@@ -23,7 +23,7 @@
 
 
     </properties>
-    <name>Rexen :: Core - Util</name>
+    <name>Kalix :: Core - Util</name>
     <description>Core - Util</description>
 
     <dependencies>

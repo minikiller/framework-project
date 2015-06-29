@@ -23,7 +23,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <name>Rexen :: Core - API</name>
+    <name>Kalix :: Core - API</name>
     <description>Core API</description>
 
     <dependencies>

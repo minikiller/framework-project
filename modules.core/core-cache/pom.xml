@@ -22,7 +22,7 @@
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <name>Rexen :: Core - Cache</name>
+    <name>Kalix :: Core - Cache</name>
     <description>Core Cache</description>
 
     <dependencies>

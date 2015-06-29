@@ -22,7 +22,7 @@
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <name>Rexen :: Core - MQ</name>
+    <name>Kalix :: Core - MQ</name>
     <description>Core MQ</description>
 
     <dependencies>

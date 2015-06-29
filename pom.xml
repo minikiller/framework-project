@@ -35,7 +35,7 @@
     <artifactId>kalix-project</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>cn.com.rexen.kalix-project (OSGi Project)</name>
+    <name>kalix-project (OSGi Project)</name>
 
     <!--
      | describe your project here
@@ -65,7 +65,7 @@
         <maven-source-plugin.version>2.4</maven-source-plugin.version>
 
         <karaf.etc.path>D:/java-develop/tools/apache-karaf-3.0.3/etc</karaf.etc.path>
-        <!--<karaf.path>D:/java-develop/tools/apache-karaf-3.0.2/deploy</karaf.path>-->
+        <karaf.path>D:/java-develop/tools/apache-karaf-3.0.3/deploy</karaf.path>
         <karaf.bin.path>D:/java-develop/tools/apache-karaf-3.0.3/bin</karaf.bin.path>
         <version.apache.karaf>3.0.3</version.apache.karaf>
         <!-- Database settings -->
