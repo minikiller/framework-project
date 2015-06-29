@@ -13,7 +13,7 @@
     <groupId>cn.com.rexen.platform</groupId>
     <artifactId>modules.core</artifactId>
 
-    <name>Kylix :: Modules - Core</name>
+    <name>Kalix :: Modules - Core</name>
 
     <packaging>pom</packaging>
 

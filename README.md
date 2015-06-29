@@ -11,9 +11,9 @@ kalix-project
 9.使用bootstrap作为表现层框架 <br/>
 10.core-archetype用于新建业务模块
 （例如：创建一个order业务模块
- mvn archetype:generate -DgroupId=com.daren.order <br/>
- -DartifactId=order -Dversion=1.0-SNAPSHOT -Dpackage=com.daren.order <br/>
- -DarchetypeGroupId=com.daren.core -DarchetypeArtifactId=com.daren.core.archetype <br/>
+ mvn archetype:generate -DgroupId=cn.com.rexen.order <br/>
+ -DartifactId=order -Dversion=1.0-SNAPSHOT -Dpackage=cn.com.rexen.order <br/>
+ -DarchetypeGroupId=cn.com.rexen.core -DarchetypeArtifactId=cn.com.rexen.core.archetype <br/>
  -DarchetypeVersion=1.0-SNAPSHOT -DarchetypeRepository=local）<br/>
 11.使用acitviti作为工作流引擎  <br/>
 12.core-util的CouchdbConfig實現了osgi的configAdmin（blueprint） <br/>

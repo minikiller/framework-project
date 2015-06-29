@@ -44,9 +44,9 @@
     <description>Parent of Project</description>
 
     <scm>
-        <url>git@github.com:jldaren/kalix-project.git</url>
-        <connection>scm:git:git@github.com:jldaren/kalix-project.git</connection>
-        <developerConnection>scm:git:git@github.com:jldaren/kalix-project.git</developerConnection>
+        <url>https://github.com/sunlingfeng-rexen/kalix-project.git</url>
+        <connection>scm:git:git@github.com:sunlingfeng-rexen/kalix-project.git</connection>
+        <developerConnection>scm:git:git@github.com:sunlingfeng-rexen/kalix-project.git</developerConnection>
     </scm>
 
     <properties>
@@ -64,6 +64,7 @@
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven-source-plugin.version>2.4</maven-source-plugin.version>
 
+        <karaf.version>3.0.3</karaf.version>
         <karaf.etc.path>D:/java-develop/tools/apache-karaf-3.0.3/etc</karaf.etc.path>
         <karaf.path>D:/java-develop/tools/apache-karaf-3.0.3/deploy</karaf.path>
         <karaf.bin.path>D:/java-develop/tools/apache-karaf-3.0.3/bin</karaf.bin.path>
@@ -295,5 +296,7 @@
     <modules>
         <module>poms</module>
         <module>modules.core</module>
+        <module>modules.tools</module>
+        <module>modules.middleware</module>
     </modules>
 </project>

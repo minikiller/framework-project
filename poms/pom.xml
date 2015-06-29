@@ -13,7 +13,7 @@
     <groupId>cn.com.rexen.platform.kalix-project.build</groupId>
     <artifactId>shared-plugin-settings</artifactId>
 
-    <name>Kylix - Plugin Configuration</name>
+    <name>Kalix :: Plugin Configuration</name>
 
     <packaging>pom</packaging>
 
@@ -41,15 +41,11 @@
         <commonsPool.Version>1.5.4</commonsPool.Version>
         <serp.Version>1.13.1</serp.Version>
         <log4j.version>1.2.17</log4j.version>
-        <!--apache wicket start-->
-        <wicket.version>6.18.0</wicket.version>
-        <pax.wicket.version>3.0.2</pax.wicket.version>
         <geronimo.inject.version>1.0</geronimo.inject.version>
         <ops4j.base.version>1.4.0</ops4j.base.version>
         <cglib.version>2.2.2_1</cglib.version>
         <aopalliance.version>1.0_6</aopalliance.version>
         <cglib.range>[2,3)</cglib.range>
-        <!--apache wicket end-->
         <!-- Aries Blueprint Versions -->
         <ariesBlueprintAnnotationApiVersion>1.0.0</ariesBlueprintAnnotationApiVersion>
         <ariesBlueprintAnnotationImplVersion>1.0.0</ariesBlueprintAnnotationImplVersion>
@@ -57,19 +53,17 @@
         <jsr339.version>2.2.0</jsr339.version>
         <ognl.version>3.0.6_1</ognl.version>
         <javassist.version>3.12.1.GA_3</javassist.version>
-        <activiti.version>5.15.1</activiti.version>
-        <cxf.version>2.7.10</cxf.version>
+        <activiti.version>5.17.0</activiti.version>
+        <cxf.version>3.1.1</cxf.version>
         <camel.version>2.15.2</camel.version>
-        <activemq.version>5.10.0</activemq.version>
+        <activemq.version>5.11.1</activemq.version>
         <guava.version>15.0</guava.version>
-        <jquery-ui.version>6.18.0</jquery-ui.version>
         <lightcouch.version>0.0.6_1</lightcouch.version>
         <jedis.version>2.4.2</jedis.version>
         <org.apache.servicemix.bundles.jedis.version>2.5.1_1</org.apache.servicemix.bundles.jedis.version>
         <commons-pool2.version>2.2</commons-pool2.version>
         <gson.version>2.2.4</gson.version>
         <poi.version>3.10-FINAL</poi.version>
-        <select2.version>2.3</select2.version>
         <jackson.version>1.9.8</jackson.version>
     </properties>
     <build>
@@ -331,7 +325,7 @@
                 <version>3.7.0.v20110613</version>
                 <scope>provided</scope>
             </dependency>
-            <!--wicket begin-->
+
             <dependency>
                 <groupId>org.apache.shiro</groupId>
                 <artifactId>shiro-spring</artifactId>
@@ -365,13 +359,6 @@
 
 
             <dependency>
-                <groupId>org.ops4j.pax.wicket</groupId>
-                <artifactId>org.ops4j.pax.wicket.service</artifactId>
-                <version>${pax.wicket.version}</version>
-                <scope>provided</scope>
-            </dependency>
-
-            <dependency>
                 <groupId>org.ops4j.base</groupId>
                 <artifactId>ops4j-base</artifactId>
                 <version>${ops4j.base.version}</version>
@@ -400,13 +387,6 @@
                 <scope>provided</scope>
             </dependency>
 
-            <dependency>
-                <groupId>org.ops4j.pax.wicket.spi</groupId>
-                <artifactId>org.ops4j.pax.wicket.spi.blueprint</artifactId>
-                <version>${pax.wicket.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <!--wicket end -->
             <!-- blueprint -->
             <dependency>
                 <groupId>org.apache.aries.blueprint</groupId>
@@ -511,36 +491,11 @@
                 <version>${guava.version}</version>
                 <scope>provided</scope>
             </dependency>
-            <!--jquery ui-->
-            <dependency>
-                <groupId>com.googlecode.wicket-jquery-ui</groupId>
-                <artifactId>wicket-jquery-ui-core</artifactId>
-                <version>${jquery-ui.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.googlecode.wicket-jquery-ui</groupId>
-                <artifactId>wicket-kendo-ui</artifactId>
-                <version>${jquery-ui.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.googlecode.wicket-jquery-ui</groupId>
-                <artifactId>wicket-jquery-ui</artifactId>
-                <version>${jquery-ui.version}</version>
-                <scope>provided</scope>
-            </dependency>
 
             <dependency>
                 <groupId>org.apache.servicemix.bundles</groupId>
                 <artifactId>org.apache.servicemix.bundles.lightcouch</artifactId>
                 <version>${lightcouch.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.code-troopers</groupId>
-                <artifactId>wicket-jsr303-parsley</artifactId>
-                <version>0.4</version>
                 <scope>provided</scope>
             </dependency>
 
