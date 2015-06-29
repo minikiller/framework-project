@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <table name="sys_dict">
+        <column>id</column>
+        <column>createBy</column>
+        <column>creationDate</column>
+        <column>updateBy</column>
+        <column>updateDate</column>
+        <column>description</column>
+        <column>label</column>
+        <column>sort</column>
+        <column>type</column>
+        <column>value</column>
+        <column>version_</column>
+        <row>
+            <value>130121</value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:06:42.0]]></value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:11:12.0]]></value>
+            <value>防盗设备</value>
+            <value>防盗设备</value>
+            <value>1</value>
+            <value>equipment_type</value>
+            <value>1</value>
+            <value>2</value>
+        </row>
+        <row>
+            <value>130122</value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:06:42.0]]></value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:11:12.0]]></value>
+            <value>防护防爆装备</value>
+            <value>防护防爆装备</value>
+            <value>2</value>
+            <value>equipment_type</value>
+            <value>2</value>
+            <value>2</value>
+        </row>
+        <row>
+            <value>130123</value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:06:42.0]]></value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:11:12.0]]></value>
+            <value>防火设备</value>
+            <value>防火设备</value>
+            <value>3</value>
+            <value>equipment_type</value>
+            <value>3</value>
+            <value>2</value>
+        </row>
+        <row>
+            <value>130124</value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:06:42.0]]></value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:11:12.0]]></value>
+            <value>观察通讯照明</value>
+            <value>观察通讯照明</value>
+            <value>4</value>
+            <value>equipment_type</value>
+            <value>4</value>
+            <value>2</value>
+        </row>
+        <row>
+            <value>130125</value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:06:42.0]]></value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:11:12.0]]></value>
+            <value>交通工具</value>
+            <value>交通工具</value>
+            <value>5</value>
+            <value>equipment_type</value>
+            <value>5</value>
+            <value>2</value>
+        </row>
+        <row>
+            <value>130126</value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:06:42.0]]></value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:11:12.0]]></value>
+            <value>警用器械</value>
+            <value>警用器械</value>
+            <value>6</value>
+            <value>equipment_type</value>
+            <value>6</value>
+            <value>2</value>
+        </row>
+        <row>
+            <value>130127</value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:06:42.0]]></value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:11:12.0]]></value>
+            <value>警用武器</value>
+            <value>警用武器</value>
+            <value>7</value>
+            <value>equipment_type</value>
+            <value>7</value>
+            <value>2</value>
+        </row>
+        <row>
+            <value>130128</value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:06:42.0]]></value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:11:12.0]]></value>
+            <value>救援物资</value>
+            <value>救援物资</value>
+            <value>8</value>
+            <value>equipment_type</value>
+            <value>8</value>
+            <value>2</value>
+        </row>
+        <row>
+            <value>130129</value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:06:42.0]]></value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:11:12.0]]></value>
+            <value>抢险材料</value>
+            <value>抢险材料</value>
+            <value>9</value>
+            <value>equipment_type</value>
+            <value>9</value>
+            <value>2</value>
+        </row>
+        <row>
+            <value>130130</value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:06:42.0]]></value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:11:12.0]]></value>
+            <value>抢险工具</value>
+            <value>抢险工具</value>
+            <value>10</value>
+            <value>equipment_type</value>
+            <value>10</value>
+            <value>2</value>
+        </row>
+        <row>
+            <value>130131</value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:06:42.0]]></value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:11:12.0]]></value>
+            <value>抢险药材</value>
+            <value>抢险药材</value>
+            <value>11</value>
+            <value>equipment_type</value>
+            <value>11</value>
+            <value>2</value>
+        </row>
+        <row>
+            <value>130132</value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:06:42.0]]></value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:11:12.0]]></value>
+            <value>生活保障物资</value>
+            <value>生活保障物资</value>
+            <value>12</value>
+            <value>equipment_type</value>
+            <value>12</value>
+            <value>2</value>
+        </row>
+        <row>
+            <value>130133</value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:06:42.0]]></value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:11:12.0]]></value>
+            <value>通讯设备</value>
+            <value>通讯设备</value>
+            <value>13</value>
+            <value>equipment_type</value>
+            <value>13</value>
+            <value>2</value>
+        </row>
+        <row>
+            <value>130134</value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:06:42.0]]></value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:11:12.0]]></value>
+            <value>照明设备</value>
+            <value>照明设备</value>
+            <value>14</value>
+            <value>equipment_type</value>
+            <value>14</value>
+            <value>2</value>
+        </row>
+        <row>
+            <value>130135</value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:06:42.0]]></value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:11:12.0]]></value>
+            <value>指示标牌</value>
+            <value>指示标牌</value>
+            <value>15</value>
+            <value>equipment_type</value>
+            <value>15</value>
+            <value>2</value>
+        </row>
+        <row>
+            <value>130136</value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:06:42.0]]></value>
+            <null/>
+            <value><![CDATA[2014-08-17 22:11:12.0]]></value>
+            <value>专用设备</value>
+            <value>专用设备</value>
+            <value>16</value>
+            <value>equipment_type</value>
+            <value>16</value>
+            <value>2</value>
+        </row>
+    </table>
+</dataset>
