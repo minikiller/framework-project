@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cxf="http://cxf.apache.org/blueprint/core"
+           xmlns:jaxrs="http://cxf.apache.org/blueprint/jaxrs"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0
+           http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+           http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd
+           http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd">
+
+
+    <bean id="userBeanServiceImpl" class="cn.com.rexen.admin.core.UserBeanServiceImpl">
+        <property name="userBeanDao" ref="userBeanDao"/>
+        <property name="roleBeanDao" ref="roleBeanDao"/>
+    </bean>
+    <service id="userBeanService" ref="userBeanServiceImpl" interface="IUserBeanService"/>
+
+
+    <bean id="loginBeanServiceImpl" class="cn.com.rexen.admin.core.UserLoginServiceImpl">
+        <property name="userBeanDao" ref="userBeanDao"/>
+    </bean>
+    <service id="userloginBeanService" ref="loginBeanServiceImpl"
+             interface="IUserLoginService"/>
+    <reference id="userBeanDao" interface="IUserBeanDao"/>
+    <!--角色dao服务注册-->
+    <bean id="roleBeanServiceImpl" class="cn.com.rexen.admin.core.RoleBeanServiceImpl">
+        <property name="roleBeanDao" ref="roleBeanDao"/>
+        <property name="userBeanDao" ref="userBeanDao"/>
+    </bean>
+    <service id="roleBeanService" ref="roleBeanServiceImpl"
+             interface="IRoleBeanService"/>
+    <reference id="roleBeanDao" interface="IRoleBeanDao"/>
+
+    <!--权限服务注册-->
+    <bean id="permissionBeanServiceImpl" class="cn.com.rexen.admin.core.PermissionBeanServiceImpl">
+        <property name="permissionBeanDao" ref="permissionBeanDao"/>
+        <property name="roleBeanDao" ref="roleBeanDao"/>
+    </bean>
+    <service id="permissionBeanService" ref="permissionBeanServiceImpl"
+             interface="IPermissionBeanService"/>
+    <reference id="permissionBeanDao" interface="IPermissionBeanDao"/>
+
+    <!--字典服务注册-->
+    <bean id="dictBeanServiceImpl" class="cn.com.rexen.admin.core.DictBeanServiceImpl">
+        <property name="dictBeanDao" ref="dictBeanDao"/>
+    </bean>
+    <service id="dictBeanService" ref="dictBeanServiceImpl"
+             interface="IDictBeanService"/>
+    <reference id="dictBeanDao" interface="IDictBeanDao"/>
+
+    <!--区域服务注册-->
+    <bean id="areaBeanServiceImpl" class="cn.com.rexen.admin.core.AreaBeanServiceImpl">
+        <property name="areaBeanDao" ref="areaBeanDao"/>
+        <property name="aboutBeanDao" ref="aboutBeanDao"/>
+    </bean>
+    <service id="areaBeanService" ref="areaBeanServiceImpl"
+             interface="IAreaBeanService"/>
+    <reference id="areaBeanDao" interface="IAreaBeanDao"/>
+
+    <!--机构服务注册-->
+    <bean id="officeBeanServiceImpl" class="cn.com.rexen.admin.core.OfficeBeanServiceImpl">
+        <property name="officeBeanDao" ref="officeBeanDao"/>
+    </bean>
+    <service id="officeBeanService" ref="officeBeanServiceImpl"
+             interface="IOfficeBeanService"/>
+    <reference id="officeBeanDao" interface="IOfficeBeanDao"/>
+
+    <!--系统版本服务注册-->
+    <bean id="aboutBeanServiceImpl" class="cn.com.rexen.admin.core.AboutBeanServiceImpl">
+        <property name="aboutBeanDao" ref="aboutBeanDao"/>
+    </bean>
+    <service id="aboutBeanService" ref="aboutBeanServiceImpl"
+             interface="IAboutBeanService"/>
+    <reference id="aboutBeanDao" interface="IAboutBeanDao"/>
+
+    <cxf:bus>
+        <cxf:features>
+            <cxf:logging/>
+        </cxf:features>
+    </cxf:bus>
+
+    <jaxrs:server id="userBeanRestService" address="/user">
+        <jaxrs:serviceBeans>
+            <ref component-id="loginBeanServiceImpl"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <!--<ref component-id="existUser"/>-->
+            <ref component-id="jsonProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
+
+    <jaxrs:server id="dictBeanRestService" address="/dict">
+        <jaxrs:serviceBeans>
+            <ref component-id="dictBeanServiceImpl"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <!--<ref component-id="existUser"/>-->
+            <ref component-id="jsonProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
+
+    <bean id="existUser" class="com.daren.core.rest.UserExistFilter"/>
+
+    <!-- cxf的JSON支持配置 -->
+    <bean id="jacksonMapper" class="com.daren.core.rest.CustomObjectMapper">
+        <property name="serializationConfig.dateFormat">
+            <bean class="java.text.SimpleDateFormat">
+                <argument value="yyyy-MM-dd HH:mm:ss"/>
+            </bean>
+        </property>
+
+        <property name="deserializationConfig.dateFormat">
+            <bean class="java.text.SimpleDateFormat">
+                <argument value="yyyy-MM-dd HH:mm:ss"/>
+            </bean>
+        </property>
+
+        <property name="serializerProvider.nullKeySerializer">
+            <bean class="com.daren.core.rest.NullSerializer"/>
+        </property>
+    </bean>
+
+    <bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider">
+        <property name="mapper" ref="jacksonMapper"/>
+    </bean>
+
+    <!--注册系统消息服务类-->
+    <service id="messageBeanService" interface="IMessageBeanService">
+        <bean class="cn.com.rexen.admin.core.MessageBeanServiceImpl">
+            <property name="messageBeanDao" ref="messageBeanDao"/>
+        </bean>
+    </service>
+    <reference id="messageBeanDao" interface="IMessageBeanDao"/>
+
+</blueprint>
+

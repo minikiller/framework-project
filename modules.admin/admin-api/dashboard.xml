@@ -1,0 +1,17 @@
+<dashboard>
+    <id>default</id>
+    <title>Default</title>
+    <columnCount>2</columnCount>
+    <widgets>
+        <com.daren.notice.webapp.wicket.widget.NoticeWidget>
+            <id>system.notice</id>
+            <title>公告</title>
+            <collapsed>false</collapsed>
+            <settings/>
+            <location>
+                <column>0</column>
+                <row>0</row>
+            </location>
+        </com.daren.notice.webapp.wicket.widget.NoticeWidget>
+    </widgets>
+</dashboard>

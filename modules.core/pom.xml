@@ -28,6 +28,7 @@
         <module>core-datasource</module>
         <module>core-impl</module>
         <module>core-util</module>
+        <module>core-web</module>
     </modules>
     <dependencyManagement>
         <dependencies>
