@@ -27,6 +27,7 @@
         <module>admin-core</module>
         <module>admin-resources</module>
         <module>admin-rest</module>
+        <module>admin-web</module>
     </modules>
     <dependencyManagement>
         <dependencies>
