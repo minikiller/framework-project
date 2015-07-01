@@ -1,7 +1,7 @@
 package cn.com.rexen.admin.api.dao;
 
-import com.daren.admin.entities.AreaBean;
-import com.daren.core.api.persistence.IGenericDao;
+import cn.com.rexen.admin.entities.AreaBean;
+import cn.com.rexen.core.api.persistence.IGenericDao;
 
 /**
  * 项目名称:  urgent-project

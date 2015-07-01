@@ -1,9 +1,9 @@
 package cn.com.rexen.admin.core;
 
-import com.daren.admin.api.biz.IOfficeBeanService;
-import com.daren.admin.api.dao.IOfficeBeanDao;
-import com.daren.admin.entities.OfficeBean;
-import com.daren.core.impl.biz.GenericBizServiceImpl;
+import cn.com.rexen.admin.api.biz.IOfficeBeanService;
+import cn.com.rexen.admin.api.dao.IOfficeBeanDao;
+import cn.com.rexen.admin.entities.OfficeBean;
+import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 
 /**
  * @类描述：机构服务实现类

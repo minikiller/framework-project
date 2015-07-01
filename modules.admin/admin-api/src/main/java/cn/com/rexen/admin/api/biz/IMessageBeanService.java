@@ -1,7 +1,7 @@
 package cn.com.rexen.admin.api.biz;
 
-import com.daren.admin.entities.MessageBean;
-import com.daren.core.api.biz.IBizService;
+import cn.com.rexen.admin.entities.MessageBean;
+import cn.com.rexen.core.api.biz.IBizService;
 
 import java.util.List;
 

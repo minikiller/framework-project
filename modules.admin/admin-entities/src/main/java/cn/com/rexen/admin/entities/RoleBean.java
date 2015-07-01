@@ -1,6 +1,6 @@
 package cn.com.rexen.admin.entities;
 
-import com.daren.core.api.persistence.PersistentEntity;
+import cn.com.rexen.core.api.persistence.PersistentEntity;
 import com.google.common.collect.Lists;
 
 import javax.persistence.*;

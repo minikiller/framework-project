@@ -1,7 +1,7 @@
 package cn.com.rexen.admin.api.dao;
 
-import com.daren.admin.entities.DictBean;
-import com.daren.core.api.persistence.IGenericDao;
+import cn.com.rexen.admin.entities.DictBean;
+import cn.com.rexen.core.api.persistence.IGenericDao;
 
 import java.util.List;
 

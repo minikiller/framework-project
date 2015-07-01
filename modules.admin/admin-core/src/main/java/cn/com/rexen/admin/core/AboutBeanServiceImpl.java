@@ -1,9 +1,9 @@
 package cn.com.rexen.admin.core;
 
-import com.daren.admin.api.biz.IAboutBeanService;
-import com.daren.admin.api.dao.IAboutBeanDao;
-import com.daren.admin.entities.AboutBean;
-import com.daren.core.impl.biz.GenericBizServiceImpl;
+import cn.com.rexen.admin.api.biz.IAboutBeanService;
+import cn.com.rexen.admin.api.dao.IAboutBeanDao;
+import cn.com.rexen.admin.entities.AboutBean;
+import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 
 /**
  * 项目名称:  urgent-project

@@ -1,8 +1,8 @@
 package cn.com.rexen.admin.persist.openjpa;
 
-import com.daren.admin.api.dao.IDictBeanDao;
-import com.daren.admin.entities.DictBean;
-import com.daren.core.impl.persistence.GenericOpenJpaDao;
+import cn.com.rexen.admin.api.dao.IDictBeanDao;
+import cn.com.rexen.admin.entities.DictBean;
+import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 import javax.persistence.Query;
 import java.util.List;

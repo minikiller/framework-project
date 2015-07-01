@@ -1,12 +1,12 @@
 package cn.com.rexen.admin.core;
 
-import com.daren.admin.api.biz.IUserBeanService;
-import com.daren.admin.api.dao.IRoleBeanDao;
-import com.daren.admin.api.dao.IUserBeanDao;
-import com.daren.admin.entities.RoleBean;
-import com.daren.admin.entities.UserBean;
-import com.daren.core.api.PermissionConstant;
-import com.daren.core.impl.biz.GenericBizServiceImpl;
+import cn.com.rexen.admin.api.biz.IUserBeanService;
+import cn.com.rexen.admin.api.dao.IRoleBeanDao;
+import cn.com.rexen.admin.api.dao.IUserBeanDao;
+import cn.com.rexen.admin.entities.RoleBean;
+import cn.com.rexen.admin.entities.UserBean;
+import cn.com.rexen.core.api.PermissionConstant;
+import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 

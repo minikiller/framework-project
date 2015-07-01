@@ -26,7 +26,7 @@
 
     <service id="roleCodeBeanDao" ref="roleBeanDaoOpenjpa" interface="IRoleBeanDao"/>
 
-    <!--<reference id="persistEntityService"   interface="com.daren.core.api.persistence.PersistEntityService"/>-->
+    <!--<reference id="persistEntityService"   interface="cn.com.rexen.core.api.persistence.PersistEntityService"/>-->
     <service id="permissionBeanDao" interface="IPermissionBeanDao">
         <bean class="cn.com.rexen.admin.persist.openjpa.PermissionBeanDaoOpenjpa"> <!--init-method="init">-->
             <jpa:context property="entityManager" unitname="admin-cm"/>

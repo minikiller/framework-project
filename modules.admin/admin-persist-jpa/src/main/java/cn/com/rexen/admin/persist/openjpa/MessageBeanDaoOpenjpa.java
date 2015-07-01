@@ -1,8 +1,8 @@
 package cn.com.rexen.admin.persist.openjpa;
 
-import com.daren.admin.api.dao.IMessageBeanDao;
-import com.daren.admin.entities.MessageBean;
-import com.daren.core.impl.persistence.GenericOpenJpaDao;
+import cn.com.rexen.admin.api.dao.IMessageBeanDao;
+import cn.com.rexen.admin.entities.MessageBean;
+import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 /**
  * @类描述：系统消息Dao实现类

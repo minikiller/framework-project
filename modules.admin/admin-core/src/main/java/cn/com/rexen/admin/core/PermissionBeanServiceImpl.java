@@ -1,11 +1,11 @@
 package cn.com.rexen.admin.core;
 
-import com.daren.admin.api.biz.IPermissionBeanService;
-import com.daren.admin.api.dao.IPermissionBeanDao;
-import com.daren.admin.api.dao.IRoleBeanDao;
-import com.daren.admin.entities.PermissionBean;
-import com.daren.admin.entities.RoleBean;
-import com.daren.core.impl.biz.GenericBizServiceImpl;
+import cn.com.rexen.admin.api.biz.IPermissionBeanService;
+import cn.com.rexen.admin.api.dao.IPermissionBeanDao;
+import cn.com.rexen.admin.api.dao.IRoleBeanDao;
+import cn.com.rexen.admin.entities.PermissionBean;
+import cn.com.rexen.admin.entities.RoleBean;
+import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 
 import java.util.List;
 import java.util.Set;

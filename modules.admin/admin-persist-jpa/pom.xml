@@ -26,7 +26,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>modules.admin.persist.openjpa</artifactId>
+    <artifactId>cn.com.rexen.kalix.admin.persist.openjpa</artifactId>
     <packaging>bundle</packaging>
     <name>System :: Admin - Persist JPA Container Managed</name>
     <description>System Admin Persist JPA Container Managed Module</description>

@@ -1,9 +1,9 @@
 package cn.com.rexen.admin.persist.openjpa;
 
-import com.daren.admin.api.dao.IRoleBeanDao;
-import com.daren.admin.entities.RoleBean;
-import com.daren.admin.entities.UserBean;
-import com.daren.core.impl.persistence.GenericOpenJpaDao;
+import cn.com.rexen.admin.api.dao.IRoleBeanDao;
+import cn.com.rexen.admin.entities.RoleBean;
+import cn.com.rexen.admin.entities.UserBean;
+import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 import javax.persistence.Query;
 import java.util.List;

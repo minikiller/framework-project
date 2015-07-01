@@ -1,8 +1,8 @@
 package cn.com.rexen.admin.persist.openjpa;
 
-import com.daren.admin.api.dao.IOfficeBeanDao;
-import com.daren.admin.entities.OfficeBean;
-import com.daren.core.impl.persistence.GenericOpenJpaDao;
+import cn.com.rexen.admin.api.dao.IOfficeBeanDao;
+import cn.com.rexen.admin.entities.OfficeBean;
+import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 /**
  * @类描述：机构Dao实现类

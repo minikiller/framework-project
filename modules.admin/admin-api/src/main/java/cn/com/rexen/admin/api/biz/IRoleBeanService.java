@@ -1,8 +1,8 @@
 package cn.com.rexen.admin.api.biz;
 
-import com.daren.admin.entities.RoleBean;
-import com.daren.admin.entities.UserBean;
-import com.daren.core.api.biz.IBizService;
+import cn.com.rexen.admin.entities.RoleBean;
+import cn.com.rexen.admin.entities.UserBean;
+import cn.com.rexen.core.api.biz.IBizService;
 
 import java.util.List;
 

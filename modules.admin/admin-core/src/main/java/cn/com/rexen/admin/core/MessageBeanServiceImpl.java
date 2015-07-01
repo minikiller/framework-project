@@ -1,9 +1,9 @@
 package cn.com.rexen.admin.core;
 
-import com.daren.admin.api.biz.IMessageBeanService;
-import com.daren.admin.api.dao.IMessageBeanDao;
-import com.daren.admin.entities.MessageBean;
-import com.daren.core.impl.biz.GenericBizServiceImpl;
+import cn.com.rexen.admin.api.biz.IMessageBeanService;
+import cn.com.rexen.admin.api.dao.IMessageBeanDao;
+import cn.com.rexen.admin.entities.MessageBean;
+import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 
 import java.util.List;
 

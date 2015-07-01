@@ -624,6 +624,37 @@
                 <version>${camel.version}</version>
                 <scope>provided</scope>
             </dependency>
+
+            <!-- swagger api -->
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-swagger</artifactId>
+                <version>${camel.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- use for json binding -->
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-jackson</artifactId>
+                <version>${camel.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-servlet</artifactId>
+                <version>${camel.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-metrics</artifactId>
+                <version>${camel.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
             <dependency>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>org.apache.felix.dependencymanager</artifactId>

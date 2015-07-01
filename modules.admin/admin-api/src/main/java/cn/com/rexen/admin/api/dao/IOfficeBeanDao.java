@@ -1,7 +1,7 @@
 package cn.com.rexen.admin.api.dao;
 
-import com.daren.admin.entities.OfficeBean;
-import com.daren.core.api.persistence.IGenericDao;
+import cn.com.rexen.admin.entities.OfficeBean;
+import cn.com.rexen.core.api.persistence.IGenericDao;
 
 /**
  * @类描述：机构dao接口类

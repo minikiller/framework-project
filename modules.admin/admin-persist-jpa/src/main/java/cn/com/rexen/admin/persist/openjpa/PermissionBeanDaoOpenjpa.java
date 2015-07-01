@@ -1,8 +1,8 @@
 package cn.com.rexen.admin.persist.openjpa;
 
-import com.daren.admin.api.dao.IPermissionBeanDao;
-import com.daren.admin.entities.PermissionBean;
-import com.daren.core.impl.persistence.GenericOpenJpaDao;
+import cn.com.rexen.admin.api.dao.IPermissionBeanDao;
+import cn.com.rexen.admin.entities.PermissionBean;
+import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 import java.util.List;
 

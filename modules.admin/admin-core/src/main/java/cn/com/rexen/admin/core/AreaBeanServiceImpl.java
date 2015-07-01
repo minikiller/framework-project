@@ -1,11 +1,11 @@
 package cn.com.rexen.admin.core;
 
-import com.daren.admin.api.biz.IAreaBeanService;
-import com.daren.admin.api.dao.IAboutBeanDao;
-import com.daren.admin.api.dao.IAreaBeanDao;
-import com.daren.admin.entities.AboutBean;
-import com.daren.admin.entities.AreaBean;
-import com.daren.core.impl.biz.GenericBizServiceImpl;
+import cn.com.rexen.admin.api.biz.IAreaBeanService;
+import cn.com.rexen.admin.api.dao.IAboutBeanDao;
+import cn.com.rexen.admin.api.dao.IAreaBeanDao;
+import cn.com.rexen.admin.entities.AboutBean;
+import cn.com.rexen.admin.entities.AreaBean;
+import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 
 import java.util.List;
 

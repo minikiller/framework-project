@@ -1,9 +1,9 @@
 package cn.com.rexen.admin.core;
 
-import com.daren.admin.api.biz.IDictBeanService;
-import com.daren.admin.api.dao.IDictBeanDao;
-import com.daren.admin.entities.DictBean;
-import com.daren.core.impl.biz.GenericBizServiceImpl;
+import cn.com.rexen.admin.api.biz.IDictBeanService;
+import cn.com.rexen.admin.api.dao.IDictBeanDao;
+import cn.com.rexen.admin.entities.DictBean;
+import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

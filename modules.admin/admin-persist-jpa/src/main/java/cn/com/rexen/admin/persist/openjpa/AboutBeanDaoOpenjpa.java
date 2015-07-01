@@ -1,8 +1,8 @@
 package cn.com.rexen.admin.persist.openjpa;
 
-import com.daren.admin.api.dao.IAboutBeanDao;
-import com.daren.admin.entities.AboutBean;
-import com.daren.core.impl.persistence.GenericOpenJpaDao;
+import cn.com.rexen.admin.api.dao.IAboutBeanDao;
+import cn.com.rexen.admin.entities.AboutBean;
+import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 /**
  * 项目名称:  urgent-project

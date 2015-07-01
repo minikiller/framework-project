@@ -1,7 +1,7 @@
 package cn.com.rexen.admin.api.biz;
 
-import com.daren.admin.entities.DictBean;
-import com.daren.core.api.biz.IBizService;
+import cn.com.rexen.admin.entities.DictBean;
+import cn.com.rexen.core.api.biz.IBizService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

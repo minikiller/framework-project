@@ -1,7 +1,7 @@
 package cn.com.rexen.admin.api.dao;
 
-import com.daren.admin.entities.MessageBean;
-import com.daren.core.api.persistence.IGenericDao;
+import cn.com.rexen.admin.entities.MessageBean;
+import cn.com.rexen.core.api.persistence.IGenericDao;
 
 /**
  * @类描述：系统消息DAO接口类

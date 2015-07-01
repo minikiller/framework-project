@@ -10,138 +10,62 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>modules.admin.rest</artifactId>
+    <artifactId>cn.com.rexen.kalix.admin.rest</artifactId>
     <packaging>bundle</packaging>
+    <name>System :: Admin - Rest</name>
+    <description>Urgent Admin Rest Service</description>
 
     <properties>
-        <swagger-ui.version>2.0.24</swagger-ui.version>
-        <logback-version>1.1.2</logback-version>
-        <swagger.url>https://github.com/swagger-api/swagger-ui/archive/v${swagger-ui.version}</swagger.url>
-        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <bundle.symbolicName>cn.com.rexen.kalix.admin.rest</bundle.symbolicName>
+        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.compendium</artifactId>
+        </dependency>
         <!-- camel -->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-core</artifactId>
-            <version>2.15.2</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-servlet</artifactId>
-            <version>2.15.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-metrics</artifactId>
-            <version>2.15.2</version>
         </dependency>
 
         <!-- swagger api -->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-swagger</artifactId>
-            <version>2.15.2</version>
         </dependency>
 
         <!-- use for json binding -->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-jackson</artifactId>
-            <version>2.15.2</version>
         </dependency>
 
         <dependency>
-            <groupId>com.example4.user.domain</groupId>
-            <artifactId>Example4-USER-DOMAIN</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>com.example4.user.service</groupId>
-            <artifactId>Example4-USER-SERVICE-API</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-
 
     </dependencies>
 
     <build>
         <plugins>
-            <!-- to generate the MANIFEST-FILE of the bundle -->
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <!--<manifestLocation>target/META-INF</manifestLocation>-->
-                    <instructions>
-                        <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
-                        <!--<Export-Package>${bundle.namespace}.*;version="${project.version}</Export-Package>-->
-                        <!--<Import-Package>-->
-                        <!--*-->
-                        <!--</Import-Package>-->
-                    </instructions>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                    <debug>true</debug>
-                    <optimize>true</optimize>
-                    <showDeprecation>true</showDeprecation>
-                    <showWarnings>true</showWarnings>
-                    <!--<verbose>true</verbose>-->
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>deploy</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <tasks>
-                                <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
-
-                                <if>
-                                    <available file="target/${project.artifactId}-${project.version}.jar"/>
-                                    <then>
-                                        <copy file="target/${project.artifactId}-${project.version}.jar"
-                                              todir="${karaf.path}"/>
-                                    </then>
-
-                                    <else>
-                                        <echo>The file does not exist</echo>
-                                    </else>
-                                </if>
-                            </tasks>
-
-                        </configuration>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>ant-contrib</groupId>
-                        <artifactId>ant-contrib</artifactId>
-                        <version>20020829</version>
-                    </dependency>
-                </dependencies>
-
-            </plugin>
-
 
         </plugins>
     </build>

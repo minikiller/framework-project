@@ -1,6 +1,6 @@
 package cn.com.rexen.admin.api.biz;
 
-import com.daren.core.api.biz.IBizService;
+import cn.com.rexen.core.api.biz.IBizService;
 
 /**
  * @类描述：机构服务接口类

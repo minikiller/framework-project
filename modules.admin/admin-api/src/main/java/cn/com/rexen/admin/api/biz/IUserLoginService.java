@@ -1,7 +1,7 @@
 package cn.com.rexen.admin.api.biz;
 
 
-import com.daren.admin.entities.UserBean;
+import cn.com.rexen.admin.entities.UserBean;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

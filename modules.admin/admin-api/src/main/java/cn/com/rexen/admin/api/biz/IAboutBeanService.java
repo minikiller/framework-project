@@ -1,7 +1,7 @@
 package cn.com.rexen.admin.api.biz;
 
-import com.daren.admin.entities.AboutBean;
-import com.daren.core.api.biz.IBizService;
+import cn.com.rexen.admin.entities.AboutBean;
+import cn.com.rexen.core.api.biz.IBizService;
 
 /**
  * 项目名称:  urgent-project
