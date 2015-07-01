@@ -1,12 +1,12 @@
 package cn.com.rexen.admin.entities;
 
 import cn.com.rexen.core.api.persistence.PersistentEntity;
-import com.google.common.collect.Lists;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,8 +37,8 @@ public class OfficeBean extends PersistentEntity {
     private String fax;    // 传真
     private String email;    // 邮箱
     @XmlTransient
-    //private List<UserBean> userList = Lists.newArrayList();   // 拥有用户列表
-    private List<OfficeBean> childList = Lists.newArrayList();// 拥有子机构列表
+//    private List<UserBean> userList = Lists.newArrayList();   // 拥有用户列表
+    private List<OfficeBean> childList = new ArrayList<>();// 拥有子机构列表
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_id")
@@ -138,7 +138,7 @@ public class OfficeBean extends PersistentEntity {
         this.email = email;
     }
 
-/*    @OneToMany(mappedBy = "office", fetch = FetchType.LAZY)
+    /*@OneToMany(mappedBy = "office", fetch = FetchType.LAZY)
     @OrderBy(value = "id")
     public List<UserBean> getUserList() {
         return userList;

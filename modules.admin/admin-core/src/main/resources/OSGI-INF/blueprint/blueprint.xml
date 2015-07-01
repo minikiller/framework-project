@@ -60,7 +60,6 @@
     <service id="officeBeanService" ref="officeBeanServiceImpl"
              interface="cn.com.rexen.admin.api.biz.IOfficeBeanService"/>
     <reference id="officeBeanDao" interface="cn.com.rexen.admin.api.dao.IOfficeBeanDao"/>
-
     <!--系统版本服务注册-->
     <bean id="aboutBeanServiceImpl" class="cn.com.rexen.admin.core.AboutBeanServiceImpl">
         <property name="aboutBeanDao" ref="aboutBeanDao"/>

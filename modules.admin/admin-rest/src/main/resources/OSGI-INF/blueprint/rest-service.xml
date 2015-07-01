@@ -77,10 +77,10 @@
             </get>
 
             <!-- this is a rest PUT to create/update an user -->
-            <put type="cn.com.rexen.admin.entities.UserBean">
+            <post type="cn.com.rexen.admin.entities.UserBean">
                 <description>Updates or create a user</description>
-                <to uri="bean:userService?method=updateUser"/>
-            </put>
+                <to uri="bean:userService?method=addUser"/>
+            </post>
 
             <!-- this is a rest GET to find all users -->
             <get uri="/findAll" outType="cn.com.rexen.admin.entities.UserBean[]">
