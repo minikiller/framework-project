@@ -5,4 +5,4 @@
 #Bundle-Activator: ${bundle.namespace}.internal.ExampleActivator
 #Meta-Persistence: META-INF/persistence.xml
 #JPA-PersistenceUnits:admin-am,admin-cm
-Import-Package:cn.com.rexen.core.rest,*
+Import-Package:*

@@ -3,6 +3,4 @@
 #-----------------------------------------------------------------
 
 #Bundle-Activator: ${bundle.namespace}.internal.ExampleActivator
-Meta-Persistence: META-INF/persistence.xml
-JPA-PersistenceUnits:admin-cm
-Import-Package:org.apache.derby.jdbc,*
+Import-Package:cn.com.rexen.admin.entities,*

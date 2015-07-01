@@ -55,10 +55,6 @@
             <groupId>cn.com.rexen.core</groupId>
             <artifactId>cn.com.rexen.core.impl</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.servicemix.specs</groupId>
-            <artifactId>org.apache.servicemix.specs.jsr339-api-m10</artifactId>
-        </dependency>
 
     </dependencies>
     <build>
