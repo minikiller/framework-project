@@ -22,26 +22,26 @@
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd
            ">
     <!-- to setup camel servlet with OSGi HttpService -->
-    <!--<reference id="httpService" interface="org.osgi.service.http.HttpService"/>
+    <reference id="httpService" interface="org.osgi.service.http.HttpService"/>
 
-    &lt;!&ndash;<bean class="org.apache.camel.component.swagger.DefaultCamelSwaggerServlet" />&ndash;&gt;
+    <!--<bean class="org.apache.camel.component.swagger.DefaultCamelSwaggerServlet" />-->
 
     <bean class="org.apache.camel.component.servlet.osgi.OsgiServletRegisterer"
           init-method="register"
           destroy-method="unregister">
-        <property name="alias" value="/camel-example-servlet-rest-blueprint/rest"/>
+        <property name="alias" value="/camel/rest"/>
         <property name="httpService" ref="httpService"/>
         <property name="servlet" ref="camelServlet"/>
     </bean>
     <bean id="camelServlet" class="org.apache.camel.component.servlet.CamelHttpTransportServlet"/>
-    <bean id="routeBean" class="com.rexen.test.route.UserRouteBuilder"/>
-    <bean id="tst" class="com.rexen.test.route.TestService" init-method="init">
-        <property name="userService" ref="userRestService"/>
-    </bean>
+    <!--<bean id="routeBean" class="com.rexen.test.route.UserRouteBuilder"/>-->
+    <!-- <bean id="tst" class="com.rexen.test.route.TestService" init-method="init">
+         <property name="userService" ref="userRestService"/>
+     </bean>-->
 
-    &lt;!&ndash; use camel-metrics route policy to gather metrics for all routes &ndash;&gt;
+    <!-- use camel-metrics route policy to gather metrics for all routes -->
     <bean id="metricsRoutePolicyFactory"
-          class="org.apache.camel.component.metrics.routepolicy.MetricsRoutePolicyFactory"/>-->
+          class="org.apache.camel.component.metrics.routepolicy.MetricsRoutePolicyFactory"/>
 
 
     <reference id="userService" interface="cn.com.rexen.admin.api.biz.IUserBeanService"/>
@@ -60,9 +60,9 @@
              knows the url to the REST services.
              Notice: This is optional, but needed if the RestRegistry should enlist accurate information.
              You can access the RestRegistry from JMX at runtime -->
-        <restConfiguration component="jetty" bindingMode="json"
+        <restConfiguration component="servlet" bindingMode="json"
                            contextPath="/camel/rest" host="localhost"
-                           port="8189">
+                           port="8181">
             <dataFormatProperty key="prettyPrint" value="true"/>
         </restConfiguration>
 

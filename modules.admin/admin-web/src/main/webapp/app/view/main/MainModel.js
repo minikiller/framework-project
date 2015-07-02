@@ -16,19 +16,19 @@ Ext.define('AppFrame.view.main.MainModel', {
         system: {
             name: '应用开发框架',
             version: "V1.0",
-            icon: "/admin/resources/images/logo_horizontal.png",
-            background: '/admin/resources/images/f2.gif',
+            icon: "/admine/resources/images/logo_horizontal.png",
+            background: '/admine/resources/images/f2.gif',
             copyright: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copyright 吉林锐迅信息技术有限公司"
         },
         user: {
-            url: "/admin/resources/datas/user.json",
+            url: "/admine/resources/datas/user.json",
             quit: "www.baidu.com"
         },
         application: {
-            url: '/admin/resources/datas/applications.json'
+            url: '/admine/resources/datas/applications.json'
         },
         module: {
-            url: '/admin/resources/datas/modules'
+            url: '/admine/resources/datas/modules'
         },
         menu: {
             title: '菜单列表'
