@@ -10,11 +10,6 @@ import cn.com.rexen.core.api.ErrorCodeValue;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.FormParam;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -96,12 +91,10 @@ public class UserLoginServiceImpl implements IUserLoginService {
     }
 
     @Override
-    @POST
-    @Produces("application/json;charset=utf-8")
-    @Path("/loginByPhone")
+
 //    @UserExist
-    public Map loginByPhone(@FormParam("username") String username, @FormParam("password") String password, @FormParam("client") String client,
-                            @Context HttpServletRequest request, @Context HttpServletResponse response) {
+    public Map loginByPhone(String username, String password, String client,
+                            HttpServletRequest request, HttpServletResponse response) {
         Map map = new HashMap();
         int result = -1;
         try {
@@ -151,10 +144,7 @@ public class UserLoginServiceImpl implements IUserLoginService {
     }
 
     @Override
-    @POST
-    @Produces("application/json;charset=utf-8")
-    @Path("/updateToken")
-    public Map updateToken(@Context HttpServletRequest request, @FormParam("token") String token, @FormParam("user_id") Long user_id) {
+    public Map updateToken(HttpServletRequest request, String token, Long user_id) {
         int result = -1;
         Map map = new HashMap();
         try {

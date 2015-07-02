@@ -1,12 +1,12 @@
 package cn.com.rexen.admin.entities;
 
 import cn.com.rexen.core.api.persistence.PersistentEntity;
-import com.google.common.collect.Lists;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,8 +26,8 @@ public class RoleBean extends PersistentEntity {
     private String name;    // 角色名称
     private String remark;  //角色备注
     @XmlTransient
-    private List<UserBean> userList = Lists.newArrayList(); // 拥有用户列表
-    private List<PermissionBean> permissionList = Lists.newArrayList(); // 拥有菜单列表
+    private List<UserBean> userList = new ArrayList<>(); // 拥有用户列表
+    private List<PermissionBean> permissionList = new ArrayList<>(); // 拥有菜单列表
 
     public RoleBean() {
     }

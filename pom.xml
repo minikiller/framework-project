@@ -65,9 +65,9 @@
         <maven-source-plugin.version>2.4</maven-source-plugin.version>
 
         <karaf.version>3.0.3</karaf.version>
-        <karaf.etc.path>D:/java-develop/tools/apache-karaf-3.0.3/etc</karaf.etc.path>
-        <karaf.path>D:/java-develop/tools/apache-karaf-3.0.3/deploy</karaf.path>
-        <karaf.bin.path>D:/java-develop/tools/apache-karaf-3.0.3/bin</karaf.bin.path>
+        <karaf.etc.path>d:/java-develop/tools/apache-karaf-3.0.3/etc</karaf.etc.path>
+        <karaf.path>d:/java-develop/tools/apache-karaf-3.0.3/deploy</karaf.path>
+        <karaf.bin.path>d:/java-develop/tools/apache-karaf-3.0.3/bin</karaf.bin.path>
         <version.apache.karaf>3.0.3</version.apache.karaf>
         <!-- Database settings -->
         <dbunit.dataTypeFactoryName>org.dbunit.ext.mysql.MySqlDataTypeFactory</dbunit.dataTypeFactoryName>

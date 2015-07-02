@@ -1,12 +1,12 @@
 package cn.com.rexen.admin.entities;
 
 import cn.com.rexen.core.api.persistence.PersistentEntity;
-import com.google.common.collect.Lists;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -44,7 +44,7 @@ public class UserBean extends PersistentEntity {
     private int is_ent_user;   //是否是企业用户：0-否；1-是
     private int available = 1;     //用户是否有效：0-无效；1-有效
     @XmlTransient
-    private List<RoleBean> roleList = Lists.newArrayList(); // 拥有角色列表
+    private List<RoleBean> roleList = new ArrayList<>(); // 拥有角色列表
 
     public UserBean() {
 

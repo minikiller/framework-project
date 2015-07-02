@@ -24,7 +24,7 @@
 	 ">
     <cm:property-placeholder persistent-id="ConfigDataSource" update-strategy="reload">
         <cm:default-properties>
-            <cm:property name="url" value="jdbc:mysql://localhost:3306/urgent"/>
+            <cm:property name="url" value="jdbc:mysql://localhost:3306/kalix"/>
             <cm:property name="user" value="root"/>
             <cm:property name="password" value="1234"/>
         </cm:default-properties>

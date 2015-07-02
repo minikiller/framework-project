@@ -23,8 +23,8 @@
     <modules>
         <module>core-api</module>
         <!--<module>core-couchdb</module>-->
-        <module>core-cache</module>
-        <module>core-mq</module>
+        <!--<module>core-cache</module>-->
+        <!--<module>core-mq</module>-->
         <module>core-datasource</module>
         <module>core-impl</module>
         <module>core-util</module>
@@ -36,11 +36,13 @@
                 <groupId>cn.com.rexen.core</groupId>
                 <artifactId>cn.com.rexen.core.api</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>cn.com.rexen.core</groupId>
                 <artifactId>cn.com.rexen.core.util</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

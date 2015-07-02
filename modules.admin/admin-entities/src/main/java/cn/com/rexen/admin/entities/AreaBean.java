@@ -6,12 +6,12 @@
 package cn.com.rexen.admin.entities;
 
 import cn.com.rexen.core.api.persistence.PersistentEntity;
-import com.google.common.collect.Lists;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,11 +39,10 @@ public class AreaBean extends PersistentEntity {
     private String jd;      //经度
     private String wd;      //纬度
 
-    private List<OfficeBean> officeList = Lists.newArrayList(); // 部门列表
-    private List<AreaBean> childList = Lists.newArrayList();    // 拥有子区域列表
+    private List<OfficeBean> officeList = new ArrayList<>(); // 部门列表
+    private List<AreaBean> childList = new ArrayList<>();    // 拥有子区域列表
 
     public AreaBean() {
-        super();
     }
 
     @Transient
@@ -133,10 +132,7 @@ public class AreaBean extends PersistentEntity {
         this.childList = childList;
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
+
 
     public String getJd() {
         return jd;
@@ -152,5 +148,10 @@ public class AreaBean extends PersistentEntity {
 
     public void setWd(String wd) {
         this.wd = wd;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

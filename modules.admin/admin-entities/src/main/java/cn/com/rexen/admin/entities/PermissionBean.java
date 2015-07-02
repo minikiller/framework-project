@@ -1,10 +1,10 @@
 package cn.com.rexen.admin.entities;
 
 import cn.com.rexen.core.api.persistence.PersistentEntity;
-import com.google.common.collect.Lists;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,8 +30,8 @@ public class PermissionBean extends PersistentEntity {
     @NotNull(message = "'权限标识'是必填项")
     private String permission; // 权限标识
 
-    private List<PermissionBean> childList = Lists.newArrayList();// 拥有子菜单列表
-    private List<RoleBean> roleList = Lists.newArrayList(); // 拥有角色列表
+    private List<PermissionBean> childList = new ArrayList<>();// 拥有子菜单列表
+    private List<RoleBean> roleList = new ArrayList<>(); // 拥有角色列表
 
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -138,6 +138,6 @@ public class PermissionBean extends PersistentEntity {
 
     @Override
     public String toString() {
-        return name;
+        return getName();
     }
 }

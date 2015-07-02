@@ -15,7 +15,7 @@
         <!--<property name="persistEntityService" ref="persistEntityService" />-->
     </bean>
 
-    <service id="userBeanDao" ref="userBeanDaoOpenjpa" interface="IUserBeanDao"/>
+    <service id="userBeanDao" ref="userBeanDaoOpenjpa" interface="cn.com.rexen.admin.api.dao.IUserBeanDao"/>
 
     <bean id="roleBeanDaoOpenjpa"
           class="cn.com.rexen.admin.persist.openjpa.RoleBeanDaoOpenjpa"> <!--init-method="init">-->
@@ -24,10 +24,10 @@
         <!--<property name="persistEntityService" ref="persistEntityService" />-->
     </bean>
 
-    <service id="roleCodeBeanDao" ref="roleBeanDaoOpenjpa" interface="IRoleBeanDao"/>
+    <service id="roleCodeBeanDao" ref="roleBeanDaoOpenjpa" interface="cn.com.rexen.admin.api.dao.IRoleBeanDao"/>
 
     <!--<reference id="persistEntityService"   interface="cn.com.rexen.core.api.persistence.PersistEntityService"/>-->
-    <service id="permissionBeanDao" interface="IPermissionBeanDao">
+    <service id="permissionBeanDao" interface="cn.com.rexen.admin.api.dao.IPermissionBeanDao">
         <bean class="cn.com.rexen.admin.persist.openjpa.PermissionBeanDaoOpenjpa"> <!--init-method="init">-->
             <jpa:context property="entityManager" unitname="admin-cm"/>
             <tx:transaction method="*" value="Required"/>
@@ -36,7 +36,7 @@
     </service>
 
     <!--字典dao-->
-    <service id="dictBeanDao" interface="IDictBeanDao">
+    <service id="dictBeanDao" interface="cn.com.rexen.admin.api.dao.IDictBeanDao">
         <bean class="cn.com.rexen.admin.persist.openjpa.DictBeanDaoOpenjpa"> <!--init-method="init">-->
             <jpa:context property="entityManager" unitname="admin-cm"/>
             <tx:transaction method="*" value="Required"/>
@@ -45,7 +45,7 @@
     </service>
 
     <!--区域dao-->
-    <service id="areaBeanDao" interface="IAreaBeanDao">
+    <service id="areaBeanDao" interface="cn.com.rexen.admin.api.dao.IAreaBeanDao">
         <bean class="cn.com.rexen.admin.persist.openjpa.AreaBeanDaoOpenjpa"> <!--init-method="init">-->
             <jpa:context property="entityManager" unitname="admin-cm"/>
             <tx:transaction method="*" value="Required"/>
@@ -53,7 +53,7 @@
         </bean>
     </service>
 
-    <service id="officeBeanDao" interface="IOfficeBeanDao">
+    <service id="officeBeanDao" interface="cn.com.rexen.admin.api.dao.IOfficeBeanDao">
         <bean class="cn.com.rexen.admin.persist.openjpa.OfficeBeanDaoOpenjpa"> <!--init-method="init">-->
             <jpa:context property="entityManager" unitname="admin-cm"/>
             <tx:transaction method="*" value="Required"/>
@@ -62,7 +62,7 @@
     </service>
 
     <!--系统版本dao-->
-    <service id="aboutBeanDao" interface="IAboutBeanDao">
+    <service id="aboutBeanDao" interface="cn.com.rexen.admin.api.dao.IAboutBeanDao">
         <bean class="cn.com.rexen.admin.persist.openjpa.AboutBeanDaoOpenjpa"> <!--init-method="init">-->
             <jpa:context property="entityManager" unitname="admin-cm"/>
             <tx:transaction method="*" value="Required"/>
@@ -71,7 +71,7 @@
     </service>
 
     <!--系统消息dao-->
-    <service id="messageBeanDao" interface="IMessageBeanDao">
+    <service id="messageBeanDao" interface="cn.com.rexen.admin.api.dao.IMessageBeanDao">
         <bean class="cn.com.rexen.admin.persist.openjpa.MessageBeanDaoOpenjpa"> <!--init-method="init">-->
             <jpa:context property="entityManager" unitname="admin-cm"/>
             <tx:transaction method="*" value="Required"/>

@@ -44,7 +44,7 @@
           class="org.apache.camel.component.metrics.routepolicy.MetricsRoutePolicyFactory"/>-->
 
 
-    <reference id="userService" interface="com.rexen.test.api.IUserService"/>
+    <reference id="userService" interface="cn.com.rexen.admin.api.biz.IUserBeanService"/>
     <!--<bean id="userService" class="com.rexen.test.route.UserRestServiceImpl">
         <property name="userService" ref="userService"/>
             </bean>-->
@@ -71,21 +71,21 @@
             <description>User rest service</description>
 
             <!-- this is a rest GET to view an user by the given id -->
-            <get uri="/{id}" outType="com.rexen.test.model.User">
+            <get uri="/{id}" outType="cn.com.rexen.admin.entities.UserBean">
                 <description>Find user by id</description>
                 <to uri="bean:userService?method=getUser(${header.id})"/>
             </get>
 
             <!-- this is a rest PUT to create/update an user -->
-            <put type="com.rexen.test.model.User">
+            <post type="cn.com.rexen.admin.entities.UserBean">
                 <description>Updates or create a user</description>
-                <to uri="bean:userService?method=updateUser"/>
-            </put>
+                <to uri="bean:userService?method=addUser"/>
+            </post>
 
             <!-- this is a rest GET to find all users -->
-            <get uri="/findAll" outType="com.rexen.test.model.User[]">
+            <get uri="/findAll" outType="cn.com.rexen.admin.entities.UserBean[]">
                 <description>Find all users</description>
-                <to uri="bean:userService?method=listUsers"/>
+                <to uri="bean:userService?method=getAllUser"/>
             </get>
 
         </rest>

@@ -5,10 +5,6 @@ import cn.com.rexen.core.api.biz.IBizService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,9 +53,6 @@ public interface IDictBeanService extends IBizService {
      *
      * @return
      */
-    @GET
-    @Produces("application/json;charset=utf-8")
-    @Path("/getExpertGroupList")
     public List<DictBean> getExpertGroupList();
 
     /**
@@ -68,8 +61,5 @@ public interface IDictBeanService extends IBizService {
      *
      * @return
      */
-    @GET
-    @Produces("application/json;charset=utf-8")
-    @Path("/getExpertGroupListData")
-    public HashMap getExpertGroupListData(@Context HttpServletRequest request, @Context HttpServletResponse response);
+    public HashMap getExpertGroupListData(HttpServletRequest request, HttpServletResponse response);
 }

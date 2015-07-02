@@ -35,21 +35,25 @@
                 <groupId>cn.com.rexen.core</groupId>
                 <artifactId>cn.com.rexen.core.api</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>cn.com.rexen.core</groupId>
                 <artifactId>cn.com.rexen.core.impl</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>cn.com.rexen.kalix.admin</groupId>
                 <artifactId>cn.com.rexen.kalix.admin.entities</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>cn.com.rexen.kalix.admin</groupId>
                 <artifactId>cn.com.rexen.kalix.admin.api</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
