@@ -1,4 +1,4 @@
-package cn.com.rexen.core.web.internal;
+package cn.com.rexen.kalix.core.web.internal;
 
 import org.apache.log4j.Logger;
 import org.osgi.framework.BundleActivator;
@@ -18,7 +18,7 @@ public class InitActivator implements BundleActivator {
         context = bundleContext;
         reference = bundleContext.getServiceReference(HttpService.class.getName());
         HttpService httpService = (HttpService) bundleContext.getService(reference);
-        httpService.registerResources("/core-web222/ext-5.1.0", "/webapp/ext-5.1.0", null);
+        httpService.registerResources("/core-web", "/", null);
     }
 
     @Override

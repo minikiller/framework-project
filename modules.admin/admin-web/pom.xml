@@ -9,13 +9,13 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cn.com.rexen.admin.web</artifactId>
+    <artifactId>cn.com.rexen.kalix.admin.web</artifactId>
     <packaging>bundle</packaging>
     <name>System :: Admin - Web</name>
     <description>Urgent Admin Web Service</description>
 
     <properties>
-        <bundle.symbolicName>cn.com.rexen.admin.web</bundle.symbolicName>
+        <bundle.symbolicName>cn.com.rexen.kalix.admin.web</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 

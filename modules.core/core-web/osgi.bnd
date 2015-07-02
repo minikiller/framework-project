@@ -1,1 +1,1 @@
-Bundle-Activator= cn.com.rexen.core.web.internal.InitActivator
+Bundle-Activator=  cn.com.rexen.kalix.core.web.internal.InitActivator
