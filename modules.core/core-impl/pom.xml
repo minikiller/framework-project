@@ -69,6 +69,10 @@
             <version>2.6</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.core</groupId>
+            <artifactId>cn.com.rexen.core.util</artifactId>
+        </dependency>
         <!--<dependency>
             <groupId>org.apache.servicemix.bundles</groupId>
             <artifactId>org.apache.servicemix.bundles.commons-collections</artifactId>

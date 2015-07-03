@@ -1,33 +1,23 @@
-package cn.com.rexen.core.util.internal;
+package cn.com.rexen.admin.core.internal;
 
 import cn.com.rexen.core.util.SystemUtil;
+import org.apache.log4j.Logger;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 /**
- * @类描述：osgi的初始化类
- * @创建人： sunlingfeng
- * @创建时间：2014/12/17
- * @修改人：
- * @修改时间：
- * @修改备注：
+ * Created by sunlf on 14-3-23.
  */
 public class InitActivator implements BundleActivator {
 
-    private static final String BUNDLE_NAME = " Kalix Core Util ";
+    private static final String BUNDLE_NAME = " Kalix Admin Core ";
     private static BundleContext context;
-
-    /**
-     * @return
-     */
-    public static BundleContext getBundleContext() {
-        return context;
-    }
+    private static Logger logger = Logger.getLogger(InitActivator.class);
 
     @Override
     public void start(BundleContext bundleContext) throws Exception {
-        context = bundleContext;
         SystemUtil.succeedPrintln(String.format("Start-up %s bundle!!", BUNDLE_NAME));
+        context = bundleContext;
     }
 
     @Override
