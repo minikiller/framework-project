@@ -185,8 +185,8 @@ Ext.define('AppFrame.view.main.admin.user.User', {
                             Ext.Msg.confirm("警告", "确定要删除吗？", function (button) {
                                 if (button == "yes") {
                                     Ext.Ajax.request({ //初始化选项卡
-                                        url: "/userDeleteServlet?id=" + rec.id,
-                                        method: "GET",
+                                        url: "/camel/rest/user/delete/" + rec.id,
+                                        method: "POST",
                                         callback: function (options, success, response) {
                                             var resp = Ext.JSON.decode(response.responseText);
                                             Ext.MessageBox.alert(CONFIG.ALTER_TITLE_INFO, resp.msg);
