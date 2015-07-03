@@ -19,7 +19,7 @@
               "title": "用户管理",
               "description": "用户管理面板",
               "icon": "",
-              "componentClass": "AppFrame.view.main.user.User"
+              "componentClass": "AppFrame.view.main.admin.user.User"
             }
           },
           {
