@@ -135,5 +135,5 @@ public interface IGenericDao<T, PK extends Serializable> extends IDaoService {
      */
     List<T> getAll(String className);
 
-    List getAll(int pageNumber, int pageSize, String entityClassName);
+    JsonData getAll(int pageNumber, int pageSize, String entityClassName);
 }

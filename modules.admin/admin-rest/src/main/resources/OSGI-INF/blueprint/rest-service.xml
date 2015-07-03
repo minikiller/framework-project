@@ -83,9 +83,9 @@
             </post>
 
             <!-- this is a rest GET to find all users -->
-            <get uri="/findAll" outType="cn.com.rexen.admin.entities.UserBean[]">
+            <get uri="/findAll" outType="cn.com.rexen.core.api.persistence.JsonData">
                 <description>Find all users</description>
-                <to uri="bean:userService?method=getAllUser"/>
+                <to uri="bean:userService?method=getAllUser(${header.page},${header.limit})"/>
             </get>
 
         </rest>

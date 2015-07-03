@@ -2,6 +2,7 @@ package cn.com.rexen.core.impl.biz;
 
 import cn.com.rexen.core.api.biz.IBizService;
 import cn.com.rexen.core.api.persistence.IGenericDao;
+import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import org.apache.log4j.Logger;
 
@@ -37,7 +38,7 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
     }
 
     @Override
-    public List getAllEntity(int pageNumber, int pageSize) {
+    public JsonData getAllEntity(int pageNumber, int pageSize) {
         return dao.getAll(pageNumber, pageSize, entityClassName);
     }
 
