@@ -3,6 +3,7 @@ package cn.com.rexen.admin.api.biz;
 
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.biz.IBizService;
+import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
 
 import java.util.List;
@@ -11,11 +12,11 @@ import java.util.List;
  * Created by dell on 14-1-17.
  */
 public interface IUserBeanService extends IBizService {
-    public UserBean addUser(UserBean user);
+    public JsonStatus addUser(UserBean user);
 
-    public void delUser(UserBean user);
+    public JsonStatus deleteUser(Long id);
 
-    public void saveUser(UserBean user);
+    public JsonStatus updateUser(UserBean user);
 
 
     public JsonData getAllUser(int page,int limit);

@@ -6,6 +6,7 @@ import cn.com.rexen.admin.api.dao.IUserBeanDao;
 import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.PermissionConstant;
+import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import org.apache.shiro.SecurityUtils;
@@ -18,6 +19,7 @@ import java.util.List;
  * Created by dell on 14-1-17.
  */
 public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserBeanService {
+    private static final String FUNCTION_NAME = "用户";
     private IUserBeanDao userBeanDao;
     private IRoleBeanDao roleBeanDao;
 
@@ -29,7 +31,6 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
 //    public void setRoleBeanDao(IRoleBeanDao roleBeanDao) {
 //        this.roleBeanDao = roleBeanDao;
 //    }
-
 
     public IRoleBeanDao getRoleBeanDao() {
         return roleBeanDao;
@@ -60,18 +61,50 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
 
     @Override
 
-    public UserBean addUser(UserBean user) {
-        return userBeanDao.saveUser(user);
+    public JsonStatus addUser(UserBean user) {
+        JsonStatus jsonStatus = new JsonStatus();
+        try {
+            userBeanDao.saveUser(user);
+            jsonStatus.setSuccess(true);
+            jsonStatus.setMsg("新增" + FUNCTION_NAME + "成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setFailure(true);
+            jsonStatus.setMsg("新增" + FUNCTION_NAME + "失败！");
+        }
+        return jsonStatus;
     }
 
     @Override
-    public void delUser(UserBean user) {
-        userBeanDao.removeUser(user.getId());
+    public JsonStatus deleteUser(Long id) {
+        JsonStatus jsonStatus = new JsonStatus();
+        try {
+            userBeanDao.removeUser(id);
+            jsonStatus.setSuccess(true);
+            jsonStatus.setMsg("删除" + FUNCTION_NAME + "成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setFailure(true);
+            jsonStatus.setMsg("删除" + FUNCTION_NAME + "失败！");
+        }
+        return jsonStatus;
+
     }
 
     @Override
-    public void saveUser(UserBean user) {
-        userBeanDao.saveUser(user);
+    public JsonStatus updateUser(UserBean user) {
+        JsonStatus jsonStatus = new JsonStatus();
+        try {
+            userBeanDao.saveUser(user);
+            jsonStatus.setSuccess(true);
+            jsonStatus.setMsg("更新" + FUNCTION_NAME + "成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setFailure(true);
+            jsonStatus.setMsg("更新" + FUNCTION_NAME + "失败！");
+        }
+        return jsonStatus;
+
     }
 
     public JsonData getAllUser(int page,int limit) {
@@ -127,7 +160,7 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
                 roleBeanList.add(roleBeanDao.getRole(role));
             }
         }
-        saveUser(userBean);
+        userBeanDao.save(userBean);
     }
 
     @Override
