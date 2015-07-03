@@ -10,97 +10,63 @@ Ext.define('AppFrame.view.main.user.User', {
     items: [],
     constructor: function () {
         this.id = "tab_user";
-        var pageSize = 20;
+        var pageSize = 8;
 
-        //可选方案1
-        var dataStore = Ext.create("Ext.data.Store", {
-            pageSize: 5,
-            autoLoad: true,
-            autoSync: true,
-            listeners: {
-                load: function (store, records, options) {
-                    //Ext.Ajax.request({ //初始化选项卡
-                    //    url: "http://localhost:8189/user/findAll",
-                    //    method: "POST",
-                    //    jsonData :{start:1,limit:5},
-                    //    waitMsg: '正在处理您的请求,请稍候...',
-                    //    callback: function (options, success, response) {
-                    //        alert(response.responseText);
-                    //    }
-                    //});
-                }
-            },
+        Ext.define('kalix.admin.User', {
+            extend: 'Ext.data.Model',
+            fields: [
+                {name: 'id',    type: 'int'},
+                {name: 'loginName',  type: 'string'},
+                {name: 'password', type: 'string'},
+                {name: 'name', type: 'string'},
+                {name: 'email', type: 'string'},
+                {name: 'phone', type: 'string'},
+                {name: 'mobile', type: 'string'},
+                {name: 'loginIp', type: 'string'},
+                {name: 'is_ent_user', type: 'int'},
+                {name: 'available', type: 'int'}
+            ]
+        });
+
+        var data = {users: [] };
+
+        var dataStore = Ext.create('Ext.data.Store', {
+            model: 'kalix.admin.User',
+            autoLoad:true,
+            pageSize:pageSize,
+            data : data,
             proxy: {
-                type: "rest",
-                url: "/camel/rest/user/findAll",
-                actionMethods: {
-                    create: 'POST', read: 'POST', update: 'POST', destroy: 'POST'
-                },
+                type: 'memory',
+                enablePaging: true,
                 reader: {
-                    type: "json",
-                    root: "datas",
-                    totalProperty: 'total'
+                    waitTitle : '提醒：',
+                    waitMsg : '数据加载中...',
+                    type: 'json',
+                    rootProperty: 'users'
                 }
             }
         });
 
-        //var dataStore = Ext.create("Ext.data.Store", {
-        //    pageSize:5,
-        //    autoLoad:true,
-        //    autoSync: true,
-        //    proxy: {
-        //        type: "rest",
-        //        url: "/example4-user/rest/users",
-        //        actionMethods:{
-        //            create: 'POST', read: 'POST', update: 'POST', destroy: 'POST'
-        //        },
-        //        reader: {
-        //            type: "json",
-        //            root:"datas",
-        //            totalProperty: 'total'
-        //        }
-        //    }
-        //});
 
-        dataStore.on('beforeload', function (store, options) {
-            var param = {};
-            param.username = 'zhangsan';
-            Ext.apply(dataStore.proxy.extraParams, param);
-        });
+
+
 
         var dataGrid = Ext.create('Ext.grid.Panel', {
             id: "userDataGrid",
             store: dataStore,
+            autoLoad :true,
             stripeRows: true,
             manageHeight: true,
             selModel: {selType: 'checkboxmodel', mode: "SIMPLE"},
             columns: [
                 {text: '编号', dataIndex: 'id'},
-                {text: '用户名', dataIndex: 'username'},
+                {text: '用户名', dataIndex: 'loginName'},
                 {text: '密码', dataIndex: 'password'},
                 {text: '姓名', dataIndex: 'name'},
-                {
-                    text: '性别', dataIndex: 'sex', renderer: function (value) {
-                    if (value) {
-                        if ("1" == value) {
-                            return "男";
-                        }
-                        return "女";
-                    }
-                    return "男";
-                }
-                },
-                {
-                    text: '状态', dataIndex: 'status', renderer: function (value) {
-                    if (value) {
-                        if ("1" == value) {
-                            return "启用";
-                        }
-                        return "禁用";
-                    }
-                    return "禁用";
-                }
-                },
+                {text: '邮箱', dataIndex: 'email'},
+                {text: '电话', dataIndex: 'phone'},
+                {text: '手机', dataIndex: 'mobile'},
+                {text: '最后登陆IP', dataIndex: 'loginIp'},
                 {
                     header: '操作',
                     xtype: "actioncolumn",
@@ -407,6 +373,33 @@ Ext.define('AppFrame.view.main.user.User', {
             }]
         });
 
+         Ext.Ajax.request({ //初始化选项卡
+            url: "/camel/rest/user/findAll",
+            method: "GET",
+            callback: function (options, success, response) {
+                data.users=[];
+                var users = Ext.JSON.decode(response.responseText);
+                data.users=users;
+                dataStore= Ext.create('Ext.data.Store', {
+                      model: 'kalix.admin.User',
+                      autoLoad:true,
+                      pageSize:pageSize,
+                      data : data,
+                      proxy: {
+                          type: 'memory',
+                          enablePaging: true,
+                          reader: {
+                              waitTitle : '提醒：',
+                              waitMsg : '数据加载中...',
+                              type: 'json',
+                              rootProperty: 'users'
+                          }
+                      }
+                  });
+                dataGrid.setStore(dataStore);
+                dataGrid.load();
+            }
+        });
 
         var formPanelRow1 = {
             border: false,
@@ -463,14 +456,6 @@ Ext.define('AppFrame.view.main.user.User', {
         };
 
 
-        //dataStore.on('beforeload', function (store, options) {
-        //    var username=Ext.getCmp("username").getValue();
-        //    var name=Ext.getCmp("name").getValue();
-        //    var sex=Ext.getCmp("sex").getValue();
-        //    var status=Ext.getCmp("status").getValue();
-        //
-        //    Ext.apply(dataStore.proxy.extraParams, {username:username,name:name,sex:sex,status:status} );
-        //});
 
         //form
         var formPanel = new Ext.form.FormPanel({
