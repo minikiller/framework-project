@@ -5,51 +5,16 @@
  *         date:2015-6-18
  * @version 1.0.0
  */
-Ext.define('AppFrame.view.main.user.User', {
+Ext.define('AppFrame.view.main.admin.user.User', {
     extend: 'Ext.panel.Panel',
     items: [],
     constructor: function () {
         this.id = "tab_user";
-        var pageSize = 8;
+        var pageSize = 10;
 
-        Ext.define('kalix.admin.User', {
-            extend: 'Ext.data.Model',
-            fields: [
-                {name: 'id',    type: 'int'},
-                {name: 'loginName',  type: 'string'},
-                {name: 'password', type: 'string'},
-                {name: 'name', type: 'string'},
-                {name: 'email', type: 'string'},
-                {name: 'phone', type: 'string'},
-                {name: 'mobile', type: 'string'},
-                {name: 'loginIp', type: 'string'},
-                {name: 'is_ent_user', type: 'int'},
-                {name: 'available', type: 'int'}
-            ]
+        var dataStore = Ext.create("AppFrame.view.main.admin.user.UserStore", {
+            pageSize: pageSize
         });
-
-        var data = {users: [] };
-
-        var dataStore = Ext.create('Ext.data.Store', {
-            model: 'kalix.admin.User',
-            autoLoad:true,
-            pageSize:pageSize,
-            data : data,
-            proxy: {
-                type: 'memory',
-                enablePaging: true,
-                reader: {
-                    waitTitle : '提醒：',
-                    waitMsg : '数据加载中...',
-                    type: 'json',
-                    rootProperty: 'users'
-                }
-            }
-        });
-
-
-
-
 
         var dataGrid = Ext.create('Ext.grid.Panel', {
             id: "userDataGrid",
@@ -61,12 +26,31 @@ Ext.define('AppFrame.view.main.user.User', {
             columns: [
                 {text: '编号', dataIndex: 'id'},
                 {text: '用户名', dataIndex: 'loginName'},
-                {text: '密码', dataIndex: 'password'},
                 {text: '姓名', dataIndex: 'name'},
                 {text: '邮箱', dataIndex: 'email'},
                 {text: '电话', dataIndex: 'phone'},
                 {text: '手机', dataIndex: 'mobile'},
+                {text: '创建人', dataIndex: 'createBy'},
+                { text: '创建日期', dataIndex: 'creationDate',renderer:function(value){
+                    var createDate=new Date(value);
+                    return createDate.format("yyyy-MM-dd hh:mm:ss");
+                }},
+                {text: '更新人', dataIndex: 'updateBy'},
+                { text: '更新日期', dataIndex: 'updateDate',renderer:function(value){
+                    var updateDate=new Date(value);
+                    return updateDate.format("yyyy-MM-dd hh:mm:ss");
+                }},
                 {text: '最后登陆IP', dataIndex: 'loginIp'},
+                { text: '登陆日期', dataIndex: 'loginDate',renderer:function(value){
+                    var loginDate=new Date(value);
+                    return loginDate.format("yyyy-MM-dd hh:mm:ss");
+                }},
+                { text: '用户状态', dataIndex: 'available',renderer:function(value){
+                    if(value!=null&&value=="1"){
+                        return "启用";
+                    }
+                    return "停用";
+                }},
                 {
                     header: '操作',
                     xtype: "actioncolumn",
@@ -82,45 +66,79 @@ Ext.define('AppFrame.view.main.user.User', {
                                 url: '/userUpdateServlet',
                                 bodyStyle: "padding:15px",
                                 frame: true,
+                                jsonSubmit: true,
+                                defaultType: 'textfield',
                                 buttonAlign: "center",
                                 items: [
                                     {xtype: 'hiddenfield', name: 'id', value: rec.data.id},
+
                                     {
-                                        xtype: 'textfield',
-                                        fieldLabel: '密码',
-                                        id: 'passwordId',
-                                        name: 'password',
+                                        fieldLabel: '登录名',
+                                        id: 'loginNameId',
+                                        name: 'loginName',
                                         allowBlank: false,
-                                        blankText: '不能为空!',
-                                        value: rec.data.password
+                                        blankText: '登录名不能为空!',
+                                        value: rec.data.loginName
                                     },
                                     {
-                                        xtype: 'textfield',
                                         fieldLabel: '姓名',
                                         id: 'nameId',
                                         name: 'name',
                                         allowBlank: false,
-                                        blankText: '不能为空!',
+                                        blankText: '姓名不能为空!',
                                         value: rec.data.name
                                     },
                                     {
-                                        xtype: 'combobox',
-                                        fieldLabel: '性别',
-                                        name: 'sex',
-                                        id: 'sexId',
-                                        store: [
-                                            ['1', '男'],
-                                            ['0', '女']
-                                        ]
+                                        inputType: 'password',
+                                        fieldLabel: '密码',
+                                        id: 'passwordId',
+                                        name: 'password',
+                                        allowBlank: false,
+                                        blankText: '密码不能为空!',
+                                        value: rec.data.password
+                                    },
+                                    {
+                                        inputType: 'password',
+                                        fieldLabel: '确认密码',
+                                        isFormField:false,
+                                        id: 'confirmPasswordId',
+                                        allowBlank: false,
+                                        blankText: '确认密码不能为空!',
+                                        value: rec.data.password
+                                    },
+                                    {
+                                        fieldLabel: '邮箱',
+                                        id: 'emailId',
+                                        name: 'email',
+                                        allowBlank: false,
+                                        blankText: '邮箱不能为空!',
+                                        value: rec.data.email
+                                    },
+                                    {
+                                        fieldLabel: '电话号',
+                                        id: 'phoneId',
+                                        name: 'phone',
+                                        allowBlank: false,
+                                        blankText: '电话号不能为空!',
+                                        value: rec.data.phone
+                                    },
+                                    {
+                                        fieldLabel: '手机号',
+                                        id: 'mobileId',
+                                        name: 'mobile',
+                                        allowBlank: false,
+                                        blankText: '手机号不能为空!',
+                                        value: rec.data.mobile
                                     },
                                     {
                                         xtype: 'combobox',
                                         fieldLabel: '状态',
-                                        id: 'statusId',
-                                        name: 'status',
+                                        name: 'available',
+                                        editable:false,
+                                        value: rec.data.available,
                                         store: [
                                             ['1', '启用'],
-                                            ['0', '禁用']
+                                            ['0', '停用']
                                         ]
                                     }
                                 ],
@@ -131,11 +149,11 @@ Ext.define('AppFrame.view.main.user.User', {
                                         if (form.isValid()) {
                                             form.submit({
                                                 success: function (form, action) {
-                                                    Ext.Msg.alert('Success', action.result.msg);
+                                                    Ext.Msg.alert(CONFIG.ALTER_TITLE_SUCCESS, action.result.msg);
                                                     //dataStore.loadPage(1);
                                                 },
                                                 failure: function (form, action) {
-                                                    Ext.Msg.alert('Failed', action.result.msg);
+                                                    Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, action.result.msg);
                                                 }
                                             });
                                         }
@@ -149,12 +167,9 @@ Ext.define('AppFrame.view.main.user.User', {
                                 ]
                             });
 
-                            Ext.getCmp("sexId").setValue(rec.data.sex);
-                            Ext.getCmp("statusId").setValue(rec.data.status);
-
                             var win = new Ext.Window({
                                 width: 510,
-                                height: 260,
+                                height: 350,
                                 border: false,
                                 modal: true,
                                 title: "编辑用户",
@@ -174,7 +189,7 @@ Ext.define('AppFrame.view.main.user.User', {
                                         method: "GET",
                                         callback: function (options, success, response) {
                                             var resp = Ext.JSON.decode(response.responseText);
-                                            Ext.MessageBox.alert("提示信息", resp.msg);
+                                            Ext.MessageBox.alert(CONFIG.ALTER_TITLE_INFO, resp.msg);
                                             if (resp.success) {
                                                 var username = Ext.getCmp("username").getValue();
                                                 var name = Ext.getCmp("name").getValue();
@@ -211,51 +226,73 @@ Ext.define('AppFrame.view.main.user.User', {
                         labelWidth: 75,
                         autoWidth: true,
                         autoHeight: true,
-                        url: '/userAddServlet',
+                        url: '/camel/rest/user',
+                        jsonSubmit: true,
                         bodyStyle: "padding:15px",
                         frame: true,
                         buttonAlign: "center",
+                        defaultType: 'textfield',
                         items: [
                             {
-                                xtype: 'textfield',
-                                fieldLabel: '用户名',
-                                id: 'usernameId',
-                                name: 'username',
+                                fieldLabel: '登录名',
+                                id: 'loginNameId',
+                                name: 'loginName',
                                 allowBlank: false,
-                                blankText: '不能为空!'
+                                blankText: '登录名不能为空!'
                             },
                             {
-                                xtype: 'textfield',
-                                fieldLabel: '密码',
-                                id: 'passwordId',
-                                name: 'password',
-                                allowBlank: false,
-                                blankText: '不能为空!'
-                            },
-                            {
-                                xtype: 'textfield',
                                 fieldLabel: '姓名',
                                 id: 'nameId',
                                 name: 'name',
                                 allowBlank: false,
-                                blankText: '不能为空!'
+                                blankText: '姓名不能为空!'
                             },
                             {
-                                xtype: 'combobox',
-                                fieldLabel: '性别',
-                                name: 'sex',
-                                store: [
-                                    ['1', '男'],
-                                    ['0', '女']
-                                ]
+                                inputType: 'password',
+                                fieldLabel: '密码',
+                                id: 'passwordId',
+                                name: 'password',
+                                allowBlank: false,
+                                blankText: '密码不能为空!'
+                            },
+                            {
+                                inputType: 'password',
+                                fieldLabel: '确认密码',
+                                isFormField:false,
+                                id: 'confirmPasswordId',
+                                allowBlank: false,
+                                blankText: '确认密码不能为空!'
+                            },
+                            {
+                                fieldLabel: '邮箱',
+                                id: 'emailId',
+                                name: 'email',
+                                allowBlank: false,
+                                blankText: '邮箱不能为空!'
+                            },
+                            {
+                                fieldLabel: '电话号',
+                                id: 'phoneId',
+                                name: 'phone',
+                                allowBlank: false,
+                                blankText: '电话号不能为空!'
+                            },
+                            {
+                                fieldLabel: '手机号',
+                                id: 'mobileId',
+                                name: 'mobile',
+                                allowBlank: false,
+                                blankText: '手机号不能为空!'
                             },
                             {
                                 xtype: 'combobox',
                                 fieldLabel: '状态',
-                                name: 'status',
+                                name: 'available',
+                                editable:false,
+                                value:'1',
                                 store: [
                                     ['1', '启用'],
-                                    ['0', '禁用']
+                                    ['0', '停用']
                                 ]
                             }
                         ],
@@ -264,6 +301,12 @@ Ext.define('AppFrame.view.main.user.User', {
                                 text: '保存', type: 'submit', handler: function () {
                                 var form = this.up('form').getForm();
                                 if (form.isValid()) {
+                                    var confirmPasswordValue = Ext.getCmp("confirmPasswordId").getValue();
+                                    var passwordValue = Ext.getCmp("passwordId").getValue();
+                                    if(confirmPasswordValue!=passwordValue){
+                                        Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, "密码与确认密码必须一致!");
+                                        return;
+                                    }
                                     form.submit({
                                         success: function (form, action) {
                                             Ext.Msg.alert('Success', action.result.msg);
@@ -285,9 +328,11 @@ Ext.define('AppFrame.view.main.user.User', {
                                             });
                                         },
                                         failure: function (form, action) {
-                                            Ext.Msg.alert('Failed', action.result.msg);
+                                            Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, action.result.msg);
                                         }
                                     });
+                                } else {
+                                    Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, "请检查输入项!");
                                 }
                             }
                             },
@@ -302,7 +347,7 @@ Ext.define('AppFrame.view.main.user.User', {
 
                     var win = new Ext.Window({
                         width: 510,
-                        height: 260,
+                        height: 350,
                         border: false,
                         modal: true,
                         title: "新增用户",
@@ -328,12 +373,12 @@ Ext.define('AppFrame.view.main.user.User', {
                                         }
                                     }
                                 }
-                                Ext.Ajax.request({ //初始化选项卡
+                                Ext.Ajax.request({
                                     url: "/userDeleteAllServlet?ids=" + ids,
                                     method: "GET",
                                     callback: function (options, success, response) {
                                         var resp = Ext.JSON.decode(response.responseText);
-                                        Ext.MessageBox.alert("提示信息", resp.msg);
+                                        Ext.MessageBox.alert(CONFIG.ALTER_TITLE_INFO, resp.msg);
                                         if (resp.success) {
                                             var username = Ext.getCmp("username").getValue();
                                             var name = Ext.getCmp("name").getValue();
@@ -357,7 +402,7 @@ Ext.define('AppFrame.view.main.user.User', {
                             }
                         });
                     } else {
-                        Ext.Msg.alert("错误", "请选择要删除的记录！");
+                        Ext.Msg.alert(CONFIG.ALTER_TITLE_ERROR, "请选择要删除的记录！");
                     }
                 }
                 }, "-"],
@@ -371,34 +416,6 @@ Ext.define('AppFrame.view.main.user.User', {
                 afterPageText: "共{0}页",
                 displayInfo: true
             }]
-        });
-
-         Ext.Ajax.request({ //初始化选项卡
-            url: "/camel/rest/user/findAll",
-            method: "GET",
-            callback: function (options, success, response) {
-                data.users=[];
-                var users = Ext.JSON.decode(response.responseText);
-                data.users=users;
-                dataStore= Ext.create('Ext.data.Store', {
-                      model: 'kalix.admin.User',
-                      autoLoad:true,
-                      pageSize:pageSize,
-                      data : data,
-                      proxy: {
-                          type: 'memory',
-                          enablePaging: true,
-                          reader: {
-                              waitTitle : '提醒：',
-                              waitMsg : '数据加载中...',
-                              type: 'json',
-                              rootProperty: 'users'
-                          }
-                      }
-                  });
-                dataGrid.setStore(dataStore);
-                dataGrid.load();
-            }
         });
 
         var formPanelRow1 = {
@@ -424,21 +441,7 @@ Ext.define('AppFrame.view.main.user.User', {
                     id: "name",
                     name: 'name'
                 }]
-            }, {
-                columnWidth: .2,
-                border: false,
-                layout: 'form',
-                items: [{
-                    xtype: 'combobox',
-                    fieldLabel: '性别',
-                    id: "sex",
-                    name: 'sex',
-                    store: [
-                        ['1', '男'],
-                        ['0', '女']
-                    ]
-                }]
-            }, {
+            },  {
                 columnWidth: .2,
                 border: false,
                 layout: 'form',
@@ -449,7 +452,7 @@ Ext.define('AppFrame.view.main.user.User', {
                     name: 'status',
                     store: [
                         ['1', '启用'],
-                        ['0', '禁用']
+                        ['0', '停用']
                     ]
                 }]
             }]
@@ -473,7 +476,6 @@ Ext.define('AppFrame.view.main.user.User', {
                     var sex = Ext.getCmp("sex").getValue();
                     var status = Ext.getCmp("status").getValue();
                     var grid = Ext.getCmp("userDataGrid");
-                    //var store = grid.getStore();
 
                     /*var user = Ext.create('AppFrame.view.main.user.UserModel', {start:0, limit:5,user:{name:'1'}});
                      user.save(); //PUT /users

@@ -1,2 +1,2 @@
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
-Web-ContextPath:admine
+Web-ContextPath:kalix
