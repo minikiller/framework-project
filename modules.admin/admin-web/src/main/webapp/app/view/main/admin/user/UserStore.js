@@ -11,11 +11,11 @@ Ext.define('AppFrame.view.main.admin.user.UserStore', {
     autoLoad: true,
     proxy: {
         type: "ajax",
-        url: "/example4-user/rest/users",
+        url: "/camel/rest/user/findAll",
         reader: {
             type: "json",
-            root: "datas",
-            totalProperty: 'total'
+            root: "data",
+            totalProperty: 'totalCount'
         }
     }
 });
