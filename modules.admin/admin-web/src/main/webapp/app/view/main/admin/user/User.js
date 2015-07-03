@@ -187,7 +187,6 @@ Ext.define('AppFrame.view.main.admin.user.User', {
                                     Ext.Ajax.request({ //初始化选项卡
                                         url: "/camel/rest/user?id=" + rec.id,
                                         method: 'DELETE',
-                                        param: {},
                                         callback: function (options, success, response) {
                                             var resp = Ext.JSON.decode(response.responseText);
                                             Ext.MessageBox.alert(CONFIG.ALTER_TITLE_INFO, resp.msg);
