@@ -79,9 +79,15 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     public JsonStatus deleteUser(Long id) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
-            userBeanDao.removeUser(id);
-            jsonStatus.setSuccess(true);
-            jsonStatus.setMsg("删除" + FUNCTION_NAME + "成功！");
+            if (userBeanDao.getUser(id) == null) {
+                jsonStatus.setFailure(true);
+                jsonStatus.setMsg(FUNCTION_NAME + "{" + id + "}不存在！");
+            } else {
+                userBeanDao.removeUser(id);
+                jsonStatus.setSuccess(true);
+                jsonStatus.setMsg("删除" + FUNCTION_NAME + "成功！");
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             jsonStatus.setFailure(true);

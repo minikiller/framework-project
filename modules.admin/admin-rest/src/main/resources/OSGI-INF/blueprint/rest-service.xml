@@ -91,7 +91,7 @@
             </put>
 
             <!-- this is a rest DELETE to delete an user -->
-            <delete id="route-deleteUser" uri="/delete/${id}" outType="cn.com.rexen.core.api.biz.JsonStatus">
+            <delete id="route-deleteUser" outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Updates or create a user</description>
                 <to uri="bean:userService?method=deleteUser(${header.id})"/>
             </delete>
