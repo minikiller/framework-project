@@ -6,6 +6,7 @@ import cn.com.rexen.admin.api.dao.IUserBeanDao;
 import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.PermissionConstant;
+import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
@@ -73,9 +74,8 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
         userBeanDao.saveUser(user);
     }
 
-    public List<UserBean> getAllUser() {
-        List<UserBean> beanList = userBeanDao.getAll(UserBean.class.getName());
-        return beanList;
+    public JsonData getAllUser(int page,int limit) {
+       return userBeanDao.getAll(page,limit,UserBean.class.getName());
     }
 
     @Override

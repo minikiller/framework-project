@@ -2,6 +2,7 @@ package cn.com.rexen.admin.api.dao;
 
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.persistence.IGenericDao;
+import cn.com.rexen.core.api.persistence.JsonData;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface IUserBeanDao extends IGenericDao<UserBean, Long> {
      *
      * @return List populated list of users
      */
-    List<UserBean> getUserList();
+    JsonData getUserList(int page,int limit);
 
     /**
      * Saves a user's information.

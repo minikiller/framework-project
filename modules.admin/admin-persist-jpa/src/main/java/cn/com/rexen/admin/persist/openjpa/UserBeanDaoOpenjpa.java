@@ -2,6 +2,7 @@ package cn.com.rexen.admin.persist.openjpa;
 
 import cn.com.rexen.admin.api.dao.IUserBeanDao;
 import cn.com.rexen.admin.entities.UserBean;
+import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 import java.util.Date;
@@ -21,9 +22,9 @@ public class UserBeanDaoOpenjpa extends GenericOpenJpaDao<UserBean, Long> implem
     }
 
     @Override
-    public List<UserBean> getUserList() {
+    public JsonData getUserList(int page,int limit) {
         log.debug("get user info");
-        return super.getAll(className);
+        return super.getAll(page,limit,className);
     }
 
     @Override

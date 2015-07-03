@@ -2,6 +2,7 @@ package cn.com.rexen.core.impl.persistence;
 
 
 import cn.com.rexen.core.api.persistence.IGenericDao;
+import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.persistence.SearchException;
 import org.apache.log4j.Logger;
@@ -67,13 +68,14 @@ public class GenericOpenJpaDao<T extends PersistentEntity, PK extends Serializab
     /**
      * JPA 分页查询
      *
-     * @param pageNumber
-     * @param pageSize
+     * @param page
+     * @param limit
      * @param className
      * @return
      */
     @Override
-    public List getAll(int pageNumber, int pageSize, String className) {
+    public JsonData getAll(int page, int limit, String className) {
+        JsonData jsonData=new JsonData();
         Class entityClass = null;
         try {
             entityClass = Class.forName(className);
@@ -86,9 +88,11 @@ public class GenericOpenJpaDao<T extends PersistentEntity, PK extends Serializab
         Root from = criteriaQuery.from(entityClass);
         CriteriaQuery select = criteriaQuery.select(from);
         TypedQuery typedQuery = entityManager.createQuery(select);
-        typedQuery.setFirstResult(pageNumber * pageSize);
-        typedQuery.setMaxResults(pageSize);
-        return typedQuery.getResultList();
+        typedQuery.setFirstResult((page-1) * limit);
+        typedQuery.setMaxResults(limit);
+        jsonData.setTotalCount(count);
+        jsonData.setData(typedQuery.getResultList());
+        return jsonData;
     }
 
     /**

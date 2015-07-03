@@ -176,6 +176,7 @@
 
     <feature name="kalix" version="1.0.0">
         <feature>transaction</feature>
+        <feature>war</feature>
         <feature>webconsole</feature>
         <feature>jndi</feature>
         <feature version="2.0.0">jpa</feature>

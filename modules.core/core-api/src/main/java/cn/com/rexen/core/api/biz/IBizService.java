@@ -1,6 +1,7 @@
 package cn.com.rexen.core.api.biz;
 
 import cn.com.rexen.core.api.IService;
+import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public interface IBizService<T extends PersistentEntity> extends IService {
 
     Object saveEntityAndReturn(PersistentEntity entity);
 
-    public List getAllEntity(int pageNumber, int pageSize);
+    public JsonData getAllEntity(int pageNumber, int pageSize);
 
     public List getAllEntity();
 

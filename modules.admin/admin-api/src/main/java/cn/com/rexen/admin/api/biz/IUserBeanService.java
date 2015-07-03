@@ -3,6 +3,7 @@ package cn.com.rexen.admin.api.biz;
 
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.biz.IBizService;
+import cn.com.rexen.core.api.persistence.JsonData;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public interface IUserBeanService extends IBizService {
     public void saveUser(UserBean user);
 
 
-    public List<UserBean> getAllUser();
+    public JsonData getAllUser(int page,int limit);
 
     List<UserBean> queryUser(UserBean userBean, int is_ent);
 
