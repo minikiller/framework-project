@@ -17,6 +17,11 @@ Ext.define('AppFrame.view.main.admin.user.UserModel', {
         {name: 'mobile', type: 'string'},
         {name: 'loginIp', type: 'string'},
         {name: 'is_ent_user', type: 'int'},
-        {name: 'available', type: 'int'}
+        {name: 'available', type: 'int'},
+        {name: 'createBy', type: 'string'},
+        {name: 'creationDate', type: 'long'},
+        {name: 'updateBy', type: 'string'},
+        {name: 'updateDate', type: 'long'}
+        
     ]
 });
