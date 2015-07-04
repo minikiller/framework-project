@@ -1,5 +1,5 @@
 /**
- *应用组件
+ * 应用组件
  *
  * @author majian <br/>
  *         date:2015-6-18
@@ -25,7 +25,7 @@ Ext.define('AppFrame.view.main.components.Application', {
     },
     initComponent: function () {
         var id = this.id;
-        Ext.Ajax.request({ //初始化选项卡
+        Ext.Ajax.request({ //初始化应用组件
             url: this.getViewModel().get("application.url"),
             //url :"/resources/datas/applications.json",
             method: "GET",
@@ -42,9 +42,9 @@ Ext.define('AppFrame.view.main.components.Application', {
                     }
                     Ext.getCmp("application").setActiveTab(0);
                 }
+                this.callParent();
             }
         });
-        this.callParent();
 
     },
     items: []
