@@ -23,11 +23,23 @@
             }
           },
           {
-            "id": "menu2_cm2",
+            "id": "menu1_cm2",
+            "text": "字典管理",
+            "leaf": true,
+            "component": {
+              "id": "module1_menu1_window2",
+              "title": "字典管理",
+              "description": "字典管理面板",
+              "icon": "",
+              "componentClass": "AppFrame.view.main.admin.dict.Dict"
+            }
+          },
+          {
+            "id": "menu2_cm3",
             "text": "资源管理",
             "leaf": true,
             "component": {
-              "id": "module2_menu2_window2",
+              "id": "module2_menu2_window3",
               "title": "资源管理",
               "description": "资源管理面板",
               "icon": "",
