@@ -9,8 +9,10 @@ Ext.define('Kalix.admin.user.viewModel.UserViewModel', {
     extend: 'Ext.app.ViewModel',
     alias: 'viewmodel.userViewModel',
     data: {
+        id:'tab_user',
         pageSize:10,
         list: '/camel/rest/user/findAll',
-        save: '/camel/rest/user'
+        save: '/camel/rest/user',
+        update: '/camel/rest/user'
     }
 });
