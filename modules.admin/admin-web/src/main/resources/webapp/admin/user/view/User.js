@@ -18,7 +18,7 @@ Ext.define('Kalix.admin.user.view.User', {
     },
     items: [],
     initComponent: function () {
-        this.id = "tab_user";
+        this.id = this.getViewModel().get("id");
 
         var formPanelRow1 = {
             border: false,
