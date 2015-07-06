@@ -167,7 +167,7 @@ Ext.define('Kalix.admin.user.controller.UserGridController', {
             labelWidth: 75,
             autoWidth: true,
             autoHeight: true,
-            url: '/userUpdateServlet',
+            url: this.getViewModel().get("edit"),
             bodyStyle: "padding:15px",
             frame: true,
             jsonSubmit: true,
