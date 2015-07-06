@@ -42,9 +42,9 @@ Ext.define('AppFrame.view.main.components.Application', {
                     }
                     Ext.getCmp("application").setActiveTab(0);
                 }
-                this.callParent();
             }
         });
+        this.callParent();
 
     },
     items: []
