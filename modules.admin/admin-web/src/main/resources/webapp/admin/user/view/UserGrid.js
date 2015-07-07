@@ -21,7 +21,7 @@ Ext.define('Kalix.admin.user.view.UserGrid', {
     selModel: {selType: 'checkboxmodel', mode: "SIMPLE"},
     columns: [
         {text: '编号', dataIndex: 'id'},
-        {text: '用户名', dataIndex: 'loginName'},
+        {text: '登录名', dataIndex: 'loginName'},
         {text: '姓名', dataIndex: 'name'},
         {text: '邮箱', dataIndex: 'email'},
         {text: '电话', dataIndex: 'phone'},
@@ -52,9 +52,7 @@ Ext.define('Kalix.admin.user.view.UserGrid', {
             xtype: "actioncolumn",
             items: [{
                 icon: "resources/images/pencil.png",
-                handler: function (grid, rowIndex, colIndex) {
-
-                }
+                handler: 'onEditUser'
             }, {
                 icon: "resources/images/cancel.png",
                 handler:'onDeleteUser'

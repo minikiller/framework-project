@@ -44,7 +44,7 @@ Ext.define('Kalix.view.components.core.Application', {
                 }
             }
         });
-        this.callParent();
+        this.callParent(arguments);
 
     },
     items: []

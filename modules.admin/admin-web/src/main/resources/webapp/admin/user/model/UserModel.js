@@ -7,6 +7,20 @@
  */
 Ext.define('Kalix.admin.user.model.UserModel', {
     extend: 'Ext.data.Model',
-    fields: ['id', 'loginName', 'password', 'name', 'email', 'phone', 'mobile', 'loginIp', 'is_ent_user', 'available', 'createBy', 'creationDate', 'updateBy', 'updateDate'
+    fields: [
+        {name:'id',type:'string'},
+        {name:'loginName',type:'string'},
+        {name:'password',type:'string'},
+        {name: 'name',type:'string'},
+        {name: 'email',type:'string'},
+        {name:'phone',type:'string'},
+        {name:'mobile',type:'string'},
+        {name:'loginIp',type:'string'},
+        {name:'is_ent_user',type:'int'},
+        {name:'available',type:'string'},
+        {name:'createBy',type:'string'},
+        {name:'creationDate',type:'int'},
+        {name:'updateBy',type:'string'},
+        {name:'updateDate',type:'int'}
     ]
 });

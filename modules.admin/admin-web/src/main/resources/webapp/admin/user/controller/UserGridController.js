@@ -8,9 +8,17 @@
 Ext.define('Kalix.admin.user.controller.UserGridController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.userGridController',
+    /**
+     * 重置操作.
+     * @returns {Ext.panel.Panel}
+     */
     onResetUser:function(){
         this.up('form').getForm().reset();
     },
+    /**
+     * 保存操作.
+     * @returns {Ext.panel.Panel}
+     */
     onSaveUser:function(){
         var form = this.up('form').getForm();
         if (form.isValid()) {
@@ -48,6 +56,10 @@ Ext.define('Kalix.admin.user.controller.UserGridController', {
             Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, "请检查输入项!");
         }
     },
+    /**
+     * 打开新增操作.
+     * @returns {Ext.panel.Panel}
+     */
     onAddUser:function(){
         var addFormPanel = Ext.create('Ext.FormPanel',{
             labelAlign: 'center',
@@ -146,6 +158,10 @@ Ext.define('Kalix.admin.user.controller.UserGridController', {
 
         win.show();
     },
+    /**
+     * 更新操作.
+     * @returns {Ext.panel.Panel}
+     */
     onUpdateUser:function(){
         var form = this.up('form').getForm();
         if (form.isValid()) {
@@ -160,6 +176,12 @@ Ext.define('Kalix.admin.user.controller.UserGridController', {
             });
         }
     },
+    /**
+     * 打开编辑操作.
+     * @param grid
+     * @param rowIndex
+     * @param colIndex
+     */
     onEditUser:function(grid, rowIndex, colIndex){
         var rec = grid.getStore().getAt(rowIndex);
         var editFormPanel =Ext.create('Ext.FormPanel',{
@@ -267,6 +289,9 @@ Ext.define('Kalix.admin.user.controller.UserGridController', {
 
         win.show();
     },
+    /**
+     * 批量删除操作.
+     */
     onDeleteAllUser:function(){
         var selModel = Ext.getCmp("userDataGrid").getSelectionModel();
         if (selModel.hasSelection()) {
@@ -314,6 +339,12 @@ Ext.define('Kalix.admin.user.controller.UserGridController', {
             Ext.Msg.alert(CONFIG.ALTER_TITLE_ERROR, "请选择要删除的记录！");
         }
     },
+    /**
+     * 删除单个操作.
+     * @param grid
+     * @param rowIndex
+     * @param colIndex
+     */
     onDeleteUser:function(grid, rowIndex, colIndex){
         var rec = grid.getStore().getAt(rowIndex);
         Ext.Msg.confirm("警告", "确定要删除吗？", function (button) {
@@ -325,22 +356,9 @@ Ext.define('Kalix.admin.user.controller.UserGridController', {
                         var resp = Ext.JSON.decode(response.responseText);
                         Ext.MessageBox.alert(CONFIG.ALTER_TITLE_INFO, resp.msg);
                         if (resp.success) {
-                            var username = Ext.getCmp("username").getValue();
-                            var name = Ext.getCmp("name").getValue();
-                            var sex = Ext.getCmp("sex").getValue();
-                            var status = Ext.getCmp("status").getValue();
                             var grid = Ext.getCmp("userDataGrid");
                             var store = grid.getStore();
-                            store.reload({
-                                params: {
-                                    start: 0,
-                                    limit: pageSize,
-                                    username: username,
-                                    name: name,
-                                    sex: sex,
-                                    status: status
-                                }
-                            });
+                            store.reload();
                         }
                     }
                 });
