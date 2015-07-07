@@ -57,6 +57,7 @@
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
+                        <_wab>src/main/webapp/</_wab>
                         <_include>-osgi.bnd</_include>
 
                         <!--<Require-Capability>

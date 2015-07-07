@@ -2682,7 +2682,7 @@ ul.x-tagfield-list.x-tagfield-singleselect {
 }
 
 .x-panel-header-title-default > .x-title-text-default:after {
-    content: 'Ext JS Beta';
+    content: ' ';
     position: absolute;
     top: 0;
     right: 0;
@@ -2971,7 +2971,7 @@ ul.x-tagfield-list.x-tagfield-singleselect {
 }
 
 .x-panel-header-title-default-framed > .x-title-text-default-framed:after {
-    content: 'Ext JS Beta';
+    content: ' ';
     position: absolute;
     top: 0;
     right: 0;
@@ -8853,7 +8853,7 @@ body.x-border-layout-ct, div.x-border-layout-ct {
 }
 
 .x-window-header-title-default > .x-title-text-default:after {
-    content: 'Ext JS Beta';
+    content: ' ';
     position: absolute;
     top: 0;
     right: 0;
@@ -13167,7 +13167,7 @@ a.x-color-picker-item:hover {
 }
 
 .x-panel-header-title-light > .x-title-text-light:after {
-    content: 'Ext JS Beta';
+    content: ' ';
     position: absolute;
     top: 0;
     right: 0;
@@ -13457,7 +13457,7 @@ a.x-color-picker-item:hover {
 }
 
 .x-panel-header-title-light-framed > .x-title-text-light-framed:after {
-    content: 'Ext JS Beta';
+    content: ' ';
     position: absolute;
     top: 0;
     right: 0;

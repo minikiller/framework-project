@@ -31,12 +31,13 @@ Ext.define('Kalix.admin.user.controller.UserGridController', {
             form.submit({
                 success: function (form, action) {
                     Ext.Msg.alert(CONFIG.ALTER_TITLE_SUCCESS, action.result.msg);
-                    var username = Ext.getCmp("username").getValue();
+                    var grid = Ext.getCmp("userDataGrid");
+                    var store = grid.getStore();
+                    store.reload();
+                    /*var username = Ext.getCmp("username").getValue();
                     var name = Ext.getCmp("name").getValue();
                     var sex = Ext.getCmp("sex").getValue();
                     var status = Ext.getCmp("status").getValue();
-                    var grid = Ext.getCmp("userDataGrid");
-                    var store = grid.getStore();
                     store.reload({
                         params: {
                             start: 0,
@@ -46,7 +47,7 @@ Ext.define('Kalix.admin.user.controller.UserGridController', {
                             sex: sex,
                             status: status
                         }
-                    });
+                    });*/
                 },
                 failure: function (form, action) {
                     Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, action.result.msg);
@@ -165,10 +166,18 @@ Ext.define('Kalix.admin.user.controller.UserGridController', {
     onUpdateUser:function(){
         var form = this.up('form').getForm();
         if (form.isValid()) {
+            var confirmPasswordValue = Ext.getCmp("confirmPasswordId").getValue();
+            var passwordValue = Ext.getCmp("passwordId").getValue();
+            if(confirmPasswordValue!=passwordValue){
+                Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, "密码与确认密码必须一致!");
+                return;
+            }
             form.submit({
                 success: function (form, action) {
                     Ext.Msg.alert(CONFIG.ALTER_TITLE_SUCCESS, action.result.msg);
-                    //dataStore.loadPage(1);
+                    var grid = Ext.getCmp("userDataGrid");
+                    var store = grid.getStore();
+                    store.reload();
                 },
                 failure: function (form, action) {
                     Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, action.result.msg);
@@ -189,10 +198,11 @@ Ext.define('Kalix.admin.user.controller.UserGridController', {
             labelWidth: 75,
             autoWidth: true,
             autoHeight: true,
-            url: this.getViewModel().get("edit"),
+            url: this.getViewModel().get("update"),
             bodyStyle: "padding:15px",
             frame: true,
             jsonSubmit: true,
+            method:"PUT",
             defaultType: 'textfield',
             buttonAlign: "center",
             items: [

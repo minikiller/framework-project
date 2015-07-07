@@ -261,7 +261,7 @@
 }
 
 .x-panel-header-title-light-framed > .x-title-text-light-framed:after {
-    content: 'Ext JS Beta';
+    content: ' ';
     position: absolute;
     top: 0;
     right: 0;
