@@ -14,6 +14,11 @@ Ext.define('Kalix.view.components.common.PagingToolBar', {
     emptyMsg: "没有数据",
     beforePageText: "当前页",
     afterPageText: "共{0}页",
+    firstText : "第一页",
+    prevText : "上一页",
+    nextText : "下一页",
+    lastText : "最后页",
+    refreshText : "刷新",
     displayInfo: true
 
 });

@@ -89,7 +89,7 @@ Ext.define('Kalix.view.main.region.Top', {
             }
         });
 
-        this.callParent();
+        this.callParent(arguments);
     },
 
     items: []

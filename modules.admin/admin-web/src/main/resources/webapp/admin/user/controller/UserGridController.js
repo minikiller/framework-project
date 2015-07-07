@@ -347,10 +347,11 @@ Ext.define('Kalix.admin.user.controller.UserGridController', {
      */
     onDeleteUser:function(grid, rowIndex, colIndex){
         var rec = grid.getStore().getAt(rowIndex);
+        var deleteUrl=this.getViewModel().get("delete");
         Ext.Msg.confirm("警告", "确定要删除吗？", function (button) {
             if (button == "yes") {
-                Ext.Ajax.request({ //初始化选项卡
-                    url: "/camel/rest/user?id=" + rec.id,
+                Ext.Ajax.request({
+                    url: deleteUrl+"?id=" + rec.id,
                     method: 'DELETE',
                     callback: function (options, success, response) {
                         var resp = Ext.JSON.decode(response.responseText);

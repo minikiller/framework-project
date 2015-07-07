@@ -12,6 +12,7 @@ Ext.define('Kalix.admin.user.viewModel.UserViewModel', {
         pageSize:10,
         list: '/camel/rest/user/findAll',
         save: '/camel/rest/user',
-        update: '/camel/rest/user'
+        update: '/camel/rest/user',
+        delete: '/camel/rest/user'
     }
 });

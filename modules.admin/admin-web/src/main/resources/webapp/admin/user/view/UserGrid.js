@@ -52,9 +52,11 @@ Ext.define('Kalix.admin.user.view.UserGrid', {
             xtype: "actioncolumn",
             items: [{
                 icon: "resources/images/pencil.png",
+                tooltip: '修改',
                 handler: 'onEditUser'
             }, {
                 icon: "resources/images/cancel.png",
+                tooltip: '删除',
                 handler:'onDeleteUser'
 
             }]
