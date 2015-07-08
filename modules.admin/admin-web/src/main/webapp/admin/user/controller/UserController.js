@@ -8,6 +8,12 @@
 Ext.define('Kalix.admin.user.controller.UserController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.userController',
+    requires: [
+        'Kalix.admin.user.viewModel.UserViewModel'
+    ],
+    viewModel: {
+        type: 'userViewModel'
+    },
     /**
      * 初始化面板.
      * @returns {Ext.panel.Panel}

@@ -20,9 +20,7 @@ Ext.define('Kalix.admin.user.controller.UserGridController', {
      * @returns {Ext.panel.Panel}
      */
     onAddUser:function(){
-        var addFormPanel = Ext.create('Kalix.admin.user.view.UserAddForm',{
-            url: this.getViewModel().get("save")
-        });
+        var addFormPanel =Ext.create('Kalix.admin.user.view.UserAddForm',this.getViewModel().get("update"));
 
         var win = Ext.create('Ext.Window',{
             width: 510,
@@ -43,82 +41,7 @@ Ext.define('Kalix.admin.user.controller.UserGridController', {
      */
     onEditUser:function(grid, rowIndex, colIndex){
         var rec = grid.getStore().getAt(rowIndex);
-        var editFormPanel =Ext.create('Kalix.admin.user.view.UserEditForm',{
-            url: this.getViewModel().get("update"),
-            items: [
-                {xtype: 'hiddenfield', name: 'id', value: rec.data.id},
-
-                {
-                    fieldLabel: '登录名',
-                    id: 'loginNameId',
-                    name: 'loginName',
-                    allowBlank: false,
-                    blankText: '登录名不能为空!',
-                    value: rec.data.loginName
-                },
-                {
-                    fieldLabel: '姓名',
-                    id: 'nameId',
-                    name: 'name',
-                    allowBlank: false,
-                    blankText: '姓名不能为空!',
-                    value: rec.data.name
-                },
-                {
-                    inputType: 'password',
-                    fieldLabel: '密码',
-                    id: 'passwordId',
-                    name: 'password',
-                    allowBlank: false,
-                    blankText: '密码不能为空!',
-                    value: rec.data.password
-                },
-                {
-                    inputType: 'password',
-                    fieldLabel: '确认密码',
-                    isFormField:false,
-                    id: 'confirmPasswordId',
-                    allowBlank: false,
-                    blankText: '确认密码不能为空!',
-                    value: rec.data.password
-                },
-                {
-                    fieldLabel: '邮箱',
-                    id: 'emailId',
-                    name: 'email',
-                    allowBlank: false,
-                    blankText: '邮箱不能为空!',
-                    value: rec.data.email
-                },
-                {
-                    fieldLabel: '电话号',
-                    id: 'phoneId',
-                    name: 'phone',
-                    allowBlank: false,
-                    blankText: '电话号不能为空!',
-                    value: rec.data.phone
-                },
-                {
-                    fieldLabel: '手机号',
-                    id: 'mobileId',
-                    name: 'mobile',
-                    allowBlank: false,
-                    blankText: '手机号不能为空!',
-                    value: rec.data.mobile
-                },
-                {
-                    xtype: 'combobox',
-                    fieldLabel: '状态',
-                    name: 'available',
-                    editable:false,
-                    value: rec.data.available,
-                    store: [
-                        ['1', '启用'],
-                        ['0', '停用']
-                    ]
-                }
-            ]
-        });
+        var editFormPanel =Ext.create('Kalix.admin.user.view.UserEditForm',this.getViewModel().get("update"),rec);
 
         var win = Ext.create('Ext.Window',{
             width: 510,

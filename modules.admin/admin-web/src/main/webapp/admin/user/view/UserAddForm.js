@@ -94,5 +94,9 @@ Ext.define('Kalix.admin.user.view.UserAddForm', {
         {
             text: '重置', handler:'onResetUser'
         }
-    ]
+    ],
+    constructor: function (url) {
+        this.url=url;
+        this.callParent();
+    }
 });
