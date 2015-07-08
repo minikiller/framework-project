@@ -8,7 +8,7 @@
 Ext.define('Kalix.view.components.core.Module', {
     extend: 'Ext.panel.Panel',
     requires: [
-        'Kalix.controller.ModuleController'
+        'Kalix.controller.components.core.ModuleController'
     ],
 
     controller: "moduleComponentController",
@@ -30,6 +30,6 @@ Ext.define('Kalix.view.components.core.Module', {
             menu.menus = config.menus;
             this.items[0] = Ext.create("Kalix.view.components.core.Menu", menu);
         }
-        this.callParent();
+        this.callParent(arguments);
     }
 });

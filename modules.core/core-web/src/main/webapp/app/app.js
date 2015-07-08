@@ -5,7 +5,6 @@ Ext.application({
     appFolder: 'app',
 
     autoCreateViewport: true,
-
     autoCreateViewport: 'Kalix.view.main.Main'
 
 

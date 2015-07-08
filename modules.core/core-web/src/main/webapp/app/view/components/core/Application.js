@@ -8,7 +8,7 @@
 Ext.define('Kalix.view.components.core.Application', {
     extend: 'Ext.TabPanel',
     requires: [
-        'Kalix.controller.ApplicationController',
+        'Kalix.controller.components.core.ApplicationController',
         'Kalix.view.main.MainModel'
     ],
     alias: 'widget.applicationComponent',

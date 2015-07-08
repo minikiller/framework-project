@@ -5,7 +5,7 @@
  *         date:2015-6-18
  * @version 1.0.0
  */
-Ext.define('Kalix.controller.ModuleController', {
+Ext.define('Kalix.controller.components.core.ModuleController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.moduleComponentController',
 

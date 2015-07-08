@@ -5,7 +5,7 @@
  *         date:2015-6-18
  * @version 1.0.0
  */
-Ext.define('Kalix.controller.ApplicationController', {
+Ext.define('Kalix.controller.components.core.ApplicationController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.applicationComponentController',
     init: function () {

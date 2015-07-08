@@ -24,7 +24,7 @@ public class InitActivator implements BundleActivator {
 
         reference = bundleContext.getServiceReference(HttpService.class.getName());
         HttpService httpService = (HttpService) bundleContext.getService(reference);
-        httpService.registerResources("/kalix/app/admin", "/webapp/admin", null);
+        httpService.registerResources("/kalix/app/admin", "/admin", null);
     }
 
     @Override

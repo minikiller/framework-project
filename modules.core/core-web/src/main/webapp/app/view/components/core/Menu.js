@@ -8,7 +8,7 @@
 Ext.define('Kalix.view.components.core.Menu', {
     extend: 'Ext.tree.Panel',
     requires: [
-        'Kalix.controller.MenuController'
+        'Kalix.controller.components.core.MenuController'
     ],
     alias: 'widget.menuComponent',
     controller: 'menuComponentController',
@@ -28,6 +28,6 @@ Ext.define('Kalix.view.components.core.Menu', {
             _tree.root.children = config.menus;
             this.store = Ext.create('Ext.data.TreeStore', _tree);
         }
-        this.callParent();
+        this.callParent(arguments);
     }
 });
