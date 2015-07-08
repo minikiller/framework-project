@@ -31,7 +31,7 @@
               "title": "字典管理",
               "description": "字典管理面板",
               "icon": "",
-              "componentClass": "AppFrame.view.main.admin.dict.Dict"
+              "componentClass": "Kalix.admin.dict.view.Dict"
             }
           },
           {
