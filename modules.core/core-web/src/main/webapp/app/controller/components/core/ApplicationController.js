@@ -11,11 +11,45 @@ Ext.define('Kalix.controller.components.core.ApplicationController', {
     init: function () {
 
     },
+    onRender:function(){
+        var applicationMenu=Ext.getCmp("application");
+        var loadMask = new Ext.LoadMask({
+            msg    : '加载中...',
+            target : applicationMenu
+        });
+        loadMask.show();
+        Ext.Ajax.request({ //初始化应用组件
+            url: this.getViewModel().get("application.url"),
+            //url :"/resources/datas/applications.json",
+            method: "GET",
+            callback: function (options, success, response) {
+                var applications = Ext.JSON.decode(response.responseText);
+                if (applications && applications.length > 0) {
+                    for (var i = 0; i < applications.length; i++) {
+                        applicationMenu.add(Ext.create('Ext.Panel', {
+                            id: applications[i].id,
+                            title: applications[i].title,
+                            icon: applications[i].icon,
+                            closable: false
+                        }));
+                    }
+                    applicationMenu.setActiveTab(0);
+                }
+                loadMask.hide();
+            }
+        });
+    },
     onTabchange: function (tabs, newTab, oldTab) {
         var applicationId = newTab.id;
         //追加模块列表
         if (newTab) {
-            Ext.getCmp("leftPanel").removeAll();
+            var menuPanel=Ext.getCmp("leftPanel");
+            menuPanel.removeAll();
+            var loadMask = new Ext.LoadMask({
+                msg    : '加载中...',
+                target : menuPanel
+            });
+            loadMask.show();
             Ext.Ajax.request({ //初始化选项卡
                 url: this.getViewModel().get("module.url") + applicationId + ".json",
                 //params : "appId="+newTab.id,
@@ -25,10 +59,11 @@ Ext.define('Kalix.controller.components.core.ApplicationController', {
                     if (modules && modules.length > 0) {
                         for (var i = 0; i < modules.length; i++) {
                             if (modules[i]) {
-                                Ext.getCmp("leftPanel").add(Ext.create("Kalix.view.components.core.Module", modules[i]));
+                                menuPanel.add(Ext.create("Kalix.view.components.core.Module", modules[i]));
                             }
                         }
                     }
+                    loadMask.hide();
                 }
             });
         }

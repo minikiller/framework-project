@@ -21,31 +21,10 @@ Ext.define('Kalix.view.components.core.Application', {
     frame: false,
     broder: false,
     listeners: {
-        tabchange: 'onTabchange'
+        tabchange: 'onTabchange',
+        render: 'onRender'
     },
     initComponent: function () {
-        var id = this.id;
-        Ext.Ajax.request({ //初始化应用组件
-            url: this.getViewModel().get("application.url"),
-            //url :"/resources/datas/applications.json",
-            method: "GET",
-            callback: function (options, success, response) {
-                var applications = Ext.JSON.decode(response.responseText);
-                if (applications && applications.length > 0) {
-                    for (var i = 0; i < applications.length; i++) {
-                        Ext.getCmp(id).add(Ext.create('Ext.Panel', {
-                            id: applications[i].id,
-                            title: applications[i].title,
-                            icon: applications[i].icon,
-                            closable: false
-                        }));
-                    }
-                    Ext.getCmp(id).setActiveTab(0);
-                }
-            }
-        });
         this.callParent(arguments);
-
-    },
-    items: []
+    }
 });
