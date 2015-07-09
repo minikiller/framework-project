@@ -7,15 +7,8 @@
  */
 Ext.define('Kalix.admin.user.store.UserStore', {
     extend: 'Ext.data.Store',
-    requires: [
-        'Kalix.view.components.common.PagingToolBar',
-        'Kalix.admin.user.viewModel.UserViewModel'
-    ],
     model: 'Kalix.admin.user.model.UserModel',
     alias: 'store.userStore',
     xtype:'userStore',
-    viewModel: {
-        type: 'userViewModel'
-    },
     autoLoad: true
 });
