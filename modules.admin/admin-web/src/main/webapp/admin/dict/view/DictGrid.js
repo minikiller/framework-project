@@ -1,42 +1,41 @@
 /**
- * 用户表格
+ * 字典表格
  * @author majian <br/>
  *         date:2015-7-3
  * @version 1.0.0
  */
-Ext.define('Kalix.admin.user.view.UserGrid', {
+Ext.define('Kalix.admin.dict.view.DictGrid', {
     extend: 'Ext.grid.Panel',
     requires: [
-        'Kalix.admin.user.viewModel.UserViewModel',
-        'Kalix.admin.user.controller.UserGridController'
+        'Kalix.admin.dict.viewModel.DictViewModel',
+        'Kalix.admin.dict.controller.DictGridController'
     ],
-    alias: 'widget.userGrid',
-    id: "userDataGrid",
-    xtype: 'userGrid',
-    controller: 'userGridController',
+    alias: 'widget.dictGrid',
+    id: "dictDataGrid",
+    xtype: 'dictGrid',
+    controller: 'dictGridController',
     viewModel: {
-        type: 'userViewModel'
+        type: 'dictViewModel'
     },
     autoLoad :true,
     stripeRows: true,
     manageHeight: true,
     selModel: {selType: 'checkboxmodel', mode: "SIMPLE"},
     bind:{
-        store:'{userStore}'
+        store:'{dictStore}'
     },
     bbar: [{
         xtype: 'pagingToolBarComponent',
         bind:{
-            store:'{userStore}'
+            store:'{dictStore}'
         }
     }],
     columns: [
         {text: '编号', dataIndex: 'id'},
-        {text: '登录名', dataIndex: 'loginName'},
-        {text: '姓名', dataIndex: 'name'},
-        {text: '邮箱', dataIndex: 'email'},
-        {text: '电话', dataIndex: 'phone'},
-        {text: '手机', dataIndex: 'mobile'},
+        {text: '标签名', dataIndex: 'label'},
+        {text: '数据值', dataIndex: 'value'},
+        {text: '类型', dataIndex: 'type'},
+        {text: '排序', dataIndex: 'sort'},
         {text: '创建人', dataIndex: 'createBy'},
         { text: '创建日期', dataIndex: 'creationDate',renderer:function(value){
             var createDate=new Date(value);
@@ -46,17 +45,6 @@ Ext.define('Kalix.admin.user.view.UserGrid', {
         { text: '更新日期', dataIndex: 'updateDate',renderer:function(value){
             var updateDate=new Date(value);
             return updateDate.format("yyyy-MM-dd hh:mm:ss");
-        }},
-        {text: '最后登陆IP', dataIndex: 'loginIp'},
-        { text: '登陆日期', dataIndex: 'loginDate',renderer:function(value){
-            var loginDate=new Date(value);
-            return loginDate.format("yyyy-MM-dd hh:mm:ss");
-        }},
-        { text: '用户状态', dataIndex: 'available',renderer:function(value){
-            if(value!=null&&value=="1"){
-                return "启用";
-            }
-            return "停用";
         }},
         {
             header: '操作',
@@ -75,10 +63,10 @@ Ext.define('Kalix.admin.user.view.UserGrid', {
     ],
     tbar: [
         {
-            text: '新增', icon: 'admin/resources/images/group_add.png', handler: 'onAdd'
+            text: '新增', icon: 'admin/resources/images/book_add.png', handler: 'onAdd'
         }, "-",
         {
-            text: '批量删除', icon: 'admin/resources/images/group_delete.png', handler:'onDeleteAll'
+            text: '批量删除', icon: 'admin/resources/images/book_delete.png', handler:'onDeleteAll'
         }, "-"]
 
 });

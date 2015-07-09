@@ -9,11 +9,9 @@ Ext.define('Kalix.admin.user.controller.UserController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.userController',
     requires: [
-        'Kalix.admin.user.viewModel.UserViewModel'
+        'Kalix.view.components.common.PagingToolBar',
+        'Kalix.admin.user.view.UserGrid'
     ],
-    viewModel: {
-        type: 'userViewModel'
-    },
     /**
      * 初始化面板.
      * @returns {Ext.panel.Panel}
@@ -44,7 +42,7 @@ Ext.define('Kalix.admin.user.controller.UserController', {
                 items: [{
                     xtype: 'textfield',
                     fieldLabel: '登录名',
-                    id: "usernameSearchId",
+                    id: "admin_user_usernameSearchId",
                     name: 'username'
                 }]
             }, {
@@ -54,7 +52,7 @@ Ext.define('Kalix.admin.user.controller.UserController', {
                 items: [{
                     xtype: 'textfield',
                     fieldLabel: '姓名',
-                    id: "nameSearchId",
+                    id: "admin_user_nameSearchId",
                     name: 'name'
                 }]
             }, {
@@ -64,7 +62,7 @@ Ext.define('Kalix.admin.user.controller.UserController', {
                 items: [{
                     xtype: 'textfield',
                     fieldLabel: '邮箱',
-                    id: "emailSearchId",
+                    id: "admin_user_emailSearchId",
                     name: 'email'
                 }]
             }, {
@@ -74,7 +72,7 @@ Ext.define('Kalix.admin.user.controller.UserController', {
                 items: [{
                     xtype: 'textfield',
                     fieldLabel: '电话',
-                    id: "phoneSearchId",
+                    id: "admin_user_phoneSearchId",
                     name: 'phone'
                 }]
             }]
@@ -90,7 +88,7 @@ Ext.define('Kalix.admin.user.controller.UserController', {
                 items: [{
                     xtype: 'textfield',
                     fieldLabel: '手机号',
-                    id: "mobileSearchId",
+                    id: "admin_user_mobileSearchId",
                     name: 'mobile'
                 }]
             },
@@ -102,7 +100,7 @@ Ext.define('Kalix.admin.user.controller.UserController', {
                         xtype: 'combobox',
                         fieldLabel: '状态',
                         editable:false,
-                        id: "statusSearchId",
+                        id: "admin_user_statusSearchId",
                         name: 'status',
                         value:'-1',
                         store: [
@@ -125,31 +123,11 @@ Ext.define('Kalix.admin.user.controller.UserController', {
             buttons: [{
                 text: '查询',
                 handler: function () {
-                    var username = Ext.getCmp("username").getValue();
-                    var name = Ext.getCmp("name").getValue();
-                    var sex = Ext.getCmp("sex").getValue();
-                    var status = Ext.getCmp("status").getValue();
-                    var grid = Ext.getCmp("userDataGrid");
-
-                    /*var user = Ext.create('Kalix.view.main.user.UserModel', {start:0, limit:5,user:{name:'1'}});
-                     user.save(); //PUT /users
-                     Ext.Msg.alert('Confirm', '发送POST请求');*/
-
-                    var _store = Ext.create('Ext.data.Store', {
-                        model: 'Kalix.view.main.user.UserModel'
-                    });
-
-                    _store.load({id: '123'});
-                    Ext.Msg.alert('Confirm', '发送GET请求');
-
-
-                    //store.reload({ params: { start: 0, limit: pageSize,username:username,name:name,sex:sex,status:status} });
-
                 }
             }, {
                 text: '重置',
                 handler: function () {
-                    this.up('form').getForm().reset();
+                    formPanel.reset();
                 }
             }]
         });
@@ -168,27 +146,7 @@ Ext.define('Kalix.admin.user.controller.UserController', {
      * @returns {Ext.panel.Panel}
      */
     onInitDataGrid:function(){
-        var userStore=Ext.create("Kalix.admin.user.store.UserStore",{
-            pageSize:this.getViewModel().get("pageSize"),
-            proxy: {
-                type: "ajax",
-                url:this.getViewModel().get("list"),
-                reader: {
-                    type: "json",
-                    root: "data",
-                    totalProperty: 'totalCount'
-                }
-            }
-        });
-        var dataGird= {
-            xtype:'userGrid',
-            store:userStore,
-            bbar: [{
-                xtype: 'pagingToolBarComponent',
-                store:userStore
-            }]
-        };
-
+        var dataGird= Ext.create("Kalix.admin.user.view.UserGrid");
         return dataGird;
     }
 });

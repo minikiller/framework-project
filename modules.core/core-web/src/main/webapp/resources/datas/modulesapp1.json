@@ -8,17 +8,18 @@
         "id": "menu1",
         "text": "权限控制",
         "leaf": false,
-        "icon": "",
+        "icon": "admin/resources/images/lock.png",
         "children": [
           {
             "id": "menu1_cm1",
             "text": "用户管理",
             "leaf": true,
+            "icon": "admin/resources/images/group.png",
             "component": {
               "id": "module1_menu1_window1",
               "title": "用户管理",
               "description": "用户管理面板",
-              "icon": "",
+              "icon": "admin/resources/images/group.png",
               "componentClass": "Kalix.admin.user.view.User"
             }
           },
@@ -26,11 +27,12 @@
             "id": "menu1_cm2",
             "text": "字典管理",
             "leaf": true,
+            "icon": "admin/resources/images/book.png",
             "component": {
               "id": "module1_menu1_window2",
               "title": "字典管理",
               "description": "字典管理面板",
-              "icon": "",
+              "icon": "admin/resources/images/book.png",
               "componentClass": "Kalix.admin.dict.view.Dict"
             }
           },

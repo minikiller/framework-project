@@ -1,21 +1,21 @@
 /**
- * 用户数据仓库
+ * 字典数据仓库
  *
  * @author majian <br/>
- *         date:2015-7-3
+ *         date:2015-7-9
  * @version 1.0.0
  */
-Ext.define('Kalix.admin.user.store.UserStore', {
+Ext.define('Kalix.admin.dict.store.DictStore', {
     extend: 'Ext.data.Store',
-    model: 'Kalix.admin.user.model.UserModel',
-    alias: 'store.userStore',
-    xtype:'userStore',
-    storeId: "userStore",
+    model: 'Kalix.admin.dict.model.DictModel',
+    alias: 'store.dictStore',
+    xtype:'dictStore',
+    storeId: "dictStore",
     autoLoad: true,
     pageSize:10,
     proxy: {
         type: "ajax",
-        url:'/camel/rest/users',
+        url:'/camel/rest/dicts',
         reader: {
             type: "json",
             root: "data",

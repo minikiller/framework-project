@@ -19,7 +19,7 @@ Ext.define('Kalix.controller.components.core.ApplicationController', {
         });
         loadMask.show();
         Ext.Ajax.request({ //初始化应用组件
-            url: this.getViewModel().get("application.url"),
+            url: this.getView().getViewModel().get("application.url"),
             //url :"/resources/datas/applications.json",
             method: "GET",
             callback: function (options, success, response) {
@@ -51,7 +51,7 @@ Ext.define('Kalix.controller.components.core.ApplicationController', {
             });
             loadMask.show();
             Ext.Ajax.request({ //初始化选项卡
-                url: this.getViewModel().get("module.url") + applicationId + ".json",
+                url: this.getView().getViewModel().get("module.url") + applicationId + ".json",
                 //params : "appId="+newTab.id,
                 method: "GET",
                 callback: function (options, success, response) {

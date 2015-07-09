@@ -8,9 +8,6 @@
 Ext.define('Kalix.admin.user.view.User', {
     extend: 'Ext.panel.Panel',
     requires: [
-        'Kalix.view.components.common.PagingToolBar',
-        'Kalix.view.components.common.AjaxProxy',
-        'Kalix.admin.user.view.UserGrid',
         'Kalix.admin.user.viewModel.UserViewModel',
         'Kalix.admin.user.controller.UserController'
     ],

@@ -7,12 +7,18 @@
  */
 Ext.define('Kalix.admin.user.viewModel.UserViewModel', {
     extend: 'Ext.app.ViewModel',
+    requires: [
+        'Kalix.admin.user.store.UserStore'
+    ],
     alias: 'viewmodel.userViewModel',
     data: {
-        pageSize:10,
-        list: '/camel/rest/user/findAll',
-        save: '/camel/rest/user',
-        update: '/camel/rest/user',
-        delete: '/camel/rest/user'
+        addTitle:'新增用户',
+        editTitle:'编辑用户',
+        url: '/camel/rest/users'
+    },
+    stores: {
+        userStore:{
+            type:'userStore'
+        }
     }
 });

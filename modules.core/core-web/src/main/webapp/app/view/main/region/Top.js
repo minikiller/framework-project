@@ -9,6 +9,7 @@ Ext.define('Kalix.view.main.region.Top', {
     extend: 'Ext.panel.Panel',
 
     requires: [
+        'Kalix.view.components.core.Theme',
         'Kalix.view.main.MainModel'
     ],
 
@@ -62,7 +63,12 @@ Ext.define('Kalix.view.main.region.Top', {
                         },
                         height: 25,
                         border: false,
+                        layout: 'column',
                         items: [{
+                            xtype: 'label',
+                            html: '&nbsp;&nbsp;',
+                            columnWidth: .95
+                        },{
                             xtype: 'label',
                             html: '&nbsp;&nbsp;欢迎您,'
                         }, user, {
@@ -70,7 +76,12 @@ Ext.define('Kalix.view.main.region.Top', {
                             bind: {
                                 html: "&nbsp;&nbsp;<a href='{user.quit}'>[退出]</a>"
                             }
-                        }]
+                        },{
+                            xtype: 'label',
+                            html: '&nbsp;&nbsp;'
+                        }/*,{
+                            xtype: 'themeComponent'
+                        }*/]
                     }, {
                         xtype: 'applicationComponent'
                     }]

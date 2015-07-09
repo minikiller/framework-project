@@ -8,9 +8,13 @@
 Ext.define('Kalix.admin.user.view.UserEditForm', {
     extend: 'Ext.FormPanel',
     requires: [
+        'Kalix.admin.user.viewModel.UserViewModel',
         'Kalix.admin.user.controller.UserFormController'
     ],
     alias: 'widget.userEditForm',
+    viewModel: {
+        type: 'userViewModel'
+    },
     controller: 'userFormController',
     id: "userEditForm",
     xtype: 'userEditForm',
@@ -24,89 +28,102 @@ Ext.define('Kalix.admin.user.view.UserEditForm', {
     method:"PUT",
     defaultType: 'textfield',
     buttonAlign: "center",
-    buttons: [
+    items:[
+        {xtype: 'hiddenfield', name: 'id'},
+
         {
-            text: '保存', type: 'submit', handler:'onUpdateUser'
+            fieldLabel: '登录名',
+            id: 'loginNameId',
+            name: 'loginName',
+            allowBlank: false,
+            blankText: '登录名不能为空!',
+            beforeLabelTpl : [
+                '<span style="color:red;font-weight:bold" data-qtip="必填选项">*</span>'
+            ]
         },
         {
-            text: '重置', handler:'onResetUser'
+            fieldLabel: '姓名',
+            id: 'nameId',
+            name: 'name',
+            allowBlank: false,
+            blankText: '姓名不能为空!',
+            beforeLabelTpl : [
+                '<span style="color:red;font-weight:bold" data-qtip="必填选项">*</span>'
+            ]
+        },
+        {
+            inputType: 'password',
+            fieldLabel: '密码',
+            id: 'passwordId',
+            name: 'password',
+            allowBlank: false,
+            blankText: '密码不能为空!',
+            beforeLabelTpl : [
+                '<span style="color:red;font-weight:bold" data-qtip="必填选项">*</span>'
+            ]
+        },
+        {
+            inputType: 'password',
+            fieldLabel: '确认密码',
+            isFormField:false,
+            id: 'confirmPasswordId',
+            allowBlank: false,
+            blankText: '确认密码不能为空!',
+            beforeLabelTpl : [
+                '<span style="color:red;font-weight:bold" data-qtip="必填选项">*</span>'
+            ]
+        },
+        {
+            fieldLabel: '邮箱',
+            id: 'emailId',
+            name: 'email',
+            allowBlank: false,
+            blankText: '邮箱不能为空!',
+            beforeLabelTpl : [
+                '<span style="color:red;font-weight:bold" data-qtip="必填选项">*</span>'
+            ]
+        },
+        {
+            fieldLabel: '电话号',
+            id: 'phoneId',
+            name: 'phone',
+            allowBlank: false,
+            blankText: '电话号不能为空!',
+            beforeLabelTpl : [
+                '<span >&nbsp;&nbsp;</span>'
+            ]
+        },
+        {
+            fieldLabel: '手机号',
+            id: 'mobileId',
+            name: 'mobile',
+            allowBlank: false,
+            blankText: '手机号不能为空!',
+            beforeLabelTpl : [
+                '<span style="color:red;font-weight:bold" data-qtip="必填选项">*</span>'
+            ]
+        },
+        {
+            xtype: 'combobox',
+            fieldLabel: '状态',
+            name: 'available',
+            editable:false,
+            value:'1',
+            store: [
+                ['1', '启用'],
+                ['0', '停用']
+            ],
+            beforeLabelTpl : [
+                '<span style="color:red;font-weight:bold" data-qtip="必填选项">*</span>'
+            ]
         }
     ],
-    constructor: function (url,rec) {
-        this.url=url;
-        this.items=[
-            {xtype: 'hiddenfield', name: 'id', value: rec.data.id},
-
-            {
-                fieldLabel: '登录名',
-                id: 'loginNameId',
-                name: 'loginName',
-                allowBlank: false,
-                blankText: '登录名不能为空!',
-                value: rec.data.loginName
-            },
-            {
-                fieldLabel: '姓名',
-                id: 'nameId',
-                name: 'name',
-                allowBlank: false,
-                blankText: '姓名不能为空!',
-                value: rec.data.name
-            },
-            {
-                inputType: 'password',
-                fieldLabel: '密码',
-                id: 'passwordId',
-                name: 'password',
-                allowBlank: false,
-                blankText: '密码不能为空!',
-                value: rec.data.password
-            },
-            {
-                inputType: 'password',
-                fieldLabel: '确认密码',
-                isFormField:false,
-                id: 'confirmPasswordId',
-                allowBlank: false,
-                blankText: '确认密码不能为空!',
-                value: rec.data.password
-            },
-            {
-                fieldLabel: '邮箱',
-                id: 'emailId',
-                name: 'email',
-                allowBlank: false,
-                blankText: '邮箱不能为空!',
-                value: rec.data.email
-            },
-            {
-                fieldLabel: '电话号',
-                id: 'phoneId',
-                name: 'phone',
-                allowBlank: false,
-                blankText: '电话号不能为空!',
-                value: rec.data.phone
-            },
-            {
-                fieldLabel: '手机号',
-                id: 'mobileId',
-                name: 'mobile',
-                allowBlank: false,
-                blankText: '手机号不能为空!',
-                value: rec.data.mobile
-            },
-            {
-                xtype: 'combobox',
-                fieldLabel: '状态',
-                name: 'available',
-                editable:false,
-                value: rec.data.available,
-                store: [
-                    ['1', '启用'],
-                    ['0', '停用']
-                ]
-            }
-        ]
-        this.callParent();
-    }
+    buttons: [
+        {
+            text: '保存', type: 'submit', handler:'onUpdate'
+        },
+        {
+            text: '重置', handler:'onEditReset'
+        }
+    ]
 });
