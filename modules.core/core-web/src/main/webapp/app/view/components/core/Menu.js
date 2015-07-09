@@ -28,6 +28,6 @@ Ext.define('Kalix.view.components.core.Menu', {
             _tree.root.children = config.menus;
             this.store = Ext.create('Ext.data.TreeStore', _tree);
         }
-        this.callParent(arguments);
+        this.callParent();
     }
 });
