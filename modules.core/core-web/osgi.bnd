@@ -1,2 +1,3 @@
 Bundle-Activator=cn.com.rexen.kalix.core.web.internal.InitActivator
 Web-ContextPath:kalix
+Include-Resource: src/main/webapp

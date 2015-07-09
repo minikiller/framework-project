@@ -50,46 +50,6 @@
     <build>
         <plugins>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>deploy</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <tasks>
-                                <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
-
-                                <if>
-                                    <available
-                                            file="${project.build.directory}/${project.artifactId}-${project.version}.jar"/>
-                                    <then>
-                                        <copy file="${project.build.directory}/${project.artifactId}-${project.version}.jar"
-                                              todir="${karaf.path}"/>
-                                    </then>
-
-                                    <else>
-                                        <echo>The file does not exist</echo>
-                                    </else>
-                                </if>
-                            </tasks>
-
-                        </configuration>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>ant-contrib</groupId>
-                        <artifactId>ant-contrib</artifactId>
-                        <version>20020829</version>
-                    </dependency>
-                </dependencies>
-
-            </plugin>
         </plugins>
     </build>
 
