@@ -49,7 +49,7 @@
 
             <!-- this is a rest DELETE to delete an dict -->
             <delete id="route-deleteDict" outType="cn.com.rexen.core.api.biz.JsonStatus">
-                <description>Delete a dict</description>
+                <description>删除一条数据字典记录</description>
                 <to uri="bean:dictService?method=deleteEntity(${header.id})"/>
             </delete>
 

@@ -30,6 +30,7 @@
         <module>core-util</module>
         <module>core-web</module>
         <module>core-rest</module>
+        <module>core-swagger</module>
     </modules>
     <dependencyManagement>
         <dependencies>
