@@ -3,9 +3,6 @@ package cn.com.rexen.admin.api.biz;
 import cn.com.rexen.admin.entities.DictBean;
 import cn.com.rexen.core.api.biz.IBizService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -48,18 +45,4 @@ public interface IDictBeanService extends IBizService {
      */
     List<DictBean> query(DictBean dictBean);
 
-    /**
-     * 查询专家组类型
-     *
-     * @return
-     */
-    public List<DictBean> getExpertGroupList();
-
-    /**
-     * dlw ext 版 标准返回结果
-     * 2014-12-26-16:58
-     *
-     * @return
-     */
-    public HashMap getExpertGroupListData(HttpServletRequest request, HttpServletResponse response);
 }

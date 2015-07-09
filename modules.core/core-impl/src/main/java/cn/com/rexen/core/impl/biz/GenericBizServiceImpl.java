@@ -1,6 +1,7 @@
 package cn.com.rexen.core.impl.biz;
 
 import cn.com.rexen.core.api.biz.IBizService;
+import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
@@ -22,14 +23,38 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
     private String entityClassName;
 
     @Override
-    public void deleteEntity(long entityId) {
+    public JsonStatus deleteEntity(long entityId) {
         log.debug("remove entity of " + entityClassName + ";PK is " + entityId);
-        dao.remove(entityClassName, entityId);
+        JsonStatus jsonStatus = new JsonStatus();
+        try {
+            dao.remove(entityClassName, entityId);
+            jsonStatus.setSuccess(true);
+            jsonStatus.setMsg("删除成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setFailure(true);
+            jsonStatus.setMsg("删除失败！");
+        }
+        return jsonStatus;
     }
 
     @Override
-    public void saveEntity(PersistentEntity entity) {
-        dao.save(entity);
+    public JsonStatus saveEntity(PersistentEntity entity) {
+
+        log.debug("save entity of " + entityClassName);
+        JsonStatus jsonStatus = new JsonStatus();
+        String action = (entity.getId() == 0) ? "新增" : "更新";
+        try {
+            dao.save(entity);
+            jsonStatus.setSuccess(true);
+            jsonStatus.setMsg(action + "成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setFailure(true);
+            jsonStatus.setMsg(action + "失败！");
+        }
+        return jsonStatus;
+
     }
 
     @Override

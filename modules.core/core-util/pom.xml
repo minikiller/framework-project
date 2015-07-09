@@ -20,9 +20,8 @@
         <bundle.symbolicName>cn.com.rexen.core.util</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-
     </properties>
+
     <name>Kalix :: Core - Util</name>
     <description>Core - Util</description>
 

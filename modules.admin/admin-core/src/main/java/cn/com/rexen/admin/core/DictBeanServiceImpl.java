@@ -5,8 +5,6 @@ import cn.com.rexen.admin.api.dao.IDictBeanDao;
 import cn.com.rexen.admin.entities.DictBean;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,28 +20,6 @@ import java.util.Map;
 
 public class DictBeanServiceImpl extends GenericBizServiceImpl implements IDictBeanService {
     private IDictBeanDao dictBeanDao;
-
-    @Override
-    public HashMap getExpertGroupListData(HttpServletRequest request, HttpServletResponse response) {
-        boolean success = false;
-        int count = 0;
-        HashMap resultmap = new HashMap();
-        List<DictBean> dictBeanList;
-        String name = request.getParameter("name");
-        if (name != null) {
-            dictBeanList = getLikeExpertGroupByName(name);
-        } else {
-            dictBeanList = getExpertGroupList();
-        }
-        if (dictBeanList != null) {
-            success = true;
-            count = dictBeanList.size();
-        }
-        resultmap.put("success", success);
-        resultmap.put("data", dictBeanList != null ? dictBeanList : "");
-        resultmap.put("TotoRecord", count);
-        return resultmap;
-    }
 
     public void setDictBeanDao(IDictBeanDao dictBeanDao) {
         this.dictBeanDao = dictBeanDao;
@@ -71,12 +47,4 @@ public class DictBeanServiceImpl extends GenericBizServiceImpl implements IDictB
         return dictBeanDao.find("select a from DictBean a where a.type like ?1", "%" + dictBean.getType() + "%");
     }
 
-    @Override
-    public List<DictBean> getExpertGroupList() {
-        return dictBeanDao.find("select t from DictBean t where t.type=?1", "EXPERT_TYPE");
-    }
-
-    public List<DictBean> getLikeExpertGroupByName(String name) {
-        return dictBeanDao.find("select t from DictBean t where t.type=?1 and t.label like ?2", "EXPERT_TYPE", "%" + name + "%");
-    }
 }

@@ -18,9 +18,9 @@ import java.util.List;
 
 public interface IBizService<T extends PersistentEntity> extends IService {
 
-    public void deleteEntity(long entityId);
+    public JsonStatus deleteEntity(long entityId);
 
-    public void saveEntity(T entity);
+    public JsonStatus saveEntity(T entity);
 
     Object saveEntityAndReturn(PersistentEntity entity);
 

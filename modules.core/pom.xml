@@ -29,6 +29,7 @@
         <module>core-impl</module>
         <module>core-util</module>
         <module>core-web</module>
+        <module>core-rest</module>
     </modules>
     <dependencyManagement>
         <dependencies>
