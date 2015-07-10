@@ -50,13 +50,12 @@ Ext.define('Kalix.admin.dict.view.DictAddForm', {
         },
         {
             xtype: 'combobox',
-            fieldLabel: '状态',
-            name: 'available',
+            fieldLabel: '类型',
+            name: 'type',
             editable:false,
-            value:'1',
+            value:'sex',
             store: [
-                ['1', '启用'],
-                ['0', '停用']
+                ['sex', '性别']
             ],
             beforeLabelTpl : [
                 '<span style="color:red;font-weight:bold" data-qtip="必填选项">*</span>'
@@ -66,9 +65,9 @@ Ext.define('Kalix.admin.dict.view.DictAddForm', {
             fieldLabel: '排序',
             id: 'sortId',
             name: 'sort',
-            allowBlank: true,
+            allowBlank: false,
             beforeLabelTpl : [
-                '<span  >&nbsp;&nbsp;</span>'
+                '<span style="color:red;font-weight:bold" data-qtip="必填选项">*</span>'
             ]
         },
         {

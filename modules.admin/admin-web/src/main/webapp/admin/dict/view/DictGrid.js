@@ -32,22 +32,28 @@ Ext.define('Kalix.admin.dict.view.DictGrid', {
     }],
     columns: [
         {text: '编号', dataIndex: 'id'},
-        {text: '标签名', dataIndex: 'label'},
-        {text: '数据值', dataIndex: 'value'},
-        {text: '类型', dataIndex: 'type'},
-        {text: '排序', dataIndex: 'sort'},
-        {text: '创建人', dataIndex: 'createBy'},
-        { text: '创建日期', dataIndex: 'creationDate',renderer:function(value){
+        {text: '标签名', dataIndex: 'label',width:60},
+        {text: '数据值', dataIndex: 'value',width:60},
+        {text: '类型', dataIndex: 'type',width:60,renderer:function(value){
+            if(value=="sex"){
+                return "性别";
+            }
+            return "未定义";
+        }},
+        {text: '排序', dataIndex: 'sort',width:60},
+        {text: '创建人', dataIndex: 'createBy',width:60},
+        { text: '创建日期', dataIndex: 'creationDate',width:60,renderer:function(value){
             var createDate=new Date(value);
             return createDate.format("yyyy-MM-dd hh:mm:ss");
         }},
-        {text: '更新人', dataIndex: 'updateBy'},
-        { text: '更新日期', dataIndex: 'updateDate',renderer:function(value){
+        {text: '更新人', dataIndex: 'updateBy',width:60},
+        { text: '更新日期', dataIndex: 'updateDate',width:60,renderer:function(value){
             var updateDate=new Date(value);
             return updateDate.format("yyyy-MM-dd hh:mm:ss");
         }},
         {
             header: '操作',
+            width:60,
             xtype: "actioncolumn",
             items: [{
                 icon: "resources/images/pencil.png",

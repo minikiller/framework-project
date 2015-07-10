@@ -79,9 +79,9 @@ Ext.define('Kalix.view.main.region.Top', {
                         },{
                             xtype: 'label',
                             html: '&nbsp;&nbsp;'
-                        }/*,{
+                        },{
                             xtype: 'themeComponent'
-                        }*/]
+                        }]
                     }, {
                         xtype: 'applicationComponent'
                     }]

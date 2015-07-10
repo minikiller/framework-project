@@ -37,21 +37,18 @@ Ext.define('Kalix.admin.dict.controller.DictGridController', {
      */
     onEdit:function(grid, rowIndex, colIndex){
         var rec = grid.getStore().getAt(rowIndex);
-        var editFormPanel =Ext.create('Kalix.admin.user.view.UserEditForm',{
+        var editFormPanel =Ext.create('Kalix.admin.dict.view.DictEditForm',{
             url:this.getView().getViewModel().get("url")
         });
-        var userModel=Ext.create("Kalix.admin.user.model.UserModel",{
+        var dictModel=Ext.create("Kalix.admin.dict.model.DictModel",{
             id:rec.data.id,
-            loginName:rec.data.loginName,
-            name:rec.data.name,
-            password:rec.data.password,
-            email:rec.data.email,
-            phone:rec.data.email,
-            mobile:rec.data.mobile,
-            available:rec.data.available
+            label:rec.data.label,
+            value:rec.data.value,
+            type:rec.data.type,
+            description:rec.data.description,
+            sort:rec.data.sort
         });
-        editFormPanel.getComponent("confirmPasswordId").setValue(rec.data.password);
-        editFormPanel.loadRecord(userModel);
+        editFormPanel.loadRecord(dictModel);
 
         var win = Ext.create('Ext.Window',{
             width: 400,
@@ -134,7 +131,7 @@ Ext.define('Kalix.admin.dict.controller.DictGridController', {
                         var resp = Ext.JSON.decode(response.responseText);
                         Ext.MessageBox.alert(CONFIG.ALTER_TITLE_INFO, resp.msg);
                         if (resp.success) {
-                            var grid = Ext.getCmp("userDataGrid");
+                            var grid = Ext.getCmp("dictDataGrid");
                             var store = grid.getStore();
                             store.reload();
                         }

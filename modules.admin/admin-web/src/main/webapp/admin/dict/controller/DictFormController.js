@@ -30,32 +30,12 @@ Ext.define('Kalix.admin.dict.controller.DictFormController', {
     onSave:function(){
         var form = Ext.getCmp("dictAddForm");
         if (form.isValid()) {
-            var confirmPasswordValue = Ext.getCmp("confirmPasswordId").getValue();
-            var passwordValue = Ext.getCmp("passwordId").getValue();
-            if(confirmPasswordValue!=passwordValue){
-                Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, "密码与确认密码必须一致!");
-                return;
-            }
             form.submit({
                 success: function (form, action) {
                     Ext.Msg.alert(CONFIG.ALTER_TITLE_SUCCESS, action.result.msg);
                     var grid = Ext.getCmp("dictDataGrid");
                     var store = grid.getStore();
                     store.reload();
-                    /*var dictname = Ext.getCmp("dictname").getValue();
-                    var name = Ext.getCmp("name").getValue();
-                    var sex = Ext.getCmp("sex").getValue();
-                    var status = Ext.getCmp("status").getValue();
-                    store.reload({
-                        params: {
-                            start: 0,
-                            limit: pageSize,
-                            dictname: dictname,
-                            name: name,
-                            sex: sex,
-                            status: status
-                        }
-                    });*/
                 },
                 failure: function (form, action) {
                     Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, action.result.msg);
@@ -70,12 +50,6 @@ Ext.define('Kalix.admin.dict.controller.DictFormController', {
     onUpdate:function(){
         var form = Ext.getCmp("dictEditForm");
         if (form.isValid()) {
-            var confirmPasswordValue = Ext.getCmp("confirmPasswordId").getValue();
-            var passwordValue = Ext.getCmp("passwordId").getValue();
-            if(confirmPasswordValue!=passwordValue){
-                Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, "密码与确认密码必须一致!");
-                return;
-            }
             form.submit({
                 success: function (form, action) {
                     Ext.Msg.alert(CONFIG.ALTER_TITLE_SUCCESS, action.result.msg);
