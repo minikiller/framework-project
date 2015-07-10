@@ -10,16 +10,15 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-
     <groupId>cn.com.rexen.core</groupId>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cn.com.rexen.core.web</artifactId>
-    <name>Kalix :: Core - Web</name>
-    <description>Core - Web</description>
+    <artifactId>cn.com.rexen.core.security</artifactId>
+    <name>Kalix :: Core - Security</name>
+    <description>Core - Security</description>
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.symbolicName>cn.com.rexen.core.web</bundle.symbolicName>
+        <bundle.symbolicName>cn.com.rexen.core.security</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -46,6 +45,30 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.core</groupId>
+            <artifactId>cn.com.rexen.core.util</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.core</groupId>
+            <artifactId>cn.com.rexen.core.api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.bundles</groupId>
+            <artifactId>org.apache.servicemix.bundles.jedis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
         </dependency>
     </dependencies>
 

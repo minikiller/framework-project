@@ -1,7 +1,4 @@
-package cn.com.rexen.admin.api.biz;
-
-
-import cn.com.rexen.admin.entities.UserBean;
+package cn.com.rexen.core.api.security;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,7 +43,7 @@ public interface IUserLoginService {
      * @param is_ent_user 是否是企业用户：0-否；1-是；
      * @return
      */
-    public UserBean login(String username, String password, int is_ent_user);
+    public Map login(String username, String password);
 
     /**
      * 记录用户登录后的时间和登录ip

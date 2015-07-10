@@ -1,4 +1,4 @@
-package cn.com.rexen.kalix.core.web.internal;
+package cn.com.rexen.core.web.internal;
 
 import org.apache.log4j.Logger;
 import org.osgi.framework.BundleActivator;
