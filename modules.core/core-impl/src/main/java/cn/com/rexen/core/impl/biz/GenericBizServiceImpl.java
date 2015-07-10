@@ -5,6 +5,8 @@ import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
 import org.apache.log4j.Logger;
 
 import java.util.List;
@@ -23,7 +25,8 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
     private String entityClassName;
 
     @Override
-    public JsonStatus deleteEntity(long entityId) {
+    @ApiOperation(value = "添加用户", httpMethod = "DELETE", response = JsonStatus.class, notes = "add user")
+    public JsonStatus deleteEntity(@ApiParam(required = true, name = "entityId", value = "用户信息json数据") long entityId) {
         log.debug("remove entity of " + entityClassName + ";PK is " + entityId);
         JsonStatus jsonStatus = new JsonStatus();
         try {
@@ -63,7 +66,8 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
     }
 
     @Override
-    public JsonData getAllEntity(int pageNumber, int pageSize) {
+    public JsonData getAllEntity(@ApiParam(required = true, name = "pageNumber", value = "用户信息json数据") int pageNumber,
+                                 @ApiParam(required = true, name = "pageSize", value = "用户信息json数据") int pageSize) {
         return dao.getAll(pageNumber, pageSize, entityClassName);
     }
 

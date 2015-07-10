@@ -3,4 +3,6 @@
 #-----------------------------------------------------------------
 
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
-Import-Package:*
+Import-Package: org.apache.camel.component.swagger,org.apache.camel.component.servlet,*
+Include-Resource: src/main/webapp,src/main/swagger-ui
+Web-ContextPath:camel
