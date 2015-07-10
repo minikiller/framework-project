@@ -16,7 +16,7 @@
         <property name="userBeanDao" ref="userBeanDao"/>
     </bean>
     <service id="userloginBeanService" ref="loginBeanServiceImpl"
-             interface="cn.com.rexen.admin.api.biz.IUserLoginService"/>
+             interface="cn.com.rexen.core.api.security.IUserLoginService"/>
     <reference id="userBeanDao" interface="cn.com.rexen.admin.api.dao.IUserBeanDao"/>
     <!--角色dao服务注册-->
     <bean id="roleBeanServiceImpl" class="cn.com.rexen.admin.core.RoleBeanServiceImpl">

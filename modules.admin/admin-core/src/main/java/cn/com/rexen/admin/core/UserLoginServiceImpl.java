@@ -1,11 +1,11 @@
 package cn.com.rexen.admin.core;
 
-import cn.com.rexen.admin.api.biz.IUserLoginService;
 import cn.com.rexen.admin.api.dao.IUserBeanDao;
 import cn.com.rexen.admin.entities.PermissionBean;
 import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.ErrorCodeValue;
+import cn.com.rexen.core.api.security.IUserLoginService;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -50,17 +50,32 @@ public class UserLoginServiceImpl implements IUserLoginService {
     }
 
     @Override
-    public UserBean login(String username, String password, int is_ent_user) {
-        UserBean user = userBeanDao.getUser(username);
-        if (user == null) {
-            return null;
+    public Map login(String username, String password) {
+        Map map = new HashMap();
+        int result = -1;
+        try {
+            UserBean user = userBeanDao.getUser(username);
+            if (user == null) {
+                return null;
+            }
+            //判断密码和用户类型是否对应
+            if (encrypt(password).equals(user.getPassword())) {
+                result = 1;
+                Map resMap = new HashMap();
+                resMap.put("user_id", user.getId());
+                resMap.put("name", user.getName());
+                resMap.put("user_name", user.getLoginName());
+                resMap.put("password", user.getPassword());
+                map.put("response", resMap);
+            }
+        } catch (Exception e) {
+            map.put("errorCode", ErrorCodeValue.INNER_ERROR);
+            e.printStackTrace();
+        } finally {
+            map.put("result", result);
         }
-        //判断密码和用户类型是否对应
-        if (encrypt(password).equals(user.getPassword()) && user.getIs_ent_user() == is_ent_user) {
-            return user;
-        } else {
-            return null;
-        }
+        return map;
+
     }
 
     @Override
@@ -103,9 +118,9 @@ public class UserLoginServiceImpl implements IUserLoginService {
                 logon(user, client, request, response);
                 result = 1;
                 Map resMap = new HashMap();
-                resMap.put("user_id", user.getId());
+                resMap.put("id", user.getId());
                 resMap.put("name", user.getName());
-                resMap.put("user_name", user.getLoginName());
+                resMap.put("login_name", user.getLoginName());
                 resMap.put("password", user.getPassword());
                 map.put("response", resMap);
             }

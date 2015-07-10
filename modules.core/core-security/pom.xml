@@ -50,6 +50,26 @@
             <groupId>cn.com.rexen.core</groupId>
             <artifactId>cn.com.rexen.core.util</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.core</groupId>
+            <artifactId>cn.com.rexen.core.api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.bundles</groupId>
+            <artifactId>org.apache.servicemix.bundles.jedis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
