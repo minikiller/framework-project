@@ -1,21 +1,21 @@
 /**
- * 字典表格
+ * 角色表格
  * @author majian <br/>
- *         date:2015-7-3
+ *         date:2015-7-10
  * @version 1.0.0
  */
-Ext.define('Kalix.admin.dict.view.DictGrid', {
+Ext.define('Kalix.admin.role.view.RoleGrid', {
     extend: 'Ext.grid.Panel',
     requires: [
-        'Kalix.admin.dict.viewModel.DictViewModel',
-        'Kalix.admin.dict.controller.DictGridController'
+        'Kalix.admin.role.viewModel.RoleViewModel',
+        'Kalix.admin.role.controller.RoleGridController'
     ],
-    alias: 'widget.dictGrid',
-    id: "dictDataGrid",
-    xtype: 'dictGrid',
-    controller: 'dictGridController',
+    alias: 'widget.roleGrid',
+    id: "roleDataGrid",
+    xtype: 'roleGrid',
+    controller: 'roleGridController',
     viewModel: {
-        type: 'dictViewModel'
+        type: 'roleViewModel'
     },
     autoLoad :true,
     stripeRows: true,
@@ -27,15 +27,12 @@ Ext.define('Kalix.admin.dict.view.DictGrid', {
     bbar: [{
         xtype: 'pagingToolBarComponent',
         bind:{
-            store:'{dictStore}'
+            store:'{roleStore}'
         }
     }],
     columns: [
         {text: '编号', dataIndex: 'id'},
-        {text: '标签名', dataIndex: 'label',width:60},
-        {text: '数据值', dataIndex: 'value',width:60},
-        {text: '类型', dataIndex: 'type',width:60},
-        {text: '排序', dataIndex: 'sort',width:60},
+        {text: '名称', dataIndex: 'label',width:60},
         {text: '创建人', dataIndex: 'createBy',width:60},
         { text: '创建日期', dataIndex: 'creationDate',width:60,renderer:function(value){
             var createDate=new Date(value);

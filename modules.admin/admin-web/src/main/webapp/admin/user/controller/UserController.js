@@ -55,42 +55,6 @@ Ext.define('Kalix.admin.user.controller.UserController', {
                     id: "admin_user_nameSearchId",
                     name: 'name'
                 }]
-            }, {
-                columnWidth: .2,
-                border: false,
-                layout: 'form',
-                items: [{
-                    xtype: 'textfield',
-                    fieldLabel: '邮箱',
-                    id: "admin_user_emailSearchId",
-                    name: 'email'
-                }]
-            }, {
-                columnWidth: .2,
-                border: false,
-                layout: 'form',
-                items: [{
-                    xtype: 'textfield',
-                    fieldLabel: '电话',
-                    id: "admin_user_phoneSearchId",
-                    name: 'phone'
-                }]
-            }]
-        };
-
-        var formPanelRow2 = {
-            border: false,
-            layout: 'column',
-            items: [ {
-                columnWidth: .2,
-                border: false,
-                layout: 'form',
-                items: [{
-                    xtype: 'textfield',
-                    fieldLabel: '手机号',
-                    id: "admin_user_mobileSearchId",
-                    name: 'mobile'
-                }]
             },
                 {
                     columnWidth: .2,
@@ -109,8 +73,20 @@ Ext.define('Kalix.admin.user.controller.UserController', {
                             ['0', '停用']
                         ]
                     }]
+                },
+                {
+                    columnWidth: .2,
+                    border: false,
+                    layout: 'form',
+                    items: [{
+                        xtype: 'button',
+                        text: '查询',
+                        handler: function () {
+                        }
+                    }]
                 }]
         };
+
 
         //form
         var formPanel =Ext.create('Ext.form.FormPanel',{
@@ -118,18 +94,8 @@ Ext.define('Kalix.admin.user.controller.UserController', {
             layout: 'form',
             labelWidth: 65,
             labelAlign: 'right',
-            items: [formPanelRow1,formPanelRow2],
-            buttonAlign: 'center',
-            buttons: [{
-                text: '查询',
-                handler: function () {
-                }
-            }, {
-                text: '重置',
-                handler: function () {
-                    formPanel.reset();
-                }
-            }]
+            items: [formPanelRow1],
+            buttonAlign: 'center'
         });
 
 

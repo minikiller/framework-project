@@ -1,16 +1,16 @@
 /**
- * 字典模块控制器
+ * 角色模块控制器
  *
  * @author majian <br/>
- *         date:2015-6-18
+ *         date:2015-7-10
  * @version 1.0.0
  */
-Ext.define('Kalix.admin.dict.controller.DictController', {
+Ext.define('Kalix.admin.role.controller.RoleController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.dictController',
+    alias: 'controller.roleController',
     requires: [
         'Kalix.view.components.common.PagingToolBar',
-        'Kalix.admin.dict.view.DictGrid'
+        'Kalix.admin.role.view.RoleGrid'
     ],
     /**
      * 初始化面板.
@@ -41,18 +41,8 @@ Ext.define('Kalix.admin.dict.controller.DictController', {
                 layout: 'form',
                 items: [{
                     xtype: 'textfield',
-                    fieldLabel: '标签',
-                    id: "admin_dict_labelId",
-                    name: 'username'
-                }]
-            }, {
-                columnWidth: .2,
-                border: false,
-                layout: 'form',
-                items: [{
-                    xtype: 'textfield',
-                    fieldLabel: '数据值',
-                    id: "admin_dict_valueId",
+                    fieldLabel: '名称',
+                    id: "admin_role_nameId",
                     name: 'name'
                 }]
             },
@@ -93,7 +83,7 @@ Ext.define('Kalix.admin.dict.controller.DictController', {
      * @returns {Ext.panel.Panel}
      */
     onInitDataGrid:function(){
-        var dataGird= Ext.create("Kalix.admin.dict.view.DictGrid");
+        var dataGird= Ext.create("Kalix.admin.role.view.RoleGrid");
         return dataGird;
     }
 });

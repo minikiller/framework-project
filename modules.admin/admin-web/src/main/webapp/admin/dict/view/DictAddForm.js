@@ -49,14 +49,11 @@ Ext.define('Kalix.admin.dict.view.DictAddForm', {
             ]
         },
         {
-            xtype: 'combobox',
             fieldLabel: '类型',
+            id: 'typeId',
             name: 'type',
-            editable:false,
-            value:'sex',
-            store: [
-                ['sex', '性别']
-            ],
+            allowBlank: false,
+            blankText: '类型不能为空!',
             beforeLabelTpl : [
                 '<span style="color:red;font-weight:bold" data-qtip="必填选项">*</span>'
             ]
