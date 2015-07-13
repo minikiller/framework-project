@@ -19,4 +19,16 @@
     <bean id="metricsRoutePolicyFactory"
           class="org.apache.camel.component.metrics.routepolicy.MetricsRoutePolicyFactory"/>
 
+    <reference id="filter" interface="javax.servlet.Filter"
+               filter="(osgi.jndi.service.name=testFilter)"/>
+
+
+    <service interface="javax.servlet.Filter" ref="filter">
+        <service-properties>
+            <entry key="filter-name" value="springSecurityFilterChain"/>
+            <entry key="urlPatterns" value="/camel/rest"/>
+            <entry key="servletNames" value="CamelServlet"/>
+        </service-properties>
+    </service>
+
 </blueprint>

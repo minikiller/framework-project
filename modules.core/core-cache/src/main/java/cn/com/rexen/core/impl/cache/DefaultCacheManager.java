@@ -26,6 +26,9 @@ public class DefaultCacheManager implements ICacheManager {
         this.pool = pool;
     }
 
+    public void init() {
+        System.out.print("test");
+    }
     @Override
     public <T> void save(String key, T value) {
         // 从池中获取一个Jedis对象

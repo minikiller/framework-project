@@ -80,6 +80,7 @@ Ext.define('Kalix.admin.user.controller.UserController', {
                     layout: 'form',
                     items: [{
                         xtype: 'button',
+                        glyph: 0xf002,
                         text: '查询',
                         handler: function () {
                         }

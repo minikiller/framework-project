@@ -9,4 +9,14 @@
         <bean class="org.apache.camel.component.swagger.DefaultCamelSwaggerServlet"/>
     </service>-->
 
+    <service interface="javax.servlet.Filter" ref="filter">
+        <service-properties>
+            <entry key="osgi.jndi.service.name" value="testFilter"/>
+        </service-properties>
+
+    </service>
+    <reference id="securityManager" interface="org.apache.shiro.web.mgt.WebSecurityManager"/>
+    <bean id="filter" class="cn.com.rexen.core.swagger.TestFilter" init-method="init">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
 </blueprint>

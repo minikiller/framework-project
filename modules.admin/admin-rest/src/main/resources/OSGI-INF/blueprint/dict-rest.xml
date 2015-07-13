@@ -10,7 +10,12 @@
             <cm:property name="port" value="8181"/>
         </cm:default-properties>
     </cm:property-placeholder>-->
-
+    <bean class="cn.com.rexen.core.security.KalixPolicy" id="policy" init-method="init">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+    <reference interface="org.apache.shiro.web.mgt.WebSecurityManager" id="securityManager"/>
+    <!--<service interface="org.apache.camel.spi.Policy" ref="camelPolicy"/>-->
+    <!--<reference interface="org.apache.camel.spi.Policy" id="policy"/>-->
     <reference id="dictService" interface="cn.com.rexen.admin.api.biz.IDictBeanService"/>
     <reference id="userService" interface="cn.com.rexen.admin.api.biz.IUserBeanService"/>
     <camelContext id="dictCamel" xmlns="http://camel.apache.org/schema/blueprint">
@@ -25,17 +30,25 @@
         <restConfiguration component="servlet" bindingMode="json"
                            contextPath="/camel/rest" host="localhost"
                            port="8181">
-            <dataFormatProperty key="prettyPrint" value="true"/>
+
+        <dataFormatProperty key="prettyPrint" value="true"/>
         </restConfiguration>
 
         <!-- defines the rest services using the context-path /dicts -->
         <rest path="/dicts" consumes="application/json" produces="application/json">
+
             <description>Dict rest service</description>
 
             <!-- this is a rest GET to view an dict by the given id -->
             <get id="route-getDict" uri="/{id}" outType="cn.com.rexen.admin.entities.DictBean">
                 <description>Find dict by id</description>
-                <to uri="bean:dictService?method=getEntity(${header.id})"/>
+                <route>
+                    <!--<policy ref="policy">-->
+                    <to uri="bean:dictService?method=getEntity(${header.id})"/>
+                    <!--</policy>-->
+
+                </route>
+
             </get>
 
             <!-- this is a rest POST to create an dict -->

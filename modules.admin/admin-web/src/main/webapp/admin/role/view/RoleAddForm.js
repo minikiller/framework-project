@@ -50,10 +50,10 @@ Ext.define('Kalix.admin.role.view.RoleAddForm', {
     ],
     buttons: [
         {
-            text: '保存', type: 'submit', handler:'onSave'
+            text: '保存', glyph: 0xf0c7, type: 'submit', handler: 'onSave'
         },
         {
-            text: '重置', handler:'onAddReset'
+            text: '重置', glyph: 0xf0e2, handler: 'onAddReset'
         }
     ]
 });

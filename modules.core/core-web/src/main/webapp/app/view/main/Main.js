@@ -43,5 +43,9 @@ Ext.define('Kalix.view.main.Main', {
     }, {
         xtype: 'mainbottom',
         region: 'south'
-    }]
+    }],
+    initComponent: function () {
+        Ext.setGlyphFontFamily('FontAwesome'); // 设置图标字体文件，只有设置了以后才能用glyph属性
+        this.callParent();
+    },
 });

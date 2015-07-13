@@ -1,1 +1,2 @@
 Bundle-Activator=cn.com.rexen.core.security.internal.InitActivator
+Import-Package:org.apache.commons.pool2.impl,*

@@ -57,7 +57,8 @@ Ext.define('Kalix.admin.dict.view.DictGrid', {
             }, {
                 icon: "resources/images/cancel.png",
                 tooltip: '删除',
-                handler:'onDelete'
+                handler: 'onDelete',
+                //glyph : 0xf059
 
             }]
         }

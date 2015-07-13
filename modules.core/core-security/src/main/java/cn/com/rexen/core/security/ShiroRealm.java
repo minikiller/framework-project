@@ -87,7 +87,7 @@ public class ShiroRealm extends AuthorizingRealm implements IAuthorizingRealm {
             session = SecurityUtils.getSubject().getSession();
             session.setAttribute(PermissionConstant.SYS_CURRENT_USERNAME, map.get("name"));
 //            doGetAuthorizationInfo(SecurityUtils.getSubject().getPrincipals());
-            userLoginService.updateUserLoginInfo((Long) map.get("id"), SecurityUtils.getSubject().getSession().getHost());
+            //userLoginService.updateUserLoginInfo((Long) map.get("id"), SecurityUtils.getSubject().getSession().getHost());
             return new SimpleAuthenticationInfo(userName, password, getName());
         }
 

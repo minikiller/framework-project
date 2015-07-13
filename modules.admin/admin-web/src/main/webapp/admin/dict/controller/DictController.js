@@ -27,16 +27,117 @@ Ext.define('Kalix.admin.dict.controller.DictController', {
 
         return panel;
     },
+    onInitSearchPanel: function () {
+        var formPanelRow1 = new Ext.FormPanel({
+            labelWidth: 35,
+            layout: 'column',
+            floating: false,
+            bodyStyle: 'padding:5px 5px 0',
+            draggable: false,
+            defaults: {
+                width: 230
+            },
+            defaultType: 'textfield',
+            items: [{
+                fieldLabel: '用户名',
+                name: 'username',
+                allowBlank: true,
+                emptyText: "请输入用户名",
+                id: 'username'
+            }, {
+                fieldLabel: '昵称',
+                name: 'nickname',
+                allowBlank: true,
+                emptyText: "请输入用户昵称",
+                id: 'nickname'
+            }, {
+                xtype: 'combobox',
+                fieldLabel: '性别',
+                emptyText: '请选择操作员性别',
+                //store : store_sex,
+                displayField: 'text',
+                valueField: 'sex',
+                name: 'sex',
+                id: 'sex',
+                allowBlank: true
+            }, {
+                fieldLabel: '注册时间从',
+                name: 'registDate',
+                xtype: 'datefield',
+                readOnly: false,
+                format: 'Y-m-d H:i:s',
+                allowBlank: true,
+                id: 'registDateFrom'
+            }, {
+                fieldLabel: '到',
+                name: 'registDate',
+                xtype: 'datefield',
+                readOnly: false,
+                format: 'Y-m-d H:i:s',
+                allowBlank: true,
+                id: 'registDateTo'
+            }],
+
+            buttons: [{
+                text: '查询',
+                glyph: 0xf002,
+                type: 'submit',
+                handler: function () {
+                    store.on('beforeload', function () {
+                        store.proxy.extraParams = {
+                            username_LIKE_STRING: Ext.getCmp('username')
+                                .getValue(),
+                            nickname_LIKE_STRING: Ext.getCmp('nickname')
+                                .getValue(),
+                            sex_EQ_INT: Ext.getCmp('sex').getValue(),
+                            registDate_GT_DATE: Ext.getCmp('registDateFrom')
+                                .getValue(),
+                            registDate_LT_DATE: Ext.getCmp('registDateTo')
+                                .getValue()
+                        };
+                    });
+                    store.load({
+                        params: {
+                            start: 0,
+                            limit: 10
+                        }
+                    });
+                }
+            }, {
+                text: '重置',
+                glyph: 0xf0e2,
+                handler: function () {
+                    searchForm.getForm().reset();
+                }
+            }]
+        });
+        var formPanel = Ext.create('Ext.form.FormPanel', {
+            border: false,
+            layout: 'form',
+            labelWidth: 65,
+            labelAlign: 'right',
+            items: [formPanelRow1],
+            buttonAlign: 'center'
+        });
+        var searchPanel = Ext.create("Ext.panel.Panel", {
+            title: '条件查询',
+            border: false,
+            items: [formPanel]
+        });
+
+        return searchPanel;
+
+    },
     /**
      * 初始化查询面板.
      * @returns {Ext.panel.Panel}
      */
-    onInitSearchPanel:function(){
+    /* onInitSearchPanel:function(){
         var formPanelRow1 = {
             border: false,
             layout: 'column',
             items: [{
-                columnWidth: .2,
+     //columnWidth: .2,
                 border: false,
                 layout: 'form',
                 items: [{
@@ -46,7 +147,7 @@ Ext.define('Kalix.admin.dict.controller.DictController', {
                     name: 'username'
                 }]
             }, {
-                columnWidth: .2,
+     //columnWidth: .2,
                 border: false,
                 layout: 'form',
                 items: [{
@@ -56,18 +157,19 @@ Ext.define('Kalix.admin.dict.controller.DictController', {
                     name: 'name'
                 }]
             },
-                {
-                    columnWidth: .2,
+     {
+     //columnWidth: .2,
                     border: false,
-                    layout: 'form',
+     //layout: 'form',
                     items: [{
-                        xtype: 'button',
+     xtype: 'submit',
+     glyph : 0xf002,
                         text: '查询',
                         handler: function () {
                         }
                     }]
                 }]
-        };
+     }];
 
         //form
         var formPanel =Ext.create('Ext.form.FormPanel',{
@@ -87,7 +189,7 @@ Ext.define('Kalix.admin.dict.controller.DictController', {
         });
 
         return searchPanel;
-    },
+     },*/
     /**
      * 初始化数据表格.
      * @returns {Ext.panel.Panel}
