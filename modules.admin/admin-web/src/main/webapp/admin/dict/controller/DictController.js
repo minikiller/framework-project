@@ -21,14 +21,14 @@ Ext.define('Kalix.admin.dict.controller.DictController', {
         var panel = Ext.create("Ext.panel.Panel", {
             border: false,
             autoScroll: true,
-            height:600,
+            height:640,
             items: [this.onInitSearchPanel(), this.onInitDataGrid()]
         })
 
         return panel;
     },
     onInitSearchPanel: function () {
-        var formPanelRow1 = new Ext.FormPanel({
+        var formPanelRow1 = Ext.create("Ext.FormPanel",{
             labelWidth: 35,
             layout: 'column',
             floating: false,
@@ -76,7 +76,15 @@ Ext.define('Kalix.admin.dict.controller.DictController', {
                 format: 'Y-m-d H:i:s',
                 allowBlank: true,
                 id: 'registDateTo'
-            }],
+            }]
+        });
+        var formPanel = Ext.create('Ext.form.FormPanel', {
+            border: false,
+            layout: 'form',
+            labelWidth: 65,
+            labelAlign: 'right',
+            items: [formPanelRow1],
+            buttonAlign: 'center',
 
             buttons: [{
                 text: '查询',
@@ -110,14 +118,6 @@ Ext.define('Kalix.admin.dict.controller.DictController', {
                     searchForm.getForm().reset();
                 }
             }]
-        });
-        var formPanel = Ext.create('Ext.form.FormPanel', {
-            border: false,
-            layout: 'form',
-            labelWidth: 65,
-            labelAlign: 'right',
-            items: [formPanelRow1],
-            buttonAlign: 'center'
         });
         var searchPanel = Ext.create("Ext.panel.Panel", {
             title: '条件查询',

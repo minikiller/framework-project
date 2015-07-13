@@ -60,18 +60,29 @@ Ext.define('Kalix.view.login.Login', {
                     beforeLabelTpl : [
                         '<span style="color:red;font-weight:bold" data-qtip="必填选项">*</span>'
                     ]
-                }//,
-                //{
-                //    fieldLabel: '验证码',
-                //    id: 'vcodeId',
-                //    name: 'vcode',
-                //    allowBlank: false,
-                //    blankText: '验证码不能为空!',
-                //    beforeLabelTpl : [
-                //        '<span style="color:red;font-weight:bold" data-qtip="必填选项">*</span>'
-                //    ]
-                //}
-            ],
+                }/*,
+                {
+                    items : [{
+                             xtype:'panel',
+                              layout : 'table', // 把整个空间划分成两列
+                              items : [{
+                                   layout : 'form', // 右边列再分成上下两行
+                                    width : 85,
+                                   items : [{
+                                       name : 'login.validateCode',
+                                       xtype : 'textfield',
+                                       fieldLabel : '验证码',
+                                       regex : /^[0-9]{4}$/,
+                                        regexText : '图片不清楚吗？请点击图片进行刷新，验证码为4位数字!',
+                                      width : 70,
+                                       allowBlank : false,
+                                       blankText : '验证码不能为空!'
+                               }]
+                          }, {
+                                   html : '<img id="photo" src="user.action"  onmousedown="changeImg(this)"/>'
+                               }]
+                       }]
+            }*/],
             buttons: [
                 {
                     text: '登陆', type: 'button', handler:'onLogin'

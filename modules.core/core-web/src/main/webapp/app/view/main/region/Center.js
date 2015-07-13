@@ -15,13 +15,13 @@ Ext.define('Kalix.view.main.region.Center', {
     alias: 'widget.maincenter',
 
 
+    bodyStyle: "background-image:url('resources/images/center_bg.jpg')",
     id: 'centerPanel',
     items: [{
         xtype: 'tabpanel',
         id: 'centerTabPanel',
         items: [{
-            title: '首页',
-            html: '<h2>Content appropriate for the current navigation.</h2>'
+            title: '首页'
         }]
     }
     ]

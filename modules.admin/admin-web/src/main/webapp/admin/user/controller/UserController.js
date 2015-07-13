@@ -21,7 +21,7 @@ Ext.define('Kalix.admin.user.controller.UserController', {
         var panel = Ext.create("Ext.panel.Panel", {
             border: false,
             autoScroll: true,
-            height:600,
+            height:640,
             items: [this.onInitSearchPanel(), this.onInitDataGrid()]
         })
 
@@ -80,7 +80,6 @@ Ext.define('Kalix.admin.user.controller.UserController', {
                     layout: 'form',
                     items: [{
                         xtype: 'button',
-                        glyph: 0xf002,
                         text: '查询',
                         handler: function () {
                         }

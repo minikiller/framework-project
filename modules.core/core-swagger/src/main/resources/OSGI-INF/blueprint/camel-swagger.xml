@@ -16,7 +16,7 @@
 
     </service>
     <reference id="securityManager" interface="org.apache.shiro.web.mgt.WebSecurityManager"/>
-    <bean id="filter" class="cn.com.rexen.core.swagger.TestFilter" init-method="init">
+    <bean id="filter" class="cn.com.rexen.core.swagger.TestFilter">
         <property name="securityManager" ref="securityManager"/>
     </bean>
 </blueprint>
