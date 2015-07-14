@@ -25,7 +25,7 @@ Ext.define('Kalix.view.main.MainModel', {
             quit: "www.baidu.com"
         },
         application: {
-            url: '/kalix/resources/datas/applications.json'
+            url: 'http://localhost:8181/camel/rest/applications'
         },
         module: {
             url: '/kalix/resources/datas/modules'

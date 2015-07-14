@@ -6,3 +6,4 @@ Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 Import-Package: org.apache.camel.component.swagger,org.apache.camel.component.servlet,*
 Include-Resource: src/main/webapp,src/main/swagger-ui,src/main/resources
 Web-ContextPath:camel
+Bundle-Category: Rexen Kalix Core

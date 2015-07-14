@@ -7,3 +7,4 @@ Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 #JPA-PersistenceUnits:core-cm
 #Import-Package:*
 #Export-Package:cn.com.rexen.core.api.exception,*
+Bundle-Category: Rexen Kalix Core

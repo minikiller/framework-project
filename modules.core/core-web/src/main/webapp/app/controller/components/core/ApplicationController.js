@@ -51,8 +51,8 @@ Ext.define('Kalix.controller.components.core.ApplicationController', {
             });
             loadMask.show();
             Ext.Ajax.request({ //初始化选项卡
-                url: this.getView().getViewModel().get("module.url") + applicationId + ".json",
-                //params : "appId="+newTab.id,
+                url: this.getView().getViewModel().get("module.url"),
+                params: "appId=" + newTab.id,
                 method: "GET",
                 callback: function (options, success, response) {
                     var modules = Ext.JSON.decode(response.responseText);

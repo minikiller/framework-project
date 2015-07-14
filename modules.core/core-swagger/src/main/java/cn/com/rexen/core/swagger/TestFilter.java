@@ -9,7 +9,6 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  * Created by sunlf on 2015/7/10.
@@ -35,7 +34,7 @@ public class TestFilter implements Filter {
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken("wewe", "1234");
         try {
-            subject.login(token);
+            /*subject.login(token);
             if (subject.isAuthenticated()) {
                 System.out.println("dsdff");
                 httpServletResponse.setCharacterEncoding("UTF-8");
@@ -43,11 +42,11 @@ public class TestFilter implements Filter {
                 out.println("{success:true,message:'登入成功'}");
                 out.flush();
                 out.close();
-            }
+            }*/
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // chain.doFilter(httpServletRequest,response);
+        chain.doFilter(httpServletRequest, response);
     }
 
     @Override

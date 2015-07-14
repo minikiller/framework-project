@@ -7,3 +7,4 @@ Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 #JPA-PersistenceUnits:core-cm
 #Import-Package:cn.com.rexen.core.api.persistence,*
 DynamicImport-Package: *
+Bundle-Category: Rexen Kalix Core

@@ -8,3 +8,4 @@ Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 #Import-Package:org.apache.derby.jdbc,*
 #Import-Package:*
 DynamicImport-Package:*
+Bundle-Category: Rexen Kalix Core

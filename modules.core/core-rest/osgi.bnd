@@ -3,4 +3,5 @@
 #-----------------------------------------------------------------
 
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
-Import-Package:*
+Import-Package:cn.com.rexen.core.api.web.model,*
+Bundle-Category: Rexen Kalix Core

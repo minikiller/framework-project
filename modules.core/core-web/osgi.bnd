@@ -1,3 +1,5 @@
 Bundle-Activator=${bundle.namespace}.internal.InitActivator
 Web-ContextPath:kalix
 Include-Resource: src/main/webapp,src/main/resources
+Bundle-Category: Rexen Kalix Core
+Require-Capability:org.ops4j.pax.cdi.extension,osgi.extender; filter:="(osgi.extender=pax.cdi)"
