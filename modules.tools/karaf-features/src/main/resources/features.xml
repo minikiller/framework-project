@@ -210,6 +210,6 @@
 
     <!--osgi:install -s 'wrap:mvn:org.jasig.cas.client/cas-client-core/3.2.1$Bundle-SymbolicName=cas-client-core&Bundle-Version=3.2.0'-->
     <!--feature:repo-add mvn:cn.com.rexen.tools/karaf-features/1.0.0-SNAPSHOT/xml/features-->
-    <!--<feature install kalix-->
+    <!--<feature:install kalix-->
     <!--install mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.cglib/3.1_1-->
 </features>

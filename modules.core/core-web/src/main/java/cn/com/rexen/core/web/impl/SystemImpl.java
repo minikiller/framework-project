@@ -4,23 +4,23 @@ import cn.com.rexen.core.api.web.IBody;
 import cn.com.rexen.core.api.web.IFooter;
 import cn.com.rexen.core.api.web.IHeader;
 import cn.com.rexen.core.api.web.ISystem;
-import org.ops4j.pax.cdi.api.OsgiService;
 
 /**
  * Created by sunlf on 2015/7/13.
  */
 //@OsgiServiceProvider
 public class SystemImpl implements ISystem {
-    @OsgiService
-    IHeader header;
-    @OsgiService
-    IFooter footer;
-    @OsgiService
-    IBody body;
+    private IHeader header;
+    private IFooter footer;
+    private IBody body;
 
     @Override
     public IHeader getHeader() {
         return header;
+    }
+
+    public void setHeader(IHeader header) {
+        this.header = header;
     }
 
     @Override
@@ -28,8 +28,16 @@ public class SystemImpl implements ISystem {
         return footer;
     }
 
+    public void setFooter(IFooter footer) {
+        this.footer = footer;
+    }
+
     @Override
     public IBody getBody() {
         return body;
+    }
+
+    public void setBody(IBody body) {
+        this.body = body;
     }
 }

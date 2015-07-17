@@ -53,8 +53,8 @@
         <!--
          | some example OSGi runtime properties
         -->
-        <org.osgi.core.version>4.3.0</org.osgi.core.version>
-        <org.osgi.compendium.version>4.3.0</org.osgi.compendium.version>
+        <org.osgi.core.version>4.3.1</org.osgi.core.version>
+        <org.osgi.compendium.version>4.3.1</org.osgi.compendium.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <org.osgi.service.http.port>8080</org.osgi.service.http.port>
         <org.osgi.service.http.port.secure>8443</org.osgi.service.http.port.secure>
@@ -299,5 +299,6 @@
         <module>modules.tools</module>
         <!--<module>modules.middleware</module>-->
         <module>modules.admin</module>
+        <!--<module>modules.example</module>-->
     </modules>
 </project>

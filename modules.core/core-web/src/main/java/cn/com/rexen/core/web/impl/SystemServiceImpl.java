@@ -3,14 +3,10 @@ package cn.com.rexen.core.web.impl;
 import cn.com.rexen.core.api.web.IApplication;
 import cn.com.rexen.core.api.web.ISystem;
 import cn.com.rexen.core.api.web.ISystemService;
-import cn.com.rexen.core.api.web.model.ApplicationBean;
-import cn.com.rexen.core.api.web.model.HeaderBean;
-import cn.com.rexen.core.api.web.model.SystemBean;
+import cn.com.rexen.core.api.web.model.*;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
-import org.ops4j.pax.cdi.api.OsgiService;
 
-import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,9 +14,7 @@ import java.util.List;
  * Created by sunlf on 2015/7/13.
  */
 public class SystemServiceImpl implements ISystemService {
-    @Inject
-    @OsgiService(dynamic = true)
-    ISystem systemService;
+    private ISystem systemService;
 
     @Override
     public SystemBean getSystem() {
@@ -28,6 +22,13 @@ public class SystemServiceImpl implements ISystemService {
         Mapper mapper = new DozerBeanMapper();
         HeaderBean headerBean = mapper.map(systemService.getHeader(), HeaderBean.class);
         systemBean.setHeaderBean(headerBean);
+
+        FooterBean footerBean = mapper.map(systemService.getFooter(), FooterBean.class);
+        systemBean.setFooterBean(footerBean);
+
+        BodyBean bodyBean = new BodyBean();
+        bodyBean.setApplicationBeanList(DozerHelper.map(mapper, systemService.getBody().getApplications(), ApplicationBean.class));
+        systemBean.setBodyBean(bodyBean);
         return systemBean;
     }
 
@@ -44,4 +45,9 @@ public class SystemServiceImpl implements ISystemService {
         }
         return applicationBeans;
     }
+
+    public void setSystemService(ISystem systemService) {
+        this.systemService = systemService;
+    }
+
 }

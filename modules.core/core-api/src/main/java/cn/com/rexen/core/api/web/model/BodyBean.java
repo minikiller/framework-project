@@ -7,7 +7,7 @@ import java.util.List;
  * Created by sunlf on 2015/7/14.
  */
 public class BodyBean {
-    List<ApplicationBean> applicationBeanList = new ArrayList<>();
+    private List<ApplicationBean> applicationBeanList = new ArrayList<>();
 
     public List<ApplicationBean> getApplicationBeanList() {
         return applicationBeanList;

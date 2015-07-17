@@ -2,8 +2,10 @@ package cn.com.rexen.core.swagger.internal;
 
 import cn.com.rexen.core.util.SystemUtil;
 import org.apache.log4j.Logger;
+import org.ops4j.pax.web.service.WebContainer;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
 
 /**
  * Created by sunlf on 14-3-23.
@@ -17,6 +19,10 @@ public class InitActivator implements BundleActivator {
     @Override
     public void start(BundleContext bundleContext) throws Exception {
         SystemUtil.succeedPrintln(String.format("Start-up %s bundle!!", BUNDLE_NAME));
+        ServiceReference<WebContainer> serviceReference = bundleContext.getServiceReference(WebContainer.class);
+        WebContainer webContainer = bundleContext.getService(serviceReference);
+        /*HttpContext httpContext=webContainer.createDefaultHttpContext();
+        webContainer.registerEventListener(new EnvironmentLoaderListener(),httpContext);*/
         context = bundleContext;
     }
 

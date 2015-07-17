@@ -3,7 +3,8 @@
 #-----------------------------------------------------------------
 
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
-Import-Package: org.apache.camel.component.swagger,org.apache.camel.component.servlet,*
+Import-Package: org.apache.camel.component.swagger,org.apache.camel.component.servlet,org.apache.shiro,org.apache.shiro.web.env,org.apache.shiro.web.servlet,org.apache.shiro.web.tags,javax.servlet.jsp,*
 Include-Resource: src/main/webapp,src/main/swagger-ui,src/main/resources
+Require-TldBundle:org.apache.shiro.web
 Web-ContextPath:camel
 Bundle-Category: Rexen Kalix Core

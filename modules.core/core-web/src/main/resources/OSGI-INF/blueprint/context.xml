@@ -21,24 +21,31 @@
             <bean class="cn.com.rexen.core.web.impl.BodyImpl"/>
         </reference-listener>
     </reference-list>
+    <!--body osgi service-->
+    <bean id="bodyImpl" class="cn.com.rexen.core.web.impl.BodyImpl"/>
+    <service interface="cn.com.rexen.core.api.web.IBody" ref="bodyImpl"/>
 
-    <service interface="cn.com.rexen.core.api.web.IBody">
-        <bean class="cn.com.rexen.core.web.impl.BodyImpl"/>
-    </service>
+    <!--footer osgi service-->
+    <bean id="footerImpl" class="cn.com.rexen.core.web.impl.FooterImpl"/>
+    <service interface="cn.com.rexen.core.api.web.IFooter" ref="footerImpl"/>
 
-    <service interface="cn.com.rexen.core.api.web.IFooter">
-        <bean class="cn.com.rexen.core.web.impl.FooterImpl"/>
-    </service>
+    <!--header osgi service-->
+    <bean id="headerImpl" class="cn.com.rexen.core.web.impl.HeaderImpl"/>
+    <service interface="cn.com.rexen.core.api.web.IHeader" ref="headerImpl"/>
 
-    <service interface="cn.com.rexen.core.api.web.IHeader">
-        <bean class="cn.com.rexen.core.web.impl.HeaderImpl"/>
-    </service>
+    <!--system osgi service-->
+    <bean id="systemImpl" class="cn.com.rexen.core.web.impl.SystemImpl">
+        <property name="body" ref="bodyImpl"/>
+        <property name="footer" ref="footerImpl"/>
+        <property name="header" ref="headerImpl"/>
+    </bean>
+    <service interface="cn.com.rexen.core.api.web.ISystem" ref="systemImpl"/>
 
-    <service interface="cn.com.rexen.core.api.web.ISystem">
-        <bean class="cn.com.rexen.core.web.impl.SystemImpl"/>
-    </service>
-
-    <service interface="cn.com.rexen.core.api.web.ISystemService">
-        <bean class="cn.com.rexen.core.web.impl.SystemServiceImpl"/>
-    </service>
+    <bean class="cn.com.rexen.core.web.impl.SystemServiceImpl" id="systemServiceImpl">
+        <property name="systemService" ref="systemImpl"/>
+    </bean>
+    <service interface="cn.com.rexen.core.api.web.ISystemService" ref="systemServiceImpl"/>
+    <!--<service interface="java.util.EventListener" >
+        <bean class="org.apache.shiro.web.env.EnvironmentLoaderListener"/>
+    </service>-->
 </blueprint>

@@ -36,7 +36,8 @@
         <property name="maxAge" value="2592000"/>
         <!-- 30天 -->
     </bean>
-    <bean id="shiroRealm" class="cn.com.rexen.core.security.ShiroRealm"/>
+    <bean id="shiroRealm" class="cn.com.rexen.core.security.ShiroRealm">
+    </bean>
     <!--<reference id="shiroRealm" interface="cn.com.rexen.core.web.api.security.IAuthorizingRealm" filter="(key=urgent)" />-->
     <service interface="org.apache.shiro.web.mgt.WebSecurityManager" ref="webSecurityManager"/>
     <bean id="webSecurityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"
@@ -45,6 +46,7 @@
         <property name="cacheManager" ref="shiroCacheManager"/>
         <property name="sessionMode" value="native"/>
         <property name="sessionManager" ref="sessionManager"/>
+
     </bean>
 
 
@@ -136,4 +138,5 @@
     </bean>
 
     <reference id="cacheManager" interface="cn.com.rexen.core.api.cache.ICacheManager"/>
+
 </blueprint>

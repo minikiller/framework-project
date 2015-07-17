@@ -44,6 +44,7 @@ public class ShiroRealm extends AuthorizingRealm implements IAuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+
         String userName = (String) principalCollection.getPrimaryPrincipal();
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         //添加用户权限

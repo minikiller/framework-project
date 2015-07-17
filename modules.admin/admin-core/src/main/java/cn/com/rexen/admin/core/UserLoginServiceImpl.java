@@ -6,6 +6,8 @@ import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.ErrorCodeValue;
 import cn.com.rexen.core.api.security.IUserLoginService;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -53,10 +55,10 @@ public class UserLoginServiceImpl implements IUserLoginService {
     public Map login(String username, String password) {
         Map map = new HashMap();
         int result = -1;
-        try {
+
             UserBean user = userBeanDao.getUser(username);
             if (user == null) {
-                return null;
+                throw new UnknownAccountException("unkone user");
             }
             //判断密码和用户类型是否对应
             if (encrypt(password).equals(user.getPassword())) {
@@ -67,13 +69,10 @@ public class UserLoginServiceImpl implements IUserLoginService {
                 resMap.put("user_name", user.getLoginName());
                 resMap.put("password", user.getPassword());
                 map.put("response", resMap);
+            } else {
+                throw new IncorrectCredentialsException("incorrectcred!");
             }
-        } catch (Exception e) {
-            map.put("errorCode", ErrorCodeValue.INNER_ERROR);
-            e.printStackTrace();
-        } finally {
-            map.put("result", result);
-        }
+
         return map;
 
     }
