@@ -1,9 +1,10 @@
 package cn.com.rexen.core.web.impl;
 
-import cn.com.rexen.core.api.web.IApplication;
-import cn.com.rexen.core.api.web.ISystem;
-import cn.com.rexen.core.api.web.ISystemService;
+import cn.com.rexen.core.api.web.*;
 import cn.com.rexen.core.api.web.model.*;
+import cn.com.rexen.core.web.listener.ApplicationManager;
+import cn.com.rexen.core.web.listener.MenuManager;
+import cn.com.rexen.core.web.listener.MoudleManager;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
@@ -44,6 +45,60 @@ public class SystemServiceImpl implements ISystemService {
             }
         }
         return applicationBeans;
+    }
+
+    @Override
+    public List<ModuleBean> getModuleByApplication(String applicationId) {
+        List<IModule> moduleList = MoudleManager.getInstall().getModuleList(applicationId);
+        Mapper mapper = new DozerBeanMapper();
+        List<ModuleBean> moduleBeanList = DozerHelper.map(mapper, moduleList, ModuleBean.class);
+        return moduleBeanList;
+    }
+
+    @Override
+    public MenuBean getMenuByModule(String moduleId) {
+        List<IMenu> menuList = MenuManager.getInstall().getMenuList(moduleId);
+        IMenu rootMenu = getRootMenu(menuList);
+        /*List<String> mapFile=new ArrayList<>();
+        mapFile.add("META-INF/MenuMapper.xml");*/
+        Mapper mapper = new DozerBeanMapper();
+        MenuBean menuBean = mapper.map(rootMenu, MenuBean.class);
+        getMenuChilden(menuBean, menuList, mapper);
+        return menuBean;
+    }
+
+    /**
+     * 递归函数加载子菜单
+     *
+     * @param menuBean
+     * @param menuList
+     */
+    private void getMenuChilden(MenuBean menuBean, List<IMenu> menuList, Mapper mapper) {
+        List<MenuBean> childMenuList = new ArrayList<>();
+
+        for (IMenu menu : menuList) {
+            if (menu.getParentMenuId() != null && menu.getParentMenuId().equals(menuBean.getId())) {
+                MenuBean mBean = mapper.map(menu, MenuBean.class);
+                childMenuList.add(mBean);
+                getMenuChilden(mBean, menuList, mapper);
+            }
+        }
+        menuBean.setChildren(childMenuList);
+    }
+
+    /**
+     * 获得菜单根节点
+     *
+     * @param menuList
+     * @return
+     */
+    private IMenu getRootMenu(List<IMenu> menuList) {
+        for (IMenu menu : menuList) {
+            if (menu.isLeaf() == false && menu.getParentMenuId() == null) {
+                return menu;
+            }
+        }
+        return null;
     }
 
     public void setSystemService(ISystem systemService) {

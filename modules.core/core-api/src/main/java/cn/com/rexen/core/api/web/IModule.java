@@ -7,4 +7,6 @@ import java.util.List;
  */
 public interface IModule extends IBaseWebPage {
     List<IMenu> getMenus();
+
+    String getApplicationId();
 }

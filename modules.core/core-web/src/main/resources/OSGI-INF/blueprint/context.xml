@@ -18,7 +18,23 @@
     <reference-list interface="cn.com.rexen.core.api.web.IApplication" member-type="service-reference"
                     availability="optional">
         <reference-listener bind-method="register" unbind-method="unregister">
-            <bean class="cn.com.rexen.core.web.impl.BodyImpl"/>
+            <bean class="cn.com.rexen.core.web.listener.ApplicationListener"/>
+        </reference-listener>
+    </reference-list>
+
+    <!--监听IModule项模块的加载和卸载-->
+    <reference-list interface="cn.com.rexen.core.api.web.IModule" member-type="service-reference"
+                    availability="optional">
+        <reference-listener bind-method="register" unbind-method="unregister">
+            <bean class="cn.com.rexen.core.web.listener.ModuleListener"/>
+        </reference-listener>
+    </reference-list>
+
+    <!--监听IMenu项模块的加载和卸载-->
+    <reference-list interface="cn.com.rexen.core.api.web.IMenu" member-type="service-reference"
+                    availability="optional">
+        <reference-listener bind-method="register" unbind-method="unregister">
+            <bean class="cn.com.rexen.core.web.listener.MenuListener"/>
         </reference-listener>
     </reference-list>
     <!--body osgi service-->
@@ -46,6 +62,6 @@
     </bean>
     <service interface="cn.com.rexen.core.api.web.ISystemService" ref="systemServiceImpl"/>
     <!--<service interface="java.util.EventListener" >
-        <bean class="org.apache.shiro.web.env.EnvironmentLoaderListener"/>
+        <bean class="org.apache.sh iro.web.env.EnvironmentLoaderListener"/>
     </service>-->
 </blueprint>

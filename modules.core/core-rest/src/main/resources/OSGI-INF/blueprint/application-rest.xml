@@ -62,15 +62,21 @@
 
             <!-- this is a rest GET to view an user by the given id -->
             <get id="route-getModuleByAppId" uri="/applications/{id}"
-                 outType="cn.com.rexen.core.api.web.model.ApplicationBean[]">
+                 outType="cn.com.rexen.core.api.web.model.ModuleBean[]">
                 <description>Find Module by Application id</description>
-                <to uri="bean:systemService?method=getApplicationList(${header.id})"/>
+                <to uri="bean:systemService?method=getModuleByApplication(${header.id})"/>
             </get>
 
             <!-- this is a rest GET to view an user by the given id -->
             <get id="route-getSystem" outType="cn.com.rexen.core.api.web.model.SystemBean">
                 <description>Get System Info</description>
                 <to uri="bean:systemService?method=getSystem"/>
+            </get>
+
+            <get id="route-getMenuByModule" uri="/applications/modules/{id}"
+                 outType="cn.com.rexen.core.api.web.model.MenuBean[]">
+                <description>Find Menu by Module id</description>
+                <to uri="bean:systemService?method=getMenuByModule(${header.id})"/>
             </get>
 
         </rest>

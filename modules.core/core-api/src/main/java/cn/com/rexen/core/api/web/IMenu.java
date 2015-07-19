@@ -1,6 +1,5 @@
 package cn.com.rexen.core.api.web;
 
-import java.util.List;
 
 /**
  * Created by sunlf on 2015/7/13.
@@ -8,5 +7,7 @@ import java.util.List;
 public interface IMenu extends IBaseWebPage {
     boolean isLeaf();
 
-    List<IMenu> getChildren();
+    String getModuleId();
+
+    String getParentMenuId();
 }

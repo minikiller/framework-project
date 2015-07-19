@@ -2,7 +2,7 @@ package cn.com.rexen.core.web.impl;
 
 import cn.com.rexen.core.api.web.IApplication;
 import cn.com.rexen.core.api.web.IBody;
-import org.apache.log4j.Logger;
+import cn.com.rexen.core.web.listener.ApplicationManager;
 
 import java.util.List;
 
@@ -11,20 +11,12 @@ import java.util.List;
  * 监听IApplication的注册和注销
  */
 public class BodyImpl implements IBody {
-    private static Logger logger = Logger.getLogger(BodyImpl.class);
+
 
     @Override
     public List<IApplication> getApplications() {
         return ApplicationManager.getInstall().getApplicationList();
     }
 
-    public void register(IApplication application) {
-        logger.info("application of " + application.getTitle() + " is regisered!");
-        ApplicationManager.getInstall().add(application);
-    }
 
-    public void unregister(IApplication application) {
-        logger.info("application of " + application.getTitle() + " is unregisered!");
-        ApplicationManager.getInstall().remove(application);
-    }
 }

@@ -46,7 +46,6 @@
         <property name="cacheManager" ref="shiroCacheManager"/>
         <property name="sessionMode" value="native"/>
         <property name="sessionManager" ref="sessionManager"/>
-
     </bean>
 
 
@@ -57,35 +56,6 @@
             <entry key="osgi.jndi.service.name" value="shiroFilter"/>
         </service-properties>
     </service>
-    <!--<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-        <property name="securityManager" ref="webSecurityManager"/>
-        <property name="loginUrl" value="/login" />
-        <property name="successUrl" value="/home" />
-        <property name="unauthorizedUrl" value="/unauthorized" />
-
-        <property name="filters">
-            <map>
-                <entry key="authc" value-ref="filter"/>
-            </map>
-                </property>
-        <property name="filterChainDefinitions">
-            <value>
-                /extjs/** = anon
-                /js/userservice.js= anon
-                /resources/**=anon
-                /kaptcha.jpg=anon
-                /camel/rest/**=authc
-            </value>
-        </property>
-    </bean>
-
-    <service interface="javax.servlet.Filter" ref="filter">
-        <service-properties>
-            <entry key="filter-name" value="KalixFilterChain"/>
-            <entry key="urlPatterns" value="/camel/rest"/>
-            <entry key="servletNames" value="CamelServlet"/>
-        </service-properties>
-    </service>-->
 
     <!--<bean id="sessionValidationScheduler" class="org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler">
         <property name="interval" value="1800000"/>

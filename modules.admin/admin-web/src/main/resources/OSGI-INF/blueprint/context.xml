@@ -25,5 +25,15 @@
         <bean class="cn.com.rexen.admin.web.impl.AdminApplicationImpl"/>
     </service>
 
+    <service interface="cn.com.rexen.core.api.web.IModule">
+        <bean class="cn.com.rexen.admin.web.impl.AdminModuleImpl"/>
+    </service>
 
+    <service interface="cn.com.rexen.core.api.web.IMenu">
+        <bean class="cn.com.rexen.admin.web.impl.PermissionControlMenuImpl"/>
+    </service>
+
+    <service interface="cn.com.rexen.core.api.web.IMenu">
+        <bean class="cn.com.rexen.admin.web.impl.UserMenuImpl"/>
+    </service>
 </blueprint>
