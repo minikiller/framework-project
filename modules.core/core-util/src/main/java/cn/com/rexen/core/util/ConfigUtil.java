@@ -23,11 +23,11 @@ public class ConfigUtil {
      * @param configId 配置文件名称
      * @return
      */
-    public static String getConfigProp(String key, String configId) {
+    public static Object getConfigProp(String key, String configId) {
         try {
             ConfigurationAdmin configurationAdmin = JNDIHelper.getJNDIServiceForName(ConfigurationAdmin.class.getName());
             Configuration config = configurationAdmin.getConfiguration(configId);
-            Dictionary<String, String> dictionary = config.getProperties();
+            Dictionary<String, Object> dictionary = config.getProperties();
             return dictionary.get(key);
         } catch (IOException e) {
             e.printStackTrace();

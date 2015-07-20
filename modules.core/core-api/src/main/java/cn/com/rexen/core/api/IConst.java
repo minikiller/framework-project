@@ -32,12 +32,12 @@ public class IConst {
     public final static String UPLOAD_CONFIG_FILE_NAME = "ConfigUpload";
     public final static String CONFIG_VIEDO_FILE_NAME = "ConfigVideo";
 
-    public final static String TOMCAT_PATH = ConfigUtil.getConfigProp("TOMCAT_PATH", UPLOAD_CONFIG_FILE_NAME);//"D:\\java-develop\\apache-tomcat-7.0.53";
+    public final static String TOMCAT_PATH = (String) ConfigUtil.getConfigProp("TOMCAT_PATH", UPLOAD_CONFIG_FILE_NAME);//"D:\\java-develop\\apache-tomcat-7.0.53";
     public final static String XT_OFFICE_WEB_PATH_WRITE = TOMCAT_PATH + "\\webapps\\uploadfile\\";
     public final static String OFFICE_WEB_PATH_WRITE = TOMCAT_PATH + "\\webapps\\uploadfile\\";
     public final static String OFFICE_WEB_PATH_TEMP = TOMCAT_PATH + "\\webapps\\tempfile\\";
 
-    public final static String TOMCAT_URL = ConfigUtil.getConfigProp("TOMCAT_URL", UPLOAD_CONFIG_FILE_NAME);//"http://202.111.175.224:8080";
+    public final static String TOMCAT_URL = (String) ConfigUtil.getConfigProp("TOMCAT_URL", UPLOAD_CONFIG_FILE_NAME);//"http://202.111.175.224:8080";
     //public final static String XT_OFFICE_WEB_PATH_READ = "http://202.98.7.181:8687/uploadfile/";
     public final static String XT_OFFICE_WEB_PATH_READ = TOMCAT_URL + "/uploadfile/";
     //release config
