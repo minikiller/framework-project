@@ -10,10 +10,10 @@
             <cm:property name="port" value="8181"/>
         </cm:default-properties>
     </cm:property-placeholder>-->
-    <bean class="cn.com.rexen.core.security.KalixPolicy" id="policy" init-method="init">
+    <!--<bean class="cn.com.rexen.core.security.KalixPolicy" id="policy" init-method="init">
         <property name="securityManager" ref="securityManager"/>
-    </bean>
-    <reference interface="org.apache.shiro.web.mgt.WebSecurityManager" id="securityManager"/>
+    </bean>-->
+    <!--<reference interface="org.apache.shiro.web.mgt.WebSecurityManager" id="securityManager"/>-->
     <!--<service interface="org.apache.camel.spi.Policy" ref="camelPolicy"/>-->
     <!--<reference interface="org.apache.camel.spi.Policy" id="policy"/>-->
     <reference id="dictService" interface="cn.com.rexen.admin.api.biz.IDictBeanService"/>
