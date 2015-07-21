@@ -14,7 +14,7 @@ import java.util.Map;
 public class MoudleManager {
     private static MoudleManager install;
 
-    private Map<String, List<IModule>> moduleMap = new HashMap<>();
+    private Map<String, List<IModule>> moduleMap = new HashMap<String, List<IModule>>();
 
     private MoudleManager() {
     }
@@ -29,7 +29,7 @@ public class MoudleManager {
     public void add(IModule module) {
         List<IModule> moduleList = moduleMap.get(module.getApplicationId());
         if (moduleList == null) {
-            moduleList = new ArrayList<>();
+            moduleList = new ArrayList<IModule>();
             moduleMap.put(module.getApplicationId(), moduleList);
         }
         moduleList.add(module);

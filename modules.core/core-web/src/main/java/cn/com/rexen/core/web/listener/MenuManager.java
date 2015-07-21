@@ -14,7 +14,7 @@ import java.util.Map;
 public class MenuManager {
     private static MenuManager install;
 
-    private Map<String, List<IMenu>> menuMap = new HashMap<>();
+    private Map<String, List<IMenu>> menuMap = new HashMap<String, List<IMenu>>();
 
     private MenuManager() {
     }
@@ -29,7 +29,7 @@ public class MenuManager {
     public void add(IMenu menu) {
         List<IMenu> menuList = menuMap.get(menu.getModuleId());
         if (menuList == null) {
-            menuList = new ArrayList<>();
+            menuList = new ArrayList<IMenu>();
             menuMap.put(menu.getModuleId(), menuList);
         }
         menuList.add(menu);

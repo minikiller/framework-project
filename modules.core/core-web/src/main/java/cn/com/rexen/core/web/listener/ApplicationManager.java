@@ -12,7 +12,7 @@ import java.util.List;
 public class ApplicationManager {
     private static ApplicationManager install;
 
-    private List<IApplication> applicationList = new ArrayList<>();
+    private List<IApplication> applicationList = new ArrayList<IApplication>();
 
     private ApplicationManager() {
     }

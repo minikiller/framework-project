@@ -15,7 +15,7 @@
         </service-properties>
 
     </service>-->
-    <reference id="securityManager" interface="org.apache.shiro.web.mgt.WebSecurityManager"/>
+    <!--<reference id="securityManager" interface="org.apache.shiro.web.mgt.WebSecurityManager"/>-->
 
     <!--<bean id="filter" class="cn.com.rexen.core.swagger.TestFilter">
         <property name="securityManager" ref="securityManager"/>
@@ -29,7 +29,7 @@
         </service-properties>
     </service>-->
 
-    <bean id="logoutService" class="cn.com.rexen.core.swagger.LogoutServlet">
+   <!-- <bean id="logoutService" class="cn.com.rexen.core.swagger.LogoutServlet">
         <property name="securityManager" ref="securityManager"/>
     </bean>
 
@@ -38,5 +38,5 @@
         <service-properties>
             <entry key="alias" value="/kalix/logout"/>
         </service-properties>
-    </service>
+    </service>-->
 </blueprint>

@@ -22,7 +22,7 @@
 
     <display-name>My Camel Rest Application</display-name>
 
-    <listener>
+   <!-- <listener>
         <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
     </listener>
 
@@ -30,12 +30,12 @@
         <filter-name>ShiroFilter</filter-name>
         <filter-class>cn.com.rexen.core.swagger.TestFilter</filter-class>
     </filter>
-
-    <filter-mapping>
+-->
+  <!--  <filter-mapping>
         <filter-name>ShiroFilter</filter-name>
         <url-pattern>/*</url-pattern>
         <url-pattern>/rest/*</url-pattern>
-    </filter-mapping>
+    </filter-mapping>-->
     <!-- the listener that kick-starts Spring -->
     <!--<listener>
       <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

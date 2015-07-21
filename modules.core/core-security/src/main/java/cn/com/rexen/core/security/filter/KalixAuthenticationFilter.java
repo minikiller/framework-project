@@ -32,13 +32,13 @@ public class KalixAuthenticationFilter extends FormAuthenticationFilter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 
-        if (!"XMLHttpRequest".equalsIgnoreCase(httpServletRequest
-                .getHeader("X-Requested-With"))) {// 不是ajax请求
+        /*if (!"XMLHttpRequest".equalsIgnoreCase(httpServletRequest.getHeader("X-Requested-With"))) {// 不是ajax请求
             issueSuccessRedirect(request, response);
-        } else {
+        } else */
+        {
             httpServletResponse.setCharacterEncoding("UTF-8");
             PrintWriter out = httpServletResponse.getWriter();
-            out.println("{success:true,message:'登入成功'}");
+            out.println("{success:true,location:'/kalix/index.jsp',message:'登入成功'}");
             out.flush();
             out.close();
         }
@@ -52,11 +52,11 @@ public class KalixAuthenticationFilter extends FormAuthenticationFilter {
     protected boolean onLoginFailure(AuthenticationToken token,
                                      AuthenticationException e, ServletRequest request,
                                      ServletResponse response) {
-        if (!"XMLHttpRequest".equalsIgnoreCase(((HttpServletRequest) request)
-                .getHeader("X-Requested-With"))) {// 不是ajax请求
-            setFailureAttribute(request, e);
-            return true;
-        }
+//        if (!"XMLHttpRequest".equalsIgnoreCase(((HttpServletRequest) request)
+//                .getHeader("X-Requested-With"))) {// 不是ajax请求
+//            setFailureAttribute(request, e);
+//            return true;
+//        }
         try {
             response.setCharacterEncoding("UTF-8");
             PrintWriter out = response.getWriter();
@@ -86,7 +86,9 @@ public class KalixAuthenticationFilter extends FormAuthenticationFilter {
     protected boolean onAccessDenied(ServletRequest request,
                                      ServletResponse response) throws Exception {
 
+        //判断是否是登陆操作
         if (isLoginRequest(request, response)) {
+            //验证登陆方式
             if (isLoginSubmission(request, response)) {
                 if (log.isTraceEnabled()) {
                     log.trace("Login submission detected.  Attempting to execute login.");
@@ -100,6 +102,7 @@ public class KalixAuthenticationFilter extends FormAuthenticationFilter {
                             .getSession()
                             .getAttribute(
                                     com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);*/
+
                     String vvcode = "123";
                     if (vvcode == null || "".equals(vvcode)
                             || !vvcode.equals(vcode)) {
