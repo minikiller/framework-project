@@ -16,9 +16,9 @@ public class InitActivator implements BundleActivator {
     public void start(BundleContext bundleContext) throws Exception {
         logger.info("Start-up core web resources bundle!!");
         context = bundleContext;
-//        reference = bundleContext.getServiceReference(HttpService.class.getName());
-//        HttpService httpService = (HttpService) bundleContext.getService(reference);
-//        httpService.registerResources("/core-web/ext-5.1.0", "/ext-5.1.0", null);
+        reference = bundleContext.getServiceReference(HttpService.class.getName());
+        /*HttpService httpService = (HttpService) bundleContext.getService(reference);
+        httpService.registerResources("/core-web/ext-5.1.0", "/ext-5.1.0", null);*/
     }
 
     @Override
