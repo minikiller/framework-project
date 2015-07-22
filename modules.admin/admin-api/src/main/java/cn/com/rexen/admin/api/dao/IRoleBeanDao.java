@@ -30,10 +30,33 @@ public interface IRoleBeanDao extends IGenericDao<RoleBean, Long> {
      */
     public RoleBean getRole(String roleName);
 
+
+    /**
+     * 获得角色.
+     * @param roleId
+     * @return
+     */
+    RoleBean getRole(Long roleId);
+
+    /**
+     * 删除一个角色.
+     *
+     * @param roleId 角色ID
+     */
+    void removeRole(Long roleId);
+
     /**
      * 获得角色名列表
      *
      * @return
      */
     List<String> getRoleNameList(UserBean userBean);
+
+    /**
+     * 保存角色.
+     *
+     * @param role the object to be saved
+     * @return the persisted User object
+     */
+    RoleBean saveRole(RoleBean role);
 }

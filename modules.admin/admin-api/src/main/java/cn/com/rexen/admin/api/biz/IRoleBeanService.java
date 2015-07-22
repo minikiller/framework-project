@@ -3,6 +3,8 @@ package cn.com.rexen.admin.api.biz;
 import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.biz.IBizService;
+import cn.com.rexen.core.api.biz.JsonStatus;
+import cn.com.rexen.core.api.persistence.JsonData;
 
 import java.util.List;
 
@@ -22,6 +24,14 @@ public interface IRoleBeanService extends IBizService {
      * @return
      */
     List<String> getRoleNameList();
+
+    public JsonStatus addRole(RoleBean role);
+
+    public JsonStatus deleteRole(Long id);
+
+    public JsonStatus updateRole(RoleBean role);
+
+    public JsonData getAllRole(int page,int limit);
 
     /**
      * 根据用户获得角色名称列表

@@ -40,16 +40,22 @@
             <artifactId>org.osgi.compendium</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-        </dependency>
-        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.admin</groupId>
             <artifactId>cn.com.rexen.kalix.admin.entities</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.core</groupId>
+            <artifactId>cn.com.rexen.core.api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.admin</groupId>
+            <artifactId>cn.com.rexen.kalix.admin.rest</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.core</groupId>

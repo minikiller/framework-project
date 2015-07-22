@@ -40,11 +40,14 @@
             <groupId>cn.com.rexen.kalix.admin</groupId>
             <artifactId>cn.com.rexen.kalix.admin.api</artifactId>
         </dependency>
-
-
         <dependency>
             <groupId>cn.com.rexen.kalix.admin</groupId>
             <artifactId>cn.com.rexen.kalix.admin.entities</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.admin</groupId>
+            <artifactId>cn.com.rexen.kalix.admin.rest</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.core</groupId>
@@ -61,6 +64,25 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-shiro</artifactId>
+            <version>2.15.2</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.servicemix.specs</groupId>
             <artifactId>org.apache.servicemix.specs.jsr339-api-m10</artifactId>
         </dependency>
@@ -73,6 +95,11 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer-osgi</artifactId>
         </dependency>
 
         <dependency>

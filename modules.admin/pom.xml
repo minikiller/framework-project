@@ -55,6 +55,12 @@
                 <version>1.0.0-SNAPSHOT</version>
                 <scope>provided</scope>
             </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.admin</groupId>
+                <artifactId>cn.com.rexen.kalix.admin.rest</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

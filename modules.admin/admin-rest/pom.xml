@@ -41,6 +41,11 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-swagger</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.core</groupId>
+            <artifactId>cn.com.rexen.core.api</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
         <!-- use for json binding -->
         <dependency>

@@ -18,6 +18,7 @@ import java.util.List;
  */
 
 public class RoleBeanDaoOpenjpa extends GenericOpenJpaDao<RoleBean, Long> implements IRoleBeanDao {
+    private final String className = RoleBean.class.getName();
     @Override
     public List<String> getRoleNameList() {
         /*List<RoleBean> roleBeanList=super.getAll(RoleBean.class.getName());
@@ -32,11 +33,28 @@ public class RoleBeanDaoOpenjpa extends GenericOpenJpaDao<RoleBean, Long> implem
         return resultList;
     }
 
+
+    @Override
+    public void removeRole(Long roleId) {
+        super.remove(className, roleId);
+    }
+
     @Override
     public RoleBean getRole(String roleName) {
         RoleBean roleBean = this.findUnique("select u from RoleBean u where u.name=?1", roleName);
         return roleBean;
     }
+
+    @Override
+    public RoleBean getRole(Long roleId) {
+        return super.get(className, roleId);
+    }
+
+    @Override
+    public RoleBean saveRole(RoleBean role) {
+        return super.save(role);
+    }
+
 
     @Override
     public List<String> getRoleNameList(UserBean userBean) {

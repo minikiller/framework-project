@@ -53,6 +53,15 @@
         </bean>
     </service>
 
+    <!--机构dao-->
+    <service id="orgBeanDao" interface="cn.com.rexen.admin.api.dao.IOrganizationBeanDao">
+        <bean class="cn.com.rexen.admin.persist.openjpa.OrganizationBeanDaoOpenjpa"> <!--init-method="init">-->
+            <jpa:context property="entityManager" unitname="admin-cm"/>
+            <tx:transaction method="*" value="Required"/>
+            <!--<property name="persistEntityService" ref="persistEntityService" />-->
+        </bean>
+    </service>
+
     <service id="officeBeanDao" interface="cn.com.rexen.admin.api.dao.IOfficeBeanDao">
         <bean class="cn.com.rexen.admin.persist.openjpa.OfficeBeanDaoOpenjpa"> <!--init-method="init">-->
             <jpa:context property="entityManager" unitname="admin-cm"/>

@@ -5,6 +5,8 @@ import cn.com.rexen.admin.api.dao.IRoleBeanDao;
 import cn.com.rexen.admin.api.dao.IUserBeanDao;
 import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.UserBean;
+import cn.com.rexen.core.api.biz.JsonStatus;
+import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ import java.util.List;
  */
 
 public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleBeanService {
+    private static final String FUNCTION_NAME = "角色";
     private IRoleBeanDao roleBeanDao;
     private IUserBeanDao userBeanDao;
 
@@ -42,6 +45,62 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
         return roleBeanDao.getRoleNameList(userBean);
     }
 
+    @Override
+    public JsonStatus addRole(RoleBean role) {
+        JsonStatus jsonStatus = new JsonStatus();
+        try {
+            roleBeanDao.saveRole(role);
+            jsonStatus.setSuccess(true);
+            jsonStatus.setMsg("新增" + FUNCTION_NAME + "成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setFailure(true);
+            jsonStatus.setMsg("新增" + FUNCTION_NAME + "失败！");
+        }
+        return jsonStatus;
+    }
+
+    @Override
+    public JsonStatus deleteRole(Long id) {
+        JsonStatus jsonStatus = new JsonStatus();
+        try {
+            if (roleBeanDao.getRole(id) == null) {
+                jsonStatus.setFailure(true);
+                jsonStatus.setMsg(FUNCTION_NAME + "{" + id + "}不存在！");
+            } else {
+                roleBeanDao.removeRole(id);
+                jsonStatus.setSuccess(true);
+                jsonStatus.setMsg("删除" + FUNCTION_NAME + "成功！");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setFailure(true);
+            jsonStatus.setMsg("删除" + FUNCTION_NAME + "失败！");
+        }
+        return jsonStatus;
+
+    }
+
+    @Override
+    public JsonStatus updateRole(RoleBean role) {
+        JsonStatus jsonStatus = new JsonStatus();
+        try {
+            roleBeanDao.saveRole(role);
+            jsonStatus.setSuccess(true);
+            jsonStatus.setMsg("更新" + FUNCTION_NAME + "成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setFailure(true);
+            jsonStatus.setMsg("更新" + FUNCTION_NAME + "失败！");
+        }
+        return jsonStatus;
+
+    }
+
+    public JsonData getAllRole(int page,int limit) {
+        return roleBeanDao.getAll(page, limit, RoleBean.class.getName());
+    }
     @Override
     public void saveRoleUser(RoleBean roleBean, List<UserBean> userSelect) {
         List<UserBean> userBeanList = new ArrayList<UserBean>();

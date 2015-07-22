@@ -9,9 +9,12 @@ import cn.com.rexen.core.api.PermissionConstant;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
+import cn.com.rexen.core.util.JNDIHelper;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
+import org.apache.shiro.web.mgt.WebSecurityManager;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,7 +63,6 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     }
 
     @Override
-
     public JsonStatus addUser(UserBean user) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
@@ -225,6 +227,11 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
 
     @Override
     public UserBean getCurrentUser() {
+        try {
+            SecurityUtils.setSecurityManager((WebSecurityManager) JNDIHelper.getJNDIServiceForName(WebSecurityManager.class.getName()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Session session = SecurityUtils.getSubject().getSession();
         UserBean userBean = (UserBean) session.getAttribute(PermissionConstant.SYS_CURRENT_USER);
         if (userBean == null) {

@@ -17,7 +17,6 @@
     <!--<service interface="org.apache.camel.spi.Policy" ref="camelPolicy"/>-->
     <!--<reference interface="org.apache.camel.spi.Policy" id="policy"/>-->
     <reference id="dictService" interface="cn.com.rexen.admin.api.biz.IDictBeanService"/>
-    <reference id="userService" interface="cn.com.rexen.admin.api.biz.IUserBeanService"/>
     <camelContext id="dictCamel" xmlns="http://camel.apache.org/schema/blueprint">
 
         <!-- configure rest to use the camel-servlet component, and use json binding mode -->
@@ -75,44 +74,6 @@
             <get id="route-getAllDict" outType="cn.com.rexen.core.api.persistence.JsonData">
                 <description>Find all dicts</description>
                 <to uri="bean:dictService?method=getAllEntity(${header.page},${header.limit})"/>
-            </get>
-
-        </rest>
-
-        <!-- defines the rest services using the context-path /user -->
-        <rest path="/users" consumes="application/json" produces="application/json">
-            <description>User rest service</description>
-
-            <!-- this is a rest GET to view an user by the given id -->
-            <get id="route-getUser" uri="/{id}" outType="cn.com.rexen.admin.entities.UserBean">
-                <description>Find user by id</description>
-                <to uri="bean:userService?method=getUser(${header.id})"/>
-            </get>
-
-            <!-- this is a rest PUT to create an user -->
-            <post id="route-addUser" type="cn.com.rexen.admin.entities.UserBean"
-                  outType="cn.com.rexen.core.api.biz.JsonStatus">
-                <description>Create a user</description>
-                <to uri="bean:userService?method=addUser"/>
-            </post>
-
-            <!-- this is a rest PUT to update an user -->
-            <put id="route-updateUser" type="cn.com.rexen.admin.entities.UserBean"
-                 outType="cn.com.rexen.core.api.biz.JsonStatus">
-                <description>Updates a user</description>
-                <to uri="bean:userService?method=updateUser"/>
-            </put>
-
-            <!-- this is a rest DELETE to delete an user -->
-            <delete id="route-deleteUser" outType="cn.com.rexen.core.api.biz.JsonStatus">
-                <description>Delete a user</description>
-                <to uri="bean:userService?method=deleteUser(${header.id})"/>
-            </delete>
-
-            <!-- this is a rest GET to find all users -->
-            <get id="route-getAllUser" outType="cn.com.rexen.core.api.persistence.JsonData">
-                <description>Find all users</description>
-                <to uri="bean:userService?method=getAllUser(${header.page},${header.limit})"/>
             </get>
 
         </rest>

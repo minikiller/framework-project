@@ -94,7 +94,7 @@ public class SystemServiceImpl implements ISystemService {
      */
     private IMenu getRootMenu(List<IMenu> menuList) {
         for (IMenu menu : menuList) {
-            if (menu.isLeaf() == false && menu.getParentMenuId() == null) {
+            if (menu.getParentMenuId() == null) {
                 return menu;
             }
         }
