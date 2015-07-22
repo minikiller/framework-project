@@ -45,6 +45,12 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
         JsonStatus jsonStatus = new JsonStatus();
         try {
 
+            List<OrganizationBean> organizationBeans=orgBeanDao.find("select ob from OrganizationBean ob where ob.name = ?1", org.getName());
+            if(organizationBeans!=null&&organizationBeans.size()>0){
+                jsonStatus.setSuccess(false);
+                jsonStatus.setMsg(FUNCTION_NAME + "已经存在！");
+                return jsonStatus;
+            }
             UserBean currentUser=userBeanService.getCurrentUser();
             if(currentUser!=null){
                 org.setCreateBy(currentUser.getName());
@@ -58,12 +64,6 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
                     parentOrganizationBean.setIsLeaf(0);
                     orgBeanDao.saveOrg(parentOrganizationBean);
                 }
-            }
-            List<OrganizationBean> organizationBeans=orgBeanDao.find("select ob from OrganizationBean ob where ob.name = ?1", org.getName());
-            if(organizationBeans!=null&&organizationBeans.size()>0){
-                jsonStatus.setSuccess(false);
-                jsonStatus.setMsg(FUNCTION_NAME + "已经存在！");
-                return jsonStatus;
             }
             jsonStatus.setSuccess(true);
             jsonStatus.setMsg("新增" + FUNCTION_NAME + "成功！");
