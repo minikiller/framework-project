@@ -64,7 +64,7 @@
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven-source-plugin.version>2.4</maven-source-plugin.version>
 
-        <karaf.version>3.0.3</karaf.version>
+        <karaf.version>3.0.4</karaf.version>
         <karaf.etc.path>d:/java-develop/tools/apache-karaf-3.0.4/etc</karaf.etc.path>
         <karaf.path>d:/java-develop/tools/apache-karaf-3.0.4/deploy</karaf.path>
         <karaf.bin.path>d:/java-develop/tools/apache-karaf-3.0.4/bin</karaf.bin.path>
@@ -297,7 +297,7 @@
         <module>poms</module>
         <module>modules.core</module>
         <module>modules.tools</module>
-        <!--<module>modules.middleware</module>-->
+        <module>modules.middleware</module>
         <module>modules.admin</module>
         <!--<module>modules.example</module>-->
     </modules>

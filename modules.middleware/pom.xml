@@ -28,18 +28,21 @@
                 <groupId>cn.com.rexen.core</groupId>
                 <artifactId>cn.com.rexen.core.api</artifactId>
                 <version>${project.version}</version>
+                <scope>provided</scope>
             </dependency>
 
             <dependency>
                 <groupId>cn.com.rexen.core</groupId>
                 <artifactId>cn.com.rexen.core.impl</artifactId>
                 <version>${project.version}</version>
+                <scope>provided</scope>
             </dependency>
 
             <dependency>
                 <groupId>cn.com.rexen.core</groupId>
                 <artifactId>cn.com.rexen.core.util</artifactId>
                 <version>${project.version}</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
