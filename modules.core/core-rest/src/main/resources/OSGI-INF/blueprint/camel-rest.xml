@@ -11,6 +11,7 @@
         <property name="alias" value="/camel/rest"/>
         <property name="httpService" ref="httpService"/>
         <property name="servlet" ref="camelServlet"/>
+
         <!--<property name="servletName" value="dictServlet"/>-->
     </bean>
     <bean id="camelServlet" class="org.apache.camel.component.servlet.CamelHttpTransportServlet"/>

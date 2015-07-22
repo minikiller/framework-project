@@ -61,6 +61,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer-osgi</artifactId>
+            <!--<version>5.5.1</version>-->
+            <!--<classifier>sources</classifier>-->
+        </dependency>
+
     </dependencies>
     <build>
 

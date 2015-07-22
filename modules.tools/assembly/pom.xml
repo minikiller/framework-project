@@ -132,6 +132,7 @@
                         <feature>ssh</feature>
                         <feature>config</feature>
                         <feature>webconsole</feature>
+                        <feature>kalix</feature>
                         <!--<feature>urgent-dev</feature>-->
                         <!--<feature>openjpa</feature>
                         <feature>shiro-web</feature>

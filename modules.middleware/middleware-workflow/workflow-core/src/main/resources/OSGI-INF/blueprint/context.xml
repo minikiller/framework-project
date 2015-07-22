@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
 
-    <service interface="IWorkflowService" ref="workFlowServiceImpl">
+    <service interface="cn.com.rexen.workflow.api.biz.IWorkflowService" ref="workFlowServiceImpl">
     </service>
 
     <bean id="workFlowServiceImpl" class="cn.com.rexen.workflow.core.WorkflowServiceImpl">
