@@ -5,12 +5,13 @@
     <!-- to setup camel servlet with OSGi HttpService -->
     <reference id="httpService" interface="org.osgi.service.http.HttpService"/>
 
-    <bean id="osgiServletRegisterer" class="org.apache.camel.component.servlet.osgi.OsgiServletRegisterer"
+    <bean id="osgiServletRegisterer" class="cn.com.rexen.core.rest.ShiroOsgiServletRegisterer"
           init-method="register"
           destroy-method="unregister">
         <property name="alias" value="/camel/rest"/>
         <property name="httpService" ref="httpService"/>
         <property name="servlet" ref="camelServlet"/>
+        <property name="bundleContext" ref="blueprintBundleContext"/>
 
         <!--<property name="servletName" value="dictServlet"/>-->
     </bean>
@@ -31,5 +32,12 @@
             <entry key="servletNames" value="CamelServlet"/>
         </service-properties>
     </service>-->
-
+    <bean class="cn.com.rexen.core.security.filter.KalixSecurityFilter" id="filter"/>
+    <service interface="javax.servlet.Filter" ref="filter">
+        <service-properties>
+            <entry key="filter-name" value="shiroFilterChain"/>
+            <entry key="urlPatterns" value="/camel/rest"/>
+            <entry key="servletNames" value="CamelServlet"/>
+        </service-properties>
+    </service>
 </blueprint>

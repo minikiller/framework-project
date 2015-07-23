@@ -58,7 +58,7 @@ public class UserLoginServiceImpl implements IUserLoginService {
 
             UserBean user = userBeanDao.getUser(username);
             if (user == null) {
-                throw new UnknownAccountException("unkone user");
+                throw new UnknownAccountException("Unknown Account Exception!");
             }
             //判断密码和用户类型是否对应
             if (encrypt(password).equals(user.getPassword())) {
@@ -69,8 +69,9 @@ public class UserLoginServiceImpl implements IUserLoginService {
                 resMap.put("user_name", user.getLoginName());
                 resMap.put("password", user.getPassword());
                 map.put("response", resMap);
+
             } else {
-                throw new IncorrectCredentialsException("incorrectcred!");
+                throw new IncorrectCredentialsException("Incorrect Credentials Exception!");
             }
 
         return map;

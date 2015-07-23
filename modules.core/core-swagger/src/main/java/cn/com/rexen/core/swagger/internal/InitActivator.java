@@ -21,10 +21,10 @@ public class InitActivator implements BundleActivator {
     @Override
     public void start(BundleContext bundleContext) throws Exception {
         SystemUtil.succeedPrintln(String.format("Start-up %s bundle!!", BUNDLE_NAME));
-        ServiceReference<WebContainer> serviceReference = bundleContext.getServiceReference(WebContainer.class);
+        /*ServiceReference<WebContainer> serviceReference = bundleContext.getServiceReference(WebContainer.class);
         WebContainer webContainer = bundleContext.getService(serviceReference);
         HttpContext httpContext=webContainer.createDefaultHttpContext();
-        webContainer.registerEventListener(new EnvironmentLoaderListener(),httpContext);
+        webContainer.registerEventListener(new EnvironmentLoaderListener(),httpContext);*/
         context = bundleContext;
     }
 
