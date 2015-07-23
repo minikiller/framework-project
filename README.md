@@ -2,10 +2,10 @@ kalix-project
 ============
 1.本项目使用karaf作为部署环境 <br/>
 2.使用openjpa作为持久化数据  <br/>
-3.使用wicket作为web开发框架  <br/>
-4.部分模块使用了couchdb  <br/>
-5.使用cxf发布restful服务（salesman模块的ISalesmanBeanService 实现了销售顾问登陆的restful服务） <br/>
-6.使用pax wicket集成wicket到osgi <br/>
+3.使用Extjs作为web开发框架  <br/>
+4.使用couchdb作为上传下载服务器  <br/>
+5.使用camel rest 发布rest 服务 <br/>
+6.统一使用shiro作为rest的安全框架<br/>
 7.使用dbunit作为数据库的初始化和导出工具（under util bundle） <br/>
 8.使用shiro作为安全框架 <br/>
 9.使用bootstrap作为表现层框架 <br/>
@@ -21,10 +21,3 @@ kalix-project
 14.osgi service事务控制，在blueprint里的bean定义中加入<tx:transaction method="*" value="Required"/>
 15.安装redis为window服务：redis-server --service-install redis.windows.conf
 
-
-16.完成一个REST
-在API的POM中添加
-        <dependency>
-            <groupId>org.apache.servicemix.specs</groupId>
-            <artifactId>org.apache.servicemix.specs.jsr339-api-m10</artifactId>
-        </dependency>
