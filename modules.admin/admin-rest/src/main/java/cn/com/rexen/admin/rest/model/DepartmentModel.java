@@ -7,21 +7,21 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 机构模型类
+ * 部门模型类
  * @author majian <br/>
  *         date:2015-7-21
  * @version 1.0.0
  */
-public class OrganizationModel extends BaseWebPage {
-    private String name; //机构名称
-    private String code; //机构代码
+public class DepartmentModel extends BaseWebPage {
+    private String name; //名称
     private String text; //名称
+    private String code; //代码
     private String centerCode; //中心代码
     private boolean leaf; //是否是叶子节点
-    private long parentId; //父机构
-    private int areaId;  // 归属区域
+    private long parentId; //父节点
+    private int orgId;  // 所属机构
     private String parentName; //父节点名称
-    private List<OrganizationModel> children=new ArrayList<OrganizationModel>();
+    private List<DepartmentModel> children=new ArrayList<DepartmentModel>();
 
 
     private Date creationDate;// 创建日期
@@ -29,9 +29,6 @@ public class OrganizationModel extends BaseWebPage {
     private String updateBy;    // 更新者
     private Date updateDate; //更新日期
 
-    public Date getCreationDate() {
-        return creationDate;
-    }
 
     public String getText() {
         return text;
@@ -39,6 +36,10 @@ public class OrganizationModel extends BaseWebPage {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
     }
 
     public void setCreationDate(Date creationDate) {
@@ -118,19 +119,19 @@ public class OrganizationModel extends BaseWebPage {
         this.parentId = parentId;
     }
 
-    public int getAreaId() {
-        return areaId;
+    public int getOrgId() {
+        return orgId;
     }
 
-    public void setAreaId(int areaId) {
-        this.areaId = areaId;
+    public void setOrgId(int orgId) {
+        this.orgId = orgId;
     }
 
-    public List<OrganizationModel> getChildren() {
+    public List<DepartmentModel> getChildren() {
         return children;
     }
 
-    public void setChildren(List<OrganizationModel> children) {
+    public void setChildren(List<DepartmentModel> children) {
         this.children = children;
     }
 }

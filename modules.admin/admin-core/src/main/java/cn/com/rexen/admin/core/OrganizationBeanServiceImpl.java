@@ -60,7 +60,7 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
 
             if(org.getParentId()!=-1){
                 OrganizationBean parentOrganizationBean=orgBeanDao.getOrg(org.getParentId());
-                if(parentOrganizationBean.getIsLeaf()==1){
+                if(parentOrganizationBean!=null&&parentOrganizationBean.getIsLeaf()==1){
                     parentOrganizationBean.setIsLeaf(0);
                     orgBeanDao.saveOrg(parentOrganizationBean);
                 }
@@ -167,6 +167,7 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
                     OrganizationModel organizationModel = mapper.map(rootElement, OrganizationModel.class);
                     organizationModel.setLeaf(rootElement.getIsLeaf() == 0 ? false : true);
                     organizationModel.setParentName("根机构");
+                    organizationModel.setText(rootElement.getName());
                     getChilden(organizationModel, orgs, mapper);
                     root.getChildren().add(organizationModel);
                }
@@ -187,8 +188,9 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
         for (OrganizationBean organizationBean : elements) {
             if (root.getId()!=null&&root.getId().equals(String.valueOf(organizationBean.getParentId()))) {
                 OrganizationModel organizationModel = mapper.map(organizationBean, OrganizationModel.class);
-                organizationModel.setLeaf(organizationBean.getIsLeaf()==0?false:true);
+                organizationModel.setLeaf(organizationBean.getIsLeaf() == 0 ? false : true);
                 organizationModel.setParentName(root.getName());
+                organizationModel.setText(organizationBean.getName());
                 children.add(organizationModel);
                 if(organizationBean.getIsLeaf()==0) {
                     getChilden(organizationModel, elements, mapper);

@@ -62,6 +62,15 @@
              interface="cn.com.rexen.admin.api.biz.IOrganizationBeanService"/>
     <reference id="orgBeanDao" interface="cn.com.rexen.admin.api.dao.IOrganizationBeanDao"/>
 
+    <!--部门服务注册-->
+    <reference id="depBeanDao" interface="cn.com.rexen.admin.api.dao.IDepartmentBeanDao"/>
+    <bean id="depBeanServiceImpl" class="cn.com.rexen.admin.core.DepartmentBeanServiceImpl">
+        <property name="depBeanDao" ref="depBeanDao"/>
+        <property name="userBeanService" ref="userBeanServiceImpl"/>
+    </bean>
+    <service id="depBeanService" ref="depBeanServiceImpl"
+             interface="cn.com.rexen.admin.api.biz.IDepartmentBeanService"/>
+
     <!--机构服务注册-->
     <bean id="officeBeanServiceImpl" class="cn.com.rexen.admin.core.OfficeBeanServiceImpl">
         <property name="officeBeanDao" ref="officeBeanDao"/>
