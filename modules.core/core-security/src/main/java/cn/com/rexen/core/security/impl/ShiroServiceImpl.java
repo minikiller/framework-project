@@ -23,7 +23,7 @@ public class ShiroServiceImpl implements IShiroService {
     @Override
     public String getCurrentUserName() {
         Session session = getSession();
-        String userName = (String) session.getAttribute(PermissionConstant.SYS_CURRENT_USER);
+        String userName = (String) session.getAttribute(PermissionConstant.SYS_CURRENT_USERNAME);
         return userName;
     }
 
