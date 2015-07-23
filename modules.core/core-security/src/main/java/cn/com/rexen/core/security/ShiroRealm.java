@@ -36,6 +36,7 @@ public class ShiroRealm extends AuthorizingRealm implements IAuthorizingRealm {
         setName("myMemoryRealm");
         CredentialsMatcher cm = new SimpleCredentialsMatcher();
         setCredentialsMatcher(cm);
+        setCachingEnabled(true);
 
     }
 
@@ -79,6 +80,7 @@ public class ShiroRealm extends AuthorizingRealm implements IAuthorizingRealm {
         // 判断验证码
         Session session = SecurityUtils.getSubject().getSession();
         String code = (String) session.getAttribute(PermissionConstant.VALIDATE_CODE);
+
         /*if (token.getCaptcha() == null || !token.getCaptcha().equalsIgnoreCase(code)) {
             throw new CaptchaException("验证码错误!");
         }*/
@@ -86,7 +88,9 @@ public class ShiroRealm extends AuthorizingRealm implements IAuthorizingRealm {
         if (map != null) {
             //保存用户信息到session
             session = SecurityUtils.getSubject().getSession();
-            session.setAttribute(PermissionConstant.SYS_CURRENT_USERNAME, map.get("name"));
+            Map result= (Map) map.get("response");
+
+            session.setAttribute(PermissionConstant.SYS_CURRENT_USERNAME, result.get("name"));
 //            doGetAuthorizationInfo(SecurityUtils.getSubject().getPrincipals());
             //userLoginService.updateUserLoginInfo((Long) map.get("id"), SecurityUtils.getSubject().getSession().getHost());
             return new SimpleAuthenticationInfo(userName, password, getName());

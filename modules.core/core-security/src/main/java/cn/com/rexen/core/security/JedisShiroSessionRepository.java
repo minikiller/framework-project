@@ -43,8 +43,7 @@ public class JedisShiroSessionRepository implements
                     "session或者session id为空");
             return;
         }
-        byte[] key = SerializeUtil
-                .serialize(getRedisSessionKey(session.getId()));
+        byte[] key = SerializeUtil.serialize(getRedisSessionKey(session.getId()));
         byte[] value = SerializeUtil.serialize(session);
         Jedis jedis = this.getJedis();
         try {

@@ -32,6 +32,7 @@ public class KalixSecurityFilter extends AbstractShiroFilter {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         super.setSecurityManager(securityManager);
         FilterChainResolver resolver = env.getFilterChainResolver();
         if (resolver != null) {

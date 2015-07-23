@@ -297,7 +297,7 @@
         <module>poms</module>
         <module>modules.core</module>
         <module>modules.tools</module>
-        <module>modules.middleware</module>
+        <!--<module>modules.middleware</module>-->
         <module>modules.admin</module>
         <!--<module>modules.example</module>-->
     </modules>

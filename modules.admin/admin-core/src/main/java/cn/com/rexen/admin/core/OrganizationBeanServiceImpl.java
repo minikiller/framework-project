@@ -12,6 +12,7 @@ import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.admin.rest.model.OrganizationModel;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
+import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,7 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
     private static final String FUNCTION_NAME = "机构";
     private IOrganizationBeanDao orgBeanDao;
     private IUserBeanService userBeanService;
+    private IShiroService shiroService;
 
     public void setUserBeanService(IUserBeanService userBeanService) {
         this.userBeanService = userBeanService;
@@ -38,6 +40,10 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
 
     public void setOrgBeanDao(IOrganizationBeanDao orgBeanDao) {
         this.orgBeanDao = orgBeanDao;
+    }
+
+    public void setShiroService(IShiroService shiroService) {
+        this.shiroService = shiroService;
     }
 
     @Override
@@ -51,10 +57,15 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
                 jsonStatus.setMsg(FUNCTION_NAME + "已经存在！");
                 return jsonStatus;
             }
-            UserBean currentUser=userBeanService.getCurrentUser();
+            /*UserBean currentUser=userBeanService.getCurrentUser();
             if(currentUser!=null){
                 org.setCreateBy(currentUser.getName());
                 org.setUpdateBy(currentUser.getName());
+            }*/
+            String userName = shiroService.getCurrentUserName();
+            if (userName != null) {
+                org.setCreateBy(userName);
+                org.setUpdateBy(userName);
             }
             orgBeanDao.saveOrg(org);
 

@@ -11,6 +11,7 @@
         <property name="alias" value="/camel/rest"/>
         <property name="httpService" ref="httpService"/>
         <property name="servlet" ref="camelServlet"/>
+        <!--<property name="bundleContext" ref="blueprintBundleContext"/>-->
 
         <!--<property name="servletName" value="dictServlet"/>-->
     </bean>
@@ -31,5 +32,12 @@
             <entry key="servletNames" value="CamelServlet"/>
         </service-properties>
     </service>-->
-
+    <!--<bean class="cn.com.rexen.core.security.filter.KalixSecurityFilter" id="filter"/>
+    <service interface="javax.servlet.Filter" ref="filter">
+        <service-properties>
+            <entry key="filter-name" value="shiroFilterChain"/>
+            <entry key="urlPatterns" value="/camel/rest"/>
+            <entry key="servletNames" value="CamelServlet"/>
+        </service-properties>
+    </service>-->
 </blueprint>
