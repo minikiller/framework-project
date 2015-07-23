@@ -13,7 +13,7 @@ import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
  * @version 1.0.0
  */
 public class DepartmentBeanDaoOpenjpa extends GenericOpenJpaDao<DepartmentBean, Long> implements IDepartmentBeanDao {
-    private final String className = OrganizationBean.class.getName();
+    private final String className = DepartmentBean.class.getName();
 
 
     @Override

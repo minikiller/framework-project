@@ -11,7 +11,9 @@ import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.admin.rest.model.DepartmentModel;
 import cn.com.rexen.admin.rest.model.OrganizationModel;
 import cn.com.rexen.core.api.biz.JsonStatus;
+import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
+import org.apache.commons.lang.StringUtils;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
@@ -28,6 +30,11 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl implements 
     private static final String FUNCTION_NAME = "部门";
     private IDepartmentBeanDao depBeanDao;
     private IUserBeanService userBeanService;
+    private IShiroService shiroService;
+
+    public void setShiroService(IShiroService shiroService) {
+        this.shiroService = shiroService;
+    }
 
     public void setUserBeanService(IUserBeanService userBeanService) {
         this.userBeanService = userBeanService;
@@ -42,16 +49,16 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl implements 
         JsonStatus jsonStatus = new JsonStatus();
         try {
 
-            List<DepartmentBean> beans=depBeanDao.find("select ob from DepartmentBean ob where ob.name = ?1", bean.getName());
+            List<DepartmentBean> beans=depBeanDao.find("select ob from DepartmentBean ob where ob.name = ?1 and ob.orgId=?2", bean.getName(),bean.getOrgId());
             if(beans!=null&&beans.size()>0){
                 jsonStatus.setSuccess(false);
                 jsonStatus.setMsg(FUNCTION_NAME + "已经存在！");
                 return jsonStatus;
             }
-            UserBean currentUser=userBeanService.getCurrentUser();
-            if(currentUser!=null){
-                bean.setCreateBy(currentUser.getName());
-                bean.setUpdateBy(currentUser.getName());
+            String userName = shiroService.getCurrentUserName();
+            if(StringUtils.isNotEmpty(userName)){
+                bean.setCreateBy(userName);
+                bean.setUpdateBy(userName);
             }
             depBeanDao.save(bean);
 
@@ -103,6 +110,16 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl implements 
 
     }
 
+    @Override
+    public void deleteByOrgId(Long orgId) {
+        try {
+           depBeanDao.update("delete from DepartmentBean ob where ob.orgId = ?1", orgId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     /**
      * 如果父节点下再没有子节点,将更新父节点状态
@@ -140,6 +157,7 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl implements 
             oldDep.setName(bean.getName());
             oldDep.setCode(bean.getCode());
             oldDep.setCenterCode(bean.getCenterCode());
+            oldDep.setUpdateBy(shiroService.getCurrentUserName());
             depBeanDao.save(oldDep);
             jsonStatus.setSuccess(true);
             jsonStatus.setMsg("更新" + FUNCTION_NAME + "成功！");

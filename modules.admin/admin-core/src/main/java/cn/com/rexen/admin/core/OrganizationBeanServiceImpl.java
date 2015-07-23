@@ -1,5 +1,6 @@
 package cn.com.rexen.admin.core;
 
+import cn.com.rexen.admin.api.biz.IDepartmentBeanService;
 import cn.com.rexen.admin.api.biz.IOrganizationBeanService;
 import cn.com.rexen.admin.api.biz.IRoleBeanService;
 import cn.com.rexen.admin.api.biz.IUserBeanService;
@@ -33,6 +34,11 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
     private IOrganizationBeanDao orgBeanDao;
     private IUserBeanService userBeanService;
     private IShiroService shiroService;
+    private IDepartmentBeanService departmentBeanService;
+
+    public void setDepartmentBeanService(IDepartmentBeanService departmentBeanService) {
+        this.departmentBeanService = departmentBeanService;
+    }
 
     public void setUserBeanService(IUserBeanService userBeanService) {
         this.userBeanService = userBeanService;
@@ -99,6 +105,7 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
                     removeChildren(id);
                     OrganizationBean org=organizationBeans.get(0);
                     orgBeanDao.removeOrg(id);
+                    departmentBeanService.deleteByOrgId(id);
                     updateParent(org.getParentId());
                     jsonStatus.setSuccess(true);
                     jsonStatus.setMsg("删除" + FUNCTION_NAME + "成功！");
@@ -142,6 +149,7 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
                     removeChildren(org.getId());
                 }
                 orgBeanDao.removeOrg(org.getId());
+                departmentBeanService.deleteByOrgId(org.getId());
             }
         }
     }
@@ -154,6 +162,7 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
             oldOrg.setName(org.getName());
             oldOrg.setCode(org.getCode());
             oldOrg.setCenterCode(org.getCenterCode());
+            oldOrg.setUpdateBy(shiroService.getCurrentUserName());
             orgBeanDao.saveOrg(oldOrg);
             jsonStatus.setSuccess(true);
             jsonStatus.setMsg("更新" + FUNCTION_NAME + "成功！");

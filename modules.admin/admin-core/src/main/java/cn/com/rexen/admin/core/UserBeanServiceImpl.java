@@ -8,8 +8,10 @@ import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.PermissionConstant;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
+import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.JNDIHelper;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.web.mgt.WebSecurityManager;
@@ -25,8 +27,14 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     private static final String FUNCTION_NAME = "用户";
     private IUserBeanDao userBeanDao;
     private IRoleBeanDao roleBeanDao;
+    private IShiroService shiroService;
 
-//    public void setUserBeanDao(IUserBeanDao userBeanDao) {
+
+    public void setShiroService(IShiroService shiroService) {
+        this.shiroService = shiroService;
+    }
+
+    //    public void setUserBeanDao(IUserBeanDao userBeanDao) {
 //        this.userBeanDao = userBeanDao;
 ////        super.init(userBeanDao, UserBean.class.getName());
 //    }
@@ -66,6 +74,11 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     public JsonStatus addUser(UserBean user) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
+            String userName=shiroService.getCurrentUserName();
+            if(StringUtils.isNotEmpty(userName)) {
+                user.setCreateBy(userName);
+                user.setUpdateBy(userName);
+            }
             userBeanDao.saveUser(user);
             jsonStatus.setSuccess(true);
             jsonStatus.setMsg("新增" + FUNCTION_NAME + "成功！");
@@ -103,6 +116,10 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     public JsonStatus updateUser(UserBean user) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
+            String userName=shiroService.getCurrentUserName();
+            if(StringUtils.isNotEmpty(userName)) {
+                user.setUpdateBy(userName);
+            }
             userBeanDao.saveUser(user);
             jsonStatus.setSuccess(true);
             jsonStatus.setMsg("更新" + FUNCTION_NAME + "成功！");

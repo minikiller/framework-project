@@ -7,7 +7,9 @@ import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
+import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,15 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
     private static final String FUNCTION_NAME = "角色";
     private IRoleBeanDao roleBeanDao;
     private IUserBeanDao userBeanDao;
+    private IShiroService shiroService;
+
+    public IShiroService getShiroService() {
+        return shiroService;
+    }
+
+    public void setShiroService(IShiroService shiroService) {
+        this.shiroService = shiroService;
+    }
 
     public void setRoleBeanDao(IRoleBeanDao roleBeanDao) {
         this.roleBeanDao = roleBeanDao;
@@ -49,6 +60,11 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
     public JsonStatus addRole(RoleBean role) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
+            String userName=shiroService.getCurrentUserName();
+            if(StringUtils.isNotEmpty(userName)){
+                role.setCreateBy(userName);
+                role.setUpdateBy(userName);
+            }
             roleBeanDao.saveRole(role);
             jsonStatus.setSuccess(true);
             jsonStatus.setMsg("新增" + FUNCTION_NAME + "成功！");
@@ -86,6 +102,10 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
     public JsonStatus updateRole(RoleBean role) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
+            String userName=shiroService.getCurrentUserName();
+            if(StringUtils.isNotEmpty(userName)) {
+                role.setUpdateBy(userName);
+            }
             roleBeanDao.saveRole(role);
             jsonStatus.setSuccess(true);
             jsonStatus.setMsg("更新" + FUNCTION_NAME + "成功！");

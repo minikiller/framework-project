@@ -5,9 +5,11 @@
            http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
 
 
+    <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
     <bean id="userBeanServiceImpl" class="cn.com.rexen.admin.core.UserBeanServiceImpl">
         <property name="userBeanDao" ref="userBeanDao"/>
         <property name="roleBeanDao" ref="roleBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
     </bean>
     <service id="userBeanService" ref="userBeanServiceImpl" interface="cn.com.rexen.admin.api.biz.IUserBeanService"/>
 
@@ -22,6 +24,7 @@
     <bean id="roleBeanServiceImpl" class="cn.com.rexen.admin.core.RoleBeanServiceImpl">
         <property name="roleBeanDao" ref="roleBeanDao"/>
         <property name="userBeanDao" ref="userBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
     </bean>
     <service id="roleBeanService" ref="roleBeanServiceImpl"
              interface="cn.com.rexen.admin.api.biz.IRoleBeanService"/>
@@ -39,6 +42,7 @@
     <!--字典服务注册-->
     <bean id="dictBeanServiceImpl" class="cn.com.rexen.admin.core.DictBeanServiceImpl">
         <property name="dictBeanDao" ref="dictBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
     </bean>
     <service id="dictBeanService" ref="dictBeanServiceImpl"
              interface="cn.com.rexen.admin.api.biz.IDictBeanService"/>
@@ -53,25 +57,28 @@
              interface="cn.com.rexen.admin.api.biz.IAreaBeanService"/>
     <reference id="areaBeanDao" interface="cn.com.rexen.admin.api.dao.IAreaBeanDao"/>
 
-    <!--机构服务注册-->
-    <bean id="orgBeanServiceImpl" class="cn.com.rexen.admin.core.OrganizationBeanServiceImpl">
-        <property name="orgBeanDao" ref="orgBeanDao"/>
-        <property name="userBeanService" ref="userBeanServiceImpl"/>
-        <property name="shiroService" ref="shiroService"/>
-    </bean>
-    <service id="orgBeanService" ref="orgBeanServiceImpl"
-             interface="cn.com.rexen.admin.api.biz.IOrganizationBeanService"/>
-    <reference id="orgBeanDao" interface="cn.com.rexen.admin.api.dao.IOrganizationBeanDao"/>
-    <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
 
     <!--部门服务注册-->
     <reference id="depBeanDao" interface="cn.com.rexen.admin.api.dao.IDepartmentBeanDao"/>
     <bean id="depBeanServiceImpl" class="cn.com.rexen.admin.core.DepartmentBeanServiceImpl">
         <property name="depBeanDao" ref="depBeanDao"/>
         <property name="userBeanService" ref="userBeanServiceImpl"/>
+        <property name="shiroService" ref="shiroService"/>
     </bean>
     <service id="depBeanService" ref="depBeanServiceImpl"
              interface="cn.com.rexen.admin.api.biz.IDepartmentBeanService"/>
+
+    <!--机构服务注册-->
+    <bean id="orgBeanServiceImpl" class="cn.com.rexen.admin.core.OrganizationBeanServiceImpl">
+        <property name="orgBeanDao" ref="orgBeanDao"/>
+        <property name="userBeanService" ref="userBeanServiceImpl"/>
+        <property name="shiroService" ref="shiroService"/>
+        <property name="departmentBeanService" ref="depBeanServiceImpl"/>
+    </bean>
+    <service id="orgBeanService" ref="orgBeanServiceImpl"
+             interface="cn.com.rexen.admin.api.biz.IOrganizationBeanService"/>
+    <reference id="orgBeanDao" interface="cn.com.rexen.admin.api.dao.IOrganizationBeanDao"/>
+
 
     <!--机构服务注册-->
     <bean id="officeBeanServiceImpl" class="cn.com.rexen.admin.core.OfficeBeanServiceImpl">

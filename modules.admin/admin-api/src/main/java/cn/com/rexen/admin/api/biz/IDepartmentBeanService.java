@@ -18,6 +18,7 @@ public interface IDepartmentBeanService extends IBizService {
     public JsonStatus add(DepartmentBean bean);
 
     public JsonStatus delete(Long id);
+    public void deleteByOrgId(Long orgId);
 
     public JsonStatus update(DepartmentBean org);
 
