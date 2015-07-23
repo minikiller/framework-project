@@ -36,6 +36,7 @@ public class ShiroRealm extends AuthorizingRealm implements IAuthorizingRealm {
         setName("myMemoryRealm");
         CredentialsMatcher cm = new SimpleCredentialsMatcher();
         setCredentialsMatcher(cm);
+        setCachingEnabled(true);
 
     }
 

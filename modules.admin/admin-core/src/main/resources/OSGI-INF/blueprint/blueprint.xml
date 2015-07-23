@@ -57,10 +57,12 @@
     <bean id="orgBeanServiceImpl" class="cn.com.rexen.admin.core.OrganizationBeanServiceImpl">
         <property name="orgBeanDao" ref="orgBeanDao"/>
         <property name="userBeanService" ref="userBeanServiceImpl"/>
+        <property name="shiroService" ref="shiroService"/>
     </bean>
     <service id="orgBeanService" ref="orgBeanServiceImpl"
              interface="cn.com.rexen.admin.api.biz.IOrganizationBeanService"/>
     <reference id="orgBeanDao" interface="cn.com.rexen.admin.api.dao.IOrganizationBeanDao"/>
+    <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
 
     <!--机构服务注册-->
     <bean id="officeBeanServiceImpl" class="cn.com.rexen.admin.core.OfficeBeanServiceImpl">
