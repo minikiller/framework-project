@@ -26,4 +26,7 @@ public interface IOrganizationBeanService extends IBizService {
 
     public OrganizationModel getAllOrg();
 
+    public OrganizationModel getAllByAreaId(Long id);
+
+    public void deleteByAreaId(Long id);
 }

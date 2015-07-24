@@ -18,9 +18,30 @@ import java.util.List;
 
 public interface IBizService<T extends PersistentEntity> extends IService {
 
+
+    public void beforeDeleteEntity(Long id,JsonStatus status);
+
+    public void afterDeleteEntity(Long id,JsonStatus status);
+
+    public boolean isDelete(Long entityId,JsonStatus status);
+
     public JsonStatus deleteEntity(long entityId);
 
+    public void beforeSaveEntity(T entity,JsonStatus status);
+
+    public void afterSaveEntity(T entity,JsonStatus status);
+
+    public boolean isSave(T entity,JsonStatus status);
+
     public JsonStatus saveEntity(T entity);
+
+    public void beforeUpdateEntity(T entity,JsonStatus status);
+
+    public void afterUpdateEntity(T entity,JsonStatus status);
+
+    public boolean isUpdate(T entity,JsonStatus status);
+
+    public JsonStatus updateEntity(T entity);
 
     Object saveEntityAndReturn(PersistentEntity entity);
 

@@ -235,4 +235,43 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
         return roots;
     }
 
+    public OrganizationModel getAllByAreaId(Long id) {
+        List<OrganizationBean> beans=orgBeanDao.find("select ob from OrganizationBean ob where ob.areaId = ?1", id);
+        OrganizationModel root=new OrganizationModel();
+        root.setId("-1");
+        if(beans!=null&&beans.size()>0){
+            List<OrganizationBean> rootElements = getRootElements(beans);
+            if(rootElements!=null&&rootElements.size()>0) {
+                for(OrganizationBean rootElement:rootElements){
+                    Mapper mapper = new DozerBeanMapper();
+                    OrganizationModel OrganizationModel = mapper.map(rootElement, OrganizationModel.class);
+                    OrganizationModel.setLeaf(rootElement.getIsLeaf() == 0 ? false : true);
+                    OrganizationModel.setParentName("根机构");
+                    OrganizationModel.setText(rootElement.getName());
+                    getChilden(OrganizationModel, beans, mapper);
+                    root.getChildren().add(OrganizationModel);
+                }
+            }
+        }
+        return root;
+    }
+
+    @Override
+    public void deleteByAreaId(Long id) {
+        try {
+            List<OrganizationBean> orgs=orgBeanDao.find("select ob from OrganizationBean ob where ob.areaId = ?1",id);
+            if(orgs!=null&&!orgs.isEmpty()){
+                for(OrganizationBean org:orgs){
+                    if(org!=null) {
+                        orgBeanDao.removeOrg(org.getId());
+                        departmentBeanService.deleteByOrgId(org.getId());
+                    }
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
