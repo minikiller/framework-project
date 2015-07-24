@@ -30,6 +30,13 @@
                 <to uri="bean:orgService?method=addOrg"/>
             </post>
 
+            <!-- this is a rest GET to view an dep by the given id -->
+            <get id="route-getDepsByAreaId" uri="/area/{id}" outType="cn.com.rexen.admin.entities.AreaBean">
+                <description>Find dep by id</description>
+                <to uri="bean:orgService?method=getAllByAreaId(${header.id})"/>
+            </get>
+
+
             <!-- this is a rest PUT to update an org -->
             <put id="route-updateOrg" type="cn.com.rexen.admin.entities.OrganizationBean"
                  outType="cn.com.rexen.core.api.biz.JsonStatus">

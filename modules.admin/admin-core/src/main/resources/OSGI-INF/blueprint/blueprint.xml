@@ -52,6 +52,8 @@
     <bean id="areaBeanServiceImpl" class="cn.com.rexen.admin.core.AreaBeanServiceImpl">
         <property name="areaBeanDao" ref="areaBeanDao"/>
         <property name="aboutBeanDao" ref="aboutBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
+        <property name="orgService" ref="orgBeanServiceImpl"/>
     </bean>
     <service id="areaBeanService" ref="areaBeanServiceImpl"
              interface="cn.com.rexen.admin.api.biz.IAreaBeanService"/>

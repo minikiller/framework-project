@@ -24,15 +24,35 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
     private T dao;
     private String entityClassName;
 
+
     @Override
-    @ApiOperation(value = "添加用户", httpMethod = "DELETE", response = JsonStatus.class, notes = "add user")
+    public void beforeDeleteEntity(Long id, JsonStatus status) {
+
+    }
+
+    @Override
+    public void afterDeleteEntity(Long id, JsonStatus status) {
+
+    }
+
+    @Override
+    public boolean isDelete(Long entityId, JsonStatus status) {
+        return true;
+    }
+
+    @Override
+    @ApiOperation(value = "删除实体", httpMethod = "DELETE", response = JsonStatus.class, notes = "add user")
     public JsonStatus deleteEntity(@ApiParam(required = true, name = "entityId", value = "用户信息json数据") long entityId) {
         log.debug("remove entity of " + entityClassName + ";PK is " + entityId);
         JsonStatus jsonStatus = new JsonStatus();
         try {
-            dao.remove(entityClassName, entityId);
-            jsonStatus.setSuccess(true);
-            jsonStatus.setMsg("删除成功！");
+            if(isDelete(entityId,jsonStatus)) {
+                beforeDeleteEntity(entityId, jsonStatus);
+                dao.remove(entityClassName, entityId);
+                jsonStatus.setSuccess(true);
+                jsonStatus.setMsg("删除成功！");
+                afterDeleteEntity(entityId, jsonStatus);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             jsonStatus.setFailure(true);
@@ -42,23 +62,79 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
     }
 
     @Override
+    public void beforeSaveEntity(PersistentEntity entity, JsonStatus status) {
+
+    }
+
+    @Override
+    public void afterSaveEntity(PersistentEntity entity, JsonStatus status) {
+
+    }
+
+    @Override
+    public boolean isSave(PersistentEntity entity, JsonStatus status) {
+        return true;
+    }
+
+
+    @Override
     public JsonStatus saveEntity(PersistentEntity entity) {
 
         log.debug("save entity of " + entityClassName);
         JsonStatus jsonStatus = new JsonStatus();
-        String action = (entity.getId() == 0) ? "新增" : "更新";
         try {
-            dao.save(entity);
-            jsonStatus.setSuccess(true);
-            jsonStatus.setMsg(action + "成功！");
+            if(isSave(entity,jsonStatus)) {
+                beforeSaveEntity(entity, jsonStatus);
+                dao.save(entity);
+                jsonStatus.setSuccess(true);
+                jsonStatus.setMsg("新增成功！");
+                afterSaveEntity(entity, jsonStatus);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             jsonStatus.setFailure(true);
-            jsonStatus.setMsg(action + "失败！");
+            jsonStatus.setMsg( "新增失败！");
         }
         return jsonStatus;
 
     }
+
+    @Override
+    public void beforeUpdateEntity(PersistentEntity entity, JsonStatus status) {
+
+    }
+
+    @Override
+    public void afterUpdateEntity(PersistentEntity entity, JsonStatus status) {
+
+    }
+
+    @Override
+    public boolean isUpdate(PersistentEntity entity, JsonStatus status) {
+        return true;
+    }
+
+    @Override
+    public JsonStatus updateEntity(PersistentEntity entity) {
+
+        log.debug("update entity of " + entityClassName);
+        JsonStatus jsonStatus = new JsonStatus();
+        try {
+            if(isUpdate(entity,jsonStatus)) {
+                beforeUpdateEntity(entity, jsonStatus);
+                dao.save(entity);
+                jsonStatus.setSuccess(true);
+                jsonStatus.setMsg("修改成功！");
+                afterUpdateEntity(entity, jsonStatus);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setFailure(true);
+            jsonStatus.setMsg( "修改失败！");
+        }
+        return jsonStatus;
+    }
+
 
     @Override
     public Object saveEntityAndReturn(PersistentEntity entity) {
