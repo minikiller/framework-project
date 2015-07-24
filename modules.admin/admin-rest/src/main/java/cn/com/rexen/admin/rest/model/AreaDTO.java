@@ -1,33 +1,49 @@
 package cn.com.rexen.admin.rest.model;
 
-import cn.com.rexen.core.api.web.model.BaseWebPage;
+import cn.com.rexen.core.api.web.model.BaseDTO;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
- * 机构模型类
+ * 区域模型类
  * @author majian <br/>
- *         date:2015-7-21
+ *         date:2015-7-24
  * @version 1.0.0
  */
-public class OrganizationModel extends BaseWebPage {
-    private String name; //机构名称
-    private String code; //机构代码
+public class AreaDTO extends BaseDTO {
+    private String name; //名称
+    private String code; //代码
     private String text; //名称
     private String centerCode; //中心代码
     private boolean leaf; //是否是叶子节点
-    private long parentId; //父机构
-    private int areaId;  // 归属区域
+    private long parentId; //父节点
     private String parentName; //父节点名称
-    private List<OrganizationModel> children=new ArrayList<OrganizationModel>();
-
+    private List<AreaDTO> children=new ArrayList<AreaDTO>();
+    private String jd; //经度
+    private String wd; //纬度
 
     private Date creationDate;// 创建日期
     private String createBy;    // 创建者
     private String updateBy;    // 更新者
     private Date updateDate; //更新日期
+
+    public String getJd() {
+        return jd;
+    }
+
+    public void setJd(String jd) {
+        this.jd = jd;
+    }
+
+    public String getWd() {
+        return wd;
+    }
+
+    public void setWd(String wd) {
+        this.wd = wd;
+    }
 
     public Date getCreationDate() {
         return creationDate;
@@ -118,19 +134,12 @@ public class OrganizationModel extends BaseWebPage {
         this.parentId = parentId;
     }
 
-    public int getAreaId() {
-        return areaId;
-    }
 
-    public void setAreaId(int areaId) {
-        this.areaId = areaId;
-    }
-
-    public List<OrganizationModel> getChildren() {
+    public List<AreaDTO> getChildren() {
         return children;
     }
 
-    public void setChildren(List<OrganizationModel> children) {
+    public void setChildren(List<AreaDTO> children) {
         this.children = children;
     }
 }

@@ -1,9 +1,7 @@
 package cn.com.rexen.admin.api.biz;
 
 import cn.com.rexen.admin.entities.DepartmentBean;
-import cn.com.rexen.admin.entities.OrganizationBean;
-import cn.com.rexen.admin.rest.model.DepartmentModel;
-import cn.com.rexen.admin.rest.model.OrganizationModel;
+import cn.com.rexen.admin.rest.model.DepartmentDTO;
 import cn.com.rexen.core.api.biz.IBizService;
 import cn.com.rexen.core.api.biz.JsonStatus;
 
@@ -22,7 +20,7 @@ public interface IDepartmentBeanService extends IBizService {
 
     public JsonStatus update(DepartmentBean org);
 
-    public DepartmentModel getAll();
-    public DepartmentModel getAllByOrgId(Long orgId);
+    public DepartmentDTO getAll();
+    public DepartmentDTO getAllByOrgId(Long orgId);
 
 }

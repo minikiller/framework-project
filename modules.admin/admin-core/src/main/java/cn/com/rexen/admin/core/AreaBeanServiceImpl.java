@@ -6,9 +6,7 @@ import cn.com.rexen.admin.api.dao.IAboutBeanDao;
 import cn.com.rexen.admin.api.dao.IAreaBeanDao;
 import cn.com.rexen.admin.entities.AboutBean;
 import cn.com.rexen.admin.entities.AreaBean;
-import cn.com.rexen.admin.entities.DepartmentBean;
-import cn.com.rexen.admin.rest.model.AreaModel;
-import cn.com.rexen.admin.rest.model.DepartmentModel;
+import cn.com.rexen.admin.rest.model.AreaDTO;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
@@ -18,7 +16,6 @@ import cn.com.rexen.core.util.StringUtils;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
-import java.awt.geom.Area;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -202,7 +199,6 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl implements IAreaB
         AreaBean oldArea=areaBeanDao.get(AreaBean.class.getName(), entity.getId());
         AreaBean area=(AreaBean)entity;
         area.setParentId(oldArea.getParentId());
-        area.setParent(oldArea.getParent());
         area.setCreateBy(oldArea.getCreateBy());
         area.setCreationDate(oldArea.getCreationDate());
         area.setIsLeaf(oldArea.getIsLeaf());
@@ -232,21 +228,21 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl implements IAreaB
         }
     }
     
-    public AreaModel getAllArea() {
+    public AreaDTO getAllArea() {
         List<AreaBean> beans=areaBeanDao.getAll(AreaBean.class.getName());
-        AreaModel root=new AreaModel();
+        AreaDTO root=new AreaDTO();
         root.setId("-1");
         if(beans!=null&&beans.size()>0){
             List<AreaBean> rootElements = getRootElements(beans);
             if(rootElements!=null&&rootElements.size()>0) {
                 for(AreaBean rootElement:rootElements){
                     Mapper mapper = new DozerBeanMapper();
-                    AreaModel AreaModel = mapper.map(rootElement, AreaModel.class);
-                    AreaModel.setLeaf(rootElement.getIsLeaf() == 0 ? false : true);
-                    AreaModel.setParentName("根机构");
-                    AreaModel.setText(rootElement.getName());
-                    getChilden(AreaModel, beans, mapper);
-                    root.getChildren().add(AreaModel);
+                    AreaDTO AreaDTO = mapper.map(rootElement, AreaDTO.class);
+                    AreaDTO.setLeaf(rootElement.getIsLeaf() == 0 ? false : true);
+                    AreaDTO.setParentName("根机构");
+                    AreaDTO.setText(rootElement.getName());
+                    getChilden(AreaDTO, beans, mapper);
+                    root.getChildren().add(AreaDTO);
                 }
             }
         }
@@ -260,18 +256,18 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl implements IAreaB
      * @param root
      * @param elements
      */
-    private void getChilden(AreaModel root, List<AreaBean> elements, Mapper mapper) {
-        List<AreaModel> children = new ArrayList<AreaModel>();
+    private void getChilden(AreaDTO root, List<AreaBean> elements, Mapper mapper) {
+        List<AreaDTO> children = new ArrayList<AreaDTO>();
 
         for (AreaBean AreaBean : elements) {
             if (root.getId()!=null&&root.getId().equals(String.valueOf(AreaBean.getParentId()))) {
-                AreaModel AreaModel = mapper.map(AreaBean, AreaModel.class);
-                AreaModel.setLeaf(AreaBean.getIsLeaf()==0?false:true);
-                AreaModel.setParentName(root.getName());
-                AreaModel.setText(AreaBean.getName());
-                children.add(AreaModel);
+                AreaDTO AreaDTO = mapper.map(AreaBean, AreaDTO.class);
+                AreaDTO.setLeaf(AreaBean.getIsLeaf()==0?false:true);
+                AreaDTO.setParentName(root.getName());
+                AreaDTO.setText(AreaBean.getName());
+                children.add(AreaDTO);
                 if(AreaBean.getIsLeaf()==0) {
-                    getChilden(AreaModel, elements, mapper);
+                    getChilden(AreaDTO, elements, mapper);
                 }
             }
         }

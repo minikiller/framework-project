@@ -1,15 +1,10 @@
 package cn.com.rexen.admin.core;
 
 import cn.com.rexen.admin.api.biz.IDepartmentBeanService;
-import cn.com.rexen.admin.api.biz.IOrganizationBeanService;
 import cn.com.rexen.admin.api.biz.IUserBeanService;
 import cn.com.rexen.admin.api.dao.IDepartmentBeanDao;
-import cn.com.rexen.admin.api.dao.IOrganizationBeanDao;
 import cn.com.rexen.admin.entities.DepartmentBean;
-import cn.com.rexen.admin.entities.OrganizationBean;
-import cn.com.rexen.admin.entities.UserBean;
-import cn.com.rexen.admin.rest.model.DepartmentModel;
-import cn.com.rexen.admin.rest.model.OrganizationModel;
+import cn.com.rexen.admin.rest.model.DepartmentDTO;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
@@ -170,40 +165,40 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl implements 
 
     }
 
-    public DepartmentModel getAll() {
+    public DepartmentDTO getAll() {
         List<DepartmentBean> beans=depBeanDao.getAll(DepartmentBean.class.getName());
-        DepartmentModel root=new DepartmentModel();
+        DepartmentDTO root=new DepartmentDTO();
         root.setId("-1");
         if(beans!=null&&beans.size()>0){
             List<DepartmentBean> rootElements = getRootElements(beans);
             if(rootElements!=null&&rootElements.size()>0) {
                 for(DepartmentBean rootElement:rootElements){
                     Mapper mapper = new DozerBeanMapper();
-                    DepartmentModel departmentModel = mapper.map(rootElement, DepartmentModel.class);
-                    departmentModel.setLeaf(rootElement.getIsLeaf() == 0 ? false : true);
-                    departmentModel.setParentName("根机构");
-                    getChilden(departmentModel, beans, mapper);
-                    root.getChildren().add(departmentModel);
+                    DepartmentDTO departmentDTO = mapper.map(rootElement, DepartmentDTO.class);
+                    departmentDTO.setLeaf(rootElement.getIsLeaf() == 0 ? false : true);
+                    departmentDTO.setParentName("根机构");
+                    getChilden(departmentDTO, beans, mapper);
+                    root.getChildren().add(departmentDTO);
                }
            }
         }
        return root;
     }
 
-    public DepartmentModel getAllByOrgId(Long orgId) {
+    public DepartmentDTO getAllByOrgId(Long orgId) {
         List<DepartmentBean> beans=depBeanDao.find("select ob from DepartmentBean ob where ob.orgId = ?1", orgId);
-        DepartmentModel root=new DepartmentModel();
+        DepartmentDTO root=new DepartmentDTO();
         root.setId("-1");
         if(beans!=null&&beans.size()>0){
             List<DepartmentBean> rootElements = getRootElements(beans);
             if(rootElements!=null&&rootElements.size()>0) {
                 for(DepartmentBean rootElement:rootElements){
                     Mapper mapper = new DozerBeanMapper();
-                    DepartmentModel departmentModel = mapper.map(rootElement, DepartmentModel.class);
-                    departmentModel.setLeaf(rootElement.getIsLeaf() == 0 ? false : true);
-                    departmentModel.setParentName("根机构");
-                    getChilden(departmentModel, beans, mapper);
-                    root.getChildren().add(departmentModel);
+                    DepartmentDTO departmentDTO = mapper.map(rootElement, DepartmentDTO.class);
+                    departmentDTO.setLeaf(rootElement.getIsLeaf() == 0 ? false : true);
+                    departmentDTO.setParentName("根机构");
+                    getChilden(departmentDTO, beans, mapper);
+                    root.getChildren().add(departmentDTO);
                }
            }
         }
@@ -216,18 +211,18 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl implements 
      * @param root
      * @param elements
      */
-    private void getChilden(DepartmentModel root, List<DepartmentBean> elements, Mapper mapper) {
-        List<DepartmentModel> children = new ArrayList<DepartmentModel>();
+    private void getChilden(DepartmentDTO root, List<DepartmentBean> elements, Mapper mapper) {
+        List<DepartmentDTO> children = new ArrayList<DepartmentDTO>();
 
         for (DepartmentBean departmentBean : elements) {
             if (root.getId()!=null&&root.getId().equals(String.valueOf(departmentBean.getParentId()))) {
-                DepartmentModel departmentModel = mapper.map(departmentBean, DepartmentModel.class);
-                departmentModel.setLeaf(departmentBean.getIsLeaf()==0?false:true);
-                departmentModel.setParentName(root.getName());
-                departmentModel.setText(departmentBean.getName());
-                children.add(departmentModel);
+                DepartmentDTO departmentDTO = mapper.map(departmentBean, DepartmentDTO.class);
+                departmentDTO.setLeaf(departmentBean.getIsLeaf()==0?false:true);
+                departmentDTO.setParentName(root.getName());
+                departmentDTO.setText(departmentBean.getName());
+                children.add(departmentDTO);
                 if(departmentBean.getIsLeaf()==0) {
-                    getChilden(departmentModel, elements, mapper);
+                    getChilden(departmentDTO, elements, mapper);
                 }
             }
         }
