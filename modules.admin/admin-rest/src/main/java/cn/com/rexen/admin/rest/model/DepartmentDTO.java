@@ -1,6 +1,6 @@
 package cn.com.rexen.admin.rest.model;
 
-import cn.com.rexen.core.api.web.model.BaseWebPage;
+import cn.com.rexen.core.api.web.model.BaseDTO;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,7 +12,7 @@ import java.util.List;
  *         date:2015-7-21
  * @version 1.0.0
  */
-public class DepartmentModel extends BaseWebPage {
+public class DepartmentDTO extends BaseDTO {
     private String name; //名称
     private String text; //名称
     private String code; //代码
@@ -21,7 +21,7 @@ public class DepartmentModel extends BaseWebPage {
     private long parentId; //父节点
     private int orgId;  // 所属机构
     private String parentName; //父节点名称
-    private List<DepartmentModel> children=new ArrayList<DepartmentModel>();
+    private List<DepartmentDTO> children=new ArrayList<DepartmentDTO>();
 
 
     private Date creationDate;// 创建日期
@@ -127,11 +127,11 @@ public class DepartmentModel extends BaseWebPage {
         this.orgId = orgId;
     }
 
-    public List<DepartmentModel> getChildren() {
+    public List<DepartmentDTO> getChildren() {
         return children;
     }
 
-    public void setChildren(List<DepartmentModel> children) {
+    public void setChildren(List<DepartmentDTO> children) {
         this.children = children;
     }
 }

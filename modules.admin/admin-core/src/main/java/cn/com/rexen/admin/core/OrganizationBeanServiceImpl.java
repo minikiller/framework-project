@@ -2,24 +2,16 @@ package cn.com.rexen.admin.core;
 
 import cn.com.rexen.admin.api.biz.IDepartmentBeanService;
 import cn.com.rexen.admin.api.biz.IOrganizationBeanService;
-import cn.com.rexen.admin.api.biz.IRoleBeanService;
 import cn.com.rexen.admin.api.biz.IUserBeanService;
 import cn.com.rexen.admin.api.dao.IOrganizationBeanDao;
-import cn.com.rexen.admin.api.dao.IRoleBeanDao;
-import cn.com.rexen.admin.api.dao.IUserBeanDao;
 import cn.com.rexen.admin.entities.OrganizationBean;
-import cn.com.rexen.admin.entities.RoleBean;
-import cn.com.rexen.admin.entities.UserBean;
-import cn.com.rexen.admin.rest.model.OrganizationModel;
+import cn.com.rexen.admin.rest.model.OrganizationDTO;
 import cn.com.rexen.core.api.biz.JsonStatus;
-import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
@@ -175,21 +167,21 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
 
     }
 
-    public OrganizationModel getAllOrg() {
+    public OrganizationDTO getAllOrg() {
         List<OrganizationBean> orgs=orgBeanDao.getAll(OrganizationBean.class.getName());
-        OrganizationModel root=new OrganizationModel();
+        OrganizationDTO root=new OrganizationDTO();
         root.setId("-1");
         if(orgs!=null&&orgs.size()>0){
             List<OrganizationBean> rootElements = getRootElements(orgs);
             if(rootElements!=null&&rootElements.size()>0) {
                 for(OrganizationBean rootElement:rootElements){
                     Mapper mapper = new DozerBeanMapper();
-                    OrganizationModel organizationModel = mapper.map(rootElement, OrganizationModel.class);
-                    organizationModel.setLeaf(rootElement.getIsLeaf() == 0 ? false : true);
-                    organizationModel.setParentName("根机构");
-                    organizationModel.setText(rootElement.getName());
-                    getChilden(organizationModel, orgs, mapper);
-                    root.getChildren().add(organizationModel);
+                    OrganizationDTO organizationDTO = mapper.map(rootElement, OrganizationDTO.class);
+                    organizationDTO.setLeaf(rootElement.getIsLeaf() == 0 ? false : true);
+                    organizationDTO.setParentName("根机构");
+                    organizationDTO.setText(rootElement.getName());
+                    getChilden(organizationDTO, orgs, mapper);
+                    root.getChildren().add(organizationDTO);
                }
            }
         }
@@ -202,18 +194,18 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
      * @param root
      * @param elements
      */
-    private void getChilden(OrganizationModel root, List<OrganizationBean> elements, Mapper mapper) {
-        List<OrganizationModel> children = new ArrayList<OrganizationModel>();
+    private void getChilden(OrganizationDTO root, List<OrganizationBean> elements, Mapper mapper) {
+        List<OrganizationDTO> children = new ArrayList<OrganizationDTO>();
 
         for (OrganizationBean organizationBean : elements) {
             if (root.getId()!=null&&root.getId().equals(String.valueOf(organizationBean.getParentId()))) {
-                OrganizationModel organizationModel = mapper.map(organizationBean, OrganizationModel.class);
-                organizationModel.setLeaf(organizationBean.getIsLeaf() == 0 ? false : true);
-                organizationModel.setParentName(root.getName());
-                organizationModel.setText(organizationBean.getName());
-                children.add(organizationModel);
+                OrganizationDTO organizationDTO = mapper.map(organizationBean, OrganizationDTO.class);
+                organizationDTO.setLeaf(organizationBean.getIsLeaf() == 0 ? false : true);
+                organizationDTO.setParentName(root.getName());
+                organizationDTO.setText(organizationBean.getName());
+                children.add(organizationDTO);
                 if(organizationBean.getIsLeaf()==0) {
-                    getChilden(organizationModel, elements, mapper);
+                    getChilden(organizationDTO, elements, mapper);
                 }
             }
         }
@@ -235,21 +227,21 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
         return roots;
     }
 
-    public OrganizationModel getAllByAreaId(Long id) {
+    public OrganizationDTO getAllByAreaId(Long id) {
         List<OrganizationBean> beans=orgBeanDao.find("select ob from OrganizationBean ob where ob.areaId = ?1", id);
-        OrganizationModel root=new OrganizationModel();
+        OrganizationDTO root=new OrganizationDTO();
         root.setId("-1");
         if(beans!=null&&beans.size()>0){
             List<OrganizationBean> rootElements = getRootElements(beans);
             if(rootElements!=null&&rootElements.size()>0) {
                 for(OrganizationBean rootElement:rootElements){
                     Mapper mapper = new DozerBeanMapper();
-                    OrganizationModel OrganizationModel = mapper.map(rootElement, OrganizationModel.class);
-                    OrganizationModel.setLeaf(rootElement.getIsLeaf() == 0 ? false : true);
-                    OrganizationModel.setParentName("根机构");
-                    OrganizationModel.setText(rootElement.getName());
-                    getChilden(OrganizationModel, beans, mapper);
-                    root.getChildren().add(OrganizationModel);
+                    OrganizationDTO OrganizationDTO = mapper.map(rootElement, OrganizationDTO.class);
+                    OrganizationDTO.setLeaf(rootElement.getIsLeaf() == 0 ? false : true);
+                    OrganizationDTO.setParentName("根机构");
+                    OrganizationDTO.setText(rootElement.getName());
+                    getChilden(OrganizationDTO, beans, mapper);
+                    root.getChildren().add(OrganizationDTO);
                 }
             }
         }

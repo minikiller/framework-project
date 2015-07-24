@@ -29,39 +29,22 @@ import java.util.List;
 public class AreaBean extends PersistentEntity {
 
     private static final long serialVersionUID = 1L;
-    private AreaBean parent;    // 父级编号
+    private String parentIds; // 所有父级编号
     private int isLeaf; //是否是子节点
     @Length(min = 1, max = 255)
     private long parentId; // 父级编号
     @NotNull(message = "'区域编码'是必填项")
     private String code;    // 区域编码
-    @NotNull(message = "'中心代码'是必填项")
-    private String centerCode;    // 中心代码
     @NotNull(message = "'区域名称'是必填项")
     private String name;    // 区域名称
+    @NotNull(message = "'中心代码'是必填项")
+    private String centerCode;    // 中心代码
     private String type;    // 区域类型（1：国家；2：省份、直辖市；3：地市；4：区县）
     private String jd;      //经度
     private String wd;      //纬度
 
-    private List<AreaBean> childList = new ArrayList<>();    // 拥有子区域列表
 
     public AreaBean() {
-    }
-
-    public String getCenterCode() {
-        return centerCode;
-    }
-
-    public void setCenterCode(String centerCode) {
-        this.centerCode = centerCode;
-    }
-
-    public int getIsLeaf() {
-        return isLeaf;
-    }
-
-    public void setIsLeaf(int isLeaf) {
-        this.isLeaf = isLeaf;
     }
 
     @Transient
@@ -84,15 +67,12 @@ public class AreaBean extends PersistentEntity {
 		}*/
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_id")
-    @NotNull
-    public AreaBean getParent() {
-        return parent;
+    public int getIsLeaf() {
+        return isLeaf;
     }
 
-    public void setParent(AreaBean parent) {
-        this.parent = parent;
+    public void setIsLeaf(int isLeaf) {
+        this.isLeaf = isLeaf;
     }
 
     public long getParentId() {
@@ -101,6 +81,23 @@ public class AreaBean extends PersistentEntity {
 
     public void setParentId(long parentId) {
         this.parentId = parentId;
+    }
+
+    public String getCenterCode() {
+        return centerCode;
+    }
+
+    public void setCenterCode(String centerCode) {
+        this.centerCode = centerCode;
+    }
+
+    @Length(min = 1, max = 255)
+    public String getParentIds() {
+        return parentIds;
+    }
+
+    public void setParentIds(String parentIds) {
+        this.parentIds = parentIds;
     }
 
     @Length(min = 1, max = 100)
@@ -129,18 +126,6 @@ public class AreaBean extends PersistentEntity {
     public void setCode(String code) {
         this.code = code;
     }
-
-
-    @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
-    @OrderBy(value = "code")
-    public List<AreaBean> getChildList() {
-        return childList;
-    }
-
-    public void setChildList(List<AreaBean> childList) {
-        this.childList = childList;
-    }
-
 
 
     public String getJd() {
