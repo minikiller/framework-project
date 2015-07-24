@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <reference id="noticeService" interface="cn.com.rexen.notice.api.biz.INoticeBeanService"/>
+    <camelContext id="noticeCamel" xmlns="http://camel.apache.org/schema/blueprint">
+
+        <restConfiguration component="servlet" bindingMode="json"
+                           contextPath="/kalix/camel/rest" host="localhost"
+                           port="8181">
+
+            <dataFormatProperty key="prettyPrint" value="true"/>
+        </restConfiguration>
+
+        <!-- defines the rest services using the context-path /area -->
+        <rest path="/notices" consumes="application/json" produces="application/json">
+            <description>notice rest service</description>
+
+
+            <!-- this is a rest PUT to create an area -->
+            <post id="route-addNotice" type="cn.com.rexen.notice.entities.NoticeBean"
+                  outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Create a notice</description>
+                <to uri="bean:noticeService?method=saveEntity"/>
+            </post>
+
+            <!-- this is a rest PUT to update an area -->
+            <put id="route-updateNotice" type="cn.com.rexen.notice.entities.NoticeBean"
+                 outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Updates a notice</description>
+                <to uri="bean:noticeService?method=updateEntity"/>
+            </put>
+
+            <!-- this is a rest DELETE to delete an area -->
+            <delete id="route-deleteNotice" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Delete a notice</description>
+                <to uri="bean:noticeService?method=deleteEntity(${header.id})"/>
+            </delete>
+
+            <!-- this is a rest GET to find all areas -->
+            <get id="route-getAllNotice" outType="cn.com.rexen.notice.entities.NoticeBean[]">
+                <description>Find all notices</description>
+                <to uri="bean:noticeService?method=getAllNotice"/>
+            </get>
+
+        </rest>
+
+    </camelContext>
+</blueprint>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <!--<relativePath>../poms/compiled/</relativePath>-->
+        <groupId>cn.com.rexen.platform.kalix-project.build</groupId>
+        <artifactId>compiled-bundle-settings</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>cn.com.rexen.kalix.notice</groupId>
+    <artifactId>modules.notice</artifactId>
+
+    <name>Kalix :: Modules - 公告</name>
+
+    <packaging>pom</packaging>
+
+    <properties>
+
+    </properties>
+    <modules>
+        <module>notice-entities</module>
+        <module>notice-api</module>
+        <module>notice-core</module>
+        <module>notice-persist-jpa</module>
+        <module>notice-rest</module>
+
+    </modules>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.notice</groupId>
+                <artifactId>cn.com.rexen.kalix.notice.core</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.notice</groupId>
+                <artifactId>cn.com.rexen.kalix.notice.api</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.notice</groupId>
+                <artifactId>cn.com.rexen.kalix.notice.entities</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.notice</groupId>
+                <artifactId>cn.com.rexen.kalix.notice.persist.openjpa</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.core</groupId>
+                <artifactId>cn.com.rexen.core.api</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.core</groupId>
+                <artifactId>cn.com.rexen.core.impl</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.compendium</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.com.rexen.core</groupId>
+            <artifactId>cn.com.rexen.core.util</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

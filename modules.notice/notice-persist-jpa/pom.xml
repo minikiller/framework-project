@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.com.rexen.kalix.notice</groupId>
+        <artifactId>modules.notice</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>cn.com.rexen.kalix.notice.persist.openjpa</artifactId>
+    <packaging>bundle</packaging>
+    <name>Kalix :: Notice - JPA</name>
+    <description>Notice JPA</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <bundle.symbolicName>cn.com.rexen.notice.persist.openjpa</bundle.symbolicName>
+        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.com.rexen.core</groupId>
+            <artifactId>cn.com.rexen.core.api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.core</groupId>
+            <artifactId>cn.com.rexen.core.impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.openjpa</groupId>
+            <artifactId>openjpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.com.rexen.kalix.notice</groupId>
+            <artifactId>cn.com.rexen.kalix.notice.entities</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.notice</groupId>
+            <artifactId>cn.com.rexen.kalix.notice.api</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+
+        </plugins>
+    </build>
+</project>
