@@ -48,6 +48,16 @@
              interface="cn.com.rexen.admin.api.biz.IDictBeanService"/>
     <reference id="dictBeanDao" interface="cn.com.rexen.admin.api.dao.IDictBeanDao"/>
 
+    <!--工作组服务注册-->
+    <bean id="workGroupBeanServiceImpl" class="cn.com.rexen.admin.core.WorkGroupBeanServiceImpl">
+        <property name="workGroupBeanDao" ref="workGroupBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
+    </bean>
+    <service id="workGroupBeanService" ref="workGroupBeanServiceImpl"
+             interface="cn.com.rexen.admin.api.biz.IWorkGroupBeanService"/>
+    <reference id="workGroupBeanDao" interface="cn.com.rexen.admin.api.dao.IWorkGroupBeanDao"/>
+
+
     <!--区域服务注册-->
     <bean id="areaBeanServiceImpl" class="cn.com.rexen.admin.core.AreaBeanServiceImpl">
         <property name="areaBeanDao" ref="areaBeanDao"/>

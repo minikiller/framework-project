@@ -44,6 +44,15 @@
         </bean>
     </service>
 
+    <!--工作组dao-->
+    <service id="workGroupBeanDao" interface="cn.com.rexen.admin.api.dao.IWorkGroupBeanDao">
+        <bean class="cn.com.rexen.admin.persist.openjpa.WorkGroupBeanDaoOpenjpa"> <!--init-method="init">-->
+            <jpa:context property="entityManager" unitname="admin-cm"/>
+            <tx:transaction method="*" value="Required"/>
+            <!--<property name="persistEntityService" ref="persistEntityService" />-->
+        </bean>
+    </service>
+
     <!--区域dao-->
     <service id="areaBeanDao" interface="cn.com.rexen.admin.api.dao.IAreaBeanDao">
         <bean class="cn.com.rexen.admin.persist.openjpa.AreaBeanDaoOpenjpa"> <!--init-method="init">-->

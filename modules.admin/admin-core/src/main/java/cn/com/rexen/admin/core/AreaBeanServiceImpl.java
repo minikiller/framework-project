@@ -199,8 +199,6 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl implements IAreaB
         AreaBean oldArea=areaBeanDao.get(AreaBean.class.getName(), entity.getId());
         AreaBean area=(AreaBean)entity;
         area.setParentId(oldArea.getParentId());
-        area.setCreateBy(oldArea.getCreateBy());
-        area.setCreationDate(oldArea.getCreationDate());
         area.setIsLeaf(oldArea.getIsLeaf());
         String userName = shiroService.getCurrentUserName();
         Assert.notNull(userName, "用户名不能为空.");

@@ -42,7 +42,7 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
 
     @Override
     @ApiOperation(value = "删除实体", httpMethod = "DELETE", response = JsonStatus.class, notes = "add user")
-    public JsonStatus deleteEntity(@ApiParam(required = true, name = "entityId", value = "用户信息json数据") long entityId) {
+    public JsonStatus deleteEntity(@ApiParam(required = true, name = "entityId", value = "信息json数据") long entityId) {
         log.debug("remove entity of " + entityClassName + ";PK is " + entityId);
         JsonStatus jsonStatus = new JsonStatus();
         try {
