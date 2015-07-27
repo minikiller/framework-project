@@ -1,7 +1,10 @@
 package cn.com.rexen.core.security.filter;
 
+import cn.com.rexen.core.api.PermissionConstant;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.slf4j.Logger;
@@ -36,9 +39,11 @@ public class KalixAuthenticationFilter extends FormAuthenticationFilter {
             issueSuccessRedirect(request, response);
         } else */
         {
+            Session session=SecurityUtils.getSubject().getSession();
+            String name=String.valueOf(session.getAttribute(PermissionConstant.SYS_CURRENT_USERNAME));
             httpServletResponse.setCharacterEncoding("UTF-8");
             PrintWriter out = httpServletResponse.getWriter();
-            out.println("{success:true,location:'/kalix/index.jsp',message:'登入成功'}");
+            out.println("{success:true,location:'/kalix/index.jsp',message:'登入成功',user:{name:'"+ name+"'}}");
             out.flush();
             out.close();
         }
