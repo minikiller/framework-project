@@ -49,6 +49,13 @@
                 <to uri="bean:userService?method=getAllUser(${header.page},${header.limit})"/>
             </get>
 
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-getUser" uri="/all" outType="cn.com.rexen.admin.entities.UserBean">
+                <description>Find user by id</description>
+                <to uri="bean:userService?method=getAllUser"/>
+            </get>
+
+
         </rest>
         
     </camelContext>

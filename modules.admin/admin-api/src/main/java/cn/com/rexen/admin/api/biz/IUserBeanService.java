@@ -21,6 +21,8 @@ public interface IUserBeanService extends IBizService {
 
     public JsonData getAllUser(int page,int limit);
 
+    public JsonData getAllUser();
+
     List<UserBean> queryUser(UserBean userBean, int is_ent);
 
     /**

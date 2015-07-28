@@ -8,6 +8,7 @@ import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.PermissionConstant;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
+import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.JNDIHelper;
@@ -134,6 +135,22 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
 
     public JsonData getAllUser(int page,int limit) {
        return userBeanDao.getAll(page,limit,UserBean.class.getName());
+    }
+
+    public JsonData getAllUser() {
+        JsonData jsonData=new JsonData();
+        List<UserBean> users=userBeanDao.getAll(UserBean.class.getName());
+        List<PersistentEntity> persistentEntities=new ArrayList<PersistentEntity>();
+        if(users!=null&&users.size()>0){
+            for(UserBean user:users){
+                if(user!=null) {
+                    persistentEntities.add((PersistentEntity)user);
+                }
+            }
+        }
+        jsonData.setData(persistentEntities);
+        jsonData.setTotalCount((long) users.size());
+       return jsonData;
     }
 
     @Override
