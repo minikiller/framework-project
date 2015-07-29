@@ -121,7 +121,5 @@
             <bean ref="userRestService" method="getUserName"/>
             <log message="${body}"/>
         </route>-->
-
-
     </camelContext>
 </blueprint>

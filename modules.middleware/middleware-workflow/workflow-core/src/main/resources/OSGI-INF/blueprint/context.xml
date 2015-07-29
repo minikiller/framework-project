@@ -7,6 +7,19 @@
     <bean id="workFlowServiceImpl" class="cn.com.rexen.workflow.core.WorkflowServiceImpl">
     </bean>
 
-    <!--<reference id="noticeBeanDao" interface="cn.com.rexen.notice.api.dao.INoticeBeanDao"/>-->
+    <!--监听IBizDataHandler模块的加载和卸载-->
+    <reference-list interface="cn.com.rexen.workflow.api.web.IBizDataHandler" member-type="service-reference"
+                    availability="optional">
+        <reference-listener bind-method="bind" unbind-method="unbind">
+            <bean class="cn.com.rexen.workflow.core.listener.BizDataListener"/>
+        </reference-listener>
+    </reference-list>
 
+    <!--监听IFormHandler模块的加载和卸载-->
+    <reference-list interface="cn.com.rexen.workflow.api.web.IFormHandler" member-type="service-reference"
+                    availability="optional">
+        <reference-listener bind-method="bind" unbind-method="unbind">
+            <bean class="cn.com.rexen.workflow.core.listener.FormListener"/>
+        </reference-listener>
+    </reference-list>
 </blueprint>

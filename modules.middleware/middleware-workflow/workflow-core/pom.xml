@@ -60,6 +60,11 @@
             <groupId>org.activiti</groupId>
             <artifactId>activiti-bpmn-converter</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-rest</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
