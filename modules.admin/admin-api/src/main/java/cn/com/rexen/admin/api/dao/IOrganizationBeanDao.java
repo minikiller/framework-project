@@ -38,4 +38,5 @@ public interface IOrganizationBeanDao extends IGenericDao<OrganizationBean, Long
      * @return the persisted User object
      */
     OrganizationBean saveOrg(OrganizationBean org);
+
 }

@@ -2,11 +2,15 @@ package cn.com.rexen.admin.core;
 
 import cn.com.rexen.admin.api.biz.IRoleBeanService;
 import cn.com.rexen.admin.api.dao.IRoleBeanDao;
+import cn.com.rexen.admin.api.dao.IRoleUserBeanDao;
 import cn.com.rexen.admin.api.dao.IUserBeanDao;
+import cn.com.rexen.admin.entities.PermissionBean;
 import cn.com.rexen.admin.entities.RoleBean;
+import cn.com.rexen.admin.entities.RoleUserBean;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
+import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import org.apache.commons.lang.StringUtils;
@@ -27,7 +31,20 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
     private static final String FUNCTION_NAME = "角色";
     private IRoleBeanDao roleBeanDao;
     private IUserBeanDao userBeanDao;
+    private IRoleUserBeanDao roleUserBeanDao;
     private IShiroService shiroService;
+
+    public IRoleUserBeanDao getRoleUserBeanDao() {
+        return roleUserBeanDao;
+    }
+
+    public void setRoleUserBeanDao(IRoleUserBeanDao roleUserBeanDao) {
+        this.roleUserBeanDao = roleUserBeanDao;
+    }
+
+    public IUserBeanDao getUserBeanDao() {
+        return userBeanDao;
+    }
 
     public IShiroService getShiroService() {
         return shiroService;
@@ -85,6 +102,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
                 jsonStatus.setMsg(FUNCTION_NAME + "{" + id + "}不存在！");
             } else {
                 roleBeanDao.removeRole(id);
+                roleUserBeanDao.deleteByRoleId(id);
                 jsonStatus.setSuccess(true);
                 jsonStatus.setMsg("删除" + FUNCTION_NAME + "成功！");
             }
@@ -121,6 +139,22 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
     public JsonData getAllRole(int page,int limit) {
         return roleBeanDao.getAll(page, limit, RoleBean.class.getName());
     }
+
+    @Override
+    public JsonData getAllRole() {
+        JsonData jsonData=new JsonData();
+        List<RoleBean> roles=roleBeanDao.getAll(RoleBean.class.getName());
+        List<PersistentEntity> persistentEntityList=new ArrayList<PersistentEntity>();
+        if(roles!=null&&roles.size()>0){
+            for(RoleBean role:roles){
+                persistentEntityList.add((PersistentEntity)role);
+            }
+        }
+        jsonData.setData(persistentEntityList);
+        jsonData.setTotalCount((long) roles.size());
+        return jsonData;
+    }
+
     @Override
     public void saveRoleUser(RoleBean roleBean, List<UserBean> userSelect) {
         List<UserBean> userBeanList = new ArrayList<UserBean>();
@@ -160,5 +194,65 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
             userBean.getRoleList().remove(roleBean);
             userBeanDao.save(userBean);
         }
+    }
+
+    @Override
+    public List getUsersByRoleId(long id) {
+        List<String> userIds=new ArrayList<String>();
+        List<RoleUserBean> roleUserBeans=roleUserBeanDao.find("select ob from RoleUserBean ob where ob.roleId = ?1", id);
+        if(roleUserBeans!=null&&!roleUserBeans.isEmpty()){
+            for(RoleUserBean roleUserBean:roleUserBeans){
+                if(roleUserBean!=null&&roleUserBean.getUserId()!=0){
+                    userIds.add(String.valueOf(roleUserBean.getUserId()));
+                }
+            }
+        }
+        return userIds;
+    }
+
+    @Override
+    public void afterDeleteEntity(Long id, JsonStatus status) {
+        roleUserBeanDao.deleteByRoleId(id);
+    }
+
+    @Override
+    public JsonStatus saveRoleUsers(long roleId, String userId) {
+        JsonStatus jsonStatus=new JsonStatus();
+        try {
+            roleUserBeanDao.deleteByRoleId(roleId);
+            String userName=shiroService.getCurrentUserName();
+            if (StringUtils.isNotEmpty(userId)) {
+                if (userId.indexOf(",") != -1) {
+                    String[] userIds = userId.split(",");
+                    for (String _userId : userIds) {
+                        if (StringUtils.isNotEmpty(_userId.trim())) {
+                            RoleUserBean roleUserBean = new RoleUserBean();
+                            roleUserBean.setCreateBy(userName);
+                            roleUserBean.setUpdateBy(userName);
+                            roleUserBean.setRoleId(roleId);
+                            roleUserBean.setUserId(Long.parseLong(_userId));
+                            roleUserBeanDao.save(roleUserBean);
+                        }
+                    }
+                }else{
+                    if (StringUtils.isNotEmpty(userId.trim())) {
+                        RoleUserBean roleUserBean = new RoleUserBean();
+                        roleUserBean.setCreateBy(userName);
+                        roleUserBean.setUpdateBy(userName);
+                        roleUserBean.setRoleId(roleId);
+                        roleUserBean.setUserId(Long.parseLong(userId));
+                        roleUserBeanDao.save(roleUserBean);
+                    }
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            jsonStatus.setFailure(true);
+            jsonStatus.setMsg("保存失败!");
+            return jsonStatus;
+        }
+        jsonStatus.setSuccess(true);
+        jsonStatus.setMsg("保存成功!");
+        return jsonStatus;
     }
 }

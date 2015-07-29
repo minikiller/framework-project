@@ -43,6 +43,30 @@
                 <to uri="bean:workGroupService?method=getAllWorkGroup(${header.page},${header.limit})"/>
             </get>
 
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-getUsersByWorkGroupId" uri="/workGroupUsers/users/{id}" outType="java.util.List">
+                <description>Find users by WorkGroup Id</description>
+                <to uri="bean:workGroupService?method=getUsersByWorkGroupId(${header.id})"/>
+            </get>
+
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-getRolesByWorkGroupId" uri="/workGroupRoles/roles/{id}" outType="java.util.List">
+                <description>Find users by WorkGroup Id</description>
+                <to uri="bean:workGroupService?method=getRolesByWorkGroupId(${header.id})"/>
+            </get>
+
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-saveWorkGroupUsers" uri="/workGroupUsers"   outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>save WorkGroupUsers</description>
+                <to uri="bean:workGroupService?method=saveWorkGroupUsers(${header.groupId},${header.userIds})"/>
+            </get>
+
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-saveWorkGroupRoles" uri="/workGroupRoles"   outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>save WorkGroupUsers</description>
+                <to uri="bean:workGroupService?method=saveWorkGroupRoles(${header.groupId},${header.roleIds})"/>
+            </get>
+
         </rest>
         
     </camelContext>

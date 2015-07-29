@@ -33,6 +33,9 @@ public interface IRoleBeanService extends IBizService {
 
     public JsonData getAllRole(int page,int limit);
 
+    public JsonData getAllRole();
+
+
     /**
      * 根据用户获得角色名称列表
      *
@@ -57,4 +60,10 @@ public interface IRoleBeanService extends IBizService {
      * @return
      */
     List<UserBean> getUserList(RoleBean roleBean);
+
+    public JsonStatus saveRoleUsers(long roleId, String userId);
+
+
+    public List getUsersByRoleId(long id);
+
 }

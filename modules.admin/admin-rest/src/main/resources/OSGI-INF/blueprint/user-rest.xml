@@ -50,9 +50,9 @@
             </get>
 
             <!-- this is a rest GET to view an user by the given id -->
-            <get id="route-getUser" uri="/all" outType="cn.com.rexen.admin.entities.UserBean">
-                <description>Find user by id</description>
-                <to uri="bean:userService?method=getAllUser"/>
+            <get id="route-getUserAll" uri="/all" outType="cn.com.rexen.core.api.persistence.JsonData">
+                <description>Find user</description>
+                <to uri="bean:userService?method=getAllUser()"/>
             </get>
 
 

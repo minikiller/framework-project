@@ -4,20 +4,27 @@ import cn.com.rexen.admin.api.biz.IAreaBeanService;
 import cn.com.rexen.admin.api.biz.IOrganizationBeanService;
 import cn.com.rexen.admin.api.dao.IAboutBeanDao;
 import cn.com.rexen.admin.api.dao.IAreaBeanDao;
+import cn.com.rexen.admin.api.dao.IDepartmentBeanDao;
+import cn.com.rexen.admin.api.dao.IDepartmentUserBeanDao;
 import cn.com.rexen.admin.entities.AboutBean;
 import cn.com.rexen.admin.entities.AreaBean;
+import cn.com.rexen.admin.entities.DepartmentBean;
 import cn.com.rexen.admin.rest.model.AreaDTO;
+import cn.com.rexen.core.api.PermissionConstant;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.Assert;
 import cn.com.rexen.core.util.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 项目名称:  urgent-project
@@ -33,7 +40,17 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl implements IAreaB
     private IAreaBeanDao areaBeanDao;
     private IOrganizationBeanService orgService;
     private IAboutBeanDao aboutBeanDao;
+    private IDepartmentUserBeanDao depUserBeanDao;
+    private IDepartmentBeanDao depBeanDao;
     private IShiroService shiroService;
+
+    public void setDepUserBeanDao(IDepartmentUserBeanDao depUserBeanDao) {
+        this.depUserBeanDao = depUserBeanDao;
+    }
+
+    public void setDepBeanDao(IDepartmentBeanDao depBeanDao) {
+        this.depBeanDao = depBeanDao;
+    }
 
     public void setOrgService(IOrganizationBeanService orgService) {
         this.orgService = orgService;
@@ -227,9 +244,17 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl implements IAreaB
     }
     
     public AreaDTO getAllArea() {
-        List<AreaBean> beans=areaBeanDao.getAll(AreaBean.class.getName());
+//        Subject currentUser=SecurityUtils.getSubject();
+//        Assert.notNull(currentUser, "当前登录用户不能为空.");
+//        Map userInfo=(Map)currentUser.getSession().getAttribute(PermissionConstant.SYS_CURRENT_USER);
+//        Assert.notNull(userInfo.get("user_id"), "当前登录用户编号不能为空.");
+//        //所属部门
+//        long depId=depUserBeanDao.findDepartmentIdByUserId(Long.parseLong(String.valueOf(userInfo.get("user_id"))));
+//        List<DepartmentBean> departmentBeans=depBeanDao.find("select d from DepartmentBean d where d.id=?1",depId);
+//        Assert.notEmpty(departmentBeans,"当前用户所属部门不能为空.");
         AreaDTO root=new AreaDTO();
         root.setId("-1");
+        List<AreaBean> beans=areaBeanDao.getAll(AreaBean.class.getName());
         if(beans!=null&&beans.size()>0){
             List<AreaBean> rootElements = getRootElements(beans);
             if(rootElements!=null&&rootElements.size()>0) {

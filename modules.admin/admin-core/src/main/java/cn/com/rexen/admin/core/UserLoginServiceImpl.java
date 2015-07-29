@@ -1,5 +1,8 @@
 package cn.com.rexen.admin.core;
 
+import cn.com.rexen.admin.api.dao.IAreaBeanDao;
+import cn.com.rexen.admin.api.dao.IDepartmentUserBeanDao;
+import cn.com.rexen.admin.api.dao.IOrganizationBeanDao;
 import cn.com.rexen.admin.api.dao.IUserBeanDao;
 import cn.com.rexen.admin.entities.PermissionBean;
 import cn.com.rexen.admin.entities.RoleBean;
@@ -27,6 +30,7 @@ public class UserLoginServiceImpl implements IUserLoginService {
     /*@Inject
     @Reference(id="userBeanDao",serviceInterface = IUserBeanDao.class)*/
     private IUserBeanDao userBeanDao;
+
 
     /**
      * 设置cookie

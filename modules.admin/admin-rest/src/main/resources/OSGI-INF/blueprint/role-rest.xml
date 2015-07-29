@@ -48,6 +48,24 @@
                 <to uri="bean:roleService?method=getAllRole(${header.page},${header.limit})"/>
             </get>
 
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-getUsersByRoleId" uri="/roleUsers/users/{id}" outType="java.util.List">
+                <description>Find users by WorkGroup Id</description>
+                <to uri="bean:roleService?method=getUsersByRoleId(${header.id})"/>
+            </get>
+
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-saveRoleUsers" uri="/roleUsers"  outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>save WorkGroupUsers</description>
+                <to uri="bean:roleService?method=saveRoleUsers(${header.roleId},${header.userIds})"/>
+            </get>
+
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-getRoleAll" uri="/all" outType="cn.com.rexen.core.api.persistence.JsonData">
+                <description>Find user</description>
+                <to uri="bean:roleService?method=getAllRole()"/>
+            </get>
+
         </rest>
 
     </camelContext>

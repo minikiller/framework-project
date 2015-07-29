@@ -24,6 +24,14 @@
         <!--<property name="persistEntityService" ref="persistEntityService" />-->
     </bean>
 
+    <service id="roleUserBeanDao" ref="roleUserBeanDaoOpenjpa" interface="cn.com.rexen.admin.api.dao.IRoleUserBeanDao"/>
+    <bean id="roleUserBeanDaoOpenjpa"
+          class="cn.com.rexen.admin.persist.openjpa.RoleUserBeanDaoOpenjpa"> <!--init-method="init">-->
+        <jpa:context property="entityManager" unitname="admin-cm"/>
+        <tx:transaction method="*" value="Required"/>
+        <!--<property name="persistEntityService" ref="persistEntityService" />-->
+    </bean>
+
     <service id="roleCodeBeanDao" ref="roleBeanDaoOpenjpa" interface="cn.com.rexen.admin.api.dao.IRoleBeanDao"/>
 
     <!--<reference id="persistEntityService"   interface="cn.com.rexen.core.api.persistence.PersistEntityService"/>-->
@@ -38,6 +46,24 @@
     <!--字典dao-->
     <service id="dictBeanDao" interface="cn.com.rexen.admin.api.dao.IDictBeanDao">
         <bean class="cn.com.rexen.admin.persist.openjpa.DictBeanDaoOpenjpa"> <!--init-method="init">-->
+            <jpa:context property="entityManager" unitname="admin-cm"/>
+            <tx:transaction method="*" value="Required"/>
+            <!--<property name="persistEntityService" ref="persistEntityService" />-->
+        </bean>
+    </service>
+
+    <!--工作组用户dao-->
+    <service id="workGroupUserBeanDao" interface="cn.com.rexen.admin.api.dao.IWorkGroupUserBeanDao">
+        <bean class="cn.com.rexen.admin.persist.openjpa.WorkGroupUserBeanDaoOpenjpa"> <!--init-method="init">-->
+            <jpa:context property="entityManager" unitname="admin-cm"/>
+            <tx:transaction method="*" value="Required"/>
+            <!--<property name="persistEntityService" ref="persistEntityService" />-->
+        </bean>
+    </service>
+
+    <!--工作组用户dao-->
+    <service id="workGroupRoleBeanDao" interface="cn.com.rexen.admin.api.dao.IWorkGroupRoleBeanDao">
+        <bean class="cn.com.rexen.admin.persist.openjpa.WorkGroupRoleBeanDaoOpenjpa"> <!--init-method="init">-->
             <jpa:context property="entityManager" unitname="admin-cm"/>
             <tx:transaction method="*" value="Required"/>
             <!--<property name="persistEntityService" ref="persistEntityService" />-->
@@ -74,6 +100,15 @@
     <!--部门dao-->
     <service id="depBeanDao" interface="cn.com.rexen.admin.api.dao.IDepartmentBeanDao">
         <bean class="cn.com.rexen.admin.persist.openjpa.DepartmentBeanDaoOpenjpa"> <!--init-method="init">-->
+            <jpa:context property="entityManager" unitname="admin-cm"/>
+            <tx:transaction method="*" value="Required"/>
+            <!--<property name="persistEntityService" ref="persistEntityService" />-->
+        </bean>
+    </service>
+
+    <!--部门用户dao-->
+    <service id="depUserBeanDao" interface="cn.com.rexen.admin.api.dao.IDepartmentUserBeanDao">
+        <bean class="cn.com.rexen.admin.persist.openjpa.DepartmentUserBeanDaoOpenjpa"> <!--init-method="init">-->
             <jpa:context property="entityManager" unitname="admin-cm"/>
             <tx:transaction method="*" value="Required"/>
             <!--<property name="persistEntityService" ref="persistEntityService" />-->

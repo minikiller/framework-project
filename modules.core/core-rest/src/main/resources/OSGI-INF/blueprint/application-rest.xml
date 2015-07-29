@@ -35,7 +35,7 @@
 
     <reference id="systemService" interface="cn.com.rexen.core.api.web.ISystemService"/>
 
-    <camelContext id="userCamel" xmlns="http://camel.apache.org/schema/blueprint">
+    <camelContext id="applicationCamel" xmlns="http://camel.apache.org/schema/blueprint">
 
         <!-- configure rest to use the camel-servlet component, and use json binding mode -->
         <!-- and tell to output json in pretty print mode -->

@@ -25,10 +25,12 @@
         <property name="roleBeanDao" ref="roleBeanDao"/>
         <property name="userBeanDao" ref="userBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
+        <property name="roleUserBeanDao" ref="roleUserBeanDao"/>
     </bean>
     <service id="roleBeanService" ref="roleBeanServiceImpl"
              interface="cn.com.rexen.admin.api.biz.IRoleBeanService"/>
     <reference id="roleBeanDao" interface="cn.com.rexen.admin.api.dao.IRoleBeanDao"/>
+    <reference id="roleUserBeanDao" interface="cn.com.rexen.admin.api.dao.IRoleUserBeanDao"/>
 
     <!--权限服务注册-->
     <bean id="permissionBeanServiceImpl" class="cn.com.rexen.admin.core.PermissionBeanServiceImpl">
@@ -52,10 +54,14 @@
     <bean id="workGroupBeanServiceImpl" class="cn.com.rexen.admin.core.WorkGroupBeanServiceImpl">
         <property name="workGroupBeanDao" ref="workGroupBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
+        <property name="workGroupUserBeanDao" ref="workGroupUserBeanDao"/>
+        <property name="workGroupRoleBeanDao" ref="workGroupRoleBeanDao"/>
     </bean>
     <service id="workGroupBeanService" ref="workGroupBeanServiceImpl"
              interface="cn.com.rexen.admin.api.biz.IWorkGroupBeanService"/>
     <reference id="workGroupBeanDao" interface="cn.com.rexen.admin.api.dao.IWorkGroupBeanDao"/>
+    <reference id="workGroupUserBeanDao" interface="cn.com.rexen.admin.api.dao.IWorkGroupUserBeanDao"/>
+    <reference id="workGroupRoleBeanDao" interface="cn.com.rexen.admin.api.dao.IWorkGroupRoleBeanDao"/>
 
 
     <!--区域服务注册-->
@@ -64,6 +70,8 @@
         <property name="aboutBeanDao" ref="aboutBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="orgService" ref="orgBeanServiceImpl"/>
+        <property name="depUserBeanDao" ref="depUserBeanDao"/>
+        <property name="depBeanDao" ref="depBeanDao"/>
     </bean>
     <service id="areaBeanService" ref="areaBeanServiceImpl"
              interface="cn.com.rexen.admin.api.biz.IAreaBeanService"/>
@@ -72,10 +80,12 @@
 
     <!--部门服务注册-->
     <reference id="depBeanDao" interface="cn.com.rexen.admin.api.dao.IDepartmentBeanDao"/>
+    <reference id="depUserBeanDao" interface="cn.com.rexen.admin.api.dao.IDepartmentUserBeanDao"/>
     <bean id="depBeanServiceImpl" class="cn.com.rexen.admin.core.DepartmentBeanServiceImpl">
         <property name="depBeanDao" ref="depBeanDao"/>
-        <property name="userBeanService" ref="userBeanServiceImpl"/>
+        <property name="userBeanDao" ref="userBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
+        <property name="depUserBeanDao" ref="depUserBeanDao"/>
     </bean>
     <service id="depBeanService" ref="depBeanServiceImpl"
              interface="cn.com.rexen.admin.api.biz.IDepartmentBeanService"/>
