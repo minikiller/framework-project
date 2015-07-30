@@ -73,10 +73,16 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
     public boolean isSave(PersistentEntity entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         ApplicationBean bean=(ApplicationBean)entity;
-        List<ApplicationBean> beans= applicationBeanDao.find("select ob from ApplicationBean ob where ob.name = ?1 or ob.code=?2", bean.getName(),bean.getCode());
+        List<ApplicationBean> beans= applicationBeanDao.find("select ob from ApplicationBean ob where ob.name = ?1 ", bean.getName());
         if(beans!=null&&beans.size()>0){
             status.setFailure(true);
-            status.setMsg(FUNCTION_NAME + "已经存在,请检查名称与代码！");
+            status.setMsg(FUNCTION_NAME + "已经存在,请检查名称！");
+            return false;
+        }
+        beans= applicationBeanDao.find("select ob from ApplicationBean ob where ob.code = ?1 ", bean.getCode());
+        if(beans!=null&&beans.size()>0){
+            status.setFailure(true);
+            status.setMsg(FUNCTION_NAME + "已经存在,请检查代码！");
             return false;
         }
         return true;
