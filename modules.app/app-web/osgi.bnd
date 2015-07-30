@@ -1,0 +1,3 @@
+#Bundle-Activator: ${bundle.namespace}.internal.InitActivator
+Include-Resource: src/main/resources
+Bundle-Category: Rexen Kalix App

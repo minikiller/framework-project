@@ -77,6 +77,12 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
     public JsonStatus addRole(RoleBean role) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
+            List<RoleBean> beans=roleBeanDao.find("select ob from RoleBean ob where ob.name = ?1", role.getName());
+            if(beans!=null&&beans.size()>0){
+                jsonStatus.setSuccess(false);
+                jsonStatus.setMsg(FUNCTION_NAME + "已经存在！");
+                return jsonStatus;
+            }
             String userName=shiroService.getCurrentUserName();
             if(StringUtils.isNotEmpty(userName)){
                 role.setCreateBy(userName);
@@ -120,6 +126,16 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
     public JsonStatus updateRole(RoleBean role) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
+
+            List<RoleBean> beans=roleBeanDao.find("select ob from RoleBean ob where ob.name = ?1 ", role.getName());
+            if(beans!=null&&beans.size()>0){
+                RoleBean _role=beans.get(0);
+                if(_role.getId()!=role.getId()){
+                    jsonStatus.setFailure(true);
+                    jsonStatus.setMsg("更新" + FUNCTION_NAME + "失败,已经存在！");
+                    return jsonStatus;
+                }
+            }
             String userName=shiroService.getCurrentUserName();
             if(StringUtils.isNotEmpty(userName)) {
                 role.setUpdateBy(userName);

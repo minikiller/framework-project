@@ -103,14 +103,16 @@ public class DictBeanServiceImpl extends GenericBizServiceImpl implements IDictB
     }
 
     @Override
-    public JsonStatus update(DictBean role) {
+    public JsonStatus update(DictBean dict) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
+
+
             String userName=shiroService.getCurrentUserName();
             if(StringUtils.isNotEmpty(userName)) {
-                role.setUpdateBy(userName);
+                dict.setUpdateBy(userName);
             }
-            dictBeanDao.save(role);
+            dictBeanDao.save(dict);
             jsonStatus.setSuccess(true);
             jsonStatus.setMsg("更新" + FUNCTION_NAME + "成功！");
         } catch (Exception e) {

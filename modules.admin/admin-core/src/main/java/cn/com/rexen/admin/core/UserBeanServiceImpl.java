@@ -3,6 +3,7 @@ package cn.com.rexen.admin.core;
 import cn.com.rexen.admin.api.biz.IUserBeanService;
 import cn.com.rexen.admin.api.dao.IRoleBeanDao;
 import cn.com.rexen.admin.api.dao.IUserBeanDao;
+import cn.com.rexen.admin.entities.OrganizationBean;
 import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.PermissionConstant;
@@ -75,6 +76,12 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     public JsonStatus addUser(UserBean user) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
+            List<UserBean> userBeans=userBeanDao.find("select ob from UserBean ob where ob.name = ?1", user.getName());
+            if(userBeans!=null&&userBeans.size()>0){
+                jsonStatus.setSuccess(false);
+                jsonStatus.setMsg(FUNCTION_NAME + "已经存在！");
+                return jsonStatus;
+            }
             String userName=shiroService.getCurrentUserName();
             if(StringUtils.isNotEmpty(userName)) {
                 user.setCreateBy(userName);
@@ -117,6 +124,15 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     public JsonStatus updateUser(UserBean user) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
+            List<UserBean> users=userBeanDao.find("select u from UserBean u where u.loginName=?1", user.getLoginName());
+            if(users!=null&&users.size()>0){
+                UserBean _user=users.get(0);
+                if(_user.getId()!=user.getId()){
+                    jsonStatus.setFailure(true);
+                    jsonStatus.setMsg("更新" + FUNCTION_NAME + "失败,已经存在！");
+                    return jsonStatus;
+                }
+            }
             String userName=shiroService.getCurrentUserName();
             if(StringUtils.isNotEmpty(userName)) {
                 user.setUpdateBy(userName);

@@ -7,11 +7,13 @@ import cn.com.rexen.admin.api.dao.IOrganizationBeanDao;
 import cn.com.rexen.admin.entities.OrganizationBean;
 import cn.com.rexen.admin.rest.model.OrganizationDTO;
 import cn.com.rexen.core.api.biz.JsonStatus;
+import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.com.rexen.core.util.Assert;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
@@ -85,6 +87,35 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
     }
 
     @Override
+    public boolean isUpdate(PersistentEntity entity, JsonStatus status) {
+        Assert.notNull(entity, "实体不能为空.");
+        OrganizationBean bean=(OrganizationBean)entity;
+        List<OrganizationBean> beans=orgBeanDao.find("select ob from OrganizationBean ob where ob.name = ?1", bean.getName());
+        if(beans!=null&&beans.size()>0){
+            OrganizationBean _org=beans.get(0);
+            if(_org.getId()!=entity.getId()) {
+                status.setFailure(true);
+                status.setMsg(FUNCTION_NAME + "已经存在！");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean isSave(PersistentEntity entity, JsonStatus status) {
+        Assert.notNull(entity, "实体不能为空.");
+        OrganizationBean bean=(OrganizationBean)entity;
+        List<OrganizationBean> beans=orgBeanDao.find("select ob from OrganizationBean ob where ob.name = ?1", bean.getName());
+        if(beans!=null&&beans.size()>0){
+            status.setSuccess(false);
+            status.setMsg(FUNCTION_NAME + "已经存在！");
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public JsonStatus deleteOrg(Long id) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
@@ -150,14 +181,16 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
     public JsonStatus updateOrg(OrganizationBean org) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
-            OrganizationBean oldOrg=orgBeanDao.getOrg(org.getId());
-            oldOrg.setName(org.getName());
-            oldOrg.setCode(org.getCode());
-            oldOrg.setCenterCode(org.getCenterCode());
-            oldOrg.setUpdateBy(shiroService.getCurrentUserName());
-            orgBeanDao.saveOrg(oldOrg);
-            jsonStatus.setSuccess(true);
-            jsonStatus.setMsg("更新" + FUNCTION_NAME + "成功！");
+            if(isUpdate(org,jsonStatus)) {
+                OrganizationBean oldOrg = orgBeanDao.getOrg(org.getId());
+                oldOrg.setName(org.getName());
+                oldOrg.setCode(org.getCode());
+                oldOrg.setCenterCode(org.getCenterCode());
+                oldOrg.setUpdateBy(shiroService.getCurrentUserName());
+                orgBeanDao.saveOrg(oldOrg);
+                jsonStatus.setSuccess(true);
+                jsonStatus.setMsg("更新" + FUNCTION_NAME + "成功！");
+            }
         } catch (Exception e) {
             e.printStackTrace();
             jsonStatus.setFailure(true);

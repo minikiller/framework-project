@@ -18,7 +18,6 @@ import java.util.List;
 
 public interface IBizService<T extends PersistentEntity> extends IService {
 
-
     public void beforeDeleteEntity(Long id,JsonStatus status);
 
     public void afterDeleteEntity(Long id,JsonStatus status);

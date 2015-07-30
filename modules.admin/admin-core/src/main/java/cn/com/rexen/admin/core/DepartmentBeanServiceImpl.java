@@ -58,7 +58,7 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl implements 
 
             List<DepartmentBean> beans=depBeanDao.find("select ob from DepartmentBean ob where ob.name = ?1 and ob.orgId=?2", bean.getName(),bean.getOrgId());
             if(beans!=null&&beans.size()>0){
-                jsonStatus.setSuccess(false);
+                jsonStatus.setFailure(true);
                 jsonStatus.setMsg(FUNCTION_NAME + "已经存在！");
                 return jsonStatus;
             }
@@ -160,6 +160,12 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl implements 
     public JsonStatus update(DepartmentBean bean) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
+            List<DepartmentBean> beans=depBeanDao.find("select ob from DepartmentBean ob where ob.name = ?1 and ob.orgId=?2 ", bean.getName(),bean.getOrgId());
+            if(beans!=null&&beans.size()>0){
+                jsonStatus.setFailure(true);
+                jsonStatus.setMsg(FUNCTION_NAME + "已经存在！");
+                return jsonStatus;
+            }
             DepartmentBean oldDep=depBeanDao.get(bean.getId());
             oldDep.setName(bean.getName());
             oldDep.setCode(bean.getCode());
