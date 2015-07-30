@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <reference id="applicationService" interface="cn.com.rexen.app.api.biz.IApplicationBeanService"/>
+    <camelContext id="applicationCamel" xmlns="http://camel.apache.org/schema/blueprint">
+
+        <restConfiguration component="servlet" bindingMode="json"
+                           contextPath="/kalix/camel/rest" host="localhost"
+                           port="8181">
+
+        <dataFormatProperty key="prettyPrint" value="true"/>
+        </restConfiguration>
+
+        <!-- defines the rest services using the context-path /application -->
+        <rest path="/applications" consumes="application/json" produces="application/json">
+            <description>application rest service</description>
+
+            <!-- this is a rest PUT to create an application -->
+            <post id="route-addApplication" type="cn.com.rexen.app.entities.ApplicationBean"
+                  outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Create a application</description>
+                <to uri="bean:applicationService?method=saveEntity"/>
+            </post>
+
+            <!-- this is a rest PUT to update an application -->
+            <put id="route-updateApplication" type="cn.com.rexen.app.entities.ApplicationBean"
+                 outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Updates a application</description>
+                <to uri="bean:applicationService?method=updateEntity"/>
+            </put>
+
+            <!-- this is a rest DELETE to delete an application -->
+            <delete id="route-deleteApplication" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Delete a application</description>
+                <to uri="bean:applicationService?method=deleteEntity(${header.id})"/>
+            </delete>
+
+            <get id="route-getAllApplication" outType="cn.com.rexen.core.api.persistence.JsonData">
+                <description>Find all users</description>
+                <to uri="bean:applicationService?method=getAllEntity(${header.page},${header.limit})"/>
+            </get>
+
+
+        </rest>
+
+    </camelContext>
+</blueprint>

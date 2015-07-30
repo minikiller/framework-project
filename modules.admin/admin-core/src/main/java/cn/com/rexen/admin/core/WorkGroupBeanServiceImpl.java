@@ -86,6 +86,22 @@ public class WorkGroupBeanServiceImpl extends GenericBizServiceImpl implements I
     }
 
     @Override
+    public boolean isUpdate(PersistentEntity entity, JsonStatus status) {
+        Assert.notNull(entity, "实体不能为空.");
+        WorkGroupBean bean=(WorkGroupBean)entity;
+        List<WorkGroupBean> beans= workGroupBeanDao.find("select ob from WorkGroupBean ob where ob.name = ?1", bean.getName());
+        if(beans!=null&&beans.size()>0){
+            WorkGroupBean _workGroup=beans.get(0);
+            if(_workGroup.getId()!=entity.getId()) {
+                status.setFailure(true);
+                status.setMsg(FUNCTION_NAME + "已经存在！");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
     public boolean isSave(PersistentEntity entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         WorkGroupBean bean=(WorkGroupBean)entity;
@@ -101,7 +117,6 @@ public class WorkGroupBeanServiceImpl extends GenericBizServiceImpl implements I
     @Override
     public void beforeUpdateEntity(PersistentEntity entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
-        WorkGroupBean oldWorkGroup=workGroupBeanDao.get(WorkGroupBean.class.getName(), entity.getId());
         WorkGroupBean WorkGroup=(WorkGroupBean)entity;
         String userName = shiroService.getCurrentUserName();
         Assert.notNull(userName, "用户名不能为空.");

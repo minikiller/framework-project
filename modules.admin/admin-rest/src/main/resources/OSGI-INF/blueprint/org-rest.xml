@@ -27,7 +27,7 @@
             <post id="route-addOrg" type="cn.com.rexen.admin.entities.OrganizationBean"
                   outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Create a org</description>
-                <to uri="bean:orgService?method=addOrg"/>
+                <to uri="bean:orgService?method=saveEntity"/>
             </post>
 
             <!-- this is a rest GET to view an dep by the given id -->
@@ -41,13 +41,13 @@
             <put id="route-updateOrg" type="cn.com.rexen.admin.entities.OrganizationBean"
                  outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Updates a org</description>
-                <to uri="bean:orgService?method=updateOrg"/>
+                <to uri="bean:orgService?method=updateEntity"/>
             </put>
 
             <!-- this is a rest DELETE to delete an org -->
             <delete id="route-deleteOrg" outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Delete a org</description>
-                <to uri="bean:orgService?method=deleteOrg(${header.id})"/>
+                <to uri="bean:orgService?method=deleteEntity(${header.id})"/>
             </delete>
 
             <!-- this is a rest GET to find all orgs -->

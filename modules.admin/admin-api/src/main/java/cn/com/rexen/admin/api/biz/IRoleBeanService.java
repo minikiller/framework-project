@@ -25,14 +25,6 @@ public interface IRoleBeanService extends IBizService {
      */
     List<String> getRoleNameList();
 
-    public JsonStatus addRole(RoleBean role);
-
-    public JsonStatus deleteRole(Long id);
-
-    public JsonStatus updateRole(RoleBean role);
-
-    public JsonData getAllRole(int page,int limit);
-
     public JsonData getAllRole();
 
 

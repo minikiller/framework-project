@@ -17,12 +17,7 @@ import java.util.List;
  */
 public interface IDepartmentBeanService extends IBizService {
 
-    public JsonStatus add(DepartmentBean bean);
-
-    public JsonStatus delete(Long id);
     public void deleteByOrgId(Long orgId);
-
-    public JsonStatus update(DepartmentBean org);
 
     public DepartmentDTO getAll();
     public DepartmentDTO getAllByOrgId(Long orgId);

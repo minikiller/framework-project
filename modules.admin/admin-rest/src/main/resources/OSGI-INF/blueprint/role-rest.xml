@@ -26,26 +26,26 @@
             <post id="route-addRole" type="cn.com.rexen.admin.entities.RoleBean"
                   outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Create a Role</description>
-                <to uri="bean:roleService?method=addRole"/>
+                <to uri="bean:roleService?method=saveEntity"/>
             </post>
 
             <!-- this is a rest PUT to update an Role -->
             <put id="route-updateRole" type="cn.com.rexen.admin.entities.RoleBean"
                  outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Updates a Role</description>
-                <to uri="bean:roleService?method=updateRole"/>
+                <to uri="bean:roleService?method=updateEntity"/>
             </put>
 
             <!-- this is a rest DELETE to delete an Role -->
             <delete id="route-deleteRole" outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Delete a Role</description>
-                <to uri="bean:roleService?method=deleteRole(${header.id})"/>
+                <to uri="bean:roleService?method=deleteEntity(${header.id})"/>
             </delete>
 
             <!-- this is a rest GET to find all Roles -->
             <get id="route-getAllRole" outType="cn.com.rexen.core.api.persistence.JsonData">
                 <description>Find all Roles</description>
-                <to uri="bean:roleService?method=getAllRole(${header.page},${header.limit})"/>
+                <to uri="bean:roleService?method=getAllEntity(${header.page},${header.limit})"/>
             </get>
 
             <!-- this is a rest GET to view an user by the given id -->

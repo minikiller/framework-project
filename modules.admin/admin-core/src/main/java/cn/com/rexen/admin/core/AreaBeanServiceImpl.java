@@ -95,6 +95,7 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl implements IAreaB
     }
 
 
+
     @Override
     public void beforeDeleteEntity(Long id, JsonStatus status) {
         List<AreaBean> areaBeans=areaBeanDao.find("select ob from AreaBean ob where ob.id = ?1", id);
@@ -118,7 +119,7 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl implements IAreaB
 
     @Override
     public boolean isDelete(Long entityId, JsonStatus status) {
-        if (areaBeanDao.get(AreaBean.class.getName(),entityId) == null) {
+        if (areaBeanDao.get(AreaBean.class.getName(), entityId) == null) {
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经被删除！");
             return false;
@@ -186,7 +187,7 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl implements IAreaB
 
     @Override
     public void afterSaveEntity(PersistentEntity entity, JsonStatus status) {
-        Assert.notNull(entity,"实体不能为空.");
+        Assert.notNull(entity, "实体不能为空.");
         AreaBean bean=(AreaBean)entity;
         if(bean.getParentId()!=-1){
             AreaBean parentAreaBean=areaBeanDao.get(AreaBean.class.getName(),bean.getParentId());
@@ -195,6 +196,22 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl implements IAreaB
                 areaBeanDao.save(parentAreaBean);
             }
         }
+    }
+
+    @Override
+    public boolean isUpdate(PersistentEntity entity, JsonStatus status) {
+        Assert.notNull(entity, "实体不能为空.");
+        AreaBean bean=(AreaBean)entity;
+        List<AreaBean> beans=areaBeanDao.find("select ob from AreaBean ob where ob.name = ?1", bean.getName());
+        if(beans!=null&&beans.size()>0){
+            AreaBean _area=beans.get(0);
+            if(_area.getId()!=entity.getId()) {
+                status.setFailure(true);
+                status.setMsg(FUNCTION_NAME + "已经存在！");
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override

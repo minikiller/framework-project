@@ -26,6 +26,27 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
 
 
     @Override
+    public void doDelete(long entityId,JsonStatus jsonStatus) {
+        dao.remove(entityClassName, entityId);
+        jsonStatus.setSuccess(true);
+        jsonStatus.setMsg("删除成功！");
+    }
+
+    @Override
+    public void doSave(PersistentEntity entity,JsonStatus jsonStatus) {
+        dao.save(entity);
+        jsonStatus.setSuccess(true);
+        jsonStatus.setMsg("新增成功！");
+    }
+
+    @Override
+    public void doUpdate(PersistentEntity entity,JsonStatus jsonStatus) {
+        dao.save(entity);
+        jsonStatus.setSuccess(true);
+        jsonStatus.setMsg("修改成功！");
+    }
+
+    @Override
     public void beforeDeleteEntity(Long id, JsonStatus status) {
 
     }
@@ -46,11 +67,9 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
         log.debug("remove entity of " + entityClassName + ";PK is " + entityId);
         JsonStatus jsonStatus = new JsonStatus();
         try {
-            if(isDelete(entityId,jsonStatus)) {
+            if (isDelete(entityId, jsonStatus)) {
                 beforeDeleteEntity(entityId, jsonStatus);
-                dao.remove(entityClassName, entityId);
-                jsonStatus.setSuccess(true);
-                jsonStatus.setMsg("删除成功！");
+                doDelete(entityId,jsonStatus);
                 afterDeleteEntity(entityId, jsonStatus);
             }
         } catch (Exception e) {
@@ -85,9 +104,7 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
         try {
             if(isSave(entity,jsonStatus)) {
                 beforeSaveEntity(entity, jsonStatus);
-                dao.save(entity);
-                jsonStatus.setSuccess(true);
-                jsonStatus.setMsg("新增成功！");
+                doSave(entity,jsonStatus);
                 afterSaveEntity(entity, jsonStatus);
             }
         } catch (Exception e) {
@@ -122,9 +139,7 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
         try {
             if(isUpdate(entity,jsonStatus)) {
                 beforeUpdateEntity(entity, jsonStatus);
-                dao.save(entity);
-                jsonStatus.setSuccess(true);
-                jsonStatus.setMsg("修改成功！");
+                doUpdate(entity,jsonStatus);
                 afterUpdateEntity(entity, jsonStatus);
             }
         } catch (Exception e) {

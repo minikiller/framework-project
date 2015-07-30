@@ -12,14 +12,7 @@ import java.util.List;
  * Created by dell on 14-1-17.
  */
 public interface IUserBeanService extends IBizService {
-    public JsonStatus addUser(UserBean user);
 
-    public JsonStatus deleteUser(Long id);
-
-    public JsonStatus updateUser(UserBean user);
-
-
-    public JsonData getAllUser(int page,int limit);
 
     public JsonData getAllUser();
 

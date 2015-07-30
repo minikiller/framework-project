@@ -18,30 +18,113 @@ import java.util.List;
 
 public interface IBizService<T extends PersistentEntity> extends IService {
 
-
+    /**
+     * 删除前执行函数.
+     * @param id
+     * @param status
+     */
     public void beforeDeleteEntity(Long id,JsonStatus status);
 
+    /**
+     * 删除后执行函数
+     * @param id
+     * @param status
+     */
     public void afterDeleteEntity(Long id,JsonStatus status);
 
+    /**
+     * 是否执行删除.
+     * @param entityId
+     * @param status
+     * @return
+     */
     public boolean isDelete(Long entityId,JsonStatus status);
 
+    /**
+     * 删除实体.
+     * @param entityId
+     * @return
+     */
     public JsonStatus deleteEntity(long entityId);
 
+    /**
+     * 执行删除.
+     * @param entityId
+     * @param jsonStatus
+     */
+    public void doDelete(long entityId,JsonStatus jsonStatus);
+
+    /**
+     * 保存前执行.
+     * @param entity
+     * @param status
+     */
     public void beforeSaveEntity(T entity,JsonStatus status);
 
+    /**
+     * 保存后执行.
+     * @param entity
+     * @param status
+     */
     public void afterSaveEntity(T entity,JsonStatus status);
 
+    /**
+     * 是否保存.
+     * @param entity
+     * @param status
+     * @return
+     */
     public boolean isSave(T entity,JsonStatus status);
 
+    /**
+     * 保存实体.
+     * @param entity
+     * @return
+     */
     public JsonStatus saveEntity(T entity);
 
+    /**
+     * 执行保存.
+     * @param entity
+     * @param jsonStatus
+     */
+    public void doSave(T entity,JsonStatus jsonStatus);
+
+    /**
+     * 更新前执行.
+     * @param entity
+     * @param status
+     */
     public void beforeUpdateEntity(T entity,JsonStatus status);
 
+    /**
+     * 更新后执行.
+     * @param entity
+     * @param status
+     */
     public void afterUpdateEntity(T entity,JsonStatus status);
 
+    /**
+     * 是否更新.
+     * @param entity
+     * @param status
+     * @return
+     */
     public boolean isUpdate(T entity,JsonStatus status);
 
+    /**
+     * 更新实体.
+     * @param entity
+     * @return
+     */
     public JsonStatus updateEntity(T entity);
+
+    /**
+     * 执行更新.
+     * @param entity
+     * @param jsonStatus
+     */
+    public void doUpdate(T entity,JsonStatus jsonStatus);
 
     Object saveEntityAndReturn(PersistentEntity entity);
 

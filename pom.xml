@@ -299,8 +299,10 @@
         <module>modules.tools</module>
         <module>modules.middleware</module>
         <module>modules.admin</module>
+        <!--<module>modules.app</module>-->
         <!--<module>modules.notice</module>-->
         <module>modules.demo</module>
+        <module>modules.app</module>
         <!--<module>modules.example</module>-->
     </modules>
 </project>
