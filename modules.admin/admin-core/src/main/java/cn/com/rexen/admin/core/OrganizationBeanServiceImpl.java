@@ -112,7 +112,7 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
 
 
     @Override
-    public JsonStatus delete(Long id) {
+    public JsonStatus deleteEntity(long id) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
             if (orgBeanDao.getOrg(id) == null) {
@@ -179,7 +179,8 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
     }
 
     @Override
-    public JsonStatus update(OrganizationBean org) {
+    public JsonStatus updateEntity(PersistentEntity entity) {
+        OrganizationBean org=(OrganizationBean)entity;
         JsonStatus jsonStatus = new JsonStatus();
         try {
             if(isUpdate(org,jsonStatus)) {

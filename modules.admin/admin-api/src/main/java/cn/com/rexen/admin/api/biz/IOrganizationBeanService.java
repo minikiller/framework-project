@@ -13,11 +13,6 @@ import cn.com.rexen.core.api.biz.JsonStatus;
  */
 public interface IOrganizationBeanService extends IBizService {
 
-
-    public JsonStatus delete(Long id);
-
-    public JsonStatus update(OrganizationBean org);
-
     public OrganizationDTO getAllOrg();
 
     public OrganizationDTO getAllByAreaId(Long id);
