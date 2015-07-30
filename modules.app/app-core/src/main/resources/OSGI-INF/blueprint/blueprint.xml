@@ -12,6 +12,7 @@
     <service id="applicationBeanService" interface="cn.com.rexen.app.api.biz.IApplicationBeanService">
         <bean class="cn.com.rexen.app.core.ApplicationBeanServiceImpl">
             <property name="applicationBeanDao" ref="applicationBeanDao"/>
+            <property name="shiroService" ref="shiroService"/>
         </bean>
     </service>
 

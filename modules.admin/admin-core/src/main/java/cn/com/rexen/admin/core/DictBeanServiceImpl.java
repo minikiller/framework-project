@@ -5,8 +5,10 @@ import cn.com.rexen.admin.api.dao.IDictBeanDao;
 import cn.com.rexen.admin.entities.DictBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
+import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
+import cn.com.rexen.core.util.Assert;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.HashMap;
@@ -31,6 +33,26 @@ public class DictBeanServiceImpl extends GenericBizServiceImpl implements IDictB
 
     public void setShiroService(IShiroService shiroService) {
         this.shiroService = shiroService;
+    }
+
+    @Override
+    public void beforeUpdateEntity(PersistentEntity entity, JsonStatus status) {
+        Assert.notNull(entity, "实体不能为空.");
+        String userName = shiroService.getCurrentUserName();
+        Assert.notNull(userName, "用户名不能为空.");
+        if(StringUtils.isNotEmpty(userName)) {
+            entity.setUpdateBy(userName);
+        }
+    }
+
+    @Override
+    public void beforeSaveEntity(PersistentEntity entity, JsonStatus status) {
+        String userName = shiroService.getCurrentUserName();
+        Assert.notNull(userName, "用户名不能为空.");
+        if(StringUtils.isNotEmpty(userName)) {
+            entity.setCreateBy(userName);
+            entity.setUpdateBy(userName);
+        }
     }
 
 
@@ -60,69 +82,6 @@ public class DictBeanServiceImpl extends GenericBizServiceImpl implements IDictB
         return dictBeanDao.find("select a from DictBean a where a.type like ?1", "%" + dictBean.getType() + "%");
     }
 
-    @Override
-    public JsonStatus add(DictBean dict) {
-        JsonStatus jsonStatus = new JsonStatus();
-        try {
-            String userName=shiroService.getCurrentUserName();
-            if(StringUtils.isNotEmpty(userName)){
-                dict.setCreateBy(userName);
-                dict.setUpdateBy(userName);
-            }
-            dictBeanDao.save(dict);
-            jsonStatus.setSuccess(true);
-            jsonStatus.setMsg("新增" + FUNCTION_NAME + "成功！");
-        } catch (Exception e) {
-            e.printStackTrace();
-            jsonStatus.setFailure(true);
-            jsonStatus.setMsg("新增" + FUNCTION_NAME + "失败！");
-        }
-        return jsonStatus;
-    }
-
-    @Override
-    public JsonStatus delete(Long id) {
-        JsonStatus jsonStatus = new JsonStatus();
-        try {
-            if (dictBeanDao.get(DictBean.class.getName(), id) == null) {
-                jsonStatus.setFailure(true);
-                jsonStatus.setMsg(FUNCTION_NAME + "{" + id + "}不存在！");
-            } else {
-                dictBeanDao.remove(DictBean.class.getName(),id);
-                jsonStatus.setSuccess(true);
-                jsonStatus.setMsg("删除" + FUNCTION_NAME + "成功！");
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            jsonStatus.setFailure(true);
-            jsonStatus.setMsg("删除" + FUNCTION_NAME + "失败！");
-        }
-        return jsonStatus;
-
-    }
-
-    @Override
-    public JsonStatus update(DictBean dict) {
-        JsonStatus jsonStatus = new JsonStatus();
-        try {
-
-
-            String userName=shiroService.getCurrentUserName();
-            if(StringUtils.isNotEmpty(userName)) {
-                dict.setUpdateBy(userName);
-            }
-            dictBeanDao.save(dict);
-            jsonStatus.setSuccess(true);
-            jsonStatus.setMsg("更新" + FUNCTION_NAME + "成功！");
-        } catch (Exception e) {
-            e.printStackTrace();
-            jsonStatus.setFailure(true);
-            jsonStatus.setMsg("更新" + FUNCTION_NAME + "失败！");
-        }
-        return jsonStatus;
-
-    }
 
     public JsonData getAll(int page,int limit) {
         return dictBeanDao.getAll(page, limit, DictBean.class.getName());

@@ -13,6 +13,7 @@ import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
+import cn.com.rexen.core.util.Assert;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
@@ -42,13 +43,6 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
         this.roleUserBeanDao = roleUserBeanDao;
     }
 
-    public IUserBeanDao getUserBeanDao() {
-        return userBeanDao;
-    }
-
-    public IShiroService getShiroService() {
-        return shiroService;
-    }
 
     public void setShiroService(IShiroService shiroService) {
         this.shiroService = shiroService;
@@ -57,6 +51,65 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
     public void setRoleBeanDao(IRoleBeanDao roleBeanDao) {
         this.roleBeanDao = roleBeanDao;
         super.init(roleBeanDao, RoleBean.class.getName());
+    }
+
+    @Override
+    public void beforeUpdateEntity(PersistentEntity entity, JsonStatus status) {
+        Assert.notNull(entity, "实体不能为空.");
+        String userName = shiroService.getCurrentUserName();
+        Assert.notNull(userName, "用户名不能为空.");
+        if(StringUtils.isNotEmpty(userName)) {
+            entity.setUpdateBy(userName);
+        }
+    }
+
+    @Override
+    public void beforeSaveEntity(PersistentEntity entity, JsonStatus status) {
+        String userName = shiroService.getCurrentUserName();
+        Assert.notNull(userName, "用户名不能为空.");
+        if(StringUtils.isNotEmpty(userName)) {
+            entity.setCreateBy(userName);
+            entity.setUpdateBy(userName);
+        }
+    }
+
+    @Override
+    public boolean isDelete(Long entityId, JsonStatus status) {
+        if (roleBeanDao.get(RoleBean.class.getName(),entityId) == null) {
+            status.setFailure(true);
+            status.setMsg(FUNCTION_NAME + "已经被删除！");
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean isUpdate(PersistentEntity entity, JsonStatus status) {
+        Assert.notNull(entity, "实体不能为空.");
+        RoleBean role=(RoleBean)entity;
+        List<RoleBean> beans=roleBeanDao.find("select ob from RoleBean ob where ob.name = ?1 ", role.getName());
+        if(beans!=null&&beans.size()>0){
+            RoleBean _role=beans.get(0);
+            if(_role.getId()!=role.getId()){
+                status.setFailure(true);
+                status.setMsg("更新" + FUNCTION_NAME + "失败,已经存在！");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean isSave(PersistentEntity entity, JsonStatus status) {
+        Assert.notNull(entity, "实体不能为空.");
+        RoleBean role=(RoleBean)entity;
+        List<RoleBean> beans=roleBeanDao.find("select ob from RoleBean ob where ob.name = ?1", role.getName());
+        if(beans!=null&&beans.size()>0){
+            status.setSuccess(false);
+            status.setMsg(FUNCTION_NAME + "已经存在！");
+            return false;
+        }
+        return true;
     }
 
     public void setUserBeanDao(IUserBeanDao userBeanDao) {
@@ -73,88 +126,8 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
         return roleBeanDao.getRoleNameList(userBean);
     }
 
-    @Override
-    public JsonStatus addRole(RoleBean role) {
-        JsonStatus jsonStatus = new JsonStatus();
-        try {
-            List<RoleBean> beans=roleBeanDao.find("select ob from RoleBean ob where ob.name = ?1", role.getName());
-            if(beans!=null&&beans.size()>0){
-                jsonStatus.setSuccess(false);
-                jsonStatus.setMsg(FUNCTION_NAME + "已经存在！");
-                return jsonStatus;
-            }
-            String userName=shiroService.getCurrentUserName();
-            if(StringUtils.isNotEmpty(userName)){
-                role.setCreateBy(userName);
-                role.setUpdateBy(userName);
-            }
-            roleBeanDao.saveRole(role);
-            jsonStatus.setSuccess(true);
-            jsonStatus.setMsg("新增" + FUNCTION_NAME + "成功！");
-        } catch (Exception e) {
-            e.printStackTrace();
-            jsonStatus.setFailure(true);
-            jsonStatus.setMsg("新增" + FUNCTION_NAME + "失败！");
-        }
-        return jsonStatus;
-    }
 
-    @Override
-    public JsonStatus deleteRole(Long id) {
-        JsonStatus jsonStatus = new JsonStatus();
-        try {
-            if (roleBeanDao.getRole(id) == null) {
-                jsonStatus.setFailure(true);
-                jsonStatus.setMsg(FUNCTION_NAME + "{" + id + "}不存在！");
-            } else {
-                roleBeanDao.removeRole(id);
-                roleUserBeanDao.deleteByRoleId(id);
-                jsonStatus.setSuccess(true);
-                jsonStatus.setMsg("删除" + FUNCTION_NAME + "成功！");
-            }
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            jsonStatus.setFailure(true);
-            jsonStatus.setMsg("删除" + FUNCTION_NAME + "失败！");
-        }
-        return jsonStatus;
-
-    }
-
-    @Override
-    public JsonStatus updateRole(RoleBean role) {
-        JsonStatus jsonStatus = new JsonStatus();
-        try {
-
-            List<RoleBean> beans=roleBeanDao.find("select ob from RoleBean ob where ob.name = ?1 ", role.getName());
-            if(beans!=null&&beans.size()>0){
-                RoleBean _role=beans.get(0);
-                if(_role.getId()!=role.getId()){
-                    jsonStatus.setFailure(true);
-                    jsonStatus.setMsg("更新" + FUNCTION_NAME + "失败,已经存在！");
-                    return jsonStatus;
-                }
-            }
-            String userName=shiroService.getCurrentUserName();
-            if(StringUtils.isNotEmpty(userName)) {
-                role.setUpdateBy(userName);
-            }
-            roleBeanDao.saveRole(role);
-            jsonStatus.setSuccess(true);
-            jsonStatus.setMsg("更新" + FUNCTION_NAME + "成功！");
-        } catch (Exception e) {
-            e.printStackTrace();
-            jsonStatus.setFailure(true);
-            jsonStatus.setMsg("更新" + FUNCTION_NAME + "失败！");
-        }
-        return jsonStatus;
-
-    }
-
-    public JsonData getAllRole(int page,int limit) {
-        return roleBeanDao.getAll(page, limit, RoleBean.class.getName());
-    }
 
     @Override
     public JsonData getAllRole() {

@@ -12,6 +12,7 @@ import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
+import cn.com.rexen.core.util.Assert;
 import cn.com.rexen.core.util.JNDIHelper;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
@@ -31,6 +32,63 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     private IRoleBeanDao roleBeanDao;
     private IShiroService shiroService;
 
+    @Override
+    public void beforeUpdateEntity(PersistentEntity entity, JsonStatus status) {
+        Assert.notNull(entity, "实体不能为空.");
+        String userName = shiroService.getCurrentUserName();
+        Assert.notNull(userName, "用户名不能为空.");
+        if(StringUtils.isNotEmpty(userName)) {
+            entity.setUpdateBy(userName);
+        }
+    }
+
+    @Override
+    public void beforeSaveEntity(PersistentEntity entity, JsonStatus status) {
+        String userName = shiroService.getCurrentUserName();
+        Assert.notNull(userName, "用户名不能为空.");
+        if(StringUtils.isNotEmpty(userName)) {
+            entity.setCreateBy(userName);
+            entity.setUpdateBy(userName);
+        }
+    }
+
+    @Override
+    public boolean isUpdate(PersistentEntity entity, JsonStatus status) {
+        Assert.notNull(entity, "实体不能为空.");
+        UserBean bean=(UserBean)entity;
+        List<UserBean> userBeans=userBeanDao.find("select ob from UserBean ob where ob.loginName = ?1", bean.getLoginName());
+        if(userBeans!=null&&userBeans.size()>0){
+            UserBean _userBean=userBeans.get(0);
+            if(entity.getId()!=_userBean.getId()) {
+                status.setFailure(true);
+                status.setMsg(FUNCTION_NAME + "已经存在！");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean isSave(PersistentEntity entity, JsonStatus status) {
+        UserBean bean=(UserBean)entity;
+        List<UserBean> userBeans=userBeanDao.find("select ob from UserBean ob where ob.loginName = ?1", bean.getLoginName());
+        if(userBeans!=null&&userBeans.size()>0){
+            status.setFailure(true);
+            status.setMsg(FUNCTION_NAME + "已经存在！");
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean isDelete(Long entityId, JsonStatus status) {
+        if (userBeanDao.get(UserBean.class.getName(),entityId) == null) {
+            status.setFailure(true);
+            status.setMsg(FUNCTION_NAME + "已经被删除！");
+            return false;
+        }
+        return true;
+    }
 
     public void setShiroService(IShiroService shiroService) {
         this.shiroService = shiroService;
@@ -72,86 +130,7 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
         System.out.print("system is called " + list.size());*/
     }
 
-    @Override
-    public JsonStatus addUser(UserBean user) {
-        JsonStatus jsonStatus = new JsonStatus();
-        try {
-            List<UserBean> userBeans=userBeanDao.find("select ob from UserBean ob where ob.name = ?1", user.getName());
-            if(userBeans!=null&&userBeans.size()>0){
-                jsonStatus.setSuccess(false);
-                jsonStatus.setMsg(FUNCTION_NAME + "已经存在！");
-                return jsonStatus;
-            }
-            String userName=shiroService.getCurrentUserName();
-            if(StringUtils.isNotEmpty(userName)) {
-                user.setCreateBy(userName);
-                user.setUpdateBy(userName);
-            }
-            userBeanDao.saveUser(user);
-            jsonStatus.setSuccess(true);
-            jsonStatus.setMsg("新增" + FUNCTION_NAME + "成功！");
-        } catch (Exception e) {
-            e.printStackTrace();
-            jsonStatus.setFailure(true);
-            jsonStatus.setMsg("新增" + FUNCTION_NAME + "失败！");
-        }
-        return jsonStatus;
-    }
 
-    @Override
-    public JsonStatus deleteUser(Long id) {
-        JsonStatus jsonStatus = new JsonStatus();
-        try {
-            if (userBeanDao.getUser(id) == null) {
-                jsonStatus.setFailure(true);
-                jsonStatus.setMsg(FUNCTION_NAME + "{" + id + "}不存在！");
-            } else {
-                userBeanDao.removeUser(id);
-                jsonStatus.setSuccess(true);
-                jsonStatus.setMsg("删除" + FUNCTION_NAME + "成功！");
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            jsonStatus.setFailure(true);
-            jsonStatus.setMsg("删除" + FUNCTION_NAME + "失败！");
-        }
-        return jsonStatus;
-
-    }
-
-    @Override
-    public JsonStatus updateUser(UserBean user) {
-        JsonStatus jsonStatus = new JsonStatus();
-        try {
-            List<UserBean> users=userBeanDao.find("select u from UserBean u where u.loginName=?1", user.getLoginName());
-            if(users!=null&&users.size()>0){
-                UserBean _user=users.get(0);
-                if(_user.getId()!=user.getId()){
-                    jsonStatus.setFailure(true);
-                    jsonStatus.setMsg("更新" + FUNCTION_NAME + "失败,已经存在！");
-                    return jsonStatus;
-                }
-            }
-            String userName=shiroService.getCurrentUserName();
-            if(StringUtils.isNotEmpty(userName)) {
-                user.setUpdateBy(userName);
-            }
-            userBeanDao.saveUser(user);
-            jsonStatus.setSuccess(true);
-            jsonStatus.setMsg("更新" + FUNCTION_NAME + "成功！");
-        } catch (Exception e) {
-            e.printStackTrace();
-            jsonStatus.setFailure(true);
-            jsonStatus.setMsg("更新" + FUNCTION_NAME + "失败！");
-        }
-        return jsonStatus;
-
-    }
-
-    public JsonData getAllUser(int page,int limit) {
-       return userBeanDao.getAll(page,limit,UserBean.class.getName());
-    }
 
     public JsonData getAllUser() {
         JsonData jsonData=new JsonData();

@@ -54,26 +54,26 @@
             <post id="route-addDict" type="cn.com.rexen.admin.entities.DictBean"
                   outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Create a dict</description>
-                <to uri="bean:dictService?method=add"/>
+                <to uri="bean:dictService?method=saveEntity"/>
             </post>
 
             <!-- this is a rest PUT to update an dict -->
             <put id="route-updateDict" type="cn.com.rexen.admin.entities.DictBean"
                  outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Updates a dict</description>
-                <to uri="bean:dictService?method=update"/>
+                <to uri="bean:dictService?method=updateEntity"/>
             </put>
 
             <!-- this is a rest DELETE to delete an dict -->
             <delete id="route-deleteDict" outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>删除一条数据字典记录</description>
-                <to uri="bean:dictService?method=delete(${header.id})"/>
+                <to uri="bean:dictService?method=deleteEntity(${header.id})"/>
             </delete>
 
             <!-- this is a rest GET to find all users -->
             <get id="route-getAllDict" outType="cn.com.rexen.core.api.persistence.JsonData">
                 <description>Find all dicts</description>
-                <to uri="bean:dictService?method=getAll(${header.page},${header.limit})"/>
+                <to uri="bean:dictService?method=getAllEntity(${header.page},${header.limit})"/>
             </get>
 
         </rest>

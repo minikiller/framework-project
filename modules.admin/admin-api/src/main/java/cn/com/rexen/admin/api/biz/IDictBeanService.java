@@ -48,12 +48,5 @@ public interface IDictBeanService extends IBizService {
      */
     List<DictBean> query(DictBean dictBean);
 
-    public JsonStatus add(DictBean role);
-
-    public JsonStatus delete(Long id);
-
-    public JsonStatus update(DictBean role);
-
-    public JsonData getAll(int page,int limit);
 
 }

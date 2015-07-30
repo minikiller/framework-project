@@ -49,14 +49,16 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl implements 
 
     public void setDepBeanDao(IDepartmentBeanDao depBeanDao) {
         this.depBeanDao = depBeanDao;
+        super.init(depBeanDao,DepartmentBean.class.getName());
     }
 
     @Override
-    public JsonStatus add(DepartmentBean bean) {
+    public JsonStatus saveEntity(PersistentEntity bean) {
+        DepartmentBean _bean=(DepartmentBean)bean;
         JsonStatus jsonStatus = new JsonStatus();
         try {
 
-            List<DepartmentBean> beans=depBeanDao.find("select ob from DepartmentBean ob where ob.name = ?1 and ob.orgId=?2", bean.getName(),bean.getOrgId());
+            List<DepartmentBean> beans=depBeanDao.find("select ob from DepartmentBean ob where ob.name = ?1 and ob.orgId=?2", _bean.getName(),_bean.getOrgId());
             if(beans!=null&&beans.size()>0){
                 jsonStatus.setFailure(true);
                 jsonStatus.setMsg(FUNCTION_NAME + "已经存在！");
@@ -67,10 +69,10 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl implements 
                 bean.setCreateBy(userName);
                 bean.setUpdateBy(userName);
             }
-            depBeanDao.save(bean);
+            depBeanDao.save(_bean);
 
-            if(bean.getParentId()!=-1){
-                DepartmentBean parentDepartmentBean=depBeanDao.get(bean.getParentId());
+            if(_bean.getParentId()!=-1){
+                DepartmentBean parentDepartmentBean=depBeanDao.get(_bean.getParentId());
                 if(parentDepartmentBean!=null&&parentDepartmentBean.getIsLeaf()==1){
                     parentDepartmentBean.setIsLeaf(0);
                     depBeanDao.save(parentDepartmentBean);
@@ -87,7 +89,7 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl implements 
     }
 
     @Override
-    public JsonStatus delete(Long id) {
+    public JsonStatus deleteEntity(long id) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
             if (depBeanDao.get(id) == null) {
@@ -157,19 +159,23 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl implements 
     }
 
     @Override
-    public JsonStatus update(DepartmentBean bean) {
+    public JsonStatus updateEntity(PersistentEntity bean) {
+        DepartmentBean _department=(DepartmentBean)bean;
         JsonStatus jsonStatus = new JsonStatus();
         try {
-            List<DepartmentBean> beans=depBeanDao.find("select ob from DepartmentBean ob where ob.name = ?1 and ob.orgId=?2 ", bean.getName(),bean.getOrgId());
+            List<DepartmentBean> beans=depBeanDao.find("select ob from DepartmentBean ob where ob.name = ?1 and ob.orgId=?2 ", _department.getName(),_department.getOrgId());
             if(beans!=null&&beans.size()>0){
-                jsonStatus.setFailure(true);
-                jsonStatus.setMsg(FUNCTION_NAME + "已经存在！");
-                return jsonStatus;
+                DepartmentBean _bean=beans.get(0);
+                if(_bean.getId()!=bean.getId()) {
+                    jsonStatus.setFailure(true);
+                    jsonStatus.setMsg(FUNCTION_NAME + "已经存在！");
+                    return jsonStatus;
+                }
             }
             DepartmentBean oldDep=depBeanDao.get(bean.getId());
-            oldDep.setName(bean.getName());
-            oldDep.setCode(bean.getCode());
-            oldDep.setCenterCode(bean.getCenterCode());
+            oldDep.setName(_department.getName());
+            oldDep.setCode(_department.getCode());
+            oldDep.setCenterCode(_department.getCenterCode());
             oldDep.setUpdateBy(shiroService.getCurrentUserName());
             depBeanDao.save(oldDep);
             jsonStatus.setSuccess(true);

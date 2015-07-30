@@ -117,7 +117,6 @@ public class WorkGroupBeanServiceImpl extends GenericBizServiceImpl implements I
     @Override
     public void beforeUpdateEntity(PersistentEntity entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
-        WorkGroupBean oldWorkGroup=workGroupBeanDao.get(WorkGroupBean.class.getName(), entity.getId());
         WorkGroupBean WorkGroup=(WorkGroupBean)entity;
         String userName = shiroService.getCurrentUserName();
         Assert.notNull(userName, "用户名不能为空.");

@@ -33,20 +33,20 @@
             <post id="route-addDep" type="cn.com.rexen.admin.entities.DepartmentBean"
                   outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Create a dep</description>
-                <to uri="bean:depService?method=add"/>
+                <to uri="bean:depService?method=saveEntity"/>
             </post>
 
             <!-- this is a rest PUT to update an dep -->
             <put id="route-updateDep" type="cn.com.rexen.admin.entities.DepartmentBean"
                  outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Updates a dep</description>
-                <to uri="bean:depService?method=update"/>
+                <to uri="bean:depService?method=updateEntity"/>
             </put>
 
             <!-- this is a rest DELETE to delete an dep -->
             <delete id="route-deleteDep" outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Delete a dep</description>
-                <to uri="bean:depService?method=delete(${header.id})"/>
+                <to uri="bean:depService?method=deleteEntity(${header.id})"/>
             </delete>
 
             <!-- this is a rest GET to find all deps -->

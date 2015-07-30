@@ -35,6 +35,27 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
     }
 
     @Override
+    public void beforeUpdateEntity(PersistentEntity entity, JsonStatus status) {
+        Assert.notNull(entity, "实体不能为空.");
+        String userName = shiroService.getCurrentUserName();
+        Assert.notNull(userName, "用户名不能为空.");
+        if(StringUtils.isNotEmpty(userName)) {
+            entity.setUpdateBy(userName);
+        }
+    }
+
+    @Override
+    public void beforeSaveEntity(PersistentEntity entity, JsonStatus status) {
+        String userName = shiroService.getCurrentUserName();
+        Assert.notNull(userName, "用户名不能为空.");
+        if(StringUtils.isNotEmpty(userName)) {
+            entity.setCreateBy(userName);
+            entity.setUpdateBy(userName);
+        }
+    }
+
+
+    @Override
     public boolean isDelete(Long entityId, JsonStatus status) {
         if (applicationBeanDao.get(ApplicationBean.class.getName(),entityId) == null) {
             status.setFailure(true);

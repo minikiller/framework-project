@@ -16,10 +16,48 @@ import java.util.List;
  * @version 1.0.0
  */
 public interface IWorkGroupBeanService extends IBizService {
+    /**
+     * 查询工作组
+     * @param bean
+     * @return
+     */
     public List<WorkGroupBean> query(WorkGroupBean bean);
+
+    /**
+     * 返回全部工作组
+     * @param page
+     * @param limit
+     * @return
+     */
     public JsonData getAllWorkGroup(int page,int limit);
+
+    /**
+     * 返回工作组下所有用户
+     * @param id
+     * @return
+     */
     public List getUsersByWorkGroupId(long id);
+
+    /**
+     * 返回工作组下所有角色
+     * @param id
+     * @return
+     */
     public List getRolesByWorkGroupId(long id);
+
+    /**
+     * 保存工作组与用户关联
+     * @param workGroupId
+     * @param userIds
+     * @return
+     */
     public JsonStatus saveWorkGroupUsers(long workGroupId,String userIds);
+
+    /**
+     * 保存工作组与角色关联
+     * @param workGroupId
+     * @param roleIds
+     * @return
+     */
     public JsonStatus saveWorkGroupRoles(long workGroupId,String roleIds);
 }

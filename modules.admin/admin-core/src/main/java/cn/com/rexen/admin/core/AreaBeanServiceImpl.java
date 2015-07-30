@@ -95,6 +95,7 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl implements IAreaB
     }
 
 
+
     @Override
     public void beforeDeleteEntity(Long id, JsonStatus status) {
         List<AreaBean> areaBeans=areaBeanDao.find("select ob from AreaBean ob where ob.id = ?1", id);
