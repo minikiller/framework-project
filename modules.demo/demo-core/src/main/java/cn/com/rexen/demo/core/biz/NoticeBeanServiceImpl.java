@@ -24,7 +24,7 @@ public class NoticeBeanServiceImpl extends GenericBizServiceImpl implements INot
         uuid = UUID.randomUUID().toString();
     }
 
-    public void setdemoBeanDao(INoticeBeanDao demoBeanDao) {
+    public void setNoticeBeanDao(INoticeBeanDao demoBeanDao) {
         this.noticeBeanDao = demoBeanDao;
         super.init(demoBeanDao, NoticeBean.class.getName());
     }

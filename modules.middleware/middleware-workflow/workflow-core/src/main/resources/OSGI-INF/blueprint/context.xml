@@ -4,7 +4,14 @@
     <service interface="cn.com.rexen.workflow.api.biz.IWorkflowService" ref="workFlowServiceImpl">
     </service>
 
-    <bean id="workFlowServiceImpl" class="cn.com.rexen.workflow.core.WorkflowServiceImpl">
+    <bean id="workFlowServiceImpl" class="cn.com.rexen.workflow.core.impl.WorkflowServiceImpl">
+    </bean>
+
+    <service interface="cn.com.rexen.workflow.api.biz.IProcessService" ref="processServiceImpl">
+    </service>
+    <reference interface="org.activiti.engine.RepositoryService" id="repositoryService"/>
+    <bean class="cn.com.rexen.workflow.core.impl.ProcessServiceImpl" id="processServiceImpl">
+        <property name="repositoryService" ref="repositoryService"/>
     </bean>
 
     <!--监听IBizDataHandler模块的加载和卸载-->

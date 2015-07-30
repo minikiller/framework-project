@@ -1,7 +1,7 @@
 package cn.com.rexen.workflow.api.web;
 
 /**
- * 实现工作流业务数据的统一接口
+ * 实现工作流业务数据的统一接口,用于流程历史查看
  */
 public interface IBizDataHandler {
 
@@ -17,7 +17,7 @@ public interface IBizDataHandler {
      *
      * @return
      */
-    String getComponentClass();
+    String getComponentClass(String bizId);
 
     /**
      * 获得流程定义名称

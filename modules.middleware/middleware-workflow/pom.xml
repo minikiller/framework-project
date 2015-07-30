@@ -23,6 +23,7 @@
         <module>workflow-engine</module>
         <module>workflow-api</module>
         <module>workflow-core</module>
+        <module>workflow-rest</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -30,6 +31,7 @@
                 <groupId>cn.com.rexen.workflow</groupId>
                 <artifactId>cn.com.rexen.workflow.api</artifactId>
                 <version>${project.version}</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

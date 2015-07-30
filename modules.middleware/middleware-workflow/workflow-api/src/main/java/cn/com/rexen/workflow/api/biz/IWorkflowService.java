@@ -44,7 +44,7 @@ public interface IWorkflowService {
 
     void claimTask();
 
-    void handldTask();
+    void handleTask();
 
     void getVariableByTaskInstanceId();
 

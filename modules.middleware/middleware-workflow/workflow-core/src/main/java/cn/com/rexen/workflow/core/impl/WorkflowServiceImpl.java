@@ -1,4 +1,4 @@
-package cn.com.rexen.workflow.core;
+package cn.com.rexen.workflow.core.impl;
 
 import cn.com.rexen.workflow.api.biz.IWorkflowService;
 import org.activiti.engine.*;
@@ -354,7 +354,7 @@ public class WorkflowServiceImpl implements IWorkflowService {
      */
 
     @Override
-    public void handldTask() {
+    public void handleTask() {
 
         TaskService taskService = processEngine.getTaskService(); //活动task服务
         List<Task> list = taskService.createTaskQuery().taskAssignee("张三").list();

@@ -11,65 +11,52 @@
     </parent>
 
     <!--need to change after copy-->
-    <artifactId>cn.com.rexen.workflow.core</artifactId>
+    <artifactId>cn.com.rexen.workflow.rest</artifactId>
 
     <packaging>bundle</packaging>
     <!--need to change after copy-->
     <properties>
-        <bundle.symbolicName>cn.com.rexen.workflow.core</bundle.symbolicName>
+        <bundle.symbolicName>cn.com.rexen.workflow.rest</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <name>Middleware :: Workflow - Core</name>
-    <description>Middleware Workflow</description>
+    <name>Middleware :: Workflow - Rest</name>
+    <description>Middleware Workflow Rest</description>
 
     <dependencies>
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.compendium</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.core</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.com.rexen.workflow</groupId>
-            <artifactId>cn.com.rexen.workflow.api</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.activiti</groupId>
             <artifactId>activiti-engine</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.activiti</groupId>
             <artifactId>activiti-osgi</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.activiti</groupId>
-            <artifactId>activiti-bpmn-model</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.activiti</groupId>
-            <artifactId>activiti-bpmn-converter</artifactId>
-        </dependency>
-
-        <!--<dependency>
-            <groupId>org.activiti</groupId>
-            <artifactId>activiti-rest</artifactId>
-        </dependency>-->
 
         <dependency>
-            <groupId>net.sf.dozer</groupId>
-            <artifactId>dozer-osgi</artifactId>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.2.8</version>
+            <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.servicemix.activiti</groupId>
+            <artifactId>org.apache.servicemix.activiti.config</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
