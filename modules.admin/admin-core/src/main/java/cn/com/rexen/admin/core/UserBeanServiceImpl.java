@@ -1,8 +1,7 @@
 package cn.com.rexen.admin.core;
 
 import cn.com.rexen.admin.api.biz.IUserBeanService;
-import cn.com.rexen.admin.api.dao.IRoleBeanDao;
-import cn.com.rexen.admin.api.dao.IUserBeanDao;
+import cn.com.rexen.admin.api.dao.*;
 import cn.com.rexen.admin.entities.OrganizationBean;
 import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.UserBean;
@@ -30,7 +29,29 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     private static final String FUNCTION_NAME = "用户";
     private IUserBeanDao userBeanDao;
     private IRoleBeanDao roleBeanDao;
+    private IRoleUserBeanDao roleUserBeanDao;
+    private IWorkGroupUserBeanDao workGroupUserBeanDao;
+    private IDepartmentUserBeanDao departmentUserBeanDao;
     private IShiroService shiroService;
+
+    public void setWorkGroupUserBeanDao(IWorkGroupUserBeanDao workGroupUserBeanDao) {
+        this.workGroupUserBeanDao = workGroupUserBeanDao;
+    }
+
+    public void setDepartmentUserBeanDao(IDepartmentUserBeanDao departmentUserBeanDao) {
+        this.departmentUserBeanDao = departmentUserBeanDao;
+    }
+
+    public void setRoleUserBeanDao(IRoleUserBeanDao roleUserBeanDao) {
+        this.roleUserBeanDao = roleUserBeanDao;
+    }
+
+    @Override
+    public void afterDeleteEntity(Long id, JsonStatus status) {
+        roleUserBeanDao.update("delete from RoleUserBean ru where ru.userId=?1",id);
+        departmentUserBeanDao.update("delete from DepartmentUserBean du where du.userId=?1",id);
+        workGroupUserBeanDao.update("delete from WorkGroupUserBean wu where wu.userId=?1",id);
+    }
 
     @Override
     public void beforeUpdateEntity(PersistentEntity entity, JsonStatus status) {

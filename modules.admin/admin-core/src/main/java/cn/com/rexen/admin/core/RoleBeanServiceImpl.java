@@ -4,6 +4,7 @@ import cn.com.rexen.admin.api.biz.IRoleBeanService;
 import cn.com.rexen.admin.api.dao.IRoleBeanDao;
 import cn.com.rexen.admin.api.dao.IRoleUserBeanDao;
 import cn.com.rexen.admin.api.dao.IUserBeanDao;
+import cn.com.rexen.admin.api.dao.IWorkGroupRoleBeanDao;
 import cn.com.rexen.admin.entities.PermissionBean;
 import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.RoleUserBean;
@@ -33,7 +34,12 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
     private IRoleBeanDao roleBeanDao;
     private IUserBeanDao userBeanDao;
     private IRoleUserBeanDao roleUserBeanDao;
+    private IWorkGroupRoleBeanDao workGroupRoleBeanDao;
     private IShiroService shiroService;
+
+    public void setWorkGroupRoleBeanDao(IWorkGroupRoleBeanDao workGroupRoleBeanDao) {
+        this.workGroupRoleBeanDao = workGroupRoleBeanDao;
+    }
 
     public IRoleUserBeanDao getRoleUserBeanDao() {
         return roleUserBeanDao;
@@ -202,6 +208,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
     @Override
     public void afterDeleteEntity(Long id, JsonStatus status) {
         roleUserBeanDao.deleteByRoleId(id);
+        workGroupRoleBeanDao.update("delete from WorkGroupRoleBean wgr where wgr.roleId=?1",id);
     }
 
     @Override
