@@ -7,14 +7,26 @@
 
     <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
     <reference id="applicationBeanDao" interface="cn.com.rexen.app.api.dao.IApplicationBeanDao"/>
+    <reference id="functionBeanDao" interface="cn.com.rexen.app.api.dao.IFunctionBeanDao"/>
+
+
+    <bean id="functionBeanService" class="cn.com.rexen.app.core.FunctionBeanServiceImpl">
+        <property name="functionBeanDao" ref="functionBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
+    </bean>
+
+    <!--功能服务-->
+    <service id="functionService" interface="cn.com.rexen.app.api.biz.IFunctionBeanService" ref="functionBeanService" />
 
     <!--应用服务-->
     <service id="applicationBeanService" interface="cn.com.rexen.app.api.biz.IApplicationBeanService">
         <bean class="cn.com.rexen.app.core.ApplicationBeanServiceImpl">
             <property name="applicationBeanDao" ref="applicationBeanDao"/>
+            <property name="functionBeanService" ref="functionBeanService"/>
             <property name="shiroService" ref="shiroService"/>
         </bean>
     </service>
+
 
 </blueprint>
 

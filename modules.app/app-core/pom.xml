@@ -39,18 +39,27 @@
         <dependency>
             <groupId>cn.com.rexen.kalix.app</groupId>
             <artifactId>cn.com.rexen.kalix.app.api</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.app</groupId>
             <artifactId>cn.com.rexen.kalix.app.entities</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.app</groupId>
+            <artifactId>cn.com.rexen.kalix.app.dto</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.core</groupId>
             <artifactId>cn.com.rexen.core.api</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.core</groupId>
             <artifactId>cn.com.rexen.core.impl</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.openjpa</groupId>

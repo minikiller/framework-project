@@ -1,7 +1,10 @@
 package cn.com.rexen.app.core;
 
 import cn.com.rexen.app.api.biz.IApplicationBeanService;
+import cn.com.rexen.app.api.biz.IFunctionBeanService;
 import cn.com.rexen.app.api.dao.IApplicationBeanDao;
+import cn.com.rexen.app.api.dao.IFunctionBeanDao;
+import cn.com.rexen.app.dto.model.ApplicationDTO;
 import cn.com.rexen.app.entities.ApplicationBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
@@ -10,6 +13,8 @@ import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.Assert;
 import org.apache.commons.lang.StringUtils;
+import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +28,15 @@ import java.util.List;
 public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements IApplicationBeanService {
     private static final String FUNCTION_NAME = "应用";
     private IApplicationBeanDao applicationBeanDao;
+    private IFunctionBeanService functionBeanService;
     private IShiroService shiroService;
 
     public void setShiroService(IShiroService shiroService) {
         this.shiroService = shiroService;
+    }
+
+    public void setFunctionBeanService(IFunctionBeanService functionBeanService) {
+        this.functionBeanService = functionBeanService;
     }
 
     public void setApplicationBeanDao(IApplicationBeanDao applicationBeanDao) {
@@ -63,6 +73,11 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void afterDeleteEntity(Long id, JsonStatus status) {
+        functionBeanService.deleteByApplicationId(id);
     }
 
     @Override
@@ -110,5 +125,22 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
     }
 
 
-
+    @Override
+    public ApplicationDTO getTreesByAllApplications() {
+        ApplicationDTO root=new ApplicationDTO();
+        root.setId("-1");
+        List<ApplicationBean> beans=applicationBeanDao.getAll(ApplicationBean.class.getName());
+        if(beans!=null&&beans.size()>0){
+            if(beans!=null&&beans.size()>0) {
+                for(ApplicationBean applicationBean:beans){
+                    Mapper mapper = new DozerBeanMapper();
+                    ApplicationDTO applicationDTO = mapper.map(applicationBean, ApplicationDTO.class);
+                    applicationDTO.setLeaf(true);
+                    applicationDTO.setText(applicationBean.getName());
+                    root.getChildren().add(applicationDTO);
+                }
+            }
+        }
+        return root;
+    }
 }

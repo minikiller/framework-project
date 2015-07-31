@@ -42,6 +42,11 @@
                 <to uri="bean:applicationService?method=getAllEntity(${header.page},${header.limit})"/>
             </get>
 
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-getTreesByAllApplications" uri="/all/trees" >
+                <description>save getTreesByAllApplications</description>
+                <to uri="bean:applicationService?method=getTreesByAllApplications"/>
+            </get>
 
         </rest>
 

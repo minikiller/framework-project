@@ -146,12 +146,12 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl implement
 
     /**
      * 如果父节点下再没有子节点,将更新父节点状态
-     * @param id
+     * @param parentId
      */
-    public void updateParent(Long id){
-        List<OrganizationBean> organizationBeans=orgBeanDao.find("select ob from OrganizationBean ob where ob.id = ?1", id); //获得父节点
+    public void updateParent(Long parentId){
+        List<OrganizationBean> organizationBeans=orgBeanDao.find("select ob from OrganizationBean ob where ob.id = ?1", parentId); //获得父节点
         if(organizationBeans!=null&&organizationBeans.size()>0){
-            List<OrganizationBean> children=orgBeanDao.find("select ob from OrganizationBean ob where ob.parentId = ?1", id); //获得父节点
+            List<OrganizationBean> children=orgBeanDao.find("select ob from OrganizationBean ob where ob.parentId = ?1", parentId); //获得父节点
             if(children==null||children.isEmpty()) {
                 OrganizationBean parent = organizationBeans.get(0);
                 parent.setIsLeaf(1);

@@ -18,5 +18,14 @@
         </bean>
     </service>
 
+    <!--功能dao-->
+    <service id="functionBeanDao" interface="cn.com.rexen.app.api.dao.IFunctionBeanDao">
+        <bean class="cn.com.rexen.app.persist.openjpa.FunctionBeanDaoOpenjpa"> <!--init-method="init">-->
+            <jpa:context property="entityManager" unitname="app-cm"/>
+            <tx:transaction method="*" value="Required"/>
+            <!--<property name="persistEntityService" ref="persistEntityService" />-->
+        </bean>
+    </service>
+
 </blueprint>
 
