@@ -1,6 +1,6 @@
 package cn.com.rexen.demo.entities;
 
-import cn.com.rexen.core.api.persistence.PersistentEntity;
+import cn.com.rexen.core.api.persistence.WorkflowEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -17,7 +17,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "sys_demo")
-public class NoticeBean extends PersistentEntity {
+public class NoticeBean extends WorkflowEntity {
     @NotNull(message = "'标题'是必填项")
     private String title;   //标题
     @NotNull(message = "'内容'是必填项")

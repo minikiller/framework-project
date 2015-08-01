@@ -52,6 +52,10 @@
             <groupId>cn.com.rexen.kalix.demo</groupId>
             <artifactId>cn.com.rexen.kalix.demo.entities</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-engine</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

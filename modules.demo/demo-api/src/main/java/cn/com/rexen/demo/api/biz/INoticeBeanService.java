@@ -1,6 +1,7 @@
 package cn.com.rexen.demo.api.biz;
 
 import cn.com.rexen.core.api.biz.IBizService;
+import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.demo.entities.NoticeBean;
 
 import java.util.List;
@@ -15,4 +16,6 @@ import java.util.List;
  */
 public interface INoticeBeanService extends IBizService {
     public List<NoticeBean> query(String title);
+
+    JsonStatus startProcess(String id);
 }

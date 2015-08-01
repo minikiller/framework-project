@@ -1,6 +1,7 @@
 package cn.com.rexen.workflow.api.biz;
 
 import cn.com.rexen.core.api.IService;
+import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.workflow.api.model.JsonData;
 
 
@@ -10,4 +11,10 @@ import cn.com.rexen.workflow.api.model.JsonData;
  */
 public interface IProcessService extends IService {
     JsonData getProcessDefinition();
+
+    JsonStatus activateProcessDefinition(String key);
+
+    JsonStatus suspendProcessDefinition(String key);
+
+    JsonData getProcessHistory();
 }

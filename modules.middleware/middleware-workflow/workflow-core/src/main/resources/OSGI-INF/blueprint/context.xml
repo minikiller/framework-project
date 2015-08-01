@@ -7,12 +7,25 @@
     <bean id="workFlowServiceImpl" class="cn.com.rexen.workflow.core.impl.WorkflowServiceImpl">
     </bean>
 
-    <service interface="cn.com.rexen.workflow.api.biz.IProcessService" ref="processServiceImpl">
-    </service>
-    <reference interface="org.activiti.engine.RepositoryService" id="repositoryService"/>
+
+    <reference id="repositoryService" interface="org.activiti.engine.RepositoryService"/>
+    <reference id="taskService" interface="org.activiti.engine.TaskService"/>
+    <reference id="historyService" interface="org.activiti.engine.HistoryService"/>
+    <reference id="runtimeService" interface="org.activiti.engine.RuntimeService"/>
+    <reference id="processEngine" interface="org.activiti.engine.ProcessEngine"/>
+
+    <!-- 注册process服务-->
     <bean class="cn.com.rexen.workflow.core.impl.ProcessServiceImpl" id="processServiceImpl">
         <property name="repositoryService" ref="repositoryService"/>
+        <property name="historyService" ref="historyService"/>
     </bean>
+    <service interface="cn.com.rexen.workflow.api.biz.IProcessService" ref="processServiceImpl"/>
+
+    <!-- 注册task服务-->
+    <bean id="taskServiceImpl" class="cn.com.rexen.workflow.core.impl.TaskServiceImpl">
+        <property name="taskService" ref="taskService"/>
+    </bean>
+    <service interface="cn.com.rexen.workflow.api.biz.ITaskService" ref="taskServiceImpl"/>
 
     <!--监听IBizDataHandler模块的加载和卸载-->
     <reference-list interface="cn.com.rexen.workflow.api.web.IBizDataHandler" member-type="service-reference"
@@ -29,4 +42,16 @@
             <bean class="cn.com.rexen.workflow.core.listener.FormListener"/>
         </reference-listener>
     </reference-list>
+    <!-- image-->
+    <service interface="javax.servlet.Servlet" ref="bpmnImageServlet">
+        <service-properties>
+            <entry key="alias" value="/image/*"/>
+        </service-properties>
+    </service>
+    <bean id="bpmnImageServlet" class="cn.com.rexen.workflow.core.servlet.BpmnImageServlet">
+        <property name="historyService" ref="historyService"/>
+        <property name="repositoryService" ref="repositoryService"/>
+        <property name="runtimeService" ref="runtimeService"/>
+        <property name="processEngine" ref="processEngine"/>
+    </bean>
 </blueprint>

@@ -9,7 +9,7 @@ package cn.com.rexen.core.api.persistence;
  * @修改备注：
  */
 public enum WorkflowStaus {
-    ACTIVE("处理中"), FINISH("结束");
+    INACTIVE("未申请"), ACTIVE("处理中"), FINISH("结束");
 
     private String statusCode;
 

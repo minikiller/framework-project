@@ -18,7 +18,7 @@
         <property name="history" value="full"/>
 
 
-        <property name="activityFontName" value="微软雅黑"></property>
-        <property name="labelFontName" value="微软雅黑"></property>
+        <property name="activityFontName" value="宋体"></property>
+        <property name="labelFontName" value="宋体"></property>
     </bean>
 </beans>

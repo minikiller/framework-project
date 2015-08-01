@@ -44,6 +44,11 @@
                 <to uri="bean:demoService?method=getAllEntity(${header.page},${header.limit})"/>
             </get>
 
+            <get id="route-startProcessDemo" uri="/startProcess" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Start Process of Demo</description>
+                <to uri="bean:demoService?method=startProcess(${header.id})"/>
+            </get>
+
         </rest>
 
     </camelContext>

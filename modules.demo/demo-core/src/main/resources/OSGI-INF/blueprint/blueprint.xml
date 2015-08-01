@@ -7,8 +7,19 @@
              ref="beanServiceImpl">
     </service>
 
+    <reference id="repositoryService" interface="org.activiti.engine.RepositoryService"/>
+    <reference id="formService" interface="org.activiti.engine.FormService"/>
+    <reference id="identityService" interface="org.activiti.engine.IdentityService"/>
+    <reference id="runtimeService" interface="org.activiti.engine.RuntimeService"/>
+    <reference id="taskService" interface="org.activiti.engine.TaskService"/>
+
     <bean id="beanServiceImpl" class="cn.com.rexen.demo.core.biz.NoticeBeanServiceImpl" scope="prototype">
         <property name="noticeBeanDao" ref="noticeBeanDao"/>
+        <property name="formService" ref="formService"/>
+        <property name="identityService" ref="identityService"/>
+        <property name="repositoryService" ref="repositoryService"/>
+        <property name="runtimeService" ref="runtimeService"/>
+        <property name="taskService" ref="taskService"/>
     </bean>
 
     <reference id="noticeBeanDao" interface="cn.com.rexen.demo.api.dao.INoticeBeanDao"/>

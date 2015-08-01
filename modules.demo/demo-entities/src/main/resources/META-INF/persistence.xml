@@ -6,8 +6,9 @@
         <non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=jdbc/mysqlds)
         </non-jta-data-source>
 
+        <class>cn.com.rexen.core.api.persistence.WorkflowEntity</class>
         <class>cn.com.rexen.core.api.persistence.PersistentEntity</class>
-        <class>cn.com.rexen.demo.entities.demoBean</class>
+        <class>cn.com.rexen.demo.entities.NoticeBean</class>
 
         <properties>
             <property name="openjpa.BrokerImpl" value="non-finalizing"/>
