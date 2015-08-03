@@ -5,6 +5,7 @@ import cn.com.rexen.app.api.biz.IFunctionBeanService;
 import cn.com.rexen.app.api.dao.IApplicationBeanDao;
 import cn.com.rexen.app.api.dao.IFunctionBeanDao;
 import cn.com.rexen.app.dto.model.ApplicationDTO;
+import cn.com.rexen.app.dto.model.AuthorizationDTO;
 import cn.com.rexen.app.dto.model.FunctionDTO;
 import cn.com.rexen.app.entities.ApplicationBean;
 import cn.com.rexen.app.entities.FunctionBean;
@@ -98,7 +99,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
     @Override
     public void doUpdate(PersistentEntity entity, JsonStatus jsonStatus) {
         Assert.notNull(entity, "实体不能为空.");
-        FunctionBean oldBean=functionBeanDao.get(FunctionBean.class.getName(),entity.getId());
+        FunctionBean oldBean=functionBeanDao.get(FunctionBean.class.getName(), entity.getId());
         if(oldBean!=null){
             FunctionBean functionBean=(FunctionBean)entity;
             oldBean.setName(functionBean.getName());
@@ -165,7 +166,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
     public boolean isSave(PersistentEntity entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         FunctionBean bean=(FunctionBean)entity;
-        List<FunctionBean> beans= functionBeanDao.find("select ob from FunctionBean ob where ob.name = ?1 and ob.applicationId=?2", bean.getName(), bean.getApplicationId());
+        List<FunctionBean> beans= functionBeanDao.find("select ob from FunctionBean ob where ob.name = ?1 and ob.applicationId=?2 and ob.parentId=?3", bean.getName(), bean.getApplicationId(),bean.getParentId());
         if(beans!=null&&beans.size()>0){
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经存在,请检查名称！");
@@ -185,7 +186,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
      * @param root
      * @param elements
      */
-    private void getChilden(FunctionDTO root, List<FunctionBean> elements, Mapper mapper) {
+    public void getChilden(FunctionDTO root, List<FunctionBean> elements, Mapper mapper) {
         List<FunctionDTO> children = new ArrayList<FunctionDTO>();
 
         for (FunctionBean functionBean : elements) {
@@ -193,6 +194,32 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
                 FunctionDTO functionDTO = mapper.map(functionBean, FunctionDTO.class);
                 functionDTO.setLeaf(functionBean.getIsLeaf() == 0 ? false : true);
                 functionDTO.setParentName(root.getName());
+                functionDTO.setText(functionBean.getName());
+                children.add(functionDTO);
+                if(functionBean.getIsLeaf()==0) {
+                    getChilden(functionDTO, elements, mapper);
+                }
+            }
+        }
+        root.setChildren(children);
+    }
+
+    /**
+     * 递归函数加载子节点
+     *
+     * @param root
+     * @param elements
+     */
+    public void getChilden(AuthorizationDTO root, List<FunctionBean> elements, Mapper mapper) {
+        List<AuthorizationDTO> children = new ArrayList<AuthorizationDTO>();
+
+        for (FunctionBean functionBean : elements) {
+            if (root.getId()!=null&&root.getId().equals(String.valueOf(functionBean.getParentId()))) {
+                AuthorizationDTO functionDTO = mapper.map(functionBean, AuthorizationDTO.class);
+                functionDTO.setLeaf(functionBean.getIsLeaf() == 0 ? false : true);
+                functionDTO.setParentName(root.getName());
+                functionDTO.setChecked(true);
+                functionDTO.setExpanded(true);
                 functionDTO.setText(functionBean.getName());
                 children.add(functionDTO);
                 if(functionBean.getIsLeaf()==0) {
@@ -228,7 +255,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
      * @param elements
      * @return
      */
-    private List<FunctionBean> getRootElements(List<FunctionBean> elements) {
+    public List<FunctionBean> getRootElements(List<FunctionBean> elements) {
         List<FunctionBean> roots=new ArrayList<FunctionBean>();
         for (FunctionBean element : elements) {
             if (element.getParentId() == -1) {

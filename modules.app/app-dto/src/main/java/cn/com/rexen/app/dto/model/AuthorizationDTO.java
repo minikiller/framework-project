@@ -7,42 +7,42 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 机构模型类
+ * 授权模型类
  * @author majian <br/>
- *         date:2015-7-21
+ *         date:2015-7-31
  * @version 1.0.0
  */
-public class FunctionDTO extends BaseDTO {
-    private String name; //功能名称
-    private String code; //功能代码
+public class AuthorizationDTO extends BaseDTO {
+    private String name; //名称
+    private String code; //代码
     private String text; //名称
     private boolean leaf; //是否是叶子节点
-    private long parentId; //父功能
-    private String remark; //备注
-    private int applicationId;  // 归属应用
+    private long parentId; //父节点
     private String parentName; //父节点名称
-    private String permission; //权限路径
-    private List<FunctionDTO> children=new ArrayList<FunctionDTO>();
-
-    public String getPermission() {
-        return permission;
-    }
-
-    public void setPermission(String permission) {
-        this.permission = permission;
-    }
+    private boolean expanded; //是否展开子节点
+    private boolean checked; //是否多选
+    private List<AuthorizationDTO> children=new ArrayList<AuthorizationDTO>();
 
     private Date creationDate;// 创建日期
     private String createBy;    // 创建者
     private String updateBy;    // 更新者
     private Date updateDate; //更新日期
 
-    public String getRemark() {
-        return remark;
+
+    public boolean isExpanded() {
+        return expanded;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setExpanded(boolean expanded) {
+        this.expanded = expanded;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
     }
 
     public Date getCreationDate() {
@@ -109,7 +109,6 @@ public class FunctionDTO extends BaseDTO {
         this.code = code;
     }
 
-
     public boolean isLeaf() {
         return leaf;
     }
@@ -126,19 +125,12 @@ public class FunctionDTO extends BaseDTO {
         this.parentId = parentId;
     }
 
-    public int getApplicationId() {
-        return applicationId;
-    }
 
-    public void setApplicationId(int applicationId) {
-        this.applicationId = applicationId;
-    }
-
-    public List<FunctionDTO> getChildren() {
+    public List<AuthorizationDTO> getChildren() {
         return children;
     }
 
-    public void setChildren(List<FunctionDTO> children) {
+    public void setChildren(List<AuthorizationDTO> children) {
         this.children = children;
     }
 }

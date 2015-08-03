@@ -5,7 +5,9 @@ import cn.com.rexen.app.api.biz.IFunctionBeanService;
 import cn.com.rexen.app.api.dao.IApplicationBeanDao;
 import cn.com.rexen.app.api.dao.IFunctionBeanDao;
 import cn.com.rexen.app.dto.model.ApplicationDTO;
+import cn.com.rexen.app.dto.model.AuthorizationDTO;
 import cn.com.rexen.app.entities.ApplicationBean;
+import cn.com.rexen.app.entities.FunctionBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
@@ -29,7 +31,12 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
     private static final String FUNCTION_NAME = "应用";
     private IApplicationBeanDao applicationBeanDao;
     private IFunctionBeanService functionBeanService;
+    private IFunctionBeanDao functionBeanDao;
     private IShiroService shiroService;
+
+    public void setFunctionBeanDao(IFunctionBeanDao functionBeanDao) {
+        this.functionBeanDao = functionBeanDao;
+    }
 
     public void setShiroService(IShiroService shiroService) {
         this.shiroService = shiroService;
@@ -136,6 +143,46 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
                     Mapper mapper = new DozerBeanMapper();
                     ApplicationDTO applicationDTO = mapper.map(applicationBean, ApplicationDTO.class);
                     applicationDTO.setLeaf(true);
+                    applicationDTO.setText(applicationBean.getName());
+                    root.getChildren().add(applicationDTO);
+                }
+            }
+        }
+        return root;
+    }
+
+    @Override
+    public AuthorizationDTO getAuthorizationTree() {
+        AuthorizationDTO root=new AuthorizationDTO();
+        root.setId("-1");
+        List<ApplicationBean> beans=applicationBeanDao.getAll(ApplicationBean.class.getName());
+        if(beans!=null&&beans.size()>0){
+            if(beans!=null&&beans.size()>0) {
+                for(ApplicationBean applicationBean:beans){
+                    Assert.notNull(applicationBean,"应用不能为空");
+                    Mapper mapper = new DozerBeanMapper();
+                    AuthorizationDTO applicationDTO = mapper.map(applicationBean, AuthorizationDTO.class);
+                    applicationDTO.setLeaf(true);
+                    applicationDTO.setChecked(true);
+                    applicationDTO.setExpanded(true);
+                    List<FunctionBean> functionBeans=functionBeanDao.find("select ob from FunctionBean ob where ob.applicationId = ?1", applicationBean.getId());
+                    if(functionBeans!=null&&functionBeans.size()>0) {
+                        applicationDTO.setChecked(true);
+                        applicationDTO.setLeaf(false);
+                        //返回该应用下所有根功能
+                        List<FunctionBean> rootFunctions=functionBeanService.getRootElements(functionBeans);
+                        if(rootFunctions!=null&&rootFunctions.size()>0){
+                            for(FunctionBean functionBean:rootFunctions) {
+                                AuthorizationDTO functionDTO = mapper.map(functionBean, AuthorizationDTO.class);
+                                functionDTO.setLeaf(functionBean.getIsLeaf() == 0 ? false : true);
+                                functionDTO.setText(functionBean.getName());
+                                functionDTO.setChecked(true);
+                                functionDTO.setExpanded(true);
+                                functionBeanService.getChilden(functionDTO, functionBeans, mapper);
+                                applicationDTO.getChildren().add(functionDTO);
+                            }
+                        }
+                    }
                     applicationDTO.setText(applicationBean.getName());
                     root.getChildren().add(applicationDTO);
                 }
