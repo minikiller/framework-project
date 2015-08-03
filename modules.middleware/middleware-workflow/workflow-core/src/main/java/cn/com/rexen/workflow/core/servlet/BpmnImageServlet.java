@@ -1,6 +1,10 @@
 package cn.com.rexen.workflow.core.servlet;
 
 import cn.com.rexen.core.util.Assert;
+import org.activiti.engine.RuntimeService;
+import org.activiti.engine.TaskService;
+import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.task.Task;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,16 +22,32 @@ public class BpmnImageServlet extends BaseBpmnImageServlet {
 
     private String processDefinitionId;
     private String processInstanceId;
+    private String taskId;
+    private TaskService taskService;
+
+    public void setTaskService(TaskService taskService) {
+        this.taskService = taskService;
+    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        InputStream imageStream;
+        InputStream imageStream=null;
         processDefinitionId = request.getParameter("processDefinitionId");
-        Assert.notNull(processDefinitionId);
         processInstanceId = request.getParameter("processInstanceId");
-        if (processInstanceId == null)//如果传入一个参数，返回流程图片，不带活动节点
+        taskId= request.getParameter("taskId");
+
+        if (processDefinitionId != null)//如果传入一个参数，返回流程图片，不带活动节点
             imageStream = getInputStream(processDefinitionId);
-        else
-            imageStream = getInputStream(processDefinitionId, processInstanceId);
+        else if(processInstanceId!=null){
+            ProcessInstance pi = runtimeService.createProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
+            imageStream = getInputStream(pi.getProcessDefinitionId(), processInstanceId);
+        }
+        else if(taskId!=null){
+            Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+            processInstanceId=task.getProcessInstanceId();
+            ProcessInstance pi = runtimeService.createProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
+            imageStream = getInputStream(pi.getProcessDefinitionId(), processInstanceId);
+        }
+
         response.setContentType("image/jpeg");
         response.setHeader("Pragma", "no-cache");
         OutputStream out = null;

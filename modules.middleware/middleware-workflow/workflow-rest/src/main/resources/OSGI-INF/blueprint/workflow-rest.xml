@@ -65,6 +65,16 @@
                 <to uri="bean:processService?method=getProcessHistory"/>
             </get>
 
+            <get id="route-activateProcessDefinition" uri="/activate" outType="cn.com.rexen.workflow.api.model.JsonData">
+                <description>Find All History Process</description>
+                <to uri="bean:processService?method=activateProcessDefinition(${header.key})"/>
+            </get>
+
+            <get id="route-suspendProcessDefinition" uri="/suspend" outType="cn.com.rexen.workflow.api.model.JsonData">
+                <description>Find All History Process</description>
+                <to uri="bean:processService?method=suspendProcessDefinition(${header.key})"/>
+            </get>
+
             <!-- this is a rest GET to view an user by the given id -->
             <get id="route-getAllTask" uri="/tasks" outType="cn.com.rexen.workflow.api.model.JsonData">
                 <description>Find All Process</description>

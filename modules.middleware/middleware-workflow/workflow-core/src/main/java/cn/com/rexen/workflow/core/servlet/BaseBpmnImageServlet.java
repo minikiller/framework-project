@@ -18,10 +18,10 @@ import java.util.*;
  * Created by sunlf on 2015/8/1.
  */
 public class BaseBpmnImageServlet extends HttpServlet {
-    private RepositoryService repositoryService;
-    private HistoryService historyService;
-    private RuntimeService runtimeService;
-    private ProcessEngine processEngine;
+    protected RepositoryService repositoryService;
+    protected HistoryService historyService;
+    protected RuntimeService runtimeService;
+    protected ProcessEngine processEngine;
 
     public void setRepositoryService(RepositoryService repositoryService) {
         this.repositoryService = repositoryService;

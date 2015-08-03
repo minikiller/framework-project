@@ -4,7 +4,7 @@
     <bean id="dataSource" class="com.mysql.jdbc.jdbc2.optional.MysqlDataSource">
         <property name="URL" value="jdbc:mysql://localhost:3306/activiti"/>
         <property name="user" value="root"/>
-        <property name="password" value="1234"/>
+        <property name="password" value="root"/>
     </bean>
 
     <!--用于activiti JavaDelegate-->
