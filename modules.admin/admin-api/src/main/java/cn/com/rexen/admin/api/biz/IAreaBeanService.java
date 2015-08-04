@@ -1,7 +1,7 @@
 package cn.com.rexen.admin.api.biz;
 
+import cn.com.rexen.admin.dto.model.AreaDTO;
 import cn.com.rexen.admin.entities.AreaBean;
-import cn.com.rexen.admin.rest.model.AreaDTO;
 import cn.com.rexen.core.api.biz.IBizService;
 
 import java.util.List;

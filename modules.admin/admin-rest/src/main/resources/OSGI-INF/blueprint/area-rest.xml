@@ -39,7 +39,7 @@
             </delete>
 
             <!-- this is a rest GET to find all areas -->
-            <get id="route-getAllArea" outType="cn.com.rexen.admin.rest.model.AreaDTO">
+            <get id="route-getAllArea" outType="cn.com.rexen.admin.dto.model.AreaDTO">
                 <description>Find all areas</description>
                 <to uri="bean:areaService?method=getAllArea"/>
             </get>

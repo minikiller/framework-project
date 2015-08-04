@@ -48,6 +48,12 @@
                 <to uri="bean:applicationService?method=getTreesByAllApplications"/>
             </get>
 
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-getAuthorizationTree" uri="/authorizations" >
+                <description>save getTreesByAllApplications</description>
+                <to uri="bean:applicationService?method=getAuthorizationTree"/>
+            </get>
+
         </rest>
 
     </camelContext>

@@ -1,4 +1,4 @@
-package cn.com.rexen.admin.rest.model;
+package cn.com.rexen.app.dto.model;
 
 import cn.com.rexen.core.api.web.model.BaseDTO;
 
@@ -7,42 +7,42 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 区域模型类
+ * 授权模型类
  * @author majian <br/>
- *         date:2015-7-24
+ *         date:2015-7-31
  * @version 1.0.0
  */
-public class AreaDTO extends BaseDTO {
+public class AuthorizationDTO extends BaseDTO {
     private String name; //名称
     private String code; //代码
     private String text; //名称
-    private String centerCode; //中心代码
     private boolean leaf; //是否是叶子节点
     private long parentId; //父节点
     private String parentName; //父节点名称
-    private List<AreaDTO> children=new ArrayList<AreaDTO>();
-    private String jd; //经度
-    private String wd; //纬度
+    private boolean expanded; //是否展开子节点
+    private boolean checked; //是否多选
+    private List<AuthorizationDTO> children=new ArrayList<AuthorizationDTO>();
 
     private Date creationDate;// 创建日期
     private String createBy;    // 创建者
     private String updateBy;    // 更新者
     private Date updateDate; //更新日期
 
-    public String getJd() {
-        return jd;
+
+    public boolean isExpanded() {
+        return expanded;
     }
 
-    public void setJd(String jd) {
-        this.jd = jd;
+    public void setExpanded(boolean expanded) {
+        this.expanded = expanded;
     }
 
-    public String getWd() {
-        return wd;
+    public boolean isChecked() {
+        return checked;
     }
 
-    public void setWd(String wd) {
-        this.wd = wd;
+    public void setChecked(boolean checked) {
+        this.checked = checked;
     }
 
     public Date getCreationDate() {
@@ -109,15 +109,6 @@ public class AreaDTO extends BaseDTO {
         this.code = code;
     }
 
-    public String getCenterCode() {
-        return centerCode;
-    }
-
-    public void setCenterCode(String centerCode) {
-        this.centerCode = centerCode;
-    }
-
-
     public boolean isLeaf() {
         return leaf;
     }
@@ -135,11 +126,11 @@ public class AreaDTO extends BaseDTO {
     }
 
 
-    public List<AreaDTO> getChildren() {
+    public List<AuthorizationDTO> getChildren() {
         return children;
     }
 
-    public void setChildren(List<AreaDTO> children) {
+    public void setChildren(List<AuthorizationDTO> children) {
         this.children = children;
     }
 }

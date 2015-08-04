@@ -1,8 +1,6 @@
 package cn.com.rexen.admin.api.biz;
 
 import cn.com.rexen.admin.entities.WorkGroupBean;
-import cn.com.rexen.admin.rest.model.AreaDTO;
-import cn.com.rexen.admin.rest.model.WorkGroupDTO;
 import cn.com.rexen.core.api.biz.IBizService;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;

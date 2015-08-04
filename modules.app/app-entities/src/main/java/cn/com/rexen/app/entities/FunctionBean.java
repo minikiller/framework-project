@@ -25,7 +25,15 @@ public class FunctionBean extends PersistentEntity {
     private int isLeaf; //是否是叶子节点
     private long parentId; //父功能
     private int applicationId;  // 归属应用
+    private String permission; //权限
 
+    public String getPermission() {
+        return permission;
+    }
+
+    public void setPermission(String permission) {
+        this.permission = permission;
+    }
 
     public String getRemark() {
         return remark;

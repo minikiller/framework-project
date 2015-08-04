@@ -23,6 +23,7 @@
         <bean class="cn.com.rexen.app.core.ApplicationBeanServiceImpl">
             <property name="applicationBeanDao" ref="applicationBeanDao"/>
             <property name="functionBeanService" ref="functionBeanService"/>
+            <property name="functionBeanDao" ref="functionBeanDao"/>
             <property name="shiroService" ref="shiroService"/>
         </bean>
     </service>

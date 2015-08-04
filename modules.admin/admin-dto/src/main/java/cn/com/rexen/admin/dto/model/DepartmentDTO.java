@@ -1,4 +1,4 @@
-package cn.com.rexen.admin.rest.model;
+package cn.com.rexen.admin.dto.model;
 
 import cn.com.rexen.core.api.web.model.BaseDTO;
 
@@ -7,24 +7,36 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 工作组模型类
+ * 部门模型类
  * @author majian <br/>
- *         date:2015-7-24
+ *         date:2015-7-21
  * @version 1.0.0
  */
-public class WorkGroupDTO extends BaseDTO {
+public class DepartmentDTO extends BaseDTO {
     private String name; //名称
-    private String remark; //名称
+    private String text; //名称
+    private String code; //代码
+    private String centerCode; //中心代码
     private boolean leaf; //是否是叶子节点
     private long parentId; //父节点
+    private int orgId;  // 所属机构
     private String parentName; //父节点名称
-    private List<WorkGroupDTO> children=new ArrayList<WorkGroupDTO>();
+    private List<DepartmentDTO> children=new ArrayList<DepartmentDTO>();
+
 
     private Date creationDate;// 创建日期
     private String createBy;    // 创建者
     private String updateBy;    // 更新者
     private Date updateDate; //更新日期
 
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 
     public Date getCreationDate() {
         return creationDate;
@@ -74,6 +86,21 @@ public class WorkGroupDTO extends BaseDTO {
         this.name = name;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getCenterCode() {
+        return centerCode;
+    }
+
+    public void setCenterCode(String centerCode) {
+        this.centerCode = centerCode;
+    }
 
 
     public boolean isLeaf() {
@@ -92,12 +119,19 @@ public class WorkGroupDTO extends BaseDTO {
         this.parentId = parentId;
     }
 
+    public int getOrgId() {
+        return orgId;
+    }
 
-    public List<WorkGroupDTO> getChildren() {
+    public void setOrgId(int orgId) {
+        this.orgId = orgId;
+    }
+
+    public List<DepartmentDTO> getChildren() {
         return children;
     }
 
-    public void setChildren(List<WorkGroupDTO> children) {
+    public void setChildren(List<DepartmentDTO> children) {
         this.children = children;
     }
 }

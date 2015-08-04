@@ -19,6 +19,11 @@
     <reference id="depUserBeanDao" interface="cn.com.rexen.admin.api.dao.IDepartmentUserBeanDao"/>
     <reference id="orgBeanDao" interface="cn.com.rexen.admin.api.dao.IOrganizationBeanDao"/>
     <reference id="aboutBeanDao" interface="cn.com.rexen.admin.api.dao.IAboutBeanDao"/>
+    <reference id="roleApplicationBeanDao" interface="cn.com.rexen.admin.api.dao.IRoleApplicationBeanDao"/>
+    <reference id="roleFunctionBeanDao" interface="cn.com.rexen.admin.api.dao.IRoleFunctionBeanDao"/>
+    <reference id="applicationBeanDao" interface="cn.com.rexen.app.api.dao.IApplicationBeanDao"/>
+    <reference id="functionBeanDao" interface="cn.com.rexen.app.api.dao.IFunctionBeanDao"/>
+    <reference id="functionBeanService" interface="cn.com.rexen.app.api.biz.IFunctionBeanService"/>
     <reference id="messageBeanDao" interface="cn.com.rexen.admin.api.dao.IMessageBeanDao"/>
 
 
@@ -44,7 +49,12 @@
         <property name="userBeanDao" ref="userBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="roleUserBeanDao" ref="roleUserBeanDao"/>
+        <property name="roleApplicationBeanDao" ref="roleApplicationBeanDao"/>
+        <property name="roleFunctionBeanDao" ref="roleFunctionBeanDao"/>
         <property name="workGroupRoleBeanDao" ref="workGroupRoleBeanDao"/>
+        <property name="applicationBeanDao" ref="applicationBeanDao"/>
+        <property name="functionBeanDao" ref="functionBeanDao"/>
+        <property name="functionBeanService" ref="functionBeanService"/>
     </bean>
     <service id="roleBeanService" ref="roleBeanServiceImpl"
              interface="cn.com.rexen.admin.api.biz.IRoleBeanService"/>

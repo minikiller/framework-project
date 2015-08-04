@@ -1,4 +1,4 @@
-package cn.com.rexen.app.dto.model;
+package cn.com.rexen.admin.dto.model;
 
 import cn.com.rexen.core.api.web.model.BaseDTO;
 
@@ -12,38 +12,22 @@ import java.util.List;
  *         date:2015-7-21
  * @version 1.0.0
  */
-public class FunctionDTO extends BaseDTO {
-    private String name; //功能名称
-    private String code; //功能代码
+public class OrganizationDTO extends BaseDTO {
+    private String name; //机构名称
+    private String code; //机构代码
     private String text; //名称
+    private String centerCode; //中心代码
     private boolean leaf; //是否是叶子节点
-    private long parentId; //父功能
-    private String remark; //备注
-    private int applicationId;  // 归属应用
+    private long parentId; //父机构
+    private int areaId;  // 归属区域
     private String parentName; //父节点名称
-    private String permission; //权限路径
-    private List<FunctionDTO> children=new ArrayList<FunctionDTO>();
+    private List<OrganizationDTO> children=new ArrayList<OrganizationDTO>();
 
-    public String getPermission() {
-        return permission;
-    }
-
-    public void setPermission(String permission) {
-        this.permission = permission;
-    }
 
     private Date creationDate;// 创建日期
     private String createBy;    // 创建者
     private String updateBy;    // 更新者
     private Date updateDate; //更新日期
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
 
     public Date getCreationDate() {
         return creationDate;
@@ -109,6 +93,14 @@ public class FunctionDTO extends BaseDTO {
         this.code = code;
     }
 
+    public String getCenterCode() {
+        return centerCode;
+    }
+
+    public void setCenterCode(String centerCode) {
+        this.centerCode = centerCode;
+    }
+
 
     public boolean isLeaf() {
         return leaf;
@@ -126,19 +118,19 @@ public class FunctionDTO extends BaseDTO {
         this.parentId = parentId;
     }
 
-    public int getApplicationId() {
-        return applicationId;
+    public int getAreaId() {
+        return areaId;
     }
 
-    public void setApplicationId(int applicationId) {
-        this.applicationId = applicationId;
+    public void setAreaId(int areaId) {
+        this.areaId = areaId;
     }
 
-    public List<FunctionDTO> getChildren() {
+    public List<OrganizationDTO> getChildren() {
         return children;
     }
 
-    public void setChildren(List<FunctionDTO> children) {
+    public void setChildren(List<OrganizationDTO> children) {
         this.children = children;
     }
 }

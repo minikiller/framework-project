@@ -10,7 +10,6 @@ import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.admin.entities.WorkGroupBean;
 import cn.com.rexen.admin.entities.WorkGroupRoleBean;
 import cn.com.rexen.admin.entities.WorkGroupUserBean;
-import cn.com.rexen.admin.rest.model.WorkGroupDTO;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;

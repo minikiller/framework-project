@@ -13,7 +13,7 @@ import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
  * @version 1.0.0
  */
 public class RoleUserBeanDaoOpenjpa extends GenericOpenJpaDao<RoleUserBean, Long> implements IRoleUserBeanDao {
-    private final String className = WorkGroupUserBean.class.getName();
+    private final String className = RoleUserBean.class.getName();
 
     @Override
     public void deleteByRoleId(long id) {
