@@ -18,6 +18,7 @@
     <bean class="cn.com.rexen.workflow.core.impl.ProcessServiceImpl" id="processServiceImpl">
         <property name="repositoryService" ref="repositoryService"/>
         <property name="historyService" ref="historyService"/>
+        <property name="taskService" ref="taskService"/>
     </bean>
     <service interface="cn.com.rexen.workflow.api.biz.IProcessService" ref="processServiceImpl"/>
 

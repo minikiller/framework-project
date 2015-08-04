@@ -18,4 +18,6 @@ public interface INoticeBeanService extends IBizService {
     public List<NoticeBean> query(String title);
 
     JsonStatus startProcess(String id);
+
+    JsonStatus completeTask(String taskId, String accepted, String comment);
 }

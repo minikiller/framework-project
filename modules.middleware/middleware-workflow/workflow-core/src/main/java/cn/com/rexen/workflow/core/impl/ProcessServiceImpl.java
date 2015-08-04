@@ -2,14 +2,18 @@ package cn.com.rexen.workflow.core.impl;
 
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.workflow.api.biz.IProcessService;
+import cn.com.rexen.workflow.api.model.HistoricActivityInstanceDTO;
 import cn.com.rexen.workflow.api.model.HistoricProcessInstanceDTO;
 import cn.com.rexen.workflow.api.model.JsonData;
 import cn.com.rexen.workflow.api.model.ProcessDefinitionDTO;
 import cn.com.rexen.workflow.core.DozerHelper;
 import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;
+import org.activiti.engine.TaskService;
+import org.activiti.engine.history.HistoricActivityInstance;
 import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.repository.ProcessDefinition;
+import org.activiti.engine.task.Comment;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
@@ -21,7 +25,12 @@ import java.util.List;
 public class ProcessServiceImpl implements IProcessService {
     private transient RepositoryService repositoryService;
     private HistoryService historyService;
+    private TaskService taskService;
     private JsonData jsonData = new JsonData();
+
+    public void setTaskService(TaskService taskService) {
+        this.taskService = taskService;
+    }
 
     public void setRepositoryService(RepositoryService repositoryService) {
         this.repositoryService = repositoryService;
@@ -63,6 +72,7 @@ public class ProcessServiceImpl implements IProcessService {
         try {
             /*ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
             RepositoryService repositoryService = processEngine.getRepositoryService();*/
+
             repositoryService.suspendProcessDefinitionByKey(key);
             jsonStatus.setMsg("暂停流程成功");
         } catch (Exception e) {
@@ -100,6 +110,40 @@ public class ProcessServiceImpl implements IProcessService {
 
     }
 
+    /**
+     * 获得流程历史节点信息
+     *
+     * @param historyProcessId
+     * @return
+     */
+    @Override
+    public JsonData getHistoricActivity(String historyProcessId) {
+        List<HistoricActivityInstanceDTO> historicActivityDTOList;
+        List<HistoricActivityInstance> list = historyService.createHistoricActivityInstanceQuery().processInstanceId(historyProcessId).list();
+        for (int i = list.size(); i > 0; i--) {
+            if (null == list.get(i - 1).getTaskId()) {
+                list.remove(i - 1);
+            }
+        }
+
+
+        if (list != null) {
+            Mapper mapper = new DozerBeanMapper();
+            historicActivityDTOList = DozerHelper.map(mapper, list, HistoricActivityInstanceDTO.class);
+            for (HistoricActivityInstanceDTO historicActivityInstance : historicActivityDTOList) {
+                List<Comment> commentList = taskService.getTaskComments(historicActivityInstance.getTaskId());
+                String str = "";
+                for (Comment comment : commentList) {
+                    str = comment.getFullMessage() + str + " ";
+                }
+                historicActivityInstance.setComment(str);
+            }
+
+            jsonData.setTotalCount(historicActivityDTOList.size());
+            jsonData.setData(historicActivityDTOList);
+        }
+        return jsonData;
+    }
 
     /**
      * 启动流程定义

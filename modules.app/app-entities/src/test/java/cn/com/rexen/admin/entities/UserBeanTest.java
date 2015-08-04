@@ -4,9 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
-
 /**
  * UserBeanImpl Tester.
  *
@@ -39,14 +36,14 @@ public class UserBeanTest {
      */
     @Test
     public void testJaxb() throws Exception {
-        UserBean user = new UserBean();
+        /*UserBean user = new UserBean();
         user.setName("name");
         user.setPassword("password");
 
         JAXBContext jc = JAXBContext.newInstance(UserBean.class);
         Marshaller marshaller = jc.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        marshaller.marshal(user, System.out);
+        marshaller.marshal(user, System.out);*/
     }
 
 

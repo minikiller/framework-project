@@ -49,6 +49,11 @@
                 <to uri="bean:demoService?method=startProcess(${header.id})"/>
             </get>
 
+            <get id="route-completeTaskDemo" uri="/completeTask" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Complete Task of Demo</description>
+                <to uri="bean:demoService?method=completeTask(${header.taskId},${header.accepted},${header.comment})"/>
+            </get>
+
         </rest>
 
     </camelContext>

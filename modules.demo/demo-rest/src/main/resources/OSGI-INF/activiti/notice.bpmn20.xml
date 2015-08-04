@@ -27,7 +27,7 @@
                 <activiti:formProperty id="accepted" name="判断环节" variable="accepted"
                                        type="boolean"></activiti:formProperty>
             </extensionElements>
-            <humanPerformer>
+            <!--<humanPerformer>
                 <resourceAssignmentExpression>
                     <formalExpression>${assignee}</formalExpression>
                 </resourceAssignmentExpression>
@@ -36,7 +36,7 @@
                 <loopDataInputRef>assigneeList</loopDataInputRef>
                 <inputDataItem name="assignee"></inputDataItem>
                 <completionCondition>${nrOfCompletedInstances/nrOfInstances == 1}</completionCondition>
-            </multiInstanceLoopCharacteristics>
+            </multiInstanceLoopCharacteristics>-->
         </userTask>
         <sequenceFlow id="flow4" name="同意" sourceRef="exclusivegateway1" targetRef="usertask3">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>

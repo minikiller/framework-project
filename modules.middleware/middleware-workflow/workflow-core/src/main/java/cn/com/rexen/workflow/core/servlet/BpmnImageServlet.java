@@ -1,7 +1,5 @@
 package cn.com.rexen.workflow.core.servlet;
 
-import cn.com.rexen.core.util.Assert;
-import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
@@ -37,11 +35,10 @@ public class BpmnImageServlet extends BaseBpmnImageServlet {
 
         if (processDefinitionId != null)//如果传入一个参数，返回流程图片，不带活动节点
             imageStream = getInputStream(processDefinitionId);
-        else if(processInstanceId!=null){
+        else if (processInstanceId != null) {//带活动节点
             ProcessInstance pi = runtimeService.createProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
             imageStream = getInputStream(pi.getProcessDefinitionId(), processInstanceId);
-        }
-        else if(taskId!=null){
+        } else if (taskId != null) {//带活动节点
             Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
             processInstanceId=task.getProcessInstanceId();
             ProcessInstance pi = runtimeService.createProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
