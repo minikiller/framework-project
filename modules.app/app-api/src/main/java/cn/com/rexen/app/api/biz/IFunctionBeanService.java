@@ -1,5 +1,6 @@
 package cn.com.rexen.app.api.biz;
 
+import cn.com.rexen.admin.entities.RoleFunctionBean;
 import cn.com.rexen.app.dto.model.ApplicationDTO;
 import cn.com.rexen.app.dto.model.AuthorizationDTO;
 import cn.com.rexen.app.dto.model.FunctionDTO;
@@ -43,4 +44,12 @@ public interface IFunctionBeanService extends IBizService {
      * @param mapper
      */
     public void getChilden(AuthorizationDTO root, List<FunctionBean> elements, Mapper mapper);
+
+    /**
+     * 返回子节点并设置选中状态
+     * @param root
+     * @param elements
+     * @param mapper
+     */
+    public void getChilden(AuthorizationDTO root, List<FunctionBean> elements, Mapper mapper,List<RoleFunctionBean> roleFunctionBeans);
 }

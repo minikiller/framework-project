@@ -57,9 +57,21 @@
             <artifactId>cn.com.rexen.kalix.admin.rest</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>cn.com.rexen.kalix.admin</groupId>
+            <artifactId>cn.com.rexen.kalix.admin.dto</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>cn.com.rexen.core</groupId>
             <artifactId>cn.com.rexen.core.impl</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.app</groupId>
+            <artifactId>cn.com.rexen.kalix.app.dto</artifactId>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>

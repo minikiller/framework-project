@@ -70,7 +70,11 @@
             <artifactId>cn.com.rexen.core.impl</artifactId>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>cn.com.rexen.kalix.admin</groupId>
+            <artifactId>cn.com.rexen.kalix.admin.entities</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
     <build>
 

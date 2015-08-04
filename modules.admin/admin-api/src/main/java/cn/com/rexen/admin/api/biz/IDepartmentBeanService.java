@@ -1,8 +1,8 @@
 package cn.com.rexen.admin.api.biz;
 
+import cn.com.rexen.admin.dto.model.DepartmentDTO;
 import cn.com.rexen.admin.entities.DepartmentBean;
 import cn.com.rexen.admin.entities.UserBean;
-import cn.com.rexen.admin.rest.model.DepartmentDTO;
 import cn.com.rexen.core.api.biz.IBizService;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;

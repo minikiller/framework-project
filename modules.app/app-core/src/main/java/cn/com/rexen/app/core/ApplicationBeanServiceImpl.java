@@ -162,6 +162,7 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
                     Assert.notNull(applicationBean,"应用不能为空");
                     Mapper mapper = new DozerBeanMapper();
                     AuthorizationDTO applicationDTO = mapper.map(applicationBean, AuthorizationDTO.class);
+                    applicationDTO.setParentId(-1);
                     applicationDTO.setLeaf(true);
                     applicationDTO.setChecked(true);
                     applicationDTO.setExpanded(true);
@@ -174,6 +175,7 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
                         if(rootFunctions!=null&&rootFunctions.size()>0){
                             for(FunctionBean functionBean:rootFunctions) {
                                 AuthorizationDTO functionDTO = mapper.map(functionBean, AuthorizationDTO.class);
+                                functionDTO.setParentId(applicationBean.getId());
                                 functionDTO.setLeaf(functionBean.getIsLeaf() == 0 ? false : true);
                                 functionDTO.setText(functionBean.getName());
                                 functionDTO.setChecked(true);

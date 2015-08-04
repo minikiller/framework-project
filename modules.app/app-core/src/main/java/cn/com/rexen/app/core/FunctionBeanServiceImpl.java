@@ -1,5 +1,6 @@
 package cn.com.rexen.app.core;
 
+import cn.com.rexen.admin.entities.RoleFunctionBean;
 import cn.com.rexen.app.api.biz.IApplicationBeanService;
 import cn.com.rexen.app.api.biz.IFunctionBeanService;
 import cn.com.rexen.app.api.dao.IApplicationBeanDao;
@@ -224,6 +225,40 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
                 children.add(functionDTO);
                 if(functionBean.getIsLeaf()==0) {
                     getChilden(functionDTO, elements, mapper);
+                }
+            }
+        }
+        root.setChildren(children);
+    }
+
+    /**
+     * 递归函数加载子节点,并设置选中状态
+     *
+     * @param root
+     * @param elements
+     */
+    public void getChilden(AuthorizationDTO root, List<FunctionBean> elements, Mapper mapper,List<RoleFunctionBean> roleFunctionBeans) {
+        List<AuthorizationDTO> children = new ArrayList<AuthorizationDTO>();
+
+        for (FunctionBean functionBean : elements) {
+            if (root.getId()!=null&&root.getId().equals(String.valueOf(functionBean.getParentId()))) {
+                AuthorizationDTO functionDTO = mapper.map(functionBean, AuthorizationDTO.class);
+                functionDTO.setLeaf(functionBean.getIsLeaf() == 0 ? false : true);
+                functionDTO.setParentName(root.getName());
+                functionDTO.setChecked(false);
+                if(roleFunctionBeans!=null&&!roleFunctionBeans.isEmpty()){
+                    for(RoleFunctionBean roleFunctionBean:roleFunctionBeans){
+                        if(functionBean.getId()==roleFunctionBean.getFunctionId()){
+                            functionDTO.setChecked(true);
+                            break;
+                        }
+                    }
+                }
+                functionDTO.setExpanded(true);
+                functionDTO.setText(functionBean.getName());
+                children.add(functionDTO);
+                if(functionBean.getIsLeaf()==0) {
+                    getChilden(functionDTO, elements, mapper,roleFunctionBeans);
                 }
             }
         }

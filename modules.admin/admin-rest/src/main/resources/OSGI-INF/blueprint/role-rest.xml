@@ -66,6 +66,18 @@
                 <to uri="bean:roleService?method=getAllRole()"/>
             </get>
 
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-saveAuthorization" uri="/authorizations"  outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>save Authorization</description>
+                <to uri="bean:roleService?method=saveAuthorization(${header.roleId},${header.authorizationIds})"/>
+            </get>
+
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-getAuthorizationTree" uri="/{id}/authorizations" >
+                <description>find Authorizaition by RoleId</description>
+                <to uri="bean:roleService?method=getAuthorizationTree(${header.id})"/>
+            </get>
+
         </rest>
 
     </camelContext>

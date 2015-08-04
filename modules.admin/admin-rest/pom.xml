@@ -46,6 +46,11 @@
             <artifactId>cn.com.rexen.core.api</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.admin</groupId>
+            <artifactId>cn.com.rexen.kalix.admin.dto</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
         <!-- use for json binding -->
         <dependency>

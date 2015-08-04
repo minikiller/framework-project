@@ -27,6 +27,7 @@
         <module>admin-core</module>
         <module>admin-resources</module>
         <module>admin-rest</module>
+        <module>admin-dto</module>
         <module>admin-web</module>
     </modules>
     <dependencyManagement>
@@ -40,6 +41,12 @@
             <dependency>
                 <groupId>cn.com.rexen.core</groupId>
                 <artifactId>cn.com.rexen.core.impl</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.dto</groupId>
+                <artifactId>cn.com.rexen.kalix.admin.dto</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
                 <scope>provided</scope>
             </dependency>
@@ -58,6 +65,30 @@
             <dependency>
                 <groupId>cn.com.rexen.kalix.admin</groupId>
                 <artifactId>cn.com.rexen.kalix.admin.rest</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.admin</groupId>
+                <artifactId>cn.com.rexen.kalix.admin.dto</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.app</groupId>
+                <artifactId>cn.com.rexen.kalix.app.dto</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.app</groupId>
+                <artifactId>cn.com.rexen.kalix.app.entities</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.app</groupId>
+                <artifactId>cn.com.rexen.kalix.app.api</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
                 <scope>provided</scope>
             </dependency>

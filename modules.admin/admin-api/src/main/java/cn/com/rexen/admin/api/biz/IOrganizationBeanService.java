@@ -1,7 +1,7 @@
 package cn.com.rexen.admin.api.biz;
 
+import cn.com.rexen.admin.dto.model.OrganizationDTO;
 import cn.com.rexen.admin.entities.OrganizationBean;
-import cn.com.rexen.admin.rest.model.OrganizationDTO;
 import cn.com.rexen.core.api.biz.IBizService;
 import cn.com.rexen.core.api.biz.JsonStatus;
 

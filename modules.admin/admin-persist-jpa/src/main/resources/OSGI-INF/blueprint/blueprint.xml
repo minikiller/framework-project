@@ -32,6 +32,22 @@
         <!--<property name="persistEntityService" ref="persistEntityService" />-->
     </bean>
 
+    <service id="roleApplicationBeanDao" ref="roleApplicationBeanDaoOpenjpa" interface="cn.com.rexen.admin.api.dao.IRoleApplicationBeanDao"/>
+    <bean id="roleApplicationBeanDaoOpenjpa"
+          class="cn.com.rexen.admin.persist.openjpa.RoleApplicationBeanDaoOpenjpa"> <!--init-method="init">-->
+        <jpa:context property="entityManager" unitname="admin-cm"/>
+        <tx:transaction method="*" value="Required"/>
+        <!--<property name="persistEntityService" ref="persistEntityService" />-->
+    </bean>
+
+    <service id="roleFunctionBeanDao" ref="roleFunctionBeanDaoOpenjpa" interface="cn.com.rexen.admin.api.dao.IRoleFunctionBeanDao"/>
+    <bean id="roleFunctionBeanDaoOpenjpa"
+          class="cn.com.rexen.admin.persist.openjpa.RoleFunctionBeanDaoOpenjpa"> <!--init-method="init">-->
+        <jpa:context property="entityManager" unitname="admin-cm"/>
+        <tx:transaction method="*" value="Required"/>
+        <!--<property name="persistEntityService" ref="persistEntityService" />-->
+    </bean>
+
     <service id="roleCodeBeanDao" ref="roleBeanDaoOpenjpa" interface="cn.com.rexen.admin.api.dao.IRoleBeanDao"/>
 
     <!--<reference id="persistEntityService"   interface="cn.com.rexen.core.api.persistence.PersistEntityService"/>-->

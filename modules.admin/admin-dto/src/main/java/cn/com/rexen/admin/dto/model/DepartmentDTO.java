@@ -1,4 +1,4 @@
-package cn.com.rexen.admin.rest.model;
+package cn.com.rexen.admin.dto.model;
 
 import cn.com.rexen.core.api.web.model.BaseDTO;
 
@@ -7,47 +7,28 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 区域模型类
+ * 部门模型类
  * @author majian <br/>
- *         date:2015-7-24
+ *         date:2015-7-21
  * @version 1.0.0
  */
-public class AreaDTO extends BaseDTO {
+public class DepartmentDTO extends BaseDTO {
     private String name; //名称
-    private String code; //代码
     private String text; //名称
+    private String code; //代码
     private String centerCode; //中心代码
     private boolean leaf; //是否是叶子节点
     private long parentId; //父节点
+    private int orgId;  // 所属机构
     private String parentName; //父节点名称
-    private List<AreaDTO> children=new ArrayList<AreaDTO>();
-    private String jd; //经度
-    private String wd; //纬度
+    private List<DepartmentDTO> children=new ArrayList<DepartmentDTO>();
+
 
     private Date creationDate;// 创建日期
     private String createBy;    // 创建者
     private String updateBy;    // 更新者
     private Date updateDate; //更新日期
 
-    public String getJd() {
-        return jd;
-    }
-
-    public void setJd(String jd) {
-        this.jd = jd;
-    }
-
-    public String getWd() {
-        return wd;
-    }
-
-    public void setWd(String wd) {
-        this.wd = wd;
-    }
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
 
     public String getText() {
         return text;
@@ -55,6 +36,10 @@ public class AreaDTO extends BaseDTO {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
     }
 
     public void setCreationDate(Date creationDate) {
@@ -134,12 +119,19 @@ public class AreaDTO extends BaseDTO {
         this.parentId = parentId;
     }
 
+    public int getOrgId() {
+        return orgId;
+    }
 
-    public List<AreaDTO> getChildren() {
+    public void setOrgId(int orgId) {
+        this.orgId = orgId;
+    }
+
+    public List<DepartmentDTO> getChildren() {
         return children;
     }
 
-    public void setChildren(List<AreaDTO> children) {
+    public void setChildren(List<DepartmentDTO> children) {
         this.children = children;
     }
 }
