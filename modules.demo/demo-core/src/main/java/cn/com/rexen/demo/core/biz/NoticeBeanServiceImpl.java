@@ -141,7 +141,7 @@ public class NoticeBeanServiceImpl extends GenericBizServiceImpl implements INot
             Task curTask = taskService.createTaskQuery().processInstanceId(processInstanceId).singleResult();
             //设置实体状态
             if (curTask != null) {
-                bean.setCurrentNode(task.getName());
+                bean.setCurrentNode(curTask.getName());
                 bean.setStatus(WorkflowStaus.ACTIVE);
             } else {
                 bean.setCurrentNode("");

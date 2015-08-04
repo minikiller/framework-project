@@ -26,6 +26,7 @@
         <module>demo-core</module>
         <module>demo-persist-jpa</module>
         <module>demo-rest</module>
+        <module>demo-web</module>
 
     </modules>
     <dependencyManagement>
