@@ -89,10 +89,10 @@ public class ProcessServiceImpl implements IProcessService {
      * @return
      */
     @Override
-    public JsonData getProcessHistory() {
+    public JsonData getProcessHistory(int page, int limit) {
         List<HistoricProcessInstanceDTO> historicProcessDTOList = null;
         List<HistoricProcessInstance> processHistoryList = historyService.createHistoricProcessInstanceQuery()
-                .orderByProcessInstanceStartTime().desc().list();
+                .orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
         if (processHistoryList != null) {
             Mapper mapper = new DozerBeanMapper();
             historicProcessDTOList = DozerHelper.map(mapper, processHistoryList, HistoricProcessInstanceDTO.class);
@@ -103,7 +103,8 @@ public class ProcessServiceImpl implements IProcessService {
                 else
                     dto.setStatus("进行中");
             }
-            jsonData.setTotalCount(historicProcessDTOList.size());
+            long count = historyService.createHistoricProcessInstanceQuery().count();
+            jsonData.setTotalCount((int) count);
             jsonData.setData(historicProcessDTOList);
         }
         return jsonData;

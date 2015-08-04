@@ -30,17 +30,19 @@ public class TaskServiceImpl implements ITaskService {
      * @return
      */
     @Override
-    public JsonData getTasks(String userId) {
+    public JsonData getTasks(String userId, int page, int limit) {
         List<TaskDTO> taskDTOList;
         List<Task> taskList = taskService
                 .createTaskQuery()
                 .taskAssignee(userId).orderByTaskCreateTime().desc()
-                .list();
+                .listPage((page - 1) * limit, limit);
 
         if (taskList != null) {
             Mapper mapper = new DozerBeanMapper();
             taskDTOList = DozerHelper.map(mapper, taskList, TaskDTO.class);
-            jsonData.setTotalCount(taskDTOList.size());
+            jsonData.setTotalCount((int) taskService
+                    .createTaskQuery()
+                    .taskAssignee(userId).count());
             jsonData.setData(taskDTOList);
         }
         return jsonData;

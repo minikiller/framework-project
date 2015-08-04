@@ -16,7 +16,7 @@ public interface IProcessService extends IService {
 
     JsonStatus suspendProcessDefinition(String key);
 
-    JsonData getProcessHistory();
+    JsonData getProcessHistory(int firstResult, int maxResults);
 
     JsonData getHistoricActivity(String historyProcessId);
 }
