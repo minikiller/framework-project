@@ -143,7 +143,59 @@ public class NoticeBeanServiceImpl extends GenericBizServiceImpl implements INot
             Map<String, Object> submitMap = new HashMap<String, Object>();
             boolean passed = accepted.equals("同意") ? true : false;
             submitMap.put("accepted", passed);
+            if(!passed){
+                submitMap.put("assignee","qwer");
+            }
             taskService.complete(task.getId(), submitMap);
+            Task curTask = taskService.createTaskQuery().processInstanceId(processInstanceId).singleResult();
+            //设置实体状态
+            if (curTask != null) {
+                bean.setCurrentNode(curTask.getName());
+                bean.setStatus(WorkflowStaus.ACTIVE);
+            } else {
+                bean.setCurrentNode("");
+                bean.setStatus(WorkflowStaus.FINISH);
+            }
+
+            this.saveEntity(bean);
+            jsonStatus.setMsg("任务处理成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setFailure(true);
+            jsonStatus.setSuccess(false);
+            jsonStatus.setMsg("任务处理失败！");
+        }
+        return jsonStatus;
+    }
+
+    /**
+     * 编辑任务
+     *
+     * @param taskId   任务id
+     * @return
+     */
+    @Override
+    public JsonStatus completeTask(String taskId) {
+        try {
+            jsonStatus.setSuccess(true);
+            String currentUserId = userLoginService.getLoginName();
+            Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+            //通过任务对象获取流程实例
+            final String processInstanceId = task.getProcessInstanceId();
+            ProcessInstance pi = runtimeService.createProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
+
+            //通过流程实例获取“业务键”
+            String businessKey = pi.getBusinessKey();
+            //拆分业务键，拆分成“业务对象名称”和“业务对象ID”的数组
+            String beanId = WorkflowUtil.getBizId(businessKey);
+
+            NoticeBean bean = (NoticeBean) this.getEntity(new Long(beanId));
+
+            taskService.claim(task.getId(), currentUserId);
+            //添加备注信息
+            identityService.setAuthenticatedUserId(currentUserId);
+            Map<String, Object> submitMap = new HashMap<String, Object>();
+            taskService.complete(task.getId());
             Task curTask = taskService.createTaskQuery().processInstanceId(processInstanceId).singleResult();
             //设置实体状态
             if (curTask != null) {

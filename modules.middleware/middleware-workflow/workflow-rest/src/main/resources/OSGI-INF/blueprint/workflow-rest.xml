@@ -93,7 +93,7 @@
                 <to uri="bean:commonService?method=getForm(${header.taskId})"/>
             </get>
 
-            <get id="route-form" uri="/bizData" outType="cn.com.rexen.workflow.api.model.BizDataDTO">
+            <get id="route-bizData" uri="/bizData" outType="cn.com.rexen.workflow.api.model.BizDataDTO">
                 <description>Find BizData</description>
                 <to uri="bean:commonService?method=getBizData(${header.processDefinitionId})"/>
             </get>

@@ -7,10 +7,10 @@ import cn.com.rexen.workflow.api.web.IFormHandler;
  * Created by sunlf on 2015/8/4.
  * 审批页面实现类
  */
-public class DemoAuditFormImpl implements IFormHandler {
+public class DemoEndFormImpl implements IFormHandler {
     @Override
     public String getFormKey() {
-        return "audit.form";
+        return "end.form";
     }
 
     @Override
@@ -20,6 +20,6 @@ public class DemoAuditFormImpl implements IFormHandler {
 
     @Override
     public String getComponentClass() {
-        return "Kalix.demo.view.AuditWindow";
+        return "Kalix.demo.view.EndWindow";
     }
 }

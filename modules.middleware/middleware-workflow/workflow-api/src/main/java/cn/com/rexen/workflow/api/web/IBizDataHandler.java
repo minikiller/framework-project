@@ -12,12 +12,13 @@ public interface IBizDataHandler {
      */
     String getBizName();
 
+
     /**
      * 获得form的实现Extjs类
      *
      * @return
      */
-    String getComponentClass(String bizId);
+    String getComponentClass();
 
     /**
      * 获得流程定义名称

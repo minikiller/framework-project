@@ -60,11 +60,19 @@ public class BpmnImageServlet extends BaseBpmnImageServlet {
                     e.printStackTrace();
                 }
             }
-            imageStream.close();
-            out.flush();
-            out.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                if(imageStream!=null)
+                    imageStream.close();
+                if(out!=null) {
+                    out.flush();
+                    out.close();
+                }
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
     }
 

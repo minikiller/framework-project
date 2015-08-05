@@ -20,4 +20,5 @@ public interface INoticeBeanService extends IBizService {
     JsonStatus startProcess(String id);
 
     JsonStatus completeTask(String taskId, String accepted, String comment);
+    JsonStatus completeTask(String taskId);
 }

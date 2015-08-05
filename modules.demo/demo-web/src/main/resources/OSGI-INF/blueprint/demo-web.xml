@@ -10,4 +10,10 @@
     <service interface="cn.com.rexen.workflow.api.web.IFormHandler">
         <bean class="cn.com.rexen.demo.web.impl.DemoAuditFormImpl"/>
     </service>
+    <service interface="cn.com.rexen.workflow.api.web.IFormHandler">
+        <bean class="cn.com.rexen.demo.web.impl.DemoEndFormImpl"/>
+    </service>
+    <service interface="cn.com.rexen.workflow.api.web.IFormHandler">
+        <bean class="cn.com.rexen.demo.web.impl.DemoModifyFormImpl"/>
+    </service>
 </blueprint>

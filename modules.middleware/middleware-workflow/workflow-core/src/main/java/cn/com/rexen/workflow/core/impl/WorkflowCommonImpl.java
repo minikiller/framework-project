@@ -3,6 +3,7 @@ package cn.com.rexen.workflow.core.impl;
 import cn.com.rexen.workflow.api.biz.IWorkflowCommon;
 import cn.com.rexen.workflow.api.model.BizDataDTO;
 import cn.com.rexen.workflow.api.model.FormDTO;
+import cn.com.rexen.workflow.api.util.WorkflowUtil;
 import cn.com.rexen.workflow.api.web.IBizDataHandler;
 import cn.com.rexen.workflow.api.web.IFormHandler;
 import cn.com.rexen.workflow.core.manager.BizDataManager;
@@ -52,7 +53,7 @@ public class WorkflowCommonImpl implements IWorkflowCommon {
 
     @Override
     public BizDataDTO getBizData(String processDefinitionId) {
-        IBizDataHandler bizDataHandler = BizDataManager.getInstall().findPanelByKey(processDefinitionId);
+        IBizDataHandler bizDataHandler = BizDataManager.getInstall().findPanelByKey(WorkflowUtil.getProcessKey(processDefinitionId));
         Mapper mapper = new DozerBeanMapper();
         BizDataDTO bizDataDTO = mapper.map(bizDataHandler, BizDataDTO.class);
         return bizDataDTO;

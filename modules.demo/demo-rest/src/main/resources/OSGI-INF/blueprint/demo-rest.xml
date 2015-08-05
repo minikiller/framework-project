@@ -54,6 +54,17 @@
                 <to uri="bean:demoService?method=completeTask(${header.taskId},${header.accepted},${header.comment})"/>
             </get>
 
+            <get id="route-modifyTask" uri="/modifyTask" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Complete Task of Demo</description>
+                <to uri="bean:demoService?method=completeTask(${header.taskId})"/>
+            </get>
+
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-getDemo" uri="/{id}" outType="cn.com.rexen.demo.entities.NoticeBean">
+                <description>Find notice by id</description>
+                <to uri="bean:demoService?method=getEntity(${header.id})"/>
+            </get>
+
         </rest>
 
     </camelContext>
