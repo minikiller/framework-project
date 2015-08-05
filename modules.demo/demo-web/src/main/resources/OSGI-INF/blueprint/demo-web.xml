@@ -2,6 +2,11 @@
 <blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+    <!-- 流程历史页面-->
+    <service interface="cn.com.rexen.workflow.api.web.IBizDataHandler">
+        <bean class="cn.com.rexen.demo.web.impl.DemoBizDataFormImpl"/>
+    </service>
+    <!-- 审批页面-->
     <service interface="cn.com.rexen.workflow.api.web.IFormHandler">
         <bean class="cn.com.rexen.demo.web.impl.DemoAuditFormImpl"/>
     </service>

@@ -33,6 +33,10 @@ public class TaskServiceImpl implements ITaskService {
         this.userLoginService = userLoginService;
     }
 
+    public void setRuntimeService(RuntimeService runtimeService) {
+        this.runtimeService = runtimeService;
+    }
+
     /**
      * 获得工作流任务列表
      *

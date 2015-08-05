@@ -35,6 +35,8 @@
 
     <reference id="processService" interface="cn.com.rexen.workflow.api.biz.IProcessService"/>
     <reference id="taskService" interface="cn.com.rexen.workflow.api.biz.ITaskService"/>
+    <reference id="commonService" interface="cn.com.rexen.workflow.api.biz.IWorkflowCommon"/>
+
     <camelContext id="workflowCamel" xmlns="http://camel.apache.org/schema/blueprint">
 
         <!-- configure rest to use the camel-servlet component, and use json binding mode -->
@@ -85,7 +87,16 @@
                 <description>Find All Historic Activity</description>
                 <to uri="bean:processService?method=getHistoricActivity(${header.historyProcessId})"/>
             </get>
+            <!-- form and bizData rest service-->
+            <get id="route-form" uri="/form" outType="cn.com.rexen.workflow.api.model.FormDTO">
+                <description>Find Form</description>
+                <to uri="bean:commonService?method=getForm(${header.taskId})"/>
+            </get>
 
+            <get id="route-form" uri="/bizData" outType="cn.com.rexen.workflow.api.model.BizDataDTO">
+                <description>Find BizData</description>
+                <to uri="bean:commonService?method=getBizData(${header.processDefinitionId})"/>
+            </get>
 
         </rest>
 

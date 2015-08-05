@@ -7,12 +7,22 @@
     <bean id="workFlowServiceImpl" class="cn.com.rexen.workflow.core.impl.WorkflowServiceImpl">
     </bean>
 
+    <service interface="cn.com.rexen.workflow.api.biz.IWorkflowCommon" ref="workflowCommonImpl">
+    </service>
+
+    <bean id="workflowCommonImpl" class="cn.com.rexen.workflow.core.impl.WorkflowCommonImpl">
+        <property name="formService" ref="formService"/>
+        <property name="repositoryService" ref="repositoryService"/>
+        <property name="taskService" ref="taskService"/>
+    </bean>
+
 
     <reference id="repositoryService" interface="org.activiti.engine.RepositoryService"/>
     <reference id="taskService" interface="org.activiti.engine.TaskService"/>
     <reference id="historyService" interface="org.activiti.engine.HistoryService"/>
     <reference id="runtimeService" interface="org.activiti.engine.RuntimeService"/>
     <reference id="processEngine" interface="org.activiti.engine.ProcessEngine"/>
+    <reference id="formService" interface="org.activiti.engine.FormService"/>
     <reference id="userLoginService" interface="cn.com.rexen.core.api.security.IUserLoginService"/>
 
     <!-- 注册process服务-->
@@ -27,6 +37,7 @@
     <bean id="taskServiceImpl" class="cn.com.rexen.workflow.core.impl.TaskServiceImpl">
         <property name="taskService" ref="taskService"/>
         <property name="userLoginService" ref="userLoginService"/>
+        <property name="runtimeService" ref="runtimeService"/>
     </bean>
 
     <service interface="cn.com.rexen.workflow.api.biz.ITaskService" ref="taskServiceImpl"/>
