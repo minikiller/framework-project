@@ -7,5 +7,5 @@ import cn.com.rexen.workflow.api.model.JsonData;
  * Created by sunlf on 2015/7/31.
  */
 public interface ITaskService extends IService {
-    JsonData getTasks(String userId, int page, int limit);
+    JsonData getTasks(int page, int limit);
 }

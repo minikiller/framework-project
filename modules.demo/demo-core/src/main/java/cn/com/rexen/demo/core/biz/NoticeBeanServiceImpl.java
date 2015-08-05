@@ -2,6 +2,7 @@ package cn.com.rexen.demo.core.biz;
 
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.WorkflowStaus;
+import cn.com.rexen.core.api.security.IUserLoginService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.demo.api.biz.INoticeBeanService;
 import cn.com.rexen.demo.api.dao.INoticeBeanDao;
@@ -32,12 +33,17 @@ public class NoticeBeanServiceImpl extends GenericBizServiceImpl implements INot
     private IdentityService identityService;
     private RuntimeService runtimeService;
     private TaskService taskService;
+    private IUserLoginService userLoginService;
     private JsonStatus jsonStatus = new JsonStatus();
 
     private String uuid;
 
     public NoticeBeanServiceImpl() {
         uuid = UUID.randomUUID().toString();
+    }
+
+    public void setUserLoginService(IUserLoginService userLoginService) {
+        this.userLoginService = userLoginService;
     }
 
     public void setNoticeBeanDao(INoticeBeanDao demoBeanDao) {
@@ -83,8 +89,8 @@ public class NoticeBeanServiceImpl extends GenericBizServiceImpl implements INot
         try {
             String bizKey = Const.PROCESS_KEY_NAME + ":" + entityId;
             //获得当前登陆用户
-            //todo need to refactor
-            identityService.setAuthenticatedUserId("test");
+            String userName = userLoginService.getLoginName();
+            identityService.setAuthenticatedUserId(userName);
             NoticeBean bean = (NoticeBean) this.getEntity(new Long(entityId));
             //启动流程
             ProcessInstance instance = runtimeService.startProcessInstanceByKey(Const.PROCESS_KEY_NAME, bizKey);
@@ -117,7 +123,7 @@ public class NoticeBeanServiceImpl extends GenericBizServiceImpl implements INot
     public JsonStatus completeTask(String taskId, String accepted, String comment) {
         try {
             jsonStatus.setSuccess(true);
-            String currentUserId = "spajj";
+            String currentUserId = userLoginService.getLoginName();
             Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
             //通过任务对象获取流程实例
             final String processInstanceId = task.getProcessInstanceId();

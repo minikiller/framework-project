@@ -10,7 +10,7 @@ import cn.com.rexen.workflow.api.model.JsonData;
  * 流程服务接口
  */
 public interface IProcessService extends IService {
-    JsonData getProcessDefinition();
+    JsonData getProcessDefinition(int page, int limit);
 
     JsonStatus activateProcessDefinition(String key);
 

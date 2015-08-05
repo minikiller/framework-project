@@ -40,7 +40,6 @@ public interface IUserLoginService {
      *
      * @param username    用户名
      * @param password    用户密码
-     * @param is_ent_user 是否是企业用户：0-否；1-是；
      * @return
      */
     public Map login(String username, String password);
@@ -60,6 +59,8 @@ public interface IUserLoginService {
      * @return 权限列表
      */
     public List<String> getUserPermission(String username);
+
+    String getLoginName();
 
     /**
      * 手机端登录

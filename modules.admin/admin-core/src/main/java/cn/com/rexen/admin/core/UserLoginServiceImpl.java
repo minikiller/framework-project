@@ -1,16 +1,15 @@
 package cn.com.rexen.admin.core;
 
-import cn.com.rexen.admin.api.dao.IAreaBeanDao;
-import cn.com.rexen.admin.api.dao.IDepartmentUserBeanDao;
-import cn.com.rexen.admin.api.dao.IOrganizationBeanDao;
 import cn.com.rexen.admin.api.dao.IUserBeanDao;
 import cn.com.rexen.admin.entities.PermissionBean;
 import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.ErrorCodeValue;
 import cn.com.rexen.core.api.security.IUserLoginService;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.subject.Subject;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -102,6 +101,18 @@ public class UserLoginServiceImpl implements IUserLoginService {
             }
         }
         return stringList;
+    }
+
+    /**
+     * 获得登录用户名
+     *
+     * @return
+     */
+    @Override
+    public String getLoginName() {
+        Subject subject = SecurityUtils.getSubject();
+        String userName = (String) subject.getPrincipal();
+        return userName;
     }
 
     private String encrypt(String text) {

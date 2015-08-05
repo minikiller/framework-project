@@ -46,14 +46,14 @@ public class ProcessServiceImpl implements IProcessService {
      * @return
      */
     @Override
-    public JsonData getProcessDefinition() {
+    public JsonData getProcessDefinition(int page, int limit) {
 
         List<ProcessDefinitionDTO> processDefinitionDTOList = null;
-        List<ProcessDefinition> processDefinitionList = repositoryService.createProcessDefinitionQuery().latestVersion().list();
+        List<ProcessDefinition> processDefinitionList = repositoryService.createProcessDefinitionQuery().latestVersion().listPage((page - 1) * limit, limit);
         if (processDefinitionList != null) {
             Mapper mapper = new DozerBeanMapper();
             processDefinitionDTOList = DozerHelper.map(mapper, processDefinitionList, ProcessDefinitionDTO.class);
-            jsonData.setTotalCount(processDefinitionDTOList.size());
+            jsonData.setTotalCount((int) repositoryService.createProcessDefinitionQuery().latestVersion().count());
             jsonData.setData(processDefinitionDTOList);
         }
         return jsonData;

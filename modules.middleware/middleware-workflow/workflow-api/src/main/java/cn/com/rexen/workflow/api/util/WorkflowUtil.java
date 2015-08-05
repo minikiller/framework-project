@@ -24,7 +24,7 @@ public class WorkflowUtil {
         //拆分业务键，拆分成“业务对象名称”和“业务对象ID”的数组
         String beanId = null;
         if (StringUtils.isNotBlank(businessKey)) {
-            beanId = businessKey.split(":")[2];
+            beanId = businessKey.split(":")[1];
         }
         return beanId;
     }

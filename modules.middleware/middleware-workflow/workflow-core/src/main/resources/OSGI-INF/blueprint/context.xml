@@ -13,6 +13,7 @@
     <reference id="historyService" interface="org.activiti.engine.HistoryService"/>
     <reference id="runtimeService" interface="org.activiti.engine.RuntimeService"/>
     <reference id="processEngine" interface="org.activiti.engine.ProcessEngine"/>
+    <reference id="userLoginService" interface="cn.com.rexen.core.api.security.IUserLoginService"/>
 
     <!-- 注册process服务-->
     <bean class="cn.com.rexen.workflow.core.impl.ProcessServiceImpl" id="processServiceImpl">
@@ -25,7 +26,9 @@
     <!-- 注册task服务-->
     <bean id="taskServiceImpl" class="cn.com.rexen.workflow.core.impl.TaskServiceImpl">
         <property name="taskService" ref="taskService"/>
+        <property name="userLoginService" ref="userLoginService"/>
     </bean>
+
     <service interface="cn.com.rexen.workflow.api.biz.ITaskService" ref="taskServiceImpl"/>
 
     <!--监听IBizDataHandler模块的加载和卸载-->

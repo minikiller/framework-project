@@ -12,6 +12,7 @@
     <reference id="identityService" interface="org.activiti.engine.IdentityService"/>
     <reference id="runtimeService" interface="org.activiti.engine.RuntimeService"/>
     <reference id="taskService" interface="org.activiti.engine.TaskService"/>
+    <reference id="userLoginService" interface="cn.com.rexen.core.api.security.IUserLoginService"/>
 
     <bean id="beanServiceImpl" class="cn.com.rexen.demo.core.biz.NoticeBeanServiceImpl" scope="prototype">
         <property name="noticeBeanDao" ref="noticeBeanDao"/>
@@ -20,6 +21,7 @@
         <property name="repositoryService" ref="repositoryService"/>
         <property name="runtimeService" ref="runtimeService"/>
         <property name="taskService" ref="taskService"/>
+        <property name="userLoginService" ref="userLoginService"/>
     </bean>
 
     <reference id="noticeBeanDao" interface="cn.com.rexen.demo.api.dao.INoticeBeanDao"/>
