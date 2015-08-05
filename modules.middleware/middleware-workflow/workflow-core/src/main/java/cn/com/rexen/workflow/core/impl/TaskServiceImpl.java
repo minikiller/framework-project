@@ -6,8 +6,10 @@ import cn.com.rexen.workflow.api.model.JsonData;
 import cn.com.rexen.workflow.api.model.TaskDTO;
 import cn.com.rexen.workflow.api.util.WorkflowUtil;
 import cn.com.rexen.workflow.core.DozerHelper;
+import org.activiti.engine.HistoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.dozer.DozerBeanMapper;
@@ -22,6 +24,7 @@ import java.util.List;
 public class TaskServiceImpl implements ITaskService {
     private TaskService taskService;
     private RuntimeService runtimeService;
+    private HistoryService historyService;
     private JsonData jsonData = new JsonData();
     private IUserLoginService userLoginService;
 
@@ -35,6 +38,10 @@ public class TaskServiceImpl implements ITaskService {
 
     public void setRuntimeService(RuntimeService runtimeService) {
         this.runtimeService = runtimeService;
+    }
+
+    public void setHistoryService(HistoryService historyService) {
+        this.historyService = historyService;
     }
 
     /**
@@ -66,5 +73,18 @@ public class TaskServiceImpl implements ITaskService {
             jsonData.setData(taskDTOList);
         }
         return jsonData;
+    }
+
+    /**
+     * 获得流程启动用户id
+     *
+     * @param processInstanceId 流程实例id
+     * @return
+     */
+    public String getStartUserName(String processInstanceId) {
+        HistoricProcessInstance historicProcessInstance;
+        historicProcessInstance = historyService.createHistoricProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
+        String userName = historicProcessInstance.getStartUserId();
+        return userName;
     }
 }
