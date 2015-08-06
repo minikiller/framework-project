@@ -87,7 +87,9 @@ public class GenericOpenJpaDao<T extends PersistentEntity, PK extends Serializab
         CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(entityClass);
         Root from = criteriaQuery.from(entityClass);
         CriteriaQuery select = criteriaQuery.select(from);
+        select.orderBy(criteriaBuilder.desc(from.get("creationDate")));
         TypedQuery typedQuery = entityManager.createQuery(select);
+
         typedQuery.setFirstResult((page-1) * limit);
         typedQuery.setMaxResults(limit);
         jsonData.setTotalCount(count);
