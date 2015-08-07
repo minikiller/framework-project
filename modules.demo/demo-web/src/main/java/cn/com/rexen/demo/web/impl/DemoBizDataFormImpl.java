@@ -15,7 +15,7 @@ public class DemoBizDataFormImpl implements IBizDataHandler {
     @Override
     public String getComponentClass() {
 
-        return "Kalix.workflow.view.ActivityHistoryGrid";
+        return "Kalix.demo.view.NoticeShowForm";
     }
 
     @Override

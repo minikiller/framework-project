@@ -6,13 +6,16 @@ import cn.com.rexen.workflow.api.model.HistoricActivityInstanceDTO;
 import cn.com.rexen.workflow.api.model.HistoricProcessInstanceDTO;
 import cn.com.rexen.workflow.api.model.JsonData;
 import cn.com.rexen.workflow.api.model.ProcessDefinitionDTO;
+import cn.com.rexen.workflow.api.util.WorkflowUtil;
 import cn.com.rexen.workflow.core.DozerHelper;
 import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;
+import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.history.HistoricActivityInstance;
 import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.repository.ProcessDefinition;
+import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Comment;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
@@ -24,9 +27,14 @@ import java.util.List;
  */
 public class ProcessServiceImpl implements IProcessService {
     private transient RepositoryService repositoryService;
+    private RuntimeService runtimeService;
     private HistoryService historyService;
     private TaskService taskService;
     private JsonData jsonData = new JsonData();
+
+    public void setRuntimeService(RuntimeService runtimeService) {
+        this.runtimeService = runtimeService;
+    }
 
     public void setTaskService(TaskService taskService) {
         this.taskService = taskService;
@@ -98,10 +106,14 @@ public class ProcessServiceImpl implements IProcessService {
             historicProcessDTOList = DozerHelper.map(mapper, processHistoryList, HistoricProcessInstanceDTO.class);
             //设置流程状态
             for (HistoricProcessInstanceDTO dto : historicProcessDTOList) {
-                if (dto.getEndTime() != null)
+                if (dto.getEndTime() != null){
                     dto.setStatus("结束");
-                else
+                }else {
                     dto.setStatus("进行中");
+                }
+                ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
+                if(processInstance!=null)
+                    dto.setEntityId(WorkflowUtil.getBizId(processInstance.getBusinessKey()));
             }
             long count = historyService.createHistoricProcessInstanceQuery().count();
             jsonData.setTotalCount((int) count);
