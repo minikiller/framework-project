@@ -30,6 +30,7 @@
         <property name="repositoryService" ref="repositoryService"/>
         <property name="historyService" ref="historyService"/>
         <property name="taskService" ref="taskService"/>
+        <property name="runtimeService" ref="runtimeService"/>
     </bean>
     <service interface="cn.com.rexen.workflow.api.biz.IProcessService" ref="processServiceImpl"/>
 
