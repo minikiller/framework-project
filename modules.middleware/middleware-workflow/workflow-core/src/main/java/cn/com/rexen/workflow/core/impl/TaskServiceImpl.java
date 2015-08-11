@@ -68,7 +68,13 @@ public class TaskServiceImpl implements ITaskService {
             //获得业务实体id
             for (TaskDTO dto : taskDTOList) {
                 ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
-                dto.setEntityId(WorkflowUtil.getBizId(processInstance.getBusinessKey()));
+                if(processInstance!=null) {
+                    dto.setEntityId(WorkflowUtil.getBizId(processInstance.getBusinessKey()));
+                }else{
+                    HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
+                    if(historicProcessInstance!=null)
+                        dto.setEntityId(WorkflowUtil.getBizId(historicProcessInstance.getBusinessKey()));
+                }
             }
             jsonData.setData(taskDTOList);
         }
