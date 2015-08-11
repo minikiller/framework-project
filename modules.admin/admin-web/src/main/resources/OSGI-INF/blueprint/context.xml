@@ -26,10 +26,6 @@
         <bean class="cn.com.rexen.admin.web.impl.AdminApplicationImpl"/>
     </service>
 
-    <!--测试应用-->
-    <service interface="cn.com.rexen.core.api.web.IApplication">
-        <bean class="cn.com.rexen.admin.web.impl.TestApplicationImpl"/>
-    </service>
 
     <!--系统管理-->
     <service interface="cn.com.rexen.core.api.web.IModule">

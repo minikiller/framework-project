@@ -21,6 +21,7 @@
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
     </properties>
     <dependencies>
+
         <!-- camel -->
         <dependency>
             <groupId>org.apache.camel</groupId>
@@ -46,6 +47,7 @@
             <artifactId>cn.com.rexen.core.api</artifactId>
             <scope>provided</scope>
         </dependency>
+
 
         <!-- use for json binding -->
         <dependency>

@@ -1,4 +1,4 @@
-package cn.com.rexen.admin.web.impl;
+package cn.com.rexen.demo.web.impl;
 
 import cn.com.rexen.core.api.web.IApplication;
 import cn.com.rexen.core.api.web.IModule;
