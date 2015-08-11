@@ -50,8 +50,28 @@ public class SystemServiceImpl implements ISystemService {
     @Override
     public List<ModuleBean> getModuleByApplication(String applicationId) {
         List<IModule> moduleList = MoudleManager.getInstall().getModuleList(applicationId);
+        if(moduleList==null)
+            moduleList=new ArrayList<IModule>();
         Mapper mapper = new DozerBeanMapper();
         List<ModuleBean> moduleBeanList = DozerHelper.map(mapper, moduleList, ModuleBean.class);
+        if(moduleBeanList!=null&&!moduleBeanList.isEmpty()){
+            for(ModuleBean moduleBean:moduleBeanList){
+                moduleBean.setMenus(new ArrayList<MenuBean>());
+                List<IMenu> menuList = MenuManager.getInstall().getMenuList(moduleBean.getId());
+                List<IMenu> rootMenus = getRootMenus(menuList);
+                if(rootMenus!=null&&!rootMenus.isEmpty()){
+                    for(IMenu rootMenu:rootMenus){
+                        MenuBean menuBean = null;
+                        if(rootMenu!=null) {
+                            menuBean=mapper.map(rootMenu, MenuBean.class);
+                            menuBean.setText(rootMenu.getTitle());
+                            getMenuChilden(menuBean, menuList, mapper);
+                        }
+                        moduleBean.getMenus().add(menuBean);
+                    }
+                }
+            }
+        }
         return moduleBeanList;
     }
 
@@ -62,8 +82,12 @@ public class SystemServiceImpl implements ISystemService {
         /*List<String> mapFile=new ArrayList<>();
         mapFile.add("META-INF/MenuMapper.xml");*/
         Mapper mapper = new DozerBeanMapper();
-        MenuBean menuBean = mapper.map(rootMenu, MenuBean.class);
-        getMenuChilden(menuBean, menuList, mapper);
+        MenuBean menuBean = null;
+        if(rootMenu!=null) {
+            menuBean=mapper.map(rootMenu, MenuBean.class);
+            menuBean.setText(rootMenu.getTitle());
+            getMenuChilden(menuBean, menuList, mapper);
+        }
         return menuBean;
     }
 
@@ -74,11 +98,14 @@ public class SystemServiceImpl implements ISystemService {
      * @param menuList
      */
     private void getMenuChilden(MenuBean menuBean, List<IMenu> menuList, Mapper mapper) {
+        if(menuList==null||menuList.isEmpty())
+            return;
         List<MenuBean> childMenuList = new ArrayList<>();
 
         for (IMenu menu : menuList) {
             if (menu.getParentMenuId() != null && menu.getParentMenuId().equals(menuBean.getId())) {
                 MenuBean mBean = mapper.map(menu, MenuBean.class);
+                mBean.setText(menu.getTitle());
                 childMenuList.add(mBean);
                 getMenuChilden(mBean, menuList, mapper);
             }
@@ -93,12 +120,32 @@ public class SystemServiceImpl implements ISystemService {
      * @return
      */
     private IMenu getRootMenu(List<IMenu> menuList) {
+        if(menuList==null||menuList.isEmpty())
+            return null;
         for (IMenu menu : menuList) {
             if (menu.getParentMenuId() == null) {
                 return menu;
             }
         }
         return null;
+    }
+
+    /**
+     * 获得菜单根节点
+     *
+     * @param menuList
+     * @return
+     */
+    private List<IMenu> getRootMenus(List<IMenu> menuList) {
+        List<IMenu> rootMenus=new ArrayList<IMenu>();
+        if(menuList==null||menuList.isEmpty())
+            return rootMenus;
+        for (IMenu menu : menuList) {
+            if (menu.getParentMenuId() == null) {
+                rootMenus.add(menu);
+            }
+        }
+        return rootMenus;
     }
 
     public void setSystemService(ISystem systemService) {

@@ -82,8 +82,8 @@ public class GenericOpenJpaDao<T extends PersistentEntity, PK extends Serializab
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         Long count = getTotalCount(className);
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(entityClass);
         Root from = criteriaQuery.from(entityClass);
         CriteriaQuery select = criteriaQuery.select(from);
@@ -95,6 +95,28 @@ public class GenericOpenJpaDao<T extends PersistentEntity, PK extends Serializab
         return jsonData;
     }
 
+    @Override
+    public JsonData getAll(int page, int limit,String className, CriteriaQuery criteriaQuery) {
+        JsonData jsonData=new JsonData();
+        Class entityClass = null;
+        try {
+            entityClass = Class.forName(className);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        TypedQuery typedQuery = entityManager.createQuery(criteriaQuery);
+        typedQuery.setFirstResult((page - 1) * limit);
+        typedQuery.setMaxResults(limit);
+        jsonData.setTotalCount(getTotalCount(className, criteriaQuery));
+        jsonData.setData(typedQuery.getResultList());
+        return jsonData;
+    }
+
+    @Override
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
+
     /**
      * 获得结果集的总数
      *
@@ -104,6 +126,25 @@ public class GenericOpenJpaDao<T extends PersistentEntity, PK extends Serializab
     private Long getTotalCount(String className) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Long> countQuery = criteriaBuilder.createQuery(Long.class);
+        try {
+            countQuery.select(criteriaBuilder.count(countQuery.from(Class.forName(className))));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        Long count = entityManager.createQuery(countQuery).getSingleResult();
+        return count;
+    }
+
+    /**
+     * 获得结果集的总数
+     * @param className
+     * @param criteriaQuery
+     * @return
+     */
+    private Long getTotalCount(String className,CriteriaQuery criteriaQuery) {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Long> countQuery = criteriaBuilder.createQuery(Long.class);
+        countQuery.where(criteriaQuery.getRestriction());
         try {
             countQuery.select(criteriaBuilder.count(countQuery.from(Class.forName(className))));
         } catch (ClassNotFoundException e) {

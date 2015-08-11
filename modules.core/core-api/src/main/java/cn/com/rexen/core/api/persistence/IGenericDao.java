@@ -2,6 +2,8 @@ package cn.com.rexen.core.api.persistence;
 
 import cn.com.rexen.core.api.dao.IDaoService;
 
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -136,4 +138,19 @@ public interface IGenericDao<T, PK extends Serializable> extends IDaoService {
     List<T> getAll(String className);
 
     JsonData getAll(int pageNumber, int pageSize, String entityClassName);
+
+    /**
+     * 按指定条件查询
+     * @param page
+     * @param limit
+     * @param criteriaQuery
+     * @return
+     */
+    JsonData getAll(int page, int limit,String className,CriteriaQuery criteriaQuery);
+
+    /**
+     * 返回JPA 实体管理器
+     * @return
+     */
+    public EntityManager getEntityManager();
 }
