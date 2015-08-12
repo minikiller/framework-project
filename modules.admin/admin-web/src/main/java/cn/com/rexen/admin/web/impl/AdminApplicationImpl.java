@@ -36,11 +36,16 @@ public class AdminApplicationImpl implements IApplication {
 
     @Override
     public String getComponentClass() {
-        return null;
+        return "app.admin";
     }
 
     @Override
     public int getIndex() {
         return 0;
+    }
+
+    @Override
+    public String getPermission() {
+        return "admin";
     }
 }

@@ -274,6 +274,31 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
         return null;
     }
 
+    @Override
+    public List<RoleBean> getRolesByUserId(long userId) {
+        List<RoleUserBean> roleUserBeans=roleUserBeanDao.find("select rub from RoleUserBean rub where rub.userId=?1", userId);
+        List<RoleBean> roleBeans=new ArrayList<RoleBean>();
+        if(roleUserBeans!=null&&!roleUserBeans.isEmpty()){
+            for(RoleUserBean roleUserBean:roleUserBeans){
+                RoleBean roleBean=roleBeanDao.get(RoleBean.class.getName(),roleUserBean.getRoleId());
+                roleBeans.add(roleBean);
+            }
+        }
+        return roleBeans;
+    }
+
+    @Override
+    public List<RoleBean> getRolesByWorkGorupId(long workGroupId) {
+        List<WorkGroupRoleBean> workGroupRoleBeans=workGroupRoleBeanDao.find("select wgrb from WorkGroupRoleBean wgrb where wgrb.groupId=?1",workGroupId);
+        List<RoleBean> roleBeans=new ArrayList<RoleBean>();
+        if(workGroupRoleBeans!=null&&!workGroupRoleBeans.isEmpty()){
+            for(WorkGroupRoleBean workGroupRoleBean:workGroupRoleBeans){
+                roleBeans.add(roleBeanDao.get(RoleBean.class.getName(), workGroupRoleBean.getRoleId()));
+            }
+        }
+        return roleBeans;
+    }
+
     private void removeRole(RoleBean roleBean, List<UserBean> userBeanList) {
         for (UserBean userBean : userBeanList) {
             userBean.getRoleList().remove(roleBean);

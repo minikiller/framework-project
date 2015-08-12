@@ -57,8 +57,11 @@
     </bean>
     <service interface="cn.com.rexen.core.api.web.ISystem" ref="systemImpl"/>
 
+    <reference interface="cn.com.rexen.core.api.security.IShiroService" id="shiroService"></reference>
+
     <bean class="cn.com.rexen.core.web.impl.SystemServiceImpl" id="systemServiceImpl">
         <property name="systemService" ref="systemImpl"/>
+        <property name="shiroService" ref="shiroService" />
     </bean>
     <service interface="cn.com.rexen.core.api.web.ISystemService" ref="systemServiceImpl"/>
     <!--<service interface="java.util.EventListener" >

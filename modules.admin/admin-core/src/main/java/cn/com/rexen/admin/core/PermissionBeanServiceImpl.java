@@ -1,12 +1,21 @@
 package cn.com.rexen.admin.core;
 
 import cn.com.rexen.admin.api.biz.IPermissionBeanService;
+import cn.com.rexen.admin.api.biz.IRoleBeanService;
+import cn.com.rexen.admin.api.biz.IWorkGroupBeanService;
 import cn.com.rexen.admin.api.dao.IPermissionBeanDao;
+import cn.com.rexen.admin.api.dao.IRoleApplicationBeanDao;
 import cn.com.rexen.admin.api.dao.IRoleBeanDao;
 import cn.com.rexen.admin.entities.PermissionBean;
+import cn.com.rexen.admin.entities.RoleApplicationBean;
 import cn.com.rexen.admin.entities.RoleBean;
+import cn.com.rexen.admin.entities.WorkGroupUserBean;
+import cn.com.rexen.app.api.dao.IApplicationBeanDao;
+import cn.com.rexen.app.entities.ApplicationBean;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
+import cn.com.rexen.core.util.Assert;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -22,6 +31,26 @@ import java.util.Set;
 public class PermissionBeanServiceImpl extends GenericBizServiceImpl implements IPermissionBeanService {
     private IPermissionBeanDao permissionBeanDao;
     private IRoleBeanDao roleBeanDao;
+    private IRoleBeanService roleBeanService;
+    private IRoleApplicationBeanDao roleApplicationBeanDao;
+    private IWorkGroupBeanService workGroupBeanService;
+    private IApplicationBeanDao applicationBeanDao;
+
+    public void setApplicationBeanDao(IApplicationBeanDao applicationBeanDao) {
+        this.applicationBeanDao = applicationBeanDao;
+    }
+
+    public void setWorkGroupBeanService(IWorkGroupBeanService workGroupBeanService) {
+        this.workGroupBeanService = workGroupBeanService;
+    }
+
+    public void setRoleApplicationBeanDao(IRoleApplicationBeanDao roleApplicationBeanDao) {
+        this.roleApplicationBeanDao = roleApplicationBeanDao;
+    }
+
+    public void setRoleBeanService(IRoleBeanService roleBeanService) {
+        this.roleBeanService = roleBeanService;
+    }
 
     public void setPermissionBeanDao(IPermissionBeanDao permissionBeanDao) {
         this.permissionBeanDao = permissionBeanDao;
@@ -71,5 +100,43 @@ public class PermissionBeanServiceImpl extends GenericBizServiceImpl implements 
             roleBean.getPermissionList().add(bean);
         }
         roleBeanDao.save(roleBean);
+    }
+
+    @Override
+    public List<String> getApplicationCodesByUserId(String userId) {
+        Assert.notNull(userId, "用户编号不能为空.");
+        List<String> applicationLocations=new ArrayList<String>();
+        //返回用户下所有角色
+        List<RoleBean> roleBeans=roleBeanService.getRolesByUserId(Long.parseLong(userId));
+        if(roleBeans!=null&&!roleBeans.isEmpty()){
+            for(RoleBean roleBean:roleBeans){
+                List<RoleApplicationBean> roleApplicationBeans=roleApplicationBeanDao.getRoleApplicationsByRoleId(roleBean.getId());
+                fillApplicationLicationByRoles(applicationLocations,roleApplicationBeans);
+            }
+        }
+        //返回用户下所有工作组,根据工作组再返回工作组下所有角色
+        List<WorkGroupUserBean> workGroupUserBeans=workGroupBeanService.getWorkGroupUserBeanByUserId(Integer.parseInt(userId));
+        if(workGroupUserBeans!=null&&!workGroupUserBeans.isEmpty()){
+            for(WorkGroupUserBean workGroupUserBean:workGroupUserBeans){
+                List<RoleBean> _roleBeans=roleBeanService.getRolesByWorkGorupId(workGroupUserBean.getGroupId());
+                if(_roleBeans!=null&&!_roleBeans.isEmpty()){
+                    for(RoleBean roleBean:_roleBeans){
+                        List<RoleApplicationBean> roleApplicationBeans=roleApplicationBeanDao.getRoleApplicationsByRoleId(roleBean.getId());
+                        fillApplicationLicationByRoles(applicationLocations,roleApplicationBeans);
+                    }
+                }
+            }
+        }
+        return applicationLocations;
+    }
+
+    private void fillApplicationLicationByRoles(List<String> applicationLocations,List<RoleApplicationBean> roleApplicationBeans){
+        if(roleApplicationBeans!=null&&!roleApplicationBeans.isEmpty()){
+            for(RoleApplicationBean roleApplicationBean:roleApplicationBeans){
+                ApplicationBean applicationBean=applicationBeanDao.get(ApplicationBean.class.getName(), roleApplicationBean.getApplicationId());
+                if(applicationBean!=null)
+                    applicationLocations.add(applicationBean.getCode());
+            }
+        }
     }
 }

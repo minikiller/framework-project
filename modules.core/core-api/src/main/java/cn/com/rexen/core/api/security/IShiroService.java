@@ -1,6 +1,7 @@
 package cn.com.rexen.core.api.security;
 
 import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
 
 /**
  * Created by sunlf on 2015/7/23.
@@ -13,6 +14,12 @@ public interface IShiroService {
      * @return 用户名称
      */
     String getCurrentUserName();
+
+    /**
+     * 返回当前登录用户
+     * @return
+     */
+    public Subject getSubject();
 
     /**
      * 获得shiro的session

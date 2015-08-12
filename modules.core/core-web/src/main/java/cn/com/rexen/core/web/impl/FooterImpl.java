@@ -35,4 +35,9 @@ public class FooterImpl implements IFooter {
     public int getIndex() {
         return 0;
     }
+
+    @Override
+    public String getPermission() {
+        return null;
+    }
 }

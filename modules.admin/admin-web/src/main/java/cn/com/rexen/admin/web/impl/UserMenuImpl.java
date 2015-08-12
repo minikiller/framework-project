@@ -51,4 +51,9 @@ public class UserMenuImpl implements IMenu {
     public int getIndex() {
         return 0;
     }
+
+    @Override
+    public String getPermission() {
+        return null;
+    }
 }

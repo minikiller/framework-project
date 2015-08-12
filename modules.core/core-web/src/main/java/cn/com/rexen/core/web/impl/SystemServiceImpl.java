@@ -1,10 +1,12 @@
 package cn.com.rexen.core.web.impl;
 
+import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.api.web.*;
 import cn.com.rexen.core.api.web.model.*;
 import cn.com.rexen.core.web.listener.ApplicationManager;
 import cn.com.rexen.core.web.listener.MenuManager;
 import cn.com.rexen.core.web.listener.MoudleManager;
+import org.apache.shiro.subject.Subject;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
@@ -16,10 +18,18 @@ import java.util.List;
  */
 public class SystemServiceImpl implements ISystemService {
     private ISystem systemService;
+    private IShiroService shiroService;
+
+    public void setShiroService(IShiroService shiroService) {
+        this.shiroService = shiroService;
+    }
 
     @Override
     public SystemBean getSystem() {
+        Subject subject=shiroService.getSubject();
         SystemBean systemBean = new SystemBean();
+        if(subject==null)
+            return systemBean;
         Mapper mapper = new DozerBeanMapper();
         HeaderBean headerBean = mapper.map(systemService.getHeader(), HeaderBean.class);
         systemBean.setHeaderBean(headerBean);
@@ -35,13 +45,19 @@ public class SystemServiceImpl implements ISystemService {
 
     @Override
     public List<ApplicationBean> getApplicationList() {
+        Subject subject=shiroService.getSubject();
         List<ApplicationBean> applicationBeans = new ArrayList<>();
+        if(subject==null)
+            return applicationBeans;
+
         List<IApplication> applicationList = ApplicationManager.getInstall().getApplicationList();
         if (applicationList != null && applicationList.size() > 0) {
             for (IApplication application : applicationList) {
-                Mapper mapper = new DozerBeanMapper();
-                ApplicationBean applicationBean = mapper.map(application, ApplicationBean.class);
-                applicationBeans.add(applicationBean);
+                if(subject.isPermitted(application.getPermission())){
+                    Mapper mapper = new DozerBeanMapper();
+                    ApplicationBean applicationBean = mapper.map(application, ApplicationBean.class);
+                    applicationBeans.add(applicationBean);
+                }
             }
         }
         return applicationBeans;

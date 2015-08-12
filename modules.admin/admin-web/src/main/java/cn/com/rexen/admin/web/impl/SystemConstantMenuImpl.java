@@ -53,4 +53,9 @@ public class SystemConstantMenuImpl implements IMenu {
     public int getIndex() {
         return 1;
     }
+
+    @Override
+    public String getPermission() {
+        return null;
+    }
 }

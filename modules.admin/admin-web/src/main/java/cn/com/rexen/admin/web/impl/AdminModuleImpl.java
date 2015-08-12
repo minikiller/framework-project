@@ -48,4 +48,9 @@ public class AdminModuleImpl implements IModule {
     public int getIndex() {
         return 0;
     }
+
+    @Override
+    public String getPermission() {
+        return null;
+    }
 }

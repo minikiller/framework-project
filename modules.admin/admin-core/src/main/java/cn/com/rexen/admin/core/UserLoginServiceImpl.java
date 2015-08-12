@@ -1,5 +1,6 @@
 package cn.com.rexen.admin.core;
 
+import cn.com.rexen.admin.api.biz.IPermissionBeanService;
 import cn.com.rexen.admin.api.dao.IUserBeanDao;
 import cn.com.rexen.admin.entities.PermissionBean;
 import cn.com.rexen.admin.entities.RoleBean;
@@ -30,6 +31,11 @@ public class UserLoginServiceImpl implements IUserLoginService {
     @Reference(id="userBeanDao",serviceInterface = IUserBeanDao.class)*/
     private IUserBeanDao userBeanDao;
 
+    private IPermissionBeanService permissionBeanService;
+
+    public void setPermissionBeanService(IPermissionBeanService permissionBeanService) {
+        this.permissionBeanService = permissionBeanService;
+    }
 
     /**
      * 设置cookie
@@ -91,14 +97,7 @@ public class UserLoginServiceImpl implements IUserLoginService {
         List<String> stringList = new ArrayList<String>();
         UserBean userBean = userBeanDao.getUser(username);
         if (userBean != null) {
-            List<RoleBean> roleBeanList = userBean.getRoleList();
-            for (RoleBean rolebean : roleBeanList) {
-                for (PermissionBean permissionBean : rolebean.getPermissionList()) {
-                    String permission = permissionBean.getPermission();
-                    if (null != permission && !permission.equals("") && (!stringList.contains(permission)))
-                        stringList.add(permission);
-                }
-            }
+            stringList.addAll(permissionBeanService.getApplicationCodesByUserId(String.valueOf(userBean.getId())));
         }
         return stringList;
     }
