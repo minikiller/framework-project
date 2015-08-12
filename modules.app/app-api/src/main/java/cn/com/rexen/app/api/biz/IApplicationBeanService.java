@@ -27,4 +27,6 @@ public interface IApplicationBeanService extends IBizService {
      * @return
      */
     public AuthorizationDTO getAuthorizationTree();
+
+
 }

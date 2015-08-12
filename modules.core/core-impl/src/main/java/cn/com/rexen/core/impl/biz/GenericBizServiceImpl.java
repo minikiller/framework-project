@@ -5,10 +5,13 @@ import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
+import cn.com.rexen.core.api.web.model.QueryDTO;
+import cn.com.rexen.core.util.Assert;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import org.apache.log4j.Logger;
 
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 /**
@@ -154,6 +157,17 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
     @Override
     public Object saveEntityAndReturn(PersistentEntity entity) {
         return dao.save(entity);
+    }
+
+    @Override
+    public CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO) {
+        return null;
+    }
+
+    @Override
+    public JsonData getAllEntityByQuery(QueryDTO queryDTO) {
+        Assert.notNull(queryDTO,"查询条件不能为空.");
+        return dao.getAll(queryDTO.getPage(),queryDTO.getLimit(),entityClassName,buildCriteriaQuery(queryDTO));
     }
 
     @Override

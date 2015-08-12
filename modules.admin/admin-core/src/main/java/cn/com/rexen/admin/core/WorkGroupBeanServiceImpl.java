@@ -237,4 +237,9 @@ public class WorkGroupBeanServiceImpl extends GenericBizServiceImpl implements I
         jsonStatus.setMsg("保存成功!");
         return jsonStatus;
     }
+
+    @Override
+    public List<WorkGroupUserBean> getWorkGroupUserBeanByUserId(long userId) {
+        return workGroupUserBeanDao.find("select wgu from WorkGroupUserBean wgu where wgu.userId=?1",userId);
+    }
 }

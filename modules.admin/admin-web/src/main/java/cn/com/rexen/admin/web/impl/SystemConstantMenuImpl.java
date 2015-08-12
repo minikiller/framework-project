@@ -3,10 +3,12 @@ package cn.com.rexen.admin.web.impl;
 import cn.com.rexen.core.api.web.IMenu;
 
 /**
- * Created by sunlf on 2015/7/19.
- * 权限控制菜单
+ * 系统常量菜单
+ * @author majian <br/>
+ *         date:2015-8-10
+ * @version 1.0.0
  */
-public class PermissionControlMenuImpl implements IMenu {
+public class SystemConstantMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {
         return false;
@@ -24,12 +26,12 @@ public class PermissionControlMenuImpl implements IMenu {
 
     @Override
     public String getId() {
-        return "permissionControlMenu";
+        return "systemConstantMenu";
     }
 
     @Override
     public String getTitle() {
-        return "权限控制";
+        return "系统常量";
     }
 
     @Override
@@ -39,7 +41,7 @@ public class PermissionControlMenuImpl implements IMenu {
 
     @Override
     public String getIcon() {
-        return "admin/resources/images/lock.png";
+        return "admin/resources/images/bricks.png";
     }
 
     @Override
@@ -49,7 +51,7 @@ public class PermissionControlMenuImpl implements IMenu {
 
     @Override
     public int getIndex() {
-        return 0;
+        return 1;
     }
 
     @Override

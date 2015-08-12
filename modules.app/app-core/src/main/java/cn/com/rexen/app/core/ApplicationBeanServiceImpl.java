@@ -1,5 +1,11 @@
 package cn.com.rexen.app.core;
 
+import cn.com.rexen.admin.api.biz.IRoleBeanService;
+import cn.com.rexen.admin.api.biz.IWorkGroupBeanService;
+import cn.com.rexen.admin.api.dao.IRoleApplicationBeanDao;
+import cn.com.rexen.admin.entities.RoleApplicationBean;
+import cn.com.rexen.admin.entities.RoleBean;
+import cn.com.rexen.admin.entities.WorkGroupUserBean;
 import cn.com.rexen.app.api.biz.IApplicationBeanService;
 import cn.com.rexen.app.api.biz.IFunctionBeanService;
 import cn.com.rexen.app.api.dao.IApplicationBeanDao;
@@ -33,6 +39,21 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
     private IFunctionBeanService functionBeanService;
     private IFunctionBeanDao functionBeanDao;
     private IShiroService shiroService;
+    private IRoleBeanService roleBeanService;
+    private IRoleApplicationBeanDao roleApplicationBeanDao;
+    private IWorkGroupBeanService workGroupBeanService;
+
+    public void setWorkGroupBeanService(IWorkGroupBeanService workGroupBeanService) {
+        this.workGroupBeanService = workGroupBeanService;
+    }
+
+    public void setRoleApplicationBeanDao(IRoleApplicationBeanDao roleApplicationBeanDao) {
+        this.roleApplicationBeanDao = roleApplicationBeanDao;
+    }
+
+    public void setRoleBeanService(IRoleBeanService roleBeanService) {
+        this.roleBeanService = roleBeanService;
+    }
 
     public void setFunctionBeanDao(IFunctionBeanDao functionBeanDao) {
         this.functionBeanDao = functionBeanDao;
@@ -192,4 +213,6 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
         }
         return root;
     }
+
+
 }

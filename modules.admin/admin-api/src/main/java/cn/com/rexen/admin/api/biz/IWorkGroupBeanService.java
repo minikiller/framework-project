@@ -1,6 +1,7 @@
 package cn.com.rexen.admin.api.biz;
 
 import cn.com.rexen.admin.entities.WorkGroupBean;
+import cn.com.rexen.admin.entities.WorkGroupUserBean;
 import cn.com.rexen.core.api.biz.IBizService;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
@@ -58,4 +59,11 @@ public interface IWorkGroupBeanService extends IBizService {
      * @return
      */
     public JsonStatus saveWorkGroupRoles(long workGroupId,String roleIds);
+
+    /**
+     * 返回用户下所有关联工作组
+     * @param userId
+     * @return
+     */
+    public List<WorkGroupUserBean> getWorkGroupUserBeanByUserId(long userId);
 }

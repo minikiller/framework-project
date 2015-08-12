@@ -67,9 +67,35 @@ public interface IRoleBeanService extends IBizService {
      */
     List<UserBean> getUserList(RoleBean roleBean);
 
+    /**
+     * 返回用户下所有角色
+     * @param userId
+     * @return
+     */
+    public List<RoleBean> getRolesByUserId(long userId);
+
+    /**
+     * 返回工作组下所有角色
+     * @param workGroupId
+     * @return
+     */
+    public List<RoleBean> getRolesByWorkGorupId(long workGroupId);
+
+    /**
+     * 保存角色与用户关联
+     * @param roleId
+     * @param userId
+     * @return
+     */
     public JsonStatus saveRoleUsers(long roleId, String userId);
 
 
+    /**
+     * 根据角色ID获得所有用户
+     * @param id
+     * @return
+     */
     public List getUsersByRoleId(long id);
+
 
 }

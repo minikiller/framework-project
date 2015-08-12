@@ -48,7 +48,6 @@ public class ShiroRealm extends AuthorizingRealm implements IAuthorizingRealm {
 
         String userName = (String) principalCollection.getPrimaryPrincipal();
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-        //添加用户权限
         try {
             userLoginService = (IUserLoginService) JNDIHelper.getJNDIServiceForName(IUserLoginService.class.getName());
         } catch (IOException e) {
@@ -59,6 +58,7 @@ public class ShiroRealm extends AuthorizingRealm implements IAuthorizingRealm {
             for (String permission : userPermission)
                 info.addStringPermission(permission);
         }
+//        info.addStringPermission("app.admin");
         return info;
     }
 

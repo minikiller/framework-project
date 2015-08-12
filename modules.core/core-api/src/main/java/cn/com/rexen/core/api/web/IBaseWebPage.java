@@ -22,4 +22,7 @@ public interface IBaseWebPage {
     //    显示的顺序
     public int getIndex();
 
+    //返回权限
+    public String getPermission();
+
 }

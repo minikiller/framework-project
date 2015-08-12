@@ -39,4 +39,14 @@ public interface IPermissionBeanService extends IBizService {
      * @param checkedNodes 权限列表
      */
     void assignPermission(RoleBean roleBean, Set<PermissionBean> checkedNodes);
+
+
+    /**
+     * 理应放到ApplicationBeanService中,为了避免相互依赖问题,所以放置RoleBeanService中
+     * 根据用户编号返回所有应用路径
+     * 首先查询角色,之后查询角色与应用关联,最后根据关联关系中的应用ID查询应用
+     * @return
+     */
+    public List<String> getApplicationCodesByUserId(String userId);
+
 }

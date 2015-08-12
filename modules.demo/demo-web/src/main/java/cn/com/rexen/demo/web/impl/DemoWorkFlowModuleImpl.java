@@ -1,45 +1,42 @@
-package cn.com.rexen.admin.web.impl;
+package cn.com.rexen.demo.web.impl;
 
 import cn.com.rexen.core.api.web.IMenu;
+import cn.com.rexen.core.api.web.IModule;
+
+import java.util.List;
 
 /**
- * Created by sunlf on 2015/7/19.
- * 权限控制菜单
+ * 工作流演示
  */
-public class PermissionControlMenuImpl implements IMenu {
+public class DemoWorkFlowModuleImpl implements IModule {
     @Override
-    public boolean isLeaf() {
-        return false;
-    }
-
-    @Override
-    public String getModuleId() {
-        return "sysModule";
-    }
-
-    @Override
-    public String getParentMenuId() {
+    public List<IMenu> getMenus() {
         return null;
+    }
+
+    @Override
+    public String getApplicationId() {
+        return "TestApplication";
     }
 
     @Override
     public String getId() {
-        return "permissionControlMenu";
+        return "demoWorkFlowModule";
     }
 
     @Override
     public String getTitle() {
-        return "权限控制";
+        return "工作流演示";
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "工作流演示";
     }
 
     @Override
     public String getIcon() {
-        return "admin/resources/images/lock.png";
+        return "resources/images/wrench.png";
     }
 
     @Override

@@ -2,6 +2,7 @@ package cn.com.rexen.admin.core;
 
 import cn.com.rexen.admin.api.biz.IUserBeanService;
 import cn.com.rexen.admin.api.dao.*;
+import cn.com.rexen.admin.dto.model.query.UserDTO;
 import cn.com.rexen.admin.entities.OrganizationBean;
 import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.UserBean;
@@ -10,6 +11,7 @@ import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
+import cn.com.rexen.core.api.web.model.QueryDTO;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.Assert;
 import cn.com.rexen.core.util.JNDIHelper;
@@ -18,6 +20,12 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.web.mgt.WebSecurityManager;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import javax.persistence.metamodel.EntityType;
+import javax.persistence.metamodel.SingularAttribute;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,8 +57,8 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     @Override
     public void afterDeleteEntity(Long id, JsonStatus status) {
         roleUserBeanDao.update("delete from RoleUserBean ru where ru.userId=?1",id);
-        departmentUserBeanDao.update("delete from DepartmentUserBean du where du.userId=?1",id);
-        workGroupUserBeanDao.update("delete from WorkGroupUserBean wu where wu.userId=?1",id);
+        departmentUserBeanDao.update("delete from DepartmentUserBean du where du.userId=?1", id);
+        workGroupUserBeanDao.update("delete from WorkGroupUserBean wu where wu.userId=?1", id);
     }
 
     @Override
@@ -88,6 +96,34 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
         }
         return true;
     }
+
+    @Override
+    public CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO) {
+        Assert.notNull(queryDTO,"查询对象不能为空.");
+        UserDTO userDTO=(UserDTO)queryDTO;
+        CriteriaBuilder criteriaBuilder = userBeanDao.getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<UserBean> criteriaQuery = criteriaBuilder.createQuery(UserBean.class);
+        Root<UserBean> from = criteriaQuery.from(UserBean.class);
+        EntityType<UserBean> userBean_ = from.getModel(); //实体元数据
+        List<Predicate> predicatesList = new ArrayList<Predicate>();
+
+        if(userDTO.getName()!=null&&!userDTO.getName().trim().isEmpty()){
+            SingularAttribute<UserBean,String> name=(SingularAttribute<UserBean,String>)userBean_.getSingularAttribute("name");
+            predicatesList.add(criteriaBuilder.like(from.get(name),"%"+ userDTO.getName()+"%"));
+        }
+        if(userDTO.getLoginName()!=null&&!userDTO.getLoginName().trim().isEmpty()){
+            SingularAttribute<UserBean,String> loginName=(SingularAttribute<UserBean,String>)userBean_.getSingularAttribute("loginName");
+            predicatesList.add(criteriaBuilder.like(from.get(loginName),"%"+userDTO.getLoginName()+"%"));
+        }
+        if(userDTO.getAvailable()!=-1){
+            SingularAttribute<UserBean,Integer> available=(SingularAttribute<UserBean,Integer>)userBean_.getSingularAttribute("available");
+            predicatesList.add(criteriaBuilder.equal(from.get(available), userDTO.getAvailable()));
+        }
+        criteriaQuery.where(predicatesList.toArray(new Predicate[predicatesList.size()]));
+        CriteriaQuery select = criteriaQuery.select(from);
+        return select;
+    }
+
 
     @Override
     public boolean isSave(PersistentEntity entity, JsonStatus status) {

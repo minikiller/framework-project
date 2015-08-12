@@ -107,13 +107,18 @@ public class ProcessServiceImpl implements IProcessService {
             //设置流程状态
             for (HistoricProcessInstanceDTO dto : historicProcessDTOList) {
                 if (dto.getEndTime() != null){
-                    dto.setStatus("结束");
+                    dto.setStatus("<a style='color:red'>结束</a>");
                 }else {
                     dto.setStatus("进行中");
                 }
                 ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
-                if(processInstance!=null)
+                if(processInstance!=null) {
                     dto.setEntityId(WorkflowUtil.getBizId(processInstance.getBusinessKey()));
+                }else{
+                    HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
+                    if(historicProcessInstance!=null)
+                        dto.setEntityId(WorkflowUtil.getBizId(historicProcessInstance.getBusinessKey()));
+                }
             }
             long count = historyService.createHistoricProcessInstanceQuery().count();
             jsonData.setTotalCount((int) count);

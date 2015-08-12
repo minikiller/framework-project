@@ -4,6 +4,7 @@ import cn.com.rexen.core.api.PermissionConstant;
 import cn.com.rexen.core.api.security.IShiroService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.mgt.WebSecurityManager;
 
 /**
@@ -25,6 +26,15 @@ public class ShiroServiceImpl implements IShiroService {
         Session session = getSession();
         String userName = (String) session.getAttribute(PermissionConstant.SYS_CURRENT_USERNAME);
         return userName;
+    }
+
+    public Subject getSubject(){
+        try {
+            return SecurityUtils.getSubject();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

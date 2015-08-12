@@ -1,35 +1,37 @@
-package cn.com.rexen.admin.web.impl;
+package cn.com.rexen.demo.web.impl;
 
 import cn.com.rexen.core.api.web.IMenu;
 
 /**
- * Created by sunlf on 2015/7/19.
- * 权限控制菜单
+ * 流程历史列表
+ * @author majian <br/>
+ *         date:2015-8-10
+ * @version 1.0.0
  */
-public class PermissionControlMenuImpl implements IMenu {
+public class ProcessHistoryMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {
-        return false;
+        return true;
     }
 
     @Override
     public String getModuleId() {
-        return "sysModule";
+        return "demoWorkFlowModule";
     }
 
     @Override
     public String getParentMenuId() {
-        return null;
+        return "demoWorkFlowMenu";
     }
 
     @Override
     public String getId() {
-        return "permissionControlMenu";
+        return "processHistoryMenu";
     }
 
     @Override
     public String getTitle() {
-        return "权限控制";
+        return "流程历史列表";
     }
 
     @Override
@@ -39,12 +41,12 @@ public class PermissionControlMenuImpl implements IMenu {
 
     @Override
     public String getIcon() {
-        return "admin/resources/images/lock.png";
+        return "admin/resources/images/building.png";
     }
 
     @Override
     public String getComponentClass() {
-        return null;
+        return "Kalix.workflow.view.ProcessHistory";
     }
 
     @Override

@@ -40,6 +40,7 @@
 
     <bean id="loginBeanServiceImpl" class="cn.com.rexen.admin.core.UserLoginServiceImpl">
         <property name="userBeanDao" ref="userBeanDao"/>
+        <property name="permissionBeanService" ref="permissionBeanServiceImpl"/>
     </bean>
     <service id="userloginBeanService" ref="loginBeanServiceImpl"
              interface="cn.com.rexen.core.api.security.IUserLoginService"/>
@@ -63,6 +64,10 @@
     <bean id="permissionBeanServiceImpl" class="cn.com.rexen.admin.core.PermissionBeanServiceImpl">
         <property name="permissionBeanDao" ref="permissionBeanDao"/>
         <property name="roleBeanDao" ref="roleBeanDao"/>
+        <property name="roleBeanService" ref="roleBeanServiceImpl"/>
+        <property name="roleApplicationBeanDao" ref="roleApplicationBeanDao"/>
+        <property name="workGroupBeanService" ref="workGroupBeanServiceImpl"/>
+        <property name="applicationBeanDao" ref="applicationBeanDao"/>
     </bean>
     <service id="permissionBeanService" ref="permissionBeanServiceImpl"
              interface="cn.com.rexen.admin.api.biz.IPermissionBeanService"/>

@@ -36,6 +36,12 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>cn.com.rexen.kalix.admin</groupId>
+            <artifactId>cn.com.rexen.kalix.admin.api</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.app</groupId>
             <artifactId>cn.com.rexen.kalix.app.api</artifactId>

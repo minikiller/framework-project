@@ -3,13 +3,15 @@ package cn.com.rexen.admin.web.impl;
 import cn.com.rexen.core.api.web.IMenu;
 
 /**
- * Created by sunlf on 2015/7/19.
- * 权限控制菜单
+ * 机构菜单
+ * @author majian <br/>
+ *         date:2015-8-10
+ * @version 1.0.0
  */
-public class PermissionControlMenuImpl implements IMenu {
+public class OrganizationMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {
-        return false;
+        return true;
     }
 
     @Override
@@ -19,17 +21,17 @@ public class PermissionControlMenuImpl implements IMenu {
 
     @Override
     public String getParentMenuId() {
-        return null;
+        return "systemConstantMenu";
     }
 
     @Override
     public String getId() {
-        return "permissionControlMenu";
+        return "organizationMenu";
     }
 
     @Override
     public String getTitle() {
-        return "权限控制";
+        return "机构管理";
     }
 
     @Override
@@ -39,12 +41,12 @@ public class PermissionControlMenuImpl implements IMenu {
 
     @Override
     public String getIcon() {
-        return "admin/resources/images/lock.png";
+        return "admin/resources/images/script.png";
     }
 
     @Override
     public String getComponentClass() {
-        return null;
+        return "Kalix.admin.org.view.Org";
     }
 
     @Override

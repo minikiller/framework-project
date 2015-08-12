@@ -3,7 +3,9 @@ package cn.com.rexen.core.api.biz;
 import cn.com.rexen.core.api.IService;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
+import cn.com.rexen.core.api.web.model.QueryDTO;
 
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 /**
@@ -128,6 +130,26 @@ public interface IBizService<T extends PersistentEntity> extends IService {
 
     Object saveEntityAndReturn(PersistentEntity entity);
 
+    /**
+     * 构造查询对象
+     * @param queryDTO
+     * @return
+     */
+    public CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO);
+
+    /**
+     * 按条件查询
+     * @param queryDTO
+     * @return
+     */
+    public JsonData getAllEntityByQuery(QueryDTO queryDTO);
+
+    /**
+     * 查询分页
+     * @param pageNumber
+     * @param pageSize
+     * @return
+     */
     public JsonData getAllEntity(int pageNumber, int pageSize);
 
     public List getAllEntity();
