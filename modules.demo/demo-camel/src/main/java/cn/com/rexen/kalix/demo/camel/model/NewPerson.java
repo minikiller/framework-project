@@ -60,4 +60,13 @@ public class NewPerson {
         this.twitterName = twitterName;
     }
 
+    @Override
+    public String toString() {
+        return "NewPerson{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", twitterName='" + twitterName + '\'' +
+                ", createDate=" + createDate +
+                '}';
+    }
 }

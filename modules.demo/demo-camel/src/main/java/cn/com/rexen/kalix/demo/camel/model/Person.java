@@ -50,4 +50,12 @@ public class Person {
         this.twitterName = twitterName;
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", twitterName='" + twitterName + '\'' +
+                '}';
+    }
 }

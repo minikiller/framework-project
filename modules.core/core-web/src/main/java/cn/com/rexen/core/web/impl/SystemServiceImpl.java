@@ -56,7 +56,7 @@ public class SystemServiceImpl implements ISystemService {
             for (IApplication application : applicationList) {
                 //调用isPermitted不能传入空字符,故此默认值为KALIX_NOT_PERMISSION
                 String permission=application.getPermission()!=null?application.getPermission():"KALIX_NOT_PERMISSION";
-                if(subject.isPermitted(permission)){
+                if (subject.hasRole(permission)) {
                     ApplicationBean applicationBean = mapper.map(application, ApplicationBean.class);
                     applicationBeans.add(applicationBean);
                 }
@@ -78,7 +78,7 @@ public class SystemServiceImpl implements ISystemService {
             for(IModule module:moduleList) {
                 //调用isPermitted不能传入空字符,故此默认值为KALIX_NOT_PERMISSION
                 String modulePermission=module.getPermission()!=null?module.getPermission():"KALIX_NOT_PERMISSION";
-                if(subject.isPermitted(modulePermission)) {
+                if (subject.hasRole(modulePermission)) {
                     ModuleBean moduleBean = mapper.map(module, ModuleBean.class);
                     moduleBeanList.add(moduleBean);
                 }
@@ -94,7 +94,7 @@ public class SystemServiceImpl implements ISystemService {
                     for(IMenu menu:allMenu){
                         //调用isPermitted不能传入空字符,故此默认值为KALIX_NOT_PERMISSION
                         String menuPermission=menu.getPermission()!=null?menu.getPermission():"KALIX_NOT_PERMISSION";
-                        if(subject.isPermitted(menuPermission)){
+                        if (subject.hasRole(menuPermission)) {
                             menuList.add(menu);
                         }
                     }

@@ -71,7 +71,7 @@
             <to uri="activemq:queue:outbox"/>
         </route>-->
         <dataFormats>
-            <json id="json" library="Jackson" useList="true"/>
+            <json id="json" library="Jackson"/>
         </dataFormats>
 
         <route id="jpaTest" startupOrder="1">
@@ -85,14 +85,24 @@
             <!--<marshal ref="json">
 
             </marshal>-->
-            <to uri="log:out"/>
+            <!--<to uri="log:out"/>-->
             <!--<log message="Routing message from inbox to outbox queue with data ${body}"/>-->
-            <to uri="activemq:queue:inbox"/>
-            <to uri="jpa://cn.com.rexen.kalix.demo.camel.model.NewPerson"/>
+            <!--<convertBodyTo type="cn.com.rexen.kalix.demo.camel.model.NewPerson"/>-->
+            <marshal ref="json"/>
+            <to uri="activemq:queue:inbox?jmsMessageType=Text"/>
+            <!--<to uri="jpa://cn.com.rexen.kalix.demo.camel.model.NewPerson"/>-->
             <!--<process ref="stopProcessor"/>-->
         </route>
 
-
+        <route id="jpaReceive">
+            <!--<from uri="timer:test?period=5000"/>-->
+            <from uri="activemq:queue:inbox"/>
+            <unmarshal>
+                <json library="Jackson" unmarshalTypeName="cn.com.rexen.kalix.demo.camel.model.NewPerson"/>
+            </unmarshal>
+            <!--<process ref="jpaProcessor"/>-->
+            <to uri="jpa://cn.com.rexen.kalix.demo.camel.model.NewPerson"/>
+        </route>
         <!-- <route id="control" startupOrder="2"  routePolicyRef="startPolicy">
             <from uri="timer:test?period=5000&amp;repeatCount=1"/>
             <setBody>
@@ -138,6 +148,7 @@
     </bean>
 
     <bean id="processor" class="cn.com.rexen.kalix.demo.camel.JsonProcessor"/>
+    <bean id="jpaProcessor" class="cn.com.rexen.kalix.demo.camel.JpaProcessor"/>
     <!--<bean id="jmsbuilder" class="cn.com.rexen.kalix.demo.camel.Jms2RestRoute"/>-->
 </blueprint>
 

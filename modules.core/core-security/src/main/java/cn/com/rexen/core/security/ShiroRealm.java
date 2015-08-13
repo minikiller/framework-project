@@ -56,7 +56,8 @@ public class ShiroRealm extends AuthorizingRealm implements IAuthorizingRealm {
         List<String> userPermission = userLoginService.getUserPermission(userName);
         if (userPermission != null) {
             for (String permission : userPermission)
-                info.addStringPermission(permission);
+                info.addRole(permission);
+//                        .addStringPermission(permission);
         }
 //        info.addStringPermission("app.admin");
         return info;
