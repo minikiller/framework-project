@@ -56,6 +56,6 @@ public class OrganizationMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return null;
+        return "admin:sysModule:systemConstantMenu:organizationMenu";
     }
 }

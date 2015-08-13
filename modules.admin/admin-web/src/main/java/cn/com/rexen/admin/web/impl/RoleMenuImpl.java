@@ -56,6 +56,6 @@ public class RoleMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return null;
+        return "admin:sysModule:permissionControl:roleMenu";
     }
 }

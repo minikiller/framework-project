@@ -51,6 +51,6 @@ public class AdminModuleImpl implements IModule {
 
     @Override
     public String getPermission() {
-        return null;
+        return "admin:sysModule";
     }
 }

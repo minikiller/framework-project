@@ -52,9 +52,11 @@ public class SystemServiceImpl implements ISystemService {
 
         List<IApplication> applicationList = ApplicationManager.getInstall().getApplicationList();
         if (applicationList != null && applicationList.size() > 0) {
+            Mapper mapper = new DozerBeanMapper();
             for (IApplication application : applicationList) {
-                if(subject.isPermitted(application.getPermission())){
-                    Mapper mapper = new DozerBeanMapper();
+                //调用isPermitted不能传入空字符,故此默认值为KALIX_NOT_PERMISSION
+                String permission=application.getPermission()!=null?application.getPermission():"KALIX_NOT_PERMISSION";
+                if(subject.isPermitted(permission)){
                     ApplicationBean applicationBean = mapper.map(application, ApplicationBean.class);
                     applicationBeans.add(applicationBean);
                 }
@@ -65,15 +67,38 @@ public class SystemServiceImpl implements ISystemService {
 
     @Override
     public List<ModuleBean> getModuleByApplication(String applicationId) {
+        Subject subject=shiroService.getSubject();
         List<IModule> moduleList = MoudleManager.getInstall().getModuleList(applicationId);
+        List<ModuleBean> moduleBeanList=new ArrayList<ModuleBean>();
         if(moduleList==null)
             moduleList=new ArrayList<IModule>();
         Mapper mapper = new DozerBeanMapper();
-        List<ModuleBean> moduleBeanList = DozerHelper.map(mapper, moduleList, ModuleBean.class);
+        //找出所有对应权限的功能模块
+        if(moduleList!=null&&!moduleList.isEmpty()){
+            for(IModule module:moduleList) {
+                //调用isPermitted不能传入空字符,故此默认值为KALIX_NOT_PERMISSION
+                String modulePermission=module.getPermission()!=null?module.getPermission():"KALIX_NOT_PERMISSION";
+                if(subject.isPermitted(modulePermission)) {
+                    ModuleBean moduleBean = mapper.map(module, ModuleBean.class);
+                    moduleBeanList.add(moduleBean);
+                }
+            }
+        }
         if(moduleBeanList!=null&&!moduleBeanList.isEmpty()){
             for(ModuleBean moduleBean:moduleBeanList){
                 moduleBean.setMenus(new ArrayList<MenuBean>());
-                List<IMenu> menuList = MenuManager.getInstall().getMenuList(moduleBean.getId());
+                List<IMenu> menuList = new ArrayList<IMenu>();
+                List<IMenu> allMenu=MenuManager.getInstall().getMenuList(moduleBean.getId());
+                //去掉没有权限的菜单
+                if(allMenu!=null&&!allMenu.isEmpty()){
+                    for(IMenu menu:allMenu){
+                        //调用isPermitted不能传入空字符,故此默认值为KALIX_NOT_PERMISSION
+                        String menuPermission=menu.getPermission()!=null?menu.getPermission():"KALIX_NOT_PERMISSION";
+                        if(subject.isPermitted(menuPermission)){
+                            menuList.add(menu);
+                        }
+                    }
+                }
                 List<IMenu> rootMenus = getRootMenus(menuList);
                 if(rootMenus!=null&&!rootMenus.isEmpty()){
                     for(IMenu rootMenu:rootMenus){

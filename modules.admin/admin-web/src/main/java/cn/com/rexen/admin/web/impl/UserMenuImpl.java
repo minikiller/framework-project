@@ -54,6 +54,6 @@ public class UserMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return null;
+        return "admin:sysModule:permissionControl:userMenu";
     }
 }

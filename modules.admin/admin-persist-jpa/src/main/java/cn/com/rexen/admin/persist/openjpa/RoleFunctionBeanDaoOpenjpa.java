@@ -6,6 +6,8 @@ import cn.com.rexen.admin.entities.RoleApplicationBean;
 import cn.com.rexen.admin.entities.RoleFunctionBean;
 import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
+import java.util.List;
+
 /**
  * 角色功能DAO实现
  * @author majian <br/>
@@ -18,5 +20,10 @@ public class RoleFunctionBeanDaoOpenjpa extends GenericOpenJpaDao<RoleFunctionBe
     @Override
     public void deleteByRoleId(long id) {
         super.updateNativeQuery("delete from sys_role_function where roleId="+id);
+    }
+
+    @Override
+    public List<RoleFunctionBean> getRoleFunctionsByRoleId(long roleId) {
+        return super.find("select rab from RoleFunctionBean rab where rab.roleId=?1",roleId);
     }
 }

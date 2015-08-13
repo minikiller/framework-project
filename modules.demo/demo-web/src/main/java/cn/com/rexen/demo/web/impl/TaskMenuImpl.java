@@ -56,6 +56,6 @@ public class TaskMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return null;
+        return "test:demoWorkFlowModule:demoWorkFlowMenu:taskMenu";
     }
 }

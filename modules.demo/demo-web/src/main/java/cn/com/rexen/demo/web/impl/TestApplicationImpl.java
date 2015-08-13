@@ -46,6 +46,6 @@ public class TestApplicationImpl implements IApplication {
 
     @Override
     public String getPermission() {
-        return "test";
+        return "test:root";
     }
 }

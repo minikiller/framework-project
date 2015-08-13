@@ -20,5 +20,14 @@
             <bean class="cn.com.rexen.core.web.impl.BodyImpl"/>
         </reference-listener>
     </reference-list>-->
+    <!--应用管理-->
+    <service interface="cn.com.rexen.core.api.web.IMenu">
+        <bean class="cn.com.rexen.app.web.impl.ApplicationMenuImpl"/>
+    </service>
+    <!--功能管理-->
+    <service interface="cn.com.rexen.core.api.web.IMenu">
+        <bean class="cn.com.rexen.app.web.impl.FunctionMenuImpl"/>
+    </service>
+
 
 </blueprint>

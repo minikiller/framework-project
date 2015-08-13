@@ -42,11 +42,18 @@ public interface IPermissionBeanService extends IBizService {
 
 
     /**
-     * 理应放到ApplicationBeanService中,为了避免相互依赖问题,所以放置RoleBeanService中
-     * 根据用户编号返回所有应用路径
+     *
+     * 根据用户编号返回所有应用代码(理应放到ApplicationBeanService中,为了避免相互依赖问题,所以放置PermissionBeanService中)
      * 首先查询角色,之后查询角色与应用关联,最后根据关联关系中的应用ID查询应用
      * @return
      */
-    public List<String> getApplicationCodesByUserId(String userId);
+    public List<String> getApplicationCodesByUserId(long userId);
 
+    /**
+     *
+     * 根据用户编号返回所有功能代码(理应放到FunctionBeanService中,为了避免相互依赖问题,所以放置PermissionBeanService中)
+     * 首先查询角色,之后查询角色与功能关联,最后根据关联关系中的功能ID查询应用
+     * @return
+     */
+    public List<String> getFunctionCodesByUserId(long userId);
 }

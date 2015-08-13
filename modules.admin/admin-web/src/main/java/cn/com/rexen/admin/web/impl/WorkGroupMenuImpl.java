@@ -56,6 +56,6 @@ public class WorkGroupMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return null;
+        return "admin:sysModule:permissionControl:workGroupMenu";
     }
 }

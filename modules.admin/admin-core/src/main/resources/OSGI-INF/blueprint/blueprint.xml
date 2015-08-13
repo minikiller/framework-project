@@ -68,6 +68,8 @@
         <property name="roleApplicationBeanDao" ref="roleApplicationBeanDao"/>
         <property name="workGroupBeanService" ref="workGroupBeanServiceImpl"/>
         <property name="applicationBeanDao" ref="applicationBeanDao"/>
+        <property name="roleFunctionBeanDao" ref="roleFunctionBeanDao"/>
+        <property name="functionBeanDao" ref="functionBeanDao"/>
     </bean>
     <service id="permissionBeanService" ref="permissionBeanServiceImpl"
              interface="cn.com.rexen.admin.api.biz.IPermissionBeanService"/>

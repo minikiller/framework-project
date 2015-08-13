@@ -109,6 +109,21 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
     }
 
     @Override
+    public void afterUpdateEntity(PersistentEntity entity, JsonStatus status) {
+        ApplicationBean applicationBean=(ApplicationBean)entity;
+        List<FunctionBean> functionBeans=functionBeanDao.find("select fb from FunctionBean fb where fb.applicationId=?1",entity.getId());
+        if(functionBeans!=null&&!functionBeans.isEmpty()){
+            for(FunctionBean functionBean:functionBeans){
+                if(functionBean.getPermission()!=null&&functionBean.getPermission().indexOf(":")!=-1){
+                    //更新应用时,将应用代码再更新到各个功能的permission中
+                    functionBean.setPermission(applicationBean.getCode()+functionBean.getPermission().substring(functionBean.getPermission().indexOf(":"),functionBean.getPermission().length()));
+                    functionBeanDao.save(functionBean);
+                }
+            }
+        }
+    }
+
+    @Override
     public boolean isUpdate(PersistentEntity entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         ApplicationBean bean=(ApplicationBean)entity;

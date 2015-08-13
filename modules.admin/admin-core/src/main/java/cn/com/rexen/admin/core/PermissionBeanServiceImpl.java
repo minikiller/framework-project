@@ -6,12 +6,12 @@ import cn.com.rexen.admin.api.biz.IWorkGroupBeanService;
 import cn.com.rexen.admin.api.dao.IPermissionBeanDao;
 import cn.com.rexen.admin.api.dao.IRoleApplicationBeanDao;
 import cn.com.rexen.admin.api.dao.IRoleBeanDao;
-import cn.com.rexen.admin.entities.PermissionBean;
-import cn.com.rexen.admin.entities.RoleApplicationBean;
-import cn.com.rexen.admin.entities.RoleBean;
-import cn.com.rexen.admin.entities.WorkGroupUserBean;
+import cn.com.rexen.admin.api.dao.IRoleFunctionBeanDao;
+import cn.com.rexen.admin.entities.*;
 import cn.com.rexen.app.api.dao.IApplicationBeanDao;
+import cn.com.rexen.app.api.dao.IFunctionBeanDao;
 import cn.com.rexen.app.entities.ApplicationBean;
+import cn.com.rexen.app.entities.FunctionBean;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.Assert;
 
@@ -35,6 +35,16 @@ public class PermissionBeanServiceImpl extends GenericBizServiceImpl implements 
     private IRoleApplicationBeanDao roleApplicationBeanDao;
     private IWorkGroupBeanService workGroupBeanService;
     private IApplicationBeanDao applicationBeanDao;
+    private IRoleFunctionBeanDao roleFunctionBeanDao;
+    private IFunctionBeanDao functionBeanDao;
+
+    public void setFunctionBeanDao(IFunctionBeanDao functionBeanDao) {
+        this.functionBeanDao = functionBeanDao;
+    }
+
+    public void setRoleFunctionBeanDao(IRoleFunctionBeanDao roleFunctionBeanDao) {
+        this.roleFunctionBeanDao = roleFunctionBeanDao;
+    }
 
     public void setApplicationBeanDao(IApplicationBeanDao applicationBeanDao) {
         this.applicationBeanDao = applicationBeanDao;
@@ -103,39 +113,77 @@ public class PermissionBeanServiceImpl extends GenericBizServiceImpl implements 
     }
 
     @Override
-    public List<String> getApplicationCodesByUserId(String userId) {
+    public List<String> getApplicationCodesByUserId(long userId) {
         Assert.notNull(userId, "用户编号不能为空.");
-        List<String> applicationLocations=new ArrayList<String>();
+        List<String> applicationCodes=new ArrayList<String>();
         //返回用户下所有角色
-        List<RoleBean> roleBeans=roleBeanService.getRolesByUserId(Long.parseLong(userId));
+        List<RoleBean> roleBeans=roleBeanService.getRolesByUserId(userId);
         if(roleBeans!=null&&!roleBeans.isEmpty()){
             for(RoleBean roleBean:roleBeans){
                 List<RoleApplicationBean> roleApplicationBeans=roleApplicationBeanDao.getRoleApplicationsByRoleId(roleBean.getId());
-                fillApplicationLicationByRoles(applicationLocations,roleApplicationBeans);
+                fillApplicationCodeByRoles(applicationCodes, roleApplicationBeans);
             }
         }
         //返回用户下所有工作组,根据工作组再返回工作组下所有角色
-        List<WorkGroupUserBean> workGroupUserBeans=workGroupBeanService.getWorkGroupUserBeanByUserId(Integer.parseInt(userId));
+        List<WorkGroupUserBean> workGroupUserBeans=workGroupBeanService.getWorkGroupUserBeanByUserId(userId);
         if(workGroupUserBeans!=null&&!workGroupUserBeans.isEmpty()){
             for(WorkGroupUserBean workGroupUserBean:workGroupUserBeans){
                 List<RoleBean> _roleBeans=roleBeanService.getRolesByWorkGorupId(workGroupUserBean.getGroupId());
                 if(_roleBeans!=null&&!_roleBeans.isEmpty()){
                     for(RoleBean roleBean:_roleBeans){
                         List<RoleApplicationBean> roleApplicationBeans=roleApplicationBeanDao.getRoleApplicationsByRoleId(roleBean.getId());
-                        fillApplicationLicationByRoles(applicationLocations,roleApplicationBeans);
+                        fillApplicationCodeByRoles(applicationCodes, roleApplicationBeans);
                     }
                 }
             }
         }
-        return applicationLocations;
+        return applicationCodes;
     }
 
-    private void fillApplicationLicationByRoles(List<String> applicationLocations,List<RoleApplicationBean> roleApplicationBeans){
+    @Override
+    public List<String> getFunctionCodesByUserId(long userId) {
+        Assert.notNull(userId, "用户编号不能为空.");
+        List<String> functionCodes=new ArrayList<String>();
+        //返回用户下所有角色
+        List<RoleBean> roleBeans=roleBeanService.getRolesByUserId(userId);
+        if(roleBeans!=null&&!roleBeans.isEmpty()){
+            for(RoleBean roleBean:roleBeans){
+                List<RoleFunctionBean> roleFunctionBeans=roleFunctionBeanDao.getRoleFunctionsByRoleId(roleBean.getId());
+                fillFunctionCodeByRoles(functionCodes, roleFunctionBeans);
+            }
+        }
+        //返回用户下所有工作组,根据工作组再返回工作组下所有角色
+        List<WorkGroupUserBean> workGroupUserBeans=workGroupBeanService.getWorkGroupUserBeanByUserId(userId);
+        if(workGroupUserBeans!=null&&!workGroupUserBeans.isEmpty()){
+            for(WorkGroupUserBean workGroupUserBean:workGroupUserBeans){
+                List<RoleBean> _roleBeans=roleBeanService.getRolesByWorkGorupId(workGroupUserBean.getGroupId());
+                if(_roleBeans!=null&&!_roleBeans.isEmpty()){
+                    for(RoleBean roleBean:_roleBeans){
+                        List<RoleFunctionBean> roleFunctionBeans=roleFunctionBeanDao.getRoleFunctionsByRoleId(roleBean.getId());
+                        fillFunctionCodeByRoles(functionCodes, roleFunctionBeans);
+                    }
+                }
+            }
+        }
+        return functionCodes;
+    }
+
+    private void fillApplicationCodeByRoles(List<String> applicationCodes, List<RoleApplicationBean> roleApplicationBeans){
         if(roleApplicationBeans!=null&&!roleApplicationBeans.isEmpty()){
             for(RoleApplicationBean roleApplicationBean:roleApplicationBeans){
                 ApplicationBean applicationBean=applicationBeanDao.get(ApplicationBean.class.getName(), roleApplicationBean.getApplicationId());
                 if(applicationBean!=null)
-                    applicationLocations.add(applicationBean.getCode());
+                    applicationCodes.add(applicationBean.getCode());
+            }
+        }
+    }
+
+    private void fillFunctionCodeByRoles(List<String> functionCodes, List<RoleFunctionBean> roleFunctionBeans){
+        if(roleFunctionBeans!=null&&!roleFunctionBeans.isEmpty()){
+            for(RoleFunctionBean roleFunctionBean:roleFunctionBeans){
+                FunctionBean functionBean=functionBeanDao.get(FunctionBean.class.getName(), roleFunctionBean.getFunctionId());
+                if(functionBean!=null)
+                    functionCodes.add(functionBean.getPermission());
             }
         }
     }

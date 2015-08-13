@@ -56,6 +56,6 @@ public class ProcessHistoryMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return null;
+        return "test:demoWorkFlowModule:demoWorkFlowMenu:processHistoryMenu";
     }
 }

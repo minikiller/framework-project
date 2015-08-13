@@ -104,9 +104,13 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
         if(oldBean!=null){
             FunctionBean functionBean=(FunctionBean)entity;
             oldBean.setName(functionBean.getName());
-            oldBean.setCode(functionBean.getCode());
             oldBean.setRemark(functionBean.getRemark());
             oldBean.setUpdateBy(functionBean.getUpdateBy());
+            //修改功能代码后再更新permission字段
+            oldBean.setPermission(oldBean.getPermission().replace(oldBean.getCode(),functionBean.getCode()));
+            //更新下所有子功能
+            updatePermission(oldBean.getCode(),functionBean.getCode(),oldBean);
+            oldBean.setCode(functionBean.getCode());
             functionBeanDao.save(oldBean);
             jsonStatus.setSuccess(true);
             jsonStatus.setMsg("修改成功！");
@@ -122,6 +126,20 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
             if(parentFunctionBean!=null&&parentFunctionBean.getIsLeaf()==1){
                 parentFunctionBean.setIsLeaf(0);
                 functionBeanDao.save(parentFunctionBean);
+            }
+        }
+    }
+
+    private void updatePermission(String oldTopCode,String newTopCode,FunctionBean parentFunction){
+        //如果下面有叶子节点
+        if(parentFunction.getIsLeaf()==0){
+            List<FunctionBean> childFunction=functionBeanDao.find("select fb from FunctionBean fb where fb.parentId=?1",parentFunction.getId());
+            if(childFunction!=null&&!childFunction.isEmpty()){
+                for(FunctionBean functionBean:childFunction){
+                    functionBean.setPermission(functionBean.getPermission().replace(oldTopCode,newTopCode));
+                    functionBeanDao.save(functionBean);
+                    updatePermission(oldTopCode,newTopCode,functionBean);
+                }
             }
         }
     }
@@ -151,7 +169,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
     public boolean isUpdate(PersistentEntity entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         FunctionBean bean=(FunctionBean)entity;
-        List<FunctionBean> beans= functionBeanDao.find("select ob from FunctionBean ob where ob.name = ?1 and ob.applicationId=?2", bean.getName(),bean.getApplicationId());
+        List<FunctionBean> beans= functionBeanDao.find("select ob from FunctionBean ob where ob.name = ?1 and ob.applicationId=?2", bean.getName(), bean.getApplicationId());
         if(beans!=null&&beans.size()>0){
             FunctionBean functionBean=beans.get(0);
             if(functionBean.getId()!=entity.getId()) {
@@ -230,6 +248,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
         }
         root.setChildren(children);
     }
+
 
     /**
      * 递归函数加载子节点,并设置选中状态

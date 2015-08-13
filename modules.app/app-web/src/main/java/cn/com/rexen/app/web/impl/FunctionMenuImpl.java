@@ -1,14 +1,14 @@
-package cn.com.rexen.admin.web.impl;
+package cn.com.rexen.app.web.impl;
 
 import cn.com.rexen.core.api.web.IMenu;
 
 /**
- * 应用菜单
+ * 功能菜单
  * @author majian <br/>
  *         date:2015-8-10
  * @version 1.0.0
  */
-public class ApplicationMenuImpl implements IMenu {
+public class FunctionMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {
         return true;
@@ -26,12 +26,12 @@ public class ApplicationMenuImpl implements IMenu {
 
     @Override
     public String getId() {
-        return "applicationMenu";
+        return "functionMenu";
     }
 
     @Override
     public String getTitle() {
-        return "应用管理";
+        return "功能管理";
     }
 
     @Override
@@ -41,12 +41,12 @@ public class ApplicationMenuImpl implements IMenu {
 
     @Override
     public String getIcon() {
-        return "app/resources/images/application.png";
+        return "app/resources/images/note.png";
     }
 
     @Override
     public String getComponentClass() {
-        return "Kalix.app.application.view.Application";
+        return "Kalix.app.function.view.Function";
     }
 
     @Override
@@ -56,6 +56,6 @@ public class ApplicationMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return null;
+        return "admin:sysModule:permissionControl:functionMenu";
     }
 }

@@ -53,14 +53,7 @@
     <service interface="cn.com.rexen.core.api.web.IMenu">
         <bean class="cn.com.rexen.admin.web.impl.WorkGroupMenuImpl"/>
     </service>
-    <!--应用管理-->
-    <service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.admin.web.impl.ApplicationMenuImpl"/>
-    </service>
-    <!--功能管理-->
-    <service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.admin.web.impl.FunctionMenuImpl"/>
-    </service>
+
     <!--字典管理-->
     <service interface="cn.com.rexen.core.api.web.IMenu">
         <bean class="cn.com.rexen.admin.web.impl.DictMenuImpl"/>

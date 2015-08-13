@@ -97,7 +97,8 @@ public class UserLoginServiceImpl implements IUserLoginService {
         List<String> stringList = new ArrayList<String>();
         UserBean userBean = userBeanDao.getUser(username);
         if (userBean != null) {
-            stringList.addAll(permissionBeanService.getApplicationCodesByUserId(String.valueOf(userBean.getId())));
+            stringList.addAll(permissionBeanService.getApplicationCodesByUserId(userBean.getId()));
+            stringList.addAll(permissionBeanService.getFunctionCodesByUserId(userBean.getId()));
         }
         return stringList;
     }

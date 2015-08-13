@@ -51,6 +51,6 @@ public class DemoWorkFlowModuleImpl implements IModule {
 
     @Override
     public String getPermission() {
-        return null;
+        return "test:demoWorkFlowModule";
     }
 }
