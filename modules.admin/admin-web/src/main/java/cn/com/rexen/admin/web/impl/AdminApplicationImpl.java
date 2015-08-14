@@ -46,6 +46,6 @@ public class AdminApplicationImpl implements IApplication {
 
     @Override
     public String getPermission() {
-        return "admin:root";
+        return "admin";
     }
 }
