@@ -6,6 +6,7 @@ import cn.com.rexen.core.api.web.model.ModuleBean;
 import cn.com.rexen.core.api.web.model.SystemBean;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by sunlf on 2015/7/13.
@@ -19,4 +20,16 @@ public interface ISystemService {
     List<ModuleBean> getModuleByApplication(String applicationId);
 
     MenuBean getMenuByModule(String moduleId);
+
+    /**
+     * 判断按钮权限
+     * 生成JSON如下:
+     *    [{
+     *        permission:"admin:sysModule:permissionControl:userMenu:add",
+     *        status:true
+     *    }]
+     * @param permission
+     * @return
+     */
+    Map getButtonsByPermission(String permission);
 }

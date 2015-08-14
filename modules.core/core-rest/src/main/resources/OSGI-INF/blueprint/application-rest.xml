@@ -79,6 +79,12 @@
                 <to uri="bean:systemService?method=getMenuByModule(${header.id})"/>
             </get>
 
+            <get id="route-getButtonsByPermission" uri="/applications/modules/menus/buttons/{permissions}"
+                 outType="java.util.Map">
+                <description>Find Button  Permission</description>
+                <to uri="bean:systemService?method=getButtonsByPermission(${header.permissions})"/>
+            </get>
+
         </rest>
 
     </camelContext>

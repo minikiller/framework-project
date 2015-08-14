@@ -11,7 +11,9 @@ import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by sunlf on 2015/7/13.
@@ -132,6 +134,39 @@ public class SystemServiceImpl implements ISystemService {
         return menuBean;
     }
 
+    @Override
+    public Map getButtonsByPermission(String permission) {
+        if(permission==null||permission.isEmpty())
+            return null;
+        Map resp=new HashMap();
+        List<Map> buttons=new ArrayList<Map>();
+        Subject subject=shiroService.getSubject();
+        if(permission.indexOf("_")!=-1){
+            String[] permissions=permission.split("_");
+            for(String _permission:permissions){
+                Map button=new HashMap();
+                button.put("permission",_permission);
+                if(subject.hasRole(_permission)){
+                    button.put("status",true);
+                }else {
+                    button.put("status", false);
+                }
+                buttons.add(button);
+            }
+        }else{
+            Map button=new HashMap();
+            button.put("permission",permission);
+            if(subject.hasRole(permission)){
+                button.put("status",true);
+            }else{
+                button.put("status",false);
+            }
+            buttons.add(button);
+        }
+        resp.put("buttons",buttons.toArray());
+        return resp;
+    }
+
     /**
      * 递归函数加载子菜单
      *
@@ -188,7 +223,6 @@ public class SystemServiceImpl implements ISystemService {
         }
         return rootMenus;
     }
-
     public void setSystemService(ISystem systemService) {
         this.systemService = systemService;
     }
