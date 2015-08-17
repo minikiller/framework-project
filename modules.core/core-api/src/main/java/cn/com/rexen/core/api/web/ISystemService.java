@@ -15,10 +15,24 @@ import java.util.Map;
 public interface ISystemService {
     SystemBean getSystem();
 
+    /**
+     * 返回所有应用
+     * @return
+     */
     List<ApplicationBean> getApplicationList();
 
+    /**
+     * 返回指定应用下模块列表
+     * @param applicationId
+     * @return
+     */
     List<ModuleBean> getModuleByApplication(String applicationId);
 
+    /**
+     * 返回指定模块下菜单
+     * @param moduleId
+     * @return
+     */
     MenuBean getMenuByModule(String moduleId);
 
     /**

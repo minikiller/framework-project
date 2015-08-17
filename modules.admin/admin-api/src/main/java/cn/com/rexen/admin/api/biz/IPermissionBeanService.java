@@ -24,12 +24,31 @@ public interface IPermissionBeanService extends IBizService {
      */
     PermissionBean getRootPermission();
 
+    /**
+     * 获得子权限
+     * @param permissionBean
+     * @return
+     */
     List<PermissionBean> getChildPermission(PermissionBean permissionBean);
 
+    /**
+     * 查询指定权限
+     * @param permissionBean
+     * @return
+     */
     List<PermissionBean> query(PermissionBean permissionBean);
 
+    /**
+     * 获得根对象列表
+     * @return
+     */
     List<PermissionBean> getRootBeanList();
 
+    /**
+     * 获得子对象列表
+     * @param permissionBean
+     * @return
+     */
     List<PermissionBean> getChildBeanList(PermissionBean permissionBean);
 
     /**
