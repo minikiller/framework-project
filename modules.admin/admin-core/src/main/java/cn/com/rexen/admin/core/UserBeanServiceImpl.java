@@ -15,6 +15,7 @@ import cn.com.rexen.core.api.web.model.QueryDTO;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.Assert;
 import cn.com.rexen.core.util.JNDIHelper;
+import cn.com.rexen.core.util.MD5Util;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
@@ -66,8 +67,14 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
         Assert.notNull(entity, "实体不能为空.");
         String userName = shiroService.getCurrentUserName();
         Assert.notNull(userName, "用户名不能为空.");
-        if(StringUtils.isNotEmpty(userName)) {
-            entity.setUpdateBy(userName);
+        UserBean userEntity=(UserBean)entity;
+        if (StringUtils.isNotEmpty(userName)) {
+            userEntity.setUpdateBy(userName);
+        }
+        UserBean userBean = userBeanDao.get(UserBean.class.getName(),entity.getId());
+        //如果编辑时修改了密码将重新计算MD5
+        if(userBean!=null&&!userBean.getPassword().equals(userEntity.getPassword())){
+            userEntity.setPassword(MD5Util.encode(userEntity.getPassword()));
         }
     }
 
@@ -78,6 +85,11 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
         if(StringUtils.isNotEmpty(userName)) {
             entity.setCreateBy(userName);
             entity.setUpdateBy(userName);
+        }
+        UserBean userEntity=(UserBean)entity;
+        //密码加密
+        if(StringUtils.isNotEmpty(userEntity.getPassword())){
+            userEntity.setPassword(MD5Util.encode(userEntity.getPassword()));
         }
     }
 
@@ -99,7 +111,7 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
 
     @Override
     public CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO) {
-        Assert.notNull(queryDTO,"查询对象不能为空.");
+        Assert.notNull(queryDTO, "查询对象不能为空.");
         UserDTO userDTO=(UserDTO)queryDTO;
         CriteriaBuilder criteriaBuilder = userBeanDao.getEntityManager().getCriteriaBuilder();
         CriteriaQuery<UserBean> criteriaQuery = criteriaBuilder.createQuery(UserBean.class);

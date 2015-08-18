@@ -7,6 +7,7 @@ import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.ErrorCodeValue;
 import cn.com.rexen.core.api.security.IUserLoginService;
+import cn.com.rexen.core.util.MD5Util;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -116,8 +117,7 @@ public class UserLoginServiceImpl implements IUserLoginService {
     }
 
     private String encrypt(String text) {
-
-        return text;
+        return MD5Util.encode(text);
     }
 
     @Override
