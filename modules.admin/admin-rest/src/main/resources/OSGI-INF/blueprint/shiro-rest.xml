@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
+    <camelContext id="loginCamel" xmlns="http://camel.apache.org/schema/blueprint">
+
+        <restConfiguration component="servlet" bindingMode="json"
+                           contextPath="/kalix/camel/rest" host="localhost"
+                           port="8181">
+
+            <dataFormatProperty key="prettyPrint" value="true"/>
+        </restConfiguration>
+
+        <!-- defines the rest services using the context-path /user -->
+        <rest path="/shiro" consumes="application/json" produces="application/json">
+            <description>User shiro service</description>
+
+
+            <!-- this is a rest PUT to create an user -->
+            <get id="route-validSession"
+                 outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>validate user session</description>
+                <to uri="bean:shiroService?method=validSession(${header.sessionId})"/>
+            </get>
+
+        </rest>
+
+    </camelContext>
+</blueprint>

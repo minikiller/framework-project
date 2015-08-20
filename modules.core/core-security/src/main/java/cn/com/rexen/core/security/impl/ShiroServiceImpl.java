@@ -1,6 +1,7 @@
 package cn.com.rexen.core.security.impl;
 
 import cn.com.rexen.core.api.PermissionConstant;
+import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.security.IShiroService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
@@ -40,5 +41,20 @@ public class ShiroServiceImpl implements IShiroService {
     @Override
     public Session getSession() {
         return SecurityUtils.getSubject().getSession();
+    }
+
+    public JsonStatus validSession(String sessionId) {
+        JsonStatus jsonStatus = new JsonStatus();
+        Subject requestSubject = new Subject.Builder().sessionId(sessionId).buildSubject();
+        if (requestSubject.getPrincipal() != null) {
+            jsonStatus.setSuccess(true);
+            jsonStatus.setFailure(false);
+            jsonStatus.setMsg("验证成功！");
+        } else {
+            jsonStatus.setSuccess(false);
+            jsonStatus.setFailure(true);
+            jsonStatus.setMsg("验证失败！");
+        }
+        return jsonStatus;
     }
 }

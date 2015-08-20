@@ -1,5 +1,6 @@
 package cn.com.rexen.core.api.security;
 
+import cn.com.rexen.core.api.biz.JsonStatus;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 
@@ -28,4 +29,11 @@ public interface IShiroService {
      */
 
     Session getSession();
+
+    /**
+     * sessionid校验用户是否登录
+     *
+     * @return
+     */
+    public JsonStatus validSession(String sessionId);
 }

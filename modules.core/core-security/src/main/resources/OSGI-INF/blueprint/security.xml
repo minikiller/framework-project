@@ -109,7 +109,7 @@
 
     <reference id="cacheManager" interface="cn.com.rexen.core.api.cache.ICacheManager"/>
 
-    <service interface="cn.com.rexen.core.api.security.IShiroService" ref="shiroServiceImpl">
+    <service id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService" ref="shiroServiceImpl">
 
     </service>
     <bean id="shiroServiceImpl" class="cn.com.rexen.core.security.impl.ShiroServiceImpl" init-method="init">

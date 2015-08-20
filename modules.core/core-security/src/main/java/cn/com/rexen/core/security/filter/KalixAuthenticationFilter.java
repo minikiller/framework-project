@@ -43,7 +43,7 @@ public class KalixAuthenticationFilter extends FormAuthenticationFilter {
             String name=String.valueOf(session.getAttribute(PermissionConstant.SYS_CURRENT_USERNAME));
             httpServletResponse.setCharacterEncoding("UTF-8");
             PrintWriter out = httpServletResponse.getWriter();
-            out.println("{success:true,location:'/kalix/index.jsp',message:'登入成功',user:{name:'"+ name+"'}}");
+            out.println("{success:true,location:'/kalix/index.jsp',message:'登入成功',user:{name:'" + name + "',token:'" + session.getId() + "'}}");
             out.flush();
             out.close();
         }
