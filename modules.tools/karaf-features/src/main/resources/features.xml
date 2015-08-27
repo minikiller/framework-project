@@ -30,6 +30,10 @@
         <bundle>mvn:mysql/mysql-connector-java/5.1.18</bundle>
     </feature>
 
+    <feature name="postgresql-driver">
+        <!--<feature>bonecp</feature>-->
+        <bundle>mvn:org.postgresql/postgresql/9.4-1201-jdbc41</bundle>
+    </feature>
 
 
     <feature name="kalix-core" version="1.0">
