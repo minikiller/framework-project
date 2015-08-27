@@ -21,8 +21,9 @@
 
     </properties>
     <modules>
-        <module>example-pax-cdi</module>
-        <module>example-pax-cdi-client</module>
+        <!--<module>example-pax-cdi</module>-->
+        <!--<module>example-pax-cdi-client</module>-->
+        <module>example-mongodb</module>
     </modules>
     <dependencyManagement>
         <dependencies>

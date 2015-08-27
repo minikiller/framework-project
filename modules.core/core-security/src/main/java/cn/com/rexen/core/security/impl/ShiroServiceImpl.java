@@ -43,6 +43,7 @@ public class ShiroServiceImpl implements IShiroService {
         return SecurityUtils.getSubject().getSession();
     }
 
+    @Override
     public JsonStatus validSession(String sessionId) {
         JsonStatus jsonStatus = new JsonStatus();
         Subject requestSubject = new Subject.Builder().sessionId(sessionId).buildSubject();
@@ -50,6 +51,28 @@ public class ShiroServiceImpl implements IShiroService {
             jsonStatus.setSuccess(true);
             jsonStatus.setFailure(false);
             jsonStatus.setMsg("验证成功！");
+        } else {
+            jsonStatus.setSuccess(false);
+            jsonStatus.setFailure(true);
+            jsonStatus.setMsg("验证失败！");
+        }
+        return jsonStatus;
+    }
+
+    public JsonStatus validPermission(String sessionId, String permission) {
+        JsonStatus jsonStatus = new JsonStatus();
+        Subject requestSubject = new Subject.Builder().sessionId(sessionId).buildSubject();
+        if (requestSubject.getPrincipal() != null) {
+            if (requestSubject.hasRole(permission)) {
+                jsonStatus.setSuccess(true);
+                jsonStatus.setFailure(false);
+                jsonStatus.setMsg("授权成功！");
+            } else {
+                jsonStatus.setSuccess(false);
+                jsonStatus.setFailure(true);
+                jsonStatus.setMsg("授权失败！");
+            }
+
         } else {
             jsonStatus.setSuccess(false);
             jsonStatus.setFailure(true);

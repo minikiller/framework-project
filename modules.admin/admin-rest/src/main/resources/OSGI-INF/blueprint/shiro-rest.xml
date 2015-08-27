@@ -4,8 +4,8 @@
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
     <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
-    <camelContext id="loginCamel" xmlns="http://camel.apache.org/schema/blueprint">
 
+    <camelContext id="loginCamel" xmlns="http://camel.apache.org/schema/blueprint">
         <restConfiguration component="servlet" bindingMode="json"
                            contextPath="/kalix/camel/rest" host="localhost"
                            port="8181">
@@ -14,15 +14,20 @@
         </restConfiguration>
 
         <!-- defines the rest services using the context-path /user -->
-        <rest path="/shiro" consumes="application/json" produces="application/json">
+        <rest path="/shiro" produces="application/json">
             <description>User shiro service</description>
 
-
-            <!-- this is a rest PUT to create an user -->
-            <get id="route-validSession"
-                 outType="cn.com.rexen.core.api.biz.JsonStatus">
+            <post id="route-validSession"
+                  outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>validate user session</description>
                 <to uri="bean:shiroService?method=validSession(${header.sessionId})"/>
+            </post>
+
+            <!-- this is a rest PUT to create an user -->
+            <get uri="/permission" id="route-validPermission"
+                 outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>validate user permission</description>
+                <to uri="bean:shiroService?method=validPermission(${header.sessionId},${header.permission})"/>
             </get>
 
         </rest>

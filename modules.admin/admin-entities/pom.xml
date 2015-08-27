@@ -35,6 +35,7 @@
     <properties>
         <bundle.symbolicName>cn.com.rexen.admin.entities</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+        <db.name>postgres</db.name>
     </properties>
 
     <dependencies>

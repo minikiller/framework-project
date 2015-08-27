@@ -36,4 +36,13 @@ public interface IShiroService {
      * @return
      */
     public JsonStatus validSession(String sessionId);
+
+    /**
+     * 根据sessionId校验该用户是否具有权限
+     *
+     * @param sessionId  session id
+     * @param permission 功能id
+     * @return
+     */
+    public JsonStatus validPermission(String sessionId, String permission);
 }
