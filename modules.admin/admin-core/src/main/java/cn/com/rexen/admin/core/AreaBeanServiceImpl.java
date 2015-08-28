@@ -9,22 +9,17 @@ import cn.com.rexen.admin.api.dao.IDepartmentUserBeanDao;
 import cn.com.rexen.admin.dto.model.AreaDTO;
 import cn.com.rexen.admin.entities.AboutBean;
 import cn.com.rexen.admin.entities.AreaBean;
-import cn.com.rexen.admin.entities.DepartmentBean;
-import cn.com.rexen.core.api.PermissionConstant;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.Assert;
 import cn.com.rexen.core.util.StringUtils;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 项目名称:  urgent-project

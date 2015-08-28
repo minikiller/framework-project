@@ -1,6 +1,5 @@
 package cn.com.rexen.app.api.dao;
 
-import cn.com.rexen.app.entities.ApplicationBean;
 import cn.com.rexen.app.entities.FunctionBean;
 import cn.com.rexen.core.api.persistence.IGenericDao;
 

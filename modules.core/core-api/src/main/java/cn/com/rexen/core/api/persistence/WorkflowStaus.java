@@ -13,7 +13,7 @@ public enum WorkflowStaus {
 
     private String statusCode;
 
-    private WorkflowStaus(String s) {
+    WorkflowStaus(String s) {
         statusCode = s;
     }
 

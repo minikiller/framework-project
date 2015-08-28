@@ -159,7 +159,7 @@ public class WorkflowServiceImpl implements IWorkflowService {
         InputStream is = repositoryService.getResourceAsStream("1101", "demo01/Interview.bpmn20.xml");
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         byte[] bytes = new byte[1024];
-        int len = 0;
+        int len;
         while ((len = is.read(bytes)) != -1) {
             bos.write(bytes, 0, len);
         }
@@ -185,7 +185,7 @@ public class WorkflowServiceImpl implements IWorkflowService {
         File file = new File("d:" + File.separator + "test.png");
         FileOutputStream fos = new FileOutputStream(file);
         byte[] bytes = new byte[1024];
-        int len = 0;
+        int len;
         while ((len = is.read(bytes)) != -1) {
             fos.write(bytes, 0, len);
         }

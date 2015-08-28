@@ -1,11 +1,7 @@
 package cn.com.rexen.admin.api.dao;
 
 import cn.com.rexen.admin.entities.OrganizationBean;
-import cn.com.rexen.admin.entities.RoleBean;
-import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.persistence.IGenericDao;
-
-import java.util.List;
 
 /**
  * 机构管理DAO接口

@@ -52,7 +52,7 @@ public class BpmnImageServlet extends BaseBpmnImageServlet {
             out = response.getOutputStream();
             // Copy the contents of the file to the output stream
             byte[] buf = new byte[1024];
-            int count = 0;
+            int count;
             while ((count = imageStream.read(buf)) >= 0) {
                 try {
                     out.write(buf, 0, count);

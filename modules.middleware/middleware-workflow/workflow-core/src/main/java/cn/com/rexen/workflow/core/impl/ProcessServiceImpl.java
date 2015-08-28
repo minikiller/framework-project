@@ -56,7 +56,7 @@ public class ProcessServiceImpl implements IProcessService {
     @Override
     public JsonData getProcessDefinition(int page, int limit) {
 
-        List<ProcessDefinitionDTO> processDefinitionDTOList = null;
+        List<ProcessDefinitionDTO> processDefinitionDTOList;
         List<ProcessDefinition> processDefinitionList = repositoryService.createProcessDefinitionQuery().latestVersion().listPage((page - 1) * limit, limit);
         if (processDefinitionList != null) {
             Mapper mapper = new DozerBeanMapper();
@@ -98,7 +98,7 @@ public class ProcessServiceImpl implements IProcessService {
      */
     @Override
     public JsonData getProcessHistory(int page, int limit) {
-        List<HistoricProcessInstanceDTO> historicProcessDTOList = null;
+        List<HistoricProcessInstanceDTO> historicProcessDTOList;
         List<HistoricProcessInstance> processHistoryList = historyService.createHistoricProcessInstanceQuery()
                 .orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
         if (processHistoryList != null) {

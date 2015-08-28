@@ -66,16 +66,16 @@ public class UtilTools {
             String methodEnd = propertyName.substring(0, 1).toUpperCase() + propertyName.substring(1);
             String MethodGetName = "get" + methodEnd;
             String MethodSetName = "set" + methodEnd;
-            Object value = null;
+            Object value;
             try {
-                Method getMethod = clazz.getDeclaredMethod(MethodGetName, new Class[]{});
+                Method getMethod = clazz.getDeclaredMethod(MethodGetName);
                 Method setMethod = clazz.getDeclaredMethod(MethodSetName, f.getType());
-                value = getMethod.invoke(obj, new Object[]{});
+                value = getMethod.invoke(obj);
                 if (f.getType().toString().equals("class java.lang.String")) {
                     if (value != null) {
                         value = new String(((String) value).getBytes("ISO-8859-1"), encoding);
                     }
-                    setMethod.invoke(obj, new Object[]{value});
+                    setMethod.invoke(obj, value);
 
                 }
             } catch (Exception e) {
@@ -103,7 +103,7 @@ public class UtilTools {
     }
 
     public static String getAbsFileName(String filename) {
-        String absfailename = "";
+        String absfailename;
         if (filename.lastIndexOf("/") > 0) {
             System.out.println("has /");
             absfailename = filename.split("/")[filename.split("/").length - 1];
@@ -269,7 +269,7 @@ public class UtilTools {
 
 
     public static HashMap<String, String> PasswordMD5(String plainText) {
-        HashMap<String, String> r = new HashMap<String, String>();
+        HashMap<String, String> r;
         byte[] key = generateKey();
         String salt = key.toString();
         r = saltpwsMD5(salt, toMD5(plainText));
@@ -462,7 +462,7 @@ public class UtilTools {
      * @return
      */
     public static int TimeAdd(int oldspstr, String newspstr) {
-        int result = 0;
+        int result;
         int flg = 0;//计算本次拜访时间与上回总时间相加
         String addspstr = "";
         int limit = 2;
@@ -762,10 +762,10 @@ public class UtilTools {
      * @return
      */
     public static int getMaximumDateOfMonth(String str) {
-        int am = 0;
+        int am;
         SimpleDateFormat simpleFormate = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();
-        Date date = null;
+        Date date;
         try {
             date = simpleFormate.parse(str);
             calendar.setTime(date);
@@ -894,7 +894,7 @@ public class UtilTools {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        String weekString = "";
+        String weekString;
         final String dayNames[] = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(parmdate);
@@ -999,7 +999,7 @@ public class UtilTools {
      */
     public static String parseMinuteToHourAndMinute(int minuteparam) {
         //int s=12862;
-        String rs = "";
+        String rs;
         int s = minuteparam * 60;
         int N = s / 3600;
         s = s % 3600;

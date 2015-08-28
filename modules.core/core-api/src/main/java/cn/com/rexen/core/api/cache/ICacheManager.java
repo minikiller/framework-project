@@ -20,7 +20,7 @@ public interface ICacheManager extends IService {
      * @param key   key
      * @param value value
      */
-    public <T> void save(String key, T value);
+    <T> void save(String key, T value);
 
     /**
      * 保存对象（带失效时间）
@@ -30,7 +30,7 @@ public interface ICacheManager extends IService {
      * @param sec   单位（秒）
      * @param <T>
      */
-    public <T> void save(String key, T value, int sec);
+    <T> void save(String key, T value, int sec);
 
     /**
      * 是否存在KEY
@@ -38,7 +38,7 @@ public interface ICacheManager extends IService {
      * @param key
      * @return
      */
-    public Boolean exists(String key);
+    Boolean exists(String key);
 
     /**
      * 获取对象
@@ -46,16 +46,16 @@ public interface ICacheManager extends IService {
      * @param key
      * @return
      */
-    public String get(String key);
+    String get(String key);
 
-    public byte[] getObj(String key);
+    byte[] getObj(String key);
 
     /**
      * 删除对象
      *
      * @param key
      */
-    public void del(String key);
+    void del(String key);
 
     /**
      * 删除被匹配到了的key
@@ -71,5 +71,5 @@ public interface ICacheManager extends IService {
      * @param keysPattern
      * @return
      */
-    public Set<byte[]> getKeysByKeysPattern(String keysPattern);
+    Set<byte[]> getKeysByKeysPattern(String keysPattern);
 }

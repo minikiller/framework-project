@@ -1,8 +1,6 @@
 package cn.com.rexen.admin.persist.openjpa;
 
-import cn.com.rexen.admin.api.dao.IRoleApplicationBeanDao;
 import cn.com.rexen.admin.api.dao.IRoleFunctionBeanDao;
-import cn.com.rexen.admin.entities.RoleApplicationBean;
 import cn.com.rexen.admin.entities.RoleFunctionBean;
 import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 

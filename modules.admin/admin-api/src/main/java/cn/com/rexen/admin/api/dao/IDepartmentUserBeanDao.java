@@ -1,7 +1,6 @@
 package cn.com.rexen.admin.api.dao;
 
 import cn.com.rexen.admin.entities.DepartmentUserBean;
-import cn.com.rexen.admin.entities.RoleUserBean;
 import cn.com.rexen.core.api.persistence.IGenericDao;
 
 /**
@@ -11,6 +10,7 @@ import cn.com.rexen.core.api.persistence.IGenericDao;
  * @version 1.0.0
  */
 public interface IDepartmentUserBeanDao extends IGenericDao<DepartmentUserBean, Long> {
-    public void deleteByDepartmentId(long id);
-    public long findDepartmentIdByUserId(long userId);
+    void deleteByDepartmentId(long id);
+
+    long findDepartmentIdByUserId(long userId);
 }

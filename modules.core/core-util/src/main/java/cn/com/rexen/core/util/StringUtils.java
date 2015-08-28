@@ -1,17 +1,19 @@
 package cn.com.rexen.core.util;
 
 import org.apache.commons.codec.binary.Hex;
+
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Created by majian on 2015/7/23.
  */
 public final class StringUtils {
 
+
+    private StringUtils() {
+        super();
+    }
 
     public static boolean isEmpty(final String str) {
         return (str == null || "".equals(str.trim()));
@@ -42,11 +44,6 @@ public final class StringUtils {
             }
         }
         return true;
-    }
-
-
-    private StringUtils() {
-        super();
     }
 
     public static String connect(Object... str) {

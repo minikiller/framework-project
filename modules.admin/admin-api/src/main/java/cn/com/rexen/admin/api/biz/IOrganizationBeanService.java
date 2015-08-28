@@ -1,9 +1,7 @@
 package cn.com.rexen.admin.api.biz;
 
 import cn.com.rexen.admin.dto.model.OrganizationDTO;
-import cn.com.rexen.admin.entities.OrganizationBean;
 import cn.com.rexen.core.api.biz.IBizService;
-import cn.com.rexen.core.api.biz.JsonStatus;
 
 /**
  * 机构管理服务接口
@@ -13,9 +11,9 @@ import cn.com.rexen.core.api.biz.JsonStatus;
  */
 public interface IOrganizationBeanService extends IBizService {
 
-    public OrganizationDTO getAllOrg();
+    OrganizationDTO getAllOrg();
 
-    public OrganizationDTO getAllByAreaId(Long id);
+    OrganizationDTO getAllByAreaId(Long id);
 
-    public void deleteByAreaId(Long id);
+    void deleteByAreaId(Long id);
 }

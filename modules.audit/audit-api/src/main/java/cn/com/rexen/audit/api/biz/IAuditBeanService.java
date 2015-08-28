@@ -14,5 +14,5 @@ import java.util.List;
  * @修改备注：
  */
 public interface IAuditBeanService extends IBizService {
-    public List<AuditBean> query(String title);
+    List<AuditBean> query(String title);
 }

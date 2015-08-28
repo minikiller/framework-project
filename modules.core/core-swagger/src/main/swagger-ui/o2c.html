@@ -10,7 +10,7 @@
             function (key, value) {
                 return key === "" ? value : decodeURIComponent(value)
             }
-    ) : {}
+    ) : {};
     window.opener.onOAuthComplete(qp);
     window.close();
 </script>

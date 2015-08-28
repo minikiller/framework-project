@@ -108,7 +108,7 @@ public class ImageScale {
         contrib[center] = 1.0;
 
         double weight = 0.0;
-        int i = 0;
+        int i;
         for (i = 1; i <= center; i++) {
             contrib[center + i] = Lanczos(i, width, scaleWidth, support);
             weight += contrib[center + i];
@@ -133,7 +133,7 @@ public class ImageScale {
     private void CalTempContrib(int start, int stop) {
         double weight = 0;
 
-        int i = 0;
+        int i;
         for (i = start; i <= stop; i++) {
             weight += contrib[i];
         }
@@ -169,7 +169,7 @@ public class ImageScale {
         double valueRed = 0.0;
         double valueGreen = 0.0;
         double valueBlue = 0.0;
-        int valueRGB = 0;
+        int valueRGB;
         int i, j;
 
         for (i = startX, j = start; i <= stopX; i++, j++) {
@@ -189,7 +189,7 @@ public class ImageScale {
     private BufferedImage HorizontalFiltering(BufferedImage bufImage, int iOutW) {
         int dwInW = bufImage.getWidth();
         int dwInH = bufImage.getHeight();
-        int value = 0;
+        int value;
         BufferedImage pbOut = new BufferedImage(iOutW, dwInH, BufferedImage.TYPE_INT_RGB);
 
         for (int x = 0; x < iOutW; x++) {
@@ -197,7 +197,7 @@ public class ImageScale {
             int startX;
             int start;
             int X = (int) (((double) x) * ((double) dwInW) / ((double) iOutW) + 0.5);
-            int y = 0;
+            int y;
 
             startX = X - nHalfDots;
             if (startX < 0) {
@@ -239,7 +239,7 @@ public class ImageScale {
         double valueRed = 0.0;
         double valueGreen = 0.0;
         double valueBlue = 0.0;
-        int valueRGB = 0;
+        int valueRGB;
         int i, j;
 
         for (i = startY, j = start; i <= stopY; i++, j++) {
@@ -259,7 +259,7 @@ public class ImageScale {
     private BufferedImage VerticalFiltering(BufferedImage pbImage, int iOutH) {
         int iW = pbImage.getWidth();
         int iH = pbImage.getHeight();
-        int value = 0;
+        int value;
         BufferedImage pbOut = new BufferedImage(iW, iOutH, BufferedImage.TYPE_INT_RGB);
 
         for (int y = 0; y < iOutH; y++) {
@@ -278,7 +278,7 @@ public class ImageScale {
 
             int stop;
             int stopY = Y + nHalfDots;
-            if (stopY > (int) (iH - 1)) {
+            if (stopY > iH - 1) {
                 stopY = iH - 1;
                 stop = nHalfDots + (iH - 1 - Y);
             } else {

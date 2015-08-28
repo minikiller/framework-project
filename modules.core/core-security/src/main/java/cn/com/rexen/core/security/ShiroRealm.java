@@ -49,7 +49,7 @@ public class ShiroRealm extends AuthorizingRealm implements IAuthorizingRealm {
         String userName = (String) principalCollection.getPrimaryPrincipal();
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         try {
-            userLoginService = (IUserLoginService) JNDIHelper.getJNDIServiceForName(IUserLoginService.class.getName());
+            userLoginService = JNDIHelper.getJNDIServiceForName(IUserLoginService.class.getName());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -70,7 +70,7 @@ public class ShiroRealm extends AuthorizingRealm implements IAuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authToken)
             throws AuthenticationException {
         try {
-            userLoginService = (IUserLoginService) JNDIHelper.getJNDIServiceForName(IUserLoginService.class.getName());
+            userLoginService = JNDIHelper.getJNDIServiceForName(IUserLoginService.class.getName());
         } catch (IOException e) {
             e.printStackTrace();
         }

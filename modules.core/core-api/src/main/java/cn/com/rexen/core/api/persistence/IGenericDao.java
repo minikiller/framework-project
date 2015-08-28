@@ -120,7 +120,7 @@ public interface IGenericDao<T, PK extends Serializable> extends IDaoService {
 
     List findByNativeSql(String sql, Class cls, Object... parms);
 
-    public List findbyPage(String hql, int pageNumber, int pageSize, Object... values);
+    List findbyPage(String hql, int pageNumber, int pageSize, Object... values);
 
 
     <T> T findUnique(String hql, Object... values);
@@ -152,5 +152,5 @@ public interface IGenericDao<T, PK extends Serializable> extends IDaoService {
      * 返回JPA 实体管理器
      * @return
      */
-    public EntityManager getEntityManager();
+    EntityManager getEntityManager();
 }

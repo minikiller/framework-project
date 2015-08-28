@@ -1,9 +1,7 @@
 package cn.com.rexen.admin.persist.openjpa;
 
 import cn.com.rexen.admin.api.dao.IDepartmentBeanDao;
-import cn.com.rexen.admin.api.dao.IOrganizationBeanDao;
 import cn.com.rexen.admin.entities.DepartmentBean;
-import cn.com.rexen.admin.entities.OrganizationBean;
 import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 /**

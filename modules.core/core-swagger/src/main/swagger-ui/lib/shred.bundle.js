@@ -6,7 +6,7 @@ var require = function (file, cwd) {
     );
     var res = mod._cached ? mod._cached : mod();
     return res;
-}
+};
 
 require.paths = [];
 require.modules = {};
@@ -196,7 +196,7 @@ if (!process.nextTick) process.nextTick = (function () {
 if (!process.title) process.title = 'browser';
 
 if (!process.binding) process.binding = function (name) {
-    if (name === 'evals') return require('vm')
+    if (name === 'evals') return require('vm');
     else throw new Error('No such module')
 };
 
@@ -441,7 +441,7 @@ require.define("/node_modules/ax/lib/ax.js", function (require, module, exports,
 
     var noOp = function (message) {
         return this;
-    }
+    };
     var makeLogger = function (level, fn) {
         return function (message) {
             this.stream.write(this.format(level, message) + "\n");
@@ -494,7 +494,7 @@ require.define("/node_modules/ax/lib/ax.js", function (require, module, exports,
             case 'warn':
                 logger.warn = Logger.writer('warn');
         }
-    }
+    };
 
 // Used to define logger methods
     Logger.writer = function (level) {
@@ -507,7 +507,7 @@ require.define("/node_modules/ax/lib/ax.js", function (require, module, exports,
                 logger.stream(logger.format(level, message) + '\n');
 
         };
-    }
+    };
 
 
     Logger.prototype = {
@@ -560,7 +560,7 @@ require.define("/node_modules/cookiejar/cookiejar.js", function (require, module
         else {
             return new CookieAccessInfo(domain, path, secure, script)
         }
-    }
+    };
 
     exports.Cookie = Cookie = function Cookie(cookiestr) {
         if (cookiestr instanceof Cookie) {
@@ -582,7 +582,7 @@ require.define("/node_modules/cookiejar/cookiejar.js", function (require, module
             }
             return new Cookie(cookiestr)
         }
-    }
+    };
 
     Cookie.prototype.toString = function toString() {
         var str = [this.name + "=" + this.value];
@@ -602,13 +602,13 @@ require.define("/node_modules/cookiejar/cookiejar.js", function (require, module
             str.push("httponly");
         }
         return str.join("; ");
-    }
+    };
 
     Cookie.prototype.toValueString = function toValueString() {
         return this.name + "=" + this.value;
-    }
+    };
 
-    var cookie_str_splitter = /[:](?=\s*[a-zA-Z0-9_\-]+\s*[=])/g
+    var cookie_str_splitter = /[:](?=\s*[a-zA-Z0-9_\-]+\s*[=])/g;
     Cookie.prototype.parse = function parse(str) {
         if (this instanceof Cookie) {
             var parts = str.split(";")
@@ -650,7 +650,7 @@ require.define("/node_modules/cookiejar/cookiejar.js", function (require, module
             return this;
         }
         return new Cookie().parse(str)
-    }
+    };
 
     Cookie.prototype.matches = function matches(access_info) {
         if (this.noscript && access_info.script
@@ -659,7 +659,7 @@ require.define("/node_modules/cookiejar/cookiejar.js", function (require, module
             return false
         }
         return true;
-    }
+    };
 
     Cookie.prototype.collidesWith = function collidesWith(access_info) {
         if ((this.path && !access_info.path) || (this.domain && !access_info.domain)) {
@@ -672,7 +672,7 @@ require.define("/node_modules/cookiejar/cookiejar.js", function (require, module
             return true;
         }
         else if (this.domain && this.domain.charAt(0) === ".") {
-            var wildcard = access_info.domain.indexOf(this.domain.slice(1))
+            var wildcard = access_info.domain.indexOf(this.domain.slice(1));
             if (wildcard === -1 || wildcard !== access_info.domain.length - this.domain.length + 1) {
                 return false;
             }
@@ -681,11 +681,11 @@ require.define("/node_modules/cookiejar/cookiejar.js", function (require, module
             return false
         }
         return true;
-    }
+    };
 
     exports.CookieJar = CookieJar = function CookieJar() {
         if (this instanceof CookieJar) {
-            var cookies = {} //name: [Cookie]
+            var cookies = {}; //name: [Cookie]
 
             this.setCookie = function setCookie(cookie) {
                 cookie = Cookie(cookie);
@@ -720,7 +720,7 @@ require.define("/node_modules/cookiejar/cookiejar.js", function (require, module
                 else {
                     return cookies[cookie.name] = [cookie];
                 }
-            }
+            };
             //returns a cookie
             this.getCookie = function getCookie(cookie_name, access_info) {
                 var cookies_list = cookies[cookie_name];
@@ -736,7 +736,7 @@ require.define("/node_modules/cookiejar/cookiejar.js", function (require, module
                         return cookie;
                     }
                 }
-            }
+            };
             //returns a list of cookies
             this.getCookies = function getCookies(access_info) {
                 var matches = [];
@@ -748,19 +748,19 @@ require.define("/node_modules/cookiejar/cookiejar.js", function (require, module
                 }
                 matches.toString = function toString() {
                     return matches.join(":");
-                }
+                };
                 matches.toValueString = function () {
                     return matches.map(function (c) {
                         return c.toValueString();
                     }).join(';');
-                }
+                };
                 return matches;
-            }
+            };
 
             return this;
         }
         return new CookieJar()
-    }
+    };
 
 
 //returns list of cookies that were set correctly
@@ -768,7 +768,7 @@ require.define("/node_modules/cookiejar/cookiejar.js", function (require, module
         cookies = Array.isArray(cookies)
             ? cookies
             : cookies.split(cookie_str_splitter);
-        var successful = []
+        var successful = [];
         for (var i = 0; i < cookies.length; i++) {
             var cookie = Cookie(cookies[i]);
             if (this.setCookie(cookie)) {
@@ -960,7 +960,7 @@ require.define("/shred/request.js", function (require, module, exports, __dirnam
                     // Remove the last '&'
                     query = query.slice(0, -1);
                     return query;
-                }
+                };
 
                 if (value) {
                     if (typeof value === 'object') {
@@ -1019,7 +1019,6 @@ require.define("/shred/request.js", function (require, module, exports, __dirnam
             set: function (timeout) {
                 var request = this
                     , milliseconds = 0;
-                ;
                 if (!timeout) return this;
                 if (typeof timeout === "number") {
                     milliseconds = timeout;
@@ -1053,16 +1052,16 @@ require.define("/shred/request.js", function (require, module, exports, __dirnam
         var request = this;
         var headers = this.format_headers();
         var summary = ["<Shred Request> ", request.method.toUpperCase(),
-            request.url].join(" ")
+            request.url].join(" ");
         return [summary, "- Headers:", headers].join("\n");
     };
 
     Request.prototype.format_headers = function () {
-        var array = []
-        var headers = this._headers
+        var array = [];
+        var headers = this._headers;
         for (var key in headers) {
             if (headers.hasOwnProperty(key)) {
-                var value = headers[key]
+                var value = headers[key];
                 array.push("\t" + key + ": " + value);
             }
         }
@@ -1300,7 +1299,7 @@ require.define("/shred/request.js", function (require, module, exports, __dirnam
             headerString += '-H "' + key + ": " + headers[key] + '" ';
         }
 
-        var bodyString = ""
+        var bodyString = "";
 
         if (req.content) {
             bodyString += "-d '" + req.content.body + "' ";
@@ -1350,8 +1349,7 @@ require.define("/shred/parseUri.js", function (require, module, exports, __dirna
         });
 
         return uri;
-    };
-
+    }
     parseUri.options = {
         strictMode: false,
         key: ["source", "protocol", "authority", "userInfo", "user", "password", "host", "port", "relative", "path", "directory", "file", "query", "anchor"],
@@ -1866,7 +1864,7 @@ require.define("/shred/response.js", function (require, module, exports, __dirna
                     type: response.getHeader("Content-Type")
                 });
                 callback(response);
-            }
+            };
 
             if (zlib && response.getHeader("Content-Encoding") === 'gzip') {
                 zlib.gunzip(body, function (err, gunzippedBody) {
@@ -1896,15 +1894,15 @@ require.define("/shred/response.js", function (require, module, exports, __dirna
         inspect: function () {
             var response = this;
             var headers = this.format_headers();
-            var summary = ["<Shred Response> ", response.status].join(" ")
+            var summary = ["<Shred Response> ", response.status].join(" ");
             return [summary, "- Headers:", headers].join("\n");
         },
         format_headers: function () {
-            var array = []
-            var headers = this._headers
+            var array = [];
+            var headers = this._headers;
             for (var key in headers) {
                 if (headers.hasOwnProperty(key)) {
-                    var value = headers[key]
+                    var value = headers[key];
                     array.push("\t" + key + ": " + value);
                 }
             }
@@ -2144,7 +2142,7 @@ require.define("/shred/content.js", function (require, module, exports, __dirnam
         }
         , toString = function (x) {
             return x.toString();
-        }
+        };
     Content.registerProcessor(
         ["text/html", "text/plain", "text"],
         {parser: identity, stringify: toString});
@@ -2172,7 +2170,7 @@ require.define("/shred/content.js", function (require, module, exports, __dirnam
             throw new Error("Attempt to set body attribute of a content object " +
                 "when the data attributes was already set.");
         }
-    }
+    };
     module.exports = Content;
 
 });
@@ -2250,7 +2248,6 @@ require.define("/shred/mixins/headers.js", function (require, module, exports, _
         for (var key in hash) {
             setHeader(object, key, hash[key]);
         }
-        ;
         return this;
     };
 
@@ -2492,7 +2489,7 @@ require.define("/node_modules/iconv-lite/index.js", function (require, module, e
         fs = require('fs');
     fs.readdirSync(encodingsDir).forEach(function (file) {
         if (fs.statSync(encodingsDir + file).isDirectory()) return;
-        var encodings = require(encodingsDir + file)
+        var encodings = require(encodingsDir + file);
         for (var key in encodings)
             iconv.encodings[key] = encodings[key]
     });
@@ -2504,12 +2501,12 @@ require.define("/node_modules/iconv-lite/index.js", function (require, module, e
     var ensureBuffer = function (buf) {
         buf = buf || new Buffer(0);
         return (buf instanceof Buffer) ? buf : new Buffer(buf.toString(), "utf8");
-    }
+    };
 
     var ensureString = function (str) {
         str = str || "";
         return (str instanceof String) ? str : str.toString((str instanceof Buffer) ? 'utf8' : undefined);
-    }
+    };
 
     var getType = function (obj) {
         return Object.prototype.toString.call(obj).slice(8, -1);

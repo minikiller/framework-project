@@ -25,14 +25,14 @@ public interface IBizService<T extends PersistentEntity> extends IService {
      * @param id
      * @param status
      */
-    public void beforeDeleteEntity(Long id,JsonStatus status);
+    void beforeDeleteEntity(Long id, JsonStatus status);
 
     /**
      * 删除后执行函数
      * @param id
      * @param status
      */
-    public void afterDeleteEntity(Long id,JsonStatus status);
+    void afterDeleteEntity(Long id, JsonStatus status);
 
     /**
      * 是否执行删除.
@@ -40,35 +40,35 @@ public interface IBizService<T extends PersistentEntity> extends IService {
      * @param status
      * @return
      */
-    public boolean isDelete(Long entityId,JsonStatus status);
+    boolean isDelete(Long entityId, JsonStatus status);
 
     /**
      * 删除实体.
      * @param entityId
      * @return
      */
-    public JsonStatus deleteEntity(long entityId);
+    JsonStatus deleteEntity(long entityId);
 
     /**
      * 执行删除.
      * @param entityId
      * @param jsonStatus
      */
-    public void doDelete(long entityId,JsonStatus jsonStatus);
+    void doDelete(long entityId, JsonStatus jsonStatus);
 
     /**
      * 保存前执行.
      * @param entity
      * @param status
      */
-    public void beforeSaveEntity(T entity,JsonStatus status);
+    void beforeSaveEntity(T entity, JsonStatus status);
 
     /**
      * 保存后执行.
      * @param entity
      * @param status
      */
-    public void afterSaveEntity(T entity,JsonStatus status);
+    void afterSaveEntity(T entity, JsonStatus status);
 
     /**
      * 是否保存.
@@ -76,35 +76,35 @@ public interface IBizService<T extends PersistentEntity> extends IService {
      * @param status
      * @return
      */
-    public boolean isSave(T entity,JsonStatus status);
+    boolean isSave(T entity, JsonStatus status);
 
     /**
      * 保存实体.
      * @param entity
      * @return
      */
-    public JsonStatus saveEntity(T entity);
+    JsonStatus saveEntity(T entity);
 
     /**
      * 执行保存.
      * @param entity
      * @param jsonStatus
      */
-    public void doSave(T entity,JsonStatus jsonStatus);
+    void doSave(T entity, JsonStatus jsonStatus);
 
     /**
      * 更新前执行.
      * @param entity
      * @param status
      */
-    public void beforeUpdateEntity(T entity,JsonStatus status);
+    void beforeUpdateEntity(T entity, JsonStatus status);
 
     /**
      * 更新后执行.
      * @param entity
      * @param status
      */
-    public void afterUpdateEntity(T entity,JsonStatus status);
+    void afterUpdateEntity(T entity, JsonStatus status);
 
     /**
      * 是否更新.
@@ -112,21 +112,21 @@ public interface IBizService<T extends PersistentEntity> extends IService {
      * @param status
      * @return
      */
-    public boolean isUpdate(T entity,JsonStatus status);
+    boolean isUpdate(T entity, JsonStatus status);
 
     /**
      * 更新实体.
      * @param entity
      * @return
      */
-    public JsonStatus updateEntity(T entity);
+    JsonStatus updateEntity(T entity);
 
     /**
      * 执行更新.
      * @param entity
      * @param jsonStatus
      */
-    public void doUpdate(T entity,JsonStatus jsonStatus);
+    void doUpdate(T entity, JsonStatus jsonStatus);
 
     Object saveEntityAndReturn(PersistentEntity entity);
 
@@ -135,14 +135,14 @@ public interface IBizService<T extends PersistentEntity> extends IService {
      * @param queryDTO
      * @return
      */
-    public CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO);
+    CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO);
 
     /**
      * 按条件查询
      * @param queryDTO
      * @return
      */
-    public JsonData getAllEntityByQuery(QueryDTO queryDTO);
+    JsonData getAllEntityByQuery(QueryDTO queryDTO);
 
     /**
      * 查询分页
@@ -150,10 +150,10 @@ public interface IBizService<T extends PersistentEntity> extends IService {
      * @param pageSize
      * @return
      */
-    public JsonData getAllEntity(int pageNumber, int pageSize);
+    JsonData getAllEntity(int pageNumber, int pageSize);
 
-    public List getAllEntity();
+    List getAllEntity();
 
-    public T getEntity(long entityId);
+    T getEntity(long entityId);
 
 }

@@ -4,8 +4,6 @@ import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.api.persistence.JsonData;
 
-import java.util.List;
-
 /**
  * Created by dell on 14-1-16.
  */
@@ -41,7 +39,7 @@ public interface IUserBeanDao extends IGenericDao<UserBean, Long> {
      * @param username 用户名
      * @return
      */
-    public UserBean getUser(String username);
+    UserBean getUser(String username);
 
     void updateUserLoginInfo(long id, String loginIp);
 }

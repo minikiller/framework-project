@@ -6,7 +6,6 @@ import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by dell on 14-1-16.

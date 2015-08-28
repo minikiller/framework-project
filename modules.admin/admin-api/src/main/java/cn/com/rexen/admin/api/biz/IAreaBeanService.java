@@ -16,13 +16,13 @@ import java.util.List;
  * 修改备注:  [说明本次修改内容]
  */
 public interface IAreaBeanService extends IBizService {
-    public List<AreaBean> query(AreaBean areaBean);
+    List<AreaBean> query(AreaBean areaBean);
 
     List<AreaBean> getRootBeanList();
 
-    public List<AreaBean> getRootBeanListByQhdm();
+    List<AreaBean> getRootBeanListByQhdm();
 
     List<AreaBean> getChildBeanList(AreaBean node);
 
-    public AreaDTO getAllArea();
+    AreaDTO getAllArea();
 }

@@ -18,22 +18,22 @@ public interface IUserLoginService {
     /**
      * 用户名不存在
      */
-    public final static int USERNAME_NOT_EXIST = -1;
+    int USERNAME_NOT_EXIST = -1;
 
     /**
      * 密码错误
      */
-    public final static int PASSWORD_ERROR = -2;
+    int PASSWORD_ERROR = -2;
 
     /**
      * 位置错误
      */
-    public final static int UNKOWN_ERROR = -99;
+    int UNKOWN_ERROR = -99;
 
     /**
      * 成功
      */
-    public final static int SUCCESS = 1;
+    int SUCCESS = 1;
 
     /**
      * 用户登录
@@ -42,7 +42,7 @@ public interface IUserLoginService {
      * @param password    用户密码
      * @return
      */
-    public Map login(String username, String password);
+    Map login(String username, String password);
 
     /**
      * 记录用户登录后的时间和登录ip
@@ -58,7 +58,7 @@ public interface IUserLoginService {
      * @param username 用户登录名称
      * @return 权限列表
      */
-    public List<String> getUserPermission(String username);
+    List<String> getUserPermission(String username);
 
     String getLoginName();
 
@@ -72,8 +72,8 @@ public interface IUserLoginService {
      * @param response
      * @return
      */
-    public Map loginByPhone(String username, String password, String client, HttpServletRequest request,
-                            HttpServletResponse response);
+    Map loginByPhone(String username, String password, String client, HttpServletRequest request,
+                     HttpServletResponse response);
 
     /**
      * 修改用户的token
@@ -81,6 +81,6 @@ public interface IUserLoginService {
      * @param token
      * @return
      */
-    public Map updateToken(HttpServletRequest request, String token, Long user_id);
+    Map updateToken(HttpServletRequest request, String token, Long user_id);
 
 }

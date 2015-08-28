@@ -1,12 +1,9 @@
 package cn.com.rexen.admin.core;
 
-import cn.com.rexen.admin.api.biz.IUserBeanService;
 import cn.com.rexen.admin.api.biz.IWorkGroupBeanService;
-import cn.com.rexen.admin.api.dao.IUserBeanDao;
 import cn.com.rexen.admin.api.dao.IWorkGroupBeanDao;
 import cn.com.rexen.admin.api.dao.IWorkGroupRoleBeanDao;
 import cn.com.rexen.admin.api.dao.IWorkGroupUserBeanDao;
-import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.admin.entities.WorkGroupBean;
 import cn.com.rexen.admin.entities.WorkGroupRoleBean;
 import cn.com.rexen.admin.entities.WorkGroupUserBean;
@@ -17,8 +14,6 @@ import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.Assert;
 import cn.com.rexen.core.util.StringUtils;
-import org.dozer.DozerBeanMapper;
-import org.dozer.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;

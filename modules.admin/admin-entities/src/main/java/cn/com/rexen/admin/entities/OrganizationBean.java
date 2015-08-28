@@ -1,6 +1,5 @@
 package cn.com.rexen.admin.entities;
 
-import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 
 import javax.persistence.Entity;

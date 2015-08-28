@@ -16,8 +16,8 @@ import java.util.Set;
  */
 public class SerializeUtil {
     public static byte[] serialize(Object object) {
-        ByteArrayOutputStream baos = null;
-        ObjectOutputStream oos = null;
+        ByteArrayOutputStream baos;
+        ObjectOutputStream oos;
         try {
             // 序列化
             baos = new ByteArrayOutputStream();
@@ -61,7 +61,7 @@ public class SerializeUtil {
     @SuppressWarnings("unchecked")
     public static <T> T unserialize(byte[] bytes) {
 
-        ByteArrayInputStream bais = null;
+        ByteArrayInputStream bais;
         if (null != bytes) {
             try {
                 // 反序列化

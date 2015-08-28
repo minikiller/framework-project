@@ -2,9 +2,7 @@ package cn.com.rexen.core.util;
 
 import sun.misc.BASE64Encoder;
 
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 /**
  * MD5加密工具类

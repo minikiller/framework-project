@@ -2,8 +2,6 @@ package cn.com.rexen.admin.core;
 
 import cn.com.rexen.admin.api.biz.IPermissionBeanService;
 import cn.com.rexen.admin.api.dao.IUserBeanDao;
-import cn.com.rexen.admin.entities.PermissionBean;
-import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.ErrorCodeValue;
 import cn.com.rexen.core.api.security.IUserLoginService;
@@ -34,10 +32,6 @@ public class UserLoginServiceImpl implements IUserLoginService {
 
     private IPermissionBeanService permissionBeanService;
 
-    public void setPermissionBeanService(IPermissionBeanService permissionBeanService) {
-        this.permissionBeanService = permissionBeanService;
-    }
-
     /**
      * 设置cookie
      *
@@ -57,6 +51,10 @@ public class UserLoginServiceImpl implements IUserLoginService {
         response.addCookie(cookie);
     }
 
+    public void setPermissionBeanService(IPermissionBeanService permissionBeanService) {
+        this.permissionBeanService = permissionBeanService;
+    }
+
     public void setUserBeanDao(IUserBeanDao userBeanDao) {
         this.userBeanDao = userBeanDao;
     }
@@ -72,7 +70,6 @@ public class UserLoginServiceImpl implements IUserLoginService {
             }
             //判断密码和用户类型是否对应
             if (encrypt(password).equals(user.getPassword())) {
-                result = 1;
                 Map resMap = new HashMap();
                 resMap.put("user_id", user.getId());
                 resMap.put("name", user.getName());
@@ -155,7 +152,7 @@ public class UserLoginServiceImpl implements IUserLoginService {
             String map_provide = "1";//先设成1 用时再改
             //String value = user.getId()+"::"+user.getLoginName()+"::"+user.getName()+"::"+map_provide+"::"+client;
             String value = user.getId() + "::" + user.getLoginName();
-            int maxAge = 0;
+            int maxAge;
             if (client.equals("0")) {
                 maxAge = 24 * 60 * 60;
             } else {

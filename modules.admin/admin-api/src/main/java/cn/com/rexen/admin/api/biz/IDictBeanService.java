@@ -1,10 +1,7 @@
 package cn.com.rexen.admin.api.biz;
 
 import cn.com.rexen.admin.entities.DictBean;
-import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.core.api.biz.IBizService;
-import cn.com.rexen.core.api.biz.JsonStatus;
-import cn.com.rexen.core.api.persistence.JsonData;
 
 import java.util.List;
 import java.util.Map;
@@ -20,9 +17,9 @@ import java.util.Map;
 
 public interface IDictBeanService extends IBizService {
     //机构类型
-    public static final String SYS_OFFICE_TYPE = "sys_office_type";
+    String SYS_OFFICE_TYPE = "sys_office_type";
     //机构等级
-    public static final String SYS_OFFICE_GRADE = "sys_office_grade";
+    String SYS_OFFICE_GRADE = "sys_office_grade";
 
     /**
      * 根据类型常量获得字典项

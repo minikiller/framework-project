@@ -28,7 +28,7 @@ public interface IRoleBeanDao extends IGenericDao<RoleBean, Long> {
      * @param roleName 角色名
      * @return
      */
-    public RoleBean getRole(String roleName);
+    RoleBean getRole(String roleName);
 
 
     /**

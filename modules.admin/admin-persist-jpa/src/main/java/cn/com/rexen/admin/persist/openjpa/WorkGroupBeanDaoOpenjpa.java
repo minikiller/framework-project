@@ -1,13 +1,8 @@
 package cn.com.rexen.admin.persist.openjpa;
 
-import cn.com.rexen.admin.api.dao.IUserBeanDao;
 import cn.com.rexen.admin.api.dao.IWorkGroupBeanDao;
-import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.admin.entities.WorkGroupBean;
-import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
-
-import java.util.Date;
 
 /**
  * 工作组管理DAO实现

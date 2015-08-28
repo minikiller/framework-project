@@ -1,6 +1,5 @@
 package cn.com.rexen.admin.api.dao;
 
-import cn.com.rexen.admin.entities.RoleApplicationBean;
 import cn.com.rexen.admin.entities.RoleFunctionBean;
 import cn.com.rexen.core.api.persistence.IGenericDao;
 
@@ -13,6 +12,7 @@ import java.util.List;
  * @version 1.0.0
  */
 public interface IRoleFunctionBeanDao extends IGenericDao<RoleFunctionBean, Long> {
-    public void deleteByRoleId(long id);
-    public List<RoleFunctionBean> getRoleFunctionsByRoleId(long roleId);
+    void deleteByRoleId(long id);
+
+    List<RoleFunctionBean> getRoleFunctionsByRoleId(long roleId);
 }

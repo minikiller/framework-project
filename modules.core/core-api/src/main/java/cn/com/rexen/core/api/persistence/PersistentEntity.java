@@ -29,7 +29,7 @@ public abstract class PersistentEntity implements Serializable {
     private String createBy;    // 创建者
     private String updateBy;    // 更新者
     private Date updateDate = new Date();
-    ;// 更新日期
+    // 更新日期
 
     public long getId() {
         return id;

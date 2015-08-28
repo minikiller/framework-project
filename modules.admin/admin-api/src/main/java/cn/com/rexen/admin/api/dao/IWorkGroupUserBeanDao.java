@@ -1,6 +1,5 @@
 package cn.com.rexen.admin.api.dao;
 
-import cn.com.rexen.admin.entities.WorkGroupBean;
 import cn.com.rexen.admin.entities.WorkGroupUserBean;
 import cn.com.rexen.core.api.persistence.IGenericDao;
 
@@ -11,5 +10,5 @@ import cn.com.rexen.core.api.persistence.IGenericDao;
  * @version 1.0.0
  */
 public interface IWorkGroupUserBeanDao extends IGenericDao<WorkGroupUserBean, Long> {
-    public void deleteByWorkGroupId(long id);
+    void deleteByWorkGroupId(long id);
 }

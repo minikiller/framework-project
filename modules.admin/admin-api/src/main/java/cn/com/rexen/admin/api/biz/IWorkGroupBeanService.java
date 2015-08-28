@@ -20,7 +20,7 @@ public interface IWorkGroupBeanService extends IBizService {
      * @param bean
      * @return
      */
-    public List<WorkGroupBean> query(WorkGroupBean bean);
+    List<WorkGroupBean> query(WorkGroupBean bean);
 
     /**
      * 返回全部工作组
@@ -28,21 +28,21 @@ public interface IWorkGroupBeanService extends IBizService {
      * @param limit
      * @return
      */
-    public JsonData getAllWorkGroup(int page,int limit);
+    JsonData getAllWorkGroup(int page, int limit);
 
     /**
      * 返回工作组下所有用户
      * @param id
      * @return
      */
-    public List getUsersByWorkGroupId(long id);
+    List getUsersByWorkGroupId(long id);
 
     /**
      * 返回工作组下所有角色
      * @param id
      * @return
      */
-    public List getRolesByWorkGroupId(long id);
+    List getRolesByWorkGroupId(long id);
 
     /**
      * 保存工作组与用户关联
@@ -50,7 +50,7 @@ public interface IWorkGroupBeanService extends IBizService {
      * @param userIds
      * @return
      */
-    public JsonStatus saveWorkGroupUsers(long workGroupId,String userIds);
+    JsonStatus saveWorkGroupUsers(long workGroupId, String userIds);
 
     /**
      * 保存工作组与角色关联
@@ -58,12 +58,12 @@ public interface IWorkGroupBeanService extends IBizService {
      * @param roleIds
      * @return
      */
-    public JsonStatus saveWorkGroupRoles(long workGroupId,String roleIds);
+    JsonStatus saveWorkGroupRoles(long workGroupId, String roleIds);
 
     /**
      * 返回用户下所有关联工作组
      * @param userId
      * @return
      */
-    public List<WorkGroupUserBean> getWorkGroupUserBeanByUserId(long userId);
+    List<WorkGroupUserBean> getWorkGroupUserBeanByUserId(long userId);
 }

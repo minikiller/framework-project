@@ -26,7 +26,7 @@
 var Handlebars = {};
 
 (function (Handlebars, undefined) {
-    ;
+
 // lib/handlebars/base.js
 
     Handlebars.VERSION = "1.0.0";
@@ -202,7 +202,6 @@ var Handlebars = {};
         var level = options.data && options.data.level != null ? parseInt(options.data.level, 10) : 1;
         Handlebars.log(level, context);
     });
-    ;
 // lib/handlebars/compiler/parser.js
     /* Jison generated parser */
     var handlebars = (function () {
@@ -1186,7 +1185,7 @@ var Handlebars = {};
             lexer.options = {};
             lexer.performAction = function anonymous(yy, yy_, $avoiding_name_collisions, YY_START) {
 
-                var YYSTATE = YY_START
+                var YYSTATE = YY_START;
                 switch ($avoiding_name_collisions) {
                     case 0:
                         yy_.yytext = "\\";
@@ -1313,7 +1312,7 @@ var Handlebars = {};
                 "INITIAL": {"rules": [0, 1, 2, 31], "inclusive": true}
             };
             return lexer;
-        })()
+        })();
         parser.lexer = lexer;
         function Parser() {
             this.yy = {};
@@ -1323,7 +1322,6 @@ var Handlebars = {};
         parser.Parser = Parser;
         return new Parser;
     })();
-    ;
 // lib/handlebars/compiler/base.js
 
     Handlebars.Parser = handlebars;
@@ -1338,7 +1336,6 @@ var Handlebars = {};
         Handlebars.Parser.yy = Handlebars.AST;
         return Handlebars.Parser.parse(input);
     };
-    ;
 // lib/handlebars/compiler/ast.js
     Handlebars.AST = {};
 
@@ -1479,7 +1476,6 @@ var Handlebars = {};
         this.type = "comment";
         this.comment = comment;
     };
-    ;
 // lib/handlebars/utils.js
 
     var errorProps = ['description', 'fileName', 'lineNumber', 'message', 'name', 'number', 'stack'];
@@ -1556,7 +1552,6 @@ var Handlebars = {};
             }
         }
     };
-    ;
 // lib/handlebars/compiler/compiler.js
 
     /*jshint eqnull:true*/
@@ -1688,7 +1683,7 @@ var Handlebars = {};
                 depth = result.depths.list[i];
 
                 if (depth < 2) {
-                    continue;
+
                 }
                 else {
                     this.addDepth(depth - 1);
@@ -2878,7 +2873,6 @@ var Handlebars = {};
         };
     };
 
-    ;
 // lib/handlebars/runtime.js
 
     Handlebars.VM = {
@@ -2979,7 +2973,6 @@ var Handlebars = {};
     };
 
     Handlebars.template = Handlebars.VM.template;
-    ;
 // lib/handlebars/browser-suffix.js
 })(Handlebars);
-;
+

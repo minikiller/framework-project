@@ -18,12 +18,12 @@ log = function () {
 // if you want to apply conditional formatting of parameter values
 parameterMacro = function (value) {
     return value;
-}
+};
 
 // if you want to apply conditional formatting of model property values
 modelPropertyMacro = function (value) {
     return value;
-}
+};
 
 if (!Array.prototype.indexOf) {
     Array.prototype.indexOf = function (obj, start) {
@@ -128,7 +128,7 @@ var SwaggerApi = function (url, options) {
         this.build();
         this.isBuilt = true;
     }
-}
+};
 
 SwaggerApi.prototype.build = function () {
     if (this.isBuilt)
@@ -389,7 +389,7 @@ var SwaggerResource = function (resourceObj, api) {
         e.authorizations.apply(obj);
         new SwaggerHttp().execute(obj);
     }
-}
+};
 
 SwaggerResource.prototype.getAbsoluteBasePath = function (relativeBasePath) {
     var pos, url;
@@ -546,7 +546,7 @@ var SwaggerModel = function (modelName, obj) {
         prop = new SwaggerModelProperty(propertyName, obj.properties[propertyName]);
         this.properties.push(prop);
     }
-}
+};
 
 SwaggerModel.prototype.setReferencedModels = function (allModels) {
     var results = [];
@@ -595,7 +595,7 @@ SwaggerModel.prototype.createJSONSample = function (modelsToIgnore) {
     }
     else {
         var result = {};
-        var modelsToIgnore = (modelsToIgnore || [])
+        var modelsToIgnore = (modelsToIgnore || []);
         modelsToIgnore.push(this.name);
         for (var i = 0; i < this.properties.length; i++) {
             prop = this.properties[i];
@@ -636,7 +636,7 @@ var SwaggerModelProperty = function (name, obj) {
             this.valueString = "'" + this.values.join("' or '") + "'";
         }
     }
-}
+};
 
 SwaggerModelProperty.prototype.getSampleValue = function (modelsToIgnore) {
     var result;
@@ -798,7 +798,7 @@ var SwaggerOperation = function (nickname, path, method, parameters, summary, no
     this.resource[this.nickname].help = function () {
         return _this.help();
     };
-}
+};
 
 SwaggerOperation.prototype.isListType = function (type) {
     if (type && type.indexOf('[') >= 0) {
@@ -1280,7 +1280,7 @@ SwaggerRequest.prototype.setHeaders = function (params, operation) {
     if (accepts)
         headers["Accept"] = accepts;
     return headers;
-}
+};
 
 SwaggerRequest.prototype.asCurl = function () {
     var results = [];
@@ -1309,7 +1309,7 @@ SwaggerHttp.prototype.execute = function (obj) {
         return new JQueryHttpClient().execute(obj);
     else
         return new ShredHttpClient().execute(obj);
-}
+};
 
 SwaggerHttp.prototype.isIE8 = function () {
     var detectedIE = false;
@@ -1335,7 +1335,7 @@ var JQueryHttpClient = function (options) {
     if (!jQuery) {
         var jQuery = window.jQuery;
     }
-}
+};
 
 JQueryHttpClient.prototype.execute = function (obj) {
     var cb = obj.on;
@@ -1390,7 +1390,7 @@ JQueryHttpClient.prototype.execute = function (obj) {
             headers: headers
         };
 
-        var contentType = (headers["content-type"] || headers["Content-Type"] || null)
+        var contentType = (headers["content-type"] || headers["Content-Type"] || null);
 
         if (contentType != null) {
             if (contentType.indexOf("application/json") == 0 || contentType.indexOf("+json") > 0) {
@@ -1411,7 +1411,7 @@ JQueryHttpClient.prototype.execute = function (obj) {
 
     jQuery.support.cors = true;
     return jQuery.ajax(obj);
-}
+};
 
 /*
  * ShredHttpClient is a light-weight, node or browser HTTP client
@@ -1429,12 +1429,12 @@ var ShredHttpClient = function (options) {
     else
         this.Shred = require("shred");
     this.shred = new this.Shred();
-}
+};
 
 ShredHttpClient.prototype.initShred = function () {
     this.isInitialized = true;
     this.registerProcessors(this.shred);
-}
+};
 
 ShredHttpClient.prototype.registerProcessors = function (shred) {
     var identity = function (x) {
@@ -1455,7 +1455,7 @@ ShredHttpClient.prototype.registerProcessors = function (shred) {
             stringify: toString
         });
     }
-}
+};
 
 ShredHttpClient.prototype.execute = function (obj) {
     if (!this.isInitialized)
@@ -1472,7 +1472,7 @@ ShredHttpClient.prototype.execute = function (obj) {
             data: response.content.data
         };
 
-        var contentType = (response._headers["content-type"] || response._headers["Content-Type"] || null)
+        var contentType = (response._headers["content-type"] || response._headers["Content-Type"] || null);
 
         if (contentType != null) {
             if (contentType.indexOf("application/json") == 0 || contentType.indexOf("+json") > 0) {
@@ -1609,13 +1609,13 @@ ApiKeyAuthorization.prototype.apply = function (obj, authorizations) {
 
 var CookieAuthorization = function (cookie) {
     this.cookie = cookie;
-}
+};
 
 CookieAuthorization.prototype.apply = function (obj, authorizations) {
     obj.cookieJar = obj.cookieJar || CookieJar();
     obj.cookieJar.setCookie(this.cookie);
     return true;
-}
+};
 
 /**
  * Password Authorization is a basic auth implementation

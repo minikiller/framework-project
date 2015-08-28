@@ -20,7 +20,7 @@ public interface IShiroService {
      * 返回当前登录用户
      * @return
      */
-    public Subject getSubject();
+    Subject getSubject();
 
     /**
      * 获得shiro的session
@@ -35,7 +35,7 @@ public interface IShiroService {
      *
      * @return
      */
-    public JsonStatus validSession(String sessionId);
+    JsonStatus validSession(String sessionId);
 
     /**
      * 根据sessionId校验该用户是否具有权限
@@ -44,5 +44,5 @@ public interface IShiroService {
      * @param permission 功能id
      * @return
      */
-    public JsonStatus validPermission(String sessionId, String permission);
+    JsonStatus validPermission(String sessionId, String permission);
 }

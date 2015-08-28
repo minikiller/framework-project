@@ -37,7 +37,7 @@ public class PermissionBean extends PersistentEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_id")
     public PermissionBean getParent() {
-        return (PermissionBean) parent;
+        return parent;
     }
 
 

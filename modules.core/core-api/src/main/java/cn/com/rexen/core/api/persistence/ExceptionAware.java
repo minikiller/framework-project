@@ -26,5 +26,5 @@ package cn.com.rexen.core.api.persistence;
  * @author Denis Skarbichev
  */
 public interface ExceptionAware {
-    public InternalError getError();
+    InternalError getError();
 }

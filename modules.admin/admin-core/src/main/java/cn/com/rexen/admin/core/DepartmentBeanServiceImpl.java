@@ -1,7 +1,6 @@
 package cn.com.rexen.admin.core;
 
 import cn.com.rexen.admin.api.biz.IDepartmentBeanService;
-import cn.com.rexen.admin.api.biz.IUserBeanService;
 import cn.com.rexen.admin.api.dao.IDepartmentBeanDao;
 import cn.com.rexen.admin.api.dao.IDepartmentUserBeanDao;
 import cn.com.rexen.admin.api.dao.IUserBeanDao;
@@ -295,7 +294,7 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl implements 
         if(users!=null&&users.size()>0){
             for(UserBean user:users){
                 if(user!=null) {
-                    persistentEntities.add((PersistentEntity)user);
+                    persistentEntities.add(user);
                 }
             }
         }
@@ -312,7 +311,7 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl implements 
         if(users!=null&&users.size()>0){
             for(UserBean user:users){
                 if(user!=null) {
-                    persistentEntities.add((PersistentEntity)user);
+                    persistentEntities.add(user);
                 }
             }
         }
@@ -320,7 +319,7 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl implements 
         if(departmentUserBeans!=null&&departmentUserBeans.size()>0){
             for(UserBean departmentUserBean:departmentUserBeans){
                 if(departmentUserBean!=null) {
-                    persistentEntities.add((PersistentEntity)departmentUserBean);
+                    persistentEntities.add(departmentUserBean);
                 }
             }
         }

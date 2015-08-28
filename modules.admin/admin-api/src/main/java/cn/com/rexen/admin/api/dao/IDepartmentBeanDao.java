@@ -1,7 +1,6 @@
 package cn.com.rexen.admin.api.dao;
 
 import cn.com.rexen.admin.entities.DepartmentBean;
-import cn.com.rexen.admin.entities.OrganizationBean;
 import cn.com.rexen.core.api.persistence.IGenericDao;
 
 /**

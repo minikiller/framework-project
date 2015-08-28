@@ -3,7 +3,6 @@ package cn.com.rexen.admin.api.biz;
 
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.biz.IBizService;
-import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
 
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.List;
 public interface IUserBeanService extends IBizService {
 
 
-    public JsonData getAllUser();
+    JsonData getAllUser();
 
     List<UserBean> queryUser(UserBean userBean, int is_ent);
 
@@ -26,7 +25,7 @@ public interface IUserBeanService extends IBizService {
      * @param pageSize   每页大小
      * @return 用户结果集
      */
-    public List<UserBean> queryUser(String userName, int pageNumber, int pageSize);
+    List<UserBean> queryUser(String userName, int pageNumber, int pageSize);
 
     List<UserBean> query(UserBean userBean, int is_ent);
 
@@ -36,7 +35,7 @@ public interface IUserBeanService extends IBizService {
      * @param userBean 用户
      * @return
      */
-    public String getRoleList(UserBean userBean);
+    String getRoleList(UserBean userBean);
 
     /**
      * 保存用户以及相关的角色
@@ -74,7 +73,7 @@ public interface IUserBeanService extends IBizService {
      *
      * @return
      */
-    public String getCurrUserInQhdm();
+    String getCurrUserInQhdm();
 
     /**
      * 通过用户id串获取用户token集合
@@ -82,14 +81,14 @@ public interface IUserBeanService extends IBizService {
      * @param id
      * @return
      */
-    public List getUserTokenListByIds(Long id);
+    List getUserTokenListByIds(Long id);
 
     /**
      * 通过jgdm获取用户token集合
      *
      * @return
      */
-    public List getUserTokenListJgdm(String jgdm, long user_id);
+    List getUserTokenListJgdm(String jgdm, long user_id);
 
     /**
      * 根据日程id获取不同类型用户token
@@ -97,7 +96,7 @@ public interface IUserBeanService extends IBizService {
      * @param notice_id
      * @return
      */
-    public List getUserTokenListByNoticeId(Long notice_id, int reply_type, long user_id);
+    List getUserTokenListByNoticeId(Long notice_id, int reply_type, long user_id);
 
     /**
      * 根据机构代码串获取这些机构下的所有用户
@@ -105,18 +104,18 @@ public interface IUserBeanService extends IBizService {
      * @param jgdm
      * @return
      */
-    public List getUseridListByGgdm(String jgdm, long user_id);
+    List getUseridListByGgdm(String jgdm, long user_id);
 
-    public List<UserBean> getUserListByCond(int is_ent_user);
+    List<UserBean> getUserListByCond(int is_ent_user);
 
-    public UserBean getUserBeanByUsername(String username);
+    UserBean getUserBeanByUsername(String username);
 
     /**
      * 将用户置为无效
      *
      * @param relateId
      */
-    public void setUserUnavailable(String relateId);
+    void setUserUnavailable(String relateId);
 
     /**
      * 根据隐患排查传过来的信息修改用户
@@ -124,6 +123,6 @@ public interface IUserBeanService extends IBizService {
      * @param relateId
      * @return
      */
-    public UserBean getUserByRelateId(String relateId);
+    UserBean getUserByRelateId(String relateId);
 
 }

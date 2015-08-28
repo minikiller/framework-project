@@ -169,7 +169,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
         List<PersistentEntity> persistentEntityList=new ArrayList<PersistentEntity>();
         if(roles!=null&&roles.size()>0){
             for(RoleBean role:roles){
-                persistentEntityList.add((PersistentEntity)role);
+                persistentEntityList.add(role);
             }
         }
         jsonData.setData(persistentEntityList);

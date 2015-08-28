@@ -121,7 +121,7 @@ public class BaseBpmnImageServlet extends HttpServlet {
         //检查第一个节点是否是startEvent(如果流程是由别的callActivity节启动的则没有startEvent),
         //如果不是startEvent节点则要找出startEvent的高亮flow
         HistoricActivityInstance firstHistActInst = hisActInstList.getFirst();
-        String firstActType = (String) firstHistActInst.getActivityType();
+        String firstActType = firstHistActInst.getActivityType();
         if (firstActType != null && firstActType.toLowerCase().indexOf("startevent") < 0) {
             PvmTransition startTrans = getStartTransaction(startEventActList, firstHistActInst);
             if (startTrans != null) {

@@ -3,7 +3,6 @@ package cn.com.rexen.admin.core;
 import cn.com.rexen.admin.api.biz.IUserBeanService;
 import cn.com.rexen.admin.api.dao.*;
 import cn.com.rexen.admin.dto.model.query.UserDTO;
-import cn.com.rexen.admin.entities.OrganizationBean;
 import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.PermissionConstant;
@@ -208,7 +207,7 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
         if(users!=null&&users.size()>0){
             for(UserBean user:users){
                 if(user!=null) {
-                    persistentEntities.add((PersistentEntity)user);
+                    persistentEntities.add(user);
                 }
             }
         }

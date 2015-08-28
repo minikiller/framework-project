@@ -60,7 +60,7 @@ public class TestFilter extends AbstractShiroFilter {
     public void init() throws Exception {
         WebEnvironment env = WebUtils.getRequiredWebEnvironment(getServletContext());
         try {
-            securityManager = (WebSecurityManager) JNDIHelper.getJNDIServiceForName(WebSecurityManager.class.getName());
+            securityManager = JNDIHelper.getJNDIServiceForName(WebSecurityManager.class.getName());
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -8,21 +8,21 @@ public interface IBaseWebPage {
     String getId();
 
     //    标题
-    public String getTitle();
+    String getTitle();
 
     //    描述
-    public String getDescription();
+    String getDescription();
 
     //    图标
-    public String getIcon();
+    String getIcon();
 
     //    Extjs组件类名称
-    public String getComponentClass();
+    String getComponentClass();
 
     //    显示的顺序
-    public int getIndex();
+    int getIndex();
 
     //返回权限
-    public String getPermission();
+    String getPermission();
 
 }
