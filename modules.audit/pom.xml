@@ -27,9 +27,8 @@
         <module>audit-persist-jpa</module>
         <module>audit-rest</module>
         <module>audit-web</module>
-        <!--<module>audit-camel</module>-->
-
     </modules>
+
     <dependencyManagement>
         <dependencies>
             <dependency>

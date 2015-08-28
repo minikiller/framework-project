@@ -1,9 +1,9 @@
 package cn.com.rexen.demo.core.biz;
 
+import cn.com.rexen.audit.core.biz.AuditBizServiceImpl;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.WorkflowStaus;
 import cn.com.rexen.core.api.security.IUserLoginService;
-import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.demo.api.biz.INoticeBeanService;
 import cn.com.rexen.demo.api.dao.INoticeBeanDao;
 import cn.com.rexen.demo.core.Const;
@@ -26,7 +26,7 @@ import java.util.UUID;
  * @修改时间：
  * @修改备注：
  */
-public class NoticeBeanServiceImpl extends GenericBizServiceImpl implements INoticeBeanService {
+public class NoticeBeanServiceImpl extends AuditBizServiceImpl implements INoticeBeanService {
     private INoticeBeanDao noticeBeanDao;
     private RepositoryService repositoryService;
     private FormService formService;
@@ -40,6 +40,16 @@ public class NoticeBeanServiceImpl extends GenericBizServiceImpl implements INot
 
     public NoticeBeanServiceImpl() {
         uuid = UUID.randomUUID().toString();
+    }
+
+    @Override
+    public String getAppName() {
+        return "Hello";
+    }
+
+    @Override
+    public String getFunName() {
+        return "test";
     }
 
     public void setUserLoginService(IUserLoginService userLoginService) {

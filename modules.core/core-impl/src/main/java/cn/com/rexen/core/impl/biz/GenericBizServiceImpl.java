@@ -24,8 +24,8 @@ import java.util.List;
  */
 public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IBizService {
     protected final Logger log = Logger.getLogger(getClass());
-    private T dao;
-    private String entityClassName;
+    protected T dao;
+    protected String entityClassName;
 
 
     @Override

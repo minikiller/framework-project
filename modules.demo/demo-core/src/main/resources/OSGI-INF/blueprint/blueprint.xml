@@ -13,6 +13,8 @@
     <reference id="runtimeService" interface="org.activiti.engine.RuntimeService"/>
     <reference id="taskService" interface="org.activiti.engine.TaskService"/>
     <reference id="userLoginService" interface="cn.com.rexen.core.api.security.IUserLoginService"/>
+    <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
+    <reference id="auditBeanService" interface="cn.com.rexen.audit.api.biz.IAuditBeanService"/>
 
     <bean id="beanServiceImpl" class="cn.com.rexen.demo.core.biz.NoticeBeanServiceImpl" scope="prototype">
         <property name="noticeBeanDao" ref="noticeBeanDao"/>
@@ -22,6 +24,8 @@
         <property name="runtimeService" ref="runtimeService"/>
         <property name="taskService" ref="taskService"/>
         <property name="userLoginService" ref="userLoginService"/>
+        <property name="auditBeanService" ref="auditBeanService"/>
+        <property name="shiroService" ref="shiroService"/>
     </bean>
 
     <reference id="noticeBeanDao" interface="cn.com.rexen.demo.api.dao.INoticeBeanDao"/>

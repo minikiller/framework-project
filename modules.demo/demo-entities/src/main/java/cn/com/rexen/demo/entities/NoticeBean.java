@@ -56,4 +56,15 @@ public class NoticeBean extends WorkflowEntity {
     public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
     }
+
+    @Override
+    public String toString() {
+        return "NoticeBean{" +
+                "id='" + getId() + '\'' +
+                "content='" + content + '\'' +
+                ", title='" + title + '\'' +
+                ", publishPeople='" + publishPeople + '\'' +
+                ", publishDate=" + publishDate +
+                '}';
+    }
 }
