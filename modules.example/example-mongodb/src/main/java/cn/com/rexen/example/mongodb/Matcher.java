@@ -1,4 +1,4 @@
-package cn.com.rexen.example.mongodb;
+package cn.com.rexen.example.sequoiadb;
 
 import org.javers.core.Javers;
 import org.javers.core.JaversBuilder;

@@ -1,4 +1,4 @@
-package cn.com.rexen.example.mongodb;
+package cn.com.rexen.example.sequoiadb;
 
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.RoutesBuilder;

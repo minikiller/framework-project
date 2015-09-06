@@ -77,13 +77,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.sequoiadb</groupId>
-            <artifactId>sequoiadb-driver</artifactId>
-            <version>1.12</version>
-            <scope>provided</scope>
-        </dependency>
-
     </dependencies>
 
     <build>

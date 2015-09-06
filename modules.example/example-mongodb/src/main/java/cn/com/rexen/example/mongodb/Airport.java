@@ -1,4 +1,4 @@
-package cn.com.rexen.example.mongodb;
+package cn.com.rexen.example.sequoiadb;
 
 import org.javers.core.metamodel.annotation.DiffIgnore;
 

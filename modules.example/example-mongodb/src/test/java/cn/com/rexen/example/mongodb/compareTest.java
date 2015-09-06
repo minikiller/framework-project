@@ -1,4 +1,4 @@
-package cn.com.rexen.example.mongodb;
+package cn.com.rexen.example.sequoiadb;
 
 import org.junit.Assert;
 import org.junit.Test;

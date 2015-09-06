@@ -24,7 +24,8 @@
     <modules>
         <!--<module>example-pax-cdi</module>-->
         <!--<module>example-pax-cdi-client</module>-->
-        <module>example-mongodb</module>
+        <!--<module>example-mongodb</module>-->
+        <module>example-sequoiadb</module>
     </modules>
     <dependencyManagement>
         <dependencies>

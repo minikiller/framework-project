@@ -1,4 +1,4 @@
-package cn.com.rexen.example.mongodb;
+package cn.com.rexen.example.sequoiadb;
 
 public class AirportName {
     private String name;
