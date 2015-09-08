@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * 角色用户关联实体类
@@ -17,7 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "sys_role_user")
 @Inheritance(strategy = InheritanceType.JOINED)
-@XmlRootElement
+//@XmlRootElement
 public class RoleUserBean extends PersistentEntity {
     /**
      * 用户.

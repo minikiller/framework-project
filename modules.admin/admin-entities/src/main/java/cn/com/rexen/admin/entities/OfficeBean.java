@@ -3,9 +3,6 @@ package cn.com.rexen.admin.entities;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,11 +17,13 @@ import java.util.List;
 @Entity
 @Table(name = "sys_office")
 @Inheritance(strategy = InheritanceType.JOINED)
-@XmlRootElement
+//@XmlRootElement
 public class OfficeBean extends PersistentEntity {
-
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "parent_id")
     private OfficeBean parent;    // 父级编号
-    private String parentIds; // 所有父级编号
+    private String parentIds; // 所有父级编号@ManyToOne
+    @JoinColumn(name = "area_id")
     private AreaBean areaBean;        // 归属区域
     private String code;    // 机构编码
     private String name;    // 机构名称
@@ -36,12 +35,13 @@ public class OfficeBean extends PersistentEntity {
     private String phone;    // 电话
     private String fax;    // 传真
     private String email;    // 邮箱
-    @XmlTransient
+    //    @XmlTransient
 //    private List<UserBean> userList = Lists.newArrayList();   // 拥有用户列表
+    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
+    @OrderBy(value = "code")
     private List<OfficeBean> childList = new ArrayList<>();// 拥有子机构列表
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "parent_id")
+
     public OfficeBean getParent() {
         return parent;
     }
@@ -148,8 +148,7 @@ public class OfficeBean extends PersistentEntity {
         this.userList = userList;
     }*/
 
-    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
-    @OrderBy(value = "code")
+
     public List<OfficeBean> getChildList() {
         return childList;
     }
@@ -158,9 +157,8 @@ public class OfficeBean extends PersistentEntity {
         this.childList = childList;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "area_id")
-    @NotNull
+
+    //    @NotNull
     public AreaBean getAreaBean() {
         return areaBean;
     }

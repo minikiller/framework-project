@@ -202,6 +202,7 @@
                 <optional>true</optional>
             </dependency>
             <!--osgi standard begin-->
+
             <dependency>
                 <groupId>org.osgi</groupId>
                 <artifactId>org.osgi.core</artifactId>
@@ -736,6 +737,14 @@
                 <groupId>com.sequoiadb</groupId>
                 <artifactId>sequoiadb-driver</artifactId>
                 <version>1.12</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <!-- exports package javax.persistence -->
+                <groupId>org.hibernate.javax.persistence</groupId>
+                <artifactId>hibernate-jpa-2.1-api</artifactId>
+                <version>1.0.0.Final</version>
                 <scope>provided</scope>
             </dependency>
 

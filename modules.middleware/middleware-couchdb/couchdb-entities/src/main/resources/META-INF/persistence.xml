@@ -3,7 +3,7 @@
 
     <persistence-unit transaction-type="JTA" name="couchdb-cm">
         <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
-        <non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=jdbc/mysqlds)
+        <non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=${db.datasource})
         </non-jta-data-source>
 
         <class>cn.com.rexen.core.api.persistence.PersistentEntity</class>
@@ -15,7 +15,7 @@
             <property name="openjpa.jdbc.UpdateManager"
                       value="org.apache.openjpa.jdbc.kernel.BatchingConstraintUpdateManager"/>
             <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema"/>
-            <property name="openjpa.jdbc.DBDictionary" value="mysql"/>
+            <property name="openjpa.jdbc.DBDictionary" value="${db.name}"/>
             <property name="openjpa.Log" value="SQL=Trace"/>
             <property name="openjpa.ConnectionFactoryProperties" value="PrintParameters=true"/>
         </properties>

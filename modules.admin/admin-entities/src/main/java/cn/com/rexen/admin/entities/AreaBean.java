@@ -6,11 +6,8 @@
 package cn.com.rexen.admin.entities;
 
 import cn.com.rexen.core.api.persistence.PersistentEntity;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 /**
@@ -24,19 +21,19 @@ import java.util.List;
 @Entity
 @Table(name = "sys_area")
 @Inheritance(strategy = InheritanceType.JOINED)
-@XmlRootElement
+//@XmlRootElement
 public class AreaBean extends PersistentEntity {
 
     private static final long serialVersionUID = 1L;
     private String parentIds; // 所有父级编号
     private int isLeaf; //是否是子节点
-    @Length(min = 1, max = 255)
+    //    @Length(min = 1, max = 255)
     private long parentId; // 父级编号
-    @NotNull(message = "'区域编码'是必填项")
+    //    @NotNull(message = "'区域编码'是必填项")
     private String code;    // 区域编码
-    @NotNull(message = "'区域名称'是必填项")
+    //    @NotNull(message = "'区域名称'是必填项")
     private String name;    // 区域名称
-    @NotNull(message = "'中心代码'是必填项")
+    //    @NotNull(message = "'中心代码'是必填项")
     private String centerCode;    // 中心代码
     private String type;    // 区域类型（1：国家；2：省份、直辖市；3：地市；4：区县）
     private String jd;      //经度
@@ -90,7 +87,6 @@ public class AreaBean extends PersistentEntity {
         this.centerCode = centerCode;
     }
 
-    @Length(min = 1, max = 255)
     public String getParentIds() {
         return parentIds;
     }
@@ -99,7 +95,6 @@ public class AreaBean extends PersistentEntity {
         this.parentIds = parentIds;
     }
 
-    @Length(min = 1, max = 100)
     public String getName() {
         return name;
     }
@@ -108,7 +103,6 @@ public class AreaBean extends PersistentEntity {
         this.name = name;
     }
 
-    @Length(min = 1, max = 1)
     public String getType() {
         return type;
     }
@@ -117,7 +111,6 @@ public class AreaBean extends PersistentEntity {
         this.type = type;
     }
 
-    @Length(min = 0, max = 100)
     public String getCode() {
         return code;
     }

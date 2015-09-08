@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * @类描述：用户扩展关联表
@@ -19,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "sys_user_rel")
 @Inheritance(strategy = InheritanceType.JOINED)
-@XmlRootElement
+//@XmlRootElement
 public class UserRelBean extends PersistentEntity {
 
     private long user_id;       //用户ID

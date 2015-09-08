@@ -21,7 +21,7 @@
     <modules>
         <!--<module>archetype</module>-->
         <module>karaf-features</module>
-        <module>assembly</module>
+        <!--<module>assembly</module>-->
     </modules>
     <dependencyManagement>
         <dependencies>

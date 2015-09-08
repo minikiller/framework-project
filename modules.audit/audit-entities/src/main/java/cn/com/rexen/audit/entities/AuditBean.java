@@ -3,6 +3,8 @@ package cn.com.rexen.audit.entities;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 /**
@@ -15,6 +17,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "sys_audit")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class AuditBean extends PersistentEntity {
     private String appName; //应用名称
     private String funName;//功能名称

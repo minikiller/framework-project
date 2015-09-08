@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * 工作组角色实体类
@@ -17,7 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "sys_workGroup_role")
 @Inheritance(strategy = InheritanceType.JOINED)
-@XmlRootElement
+//@XmlRootElement
 public class WorkGroupRoleBean extends PersistentEntity {
     /**
      * 角色.

@@ -3,7 +3,6 @@ package cn.com.rexen.admin.entities;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,23 +18,26 @@ import java.util.List;
 @Table(name = "sys_permission")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class PermissionBean extends PersistentEntity {
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "parent_id")
     private PermissionBean parent;    // 父级菜单
     private String parentIds; // 所有父级编号
-    @NotNull(message = "'名称'是必填项")
+    //    @NotNull(message = "'名称'是必填项")
     private String name;    // 名称
     private String href;    // 链接
     private String icon;    // 图标
     private Integer sort;    // 序号
     private Boolean isShow;    // 是否在菜单中显示（1：显示；0：不显示）
-    @NotNull(message = "'权限标识'是必填项")
+    //    @NotNull(message = "'权限标识'是必填项")
     private String permission; // 权限标识
-
+    @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE})
     private List<PermissionBean> childList = new ArrayList<>();// 拥有子菜单列表
+    @ManyToMany(mappedBy = "permissionList", fetch = FetchType.EAGER)
+    @OrderBy("id")
     private List<RoleBean> roleList = new ArrayList<>(); // 拥有角色列表
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "parent_id")
+
     public PermissionBean getParent() {
         return parent;
     }
@@ -113,8 +115,8 @@ public class PermissionBean extends PersistentEntity {
         this.permission = permission;
     }
 
-    @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE})
-    @OrderBy(value = "sort")
+    //    @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE})
+//    @OrderBy(value = "sort")
     public List<PermissionBean> getChildList() {
         return childList;
     }
@@ -125,8 +127,6 @@ public class PermissionBean extends PersistentEntity {
     }
 
 
-    @ManyToMany(mappedBy = "permissionList", fetch = FetchType.EAGER)
-    @OrderBy("id")
     public List<RoleBean> getRoleList() {
         return roleList;
     }

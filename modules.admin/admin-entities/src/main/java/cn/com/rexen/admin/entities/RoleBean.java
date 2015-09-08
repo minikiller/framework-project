@@ -3,9 +3,6 @@ package cn.com.rexen.admin.entities;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,13 +17,18 @@ import java.util.List;
 @Entity
 @Table(name = "sys_role")
 @Inheritance(strategy = InheritanceType.JOINED)
-@XmlRootElement
+//@XmlRootElement
 public class RoleBean extends PersistentEntity {
-    @NotNull(message = "'角色名称'是必填项")
+    //    @NotNull(message = "'角色名称'是必填项")
     private String name;    // 角色名称
     private String remark;  //角色备注
-    @XmlTransient
+    //    @XmlTransient
+    @ManyToMany(mappedBy = "roleList", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OrderBy("id")
     private List<UserBean> userList = new ArrayList<>(); // 拥有用户列表
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "sys_role_permission", joinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "permission_id", referencedColumnName = "id"))
+    @OrderBy("id")
     private List<PermissionBean> permissionList = new ArrayList<>(); // 拥有菜单列表
 
     public RoleBean() {
@@ -52,8 +54,6 @@ public class RoleBean extends PersistentEntity {
     }
 
 
-    @ManyToMany(mappedBy = "roleList", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @OrderBy("id")
     public List<UserBean> getUserList() {
         return userList;
     }
@@ -64,9 +64,6 @@ public class RoleBean extends PersistentEntity {
     }
 
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "sys_role_permission", joinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "permission_id", referencedColumnName = "id"))
-    @OrderBy("id")
     public List<PermissionBean> getPermissionList() {
         return permissionList;
     }

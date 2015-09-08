@@ -38,7 +38,7 @@
     </properties>
 
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-jta_1.1_spec</artifactId>
             <scope>provided</scope>
@@ -53,12 +53,12 @@
             <artifactId>openjpa</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!-- OpenJPA PCEnhancer depends -->
+        &lt;!&ndash; OpenJPA PCEnhancer depends &ndash;&gt;
         <dependency>
             <groupId>net.sourceforge.serp</groupId>
             <artifactId>serp</artifactId>
             <scope>provided</scope>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>commons-lang</groupId>
@@ -82,21 +82,26 @@
             <artifactId>cn.com.rexen.core.impl</artifactId>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.servicemix.specs</groupId>
             <artifactId>org.apache.servicemix.specs.jsr303-api-1.0.0</artifactId>
-        </dependency>
+        </dependency>-->
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.servicemix.bundles</groupId>
             <artifactId>org.apache.servicemix.bundles.hibernate-validator</artifactId>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
         </dependency>
 
         <!-- end OpenJPA PCEnhancer depends -->
     </dependencies>
     <build>
         <plugins>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
@@ -129,7 +134,7 @@
             <plugin>
                 <groupId>org.apache.openjpa</groupId>
                 <artifactId>openjpa-maven-plugin</artifactId>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 </project>

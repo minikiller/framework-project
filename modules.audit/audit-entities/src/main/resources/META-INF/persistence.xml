@@ -1,23 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+<persistence
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+        http://java.sun.com/xml/ns/persistence
+        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+        xmlns="http://java.sun.com/xml/ns/persistence"
+        version="2.0">
 
     <persistence-unit transaction-type="JTA" name="audit-cm">
-        <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
-        <non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=jdbc/mysqlds)
+        <!--<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>-->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=${db.datasource})
         </non-jta-data-source>
 
         <class>cn.com.rexen.core.api.persistence.PersistentEntity</class>
         <class>cn.com.rexen.audit.entities.AuditBean</class>
 
         <properties>
-            <property name="openjpa.BrokerImpl" value="non-finalizing"/>
+            <!--<property name="openjpa.BrokerImpl" value="non-finalizing"/>
             <property name="openjpa.Sequence" value="table(Table=OPENJPASEQ, Increment=100)"/>
             <property name="openjpa.jdbc.UpdateManager"
                       value="org.apache.openjpa.jdbc.kernel.BatchingConstraintUpdateManager"/>
             <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema"/>
-            <property name="openjpa.jdbc.DBDictionary" value="mysql"/>
+            <property name="openjpa.jdbc.DBDictionary" value="${db.name}"/>
             <property name="openjpa.Log" value="SQL=Trace"/>
-            <property name="openjpa.ConnectionFactoryProperties" value="PrintParameters=true"/>
+            <property name="openjpa.ConnectionFactoryProperties" value="PrintParameters=true"/>-->
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.archive.autodetection" value="class"/>
+            <property name="hibernate.id.new_generator_mappings" value="true"/>
+            <property name="hibernate.cache.use_second_level_cache" value="false"/>
         </properties>
     </persistence-unit>
 </persistence>

@@ -4,6 +4,6 @@
 
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 Meta-Persistence: META-INF/persistence.xml
-JPA-PersistenceUnits:admin-cm
-Import-Package:*
+JPA-PersistenceUnits:app-cm
+Import-Package:javax.persistence,org.hibernate.proxy,javassist.util.proxy,*
 Bundle-Category: Rexen Kalix App

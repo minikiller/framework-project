@@ -305,4 +305,29 @@
         <module>modules.app</module>
         <!--<module>modules.example</module>-->
     </modules>
+
+    <profiles>
+        <profile>
+            <id>development</id>
+            <properties>
+                <db.name>mysql</db.name>
+                <db.datasource>jdbc/mysqlds</db.datasource>
+                <db.datasourceClass>com.mysql.jdbc.jdbc2.optional.MysqlDataSource</db.datasourceClass>
+                <db.connectionURL>jdbc:mysql://localhost:3306/kalix</db.connectionURL>
+                <db.username>root</db.username>
+                <db.password>1234</db.password>
+            </properties>
+        </profile>
+        <profile>
+            <id>production</id>
+            <properties>
+                <db.name>postgres</db.name>
+                <db.datasource>jdbc/postgres</db.datasource>
+                <db.datasourceClass>org.postgresql.jdbc2.optional.PoolingDataSource</db.datasourceClass>
+                <db.connectionURL>jdbc:postgresql://localhost:5432/postgres</db.connectionURL>
+                <db.username>postgres</db.username>
+                <db.password>1234</db.password>
+            </properties>
+        </profile>
+    </profiles>
 </project>

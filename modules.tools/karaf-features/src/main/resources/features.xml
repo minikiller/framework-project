@@ -197,13 +197,14 @@
         <feature>war</feature>
         <feature>webconsole</feature>
         <feature>jndi</feature>
-        <feature version="2.0.0">jpa</feature>
+        <feature version="2.1.0">jpa</feature>
         <feature>mysql-driver</feature>
         <feature>derby-driver</feature>
-        <feature version="2.3.0">openjpa</feature>
+        <!--<feature version="2.3.0">openjpa</feature>-->
+        <feature>hibernate</feature>
         <feature>jsr303</feature>
         <feature>camel-blueprint</feature>
-        <feature>camel-jetty</feature>
+        <!--<feature>camel-jetty</feature>-->
         <feature>camel-metrics</feature>
         <feature>camel-jackson</feature>
         <feature>camel-servlet</feature>
