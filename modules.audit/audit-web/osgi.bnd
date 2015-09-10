@@ -3,5 +3,5 @@
 #-----------------------------------------------------------------
 
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
-Import-Package:cn.com.rexen.core.api.biz,cn.com.rexen.core.api.persistence,cn.com.rexen.demo.entities,*
+Import-Package:cn.com.rexen.core.api.biz,cn.com.rexen.core.api.persistence,*
 Bundle-Category: Rexen Kalix Demo

@@ -5,8 +5,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="processEngineConfiguration"
           class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+        <property name="databaseType" value="${db.name}"/>
         <property name="jdbcUrl" value="${db.connectionURL}"/>
-        <property name="jdbcDriver" value="${db.datasourceClass}"/>
+        <property name="jdbcDriver" value="${db.driver}"/>
         <property name="jdbcUsername" value="${db.username}"/>
         <property name="jdbcPassword" value="${db.password}"/>
         <!-- Database configurations -->

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+<blueprint xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+    <ext:property-placeholder/>
     <!--<bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource">-->
     <bean id="dataSource" class="${db.datasourceClass}">
-        <property name="URL" value="${db.connectionURL}"/>
+        <!--<property name="driver" value="org.postgresql.Driver"/>-->
+        <property name="url" value="${db.connectionURL}"/>
         <property name="user" value="${db.username}"/>
         <property name="password" value="${db.password}"/>
     </bean>
@@ -23,6 +27,16 @@
         <property name="labelFontName" value="宋体"/>
         <property name="dbIdentityUsed" value="false"/>
     </bean>
+
+    <reference id="transactionManager" interface="javax.transaction.TransactionManager"/>
+
+    <!--<bean id="configuration" class="org.activiti.engine.impl.cfg.JtaProcessEngineConfiguration" ext:field-injection="true">
+        <property name="databaseType" value="postgres"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="databaseSchemaUpdate" value="true"/>
+        <property name="transactionsExternallyManaged" value="true" />
+    </bean>-->
 
     <bean id="configuration" factory-ref="configurationFactory" factory-method="getConfiguration"/>
 

@@ -86,17 +86,77 @@
                     <!--<schema>${dbunit.schema}</schema>-->
                     <tables>
                         <table>
-                            <name>sys_area</name>
-                        </table>
-                        <!--<table>
-                            <name>urg_ent_enterprise</name>
+                            <name>sys_about</name>
                         </table>
                         <table>
-                            <name>urg_ent_organization</name>
+                            <name>sys_application</name>
+                        </table>
+                        <table>
+                            <name>sys_area</name>
+                        </table>
+                        <table>
+                            <name>sys_demo</name>
+                        </table>
+                        <table>
+                            <name>sys_department</name>
+                        </table>
+                        <table>
+                            <name>sys_department_user</name>
                         </table>
                         <table>
                             <name>sys_dict</name>
-                        </table>-->
+                        </table>
+                        <table>
+                            <name>sys_function</name>
+                        </table>
+                        <table>
+                            <name>sys_message</name>
+                        </table>
+                        <table>
+                            <name>sys_office</name>
+                        </table>
+                        <table>
+                            <name>sys_organization</name>
+                        </table>
+                        <table>
+                            <name>sys_permission</name>
+                        </table>
+                        <table>
+                            <name>sys_role</name>
+                        </table>
+                        <table>
+                            <name>sys_role_application</name>
+                        </table>
+                        <table>
+                            <name>sys_role_function</name>
+                        </table>
+                        <table>
+                            <name>sys_role_permission</name>
+                        </table>
+                        <table>
+                            <name>sys_role_user</name>
+                        </table>
+                        <table>
+                            <name>sys_user</name>
+                        </table>
+                        <table>
+                            <name>sys_user_rel</name>
+                        </table>
+                        <table>
+                            <name>sys_user_role</name>
+                        </table>
+                        <table>
+                            <name>sys_workgroup</name>
+                        </table>
+                        <table>
+                            <name>sys_workgroup_role</name>
+                        </table>
+                        <table>
+                            <name>sys_workgroup_user</name>
+                        </table>
+                        <table>
+                            <name>sys_area</name>
+                        </table>
                     </tables>
                     <skip>${skipTests}</skip>
                     <transaction>true</transaction>
@@ -160,7 +220,7 @@
                 <jdbc.url>jdbc:postgresql://localhost/${db.name}</jdbc.url>
                 <jdbc.username>postgres</jdbc.username>
                 <jdbc.password>1234</jdbc.password>
-                <db.name>postgres</db.name>
+                <db.name>kalix</db.name>
             </properties>
 
         </profile>
