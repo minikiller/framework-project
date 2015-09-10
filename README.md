@@ -23,3 +23,6 @@ kalix-project
 
 feature:repo-add mvn:cn.com.rexen.tools/karaf-features/1.0.0-SNAPSHOT/xml/features
 
+install -s mvn:org.postgresql/postgresql/9.4-1202-jdbc41
+
+
