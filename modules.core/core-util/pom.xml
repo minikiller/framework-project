@@ -20,7 +20,11 @@
 
     <name>Kalix :: Core - Util</name>
     <description>Core - Util</description>
-
+    <properties>
+        <bundle.symbolicName>cn.com.rexen.core.util</bundle.symbolicName>
+        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.osgi</groupId>
@@ -36,10 +40,10 @@
             <artifactId>gson</artifactId>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.openjpa</groupId>
             <artifactId>openjpa</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
@@ -66,21 +70,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.databene</groupId>
-                <artifactId>maven-benerator-plugin</artifactId>
-                <version>0.5.4</version>
-                <configuration>
-                    <!--<descriptor>src/test/benerator/myproject.ben.xml</descriptor>-->
-                    <encoding>utf-8</encoding>
-                    <dbDriver>oracle.jdbc.driver.OracleDriver</dbDriver>
-                    <dbUrl>jdbc:oracle:thin:@localhost:1521:XE</dbUrl>
-                    <dbSchema>user</dbSchema>
-                    <dbUser>user</dbUser>
-                    <dbPassword>password</dbPassword>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>dbunit-maven-plugin</artifactId>
@@ -144,10 +133,6 @@
         <profile>
             <id>mysql</id>
             <properties>
-                <bundle.symbolicName>cn.com.rexen.core.util</bundle.symbolicName>
-                <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
-                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
                 <!-- Database settings -->
                 <dbunit.dataTypeFactoryName>org.dbunit.ext.mysql.MySqlDataTypeFactory</dbunit.dataTypeFactoryName>
                 <dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>
@@ -165,10 +150,6 @@
         <profile>
             <id>postgres</id>
             <properties>
-                <bundle.symbolicName>cn.com.rexen.core.util</bundle.symbolicName>
-                <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
-                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
                 <!-- Database settings -->
                 <!--<dbunit.dataTypeFactoryName>org.dbunit.ext.postgres.PostgresqlDataTypeFactory</dbunit.dataTypeFactoryName>-->
                 <dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>

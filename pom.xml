@@ -324,7 +324,7 @@
                 <db.name>postgres</db.name>
                 <db.datasource>jdbc/postgres</db.datasource>
                 <db.datasourceClass>org.postgresql.jdbc2.optional.PoolingDataSource</db.datasourceClass>
-                <db.connectionURL>jdbc:postgresql://localhost:5432/postgres</db.connectionURL>
+                <db.connectionURL>jdbc:postgresql://localhost:5432/kalix</db.connectionURL>
                 <db.username>postgres</db.username>
                 <db.password>1234</db.password>
             </properties>
