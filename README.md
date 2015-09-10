@@ -21,3 +21,5 @@ kalix-project
 14.osgi service事务控制，在blueprint里的bean定义中加入<tx:transaction method="*" value="Required"/>
 15.安装redis为window服务：redis-server --service-install redis.windows.conf
 
+feature:repo-add mvn:cn.com.rexen.tools/karaf-features/1.0.0-SNAPSHOT/xml/features
+

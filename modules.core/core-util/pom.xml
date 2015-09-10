@@ -80,113 +80,14 @@
                     <username>${jdbc.username}</username>
                     <password>${jdbc.password}</password>
                     <url>${jdbc.url}</url>
-                    <src>src/test/resources/sys_about.xml</src>
+                    <src>src/test/resources/sample-data.xml</src>
                     <type>${dbunit.operation.type}</type>
                     <escapePattern>"?"</escapePattern>
                     <!--<schema>${dbunit.schema}</schema>-->
                     <tables>
-                        <
-                        <
-                        <
-                        <
-                        <
-                        <
-                        < Updated upstream
                         <table>
-                        =======
-                        <!--<table>
-                            <name>sys_function</name>
-                        </table>
-                        <table>
-                            <name>urg_monitor</name>
-                            <name>sys_user</name>
-                        </table>
-                        <table>
-                            <name>sys_role</name>
-                        </table>
-                        <table>
-                            <name>sys_user_role</name>
-                        </table>
-                        <table>
-                            <name>sys_permission</name>
-                        </table>
-                        <table>
-                            <name>sys_role_permission</name>
-                        </table>
-                        -->
-                        <table>
-                            <name>sys_user</name>
-                        </table>
-                        <!--<table>
-                        <name>sys_about</name>
-                        </table>
-                        <table>
-                            <name>sys_application</name>
-                        </table>
-                        <table>
->>>>>>> Stashed changes
                             <name>sys_area</name>
                         </table>
-                        <table>
-                            <name>sys_demo</name>
-                        </table>
-                        <table>
-                            <name>sys_department</name>
-                        </table>
-                        <table>
-                            <name>sys_department_user</name>
-                        </table>
-                        <table>
-                            <name>sys_dict</name>
-                        </table>
-                        <table>
-                            <name>sys_function</name>
-                        </table>
-                        <table>
-                            <name>sys_message</name>
-                        </table>
-                        <table>
-                            <name>sys_office</name>
-                        </table>
-                        <table>
-                            <name>sys_organization</name>
-                        </table>
-                        <table>
-                            <name>sys_permission</name>
-                        </table>
-                        <table>
-                            <name>sys_role</name>
-                        </table>
-                        <table>
-                            <name>sys_role_application</name>
-                        </table>
-                        <table>
-                            <name>sys_role_function</name>
-                        </table>
-                        <table>
-                            <name>sys_role_permission</name>
-                        </table>
-                        <table>
-                            <name>sys_role_user</name>
-                        </table>
-                        <table>
-                            <name>sys_user</name>
-                        </table>
-                        <table>
-                            <name>sys_user_rel</name>
-                        </table>
-                        <table>
-                            <name>sys_user_role</name>
-                        </table>
-                        <table>
-                            <name>sys_workgroup</name>
-                        </table>
-                        <table>
-                            <name>sys_workgroup_role</name>
-                        </table>
-                        <table>
-                            <name>sys_workgroup_user</name>
-                        </table>-->
                         <!--<table>
                             <name>urg_ent_enterprise</name>
                         </table>
@@ -229,13 +130,6 @@
     </build>
 
     <profiles>
-        <
-        <
-        <
-        <
-        <
-        <
-        < Updated upstream
         <profile>
             <id>mysql</id>
             <properties>
@@ -253,64 +147,19 @@
             </properties>
 
         </profile>
-        =======
-        <profile>
-            <id>mysql</id>
-            <properties>
-                <bundle.symbolicName>cn.com.rexen.core.util</bundle.symbolicName>
-                <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
-                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-                <!-- Database settings -->
-                <dbunit.dataTypeFactoryName>org.dbunit.ext.mysql.MySqlDataTypeFactory</dbunit.dataTypeFactoryName>
-                <dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>
-                <jdbc.groupId>mysql</jdbc.groupId>
-                <jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
-                <jdbc.version>5.1.22</jdbc.version>
-                <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
-                <jdbc.url>jdbc:mysql://localhost/${db.name}?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;autoReconnect=true</jdbc.url>
-                <jdbc.username>root</jdbc.username>
-                <jdbc.password></jdbc.password>
-                <db.name>kalix</db.name>
-            </properties>
-
-        </profile>
-        >>>>>>> Stashed changes
         <profile>
             <id>postgres</id>
             <properties>
                 <!-- Database settings -->
-                <
-                <
-                <
-                <
-                <
-                <
-                < Updated upstream
                 <!--<dbunit.dataTypeFactoryName>org.dbunit.ext.postgres.PostgresqlDataTypeFactory</dbunit.dataTypeFactoryName>-->
-                =======
-                <!--<dbunit.dataTypeFactoryName>org.dbunit.ext.postgres.PostgresDataTypeFactory</dbunit.dataTypeFactoryName>-->
-                >>>>>>> Stashed changes
                 <dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>
                 <jdbc.groupId>org.postgresql</jdbc.groupId>
                 <jdbc.artifactId>postgresql</jdbc.artifactId>
                 <jdbc.version>9.4-1201-jdbc41</jdbc.version>
                 <jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
-                <
-                <
-                <
-                <
-                <
-                <
-                < Updated upstream
                 <jdbc.url>jdbc:postgresql://localhost/${db.name}</jdbc.url>
                 <jdbc.username>postgres</jdbc.username>
                 <jdbc.password>1234</jdbc.password>
-                =======
-                <jdbc.url>jdbc:postgresql://localhost/${db.name}?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;autoReconnect=true</jdbc.url>
-                <jdbc.username>postgres</jdbc.username>
-                <jdbc.password>123456</jdbc.password>
-                >>>>>>> Stashed changes
                 <db.name>postgres</db.name>
             </properties>
 
