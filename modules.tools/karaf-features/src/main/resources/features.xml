@@ -200,6 +200,7 @@
         <feature version="2.1.0">jpa</feature>
         <feature>mysql-driver</feature>
         <feature>derby-driver</feature>
+        <feature>postgresql-driver</feature>
         <!--<feature version="2.3.0">openjpa</feature>-->
         <feature>hibernate</feature>
         <feature>jsr303</feature>
@@ -216,6 +217,7 @@
         <feature>jedis</feature>
         <bundle>mvn:com.google.code.gson/gson/${gson.version}</bundle>
         <bundle>mvn:com.google.guava/guava/15.0</bundle>
+        <bundle>wrap:de.danielbechler/java-object-diff/0.92.1</bundle>
         <!--<bundle>mvn:org.apache.commons/commons-lang3/3.1</bundle>
         <bundle>mvn:commons-lang/commons-lang/2.6</bundle>
         <bundle>mvn:commons-pool/commons-pool/1.6</bundle>

@@ -29,11 +29,11 @@
             <groupId>cn.com.rexen.core</groupId>
             <artifactId>cn.com.rexen.core.impl</artifactId>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.openjpa</groupId>
             <artifactId>openjpa</artifactId>
         </dependency>
-
+-->
         <dependency>
             <groupId>cn.com.rexen.kalix.audit</groupId>
             <artifactId>cn.com.rexen.kalix.audit.entities</artifactId>

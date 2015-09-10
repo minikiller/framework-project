@@ -17,23 +17,6 @@
 
     <packaging>bundle</packaging>
 
-    <properties>
-        <bundle.symbolicName>cn.com.rexen.core.util</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <!-- Database settings -->
-        <dbunit.dataTypeFactoryName>org.dbunit.ext.mysql.MySqlDataTypeFactory</dbunit.dataTypeFactoryName>
-        <dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>
-        <jdbc.groupId>mysql</jdbc.groupId>
-        <jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
-        <jdbc.version>5.1.22</jdbc.version>
-        <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
-        <jdbc.url>jdbc:mysql://localhost/${db.name}?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;autoReconnect=true</jdbc.url>
-        <jdbc.username>root</jdbc.username>
-        <jdbc.password>1234</jdbc.password>
-        <db.name>kalix</db.name>
-    </properties>
 
     <name>Kalix :: Core - Util</name>
     <description>Core - Util</description>
@@ -53,10 +36,10 @@
             <artifactId>gson</artifactId>
         </dependency>
 
-        <!--<dependency>
+        <dependency>
             <groupId>org.apache.openjpa</groupId>
             <artifactId>openjpa</artifactId>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
@@ -83,7 +66,20 @@
 
     <build>
         <plugins>
-
+            <plugin>
+                <groupId>org.databene</groupId>
+                <artifactId>maven-benerator-plugin</artifactId>
+                <version>0.5.4</version>
+                <configuration>
+                    <!--<descriptor>src/test/benerator/myproject.ben.xml</descriptor>-->
+                    <encoding>utf-8</encoding>
+                    <dbDriver>oracle.jdbc.driver.OracleDriver</dbDriver>
+                    <dbUrl>jdbc:oracle:thin:@localhost:1521:XE</dbUrl>
+                    <dbSchema>user</dbSchema>
+                    <dbUser>user</dbUser>
+                    <dbPassword>password</dbPassword>
+                </configuration>
+            </plugin>
 
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -97,28 +93,10 @@
                     <url>${jdbc.url}</url>
                     <src>src/test/resources/sample-data.xml</src>
                     <type>${dbunit.operation.type}</type>
-                    <schema>${dbunit.schema}</schema>
+                    <escapePattern>"?"</escapePattern>
+                    <!--<schema>${dbunit.schema}</schema>-->
                     <tables>
-                        <!--<table>
-                            <name>SYSBizTran</name>
-                        </table>
                         <table>
-                            <name>urg_monitor</name>
-                            <name>sys_user</name>
-                        </table>
-                        <table>
-                            <name>sys_role</name>
-                        </table>
-                        <table>
-                            <name>sys_user_role</name>
-                        </table>
-                        <table>
-                            <name>sys_permission</name>
-                        </table>
-                        <table>
-                            <name>sys_role_permission</name>
-                        </table>
-                        --><table>
                             <name>sys_area</name>
                         </table>
                         <!--<table>
@@ -161,5 +139,50 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>mysql</id>
+            <properties>
+                <bundle.symbolicName>cn.com.rexen.core.util</bundle.symbolicName>
+                <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+                <!-- Database settings -->
+                <dbunit.dataTypeFactoryName>org.dbunit.ext.mysql.MySqlDataTypeFactory</dbunit.dataTypeFactoryName>
+                <dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>
+                <jdbc.groupId>mysql</jdbc.groupId>
+                <jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
+                <jdbc.version>5.1.22</jdbc.version>
+                <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+                <jdbc.url>jdbc:mysql://localhost/${db.name}?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;autoReconnect=true</jdbc.url>
+                <jdbc.username>root</jdbc.username>
+                <jdbc.password>1234</jdbc.password>
+                <db.name>kalix</db.name>
+            </properties>
+
+        </profile>
+        <profile>
+            <id>postgres</id>
+            <properties>
+                <bundle.symbolicName>cn.com.rexen.core.util</bundle.symbolicName>
+                <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+                <!-- Database settings -->
+                <!--<dbunit.dataTypeFactoryName>org.dbunit.ext.postgres.PostgresqlDataTypeFactory</dbunit.dataTypeFactoryName>-->
+                <dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>
+                <jdbc.groupId>org.postgresql</jdbc.groupId>
+                <jdbc.artifactId>postgresql</jdbc.artifactId>
+                <jdbc.version>9.4-1201-jdbc41</jdbc.version>
+                <jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
+                <jdbc.url>jdbc:postgresql://localhost/${db.name}</jdbc.url>
+                <jdbc.username>postgres</jdbc.username>
+                <jdbc.password>1234</jdbc.password>
+                <db.name>postgres</db.name>
+            </properties>
+
+        </profile>
+    </profiles>
 
 </project>
