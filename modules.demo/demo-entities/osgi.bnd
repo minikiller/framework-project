@@ -5,5 +5,5 @@
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 Meta-Persistence: META-INF/persistence.xml
 JPA-PersistenceUnits:demo-cm
-Import-Package:javax.persistence,org.hibernate.proxy,javassist.util.proxy,*
+Import-Package:javax.persistence,org.hibernate.proxy,javassist.util.proxy,cn.com.rexen.core.jsonb.hibernate.dialect,*
 Bundle-Category: Rexen Kalix Demo

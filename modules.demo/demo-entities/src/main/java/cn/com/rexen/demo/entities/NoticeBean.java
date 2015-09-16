@@ -1,11 +1,17 @@
 package cn.com.rexen.demo.entities;
 
 import cn.com.rexen.core.api.persistence.WorkflowEntity;
+import cn.com.rexen.core.jsonb.hibernate.user.types.JSONBUserType;
+import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @类描述：公告管理
@@ -17,6 +23,9 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "sys_demo")
+@TypeDef(name = "jsonb", typeClass = JSONBUserType.class, parameters = {
+        @Parameter(name = JSONBUserType.CLASS,
+                value = "cn.com.rexen.demo.entities.NoticeBean")})
 public class NoticeBean extends WorkflowEntity {
     @NotNull(message = "'标题'是必填项")
     private String title;   //标题
@@ -24,6 +33,21 @@ public class NoticeBean extends WorkflowEntity {
     private String content; //内容
     private String publishPeople;//发布人
     private Date publishDate;//发布时间
+
+    @Type(type = "jsonb")
+    private List<JSONBDocument> documents;
+
+    public NoticeBean() {
+        documents = new ArrayList<>();
+    }
+
+    public List<JSONBDocument> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<JSONBDocument> documents) {
+        this.documents = documents;
+    }
 
     public String getTitle() {
         return title;

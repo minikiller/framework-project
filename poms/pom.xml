@@ -68,6 +68,8 @@
         <jackson.version>1.9.8</jackson.version>
         <pax-cdi-api.version>0.11.0</pax-cdi-api.version>
         <postgresql.version>9.4-1202-jdbc41</postgresql.version>
+        <jackson2-version>2.4.3</jackson2-version>
+        <hibernate.version>4.3.6.Final</hibernate.version>
     </properties>
     <build>
         <pluginManagement>
@@ -749,6 +751,19 @@
                 <scope>provided</scope>
             </dependency>
 
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>${hibernate.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson2-version}</version>
+                <scope>provided</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

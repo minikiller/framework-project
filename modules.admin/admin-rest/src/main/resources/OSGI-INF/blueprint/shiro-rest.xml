@@ -17,11 +17,11 @@
         <rest path="/shiro" produces="application/json">
             <description>User shiro service</description>
 
-            <post id="route-validSession"
+            <get id="route-validSession"
                   outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>validate user session</description>
                 <to uri="bean:shiroService?method=validSession(${header.sessionId})"/>
-            </post>
+            </get>
 
             <!-- this is a rest PUT to create an user -->
             <get uri="/permission" id="route-validPermission"

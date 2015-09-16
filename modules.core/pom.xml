@@ -32,6 +32,8 @@
         <module>core-rest</module>
         <module>core-swagger</module>
         <module>core-security</module>
+        <module>core-jsonb</module>
+        <!--<module>core-mq</module>-->
     </modules>
     <dependencyManagement>
         <dependencies>
