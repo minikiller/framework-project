@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL -->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.com.rexen.platform</groupId>
+        <artifactId>modules.example</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+
+    <artifactId>cn.com.rexen.kalix.example.stringtemplate</artifactId>
+
+    <properties>
+        <bundle.symbolicName>cn.com.rexen.example.stringtemplate</bundle.symbolicName>
+        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+    </properties>
+
+    <name>Kalix :: Example - StringTemplate</name>
+    <description>Example StringTemplate</description>
+
+    <packaging>bundle</packaging>
+
+    <dependencies>
+
+
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.compendium</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+
+        <plugins>
+            <plugin>
+                <groupId>cn.com.rexen.tools</groupId>
+                <artifactId>maven-kalix-plugin</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <inputDir>src/templates</inputDir>
+                    <outputDir>${project.build.directory}/generate</outputDir>
+                    <attributes>
+                        <myname>hello</myname>
+                    </attributes>
+                </configuration>
+            </plugin>
+            <!--<plugin>
+                <groupId>org.apache.aries.blueprint</groupId>
+                <artifactId>blueprint-maven-plugin</artifactId>
+                <version>1.1.0</version>
+                <configuration>
+                    <scanPaths>
+                        <scanPath>cn.com.rexen.example.pax.cdi</scanPath>
+                    </scanPaths>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>blueprint-generate</goal>
+                        </goals>
+                        <phase>process-classes</phase>
+                    </execution>
+                </executions>
+            </plugin>-->
+        </plugins>
+    </build>
+
+</project>
