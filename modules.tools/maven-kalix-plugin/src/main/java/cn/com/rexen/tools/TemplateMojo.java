@@ -12,7 +12,8 @@ import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroupDir;
 import org.stringtemplate.v4.compiler.STException;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -140,37 +141,9 @@ public class TemplateMojo
         }
     }
 
-    private final static String readFile(File inputFile, String encoding) throws MojoExecutionException {
-        StringBuilder sb = new StringBuilder((int) inputFile.length());
-        char[] buf = new char[1000];
-        int count;
 
-        try {
-            InputStreamReader in = new InputStreamReader(new FileInputStream(inputFile), encoding);
-            while ((count = in.read(buf)) >= 0) {
-                sb.append(buf, 0, count);
-            }
-            in.close();
-            return sb.toString();
-        } catch (IOException e) {
-            throw new MojoExecutionException("Failed to read input file '" + inputFile.getAbsolutePath() + "': " + e.getMessage(), e);
-        }
-    }
 
-    private final static void writeFile(File ouputtFile, String encoding, String contents)
-            throws MojoExecutionException {
-        try {
-            /*if(!ouputtFile.exists()){
-                System.out.print("file is not existed!");
-                ouputtFile.createNewFile();
-            }*/
-            OutputStreamWriter w = new OutputStreamWriter(new FileOutputStream(ouputtFile), encoding);
-            w.write(contents);
-            w.close();
-        } catch (IOException e) {
-            throw new MojoExecutionException("Failed to write output file '" + ouputtFile.getAbsolutePath() + "': " + e.getMessage(), e);
-        }
-    }
+
 
     /**
      * Main operation
@@ -216,7 +189,7 @@ public class TemplateMojo
             } catch (IOException e) {
                 throw new MojoExecutionException("I/O problem: " + e.getMessage(), e);
             }
-            String input = readFile(inputFile, encoding);
+            String input = Util.readFile(inputFile, encoding);
             ST stringTemplate;
 
             try {
@@ -232,7 +205,7 @@ public class TemplateMojo
             }
             getLog().info("Read template '" + inputFile.getAbsolutePath() + "'; will process");
             String output = stringTemplate.render();
-            writeFile(outputFile, encoding, output);
+            Util.writeFile(outputFile, encoding, output);
             getLog().info("Wrote output file '" + outputFile.getAbsolutePath() + "'");
         }
     }

@@ -23,6 +23,7 @@
         <module>karaf-features</module>
         <!--<module>assembly</module>-->
         <module>maven-kalix-plugin</module>
+        <module>code-generate</module>
     </modules>
     <dependencyManagement>
         <dependencies>
