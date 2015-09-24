@@ -41,7 +41,7 @@
             <plugin>
                 <groupId>cn.com.rexen.tools</groupId>
                 <artifactId>maven-kalix-plugin</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1-SNAPSHOT</version>
                 <configuration>
                     <inputDir>src/templates</inputDir>
                     <outputDir>${project.build.directory}/generate</outputDir>

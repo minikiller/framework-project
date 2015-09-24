@@ -3,20 +3,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     \<modelVersion>4.0.0\</modelVersion>
     \<parent>
-        \<groupId><packageName>\</groupId>
-        \<artifactId>modules.<pomName>\</artifactId>
-        \<version>1.0.0-SNAPSHOT\</version>
-    \</parent>
+            \<groupId><packageName>\</groupId>
+            \<artifactId>modules.<pomName>\</artifactId>
+            \<version>1.0.0-SNAPSHOT\</version>
+        \</parent>
 
-    \<artifactId><packageName>.entities\</artifactId>
+    \<artifactId><packageName>.dao\</artifactId>
     \<packaging>bundle\</packaging>
-    \<name>Kalix :: <beanName> - Entities\</name>
-    \<description><beanName> Entities\</description>
-
+    \<name>Kalix :: <beanName> - JPA\</name>
+    \<description><beanName> JPA\</description>
 
     \<properties>
-        \<bundle.symbolicName><packageName>.entities\</bundle.symbolicName>
+        \<project.build.sourceEncoding>UTF-8\</project.build.sourceEncoding>
+        \<bundle.symbolicName><packageName>.dao\</bundle.symbolicName>
         \<bundle.namespace>${bundle.symbolicName}\</bundle.namespace>
+
     \</properties>
 
     \<dependencies>
@@ -29,22 +30,18 @@
             \<artifactId>cn.com.rexen.core.impl\</artifactId>
         \</dependency>
         \<dependency>
-            \<groupId>org.apache.servicemix.specs\</groupId>
-            \<artifactId>org.apache.servicemix.specs.jsr303-api-1.0.0\</artifactId>
+            \<groupId><packageName>\</groupId>
+            \<artifactId><packageName>.entities\</artifactId>
         \</dependency>
         \<dependency>
-            \<groupId>org.hibernate.javax.persistence\</groupId>
-            \<artifactId>hibernate-jpa-2.1-api\</artifactId>
-        \</dependency>
-        \<dependency>
-            \<groupId>org.hibernate\</groupId>
-            \<artifactId>hibernate-entitymanager\</artifactId>
-            \<version>${hibernate.version}\</version>
+            \<groupId><packageName>\</groupId>
+            \<artifactId><packageName>.api\</artifactId>
         \</dependency>
     \</dependencies>
+
     \<build>
         \<plugins>
+
         \</plugins>
     \</build>
-
 \</project>

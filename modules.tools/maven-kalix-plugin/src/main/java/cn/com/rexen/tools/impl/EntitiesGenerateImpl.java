@@ -5,6 +5,7 @@ import java.util.Map;
 
 /**
  * Created by sunlf on 2015/9/18.
+ * 实体代码生成实现类
  */
 public class EntitiesGenerateImpl extends AbstractGenernateImpl {
 
@@ -15,9 +16,9 @@ public class EntitiesGenerateImpl extends AbstractGenernateImpl {
 
     public EntitiesGenerateImpl(Map<String, String> attributes, File inputDir, File outputDir) {
         super(attributes, inputDir, outputDir, "entities");
-        javaFileMap.put("Bean", "//" + moduleName + String.format(beanFileName, beanName));
+        javaFileMap.put("Bean", String.format(beanFileName, beanName));
         javaFileMap.put("InitActivator", "//" + moduleName + "//internal//" + activatorFileName);
-        javaFileMap.put("persistence.xml", "//resources//META-INF//" + xmlFileName);
+        javaFileMap.put("persistence.xml", "//META-INF//" + xmlFileName);
     }
 
     @Override

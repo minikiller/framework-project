@@ -8,9 +8,9 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
- * @类描述：公告管理
- * @创建人： zhangqingxin
- * @创建时间：2014/10/10
+ * @类描述：
+ * @创建人：
+ * @创建时间：
  * @修改人：
  * @修改时间：
  * @修改备注：

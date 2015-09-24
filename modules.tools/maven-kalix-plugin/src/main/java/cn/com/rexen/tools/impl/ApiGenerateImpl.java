@@ -5,6 +5,7 @@ import java.util.Map;
 
 /**
  * Created by sunlf on 2015/9/18.
+ * API 接口代码生成实现类
  */
 public class ApiGenerateImpl extends AbstractGenernateImpl {
 

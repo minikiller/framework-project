@@ -1,4 +1,5 @@
 \<?xml version="1.0" encoding="UTF-8"?>
+\<!--suppress ALL -->
 \<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
@@ -9,15 +10,15 @@
     \</parent>
 
     \<modelVersion>4.0.0\</modelVersion>
-    \<artifactId>cn.com.rexen.kalix.<pomName>.api\</artifactId>
+    \<artifactId><packageName>.core\</artifactId>
 
     \<properties>
-        \<bundle.symbolicName>cn.com.rexen.<pomName>.api\</bundle.symbolicName>
+        \<bundle.symbolicName><packageName>.core\</bundle.symbolicName>
         \<bundle.namespace>${bundle.symbolicName}\</bundle.namespace>
     \</properties>
 
-    \<name>Kalix :: <beanName> - API\</name>
-    \<description><beanName> API\</description>
+    \<name>Kalix :: <beanName> - Core\</name>
+    \<description><beanName> Core\</description>
 
     \<packaging>bundle\</packaging>
 
@@ -45,14 +46,18 @@
         \</dependency>
 
         \<dependency>
-            \<groupId>cn.com.rexen.kalix.<pomName>\</groupId>
-            \<artifactId>cn.com.rexen.kalix.<pomName>.entities\</artifactId>
+            \<groupId><packageName>\</groupId>
+            \<artifactId><packageName>.api\</artifactId>
+        \</dependency>
+        \<dependency>
+            \<groupId><packageName>\</groupId>
+            \<artifactId><packageName>.entities\</artifactId>
         \</dependency>
     \</dependencies>
 
     \<build>
         \<plugins>
-
         \</plugins>
     \</build>
+
 \</project>

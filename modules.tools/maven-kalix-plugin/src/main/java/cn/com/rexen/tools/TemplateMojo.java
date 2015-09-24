@@ -22,8 +22,6 @@ import java.util.Map;
  * Beef of the plug-in; place where magic happens
  *
  * @author Tatu Saloranta (tatu.saloranta@iki.fi)
- * @goal process
- * @phase compile
  * @threadSafe
  */
 public class TemplateMojo

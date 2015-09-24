@@ -1,62 +1,21 @@
 package cn.com.rexen.tools;
 
 import cn.com.rexen.tools.api.IGenerate;
-import cn.com.rexen.tools.impl.ApiGenerateImpl;
-import cn.com.rexen.tools.impl.EntitiesGenerateImpl;
+import cn.com.rexen.tools.impl.*;
 import com.thoughtworks.qdox.JavaDocBuilder;
-import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.project.MavenProject;
 
 import java.io.File;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by sunlf on 2015/9/18.
  *
- * @goal testing
+ * @goal create-all
  * @phase compile
  * @threadSafe
  */
-public class KalixMojo extends AbstractMojo {
-    /**
-     * @parameter expression="${project}"
-     * @required
-     * @readonly
-     * @since 1.0
-     */
-    MavenProject project;
-    /**
-     * Sources
-     *
-     * @parameter
-     * @required
-     */
-    List<String> sources;
-    /**
-     * @parameter default-value="target/generated-sources/kalix"
-     * @required
-     */
-    File outputDir;
-    JavaDocBuilder docBuilder;
-    /**
-     * Input root directory
-     *
-     * @parameter expression="${stringtemplate.inputDir}"
-     * @required
-     */
-    private File inputDir;
-
-    /**
-     * We can also define attributes for ST to use. These are defined as
-     * a Map in pom.xml
-     *
-     * @parameter
-     */
-    private Map<String, String> attributes;
-
+public class KalixMojo extends AbstractBaseKalixMojo {
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
@@ -68,10 +27,26 @@ public class KalixMojo extends AbstractMojo {
         if (!inputDir.exists()) {
             throw new MojoExecutionException("Input directory '" + inputDir.getAbsolutePath() + "' does not exist");
         }
+        //create api code generate
         IGenerate apiGenerate = new ApiGenerateImpl(attributes, inputDir, outputDir);
         apiGenerate.genJavaSource();
-
+        //create entities code generate
         IGenerate entitiesGenerate = new EntitiesGenerateImpl(attributes, inputDir, outputDir);
         entitiesGenerate.genJavaSource();
+        //create dao code generate
+        IGenerate daoGenerate = new DaoGenerateImpl(attributes, inputDir, outputDir);
+        daoGenerate.genJavaSource();
+        //create core code generate
+        IGenerate coreGenerate = new CoreGenerateImpl(attributes, inputDir, outputDir);
+        coreGenerate.genJavaSource();
+        //create rest code generate
+        IGenerate restGenerate = new RestGenerateImpl(attributes, inputDir, outputDir);
+        restGenerate.genJavaSource();
+        //create web code generate
+        IGenerate webGenerate = new WebGenerateImpl(attributes, inputDir, outputDir);
+        webGenerate.genJavaSource();
+        //create extjs code generate
+        IGenerate extjsGenerate = new ExtjsGenerateImpl(attributes, inputDir, outputDir);
+        extjsGenerate.genJavaSource();
     }
 }
