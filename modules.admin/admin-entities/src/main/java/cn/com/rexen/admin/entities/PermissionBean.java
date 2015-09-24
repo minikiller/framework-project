@@ -26,7 +26,7 @@ public class PermissionBean extends PersistentEntity {
     private String name;    // 名称
     private String href;    // 链接
     private String icon;    // 图标
-    private Integer sort;    // 序号
+    private long sort;    // 序号
     private Boolean isShow;    // 是否在菜单中显示（1：显示；0：不显示）
     //    @NotNull(message = "'权限标识'是必填项")
     private String permission; // 权限标识
@@ -88,7 +88,7 @@ public class PermissionBean extends PersistentEntity {
     }
 
 
-    public Integer getSort() {
+    public long getSort() {
         return sort;
     }
 

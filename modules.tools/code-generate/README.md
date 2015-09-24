@@ -1,1 +1,1 @@
-1.testing kalix-maven-plugin code genernate
+1.代码自动生成工具包

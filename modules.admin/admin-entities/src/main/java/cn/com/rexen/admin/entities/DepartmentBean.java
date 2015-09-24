@@ -21,9 +21,9 @@ public class DepartmentBean extends PersistentEntity {
     private String name; //名称
     private String code; //代码
     private String centerCode; //中心代码
-    private int isLeaf; //是否是叶子节点
+    private long isLeaf; //是否是叶子节点
     private long parentId; //父节点
-    private int orgId;  // 归属机构
+    private long orgId;  // 归属机构
 
 
     public long getParentId() {
@@ -34,7 +34,7 @@ public class DepartmentBean extends PersistentEntity {
         this.parentId = parentId;
     }
 
-    public int getOrgId() {
+    public long getOrgId() {
         return orgId;
     }
 
@@ -66,7 +66,7 @@ public class DepartmentBean extends PersistentEntity {
         this.centerCode = centerCode;
     }
 
-    public int getIsLeaf() {
+    public long getIsLeaf() {
         return isLeaf;
     }
 

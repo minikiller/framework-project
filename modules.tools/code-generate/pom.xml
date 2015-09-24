@@ -47,7 +47,7 @@
                     <outputDir>${project.build.directory}/generate</outputDir>
                     <attributes>
                         <beanName>Hello</beanName>
-                        <packageName>cn.com.rexen.hello</packageName>
+                        <packageName>cn.com.rexen.kalix.hello</packageName>
                         <pomName>hello</pomName>
                     </attributes>
                     <sources>

@@ -28,7 +28,7 @@ public class DictBean extends PersistentEntity {
     private String type;    // 类型
     private String description;// 描述
     //    @NotNull(message = "'排序'是必填项")
-    private Integer sort;    // 排序
+    private long sort;    // 排序
 
     public String getLabel() {
         return label;
@@ -62,7 +62,7 @@ public class DictBean extends PersistentEntity {
         this.description = description;
     }
 
-    public Integer getSort() {
+    public long getSort() {
         return sort;
     }
 

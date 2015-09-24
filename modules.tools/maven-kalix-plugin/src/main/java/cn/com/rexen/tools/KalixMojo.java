@@ -2,6 +2,7 @@ package cn.com.rexen.tools;
 
 import cn.com.rexen.tools.api.IGenerate;
 import cn.com.rexen.tools.impl.ApiGenerateImpl;
+import cn.com.rexen.tools.impl.EntitiesGenerateImpl;
 import com.thoughtworks.qdox.JavaDocBuilder;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -19,7 +20,7 @@ import java.util.Map;
  * @phase compile
  * @threadSafe
  */
-public class TestMojo extends AbstractMojo {
+public class KalixMojo extends AbstractMojo {
     /**
      * @parameter expression="${project}"
      * @required
@@ -47,20 +48,7 @@ public class TestMojo extends AbstractMojo {
      * @required
      */
     private File inputDir;
-    /**
-     * Sources
-     *
-     * @parameter
-     * @required
-     */
-    private String packageName;
-    /**
-     * Sources
-     *
-     * @parameter
-     * @required
-     */
-    private String beanName;
+
     /**
      * We can also define attributes for ST to use. These are defined as
      * a Map in pom.xml
@@ -68,13 +56,7 @@ public class TestMojo extends AbstractMojo {
      * @parameter
      */
     private Map<String, String> attributes;
-    /**
-     * Sources
-     *
-     * @parameter
-     * @required
-     */
-    private String pomName;
+
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
@@ -86,7 +68,10 @@ public class TestMojo extends AbstractMojo {
         if (!inputDir.exists()) {
             throw new MojoExecutionException("Input directory '" + inputDir.getAbsolutePath() + "' does not exist");
         }
-        IGenerate generate = new ApiGenerateImpl(attributes, inputDir, outputDir);
-        generate.genJavaSource();
+        IGenerate apiGenerate = new ApiGenerateImpl(attributes, inputDir, outputDir);
+        apiGenerate.genJavaSource();
+
+        IGenerate entitiesGenerate = new EntitiesGenerateImpl(attributes, inputDir, outputDir);
+        entitiesGenerate.genJavaSource();
     }
 }

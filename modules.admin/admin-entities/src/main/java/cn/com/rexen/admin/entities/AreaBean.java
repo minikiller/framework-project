@@ -26,7 +26,7 @@ public class AreaBean extends PersistentEntity {
 
     private static final long serialVersionUID = 1L;
     private String parentIds; // 所有父级编号
-    private int isLeaf; //是否是子节点
+    private long isLeaf; //是否是子节点
     //    @Length(min = 1, max = 255)
     private long parentId; // 父级编号
     //    @NotNull(message = "'区域编码'是必填项")
@@ -63,11 +63,11 @@ public class AreaBean extends PersistentEntity {
 		}*/
     }
 
-    public int getIsLeaf() {
+    public long getIsLeaf() {
         return isLeaf;
     }
 
-    public void setIsLeaf(int isLeaf) {
+    public void setIsLeaf(long isLeaf) {
         this.isLeaf = isLeaf;
     }
 

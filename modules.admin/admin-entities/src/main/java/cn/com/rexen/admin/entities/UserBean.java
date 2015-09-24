@@ -38,8 +38,8 @@ public class UserBean extends PersistentEntity {
     private String mobile;      // 手机
     private String loginIp;    // 最后登陆IP
     private Date loginDate;    // 最后登陆日期
-    private int is_ent_user;   //是否是企业用户：0-否；1-是
-    private int available = 1;     //用户是否有效：0-无效；1-有效
+    private long is_ent_user;   //是否是企业用户：0-否；1-是
+    private long available = 1;     //用户是否有效：0-无效；1-有效
     //    @XmlTransient
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "sys_user_role", joinColumns = @JoinColumn(name = "user_id"),
@@ -61,7 +61,7 @@ public class UserBean extends PersistentEntity {
         this.relateId = relateId;
     }
 
-    public int getAvailable() {
+    public long getAvailable() {
         return available;
     }
 
@@ -161,7 +161,7 @@ public class UserBean extends PersistentEntity {
         this.loginDate = loginDate;
     }
 
-    public int getIs_ent_user() {
+    public long getIs_ent_user() {
         return is_ent_user;
     }
 
