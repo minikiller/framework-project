@@ -16,9 +16,9 @@ public class ApiGenerateImpl extends AbstractGenernateImpl {
 
     public ApiGenerateImpl(Map<String, String> attributes, File inputDir, File outputDir) {
         super(attributes, inputDir, outputDir, "api");
-        javaFileMap.put("IBeanService", "//" + moduleName + "//biz//" + String.format(serviceFileName, beanName));
-        javaFileMap.put("IBeanDao", "//" + moduleName + "//dao//" + String.format(daoFileName, beanName));
-        javaFileMap.put("InitActivator", "//" + moduleName + "//internal//" + activatorFileName);
+        fileMap.put("IBeanService", "//" + moduleName + "//biz//" + String.format(serviceFileName, beanName));
+        fileMap.put("IBeanDao", "//" + moduleName + "//dao//" + String.format(daoFileName, beanName));
+        fileMap.put("InitActivator", "//" + moduleName + "//internal//" + activatorFileName);
     }
 
     @Override

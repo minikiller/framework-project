@@ -16,9 +16,9 @@ public class WebGenerateImpl extends AbstractGenernateImpl {
 
     public WebGenerateImpl(Map<String, String> attributes, File inputDir, File outputDir) {
         super(attributes, inputDir, outputDir, "web");
-        javaFileMap.put("MenuImpl", "//" + moduleName +"//impl//"+ String.format(beanFileName, beanName));
-        javaFileMap.put("InitActivator", "//" + moduleName + "//internal//" + activatorFileName);
-        javaFileMap.put("web.xml", "//OSGI-INF//blueprint//" + String.format(xmlFileName, beanName));
+        fileMap.put("MenuImpl", "//" + moduleName +"//impl//"+ String.format(beanFileName, beanName));
+        fileMap.put("InitActivator", "//" + moduleName + "//internal//" + activatorFileName);
+        fileMap.put("web.xml", "//OSGI-INF//blueprint//" + String.format(xmlFileName, beanName));
     }
 
     @Override

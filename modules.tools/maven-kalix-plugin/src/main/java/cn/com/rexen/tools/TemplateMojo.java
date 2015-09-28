@@ -131,7 +131,6 @@ public class TemplateMojo
             } else if (name.endsWith(inputSuffix)) {
                 name = name.substring(0, name.length() - inputSuffix.length()) + outputSuffix;
                 if (!outputDir.exists()) {
-                    System.out.print("file is not existed!111");
                     outputDir.mkdir();
                 }
                 result.put(f, new File(outputDir, name));

@@ -15,8 +15,8 @@ public class RestGenerateImpl extends AbstractGenernateImpl {
 
     public RestGenerateImpl(Map<String, String> attributes, File inputDir, File outputDir) {
         super(attributes, inputDir, outputDir, "rest");
-        javaFileMap.put("InitActivator", "//" + moduleName + "//internal//" + activatorFileName);
-        javaFileMap.put("rest.xml", "//OSGI-INF//blueprint//" + String.format(xmlFileName, pomName));
+        fileMap.put("InitActivator", "//" + moduleName + "//internal//" + activatorFileName);
+        fileMap.put("rest.xml", "//OSGI-INF//blueprint//" + String.format(xmlFileName, pomName));
     }
 
     @Override

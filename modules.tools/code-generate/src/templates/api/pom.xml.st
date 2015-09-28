@@ -9,10 +9,10 @@
     \</parent>
 
     \<modelVersion>4.0.0\</modelVersion>
-    \<artifactId>cn.com.rexen.kalix.<pomName>.api\</artifactId>
+    \<artifactId><packageName>.api\</artifactId>
 
     \<properties>
-        \<bundle.symbolicName>cn.com.rexen.<pomName>.api\</bundle.symbolicName>
+        \<bundle.symbolicName><packageName>.api\</bundle.symbolicName>
         \<bundle.namespace>${bundle.symbolicName}\</bundle.namespace>
     \</properties>
 

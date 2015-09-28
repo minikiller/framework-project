@@ -19,8 +19,9 @@ public abstract class AbstractGenernateImpl implements IGenerate {
     public final static String encoding = "UTF-8";
     public final static String JAVA_SOURCE_PATH = "\\src\\main\\java\\";
     public final static String RESOURCES_SOURCE_PATH = "src\\main\\resources";
+    public final static String JS_SOURCE_PATH = "src\\main\\";
     //处理java类的map
-    public Map<String, String> javaFileMap = new HashMap<>();
+    public Map<String, String> fileMap = new HashMap<>();
     protected String packageName;
     protected String beanName;
     protected String pomName;
@@ -39,7 +40,7 @@ public abstract class AbstractGenernateImpl implements IGenerate {
         Assert.notNull(packageName);
         pomName = attributes.get("pomName");
         Assert.notNull(pomName);
-        File target = new File(outputDir.getAbsolutePath() + "\\" + beanName.toLowerCase() + "-" + moduleName);
+        File target = new File(outputDir.getAbsolutePath() + "\\" + pomName + "-" + moduleName);
         if (!target.exists())
             target.mkdirs();
         this.outputDir = target;
@@ -80,26 +81,33 @@ public abstract class AbstractGenernateImpl implements IGenerate {
                              File outputDir) {
         CharSequence javaChar = "java";
         CharSequence resourceChar = "xml";
+        CharSequence jsChar = "js";
         for (File f : inputDir.listFiles()) {
             String name = f.getName();
             if (f.isDirectory()) {
                 findFiles(result, f, new File(outputDir, name));
             } else {
                 name = name.substring(0, name.length() - Util.inputSuffix.length());
-                String javaFileName = javaFileMap.get(name);
+                String fileName = fileMap.get(name);
                 //判断是否为java文件
-                if (javaFileName != null) {
+                if (fileName != null) {
                     //处理java类型的文件
-                    if (javaFileName.contains(javaChar)) {
+                    if (fileName.contains(javaChar)) {
                         File pd = new File(this.outputDir, JAVA_SOURCE_PATH + packageName.replaceAll("\\.", "/"));
-                        File javaFile = new File(pd, javaFileName);
+                        File javaFile = new File(pd, fileName);
                         result.put(f, javaFile);
                     }
                     //处理资源类型的文件
-                    else if (javaFileName.contains(resourceChar)) {
+                    else if (fileName.contains(resourceChar)) {
                         File pd = new File(this.outputDir, RESOURCES_SOURCE_PATH);
-                        File javaFile = new File(pd, javaFileName);
-                        result.put(f, javaFile);
+                        File resourceFile = new File(pd, fileName);
+                        result.put(f, resourceFile);
+                    }
+                    //处理资源类型的文件
+                    else if (fileName.contains(jsChar)) {
+                        File pd = new File(this.outputDir, JS_SOURCE_PATH+"webapp\\"+pomName);
+                        File jsFile = new File(pd, fileName);
+                        result.put(f, jsFile);
                     }
 
                 } else {

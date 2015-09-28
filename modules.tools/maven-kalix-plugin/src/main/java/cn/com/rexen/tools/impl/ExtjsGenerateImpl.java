@@ -10,15 +10,38 @@ import java.util.Map;
 public class ExtjsGenerateImpl extends AbstractGenernateImpl {
 
     //需要替换名字的java类名
-    String beanFileName = "%sBeanDaoOpenjpa.java";
-    String xmlFileName = "blueprint.xml";
     String activatorFileName = "InitActivator.java";
+
+    //需要替换名字的js文件名
+    String controllerFileName = "%sController.js";
+    String formControllerFileName = "%sFormController.js";
+    String gridControllerFileName = "%sGridController.js";
+
+    String modelFileName = "%sModel.js";
+    String storeFileName = "%sStore.js";
+    String viewmodelFileName = "%sViewModel.js";
+
+    String beanFileName = "%s.js";
+    String addFormFileName = "%sAddForm.js";
+    String editFormFileName = "%sEditForm.js";
+    String gridFileName = "%sGrid.js";
 
     public ExtjsGenerateImpl(Map<String, String> attributes, File inputDir, File outputDir) {
         super(attributes, inputDir, outputDir, "extjs");
-        javaFileMap.put("BeanDaoOpenjpa", "//" + moduleName + String.format(beanFileName, beanName));
-        javaFileMap.put("InitActivator", "//" + moduleName + "//internal//" + activatorFileName);
-        javaFileMap.put("blueprint.xml", "//resources//OSGI-INF//blueprint//" + xmlFileName);
+        fileMap.put("InitActivator", "//" + moduleName + "//internal//" + activatorFileName);
+        //js process
+        fileMap.put("Controller", "//controller//" + String.format(controllerFileName,beanName));
+        fileMap.put("FormController", "//controller//" + String.format(formControllerFileName,beanName));
+        fileMap.put("GridController", "//controller//" + String.format(gridControllerFileName,beanName));
+
+        fileMap.put("Model", "//model//" + String.format(modelFileName,beanName));
+        fileMap.put("Store", "//store//" + String.format(storeFileName,beanName));
+        fileMap.put("ViewModel", "//viewModel//" + String.format(viewmodelFileName,beanName));
+
+        fileMap.put("bean", "//view//" + String.format(beanFileName,beanName));
+        fileMap.put("AddForm", "//view//" + String.format(addFormFileName,beanName));
+        fileMap.put("EditForm", "//view//" + String.format(editFormFileName,beanName));
+        fileMap.put("Grid", "//view//" + String.format(gridFileName,beanName));
     }
 
     @Override

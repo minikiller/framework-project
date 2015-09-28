@@ -16,9 +16,9 @@ public class DaoGenerateImpl extends AbstractGenernateImpl {
 
     public DaoGenerateImpl(Map<String, String> attributes, File inputDir, File outputDir) {
         super(attributes, inputDir, outputDir, "dao");
-        javaFileMap.put("BeanDaoImpl",  "//" + moduleName +"//"+String.format(beanFileName, beanName));
-        javaFileMap.put("InitActivator", "//" + moduleName + "//internal//" + activatorFileName);
-        javaFileMap.put("blueprint.xml", "//OSGI-INF//blueprint//" + xmlFileName);
+        fileMap.put("BeanDaoImpl",  "//" + moduleName +"//"+String.format(beanFileName, beanName));
+        fileMap.put("InitActivator", "//" + moduleName + "//internal//" + activatorFileName);
+        fileMap.put("blueprint.xml", "//OSGI-INF//blueprint//" + xmlFileName);
     }
 
     @Override

@@ -5,8 +5,11 @@ import cn.com.rexen.tools.impl.*;
 import com.thoughtworks.qdox.JavaDocBuilder;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.stringtemplate.v4.ST;
+import org.stringtemplate.v4.compiler.STException;
 
 import java.io.File;
+import java.util.Map;
 
 /**
  * Created by sunlf on 2015/9/18.
@@ -27,6 +30,8 @@ public class KalixMojo extends AbstractBaseKalixMojo {
         if (!inputDir.exists()) {
             throw new MojoExecutionException("Input directory '" + inputDir.getAbsolutePath() + "' does not exist");
         }
+        //创建parent pom file
+        createParentPom(attributes, inputDir, outputDir);
         //create api code generate
         IGenerate apiGenerate = new ApiGenerateImpl(attributes, inputDir, outputDir);
         apiGenerate.genJavaSource();
@@ -48,5 +53,28 @@ public class KalixMojo extends AbstractBaseKalixMojo {
         //create extjs code generate
         IGenerate extjsGenerate = new ExtjsGenerateImpl(attributes, inputDir, outputDir);
         extjsGenerate.genJavaSource();
+    }
+
+    private void createParentPom(Map<String, String> attributes, File inputDir, File outputDir) {
+        File pomFile=null;
+        File targetFile=null;
+        try {
+            pomFile=new File(inputDir,"pom.xml.st");
+            targetFile=new File(outputDir,"pom.xml");
+            String input = Util.readFile(pomFile, AbstractGenernateImpl.encoding);
+            ST stringTemplate;
+            stringTemplate = new ST(input);
+            if (attributes != null) {
+                for (Map.Entry<String, String> attrEntry : attributes.entrySet()) {
+                    stringTemplate.add(attrEntry.getKey(), attrEntry.getValue());
+                }
+            }
+            String output = stringTemplate.render();
+            Util.writeFile(targetFile, AbstractGenernateImpl.encoding, output);
+        } catch (STException e) {
+            e.printStackTrace();
+        } catch (MojoExecutionException e) {
+            e.printStackTrace();
+        }
     }
 }

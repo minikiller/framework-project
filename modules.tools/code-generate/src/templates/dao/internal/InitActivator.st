@@ -1,4 +1,4 @@
-package <packageName>.persist.openjpa.internal;
+package <packageName>.dao.internal;
 
 import cn.com.rexen.core.util.SystemUtil;
 import org.apache.log4j.Logger;

@@ -14,5 +14,5 @@ import java.util.List;
  * @修改备注：
  */
 public interface I<beanName>BeanService extends IBizService {
-    public List\<<beanName>> query(String title);
+    //public List\<<beanName>Bean> query(String title);
 }

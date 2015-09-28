@@ -1,7 +1,7 @@
 \<?xml version="1.0" encoding="UTF-8"?>
 \<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
     \<persistence-unit transaction-type="JTA" name="<pomName>-cm">
-        \<provider>org.apache.openjpa.persistence.PersistenceProviderImpl\</provider>
+        \<provider>org.hibernate.jpa.HibernatePersistenceProvider\</provider>
         \<non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=${db.datasource})
         \</non-jta-data-source>
         \<class>cn.com.rexen.core.api.persistence.PersistentEntity\</class>

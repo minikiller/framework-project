@@ -1,7 +1,7 @@
-package cn.com.rexen.notice.api.dao;
+package <packageName>.api.dao;
 
 import cn.com.rexen.core.api.persistence.IGenericDao;
-import cn.com.rexen.notice.entities.NoticeBean;
+import <packageName>.entities.<beanName>Bean;
 
 /**
  * @类描述：公告管理

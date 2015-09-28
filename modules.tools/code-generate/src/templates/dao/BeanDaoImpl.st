@@ -14,10 +14,10 @@ import java.util.UUID;
  * @修改时间：
  * @修改备注：
  */
-public class <beanName>BeanDao extends GenericOpenJpaDao\<<beanName>Bean, Long> implements I<beanName>BeanDao {
+public class <beanName>BeanDaoImpl extends GenericOpenJpaDao\<<beanName>Bean, Long> implements I<beanName>BeanDao {
     private String uuid;
 
-    public <beanName>BeanDaoOpenjpa() {
+    public <beanName>BeanDaoImpl() {
         uuid = UUID.randomUUID().toString();
     }
 }
