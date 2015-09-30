@@ -17,17 +17,17 @@ public class AuditMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return "auditModule";
+        return "sysModule";
     }
 
     @Override
     public String getParentMenuId() {
-        return "auditMenu";
+        return "systemConstantMenu";
     }
 
     @Override
     public String getId() {
-        return "auditMenu";
+        return "auditModule";
     }
 
     @Override
@@ -42,7 +42,7 @@ public class AuditMenuImpl implements IMenu {
 
     @Override
     public String getIcon() {
-        return "admin/resources/images/building.png";
+        return "admin/resources/images/monitor.png";
     }
 
     @Override
@@ -57,6 +57,6 @@ public class AuditMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return "admin:auditModule:auditMenu:auditMenu";
+        return "admin:sysModule:systemConstantMenu:auditMenu";
     }
 }

@@ -46,9 +46,9 @@
                     <inputDir>src/templates</inputDir>
                     <outputDir>${project.build.directory}/generate</outputDir>
                     <attributes>
-                        <beanName>Hello</beanName>
-                        <packageName>cn.com.rexen.kalix.hello</packageName>
-                        <pomName>hello</pomName>
+                        <beanName>Audit</beanName>
+                        <packageName>cn.com.rexen.extjs.audit</packageName>
+                        <pomName>audit</pomName>
                     </attributes>
                     <sources>
                         <source>${basedir}/src/main/java</source>
