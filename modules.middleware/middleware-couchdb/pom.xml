@@ -54,7 +54,6 @@
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.8</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -73,12 +72,7 @@
             <artifactId>cn.com.rexen.core.api</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>cn.com.rexen.couchdb</groupId>
-            <artifactId>cn.com.rexen.couchdb.entities</artifactId>
-            <version>${project.version}</version>
-            <scope>provided</scope>
-        </dependency>
+
 
         <!--<dependency>
             <groupId>cn.com.rexen.couchdb</groupId>
@@ -87,12 +81,12 @@
             <scope>provided</scope>
         </dependency>-->
 
-        <dependency>
+        <!--<dependency>
             <groupId>cn.com.rexen.couchdb</groupId>
             <artifactId>cn.com.rexen.couchdb.core</artifactId>
             <version>${project.version}</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency>-->
 
         <!-- Testing -->
         <dependency>

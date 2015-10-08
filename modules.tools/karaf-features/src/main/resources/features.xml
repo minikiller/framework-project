@@ -85,11 +85,14 @@
     </feature>
 
     <feature name="couchdb" version="1.0.0">
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.lightcouch/0.0.6_1</bundle>
+        <!-- 根据camel的couchdb feature生成 2.15.3-->
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.lightcouch/${lightcouch.version}</bundle>
         <bundle>mvn:com.google.code.gson/gson/${gson.version}</bundle>
-        <bundle>mvn:commons-codec/commons-codec/1.8</bundle>
-        <bundle>mvn:org.apache.httpcomponents/httpcore-osgi/4.2.4</bundle>
-        <bundle>mvn:org.apache.httpcomponents/httpclient-osgi/4.2.5</bundle>
+        <bundle>mvn:commons-codec/commons-codec/${commons-codec.version}</bundle>
+        <bundle>mvn:org.apache.httpcomponents/httpcore-osgi/4.3.3</bundle>
+        <bundle>mvn:org.apache.httpcomponents/httpclient-osgi/4.3.6</bundle>
+        <bundle>mvn:commons-io/commons-io/2.2</bundle>
+        <bundle>mvn:commons-fileupload/commons-fileupload/${commons-fileupload.version}</bundle>
     </feature>
 
     <feature name="activiti" version="${activiti.version}">
@@ -233,6 +236,8 @@
 
     <!--osgi:install -s 'wrap:mvn:org.jasig.cas.client/cas-client-core/3.2.1$Bundle-SymbolicName=cas-client-core&Bundle-Version=3.2.0'-->
     <!--feature:repo-add mvn:cn.com.rexen.tools/karaf-features/1.0.0-SNAPSHOT/xml/features-->
-    <!--<feature:install kalix-->
+    <!--feature:install kalix-->
+    <!--feature:install activiti-->
+    <!--install -s mvn:org.postgresql/postgresql/9.4-1202-jdbc41-->
     <!--install mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.cglib/3.1_1-->
 </features>

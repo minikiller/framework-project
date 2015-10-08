@@ -20,13 +20,14 @@ import java.util.Map;
  */
 public class CouchdbServiceImpl implements ICouchdbService {
 
-    private static CouchDbClient dbClient;
-    private String db_name = ConfigUtil.getConfigProp("DB_NAME", "CouchDBConfig");
-    private String protocol = ConfigUtil.getConfigProp("PROTOCOL", "CouchDBConfig");
-    private String ip = ConfigUtil.getConfigProp("IP", "CouchDBConfig");
-    private int port = Integer.parseInt(ConfigUtil.getConfigProp("PORT", "CouchDBConfig"));
-    private String user = ConfigUtil.getConfigProp("USER", "CouchDBConfig");
-    private String password = ConfigUtil.getConfigProp("PASSWORD", "CouchDBConfig");
+    //private static CouchDbClient dbClient;
+    private final CouchDbClient dbClient;
+    private String db_name = (String) ConfigUtil.getConfigProp("DB_NAME", "CouchDBConfig");
+    private String protocol = (String) ConfigUtil.getConfigProp("PROTOCOL", "CouchDBConfig");
+    private String ip = (String) ConfigUtil.getConfigProp("IP", "CouchDBConfig");
+    private int port = Integer.parseInt((String) ConfigUtil.getConfigProp("PORT", "CouchDBConfig"));
+    private String user = (String) ConfigUtil.getConfigProp("USER", "CouchDBConfig");
+    private String password = (String) ConfigUtil.getConfigProp("PASSWORD", "CouchDBConfig");
 
     public CouchdbServiceImpl() {
         dbClient = new CouchDbClient(db_name, true, protocol, ip, port, user, password);
@@ -40,14 +41,11 @@ public class CouchdbServiceImpl implements ICouchdbService {
         dbClient = new CouchDbClient();
     }*/
 
-    /**
-     * 添加附件到couchdb数据库
-     *
-     * @param value
-     * @param key
-     * @param type
-     * @return
-     */
+
+    public void init(){
+
+//        dbClient.shutdown();
+    }
     @Override
     public Response addAttachment(String value, String key, String type) {
         Attachment attachment = new Attachment();
@@ -74,15 +72,12 @@ public class CouchdbServiceImpl implements ICouchdbService {
     @Override
     public boolean deleteAttach(CouchdbAttachBean couchdbAttachBean) {
         boolean flag = false;
-        /*Bar bar = new Bar();
         try{
-            bar.setId(couchdbAttachBean.getCouchdbAttachId());
-            bar.setRevision(null);
-            dbClient.remove(bar);
+            dbClient.remove(couchdbAttachBean.getCouchdbAttachId(),couchdbAttachBean.getCouchdbAttachRev());
             flag = true;
         }catch (Exception e){
             e.printStackTrace();
-        }*/
+        }
         return flag;
     }
 

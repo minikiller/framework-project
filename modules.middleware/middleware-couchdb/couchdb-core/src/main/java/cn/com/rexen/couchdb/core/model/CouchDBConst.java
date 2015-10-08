@@ -11,5 +11,5 @@ package cn.com.rexen.couchdb.core.model;
 public class CouchDBConst {
 
     public static String LOCAL_PATH = "";
-    public static String REMOTE_PATH = "http://127.0.0.1:5984/urgent-project/";
+    public static String REMOTE_PATH = "http://127.0.0.1:5984/kalix-project/";
 }

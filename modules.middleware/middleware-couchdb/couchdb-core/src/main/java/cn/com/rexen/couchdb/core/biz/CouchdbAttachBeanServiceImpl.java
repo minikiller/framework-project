@@ -6,8 +6,8 @@ import cn.com.rexen.couchdb.api.biz.ICouchdbAttachBeanService;
 import cn.com.rexen.couchdb.api.biz.ICouchdbService;
 import cn.com.rexen.couchdb.api.dao.ICouchdbAttachBeanDao;
 import cn.com.rexen.couchdb.entities.CouchdbAttachBean;
-import org.apache.wicket.markup.html.form.upload.FileUpload;
-import org.apache.wicket.util.crypt.Base64;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.fileupload.FileItem;
 import org.lightcouch.Response;
 
 import java.io.ByteArrayOutputStream;
@@ -30,7 +30,7 @@ public class CouchdbAttachBeanServiceImpl extends GenericBizServiceImpl implemen
     private ICouchdbAttachBeanDao couchdbAttachBeanDao;
     private ICouchdbService couchdbService;
 
-    private String couchdb_url = ConfigUtil.getConfigProp("COUCHDB_URL", "ConfigUpload");
+    private String couchdb_url = (String) ConfigUtil.getConfigProp("COUCHDB_URL", "CouchDBConfig");
 
     public CouchdbAttachBeanServiceImpl() {
         /*try {
@@ -50,20 +50,20 @@ public class CouchdbAttachBeanServiceImpl extends GenericBizServiceImpl implemen
     }
 
     @Override
-    public long saveAttach(long mainId, FileUpload fileUpload) {
-        if (fileUpload != null) {
+    public long saveAttach(long mainId, FileItem fileItem) {
+        if (fileItem != null) {
             CouchdbAttachBean couchdbAttachBean = getUniqueEntityByMainId(mainId); //new CouchdbAttachBean();
             try {
-                String fileName = fileUpload.getClientFileName();
+                String fileName = fileItem.getName();
                 String otherName = System.currentTimeMillis() + System.currentTimeMillis() +
                         fileName.substring(fileName.lastIndexOf("."), fileName.length());
                 //注意：获取内容转换成字符串的时候，必须用这种方式
-                Response response = couchdbService.addAttachment(Base64.encodeBase64String(fileUpload.getBytes()),
-                        otherName, fileUpload.getContentType());
+                Response response = couchdbService.addAttachment(Base64.encodeBase64String(fileItem.get()),
+                        otherName, fileItem.getContentType());
                 couchdbAttachBean.setAttachName(fileName);
-                couchdbAttachBean.setAttachPath(response.getId() + "/" + fileUpload.getClientFileName());
-                couchdbAttachBean.setAttachSize(fileUpload.getSize());
-                couchdbAttachBean.setAttachType(fileUpload.getContentType());
+                couchdbAttachBean.setAttachPath(response.getId() + "/" + fileItem.getName());
+                couchdbAttachBean.setAttachSize(fileItem.getSize());
+                couchdbAttachBean.setAttachType(fileItem.getContentType());
                 couchdbAttachBean.setCouchdbAttachId(response.getId());
                 couchdbAttachBean.setCouchdbAttachRev(response.getRev());
                 couchdbAttachBean.setMainId(mainId);

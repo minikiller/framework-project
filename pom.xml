@@ -64,11 +64,10 @@
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven-source-plugin.version>2.4</maven-source-plugin.version>
 
-        <karaf.version>3.0.4</karaf.version>
-        <karaf.etc.path>d:/java-develop/tools/apache-karaf-3.0.4/etc</karaf.etc.path>
-        <karaf.path>d:/java-develop/tools/apache-karaf-3.0.4/deploy</karaf.path>
-        <karaf.bin.path>d:/java-develop/tools/apache-karaf-3.0.4/bin</karaf.bin.path>
-        <version.apache.karaf>3.0.4</version.apache.karaf>
+        <karaf.version>3.0.5</karaf.version>
+        <karaf.etc.path>d:/java-develop/tools/apache-karaf-${karaf.version}/etc</karaf.etc.path>
+        <karaf.path>d:/java-develop/tools/apache-karaf-3.0.5/deploy</karaf.path>
+        <karaf.bin.path>d:/java-develop/tools/apache-karaf-${karaf.version}/bin</karaf.bin.path>
         <!-- Database settings -->
         <dbunit.dataTypeFactoryName>org.dbunit.ext.mysql.MySqlDataTypeFactory</dbunit.dataTypeFactoryName>
         <dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>
@@ -303,7 +302,7 @@
         <module>modules.middleware</module>
         <module>modules.demo</module>
         <!--<module>modules.notice</module>-->
-        <!--<module>modules.example</module>-->
+        <module>modules.example</module>
     </modules>
 
     <profiles>

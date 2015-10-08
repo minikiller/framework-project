@@ -18,15 +18,7 @@
     <service id="couchdbService" interface="cn.com.rexen.couchdb.api.biz.ICouchdbService" ref="couchdbServiceImpl">
     </service>
 
-    <bean id="couchdbServiceImpl" class="cn.com.rexen.couchdb.core.biz.CouchdbServiceImpl">
-    </bean>
-
-    <service id="commonFileService" interface="cn.com.rexen.common.api.ICommonFileService"
-             ref="couchdbCommonFileServiceImpl">
-    </service>
-
-    <bean id="couchdbCommonFileServiceImpl" class="cn.com.rexen.couchdb.core.biz.CouchdbCommonFileServiceImpl">
-        <property name="couchdbAttachBeanService" ref="couchdbAttachBeanServiceImpl"></property>
+    <bean id="couchdbServiceImpl" class="cn.com.rexen.couchdb.core.biz.CouchdbServiceImpl" init-method="init">
     </bean>
 
 </blueprint>

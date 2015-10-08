@@ -2,7 +2,7 @@ package cn.com.rexen.couchdb.api.biz;
 
 import cn.com.rexen.core.api.biz.IBizService;
 import cn.com.rexen.couchdb.entities.CouchdbAttachBean;
-import org.apache.wicket.markup.html.form.upload.FileUpload;
+import org.apache.commons.fileupload.FileItem;
 
 import java.io.InputStream;
 import java.util.List;
@@ -22,7 +22,7 @@ public interface ICouchdbAttachBeanService extends IBizService {
      *
      * @return
      */
-    public long saveAttach(long mainId, FileUpload fileUpload);
+    public long saveAttach(long mainId, FileItem fileItem);
 
     /**
      * 删除附件

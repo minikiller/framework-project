@@ -26,7 +26,8 @@
         <!--<module>example-pax-cdi-client</module>-->
         <!--<module>example-mongodb</module>-->
         <!--<module>example-sequoiadb</module>-->
-        <module>example-stringtemplate</module>
+        <!--<module>example-stringtemplate</module>-->
+        <!--<module>example-couchdb</module>-->
     </modules>
     <dependencyManagement>
         <dependencies>

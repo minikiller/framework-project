@@ -10,17 +10,16 @@
     </parent>
 
     <artifactId>cn.com.rexen.couchdb.api</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <name>Middleware :: Couchdb - API</name>
+    <description>Couchdb API</description>
+    <packaging>bundle</packaging>
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.couchdb.api</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
     </properties>
 
-    <name>Middleware :: Couchdb - API</name>
-    <description>Couchdb API</description>
 
-    <packaging>bundle</packaging>
 
     <dependencies>
         <dependency>
@@ -55,8 +54,11 @@
         <dependency>
             <groupId>org.apache.servicemix.bundles</groupId>
             <artifactId>org.apache.servicemix.bundles.lightcouch</artifactId>
-            <version>0.0.6_1</version>
-            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
         </dependency>
 
     </dependencies>
