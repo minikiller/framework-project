@@ -12,6 +12,8 @@ public class JsonStatus {
     Boolean failure = false;
     String msg;
 
+    private static JsonStatus jsonStatus = new JsonStatus();
+
     @ApiModelProperty(value = "an identifier", required = true)
     public Boolean getSuccess() {
         return success;
@@ -36,5 +38,31 @@ public class JsonStatus {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    /**
+     * 返回成功json状态
+     *
+     * @param msg
+     * @return
+     */
+    public static JsonStatus successResult(String msg) {
+        jsonStatus.setMsg(msg);
+        jsonStatus.setSuccess(true);
+        jsonStatus.setFailure(false);
+        return jsonStatus;
+    }
+
+    /**
+     * 返回失败json状态
+     *
+     * @param msg
+     * @return
+     */
+    public static JsonStatus failureResult(String msg) {
+        jsonStatus.setMsg(msg);
+        jsonStatus.setSuccess(false);
+        jsonStatus.setFailure(true);
+        return jsonStatus;
     }
 }

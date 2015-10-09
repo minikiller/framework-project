@@ -22,7 +22,7 @@ public interface ICouchdbService {
      * @param type
      * @return
      */
-    public Response addAttachment(String value, String key, String type);
+    Response addAttachment(String value, String key, String type);
 
     /**
      * 移除附件
@@ -30,7 +30,7 @@ public interface ICouchdbService {
      * @param couchdbAttachBean
      * @return
      */
-    public boolean deleteAttach(CouchdbAttachBean couchdbAttachBean);
+    boolean deleteAttach(CouchdbAttachBean couchdbAttachBean);
 
     /**
      * 修改附件内容
@@ -40,7 +40,7 @@ public interface ICouchdbService {
      * @param type
      * @return
      */
-    public String updateAttach(CouchdbAttachBean couchdbAttachBean, String value, String type);
+    String updateAttach(CouchdbAttachBean couchdbAttachBean, String value, String type);
 
     /**
      * 获取文档对象
@@ -48,7 +48,7 @@ public interface ICouchdbService {
      * @param couchdbAttachBean
      * @return
      */
-    public Document getDocumentByIdAndRev(CouchdbAttachBean couchdbAttachBean);
+    Document getDocumentByIdAndRev(CouchdbAttachBean couchdbAttachBean);
 
     /**
      * 获取附件对象
@@ -56,6 +56,6 @@ public interface ICouchdbService {
      * @param couchdbAttachBean
      * @return
      */
-    public Attachment getAttachmentByIdAndRev(CouchdbAttachBean couchdbAttachBean);
+    Attachment getAttachmentByIdAndRev(CouchdbAttachBean couchdbAttachBean);
 
 }

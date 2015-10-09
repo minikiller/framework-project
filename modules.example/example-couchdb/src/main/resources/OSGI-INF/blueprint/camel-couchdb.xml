@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
            xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
            xsi:schemaLocation="
        http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
     <camelContext id="couch-camel" xmlns="http://camel.apache.org/schema/blueprint">
-        <route id="couchdb-test">
-            <!--<from uri="timer:simple?period=15000"/>
-            <setBody>
+        <route id="couchdb-test" streamCache="true">
+            <from uri="servlet:///upload?httpMethodRestrict=POST"/>
+
+            <!--<setBody>
                 <simple>{"CityId":18,"CityName":"西安","ProvinceId":27,"CityOrder":1}</simple>
             </setBody>-->
-            <from uri="couchdb:http://localhost:5984/kalix?username=admin&amp;password=123456"/>
-
+            <!--<to uri="couchdb:http://localhost:5984/kalix?username=admin&amp;password=123456"/>-->
+            <process ref="multiProcess"/>
             <process ref="couchProcess"/>
             <to uri="log:out"/>
 
             <!--<to uri="mongodb://mongo?database={{mongodb.database}}&amp;collection={{header.collection}}&amp;operation=findAll&amp;dynamicity=true"/>-->
         </route>
     </camelContext>
-    <bean id="couchProcess" class="cn.com.rexen.example.couchdb.CouchProcess" />
+
+    <reference id="couchdbAttachBeanService" interface="cn.com.rexen.couchdb.api.biz.ICouchdbAttachBeanService"/>
+    <bean id="couchProcess" class="cn.com.rexen.example.couchdb.CouchProcess">
+        <property name="couchdbAttachBeanService" ref="couchdbAttachBeanService"/>
+    </bean>
+    <bean id="multiProcess" class="cn.com.rexen.example.couchdb.MultipartUploaderProcessor"/>
 
 
 </blueprint>

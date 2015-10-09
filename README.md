@@ -20,7 +20,7 @@ kalix-project
 13.mvn install:install-file -Dfile=d:\kaptcha-2.3.2.jar -DgroupId=com.google.code -DartifactId=kaptcha -Dversion=2.3.2 -Dpackaging=jar
 14.osgi service事务控制，在blueprint里的bean定义中加入<tx:transaction method="*" value="Required"/>
 15.安装redis为window服务：redis-server --service-install redis.windows.conf
-
+16.使用couchdb作为cms存储attachment
 feature:repo-add mvn:cn.com.rexen.tools/karaf-features/1.0.0-SNAPSHOT/xml/features
 
 install -s mvn:org.postgresql/postgresql/9.4-1202-jdbc41

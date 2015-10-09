@@ -49,17 +49,24 @@ public class CouchdbAttachBeanServiceImpl extends GenericBizServiceImpl implemen
         this.couchdbService = couchdbService;
     }
 
+    /**
+     * 保存附件到couchdb
+     *
+     * @param mainId
+     * @param fileItem
+     * @return
+     */
     @Override
     public long saveAttach(long mainId, FileItem fileItem) {
         if (fileItem != null) {
-            CouchdbAttachBean couchdbAttachBean = getUniqueEntityByMainId(mainId); //new CouchdbAttachBean();
+            CouchdbAttachBean couchdbAttachBean = new CouchdbAttachBean();//getUniqueEntityByMainId(mainId);
             try {
                 String fileName = fileItem.getName();
                 String otherName = System.currentTimeMillis() + System.currentTimeMillis() +
                         fileName.substring(fileName.lastIndexOf("."), fileName.length());
                 //注意：获取内容转换成字符串的时候，必须用这种方式
                 Response response = couchdbService.addAttachment(Base64.encodeBase64String(fileItem.get()),
-                        otherName, fileItem.getContentType());
+                        fileName, fileItem.getContentType());
                 couchdbAttachBean.setAttachName(fileName);
                 couchdbAttachBean.setAttachPath(response.getId() + "/" + fileItem.getName());
                 couchdbAttachBean.setAttachSize(fileItem.getSize());
@@ -107,18 +114,6 @@ public class CouchdbAttachBeanServiceImpl extends GenericBizServiceImpl implemen
             couchdbAttachBean = getEntityByMainId(mainId).get(0);
         }
         return couchdbAttachBean;
-    }
-
-    @Override
-    public String saveExcelToCouchdb(String name, InputStream is) {
-        Response response = new Response();
-        try {
-            response = couchdbService.addAttachment(Base64.encodeBase64String(getBytes(is)),
-                    name, "xls");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return couchdb_url + response.getId() + "/" + name;
     }
 
     private byte[] getBytes(InputStream is) throws Exception {

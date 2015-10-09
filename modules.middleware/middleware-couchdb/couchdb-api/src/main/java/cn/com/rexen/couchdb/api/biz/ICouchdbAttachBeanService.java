@@ -4,7 +4,6 @@ import cn.com.rexen.core.api.biz.IBizService;
 import cn.com.rexen.couchdb.entities.CouchdbAttachBean;
 import org.apache.commons.fileupload.FileItem;
 
-import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -51,12 +50,5 @@ public interface ICouchdbAttachBeanService extends IBizService {
      * @return
      */
     public CouchdbAttachBean getUniqueEntityByMainId(long mainId);
-
-    /**
-     * 保存生成的资源excel
-     *
-     * @return
-     */
-    public String saveExcelToCouchdb(String name, InputStream is);
 
 }

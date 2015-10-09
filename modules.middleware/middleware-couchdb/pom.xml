@@ -19,6 +19,7 @@
         <module>couchdb-core</module>
         <module>couchdb-entities</module>
         <module>couchdb-persist-jpa</module>
+        <module>couchdb-rest</module>
     </modules>
 
     <properties>
@@ -72,6 +73,15 @@
             <artifactId>cn.com.rexen.core.api</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>cn.com.rexen.core</groupId>
+            <artifactId>cn.com.rexen.core.util</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
 
 
         <!--<dependency>
