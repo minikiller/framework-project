@@ -89,8 +89,8 @@
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.lightcouch/${lightcouch.version}</bundle>
         <bundle>mvn:com.google.code.gson/gson/${gson.version}</bundle>
         <bundle>mvn:commons-codec/commons-codec/${commons-codec.version}</bundle>
-        <bundle>mvn:org.apache.httpcomponents/httpcore-osgi/4.3.3</bundle>
-        <bundle>mvn:org.apache.httpcomponents/httpclient-osgi/4.3.6</bundle>
+        <bundle>mvn:org.apache.httpcomponents/httpcore-osgi/4.4.1</bundle>
+        <bundle>mvn:org.apache.httpcomponents/httpclient-osgi/4.4.1</bundle>
         <bundle>mvn:commons-io/commons-io/2.2</bundle>
         <bundle>mvn:commons-fileupload/commons-fileupload/${commons-fileupload.version}</bundle>
     </feature>
@@ -141,10 +141,10 @@
         <bundle>mvn:org.apache.shiro/shiro-ehcache/1.2.3</bundle>
     </feature>
 
-    <feature name="jedis" version="2.5.1">
+    <feature name="jedis">
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.cglib/3.1_1</bundle>
-        <bundle>mvn:org.apache.commons/commons-pool2/2.2</bundle>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jedis/2.5.1_1</bundle>
+        <bundle>mvn:org.apache.commons/commons-pool2/${commons-pool2.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jedis/${jedis.version}</bundle>
     </feature>
 
     <feature name="kalix-all" version="3.0.3">
@@ -191,6 +191,71 @@
         <bundle start-level="20">mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.jexl.evaluator/1.0.0</bundle>
     </feature>
 
+    <feature name="camel-swagger" version="2.17.0" resolver="(obr)" start-level="50">
+        <details>
+            camel-swagger is deprecated, use camel-swagger-java instead
+        </details>
+        <feature>http</feature>
+        <feature version="2.16.0">camel-core</feature>
+        <!--  must use Scala 2.10  -->
+        <bundle dependency="true">mvn:org.scala-lang/scala-library/2.10.4</bundle>
+        <bundle dependency="true">mvn:org.scala-lang/scala-reflect/2.10.4</bundle>
+        <bundle>mvn:javax.ws.rs/jsr311-api/1.1.1</bundle>
+        <bundle dependency="true">mvn:com.google.guava/guava/18.0</bundle>
+        <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-core/2.6.2</bundle>
+        <bundle dependency="true">
+            mvn:com.fasterxml.jackson.core/jackson-databind/2.6.2
+        </bundle>
+        <bundle dependency="true">
+            mvn:com.fasterxml.jackson.core/jackson-annotations/2.6.2
+        </bundle>
+        <bundle dependency="true">
+            mvn:com.fasterxml.jackson.core/jackson-annotations/2.6.2
+        </bundle>
+        <bundle dependency="true">
+            mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/2.6.2
+        </bundle>
+        <bundle dependency="true">
+            mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/2.6.2
+        </bundle>
+        <bundle dependency="true">
+            mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javax-inject/1_2
+        </bundle>
+        <bundle dependency="true">
+            mvn:com.fasterxml.jackson.module/jackson-module-paranamer/2.6.2
+        </bundle>
+        <bundle dependency="true">
+            mvn:com.fasterxml.jackson.module/jackson-module-scala_2.10/2.6.1
+        </bundle>
+        <bundle dependency="true">mvn:commons-lang/commons-lang/2.6</bundle>
+        <bundle dependency="true">
+            mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-annotations/1.3.12_1
+        </bundle>
+        <bundle dependency="true">
+            mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-core/1.3.12_1
+        </bundle>
+        <bundle dependency="true">
+            mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-jaxrs/1.3.12_1
+        </bundle>
+        <bundle dependency="true">
+            mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.paranamer/2.7_1
+        </bundle>
+        <bundle dependency="true">
+            mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.json4s/3.2.8_1
+        </bundle>
+        <bundle dependency="true">
+            mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.reflections/0.9.10_1
+        </bundle>
+        <bundle>mvn:org.apache.camel/camel-swagger/2.16.0</bundle>
+        <bundle>mvn:javax.validation/validation-api/1.1.0.Final/jar</bundle>
+        <bundle>mvn:io.swagger/swagger-core/1.5.3</bundle>
+        <bundle>mvn:io.swagger/swagger-models/1.5.3</bundle>
+        <bundle>mvn:io.swagger/swagger-annotations/1.5.3</bundle>
+        <bundle>mvn:io.swagger/swagger-jaxrs/1.5.3</bundle>
+        <bundle>mvn:org.apache.camel/camel-swagger-java/2.16.0</bundle>
+    </feature>
+
+
     <feature name="shiro-cas" version="1.0">
         <bundle>mvn:org.apache.shiro/shiro-cas/1.2.3</bundle>
         <bundle>wrap:mvn:org.jasig.cas.client/cas-client-core/3.2.1</bundle>
@@ -214,7 +279,7 @@
         <feature>camel-jackson</feature>
         <feature>camel-servlet</feature>
         <feature>camel-dozer</feature>
-        <feature>camel-swagger</feature>
+        <feature version="2.17.0">camel-swagger</feature>
         <feature>camel-shiro</feature>
         <feature>shiro-core</feature>
         <feature>shiro-web</feature>
@@ -235,9 +300,9 @@
     </feature>
 
     <!--osgi:install -s 'wrap:mvn:org.jasig.cas.client/cas-client-core/3.2.1$Bundle-SymbolicName=cas-client-core&Bundle-Version=3.2.0'-->
-    <!--feature:repo-add mvn:cn.com.rexen.tools/karaf-features/1.0.0-SNAPSHOT/xml/features-->
-    <!--feature:install kalix-->
-    <!--feature:install activiti-->
-    <!--install -s mvn:org.postgresql/postgresql/9.4-1202-jdbc41-->
+    <!-- feature:repo-add mvn:cn.com.rexen.tools/karaf-features/1.0.0-SNAPSHOT/xml/features-->
+    <!-- feature:install -v kalix activiti-->
+    <!-- feature:install -v activiti-->
+    <!-- install -s mvn:org.postgresql/postgresql/9.4-1202-jdbc41-->
     <!--install mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.cglib/3.1_1-->
 </features>

@@ -1,6 +1,7 @@
 package cn.com.rexen.audit.web.impl;
 
 import cn.com.rexen.core.api.web.IMenu;
+import cn.com.rexen.core.impl.web.AbstractMenuImpl;
 
 /**
  * 审计菜单
@@ -9,8 +10,8 @@ import cn.com.rexen.core.api.web.IMenu;
  *         date:2015-8-10
  * @version 1.0.0
  */
-public class AuditMenuImpl implements IMenu {
-    @Override
+public class AuditMenuImpl extends AbstractMenuImpl implements IMenu {
+    /*@Override
     public boolean isLeaf() {
         return true;
     }
@@ -58,5 +59,5 @@ public class AuditMenuImpl implements IMenu {
     @Override
     public String getPermission() {
         return "admin:sysModule:systemConstantMenu:auditMenu";
-    }
+    }*/
 }

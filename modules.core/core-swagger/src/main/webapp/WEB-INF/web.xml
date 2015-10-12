@@ -53,7 +53,13 @@
     <!-- to setup Camel Swagger api servlet -->
     <servlet>
         <servlet-name>ApiDeclarationServlet</servlet-name>
-        <servlet-class>org.apache.camel.component.swagger.DefaultCamelSwaggerServlet</servlet-class>
+        <servlet-class>org.apache.camel.swagger.servlet.RestSwaggerServlet</servlet-class>
+        <init-param>
+            <!-- enable context id listing so we can list all the CamelContexts in the JVM that has REST services
+                 which we then will be able to show -->
+            <param-name>apiContextIdListing</param-name>
+            <param-value>true</param-value>
+        </init-param>
         <init-param>
             <!-- we specify the base.path using relative notation, that means the actual path will be calculated at runtime as
                  http://server:port/contextpath/rest -->
@@ -98,7 +104,7 @@
     <!-- enable CORS filter so people can use swagger ui to browse and test the apis -->
     <filter>
         <filter-name>RestSwaggerCorsFilter</filter-name>
-        <filter-class>org.apache.camel.component.swagger.RestSwaggerCorsFilter</filter-class>
+        <filter-class>org.apache.camel.swagger.servlet.RestSwaggerCorsFilter</filter-class>
     </filter>
 
     <filter-mapping>

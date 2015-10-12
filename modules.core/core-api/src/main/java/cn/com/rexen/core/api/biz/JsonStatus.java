@@ -1,7 +1,8 @@
 package cn.com.rexen.core.api.biz;
 
-import com.wordnik.swagger.annotations.ApiModel;
-import com.wordnik.swagger.annotations.ApiModelProperty;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * Created by sunlf on 2015/7/3.
