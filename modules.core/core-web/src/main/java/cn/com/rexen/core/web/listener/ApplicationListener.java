@@ -1,6 +1,7 @@
 package cn.com.rexen.core.web.listener;
 
 import cn.com.rexen.core.api.web.IApplication;
+import cn.com.rexen.core.web.manager.ApplicationManager;
 import org.apache.log4j.Logger;
 
 /**

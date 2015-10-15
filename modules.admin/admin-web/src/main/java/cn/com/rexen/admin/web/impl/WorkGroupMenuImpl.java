@@ -51,7 +51,7 @@ public class WorkGroupMenuImpl implements IMenu {
 
     @Override
     public int getIndex() {
-        return 0;
+        return 2;
     }
 
     @Override

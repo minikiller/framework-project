@@ -1,11 +1,8 @@
-package cn.com.rexen.core.web.listener;
+package cn.com.rexen.core.web.manager;
 
 import cn.com.rexen.core.api.web.IMenu;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by sunlf on 2015/7/13.
@@ -15,7 +12,12 @@ public class MenuManager {
     private static MenuManager install;
 
     private Map<String, List<IMenu>> menuMap = new HashMap<String, List<IMenu>>();
-
+    private static Comparator<IMenu> COMPARATOR = new Comparator<IMenu>() {
+        // This is where the sorting happens.
+        public int compare(IMenu o1, IMenu o2) {
+            return o1.getIndex() - o2.getIndex();
+        }
+    };
     private MenuManager() {
     }
 
@@ -41,6 +43,9 @@ public class MenuManager {
     }
 
     public List<IMenu> getMenuList(String moduleId) {
-        return menuMap.get(moduleId);
+        List<IMenu> list = menuMap.get(moduleId);
+        if (list != null)
+            Collections.sort(list, COMPARATOR);
+        return list;
     }
 }

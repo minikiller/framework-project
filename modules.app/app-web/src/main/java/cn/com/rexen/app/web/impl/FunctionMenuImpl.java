@@ -16,12 +16,12 @@ public class FunctionMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return "sysModule";
+        return "appModule";
     }
 
     @Override
     public String getParentMenuId() {
-        return "permissionControlMenu";
+        return "appControlMenu";
     }
 
     @Override
@@ -51,11 +51,11 @@ public class FunctionMenuImpl implements IMenu {
 
     @Override
     public int getIndex() {
-        return 0;
+        return 1;
     }
 
     @Override
     public String getPermission() {
-        return "admin:sysModule:permissionControl:functionMenu";
+        return "admin:appModule:appControlMenu:functionMenu";
     }
 }

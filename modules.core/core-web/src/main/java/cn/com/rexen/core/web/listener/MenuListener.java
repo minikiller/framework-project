@@ -1,6 +1,7 @@
 package cn.com.rexen.core.web.listener;
 
 import cn.com.rexen.core.api.web.IMenu;
+import cn.com.rexen.core.web.manager.MenuManager;
 import org.apache.log4j.Logger;
 
 /**

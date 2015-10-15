@@ -1,4 +1,4 @@
-package cn.com.rexen.core.web.impl;
+package cn.com.rexen.core.web.util;
 
 import org.dozer.Mapper;
 

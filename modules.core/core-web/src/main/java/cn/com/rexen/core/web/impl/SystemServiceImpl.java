@@ -3,9 +3,10 @@ package cn.com.rexen.core.web.impl;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.api.web.*;
 import cn.com.rexen.core.api.web.model.*;
-import cn.com.rexen.core.web.listener.ApplicationManager;
-import cn.com.rexen.core.web.listener.MenuManager;
-import cn.com.rexen.core.web.listener.MoudleManager;
+import cn.com.rexen.core.web.manager.ApplicationManager;
+import cn.com.rexen.core.web.manager.MenuManager;
+import cn.com.rexen.core.web.manager.ModuleManager;
+import cn.com.rexen.core.web.util.DozerHelper;
 import org.apache.shiro.subject.Subject;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
@@ -70,7 +71,7 @@ public class SystemServiceImpl implements ISystemService {
     @Override
     public List<ModuleBean> getModuleByApplication(String applicationId) {
         Subject subject=shiroService.getSubject();
-        List<IModule> moduleList = MoudleManager.getInstall().getModuleList(applicationId);
+        List<IModule> moduleList = ModuleManager.getInstall().getModuleList(applicationId);
         List<ModuleBean> moduleBeanList=new ArrayList<ModuleBean>();
         if(moduleList==null)
             moduleList=new ArrayList<IModule>();

@@ -1,8 +1,10 @@
-package cn.com.rexen.core.web.listener;
+package cn.com.rexen.core.web.manager;
 
 import cn.com.rexen.core.api.web.IApplication;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -11,7 +13,12 @@ import java.util.List;
  */
 public class ApplicationManager {
     private static ApplicationManager install;
-
+    private static Comparator<IApplication> COMPARATOR = new Comparator<IApplication>() {
+        // This is where the sorting happens.
+        public int compare(IApplication o1, IApplication o2) {
+            return o1.getIndex() - o2.getIndex();
+        }
+    };
     private List<IApplication> applicationList = new ArrayList<IApplication>();
 
     private ApplicationManager() {
@@ -33,6 +40,8 @@ public class ApplicationManager {
     }
 
     public List<IApplication> getApplicationList() {
+        if (applicationList != null)
+            Collections.sort(applicationList, COMPARATOR);
         return applicationList;
     }
 }

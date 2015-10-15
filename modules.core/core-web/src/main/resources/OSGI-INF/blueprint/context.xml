@@ -65,6 +65,6 @@
     </bean>
     <service interface="cn.com.rexen.core.api.web.ISystemService" ref="systemServiceImpl"/>
     <!--<service interface="java.util.EventListener" >
-        <bean class="org.apache.sh iro.web.env.EnvironmentLoaderListener"/>
+        <bean class="org.apache.shiro.web.env.EnvironmentLoaderListener"/>
     </service>-->
 </blueprint>

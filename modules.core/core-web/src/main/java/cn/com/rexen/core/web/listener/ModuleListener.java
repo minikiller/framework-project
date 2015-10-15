@@ -1,6 +1,7 @@
 package cn.com.rexen.core.web.listener;
 
 import cn.com.rexen.core.api.web.IModule;
+import cn.com.rexen.core.web.manager.ModuleManager;
 import org.apache.log4j.Logger;
 
 /**
@@ -11,11 +12,11 @@ public class ModuleListener {
 
     public void register(IModule module) {
         logger.info("module of " + module.getTitle() + " is regisered!");
-        MoudleManager.getInstall().add(module);
+        ModuleManager.getInstall().add(module);
     }
 
     public void unregister(IModule module) {
         logger.info("module of " + module.getTitle() + " is unregisered!");
-        MoudleManager.getInstall().remove(module);
+        ModuleManager.getInstall().remove(module);
     }
 }

@@ -2,7 +2,7 @@ package cn.com.rexen.core.web.impl;
 
 import cn.com.rexen.core.api.web.IApplication;
 import cn.com.rexen.core.api.web.IBody;
-import cn.com.rexen.core.web.listener.ApplicationManager;
+import cn.com.rexen.core.web.manager.ApplicationManager;
 
 import java.util.List;
 

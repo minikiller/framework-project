@@ -1,37 +1,42 @@
-package cn.com.rexen.demo.web.impl;
+package cn.com.rexen.app.web.impl;
 
-import cn.com.rexen.core.api.web.IApplication;
+import cn.com.rexen.core.api.web.IMenu;
 import cn.com.rexen.core.api.web.IModule;
 
 import java.util.List;
 
 /**
- * Created by sunlf on 2015/7/14.
+ * Created by sunlf on 2015/7/19.
  */
-public class TestApplicationImpl implements IApplication {
+public class AppModuleImpl implements IModule {
     @Override
-    public List<IModule> getModules() {
+    public List<IMenu> getMenus() {
         return null;
     }
 
     @Override
+    public String getApplicationId() {
+        return "AdminApplication";
+    }
+
+    @Override
     public String getId() {
-        return "TestApplication";
+        return "appModule";
     }
 
     @Override
     public String getTitle() {
-        return "测试应用";
+        return "模块管理";
     }
 
     @Override
     public String getDescription() {
-        return "测试应用";
+        return "模块管理";
     }
 
     @Override
     public String getIcon() {
-        return "admin/resources/images/building.png";
+        return "resources/images/computer.png";
     }
 
     @Override
@@ -46,6 +51,6 @@ public class TestApplicationImpl implements IApplication {
 
     @Override
     public String getPermission() {
-        return "test";
+        return "admin:appModule";
     }
 }

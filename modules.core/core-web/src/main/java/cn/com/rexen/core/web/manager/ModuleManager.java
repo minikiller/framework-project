@@ -1,27 +1,31 @@
-package cn.com.rexen.core.web.listener;
+package cn.com.rexen.core.web.manager;
 
 import cn.com.rexen.core.api.web.IModule;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by sunlf on 2015/7/13.
  * 维护IApplication列表
  */
-public class MoudleManager {
-    private static MoudleManager install;
+public class ModuleManager {
+    private static ModuleManager install;
+    //排序
+    private static Comparator<IModule> COMPARATOR = new Comparator<IModule>() {
+        // This is where the sorting happens.
+        public int compare(IModule o1, IModule o2) {
+            return o1.getIndex() - o2.getIndex();
+        }
+    };
 
     private Map<String, List<IModule>> moduleMap = new HashMap<String, List<IModule>>();
 
-    private MoudleManager() {
+    private ModuleManager() {
     }
 
-    public synchronized static MoudleManager getInstall() {
+    public synchronized static ModuleManager getInstall() {
         if (install == null) {
-            install = new MoudleManager();
+            install = new ModuleManager();
         }
         return install;
     }
@@ -40,7 +44,10 @@ public class MoudleManager {
         moduleList.remove(module);
     }
 
-    public List<IModule> getModuleList(String applicationId) {
-        return moduleMap.get(applicationId);
+    public List<IModule> getModuleList(String moduleId) {
+        List<IModule> list = moduleMap.get(moduleId);
+        if (list != null)
+            Collections.sort(list, COMPARATOR);
+        return list;
     }
 }

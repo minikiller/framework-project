@@ -24,6 +24,7 @@
         <!--<module>assembly</module>-->
         <module>maven-kalix-plugin</module>
         <module>code-generate</module>
+        <module>webconsole</module>
     </modules>
     <dependencyManagement>
         <dependencies>

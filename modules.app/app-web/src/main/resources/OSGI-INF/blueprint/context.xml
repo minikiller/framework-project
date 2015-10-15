@@ -28,6 +28,13 @@
     <service interface="cn.com.rexen.core.api.web.IMenu">
         <bean class="cn.com.rexen.app.web.impl.FunctionMenuImpl"/>
     </service>
-
+    <!--模块控制-->
+    <service interface="cn.com.rexen.core.api.web.IMenu">
+        <bean class="cn.com.rexen.app.web.impl.AppControlMenuImpl"/>
+    </service>
+    <!--模块管理-->
+    <service interface="cn.com.rexen.core.api.web.IModule">
+        <bean class="cn.com.rexen.app.web.impl.AppModuleImpl"/>
+    </service>
 
 </blueprint>
