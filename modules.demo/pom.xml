@@ -27,6 +27,7 @@
         <module>demo-persist-jpa</module>
         <module>demo-rest</module>
         <module>demo-web</module>
+        <module>demo-kar</module>
         <!--<module>demo-camel</module>-->
 
     </modules>
