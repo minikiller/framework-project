@@ -3,7 +3,8 @@ SQLyog Enterprise - MySQL GUI v6.0
 Host - 5.0.90-community-nt : Database - kalix
 *********************************************************************
 Server version : 5.0.90-community-nt
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -118,14 +119,14 @@ CREATE TABLE `sys_demo` (
   `content` varchar(255) default NULL,
   `publishDate` datetime default NULL,
   `publishPeople` varchar(255) default NULL,
-  `title` varchar(255) default NULL,
+  `text` varchar(255) default NULL,
   `version_` bigint(20) default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `sys_demo` */
 
-insert  into `sys_demo`(`id`,`createBy`,`creationDate`,`updateBy`,`updateDate`,`currentNode`,`processInstanceId`,`status`,`content`,`publishDate`,`publishPeople`,`title`,`version_`) values (10401,NULL,'2015-08-05 17:03:07',NULL,'2015-08-06 10:51:13','符合性审批','22501',1,'1',NULL,NULL,'1',8),(10402,NULL,'2015-08-03 11:03:42',NULL,'2015-08-03 11:03:50','符合性审批','2507',1,'xzdz',NULL,NULL,'s',2),(10501,NULL,'2015-08-03 11:21:58',NULL,'2015-08-03 11:39:33','符合性审批','5019',1,'asd',NULL,NULL,'asd',2),(10502,NULL,'2015-08-03 11:52:29',NULL,'2015-08-03 11:52:31','符合性审批','5025',1,'222',NULL,NULL,'测试',2),(10503,NULL,'2015-08-03 11:53:17',NULL,'2015-08-03 11:53:17',NULL,NULL,0,'ds',NULL,NULL,'ds',1),(11601,NULL,'2015-08-05 14:26:30',NULL,'2015-08-05 15:33:11','颁发证件','12501',1,'112',NULL,NULL,'1212',6),(11701,NULL,'2015-08-05 15:33:32',NULL,'2015-08-05 15:39:41','颁发证件','15028',1,'22',NULL,NULL,'22',6),(11702,NULL,'2015-08-05 15:39:50',NULL,'2015-08-05 15:46:41','颁发证件','15054',1,'33',NULL,NULL,'33',6),(11703,NULL,'2015-08-11 15:14:24',NULL,'2015-08-11 15:14:24','','15080',2,'5',NULL,NULL,'5',8),(11704,NULL,'2015-08-05 16:13:30',NULL,'2015-08-05 16:35:23','局长审批','15112',1,'456',NULL,NULL,'456',5),(11705,NULL,'2015-08-06 11:31:04',NULL,'2015-08-06 11:31:04','符合性审批','15128',1,'修改了',NULL,NULL,'8',25),(11801,NULL,'2015-08-06 10:36:58',NULL,'2015-08-06 10:37:00','符合性审批','20001',1,'44',NULL,NULL,'44',2),(11901,NULL,'2015-08-06 11:46:52',NULL,'2015-08-06 11:46:52','','25003',2,'通过',NULL,NULL,'测试通过',8),(12301,NULL,'2015-08-11 14:45:03',NULL,'2015-08-11 14:45:03','','27501',2,'sssss',NULL,NULL,'ssss',8);
+insert  into `sys_demo`(`id`,`createBy`,`creationDate`,`updateBy`,`updateDate`,`currentNode`,`processInstanceId`,`status`,`content`,`publishDate`,`publishPeople`,`text`,`version_`) values (10401,NULL,'2015-08-05 17:03:07',NULL,'2015-08-06 10:51:13','符合性审批','22501',1,'1',NULL,NULL,'1',8),(10402,NULL,'2015-08-03 11:03:42',NULL,'2015-08-03 11:03:50','符合性审批','2507',1,'xzdz',NULL,NULL,'s',2),(10501,NULL,'2015-08-03 11:21:58',NULL,'2015-08-03 11:39:33','符合性审批','5019',1,'asd',NULL,NULL,'asd',2),(10502,NULL,'2015-08-03 11:52:29',NULL,'2015-08-03 11:52:31','符合性审批','5025',1,'222',NULL,NULL,'测试',2),(10503,NULL,'2015-08-03 11:53:17',NULL,'2015-08-03 11:53:17',NULL,NULL,0,'ds',NULL,NULL,'ds',1),(11601,NULL,'2015-08-05 14:26:30',NULL,'2015-08-05 15:33:11','颁发证件','12501',1,'112',NULL,NULL,'1212',6),(11701,NULL,'2015-08-05 15:33:32',NULL,'2015-08-05 15:39:41','颁发证件','15028',1,'22',NULL,NULL,'22',6),(11702,NULL,'2015-08-05 15:39:50',NULL,'2015-08-05 15:46:41','颁发证件','15054',1,'33',NULL,NULL,'33',6),(11703,NULL,'2015-08-11 15:14:24',NULL,'2015-08-11 15:14:24','','15080',2,'5',NULL,NULL,'5',8),(11704,NULL,'2015-08-05 16:13:30',NULL,'2015-08-05 16:35:23','局长审批','15112',1,'456',NULL,NULL,'456',5),(11705,NULL,'2015-08-06 11:31:04',NULL,'2015-08-06 11:31:04','符合性审批','15128',1,'修改了',NULL,NULL,'8',25),(11801,NULL,'2015-08-06 10:36:58',NULL,'2015-08-06 10:37:00','符合性审批','20001',1,'44',NULL,NULL,'44',2),(11901,NULL,'2015-08-06 11:46:52',NULL,'2015-08-06 11:46:52','','25003',2,'通过',NULL,NULL,'测试通过',8),(12301,NULL,'2015-08-11 14:45:03',NULL,'2015-08-11 14:45:03','','27501',2,'sssss',NULL,NULL,'ssss',8);
 
 /*Table structure for table `sys_department` */
 
@@ -232,7 +233,7 @@ CREATE TABLE `sys_message` (
   `message` varchar(255) default NULL,
   `sender` varchar(255) default NULL,
   `status` int(11) default NULL,
-  `title` varchar(255) default NULL,
+  `text` varchar(255) default NULL,
   `userId` bigint(20) default NULL,
   `version_` bigint(20) default NULL,
   PRIMARY KEY  (`id`)

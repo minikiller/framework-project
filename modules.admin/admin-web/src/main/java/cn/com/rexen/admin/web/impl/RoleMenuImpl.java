@@ -30,7 +30,7 @@ public class RoleMenuImpl implements IMenu {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "角色管理";
     }
 
@@ -45,8 +45,8 @@ public class RoleMenuImpl implements IMenu {
     }
 
     @Override
-    public String getComponentClass() {
-        return "Kalix.admin.role.view.Role";
+    public String getRouteId() {
+        return "AdminApplication/Role";
     }
 
     @Override

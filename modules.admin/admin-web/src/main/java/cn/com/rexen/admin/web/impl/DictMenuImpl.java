@@ -30,7 +30,7 @@ public class DictMenuImpl implements IMenu {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "字典管理";
     }
 
@@ -45,8 +45,8 @@ public class DictMenuImpl implements IMenu {
     }
 
     @Override
-    public String getComponentClass() {
-        return "Kalix.admin.dict.view.Dict";
+    public String getRouteId() {
+        return "AdminApplication/Dict";
     }
 
     @Override

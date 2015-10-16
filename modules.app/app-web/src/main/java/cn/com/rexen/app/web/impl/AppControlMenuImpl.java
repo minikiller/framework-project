@@ -28,7 +28,7 @@ public class AppControlMenuImpl implements IMenu {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "模块控制";
     }
 
@@ -43,7 +43,7 @@ public class AppControlMenuImpl implements IMenu {
     }
 
     @Override
-    public String getComponentClass() {
+    public String getRouteId() {
         return null;
     }
 

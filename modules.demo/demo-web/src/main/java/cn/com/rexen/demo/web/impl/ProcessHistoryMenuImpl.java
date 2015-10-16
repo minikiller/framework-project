@@ -30,7 +30,7 @@ public class ProcessHistoryMenuImpl implements IMenu {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "流程历史列表";
     }
 
@@ -45,7 +45,7 @@ public class ProcessHistoryMenuImpl implements IMenu {
     }
 
     @Override
-    public String getComponentClass() {
+    public String getRouteId() {
         return "Kalix.workflow.view.ProcessHistory";
     }
 

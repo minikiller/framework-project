@@ -20,7 +20,7 @@ public class TestApplicationImpl implements IApplication {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "测试应用";
     }
 
@@ -35,7 +35,7 @@ public class TestApplicationImpl implements IApplication {
     }
 
     @Override
-    public String getComponentClass() {
+    public String getRouteId() {
         return null;
     }
 

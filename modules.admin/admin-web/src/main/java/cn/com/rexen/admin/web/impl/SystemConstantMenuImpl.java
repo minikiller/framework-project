@@ -30,7 +30,7 @@ public class SystemConstantMenuImpl implements IMenu {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "系统常量";
     }
 
@@ -45,7 +45,7 @@ public class SystemConstantMenuImpl implements IMenu {
     }
 
     @Override
-    public String getComponentClass() {
+    public String getRouteId() {
         return null;
     }
 

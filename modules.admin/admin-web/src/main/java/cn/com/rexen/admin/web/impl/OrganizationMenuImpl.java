@@ -30,7 +30,7 @@ public class OrganizationMenuImpl implements IMenu {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "机构管理";
     }
 
@@ -45,8 +45,8 @@ public class OrganizationMenuImpl implements IMenu {
     }
 
     @Override
-    public String getComponentClass() {
-        return "Kalix.admin.org.view.Org";
+    public String getRouteId() {
+        return "AdminApplication/Org";
     }
 
     @Override

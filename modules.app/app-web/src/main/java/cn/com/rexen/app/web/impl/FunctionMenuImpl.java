@@ -30,7 +30,7 @@ public class FunctionMenuImpl implements IMenu {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "功能管理";
     }
 
@@ -45,7 +45,7 @@ public class FunctionMenuImpl implements IMenu {
     }
 
     @Override
-    public String getComponentClass() {
+    public String getRouteId() {
         return "Kalix.app.function.view.Function";
     }
 

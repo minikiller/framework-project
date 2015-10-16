@@ -32,7 +32,7 @@ Ext.define('Kalix.<pomName>.controller.<beanName>GridController', {
             //resizable:false,
             icon: 'admin/resources/images/group_add.png',
             bind: {
-                title: '{addTitle}'
+                text: '{addTitle}'
             },
             items: [addFormPanel]
         });
@@ -58,7 +58,7 @@ Ext.define('Kalix.<pomName>.controller.<beanName>GridController', {
          });
          var <pomName>Model = Ext.create("Kalix.<pomName>.model.<beanName>Model", {
          id: rec.data.id,
-         title: rec.data.title,
+         text: rec.data.text,
          content: rec.data.content,
          });*/
         //var grid = this.lookupReference('fooGrid');
@@ -85,7 +85,7 @@ Ext.define('Kalix.<pomName>.controller.<beanName>GridController', {
             //resizable:false,
             icon: 'admin/resources/images/group_edit.png',
             bind: {
-                title: '{editTitle}'
+                text: '{editTitle}'
             },
             items: [editFormPanel]
         });

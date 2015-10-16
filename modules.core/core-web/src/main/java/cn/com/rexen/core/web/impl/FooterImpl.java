@@ -12,7 +12,7 @@ public class FooterImpl implements IFooter {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "footer";
     }
 
@@ -27,7 +27,7 @@ public class FooterImpl implements IFooter {
     }
 
     @Override
-    public String getComponentClass() {
+    public String getRouteId() {
         return "Kalix.view.main.region.Bottom";
     }
 

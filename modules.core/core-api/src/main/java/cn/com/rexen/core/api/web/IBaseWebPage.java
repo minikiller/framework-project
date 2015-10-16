@@ -8,7 +8,7 @@ public interface IBaseWebPage {
     String getId();
 
     //    标题
-    String getTitle();
+    String getText();
 
     //    描述
     String getDescription();
@@ -17,7 +17,7 @@ public interface IBaseWebPage {
     String getIcon();
 
     //    Extjs组件类名称
-    String getComponentClass();
+    String getRouteId();
 
     //    显示的顺序
     int getIndex();

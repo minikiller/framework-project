@@ -7,17 +7,8 @@ import java.util.List;
  * Created by sunlf on 2015/7/14.
  */
 public class MenuBean extends BaseWebPage {
-    private String text;
     private List<MenuBean> children = new ArrayList<>();
     private boolean leaf;
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
 
     public List<MenuBean> getChildren() {
         return children;
@@ -34,4 +25,6 @@ public class MenuBean extends BaseWebPage {
     public void setLeaf(boolean leaf) {
         this.leaf = leaf;
     }
+
+
 }

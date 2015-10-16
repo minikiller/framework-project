@@ -11,12 +11,12 @@ public class MenuListener {
     private static Logger logger = Logger.getLogger(MenuListener.class);
 
     public void register(IMenu menu) {
-        logger.info("menu of " + menu.getTitle() + " is regisered!");
+        logger.info("menu of " + menu.getText() + " is regisered!");
         MenuManager.getInstall().add(menu);
     }
 
     public void unregister(IMenu menu) {
-        logger.info("menu of " + menu.getTitle() + " is unregisered!");
+        logger.info("menu of " + menu.getText() + " is unregisered!");
         MenuManager.getInstall().remove(menu);
     }
 }

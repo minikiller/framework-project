@@ -32,7 +32,7 @@ public class AuditMenuImpl extends AbstractMenuImpl implements IMenu {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "审计管理";
     }
 
@@ -47,7 +47,7 @@ public class AuditMenuImpl extends AbstractMenuImpl implements IMenu {
     }
 
     @Override
-    public String getComponentClass() {
+    public String getRouteId() {
         return "Kalix.audit.view.Audit";
     }
 

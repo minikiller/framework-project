@@ -48,11 +48,11 @@ public abstract class AbstractMenuImpl extends AbstractWebPageImpl implements IM
     }
 
     @Override
-    public String getTitle() {
-        return title;
+    public String getText() {
+        return text;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setText(String title) {
+        this.text = title;
     }
 }

@@ -7,20 +7,20 @@ import cn.com.rexen.core.api.web.IBaseWebPage;
  */
 public abstract class AbstractWebPageImpl implements IBaseWebPage {
     protected String id;
-    protected String title;
+    protected String text;
     protected String icon;
-    protected String componentClass;
+    protected String routeId;
     protected int index;
     protected String permission;
     protected String description;
 
     @Override
-    public String getComponentClass() {
-        return componentClass;
+    public String getRouteId() {
+        return routeId;
     }
 
-    public void setComponentClass(String componentClass) {
-        this.componentClass = componentClass;
+    public void setComponentClass(String routeId) {
+        this.routeId = routeId;
     }
 
     @Override
@@ -69,11 +69,11 @@ public abstract class AbstractWebPageImpl implements IBaseWebPage {
     }
 
     @Override
-    public String getTitle() {
-        return title;
+    public String getText() {
+        return text;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setText(String text) {
+        this.text = text;
     }
 }

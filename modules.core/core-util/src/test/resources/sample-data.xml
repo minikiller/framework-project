@@ -1763,7 +1763,7 @@
         <column>content</column>
         <column>publishDate</column>
         <column>publishPeople</column>
-        <column>title</column>
+        <column>text</column>
         <column>version_</column>
         <row>
             <value>10401</value>
@@ -2876,7 +2876,7 @@
         <column>message</column>
         <column>sender</column>
         <column>status</column>
-        <column>title</column>
+        <column>text</column>
         <column>userId</column>
         <column>version_</column>
     </table>

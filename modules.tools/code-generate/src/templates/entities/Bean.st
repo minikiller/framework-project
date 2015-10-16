@@ -19,18 +19,18 @@ import java.util.Date;
 @Table(name = "sys_<pomName>")
 public class <beanName>Bean extends PersistentEntity {
     @NotNull(message = "'标题'是必填项")
-    private String title;   //标题
+    private String text;   //标题
     @NotNull(message = "'内容'是必填项")
     private String content; //内容
     private String publishPeople;//发布人
     private Date publishDate;//发布时间
 
     public String getTitle() {
-        return title;
+        return text;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle(String text) {
+        this.text = text;
     }
 
     public String getContent() {

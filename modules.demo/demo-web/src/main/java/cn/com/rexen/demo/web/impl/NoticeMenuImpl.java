@@ -30,7 +30,7 @@ public class NoticeMenuImpl implements IMenu {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "流程演示管理";
     }
 
@@ -45,7 +45,7 @@ public class NoticeMenuImpl implements IMenu {
     }
 
     @Override
-    public String getComponentClass() {
+    public String getRouteId() {
         return "Kalix.demo.view.Notice";
     }
 

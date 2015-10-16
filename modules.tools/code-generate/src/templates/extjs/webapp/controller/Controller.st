@@ -43,7 +43,7 @@ Ext.define('Kalix.<pomName>.controller.<beanName>Controller', {
                     xtype: 'textfield',
                     fieldLabel: '标题',
                     itemId: "<pomName>_title",
-                    name: 'title'
+                    name: 'text'
                 }]
             }]
 
@@ -94,7 +94,7 @@ Ext.define('Kalix.<pomName>.controller.<beanName>Controller', {
 
 
         var searchPanel = Ext.create("Ext.panel.Panel", {
-            title: '条件查询',
+            text: '条件查询',
             border: false,
             items: [formPanel]
         });

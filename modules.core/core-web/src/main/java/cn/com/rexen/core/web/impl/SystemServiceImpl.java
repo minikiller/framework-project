@@ -83,13 +83,14 @@ public class SystemServiceImpl implements ISystemService {
                 String modulePermission=module.getPermission()!=null?module.getPermission():"KALIX_NOT_PERMISSION";
                 if (subject.hasRole(modulePermission)) {
                     ModuleBean moduleBean = mapper.map(module, ModuleBean.class);
+                    moduleBean.setText(module.getText());
                     moduleBeanList.add(moduleBean);
                 }
             }
         }
         if(moduleBeanList!=null&&!moduleBeanList.isEmpty()){
             for(ModuleBean moduleBean:moduleBeanList){
-                moduleBean.setMenus(new ArrayList<MenuBean>());
+                moduleBean.setChildren(new ArrayList<MenuBean>());
                 List<IMenu> menuList = new ArrayList<IMenu>();
                 List<IMenu> allMenu=MenuManager.getInstall().getMenuList(moduleBean.getId());
                 //去掉没有权限的菜单
@@ -108,10 +109,10 @@ public class SystemServiceImpl implements ISystemService {
                         MenuBean menuBean = null;
                         if(rootMenu!=null) {
                             menuBean=mapper.map(rootMenu, MenuBean.class);
-                            menuBean.setText(rootMenu.getTitle());
+                            menuBean.setText(rootMenu.getText());
                             getMenuChilden(menuBean, menuList, mapper);
                         }
-                        moduleBean.getMenus().add(menuBean);
+                        moduleBean.getChildren().add(menuBean);
                     }
                 }
             }
@@ -129,7 +130,7 @@ public class SystemServiceImpl implements ISystemService {
         MenuBean menuBean = null;
         if(rootMenu!=null) {
             menuBean=mapper.map(rootMenu, MenuBean.class);
-            menuBean.setText(rootMenu.getTitle());
+            menuBean.setText(rootMenu.getText());
             getMenuChilden(menuBean, menuList, mapper);
         }
         return menuBean;
@@ -182,7 +183,7 @@ public class SystemServiceImpl implements ISystemService {
         for (IMenu menu : menuList) {
             if (menu.getParentMenuId() != null && menu.getParentMenuId().equals(menuBean.getId())) {
                 MenuBean mBean = mapper.map(menu, MenuBean.class);
-                mBean.setText(menu.getTitle());
+                mBean.setText(menu.getText());
                 childMenuList.add(mBean);
                 getMenuChilden(mBean, menuList, mapper);
             }

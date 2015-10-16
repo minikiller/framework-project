@@ -11,12 +11,12 @@ public class ModuleListener {
     private static Logger logger = Logger.getLogger(ModuleListener.class);
 
     public void register(IModule module) {
-        logger.info("module of " + module.getTitle() + " is regisered!");
+        logger.info("module of " + module.getText() + " is regisered!");
         ModuleManager.getInstall().add(module);
     }
 
     public void unregister(IModule module) {
-        logger.info("module of " + module.getTitle() + " is unregisered!");
+        logger.info("module of " + module.getText() + " is unregisered!");
         ModuleManager.getInstall().remove(module);
     }
 }

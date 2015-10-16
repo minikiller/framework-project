@@ -11,12 +11,12 @@ public class ApplicationListener {
     private static Logger logger = Logger.getLogger(ApplicationListener.class);
 
     public void register(IApplication application) {
-        logger.info("application of " + application.getTitle() + " is regisered!");
+        logger.info("application of " + application.getText() + " is regisered!");
         ApplicationManager.getInstall().add(application);
     }
 
     public void unregister(IApplication application) {
-        logger.info("application of " + application.getTitle() + " is unregisered!");
+        logger.info("application of " + application.getText() + " is unregisered!");
         ApplicationManager.getInstall().remove(application);
     }
 }

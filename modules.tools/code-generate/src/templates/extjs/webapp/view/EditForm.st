@@ -43,7 +43,7 @@ Ext.define('Kalix.<pomName>.view.<beanName>EditForm', {
         {
             fieldLabel: '标题',
             id: 'titleId',
-            name: 'title',
+            name: 'text',
             allowBlank: false,
             blankText: '标题不能为空!',
             beforeLabelTpl: [

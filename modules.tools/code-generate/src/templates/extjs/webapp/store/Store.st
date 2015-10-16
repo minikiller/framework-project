@@ -33,7 +33,7 @@ Ext.define('Kalix.<pomName>.store.<beanName>Store', {
             this.rejectChanges();
 
             Ext.Msg.show({
-                title: 'Update Failed',
+                text: 'Update Failed',
                 message: 'The changes you have made are rejected.',
                 buttons: Ext.Msg.OK,
                 icon: Ext.Msg.ERROR

@@ -30,7 +30,7 @@ public class DepartmentMenuImpl implements IMenu {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "部门管理";
     }
 
@@ -45,8 +45,8 @@ public class DepartmentMenuImpl implements IMenu {
     }
 
     @Override
-    public String getComponentClass() {
-        return "Kalix.admin.dep.view.Dep";
+    public String getRouteId() {
+        return "AdminApplication/Dep";
     }
 
     @Override

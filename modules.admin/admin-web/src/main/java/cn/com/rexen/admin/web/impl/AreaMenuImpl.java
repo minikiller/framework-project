@@ -30,7 +30,7 @@ public class AreaMenuImpl implements IMenu {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "区域管理";
     }
 
@@ -45,8 +45,8 @@ public class AreaMenuImpl implements IMenu {
     }
 
     @Override
-    public String getComponentClass() {
-        return "Kalix.admin.area.view.Area";
+    public String getRouteId() {
+        return "AdminApplication/Area";
     }
 
     @Override

@@ -30,7 +30,7 @@ public class WorkGroupMenuImpl implements IMenu {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "工作组管理";
     }
 
@@ -45,8 +45,8 @@ public class WorkGroupMenuImpl implements IMenu {
     }
 
     @Override
-    public String getComponentClass() {
-        return "Kalix.admin.workGroup.view.WorkGroup";
+    public String getRouteId() {
+        return "AdminApplication/WorkGroup";
     }
 
     @Override

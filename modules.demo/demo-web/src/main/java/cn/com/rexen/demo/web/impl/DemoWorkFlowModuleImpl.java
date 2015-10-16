@@ -25,7 +25,7 @@ public class DemoWorkFlowModuleImpl implements IModule {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "工作流演示";
     }
 
@@ -40,7 +40,7 @@ public class DemoWorkFlowModuleImpl implements IModule {
     }
 
     @Override
-    public String getComponentClass() {
+    public String getRouteId() {
         return null;
     }
 

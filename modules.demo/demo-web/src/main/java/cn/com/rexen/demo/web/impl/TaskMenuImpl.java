@@ -30,7 +30,7 @@ public class TaskMenuImpl implements IMenu {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "待办任务列表";
     }
 
@@ -45,7 +45,7 @@ public class TaskMenuImpl implements IMenu {
     }
 
     @Override
-    public String getComponentClass() {
+    public String getRouteId() {
         return "Kalix.workflow.view.Task";
     }
 

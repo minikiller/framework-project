@@ -28,7 +28,7 @@ public class PermissionControlMenuImpl implements IMenu {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "权限控制";
     }
 
@@ -43,7 +43,7 @@ public class PermissionControlMenuImpl implements IMenu {
     }
 
     @Override
-    public String getComponentClass() {
+    public String getRouteId() {
         return null;
     }
 

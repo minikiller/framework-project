@@ -25,7 +25,7 @@ public class AppModuleImpl implements IModule {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "模块管理";
     }
 
@@ -40,7 +40,7 @@ public class AppModuleImpl implements IModule {
     }
 
     @Override
-    public String getComponentClass() {
+    public String getRouteId() {
         return null;
     }
 

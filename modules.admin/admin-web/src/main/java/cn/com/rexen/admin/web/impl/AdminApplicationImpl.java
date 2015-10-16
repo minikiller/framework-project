@@ -20,7 +20,7 @@ public class AdminApplicationImpl implements IApplication {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "系统应用";
     }
 
@@ -35,8 +35,8 @@ public class AdminApplicationImpl implements IApplication {
     }
 
     @Override
-    public String getComponentClass() {
-        return "app.admin";
+    public String getRouteId() {
+        return "";
     }
 
     @Override

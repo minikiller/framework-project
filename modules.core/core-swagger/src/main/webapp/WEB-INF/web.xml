@@ -77,7 +77,7 @@
             <param-value>1.0.0</param-value>
         </init-param>
         <init-param>
-            <param-name>api.title</param-name>
+            <param-name>api.text</param-name>
             <param-value>Kalix Services</param-value>
         </init-param>
         <init-param>

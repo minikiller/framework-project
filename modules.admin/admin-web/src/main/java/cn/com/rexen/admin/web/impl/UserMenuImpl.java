@@ -28,7 +28,7 @@ public class UserMenuImpl implements IMenu {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "用户管理";
     }
 
@@ -43,8 +43,8 @@ public class UserMenuImpl implements IMenu {
     }
 
     @Override
-    public String getComponentClass() {
-        return "Kalix.admin.user.view.User";
+    public String getRouteId() {
+        return "AdminApplication/User";
     }
 
     @Override

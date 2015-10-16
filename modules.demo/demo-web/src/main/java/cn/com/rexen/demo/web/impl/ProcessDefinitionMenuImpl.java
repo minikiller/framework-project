@@ -30,7 +30,7 @@ public class ProcessDefinitionMenuImpl implements IMenu {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "流程定义管理";
     }
 
@@ -45,7 +45,7 @@ public class ProcessDefinitionMenuImpl implements IMenu {
     }
 
     @Override
-    public String getComponentClass() {
+    public String getRouteId() {
         return "Kalix.workflow.view.ProcessDefinition";
     }
 

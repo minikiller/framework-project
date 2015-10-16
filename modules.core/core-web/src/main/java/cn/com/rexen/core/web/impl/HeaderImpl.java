@@ -12,7 +12,7 @@ public class HeaderImpl implements IHeader {
     }
 
     @Override
-    public String getTitle() {
+    public String getText() {
         return "Header";
     }
 
@@ -27,7 +27,7 @@ public class HeaderImpl implements IHeader {
     }
 
     @Override
-    public String getComponentClass() {
+    public String getRouteId() {
         return "Kalix.view.main.region.Top";
     }
 

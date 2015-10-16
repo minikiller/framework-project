@@ -5,11 +5,15 @@ package cn.com.rexen.core.api.web.model;
  */
 public class BaseWebPage {
     private String id;
-    private String title;
+    private String text;
     private String description;
     private String icon;
-    private String componentClass;
+    private String routeId;
     private int index;
+
+    private String iconCls = "right-icon x-fa fa-desktop";
+    private String view = "pages.BlankPage";
+
 
     public String getId() {
         return id;
@@ -19,12 +23,12 @@ public class BaseWebPage {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getText() {
+        return text;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getDescription() {
@@ -43,12 +47,12 @@ public class BaseWebPage {
         this.icon = icon;
     }
 
-    public String getComponentClass() {
-        return componentClass;
+    public String getRouteId() {
+        return routeId;
     }
 
-    public void setComponentClass(String componentClass) {
-        this.componentClass = componentClass;
+    public void setRouteId(String routeId) {
+        this.routeId = routeId;
     }
 
     public int getIndex() {
@@ -57,5 +61,21 @@ public class BaseWebPage {
 
     public void setIndex(int index) {
         this.index = index;
+    }
+
+    public String getIconCls() {
+        return iconCls;
+    }
+
+    public void setIconCls(String iconCls) {
+        this.iconCls = iconCls;
+    }
+
+    public String getView() {
+        return view;
+    }
+
+    public void setView(String view) {
+        this.view = view;
     }
 }
