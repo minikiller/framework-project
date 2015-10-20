@@ -10,7 +10,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>cn.com.rexen.kalix</groupId>
+    <groupId>cn.com.rexen.kalix.example</groupId>
     <artifactId>modules.example</artifactId>
 
     <name>Kalix :: Modules - Example</name>
