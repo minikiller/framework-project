@@ -22,7 +22,7 @@
     <modules>
         <module>app-api</module>
         <module>app-entities</module>
-        <module>app-persist-jpa</module>
+        <module>app-persist-openjpa</module>
         <module>app-core</module>
         <module>app-dto</module>
         <module>app-rest</module>
@@ -31,79 +31,68 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>cn.com.rexen.kalix.admin</groupId>
-                <artifactId>cn.com.rexen.kalix.admin.api</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
+                <groupId>cn.com.rexen.kalix.poms</groupId>
+                <artifactId>poms-dm</artifactId>
+                <version>${globle.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
-
-            <dependency>
-                <groupId>cn.com.rexen.core</groupId>
-                <artifactId>cn.com.rexen.core.api</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>cn.com.rexen.core</groupId>
-                <artifactId>cn.com.rexen.core.impl</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>cn.com.rexen.kalix.app</groupId>
-                <artifactId>cn.com.rexen.kalix.app.entities</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>cn.com.rexen.kalix.app</groupId>
-                <artifactId>cn.com.rexen.kalix.app.api</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>cn.com.rexen.kalix.app</groupId>
-                <artifactId>cn.com.rexen.kalix.app.dto</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>cn.com.rexen.kalix.app</groupId>
-                <artifactId>cn.com.rexen.kalix.app.rest</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
-            </dependency>
-
             <dependency>
                 <groupId>cn.com.rexen.kalix.admin</groupId>
-                <artifactId>cn.com.rexen.kalix.admin.entities</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
+                <artifactId>admin-api</artifactId>
+                <version>${globle.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>cn.com.rexen.kalix.core</groupId>
+                <artifactId>core-util</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.core</groupId>
+                <artifactId>core-api</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.core</groupId>
+                <artifactId>core-impl</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.app</groupId>
+                <artifactId>app-entities</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.app</groupId>
+                <artifactId>app-api</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.app</groupId>
+                <artifactId>app-dto</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.app</groupId>
+                <artifactId>app-rest</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.admin</groupId>
+                <artifactId>admin-entities</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
         <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.util</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <scope>provided</scope>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-util</artifactId>
         </dependency>
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-api</artifactId>
         </dependency>
     </dependencies>
     <build>

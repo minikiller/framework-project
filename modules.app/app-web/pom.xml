@@ -10,7 +10,7 @@
 
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cn.com.rexen.kalix.app.web</artifactId>
+    <artifactId>app-web</artifactId>
     <packaging>bundle</packaging>
     <name>System :: App - Web</name>
     <description>Kalix App Web</description>
@@ -18,32 +18,18 @@
     <properties>
         <bundle.symbolicName>cn.com.rexen.app.web</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     </properties>
 
 
     <dependencies>
-
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.enterprise</artifactId>
         </dependency>
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-api</artifactId>
         </dependency>
     </dependencies>
 

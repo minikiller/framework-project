@@ -10,13 +10,12 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cn.com.rexen.kalix.app.dto</artifactId>
+    <artifactId>app-dto</artifactId>
     <packaging>bundle</packaging>
     <name>System :: App - DTO</name>
     <description>System App DTO </description>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <bundle.symbolicName>cn.com.rexen.app.dto</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
     </properties>
@@ -25,11 +24,6 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-swagger</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-            <scope>provided</scope>
         </dependency>
 
     </dependencies>

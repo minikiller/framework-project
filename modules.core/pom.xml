@@ -33,6 +33,13 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>cn.com.rexen.kalix.poms</groupId>
+                <artifactId>poms-dm</artifactId>
+                <version>${globle.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>cn.com.rexen.kalix.core</groupId>
                 <artifactId>core-api</artifactId>
                 <version>${globle.version}</version>
@@ -46,19 +53,10 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
+            <groupId>cn.com.rexen.kalix.poms</groupId>
+            <artifactId>poms-dm</artifactId>
+            <version>${globle.version}</version>
+            <type>pom</type>
         </dependency>
     </dependencies>
-
 </project>

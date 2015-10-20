@@ -27,8 +27,8 @@
             <artifactId>core-util</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.com.rexen.kalix</groupId>
-            <artifactId>rest</artifactId>
+            <groupId>cn.com.rexen.kalix.poms</groupId>
+            <artifactId>poms-rest</artifactId>
             <type>pom</type>
             <version>${globle.version}</version>
         </dependency>

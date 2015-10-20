@@ -10,23 +10,16 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cn.com.rexen.kalix.admin.dto</artifactId>
+    <artifactId>admin-dto</artifactId>
     <packaging>bundle</packaging>
     <name>System :: Admin - DTO</name>
     <description>Admin DTO </description>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <bundle.symbolicName>cn.com.rexen.admin.dto</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
     </properties>
     <dependencies>
-
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
     <build>

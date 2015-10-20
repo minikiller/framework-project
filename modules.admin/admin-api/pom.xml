@@ -10,7 +10,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cn.com.rexen.kalix.admin.api</artifactId>
+    <artifactId>admin-api</artifactId>
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.admin.api</bundle.symbolicName>
@@ -33,46 +33,28 @@
         </dependency>
         -->
         <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
-        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.admin</groupId>
-            <artifactId>cn.com.rexen.kalix.admin.entities</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-            <scope>provided</scope>
+            <artifactId>admin-entities</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.admin</groupId>
-            <artifactId>cn.com.rexen.kalix.admin.rest</artifactId>
-            <scope>provided</scope>
+            <artifactId>admin-rest</artifactId>
         </dependency>
-
         <dependency>
             <groupId>cn.com.rexen.kalix.admin</groupId>
-            <artifactId>cn.com.rexen.kalix.admin.dto</artifactId>
-            <scope>provided</scope>
+            <artifactId>admin-dto</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.impl</artifactId>
-            <scope>provided</scope>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-impl</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.app</groupId>
-            <artifactId>cn.com.rexen.kalix.app.dto</artifactId>
-            <scope>provided</scope>
+            <artifactId>app-dto</artifactId>
         </dependency>
 
     </dependencies>

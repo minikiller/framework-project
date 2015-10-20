@@ -26,7 +26,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cn.com.rexen.kalix.admin.core</artifactId>
+    <artifactId>admin-core</artifactId>
     <packaging>bundle</packaging>
     <name>System :: Admin - Core</name>
     <description>System Admin Core Module</description>
@@ -39,52 +39,44 @@
     <dependencies>
         <dependency>
             <groupId>cn.com.rexen.kalix.admin</groupId>
-            <artifactId>cn.com.rexen.kalix.admin.api</artifactId>
+            <artifactId>admin-api</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.admin</groupId>
-            <artifactId>cn.com.rexen.kalix.admin.entities</artifactId>
+            <artifactId>admin-entities</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.admin</groupId>
-            <artifactId>cn.com.rexen.kalix.admin.rest</artifactId>
-            <scope>provided</scope>
+            <artifactId>admin-rest</artifactId>
+
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.admin</groupId>
-            <artifactId>cn.com.rexen.kalix.admin.dto</artifactId>
-            <scope>provided</scope>
+            <artifactId>admin-dto</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.impl</artifactId>
-            <scope>provided</scope>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-impl</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.app</groupId>
-            <artifactId>cn.com.rexen.kalix.app.dto</artifactId>
-            <scope>provided</scope>
+            <artifactId>app-dto</artifactId>
+
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.app</groupId>
-            <artifactId>cn.com.rexen.kalix.app.entities</artifactId>
-            <scope>provided</scope>
+            <artifactId>app-entities</artifactId>
+
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.app</groupId>
-            <artifactId>cn.com.rexen.kalix.app.api</artifactId>
-            <scope>provided</scope>
+            <artifactId>app-api</artifactId>
         </dependency>
 
         <!--<dependency>
             <groupId>org.apache.openjpa</groupId>
             <artifactId>openjpa</artifactId>
-            <scope>provided</scope>
+           
         </dependency>-->
 
         <dependency>
@@ -103,7 +95,6 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-shiro</artifactId>
             <version>2.15.2</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -155,7 +146,7 @@
             <groupId>org.apache.servicemix.specs</groupId>
             <artifactId>org.apache.servicemix.specs.jsr339-api-m10</artifactId>
             <version>2.2.0</version>
-            <scope>provided</scope>
+           
             <optional>true</optional>
         </dependency>-->
     </dependencies>
