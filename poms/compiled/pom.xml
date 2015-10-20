@@ -14,6 +14,16 @@
     <name>Kalix :: Bundle Instructions</name>
 
     <packaging>pom</packaging>
+    <modules>
+        <module>../../modules.core</module>
+        <module>../../modules.admin</module>
+        <module>../../modules.app</module>
+        <module>../../modules.audit</module>
+        <module>../../modules.middleware</module>
+        <module>../../modules.demo</module>
+        <!--<module>modules.notice</module>-->
+        <module>../../modules.example</module>
+    </modules>
     <dependencies>
 
         <!-- OSGi Arquillian test begin-->

@@ -3,39 +3,22 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
-        <relativePath>../pom.xml</relativePath>
-        <groupId>cn.com.rexen.platform</groupId>
+        <groupId>cn.com.rexen.kalix.core</groupId>
         <artifactId>modules.core</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>cn.com.rexen.core</groupId>
-    <artifactId>cn.com.rexen.core.api</artifactId>
-
-
+    <artifactId>core-api</artifactId>
+    <name>Kalix :: Core - API</name>
     <packaging>bundle</packaging>
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.core.api</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <name>Kalix :: Core - API</name>
-    <description>Core API</description>
-
     <dependencies>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -57,15 +40,14 @@
          </dependency>-->
 
         <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.util</artifactId>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-util</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-swagger-java</artifactId>
             <version>2.16.0</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -93,7 +75,7 @@
                                 <pathconvert property="enhance.files" refid="enhance.path.ref" pathsep=" "/>
                                 <java classname="org.apache.openjpa.enhance.PCEnhancer">
                                     <arg line="-p persistence.xml"/>
-                                    <arg line="${enhance.files}"/>
+                                    <!--<arg line="${enhance.files}"/>-->
                                     <classpath>
                                         <path refid="maven.dependency.classpath"/>
                                         <path refid="maven.compile.classpath"/>

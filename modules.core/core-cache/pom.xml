@@ -6,45 +6,31 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <relativePath>..</relativePath>
-        <groupId>cn.com.rexen.platform</groupId>
+        <groupId>cn.com.rexen.kalix.core</groupId>
         <artifactId>modules.core</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <!--need to change after copy-->
-    <groupId>cn.com.rexen.core</groupId>
-    <artifactId>cn.com.rexen.core.cache</artifactId>
+    <artifactId>core-cache</artifactId>
 
     <packaging>bundle</packaging>
     <!--need to change after copy-->
     <properties>
         <bundle.symbolicName>cn.com.rexen.core.impl.cache</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <name>Kalix :: Core - Cache</name>
     <description>Core Cache</description>
 
     <dependencies>
         <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-api</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.util</artifactId>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-util</artifactId>
         </dependency>
 
         <dependency>

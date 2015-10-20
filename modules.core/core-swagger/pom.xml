@@ -4,22 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
-        <relativePath>..</relativePath>
-        <groupId>cn.com.rexen.platform</groupId>
+        <groupId>cn.com.rexen.kalix.core</groupId>
         <artifactId>modules.core</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>cn.com.rexen.core</groupId>
-    <artifactId>cn.com.rexen.core.swagger</artifactId>
+    <artifactId>core-swagger</artifactId>
     <packaging>bundle</packaging>
 
     <name>Kalix :: Core - Swagger</name>
     <description>Core - Swagger</description>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <bundle.symbolicName>cn.com.rexen.core.swagger</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
     </properties>
@@ -51,8 +48,8 @@
         </dependency>
 
         <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.util</artifactId>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-util</artifactId>
         </dependency>
 
         <dependency>
@@ -73,51 +70,51 @@
             <groupId>org.ops4j.pax.web</groupId>
             <artifactId>pax-web-jetty-bundle</artifactId>
             <version>3.2.3</version>
-            <scope>provided</scope>
+
         </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-scala_2.10</artifactId>
             <version>2.6.1</version>
-            <scope>provided</scope>
+
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
             <artifactId>jackson-jaxrs-json-provider</artifactId>
             <version>2.6.2</version>
-            <scope>provided</scope>
+
         </dependency>
 
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-swagger-java</artifactId>
             <version>2.16.0</version>
-            <scope>provided</scope>
+
         </dependency>
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-core</artifactId>
             <version>1.5.3</version>
-            <scope>provided</scope>
+
         </dependency>
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-models</artifactId>
             <version>1.5.3</version>
-            <scope>provided</scope>
+
         </dependency>
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
             <version>1.5.3</version>
-            <scope>provided</scope>
+
         </dependency>
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-jaxrs</artifactId>
             <version>1.5.3</version>
-            <scope>provided</scope>
+
         </dependency>
 
     </dependencies>

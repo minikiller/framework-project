@@ -3,14 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <relativePath>..</relativePath>
-        <groupId>cn.com.rexen.platform</groupId>
+        <groupId>cn.com.rexen.kalix.core</groupId>
         <artifactId>modules.core</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>cn.com.rexen.core</groupId>
-    <artifactId>cn.com.rexen.core.datasource</artifactId>
+    <artifactId>core-datasource</artifactId>
     <packaging>bundle</packaging>
     <name>Kylix :: Core - DataSource</name>
     <description>Kylix Core DataSource</description>
@@ -38,7 +36,6 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <scope>provided</scope>
         </dependency>
 
     </dependencies>

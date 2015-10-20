@@ -2,37 +2,17 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <parent>
-        <groupId>cn.com.rexen.kalix.core</groupId>
-        <artifactId>modules.core</artifactId>
+        <artifactId>poms</artifactId>
+        <groupId>cn.com.rexen.kalix</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>core-rest</artifactId>
-    <packaging>bundle</packaging>
-
-    <name>Kalix :: Core - Rest</name>
-    <description>Core - Rest</description>
-
-    <properties>
-        <bundle.symbolicName>cn.com.rexen.core.rest</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
-    </properties>
+    <artifactId>rest</artifactId>
+    <packaging>pom</packaging>
 
     <dependencies>
         <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-util</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.kalix</groupId>
-            <artifactId>rest</artifactId>
-            <type>pom</type>
-            <version>${globle.version}</version>
-        </dependency>
-        <!--<dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-core</artifactId>
         </dependency>
@@ -41,12 +21,12 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-servlet</artifactId>
         </dependency>
-        &lt;!&ndash; swagger api &ndash;&gt;
+        <!-- swagger api -->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-swagger</artifactId>
         </dependency>
-        &lt;!&ndash; use for json binding &ndash;&gt;
+        <!-- use for json binding -->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-jackson</artifactId>
@@ -69,13 +49,6 @@
         <dependency>
             <groupId>org.ops4j.pax.web</groupId>
             <artifactId>pax-web-jetty-bundle</artifactId>
-        </dependency>-->
+        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
-
 </project>
