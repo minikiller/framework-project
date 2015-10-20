@@ -23,7 +23,7 @@
     <modules>
         <module>admin-entities</module>
         <module>admin-api</module>
-        <module>admin-persist-openjpa</module>
+        <module>admin-persist-jpa</module>
         <module>admin-core</module>
         <module>admin-rest</module>
         <module>admin-dto</module>

@@ -20,26 +20,18 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-impl</artifactId>
-        </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.servicemix.specs</groupId>
             <artifactId>org.apache.servicemix.specs.jsr303-api-1.0.0</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.1-api</artifactId>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>cn.com.rexen.kalix.core</groupId>
             <artifactId>core-jsonb</artifactId>

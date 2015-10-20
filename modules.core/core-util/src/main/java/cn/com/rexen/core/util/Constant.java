@@ -1,7 +1,6 @@
 package cn.com.rexen.core.util;
-
 /**
- * ³£Á¿.
+ * å¸¸é‡.
  *
  * @author libo <br/>
  *         date:2014-04-21
@@ -10,37 +9,37 @@ package cn.com.rexen.core.util;
 public final class Constant {
 
     /**
-     * ÏÂ»®Ïß "_".
+     * ä¸‹åˆ’çº¿ "_".
      */
     public static final String UNDERLINE = "_";
 
     /**
-     * µã. ".".
+     * ç‚¹. ".".
      */
     public static final String PERIOD = ".";
 
     /**
-     * ¿Õ¸ñ.
+     * ç©ºæ ¼.
      */
     public static final String SPACE = " ";
 
     /**
-     * ¶ººÅ. ",".
+     * é€—å·. ",".
      */
     public static final String COMMA = ",";
 
     /**
-     * ×óÀ¨ºÅ "(".
+     * å·¦æ‹¬å· "(".
      */
     public static final String LEFT_PARENTHESES = "(";
 
     /**
-     * ÓÒÀ¨ºÅ. ")".
+     * å³æ‹¬å·. ")".
      */
     public static final String RIGHT_PARENTHESES = ")";
 
     /**
-     * Ã°ºÅ ":".
+     * å†’å· ":".
      */
     public static final String COLON = ":";
 }

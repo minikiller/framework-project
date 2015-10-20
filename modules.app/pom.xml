@@ -22,7 +22,7 @@
     <modules>
         <module>app-api</module>
         <module>app-entities</module>
-        <module>app-persist-openjpa</module>
+        <module>app-persist-jpa</module>
         <module>app-core</module>
         <module>app-dto</module>
         <module>app-rest</module>

@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>tools-codegenerate</artifactId>
+    <artifactId>code-generate</artifactId>
     <name>Kalix :: Tools - CodeGenerate</name>
     <description>Tools CodeGenerate</description>
     <packaging>pom</packaging>

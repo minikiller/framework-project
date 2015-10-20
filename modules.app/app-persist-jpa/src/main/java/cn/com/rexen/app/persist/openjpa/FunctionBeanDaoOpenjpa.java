@@ -1,8 +1,6 @@
 package cn.com.rexen.app.persist.openjpa;
 
-import cn.com.rexen.app.api.dao.IApplicationBeanDao;
 import cn.com.rexen.app.api.dao.IFunctionBeanDao;
-import cn.com.rexen.app.entities.ApplicationBean;
 import cn.com.rexen.app.entities.FunctionBean;
 import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 

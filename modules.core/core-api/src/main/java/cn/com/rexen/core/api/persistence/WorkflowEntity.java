@@ -20,6 +20,8 @@
 
 package cn.com.rexen.core.api.persistence;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.MappedSuperclass;
 
 /**
@@ -31,7 +33,7 @@ import javax.persistence.MappedSuperclass;
  * @修改备注：
  */
 @MappedSuperclass
-
+@Access(AccessType.FIELD)
 public abstract class WorkflowEntity extends PersistentEntity {
     private String processInstanceId;//流程实例id
     private String currentNode;//当前环节

@@ -58,7 +58,7 @@
 
         <dependency>
             <groupId>cn.com.rexen.kalix.demo</groupId>
-            <artifactId>cn.com.rexen.kalix.demo.api</artifactId>
+            <artifactId>demo-api</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>

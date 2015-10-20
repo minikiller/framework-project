@@ -17,7 +17,7 @@
         <module>modules.app</module>
         <module>modules.audit</module>
         <module>modules.demo</module>
-        <module>modules.example</module>
+        <!--<module>modules.example</module>-->
         <module>modules.middleware</module>
         <!--<module>modules.notice</module>-->
         <module>modules.tools</module>
@@ -191,7 +191,7 @@
                         </Export-Package>
                         <!--<Private-Package>${bundle.namespace}.internal.*</Private-Package>-->
                         <!--| each module can override these defaults in their osgi.bnd file -->
-                        <!--<Import-Package>*</Import-Package>-->
+                        <Import-Package>*</Import-Package>
                         <_include>-osgi.bnd</_include>
                         <!--<Bundle-Activator>${bundle.namespace}.internal.ExampleActivator</Bundle-Activator>-->
                     </instructions>
@@ -220,6 +220,15 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>${maven-source-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -230,6 +239,40 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>${maven-antrun-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>deploy</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+
+                                <if>
+                                    <available file="target/${project.artifactId}-${project.version}.jar"/>
+                                    <then>
+                                        <copy file="target/${project.artifactId}-${project.version}.jar"
+                                              todir="${karaf.path}"/>
+                                    </then>
+
+                                    <else>
+                                        <echo>The file does not exist</echo>
+                                    </else>
+                                </if>
+                            </tasks>
+
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>ant-contrib</groupId>
+                        <artifactId>ant-contrib</artifactId>
+                        <version>20020829</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.servicemix.tooling</groupId>
@@ -246,11 +289,11 @@
                 <artifactId>build-helper-maven-plugin</artifactId>
                 <version>${build-helper-maven-plugin.version}</version>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.openjpa</groupId>
                 <artifactId>openjpa-maven-plugin</artifactId>
                 <version>${openjpa-maven-plugin.version}</version>
-            </plugin>
+            </plugin>-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>hibernate3-maven-plugin</artifactId>

@@ -4,9 +4,6 @@ import cn.com.rexen.app.api.dao.IApplicationBeanDao;
 import cn.com.rexen.app.entities.ApplicationBean;
 import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
-import javax.persistence.Query;
-import java.util.List;
-
 /**
  * 应用DAO接口
  * @author majian <br/>
