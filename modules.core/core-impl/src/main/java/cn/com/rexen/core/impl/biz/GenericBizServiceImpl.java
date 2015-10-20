@@ -7,12 +7,13 @@ import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.web.model.QueryDTO;
 import cn.com.rexen.core.util.Assert;
-import com.wordnik.swagger.annotations.ApiOperation;
-import com.wordnik.swagger.annotations.ApiParam;
 import org.apache.log4j.Logger;
 
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
+
+//import com.wordnik.swagger.annotations.ApiOperation;
+//import com.wordnik.swagger.annotations.ApiParam;
 
 /**
  * @类描述： 对外服务的抽象接口实现, 封装了基本的对数据库的操作
@@ -65,8 +66,8 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
     }
 
     @Override
-    @ApiOperation(value = "删除实体", httpMethod = "DELETE", response = JsonStatus.class, notes = "add user")
-    public JsonStatus deleteEntity(@ApiParam(required = true, name = "entityId", value = "信息json数据") long entityId) {
+//    @ApiOperation(value = "删除实体", httpMethod = "DELETE", response = JsonStatus.class, notes = "add user")
+    public JsonStatus deleteEntity(long entityId) {
         log.debug("remove entity of " + entityClassName + ";PK is " + entityId);
         JsonStatus jsonStatus = new JsonStatus();
         try {
@@ -171,8 +172,8 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
     }
 
     @Override
-    public JsonData getAllEntity(@ApiParam(required = true, name = "pageNumber", value = "用户信息json数据") int pageNumber,
-                                 @ApiParam(required = true, name = "pageSize", value = "用户信息json数据") int pageSize) {
+    public JsonData getAllEntity(int pageNumber,
+                                 int pageSize) {
         return dao.getAll(pageNumber, pageSize, entityClassName);
     }
 

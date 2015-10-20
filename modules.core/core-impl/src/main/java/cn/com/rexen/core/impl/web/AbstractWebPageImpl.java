@@ -19,6 +19,10 @@ public abstract class AbstractWebPageImpl implements IBaseWebPage {
         return routeId;
     }
 
+    public void setRouteId(String routeId) {
+        this.routeId = routeId;
+    }
+
     public void setComponentClass(String routeId) {
         this.routeId = routeId;
     }

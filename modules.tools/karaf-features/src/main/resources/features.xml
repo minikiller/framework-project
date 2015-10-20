@@ -32,7 +32,6 @@
 
     <feature name="postgresql-driver">
         <!--<feature>bonecp</feature>-->
-
         <bundle>mvn:org.postgresql/postgresql/${postgresql.version}</bundle>
     </feature>
 
@@ -279,14 +278,16 @@
         <feature>camel-jackson</feature>
         <feature>camel-servlet</feature>
         <feature>camel-dozer</feature>
-        <feature version="2.17.0">camel-swagger</feature>
+        <!--<feature version="2.17.0">camel-swagger</feature>-->
         <feature>camel-shiro</feature>
         <feature>shiro-core</feature>
         <feature>shiro-web</feature>
         <feature>jedis</feature>
+        <bundle>mvn:commons-codec/commons-codec/${commons-codec.version}</bundle>
         <bundle>mvn:com.google.code.gson/gson/${gson.version}</bundle>
         <bundle>mvn:com.google.guava/guava/15.0</bundle>
         <bundle>wrap:mvn:de.danielbechler/java-object-diff/0.92.1</bundle>
+        <bundle dependency="true">mvn:commons-lang/commons-lang/2.6</bundle>
         <!--<bundle>mvn:org.apache.commons/commons-lang3/3.1</bundle>
         <bundle>mvn:commons-lang/commons-lang/2.6</bundle>
         <bundle>mvn:commons-pool/commons-pool/1.6</bundle>
@@ -300,7 +301,7 @@
     </feature>
 
     <!--osgi:install -s 'wrap:mvn:org.jasig.cas.client/cas-client-core/3.2.1$Bundle-SymbolicName=cas-client-core&Bundle-Version=3.2.0'-->
-    <!-- feature:repo-add mvn:cn.com.rexen.tools/karaf-features/1.0.0-SNAPSHOT/xml/features-->
+    <!-- feature:repo-add mvn:cn.com.rexen.kalix/karaf-features/1.0.0-SNAPSHOT/xml/features-->
     <!-- feature:install -v kalix activiti-->
     <!-- feature:install -v activiti-->
     <!-- install -s mvn:org.postgresql/postgresql/9.4-1202-jdbc41-->

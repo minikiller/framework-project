@@ -48,7 +48,6 @@
         <dependency>
             <groupId>cn.com.rexen.kalix.admin</groupId>
             <artifactId>admin-rest</artifactId>
-
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.admin</groupId>
@@ -66,18 +65,11 @@
         <dependency>
             <groupId>cn.com.rexen.kalix.app</groupId>
             <artifactId>app-entities</artifactId>
-
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.app</groupId>
             <artifactId>app-api</artifactId>
         </dependency>
-
-        <!--<dependency>
-            <groupId>org.apache.openjpa</groupId>
-            <artifactId>openjpa</artifactId>
-           
-        </dependency>-->
 
         <dependency>
             <groupId>org.apache.shiro</groupId>
@@ -86,15 +78,6 @@
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-spring</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-shiro</artifactId>
-            <version>2.15.2</version>
         </dependency>
 
         <dependency>

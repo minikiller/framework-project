@@ -1,13 +1,13 @@
 package cn.com.rexen.core.api.biz;
 
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+//import io.swagger.annotations.ApiModel;
+//import io.swagger.annotations.ApiModelProperty;
 
 /**
  * Created by sunlf on 2015/7/3.
  */
-@ApiModel(description = "A dummy bean ...")
+//@ApiModel(description = "A dummy bean ...")
 public class JsonStatus {
     Boolean success = false;
     Boolean failure = false;
@@ -15,7 +15,7 @@ public class JsonStatus {
 
     private static JsonStatus jsonStatus = new JsonStatus();
 
-    @ApiModelProperty(value = "an identifier", required = true)
+    //    @ApiModelProperty(value = "an identifier", required = true)
     public Boolean getSuccess() {
         return success;
     }
@@ -24,7 +24,7 @@ public class JsonStatus {
         this.success = success;
     }
 
-    @ApiModelProperty(value = "an identifier", required = true)
+    //    @ApiModelProperty(value = "an identifier", required = true)
     public Boolean getFailure() {
         return failure;
     }
