@@ -12,7 +12,6 @@
 
     <!--need to change after copy-->
     <artifactId>core-jsonb</artifactId>
-
     <name>Kalix :: Core - JSONB</name>
     <description>Core JSONB</description>
     <packaging>bundle</packaging>
@@ -21,20 +20,14 @@
         <bundle.symbolicName>cn.com.rexen.core.jsonb</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
     </properties>
-
-
     <dependencies>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
-
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-jpamodelgen</artifactId>
-            <version>${hibernate.jpamodelgen.version}</version>
-
         </dependency>
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
@@ -44,7 +37,6 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>

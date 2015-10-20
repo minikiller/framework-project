@@ -10,55 +10,26 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cn.com.rexen.kalix.admin.rest</artifactId>
+    <artifactId>admin-rest</artifactId>
     <packaging>bundle</packaging>
     <name>System :: Admin - Rest</name>
     <description>Admin Rest Service</description>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <bundle.symbolicName>cn.com.rexen.admin.rest</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
     </properties>
     <dependencies>
-        <!-- camel -->
         <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-core</artifactId>
-        </dependency>
+            <groupId>cn.com.rexen.kalix.poms</groupId>
+            <artifactId>poms-rest</artifactId>
 
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-servlet</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-metrics</artifactId>
-        </dependency>
-
-        <!-- swagger api -->
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-swagger</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-            <scope>provided</scope>
+            <type>pom</type>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.admin</groupId>
-            <artifactId>cn.com.rexen.kalix.admin.dto</artifactId>
-            <scope>provided</scope>
+            <artifactId>admin-dto</artifactId>
         </dependency>
-
-        <!-- use for json binding -->
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-jackson</artifactId>
-        </dependency>
-
-
     </dependencies>
 
     <build>

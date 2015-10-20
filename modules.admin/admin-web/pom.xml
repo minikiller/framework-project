@@ -11,7 +11,7 @@
 
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cn.com.rexen.kalix.admin.web</artifactId>
+    <artifactId>admin-web</artifactId>
     <packaging>bundle</packaging>
     <name>System :: Admin - Web</name>
     <description>Kalix Admin Web</description>
@@ -19,33 +19,16 @@
     <properties>
         <bundle.symbolicName>cn.com.rexen.admin.web</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     </properties>
 
 
     <dependencies>
-
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.enterprise</artifactId>
         </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-        </dependency>
+
     </dependencies>
 
     <build>

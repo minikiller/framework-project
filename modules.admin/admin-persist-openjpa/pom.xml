@@ -27,44 +27,28 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cn.com.rexen.kalix.admin.persist.openjpa</artifactId>
+    <artifactId>admin-persist-openjpa</artifactId>
     <packaging>bundle</packaging>
     <name>System :: Admin - Persist JPA Container Managed</name>
     <description>System Admin Persist JPA Container Managed Module</description>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <bundle.symbolicName>cn.com.rexen.admin.persist.openjpa</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
-
     </properties>
 
     <dependencies>
-
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>cn.com.rexen.kalix.admin</groupId>
-            <artifactId>cn.com.rexen.kalix.admin.api</artifactId>
+            <artifactId>admin-api</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.admin</groupId>
-            <artifactId>cn.com.rexen.kalix.admin.entities</artifactId>
+            <artifactId>admin-entities</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.impl</artifactId>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-impl</artifactId>
         </dependency>
         <!--<dependency>
             <groupId>org.apache.geronimo.specs</groupId>
@@ -83,12 +67,6 @@
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.1-api</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-        </dependency>
-
     </dependencies>
 
     <build>
