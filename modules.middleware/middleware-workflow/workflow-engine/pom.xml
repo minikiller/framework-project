@@ -6,34 +6,23 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.com.rexen.workflow</groupId>
+        <groupId>cn.com.rexen.kalix.middleware</groupId>
         <artifactId>modules.workflow</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <!--need to change after copy-->
-    <artifactId>cn.com.rexen.workflow.engine</artifactId>
-
+    <artifactId>workflow-engine</artifactId>
+    <name>Middleware :: Workflow - Engine</name>
+    <description>Middleware Workflow Engine</description>
     <packaging>bundle</packaging>
-    <!--need to change after copy-->
+
     <properties>
         <bundle.symbolicName>cn.com.rexen.workflow.engine</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <name>Middleware :: Workflow - Engine</name>
-    <description>Middleware Workflow Engine</description>
 
     <dependencies>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.activiti</groupId>
             <artifactId>activiti-engine</artifactId>

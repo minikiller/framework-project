@@ -5,53 +5,34 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.com.rexen.couchdb</groupId>
+        <groupId>cn.com.rexen.kalix.middleware</groupId>
         <artifactId>modules.couchdb</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <!--need to change after copy-->
-    <artifactId>cn.com.rexen.couchdb.core</artifactId>
+    <artifactId>couchdb-core</artifactId>
     <name>Middleware :: Couchdb - Core</name>
     <description>Middleware Couchdb</description>
     <packaging>bundle</packaging>
-    <!--need to change after copy-->
+
     <properties>
         <bundle.symbolicName>cn.com.rexen.couchdb.core</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-
     <dependencies>
 
         <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
+            <groupId>cn.com.rexen.kalix.middleware</groupId>
+            <artifactId>couchdb-api</artifactId>
+            <version>${globle.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.impl</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.util</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.com.rexen.couchdb</groupId>
-            <artifactId>cn.com.rexen.couchdb.api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.com.rexen.couchdb</groupId>
-            <artifactId>cn.com.rexen.couchdb.entities</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <scope>provided</scope>
+            <groupId>cn.com.rexen.kalix.middleware</groupId>
+            <artifactId>couchdb-entities</artifactId>
+            <version>${globle.version}</version>
         </dependency>
 
         <dependency>

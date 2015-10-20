@@ -2,6 +2,7 @@
 <!--suppress ALL -->
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>cn.com.rexen.kalix</groupId>
@@ -9,12 +10,9 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <modelVersion>4.0.0</modelVersion>
     <groupId>cn.com.rexen.kalix.audit</groupId>
     <artifactId>modules.audit</artifactId>
-
     <name>Kalix :: Modules - Audit</name>
-
     <packaging>pom</packaging>
 
     <properties>
@@ -33,39 +31,38 @@
         <dependencies>
             <dependency>
                 <groupId>cn.com.rexen.kalix.audit</groupId>
-                <artifactId>cn.com.rexen.kalix.audit.core</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
+                <artifactId>audit-core</artifactId>
+                <version>${globle.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.com.rexen.kalix.audit</groupId>
-                <artifactId>cn.com.rexen.kalix.audit.api</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
+                <artifactId>audit-api</artifactId>
+                <version>${globle.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.com.rexen.kalix.audit</groupId>
-                <artifactId>cn.com.rexen.kalix.audit.entities</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
+                <artifactId>audit-entities</artifactId>
+                <version>${globle.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.com.rexen.kalix.audit</groupId>
-                <artifactId>cn.com.rexen.kalix.audit.persist.openjpa</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
+                <artifactId>audit-persist</artifactId>
+                <version>${globle.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.com.rexen.core</groupId>
-                <artifactId>cn.com.rexen.core.api</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
+                <groupId>cn.com.rexen.kalix.core</groupId>
+                <artifactId>core-api</artifactId>
+                <version>${globle.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.com.rexen.core</groupId>
-                <artifactId>cn.com.rexen.core.impl</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
+                <groupId>cn.com.rexen.kalix.core</groupId>
+                <artifactId>core-impl</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.core</groupId>
+                <artifactId>core-util</artifactId>
+                <version>${globle.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -82,14 +79,17 @@
         </dependency>
 
         <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.util</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <scope>provided</scope>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-util</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.impl</artifactId>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-impl</artifactId>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>

@@ -10,7 +10,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cn.com.rexen.kalix.audit.core</artifactId>
+    <artifactId>audit-core</artifactId>
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.audit.core</bundle.symbolicName>
@@ -24,43 +24,21 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.impl</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.apache.servicemix.specs</groupId>
             <artifactId>org.apache.servicemix.specs.jsr339-api-m10</artifactId>
         </dependency>
 
         <dependency>
             <groupId>cn.com.rexen.kalix.audit</groupId>
-            <artifactId>cn.com.rexen.kalix.audit.api</artifactId>
+            <artifactId>audit-api</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.audit</groupId>
-            <artifactId>cn.com.rexen.kalix.audit.entities</artifactId>
+            <artifactId>audit-entities</artifactId>
         </dependency>
         <dependency>
             <groupId>org.activiti</groupId>
             <artifactId>activiti-engine</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.openjpa</groupId>
-            <artifactId>openjpa</artifactId>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>

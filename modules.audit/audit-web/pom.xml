@@ -2,6 +2,7 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>cn.com.rexen.kalix.audit</groupId>
@@ -9,14 +10,12 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>cn.com.rexen.kalix.audit.web</artifactId>
+    <artifactId>audit-web</artifactId>
     <packaging>bundle</packaging>
     <name>Kalix :: Audit - Web</name>
     <description>Audit Web Service</description>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <bundle.symbolicName>cn.com.rexen.audit.web</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
     </properties>
@@ -42,12 +41,6 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-swagger</artifactId>
         </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
 
         <!-- use for json binding -->
         <dependency>
@@ -56,17 +49,15 @@
         </dependency>
 
         <dependency>
-            <groupId>cn.com.rexen.workflow</groupId>
-            <artifactId>cn.com.rexen.workflow.api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <groupId>cn.com.rexen.kalix.middleware</groupId>
+            <artifactId>workflow-api</artifactId>
+            <version>${globle.version}</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>cn.com.rexen.kalix.audit</groupId>
-            <artifactId>cn.com.rexen.kalix.audit.api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <scope>provided</scope>
+            <artifactId>audit-api</artifactId>
         </dependency>
     </dependencies>
 

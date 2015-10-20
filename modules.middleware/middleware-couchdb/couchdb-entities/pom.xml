@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <relativePath>..</relativePath>
-        <groupId>cn.com.rexen.couchdb</groupId>
+        <!--<relativePath>..</relativePath>-->
+        <groupId>cn.com.rexen.kalix.middleware</groupId>
         <artifactId>modules.couchdb</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cn.com.rexen.couchdb.entities</artifactId>
+    <artifactId>couchdb-entities</artifactId>
     <packaging>bundle</packaging>
     <name>Middleware :: Couchdb - Entities</name>
     <description>Couchdb Entities Module</description>
@@ -21,14 +21,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.impl</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.apache.servicemix.specs</groupId>
             <artifactId>org.apache.servicemix.specs.jsr303-api-1.0.0</artifactId>

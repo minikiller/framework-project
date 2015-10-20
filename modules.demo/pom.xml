@@ -34,39 +34,38 @@
         <dependencies>
             <dependency>
                 <groupId>cn.com.rexen.kalix.demo</groupId>
-                <artifactId>cn.com.rexen.kalix.demo.core</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
+                <artifactId>demo-core</artifactId>
+                <version>${globle.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.com.rexen.kalix.demo</groupId>
-                <artifactId>cn.com.rexen.kalix.demo.api</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
+                <artifactId>demo-api</artifactId>
+                <version>${globle.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.com.rexen.kalix.demo</groupId>
-                <artifactId>cn.com.rexen.kalix.demo.entities</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
+                <artifactId>demo-entities</artifactId>
+                <version>${globle.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.com.rexen.kalix.demo</groupId>
-                <artifactId>cn.com.rexen.kalix.demo.persist.openjpa</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
+                <artifactId>demo-persist</artifactId>
+                <version>${globle.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.com.rexen.core</groupId>
-                <artifactId>cn.com.rexen.core.api</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
+                <groupId>cn.com.rexen.kalix.core</groupId>
+                <artifactId>core-api</artifactId>
+                <version>${globle.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.com.rexen.core</groupId>
-                <artifactId>cn.com.rexen.core.impl</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>provided</scope>
+                <groupId>cn.com.rexen.kalix.core</groupId>
+                <artifactId>core-impl</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.core</groupId>
+                <artifactId>core-util</artifactId>
+                <version>${globle.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -81,12 +80,17 @@
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.compendium</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.util</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <scope>provided</scope>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-util</artifactId>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>

@@ -2,14 +2,13 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
-        <groupId>cn.com.rexen.couchdb</groupId>
+        <groupId>cn.com.rexen.kalix.middleware</groupId>
         <artifactId>modules.couchdb</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cn.com.rexen.couchdb.persist.openjpa</artifactId>
+    <artifactId>couchdb-persist</artifactId>
     <packaging>bundle</packaging>
     <name>Middleware :: Couchdb - Persist JPA Container Managed</name>
     <description>Urgent Couchdb Persist JPA Container Managed Module</description>
@@ -23,26 +22,15 @@
     <dependencies>
 
         <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.impl</artifactId>
+            <groupId>cn.com.rexen.kalix.middleware</groupId>
+            <artifactId>couchdb-api</artifactId>
+            <version>${globle.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>cn.com.rexen.couchdb</groupId>
-            <artifactId>cn.com.rexen.couchdb.api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.com.rexen.couchdb</groupId>
-            <artifactId>cn.com.rexen.couchdb.entities</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <scope>provided</scope>
+            <groupId>cn.com.rexen.kalix.middleware</groupId>
+            <artifactId>couchdb-entities</artifactId>
+            <version>${globle.version}</version>
         </dependency>
 
     </dependencies>

@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <relativePath>..</relativePath>
-        <groupId>cn.com.rexen.couchdb</groupId>
+        <!--<relativePath>..</relativePath>-->
+        <groupId>cn.com.rexen.kalix.middleware</groupId>
         <artifactId>modules.couchdb</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cn.com.rexen.couchdb.api</artifactId>
+    <artifactId>couchdb-api</artifactId>
     <name>Middleware :: Couchdb - API</name>
     <description>Couchdb API</description>
     <packaging>bundle</packaging>
@@ -19,30 +19,11 @@
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
     </properties>
 
-
-
     <dependencies>
         <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.impl</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.com.rexen.couchdb</groupId>
-            <artifactId>cn.com.rexen.couchdb.entities</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <groupId>cn.com.rexen.kalix.middleware</groupId>
+            <artifactId>couchdb-entities</artifactId>
+            <version>${globle.version}</version>
             <scope>provided</scope>
         </dependency>
 

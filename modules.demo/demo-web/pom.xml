@@ -10,7 +10,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cn.com.rexen.kalix.demo.web</artifactId>
+    <artifactId>demo-web</artifactId>
     <packaging>bundle</packaging>
     <name>Kalix :: Demo - Web</name>
     <description>Demo Web Service</description>
@@ -42,12 +42,6 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-swagger</artifactId>
         </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
 
         <!-- use for json binding -->
         <dependency>
@@ -56,9 +50,9 @@
         </dependency>
 
         <dependency>
-            <groupId>cn.com.rexen.workflow</groupId>
-            <artifactId>cn.com.rexen.workflow.api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <groupId>cn.com.rexen.kalix.middleware</groupId>
+            <artifactId>workflow-api</artifactId>
+            <version>${globle.version}</version>
             <scope>provided</scope>
         </dependency>
 

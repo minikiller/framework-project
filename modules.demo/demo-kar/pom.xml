@@ -10,7 +10,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cn.com.rexen.kalix.demo.kar</artifactId>
+    <artifactId>demo-kar</artifactId>
     <packaging>kar</packaging>
     <name>Kalix :: Demo - Kar</name>
     <description>Kalix Demo Kar</description>

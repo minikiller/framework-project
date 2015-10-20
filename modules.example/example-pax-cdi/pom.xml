@@ -4,27 +4,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>cn.com.rexen.platform</groupId>
+        <groupId>cn.com.rexen.kalix</groupId>
         <artifactId>modules.example</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
 
-    <artifactId>cn.com.rexen.kalix.example.pax-cdi</artifactId>
+    <artifactId>example-pax-cdi</artifactId>
+    <name>Kalix :: Example - Pax CDI</name>
+    <description>Example Pax CDI</description>
+    <packaging>bundle</packaging>
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.example.pax.cdi</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
     </properties>
 
-    <name>Kalix :: Example - Pax CDI</name>
-    <description>Example Pax CDI</description>
-
-    <packaging>bundle</packaging>
-
     <dependencies>
-
-
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.core</artifactId>

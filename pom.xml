@@ -7,20 +7,21 @@
     <groupId>cn.com.rexen.kalix</groupId>
     <artifactId>kalix-project</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <modules>
-        <module>poms</module>
-        <!--<module>modules.admin</module>-->
-        <!--<module>modules.admin</module>-->
-        <!--<module>modules.audit</module>-->
-        <module>modules.core</module>
-        <!--<module>modules.demo</module>-->
-        <!--<module>modules.example</module>-->
-        <!--<module>modules.middleware</module>-->
-        <!--&lt;!&ndash;<module>modules.notice</module>&ndash;&gt;-->
-        <!--<module>modules.tools</module>-->
-    </modules>
     <packaging>pom</packaging>
     <description>Parent of Project</description>
+
+    <modules>
+        <module>modules.poms</module>
+        <!--<module>modules.admin</module>-->
+        <!--<module>modules.app</module>-->
+        <module>modules.audit</module>
+        <module>modules.core</module>
+        <module>modules.demo</module>
+        <module>modules.example</module>
+        <module>modules.middleware</module>
+        <!--<module>modules.notice</module>-->
+        <module>modules.tools</module>
+    </modules>
 
     <organization>
         <name>ReXen Tech Company</name>
@@ -712,6 +713,16 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <debug>true</debug>
+                    <optimize>true</optimize>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
+                    <!--<verbose>true</verbose>-->
+                    <encoding>UTF-8</encoding>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

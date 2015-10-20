@@ -10,7 +10,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cn.com.rexen.kalix.demo.rest</artifactId>
+    <artifactId>demo-rest</artifactId>
     <packaging>bundle</packaging>
     <name>Kalix :: Demo - Rest</name>
     <description>Demo Rest Service</description>
@@ -41,12 +41,6 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-swagger</artifactId>
         </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- use for json binding -->
         <dependency>
             <groupId>org.apache.camel</groupId>

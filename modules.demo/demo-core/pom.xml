@@ -9,7 +9,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cn.com.rexen.kalix.demo.core</artifactId>
+    <artifactId>demo-core</artifactId>
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.demo.core</bundle.symbolicName>
@@ -31,12 +31,12 @@
             <artifactId>org.osgi.compendium</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.impl</artifactId>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-impl</artifactId>
         </dependency>
 
         <dependency>
@@ -46,26 +46,24 @@
 
         <dependency>
             <groupId>cn.com.rexen.kalix.demo</groupId>
-            <artifactId>cn.com.rexen.kalix.demo.api</artifactId>
+            <artifactId>demo-api</artifactId>
         </dependency>
 
         <dependency>
             <groupId>cn.com.rexen.kalix.audit</groupId>
-            <artifactId>cn.com.rexen.kalix.audit.api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <scope>provided</scope>
+            <artifactId>audit-api</artifactId>
+            <version>${globle.version}</version>
         </dependency>
 
         <dependency>
             <groupId>cn.com.rexen.kalix.audit</groupId>
-            <artifactId>cn.com.rexen.kalix.audit.core</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <scope>provided</scope>
+            <artifactId>audit-core</artifactId>
+            <version>${globle.version}</version>
         </dependency>
 
         <dependency>
             <groupId>cn.com.rexen.kalix.demo</groupId>
-            <artifactId>cn.com.rexen.kalix.demo.entities</artifactId>
+            <artifactId>demo-entities</artifactId>
         </dependency>
         <dependency>
             <groupId>org.activiti</groupId>

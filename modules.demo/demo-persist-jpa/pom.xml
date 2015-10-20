@@ -8,7 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cn.com.rexen.kalix.demo.persist.openjpa</artifactId>
+    <artifactId>demo-persist</artifactId>
     <packaging>bundle</packaging>
     <name>Kalix :: Demo - JPA</name>
     <description>Demo JPA</description>
@@ -22,25 +22,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.core</groupId>
-            <artifactId>cn.com.rexen.core.impl</artifactId>
-        </dependency>
-        <!--<dependency>
-            <groupId>org.apache.openjpa</groupId>
-            <artifactId>openjpa</artifactId>
-        </dependency>-->
-
-        <dependency>
             <groupId>cn.com.rexen.kalix.demo</groupId>
-            <artifactId>cn.com.rexen.kalix.demo.entities</artifactId>
+            <artifactId>demo-entities</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.demo</groupId>
-            <artifactId>cn.com.rexen.kalix.demo.api</artifactId>
+            <artifactId>demo-api</artifactId>
         </dependency>
     </dependencies>
 

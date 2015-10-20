@@ -7,15 +7,15 @@
         <artifactId>kalix-project</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+
     <artifactId>modules.middleware</artifactId>
-
     <name>Kalix :: Modules - 中间件</name>
-
     <packaging>pom</packaging>
 
     <properties>
 
     </properties>
+
     <modules>
         <module>middleware-couchdb</module>
         <module>middleware-workflow</module>
@@ -23,24 +23,19 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>cn.com.rexen.core</groupId>
-                <artifactId>cn.com.rexen.core.api</artifactId>
-                <version>${project.version}</version>
-                <scope>provided</scope>
+                <groupId>cn.com.rexen.kalix.core</groupId>
+                <artifactId>core-api</artifactId>
+                <version>${globle.version}</version>
             </dependency>
-
             <dependency>
-                <groupId>cn.com.rexen.core</groupId>
-                <artifactId>cn.com.rexen.core.impl</artifactId>
-                <version>${project.version}</version>
-                <scope>provided</scope>
+                <groupId>cn.com.rexen.kalix.core</groupId>
+                <artifactId>core-impl</artifactId>
+                <version>${globle.version}</version>
             </dependency>
-
             <dependency>
-                <groupId>cn.com.rexen.core</groupId>
-                <artifactId>cn.com.rexen.core.util</artifactId>
-                <version>${project.version}</version>
-                <scope>provided</scope>
+                <groupId>cn.com.rexen.kalix.core</groupId>
+                <artifactId>core-util</artifactId>
+                <version>${globle.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
