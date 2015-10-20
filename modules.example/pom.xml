@@ -29,7 +29,15 @@
         <module>example-couchdb</module>
     </modules>
     <dependencyManagement>
+
         <dependencies>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.poms</groupId>
+                <artifactId>poms-dm</artifactId>
+                <version>${globle.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>cn.com.rexen.core</groupId>
                 <artifactId>cn.com.rexen.core.api</artifactId>
