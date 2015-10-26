@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>poms-rest</artifactId>
     <packaging>pom</packaging>
-
+    <name>Kalix :: Rest Dependency</name>
     <dependencyManagement>
         <dependencies>
             <dependency>
