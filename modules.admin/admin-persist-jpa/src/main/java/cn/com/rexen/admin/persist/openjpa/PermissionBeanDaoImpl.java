@@ -2,7 +2,6 @@ package cn.com.rexen.admin.persist.openjpa;
 
 import cn.com.rexen.admin.api.dao.IPermissionBeanDao;
 import cn.com.rexen.admin.entities.PermissionBean;
-import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 import java.util.List;
 
@@ -15,7 +14,7 @@ import java.util.List;
  * @修改备注：
  */
 
-public class PermissionBeanDaoOpenjpa extends GenericOpenJpaDao<PermissionBean, Long> implements IPermissionBeanDao {
+public class PermissionBeanDaoImpl extends BaseAdminDao<PermissionBean, Long> implements IPermissionBeanDao {
     @Override
     public PermissionBean getRootPermission() {
         PermissionBean permissionBean = this.findUnique("select u from PermissionBean u where u.parent is null");

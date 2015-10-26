@@ -18,7 +18,7 @@
     <service id="couchdbService" interface="cn.com.rexen.couchdb.api.biz.ICouchdbService" ref="couchdbServiceImpl">
     </service>
 
-    <bean id="couchdbServiceImpl" class="cn.com.rexen.couchdb.core.biz.CouchdbServiceImpl" init-method="init">
+    <bean id="couchdbServiceImpl" class="cn.com.rexen.couchdb.core.biz.CouchdbServiceImpl">
     </bean>
 
 </blueprint>

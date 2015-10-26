@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!-- default-activation="lazy" -->
-<blueprint
-        xmlns:jpa="http://aries.apache.org/xmlns/jpa/v1.0.0"
-        xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.0.0"
-        xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+<blueprint xmlns:jpa="http://aries.apache.org/xmlns/jpa/v2.0.0"
+           xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.2.0"
+           default-activation="eager"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+    <jpa:enable/>
+    <tx:enable-annotations/>
 
-    <service interface="cn.com.rexen.demo.api.dao.INoticeBeanDao">
-        <bean class="cn.com.rexen.demo.persist.openjpa.NoticeBeanDaoOpenjpa"> <!--init-method="init">-->
-            <jpa:context property="entityManager" unitname="demo-cm"/>
-            <tx:transaction method="*" value="Required"/>
-        </bean>
-    </service>
+    <service interface="cn.com.rexen.demo.api.dao.INoticeBeanDao" ref="noticeBeanDaoImpl"/>
+
+    <bean id="noticeBeanDaoImpl" class="cn.com.rexen.demo.persist.openjpa.NoticeBeanDaoImpl">
+        <tx:transaction method="*" value="Required"/>
+    </bean>
 </blueprint>
 

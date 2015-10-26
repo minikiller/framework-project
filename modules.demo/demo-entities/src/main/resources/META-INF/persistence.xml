@@ -1,31 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="
-        http://java.sun.com/xml/ns/persistence
-        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
-        xmlns="http://java.sun.com/xml/ns/persistence"
-        version="2.0">
+<persistence version="2.1"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="
+        http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd
+    ">
 
     <persistence-unit transaction-type="JTA" name="demo-cm">
-        <!--<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>-->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=${db.datasource})
-        </non-jta-data-source>
+        <jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=${db.datasource})
+        </jta-data-source>
 
         <class>cn.com.rexen.core.api.persistence.WorkflowEntity</class>
-        <!--<class>cn.com.rexen.core.api.persistence.PersistentEntity</class>-->
         <class>cn.com.rexen.demo.entities.NoticeBean</class>
 
         <properties>
-            <!--<property name="openjpa.BrokerImpl" value="non-finalizing"/>
-            <property name="openjpa.Sequence" value="table(Table=OPENJPASEQ, Increment=100)"/>
-            <property name="openjpa.jdbc.UpdateManager"
-                      value="org.apache.openjpa.jdbc.kernel.BatchingConstraintUpdateManager"/>
-            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema"/>
-            <property name="openjpa.jdbc.DBDictionary" value="${db.name}"/>
-            <property name="openjpa.Log" value="SQL=Trace"/>
-            <property name="openjpa.ConnectionFactoryProperties" value="PrintParameters=true"/>-->
             <property name="hibernate.dialect"
                       value="cn.com.rexen.core.jsonb.hibernate.dialect.JSONBPostgreSQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>

@@ -9,7 +9,6 @@ import cn.com.rexen.core.api.web.model.QueryDTO;
 import cn.com.rexen.core.util.Assert;
 import org.apache.log4j.Logger;
 
-import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 //import com.wordnik.swagger.annotations.ApiOperation;
@@ -161,14 +160,9 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
     }
 
     @Override
-    public CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO) {
-        return null;
-    }
-
-    @Override
     public JsonData getAllEntityByQuery(QueryDTO queryDTO) {
         Assert.notNull(queryDTO,"查询条件不能为空.");
-        return dao.getAll(queryDTO.getPage(),queryDTO.getLimit(),entityClassName,buildCriteriaQuery(queryDTO));
+        return dao.getAll(queryDTO.getPage(), queryDTO.getLimit(), entityClassName, dao.buildCriteriaQuery(queryDTO));
     }
 
     @Override

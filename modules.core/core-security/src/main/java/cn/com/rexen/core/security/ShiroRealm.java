@@ -15,6 +15,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -67,6 +68,7 @@ public class ShiroRealm extends AuthorizingRealm implements IAuthorizingRealm {
      * 认证回调函数, 登录时调用
      */
     @Override
+    @Transactional
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authToken)
             throws AuthenticationException {
         try {

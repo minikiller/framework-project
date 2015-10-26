@@ -2,7 +2,6 @@ package cn.com.rexen.admin.persist.openjpa;
 
 import cn.com.rexen.admin.api.dao.IOfficeBeanDao;
 import cn.com.rexen.admin.entities.OfficeBean;
-import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 /**
  * @类描述：机构Dao实现类
@@ -13,5 +12,5 @@ import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
  * @修改备注：
  */
 
-public class OfficeBeanDaoOpenjpa extends GenericOpenJpaDao<OfficeBean, Long> implements IOfficeBeanDao {
+public class OfficeBeanDaoImpl extends BaseAdminDao<OfficeBean, Long> implements IOfficeBeanDao {
 }

@@ -5,7 +5,6 @@ import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.web.model.QueryDTO;
 
-import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 /**
@@ -129,13 +128,6 @@ public interface IBizService<T extends PersistentEntity> extends IService {
     void doUpdate(T entity, JsonStatus jsonStatus);
 
     Object saveEntityAndReturn(PersistentEntity entity);
-
-    /**
-     * 构造查询对象
-     * @param queryDTO
-     * @return
-     */
-    CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO);
 
     /**
      * 按条件查询

@@ -3,7 +3,6 @@ package cn.com.rexen.admin.persist.openjpa;
 import cn.com.rexen.admin.api.dao.IRoleBeanDao;
 import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.UserBean;
-import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 import javax.persistence.Query;
 import java.util.List;
@@ -17,7 +16,7 @@ import java.util.List;
  * @修改备注：
  */
 
-public class RoleBeanDaoOpenjpa extends GenericOpenJpaDao<RoleBean, Long> implements IRoleBeanDao {
+public class RoleBeanDaoImpl extends BaseAdminDao<RoleBean, Long> implements IRoleBeanDao {
     private final String className = RoleBean.class.getName();
     @Override
     public List<String> getRoleNameList() {

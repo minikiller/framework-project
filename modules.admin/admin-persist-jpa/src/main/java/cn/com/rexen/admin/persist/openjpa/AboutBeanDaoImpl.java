@@ -2,7 +2,6 @@ package cn.com.rexen.admin.persist.openjpa;
 
 import cn.com.rexen.admin.api.dao.IAboutBeanDao;
 import cn.com.rexen.admin.entities.AboutBean;
-import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 /**
  * 项目名称:  urgent-project
@@ -13,5 +12,5 @@ import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
  * 修改时间:  2014/8/7 15:57
  * 修改备注:  [说明本次修改内容]
  */
-public class AboutBeanDaoOpenjpa extends GenericOpenJpaDao<AboutBean, Long> implements IAboutBeanDao {
+public class AboutBeanDaoImpl extends BaseAdminDao<AboutBean, Long> implements IAboutBeanDao {
 }

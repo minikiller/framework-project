@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!-- default-activation="lazy" -->
-<blueprint xmlns:jpa="http://aries.apache.org/xmlns/jpa/v1.1.0"
-           xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.0.0"
+<blueprint xmlns:jpa="http://aries.apache.org/xmlns/jpa/v2.0.0"
+           xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.2.0"
            default-activation="eager"
            xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
-
+    <jpa:enable/>
+    <tx:enable-annotations/>
 
     <!--应用dao-->
-    <service id="applicationBeanDao" interface="cn.com.rexen.app.api.dao.IApplicationBeanDao">
-        <bean class="cn.com.rexen.app.persist.openjpa.ApplicationBeanDaoOpenjpa"> <!--init-method="init">-->
-            <jpa:context property="entityManager" unitname="app-cm"/>
-            <tx:transaction method="*" value="Required"/>
-            <!--<property name="persistEntityService" ref="persistEntityService" />-->
-        </bean>
-    </service>
+    <service id="applicationBeanDao" interface="cn.com.rexen.app.api.dao.IApplicationBeanDao"
+             ref="applicationBeanDaoImpl"/>
+
+    <bean id="applicationBeanDaoImpl" class="cn.com.rexen.app.persist.openjpa.ApplicationBeanDaoImpl">
+        <tx:transaction method="*" value="Required"/>
+    </bean>
+
 
     <!--功能dao-->
-    <service id="functionBeanDao" interface="cn.com.rexen.app.api.dao.IFunctionBeanDao">
-        <bean class="cn.com.rexen.app.persist.openjpa.FunctionBeanDaoOpenjpa"> <!--init-method="init">-->
-            <jpa:context property="entityManager" unitname="app-cm"/>
-            <tx:transaction method="*" value="Required"/>
-            <!--<property name="persistEntityService" ref="persistEntityService" />-->
-        </bean>
-    </service>
+    <service id="functionBeanDao" interface="cn.com.rexen.app.api.dao.IFunctionBeanDao" ref="functionBeanDaoImpl"/>
+
+    <bean id="functionBeanDaoImpl" class="cn.com.rexen.app.persist.openjpa.FunctionBeanDaoImpl">
+        <tx:transaction method="*" value="Required"/>
+    </bean>
 
 </blueprint>
 

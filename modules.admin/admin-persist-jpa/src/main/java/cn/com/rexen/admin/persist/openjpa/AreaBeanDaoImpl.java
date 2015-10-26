@@ -2,7 +2,6 @@ package cn.com.rexen.admin.persist.openjpa;
 
 import cn.com.rexen.admin.api.dao.IAreaBeanDao;
 import cn.com.rexen.admin.entities.AreaBean;
-import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 /**
  * 项目名称:  urgent-project
@@ -13,5 +12,5 @@ import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
  * 修改时间:  2014/8/7 15:57
  * 修改备注:  [说明本次修改内容]
  */
-public class AreaBeanDaoOpenjpa extends GenericOpenJpaDao<AreaBean, Long> implements IAreaBeanDao {
+public class AreaBeanDaoImpl extends BaseAdminDao<AreaBean, Long> implements IAreaBeanDao {
 }

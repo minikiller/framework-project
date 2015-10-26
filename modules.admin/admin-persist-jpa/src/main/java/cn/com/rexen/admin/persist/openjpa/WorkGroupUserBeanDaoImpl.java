@@ -2,7 +2,6 @@ package cn.com.rexen.admin.persist.openjpa;
 
 import cn.com.rexen.admin.api.dao.IWorkGroupUserBeanDao;
 import cn.com.rexen.admin.entities.WorkGroupUserBean;
-import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 /**
  * 工作组用户DAO实现
@@ -10,7 +9,7 @@ import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
  *         date:2015-7-23
  * @version 1.0.0
  */
-public class WorkGroupUserBeanDaoOpenjpa extends GenericOpenJpaDao<WorkGroupUserBean, Long> implements IWorkGroupUserBeanDao {
+public class WorkGroupUserBeanDaoImpl extends BaseAdminDao<WorkGroupUserBean, Long> implements IWorkGroupUserBeanDao {
     private final String className = WorkGroupUserBean.class.getName();
 
     @Override

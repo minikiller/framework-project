@@ -1,14 +1,11 @@
 package cn.com.rexen.core.rest;
 
 import org.apache.camel.util.ObjectHelper;
-import org.apache.shiro.web.env.EnvironmentLoaderListener;
-import org.ops4j.pax.web.service.WebContainer;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceReference;
 import org.osgi.service.http.HttpContext;
 import org.osgi.service.http.HttpService;
-import javax.servlet.http.HttpServlet;
 
+import javax.servlet.http.HttpServlet;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
@@ -88,10 +85,10 @@ public class ShiroOsgiServletRegisterer   {
         httpService.registerServlet(alias, servlet, initParams, actualHttpContext);
         alreadyRegistered = true;
 
-        ServiceReference<WebContainer> serviceReference = bundleContext.getServiceReference(WebContainer.class);
-        WebContainer webContainer = bundleContext.getService(serviceReference);
+        /*ServiceReference<WebContainer> serviceReference = bundleContext.getServiceReference(WebContainer.class);
+        WebContainer webContainer = bundleContext.getService(serviceReference);*/
 //        HttpContext httpContext=webContainer.createDefaultHttpContext();
-        webContainer.registerEventListener(new EnvironmentLoaderListener(),httpContext);
+//        webContainer.registerEventListener(new EnvironmentLoaderListener(),httpContext);
 
     }
 

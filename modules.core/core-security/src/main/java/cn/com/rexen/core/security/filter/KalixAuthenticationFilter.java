@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
+ * shiro首頁验证处理过滤器
  * Created by sunlf on 2015/7/10.
  */
 public class KalixAuthenticationFilter extends FormAuthenticationFilter {

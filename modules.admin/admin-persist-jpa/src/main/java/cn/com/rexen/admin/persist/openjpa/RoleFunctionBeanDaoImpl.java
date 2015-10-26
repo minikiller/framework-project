@@ -2,7 +2,6 @@ package cn.com.rexen.admin.persist.openjpa;
 
 import cn.com.rexen.admin.api.dao.IRoleFunctionBeanDao;
 import cn.com.rexen.admin.entities.RoleFunctionBean;
-import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
  *         date:2015-7-23
  * @version 1.0.0
  */
-public class RoleFunctionBeanDaoOpenjpa extends GenericOpenJpaDao<RoleFunctionBean, Long> implements IRoleFunctionBeanDao {
+public class RoleFunctionBeanDaoImpl extends BaseAdminDao<RoleFunctionBean, Long> implements IRoleFunctionBeanDao {
     private final String className = RoleFunctionBean.class.getName();
 
     @Override

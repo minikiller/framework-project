@@ -1,6 +1,7 @@
 package cn.com.rexen.core.api.persistence;
 
 import cn.com.rexen.core.api.dao.IDaoService;
+import cn.com.rexen.core.api.web.model.QueryDTO;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
@@ -147,6 +148,9 @@ public interface IGenericDao<T, PK extends Serializable> extends IDaoService {
      * @return
      */
     JsonData getAll(int page, int limit,String className,CriteriaQuery criteriaQuery);
+
+
+    CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO);
 
     /**
      * 返回JPA 实体管理器

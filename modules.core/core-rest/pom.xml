@@ -24,6 +24,10 @@
     <dependencies>
         <dependency>
             <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.core</groupId>
             <artifactId>core-util</artifactId>
         </dependency>
         <dependency>
@@ -53,7 +57,7 @@
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
+            <artifactId>javax.servlet-api</artifactId>
         </dependency>
 
         <dependency>

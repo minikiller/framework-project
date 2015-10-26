@@ -22,9 +22,9 @@
            xsi:schemaLocation="
        http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd
-       http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://svn.apache.org/repos/asf/aries/trunk/blueprint/blueprint-cm/src/main/resources/org/apache/aries/blueprint/compendium/cm/blueprint-cm-1.1.0.xsd
-
-           ">
+       http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0
+       http://svn.apache.org/repos/asf/aries/trunk/blueprint/blueprint-cm/src/main/resources/org/apache/aries/blueprint/compendium/cm/blueprint-cm-1.1.0.xsd
+">
     <cm:property-placeholder persistent-id="CamelRestConfig" update-strategy="reload">
         <cm:default-properties>
             <cm:property name="contextPath" value="/kalix/camel/rest"/>
@@ -81,7 +81,7 @@
 
             <get id="route-getButtonsByPermission" uri="/applications/modules/children/buttons/{permissions}"
                  outType="java.util.Map">
-                <description>Find Button  Permission</description>
+                <description>Find Button Permission</description>
                 <to uri="bean:systemService?method=getButtonsByPermission(${header.permissions})"/>
             </get>
 

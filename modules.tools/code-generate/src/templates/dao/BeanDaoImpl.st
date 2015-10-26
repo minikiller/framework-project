@@ -2,7 +2,7 @@ package <packageName>.dao;
 
 import <packageName>.api.dao.I<beanName>BeanDao;
 import <packageName>.entities.<beanName>Bean;
-import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
+import cn.com.rexen.core.impl.persistence.GenericDao;
 
 import java.util.UUID;
 

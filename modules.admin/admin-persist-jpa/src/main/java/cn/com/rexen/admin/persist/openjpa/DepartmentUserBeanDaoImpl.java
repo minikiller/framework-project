@@ -2,7 +2,6 @@ package cn.com.rexen.admin.persist.openjpa;
 
 import cn.com.rexen.admin.api.dao.IDepartmentUserBeanDao;
 import cn.com.rexen.admin.entities.DepartmentUserBean;
-import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
  *         date:2015-7-23
  * @version 1.0.0
  */
-public class DepartmentUserBeanDaoOpenjpa extends GenericOpenJpaDao<DepartmentUserBean, Long> implements IDepartmentUserBeanDao {
+public class DepartmentUserBeanDaoImpl extends BaseAdminDao<DepartmentUserBean, Long> implements IDepartmentUserBeanDao {
     private final String className = DepartmentUserBean.class.getName();
 
     @Override

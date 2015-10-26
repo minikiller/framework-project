@@ -2,7 +2,6 @@ package cn.com.rexen.admin.persist.openjpa;
 
 import cn.com.rexen.admin.api.dao.IMessageBeanDao;
 import cn.com.rexen.admin.entities.MessageBean;
-import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
 
 /**
  * @类描述：系统消息Dao实现类
@@ -12,5 +11,5 @@ import cn.com.rexen.core.impl.persistence.GenericOpenJpaDao;
  * @修改时间：
  * @修改备注：
  */
-public class MessageBeanDaoOpenjpa extends GenericOpenJpaDao<MessageBean, Long> implements IMessageBeanDao {
+public class MessageBeanDaoImpl extends BaseAdminDao<MessageBean, Long> implements IMessageBeanDao {
 }

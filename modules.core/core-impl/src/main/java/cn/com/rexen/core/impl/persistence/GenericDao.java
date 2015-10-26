@@ -5,6 +5,7 @@ import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.persistence.SearchException;
+import cn.com.rexen.core.api.web.model.QueryDTO;
 import org.apache.log4j.Logger;
 
 import javax.persistence.EntityManager;
@@ -19,21 +20,23 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+//import javax.transaction.Transactional;
+
 /**
- * @类描述：DAO数据访问通用实现类
+ * @类描述：DAO数据访问通用实现抽象类
  * @创建人：sunlf
  * @创建时间：2014-7-3 下午1:01:59
  * @修改人：
  * @修改时间：
  * @修改备注：
  */
-
-public class GenericOpenJpaDao<T extends PersistentEntity, PK extends Serializable> implements IGenericDao<T, PK> {
+//@Transactional
+public abstract class GenericDao<T extends PersistentEntity, PK extends Serializable> implements IGenericDao<T, PK> {
     protected final Logger log = Logger.getLogger(getClass());
     protected EntityManager entityManager;
     private Class<T> persistentClass;
 
-    public GenericOpenJpaDao() {
+    public GenericDao() {
         Object obj = this.getClass().getGenericSuperclass();
         ParameterizedType genericSuperclass = (ParameterizedType) this.getClass().getGenericSuperclass();
         java.lang.reflect.Type type = genericSuperclass.getActualTypeArguments()[0];
@@ -50,7 +53,7 @@ public class GenericOpenJpaDao<T extends PersistentEntity, PK extends Serializab
      *
      * @param persistentClass the class type you'd like to persist
      */
-    public GenericOpenJpaDao(final Class<T> persistentClass) {
+    public GenericDao(final Class<T> persistentClass) {
         this.persistentClass = persistentClass;
     }
 
@@ -95,6 +98,11 @@ public class GenericOpenJpaDao<T extends PersistentEntity, PK extends Serializab
         jsonData.setTotalCount(count);
         jsonData.setData(typedQuery.getResultList());
         return jsonData;
+    }
+
+    @Override
+    public CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO) {
+        return null;
     }
 
     @Override
@@ -304,7 +312,7 @@ public class GenericOpenJpaDao<T extends PersistentEntity, PK extends Serializab
     /**
      * 根据查询函数与参数列表创建Query对象,后续可进行更多处理,辅助函数.
      */
-
+//    @Transactional(Transactional.TxType.SUPPORTS)
     protected Query createQuery(String queryString, Object... parameter) {
 
         Query queryObject = entityManager.createQuery(queryString);
@@ -325,6 +333,7 @@ public class GenericOpenJpaDao<T extends PersistentEntity, PK extends Serializab
      * @return
      */
     @Override
+//    @Transactional(Transactional.TxType.REQUIRED)
     public int update(String qlString, Object... parameter) {
         return createQuery(qlString, parameter).executeUpdate();
     }
