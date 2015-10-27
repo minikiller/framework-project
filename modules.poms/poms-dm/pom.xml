@@ -14,8 +14,8 @@
     <packaging>pom</packaging>
     <name>Kalix :: Dependency Management</name>
     <properties>
-        <org.osgi.core.version>4.3.1</org.osgi.core.version>
-        <org.osgi.compendium.version>4.3.1</org.osgi.compendium.version>
+        <org.osgi.core.version>6.0.0</org.osgi.core.version>
+        <org.osgi.compendium.version>5.0.0</org.osgi.compendium.version>
         <derby.Version>10.8.2.2</derby.Version>
         <openjpa.Version>2.3.0</openjpa.Version>
         <geronimoJpaSpec.Version>1.1</geronimoJpaSpec.Version>
