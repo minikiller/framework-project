@@ -15,7 +15,7 @@ import java.util.List;
  *         date:2015-7-30
  * @version 1.0.0
  */
-public interface IFunctionBeanService extends IBizService {
+public interface IFunctionBeanService extends IBizService<FunctionBean> {
     /**
      * 返回指定应用下所有功能节点
      * @param id

@@ -3,6 +3,7 @@ package cn.com.rexen.admin.core;
 import cn.com.rexen.admin.api.biz.IOfficeBeanService;
 import cn.com.rexen.admin.api.dao.IOfficeBeanDao;
 import cn.com.rexen.admin.entities.OfficeBean;
+import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 
 /**
@@ -14,11 +15,15 @@ import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
  * @修改备注：
  */
 
-public class OfficeBeanServiceImpl extends GenericBizServiceImpl implements IOfficeBeanService {
+public class OfficeBeanServiceImpl extends GenericBizServiceImpl<IOfficeBeanDao, OfficeBean> implements IOfficeBeanService {
     private IOfficeBeanDao officeBeanDao;
 
-    public void setOfficeBeanDao(IOfficeBeanDao officeBeanDao) {
-        this.officeBeanDao = officeBeanDao;
-        super.init(officeBeanDao, OfficeBean.class.getName());
+    public OfficeBeanServiceImpl() {
+        super.init(OfficeBean.class.getName());
     }
+
+//    public void setOfficeBeanDao(IOfficeBeanDao officeBeanDao) {
+//        this.officeBeanDao = officeBeanDao;
+//
+//    }
 }

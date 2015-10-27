@@ -14,7 +14,7 @@ import java.util.List;
  *         date:2015-7-27
  * @version 1.0.0
  */
-public interface IWorkGroupBeanService extends IBizService {
+public interface IWorkGroupBeanService extends IBizService<WorkGroupBean> {
     /**
      * 查询工作组
      * @param bean

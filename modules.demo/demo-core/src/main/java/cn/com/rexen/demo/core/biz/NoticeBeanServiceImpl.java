@@ -26,8 +26,8 @@ import java.util.UUID;
  * @修改时间：
  * @修改备注：
  */
-public class NoticeBeanServiceImpl extends AuditBizServiceImpl implements INoticeBeanService {
-    private INoticeBeanDao noticeBeanDao;
+public class NoticeBeanServiceImpl extends AuditBizServiceImpl<INoticeBeanDao, NoticeBean> implements INoticeBeanService {
+    //    private INoticeBeanDao dao;
     private RepositoryService repositoryService;
     private FormService formService;
     private IdentityService identityService;
@@ -40,6 +40,7 @@ public class NoticeBeanServiceImpl extends AuditBizServiceImpl implements INotic
 
     public NoticeBeanServiceImpl() {
         uuid = UUID.randomUUID().toString();
+        super.init(NoticeBean.class.getName());
     }
 
     @Override
@@ -56,10 +57,10 @@ public class NoticeBeanServiceImpl extends AuditBizServiceImpl implements INotic
         this.userLoginService = userLoginService;
     }
 
-    public void setNoticeBeanDao(INoticeBeanDao demoBeanDao) {
-        this.noticeBeanDao = demoBeanDao;
-        super.init(demoBeanDao, NoticeBean.class.getName());
-    }
+//    public void setNoticeBeanDao(INoticeBeanDao demoBeanDao) {
+//        this.dao = demoBeanDao;
+//
+//    }
 
     public void setRepositoryService(RepositoryService repositoryService) {
         this.repositoryService = repositoryService;
@@ -83,7 +84,7 @@ public class NoticeBeanServiceImpl extends AuditBizServiceImpl implements INotic
 
     @Override
     public List<NoticeBean> query(String title) {
-        return noticeBeanDao.find("select n from demoBean n where n.title LIKE ?1 ", "%" + title + "%");
+        return dao.find("select n from demoBean n where n.title LIKE ?1 ", "%" + title + "%");
     }
 
     /**

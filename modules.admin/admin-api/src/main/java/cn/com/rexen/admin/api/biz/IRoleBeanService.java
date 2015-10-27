@@ -18,7 +18,7 @@ import java.util.List;
  * @修改备注：
  */
 
-public interface IRoleBeanService extends IBizService {
+public interface IRoleBeanService extends IBizService<RoleBean> {
     /**
      * 获得角色名称列表
      *

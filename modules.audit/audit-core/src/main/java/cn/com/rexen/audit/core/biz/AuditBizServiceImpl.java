@@ -13,7 +13,7 @@ import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
  * 支持审计的业务服务基类
  * Created by sunlf on 2015/8/27.
  */
-public abstract class AuditBizServiceImpl<T extends IGenericDao> extends GenericBizServiceImpl {
+public abstract class AuditBizServiceImpl<T extends IGenericDao, TP extends PersistentEntity> extends GenericBizServiceImpl<T, TP> {
     protected AuditBean auditBean;
     private IAuditBeanService auditBeanService;
     private IShiroService shiroService;
@@ -32,13 +32,13 @@ public abstract class AuditBizServiceImpl<T extends IGenericDao> extends Generic
     }
 
     @Override
-    public void beforeUpdateEntity(final PersistentEntity entity, JsonStatus status) {
+    public void beforeUpdateEntity(TP entity, JsonStatus status) {
         auditBean = new AuditBean();
         auditBean.setAppName(getAppName());
         auditBean.setFunName(getFunName());
         auditBean.setAction("更新");
         auditBean.setActor(shiroService.getCurrentUserName());
-        final PersistentEntity oldEntity = (PersistentEntity) dao.get(entityClassName, entity.getId());
+        final TP oldEntity = (TP) dao.get(entityClassName, entity.getId());
 
         auditBean.setContent(AuditUtil.Match(entity, oldEntity, entityClassName));
 //        auditBean.setContent(AuditUtil.Match(oldEntity,entity));
@@ -46,7 +46,7 @@ public abstract class AuditBizServiceImpl<T extends IGenericDao> extends Generic
     }
 
     @Override
-    public void afterSaveEntity(PersistentEntity entity, JsonStatus status) {
+    public void afterSaveEntity(TP entity, JsonStatus status) {
         auditBean = new AuditBean();
         auditBean.setAppName(getAppName());
         auditBean.setFunName(getFunName());

@@ -130,6 +130,7 @@
                             <target>
                                 <copy file="target/${project.artifactId}-${project.version}.jar"
                                       todir="${karaf.path}"/>
+                                      todir="${karaf.path}"/>
                             </target>
                         </configuration>
                     </execution>

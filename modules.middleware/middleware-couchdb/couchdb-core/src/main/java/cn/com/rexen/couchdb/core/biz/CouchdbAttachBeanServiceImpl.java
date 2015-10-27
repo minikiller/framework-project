@@ -25,9 +25,9 @@ import java.util.List;
  * @修改时间：
  * @修改备注：
  */
-public class CouchdbAttachBeanServiceImpl extends GenericBizServiceImpl implements ICouchdbAttachBeanService {
+public class CouchdbAttachBeanServiceImpl extends GenericBizServiceImpl<ICouchdbAttachBeanDao, CouchdbAttachBean> implements ICouchdbAttachBeanService {
 
-    private ICouchdbAttachBeanDao couchdbAttachBeanDao;
+    //    private ICouchdbAttachBeanDao dao;
     private ICouchdbService couchdbService;
 
     private String couchdb_url = (String) ConfigUtil.getConfigProp("COUCHDB_URL", "CouchDBConfig");
@@ -38,12 +38,13 @@ public class CouchdbAttachBeanServiceImpl extends GenericBizServiceImpl implemen
         } catch (IOException e) {
             e.printStackTrace();
         }*/
+        super.init(CouchdbAttachBean.class.getName());
     }
 
-    public void setCouchdbAttachBeanDao(ICouchdbAttachBeanDao couchdbAttachBeanDao) {
-        this.couchdbAttachBeanDao = couchdbAttachBeanDao;
-        super.init(couchdbAttachBeanDao, CouchdbAttachBean.class.getName());
-    }
+//    public void setCouchdbAttachBeanDao(ICouchdbAttachBeanDao dao) {
+//        this.dao = dao;
+//        
+//    }
 
     public void setCouchdbService(ICouchdbService couchdbService) {
         this.couchdbService = couchdbService;
@@ -75,7 +76,7 @@ public class CouchdbAttachBeanServiceImpl extends GenericBizServiceImpl implemen
                 couchdbAttachBean.setCouchdbAttachRev(response.getRev());
                 couchdbAttachBean.setMainId(mainId);
                 couchdbAttachBean.setOtherName(otherName);
-                couchdbAttachBean = couchdbAttachBeanDao.save(couchdbAttachBean);
+                couchdbAttachBean = dao.save(couchdbAttachBean);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -87,12 +88,12 @@ public class CouchdbAttachBeanServiceImpl extends GenericBizServiceImpl implemen
 
     @Override
     public void deleteAttach(long id) {
-        CouchdbAttachBean couchdbAttachBean = couchdbAttachBeanDao.get(CouchdbAttachBean.class.getName(), id);
+        CouchdbAttachBean couchdbAttachBean = dao.get(CouchdbAttachBean.class.getName(), id);
         String couchdbAttachId = couchdbAttachBean.getCouchdbAttachId();
         if (couchdbAttachId != null && !"".equals(couchdbAttachId) && !"0".equals(couchdbAttachId)) {
             couchdbService.deleteAttach(couchdbAttachBean);
         }
-        couchdbAttachBeanDao.remove(CouchdbAttachBean.class.getName(), id);
+        dao.remove(CouchdbAttachBean.class.getName(), id);
     }
 
     @Override
@@ -104,7 +105,7 @@ public class CouchdbAttachBeanServiceImpl extends GenericBizServiceImpl implemen
 
     @Override
     public List<CouchdbAttachBean> getEntityByMainId(long mainId) {
-        return couchdbAttachBeanDao.find("select t from CouchdbAttachBean t where t.mainId=?1 order by t.creationDate desc", mainId);
+        return dao.find("select t from CouchdbAttachBean t where t.mainId=?1 order by t.creationDate desc", mainId);
     }
 
     @Override

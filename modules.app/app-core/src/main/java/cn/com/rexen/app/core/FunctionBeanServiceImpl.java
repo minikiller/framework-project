@@ -28,22 +28,26 @@ import java.util.List;
  *         date:2015-7-27
  * @version 1.0.0
  */
-public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IFunctionBeanService {
+public class FunctionBeanServiceImpl extends GenericBizServiceImpl<IFunctionBeanDao, FunctionBean> implements IFunctionBeanService {
     private static final String FUNCTION_NAME = "功能";
-    private IFunctionBeanDao functionBeanDao;
+    //    private IFunctionBeanDao dao;
     private IShiroService shiroService;
 
+    public FunctionBeanServiceImpl() {
+        super.init(FunctionBean.class.getName());
+    }
+    
     public void setShiroService(IShiroService shiroService) {
         this.shiroService = shiroService;
     }
 
-    public void setFunctionBeanDao(IFunctionBeanDao functionBeanDao) {
-        this.functionBeanDao = functionBeanDao;
-        super.init(functionBeanDao, FunctionBean.class.getName());
-    }
+//    public void setFunctionBeanDao(IFunctionBeanDao dao) {
+//        this.dao = dao;
+//       
+//    }
 
     @Override
-    public void beforeUpdateEntity(PersistentEntity entity, JsonStatus status) {
+    public void beforeUpdateEntity(FunctionBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         String userName = shiroService.getCurrentUserName();
         Assert.notNull(userName, "用户名不能为空.");
@@ -54,24 +58,24 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
 
 
     public void removeChildren(Long id){
-        List<FunctionBean> functionBeans=functionBeanDao.find("select ob from FunctionBean ob where ob.parentId = ?1", id);
+        List<FunctionBean> functionBeans = dao.find("select ob from FunctionBean ob where ob.parentId = ?1", id);
         if(functionBeans!=null&&functionBeans.size()>0){
             for(FunctionBean functionBean:functionBeans){
                 if(functionBean.getIsLeaf()==0){ //存在子节点
                     removeChildren(functionBean.getId());
                 }
-                functionBeanDao.remove(FunctionBean.class.getName(), functionBean.getId());
+                dao.remove(FunctionBean.class.getName(), functionBean.getId());
             }
         }
     }
 
     @Override
     public void doDelete(long entityId, JsonStatus jsonStatus) {
-        List<FunctionBean> functionBeans=functionBeanDao.find("select ob from FunctionBean ob where ob.id = ?1", entityId);
+        List<FunctionBean> functionBeans = dao.find("select ob from FunctionBean ob where ob.id = ?1", entityId);
         if(functionBeans!=null&&!functionBeans.isEmpty()) {
             removeChildren(entityId);
             FunctionBean function=functionBeans.get(0);
-            functionBeanDao.remove(FunctionBean.class.getName(), entityId);
+            dao.remove(FunctionBean.class.getName(), entityId);
             updateParent(function.getParentId());
             jsonStatus.setSuccess(true);
             jsonStatus.setMsg("删除" + FUNCTION_NAME + "成功！");
@@ -86,21 +90,21 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
      * @param parentId
      */
     public void updateParent(Long parentId){
-        List<FunctionBean> functionBeans=functionBeanDao.find("select ob from FunctionBean ob where ob.id = ?1", parentId); //获得父节点
+        List<FunctionBean> functionBeans = dao.find("select ob from FunctionBean ob where ob.id = ?1", parentId); //获得父节点
         if(functionBeans!=null&&functionBeans.size()>0){
-            List<FunctionBean> children=functionBeanDao.find("select ob from FunctionBean ob where ob.parentId = ?1", parentId); //获得父节点
+            List<FunctionBean> children = dao.find("select ob from FunctionBean ob where ob.parentId = ?1", parentId); //获得父节点
             if(children==null||children.isEmpty()) {
                 FunctionBean parent = functionBeans.get(0);
                 parent.setIsLeaf(1);
-                functionBeanDao.save(parent);
+                dao.save(parent);
             }
         }
     }
 
     @Override
-    public void doUpdate(PersistentEntity entity, JsonStatus jsonStatus) {
+    public void doUpdate(FunctionBean entity, JsonStatus jsonStatus) {
         Assert.notNull(entity, "实体不能为空.");
-        FunctionBean oldBean=functionBeanDao.get(FunctionBean.class.getName(), entity.getId());
+        FunctionBean oldBean = dao.get(FunctionBean.class.getName(), entity.getId());
         if(oldBean!=null){
             FunctionBean functionBean=(FunctionBean)entity;
             oldBean.setName(functionBean.getName());
@@ -111,21 +115,21 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
             //更新下所有子功能
             updatePermission(oldBean.getCode(),functionBean.getCode(),oldBean);
             oldBean.setCode(functionBean.getCode());
-            functionBeanDao.save(oldBean);
+            dao.save(oldBean);
             jsonStatus.setSuccess(true);
             jsonStatus.setMsg("修改成功！");
         }
     }
 
     @Override
-    public void afterSaveEntity(PersistentEntity entity, JsonStatus status) {
+    public void afterSaveEntity(FunctionBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         FunctionBean bean=(FunctionBean)entity;
         if(bean.getParentId()!=-1){
-            FunctionBean parentFunctionBean=functionBeanDao.get(FunctionBean.class.getName(),bean.getParentId());
+            FunctionBean parentFunctionBean = dao.get(FunctionBean.class.getName(), bean.getParentId());
             if(parentFunctionBean!=null&&parentFunctionBean.getIsLeaf()==1){
                 parentFunctionBean.setIsLeaf(0);
-                functionBeanDao.save(parentFunctionBean);
+                dao.save(parentFunctionBean);
             }
         }
     }
@@ -133,11 +137,11 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
     private void updatePermission(String oldTopCode,String newTopCode,FunctionBean parentFunction){
         //如果下面有叶子节点
         if(parentFunction.getIsLeaf()==0){
-            List<FunctionBean> childFunction=functionBeanDao.find("select fb from FunctionBean fb where fb.parentId=?1",parentFunction.getId());
+            List<FunctionBean> childFunction = dao.find("select fb from FunctionBean fb where fb.parentId=?1", parentFunction.getId());
             if(childFunction!=null&&!childFunction.isEmpty()){
                 for(FunctionBean functionBean:childFunction){
                     functionBean.setPermission(functionBean.getPermission().replace(oldTopCode,newTopCode));
-                    functionBeanDao.save(functionBean);
+                    dao.save(functionBean);
                     updatePermission(oldTopCode,newTopCode,functionBean);
                 }
             }
@@ -145,7 +149,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
     }
 
     @Override
-    public void beforeSaveEntity(PersistentEntity entity, JsonStatus status) {
+    public void beforeSaveEntity(FunctionBean entity, JsonStatus status) {
         String userName = shiroService.getCurrentUserName();
         Assert.notNull(userName, "用户名不能为空.");
         if(StringUtils.isNotEmpty(userName)) {
@@ -157,7 +161,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
 
     @Override
     public boolean isDelete(Long entityId, JsonStatus status) {
-        if (functionBeanDao.get(FunctionBean.class.getName(),entityId) == null) {
+        if (dao.get(FunctionBean.class.getName(), entityId) == null) {
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经被删除！");
             return false;
@@ -166,10 +170,10 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
     }
 
     @Override
-    public boolean isUpdate(PersistentEntity entity, JsonStatus status) {
+    public boolean isUpdate(FunctionBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         FunctionBean bean=(FunctionBean)entity;
-        List<FunctionBean> beans= functionBeanDao.find("select ob from FunctionBean ob where ob.name = ?1 and ob.applicationId=?2", bean.getName(), bean.getApplicationId());
+        List<FunctionBean> beans = dao.find("select ob from FunctionBean ob where ob.name = ?1 and ob.applicationId=?2", bean.getName(), bean.getApplicationId());
         if(beans!=null&&beans.size()>0){
             FunctionBean functionBean=beans.get(0);
             if(functionBean.getId()!=entity.getId()) {
@@ -182,10 +186,10 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
     }
 
     @Override
-    public boolean isSave(PersistentEntity entity, JsonStatus status) {
+    public boolean isSave(FunctionBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         FunctionBean bean=(FunctionBean)entity;
-        List<FunctionBean> beans= functionBeanDao.find("select ob from FunctionBean ob where ob.name = ?1 and ob.applicationId=?2 and ob.parentId=?3", bean.getName(), bean.getApplicationId(),bean.getParentId());
+        List<FunctionBean> beans = dao.find("select ob from FunctionBean ob where ob.name = ?1 and ob.applicationId=?2 and ob.parentId=?3", bean.getName(), bean.getApplicationId(), bean.getParentId());
         if(beans!=null&&beans.size()>0){
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经存在,请检查名称！");
@@ -196,7 +200,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
 
     @Override
     public void deleteByApplicationId(long id) {
-        functionBeanDao.update("delete from FunctionBean fb where fb.applicationId=?1", id);
+        dao.update("delete from FunctionBean fb where fb.applicationId=?1", id);
     }
 
     /**
@@ -285,7 +289,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl implements IF
     }
 
     public FunctionDTO getAllByApplicationId(long id) {
-        List<FunctionBean> beans=functionBeanDao.find("select ob from FunctionBean ob where ob.applicationId = ?1", id);
+        List<FunctionBean> beans = dao.find("select ob from FunctionBean ob where ob.applicationId = ?1", id);
         FunctionDTO root=new FunctionDTO();
         root.setId("-1");
         if(beans!=null&&beans.size()>0){

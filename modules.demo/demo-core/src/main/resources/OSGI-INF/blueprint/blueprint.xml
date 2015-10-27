@@ -17,7 +17,7 @@
     <reference id="auditBeanService" interface="cn.com.rexen.audit.api.biz.IAuditBeanService"/>
 
     <bean id="beanServiceImpl" class="cn.com.rexen.demo.core.biz.NoticeBeanServiceImpl" scope="prototype">
-        <property name="noticeBeanDao" ref="noticeBeanDao"/>
+        <property name="dao" ref="noticeBeanDao"/>
         <property name="formService" ref="formService"/>
         <property name="identityService" ref="identityService"/>
         <property name="repositoryService" ref="repositoryService"/>

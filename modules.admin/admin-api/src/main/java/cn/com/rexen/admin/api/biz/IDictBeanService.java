@@ -15,7 +15,7 @@ import java.util.Map;
  * @修改备注：
  */
 
-public interface IDictBeanService extends IBizService {
+public interface IDictBeanService extends IBizService<DictBean> {
     //机构类型
     String SYS_OFFICE_TYPE = "sys_office_type";
     //机构等级

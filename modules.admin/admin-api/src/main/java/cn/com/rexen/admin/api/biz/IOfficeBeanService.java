@@ -1,5 +1,6 @@
 package cn.com.rexen.admin.api.biz;
 
+import cn.com.rexen.admin.entities.OfficeBean;
 import cn.com.rexen.core.api.biz.IBizService;
 
 /**
@@ -11,5 +12,5 @@ import cn.com.rexen.core.api.biz.IBizService;
  * @修改备注：
  */
 
-public interface IOfficeBeanService extends IBizService {
+public interface IOfficeBeanService extends IBizService<OfficeBean> {
 }

@@ -12,6 +12,7 @@ import cn.com.rexen.app.api.dao.IApplicationBeanDao;
 import cn.com.rexen.app.api.dao.IFunctionBeanDao;
 import cn.com.rexen.app.entities.ApplicationBean;
 import cn.com.rexen.app.entities.FunctionBean;
+import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.Assert;
 
@@ -28,8 +29,8 @@ import java.util.Set;
  * @修改备注：
  */
 
-public class PermissionBeanServiceImpl extends GenericBizServiceImpl implements IPermissionBeanService {
-    private IPermissionBeanDao permissionBeanDao;
+public class PermissionBeanServiceImpl extends GenericBizServiceImpl<IPermissionBeanDao, PermissionBean> implements IPermissionBeanService {
+    //    private IPermissionBeanDao dao;
     private IRoleBeanDao roleBeanDao;
     private IRoleBeanService roleBeanService;
     private IRoleApplicationBeanDao roleApplicationBeanDao;
@@ -37,6 +38,10 @@ public class PermissionBeanServiceImpl extends GenericBizServiceImpl implements 
     private IApplicationBeanDao applicationBeanDao;
     private IRoleFunctionBeanDao roleFunctionBeanDao;
     private IFunctionBeanDao functionBeanDao;
+
+    public PermissionBeanServiceImpl() {
+        super.init(PermissionBean.class.getName());
+    }
 
     public void setFunctionBeanDao(IFunctionBeanDao functionBeanDao) {
         this.functionBeanDao = functionBeanDao;
@@ -62,11 +67,11 @@ public class PermissionBeanServiceImpl extends GenericBizServiceImpl implements 
         this.roleBeanService = roleBeanService;
     }
 
-    public void setPermissionBeanDao(IPermissionBeanDao permissionBeanDao) {
-        this.permissionBeanDao = permissionBeanDao;
-        super.init(permissionBeanDao, PermissionBean.class.getName());
-
-    }
+//    public void setPermissionBeanDao(IPermissionBeanDao dao) {
+//        this.dao = dao;
+//
+//
+//    }
 
     public void setRoleBeanDao(IRoleBeanDao roleBeanDao) {
         this.roleBeanDao = roleBeanDao;
@@ -74,12 +79,12 @@ public class PermissionBeanServiceImpl extends GenericBizServiceImpl implements 
 
     @Override
     public PermissionBean getRootPermission() {
-        return permissionBeanDao.getRootPermission();
+        return dao.getRootPermission();
     }
 
     @Override
     public List<PermissionBean> getChildPermission(PermissionBean permissionBean) {
-        return permissionBeanDao.getChildPermission(permissionBean);
+        return dao.getChildPermission(permissionBean);
     }
 
     @Override
@@ -89,12 +94,12 @@ public class PermissionBeanServiceImpl extends GenericBizServiceImpl implements 
 
     @Override
     public List<PermissionBean> getRootBeanList() {
-        return permissionBeanDao.find("select u from PermissionBean u where u.parent is null");
+        return dao.find("select u from PermissionBean u where u.parent is null");
     }
 
     @Override
     public List<PermissionBean> getChildBeanList(PermissionBean permissionBean) {
-        return permissionBeanDao.find("select u from PermissionBean u where u.parent= ?1", permissionBean);
+        return dao.find("select u from PermissionBean u where u.parent= ?1", permissionBean);
     }
 
     /**

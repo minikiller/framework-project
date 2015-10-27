@@ -19,6 +19,7 @@
 
     <feature name="my-kar" version="1.0">
         <bundle>mvn:commons-collections/commons-collections/3.2.1</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.demo/demo-api/1.0.0-SNAPSHOT</bundle>
     </feature>
 
 </features>

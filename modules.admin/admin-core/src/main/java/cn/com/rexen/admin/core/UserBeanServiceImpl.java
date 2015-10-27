@@ -6,6 +6,7 @@ import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.PermissionConstant;
 import cn.com.rexen.core.api.biz.JsonStatus;
+import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
@@ -25,14 +26,18 @@ import java.util.List;
 /**
  * Created by dell on 14-1-17.
  */
-public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserBeanService {
+public class UserBeanServiceImpl extends GenericBizServiceImpl<IUserBeanDao, UserBean> implements IUserBeanService {
     private static final String FUNCTION_NAME = "用户";
-    private IUserBeanDao userBeanDao;
+    //    private IUserBeanDao dao;
     private IRoleBeanDao roleBeanDao;
     private IRoleUserBeanDao roleUserBeanDao;
     private IWorkGroupUserBeanDao workGroupUserBeanDao;
     private IDepartmentUserBeanDao departmentUserBeanDao;
     private IShiroService shiroService;
+
+    public UserBeanServiceImpl() {
+        super.init(UserBean.class.getName());
+    }
 
     public void setWorkGroupUserBeanDao(IWorkGroupUserBeanDao workGroupUserBeanDao) {
         this.workGroupUserBeanDao = workGroupUserBeanDao;
@@ -54,7 +59,7 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     }
 
     @Override
-    public void beforeUpdateEntity(PersistentEntity entity, JsonStatus status) {
+    public void beforeUpdateEntity(UserBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         String userName = shiroService.getCurrentUserName();
         Assert.notNull(userName, "用户名不能为空.");
@@ -62,7 +67,7 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
         if (StringUtils.isNotEmpty(userName)) {
             userEntity.setUpdateBy(userName);
         }
-        UserBean userBean = userBeanDao.get(UserBean.class.getName(),entity.getId());
+        UserBean userBean = dao.get(UserBean.class.getName(), entity.getId());
         //如果编辑时修改了密码将重新计算MD5
         if(userBean!=null&&!userBean.getPassword().equals(userEntity.getPassword())){
             userEntity.setPassword(MD5Util.encode(userEntity.getPassword()));
@@ -70,7 +75,7 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     }
 
     @Override
-    public void beforeSaveEntity(PersistentEntity entity, JsonStatus status) {
+    public void beforeSaveEntity(UserBean entity, JsonStatus status) {
         String userName = shiroService.getCurrentUserName();
         Assert.notNull(userName, "用户名不能为空.");
         if(StringUtils.isNotEmpty(userName)) {
@@ -85,10 +90,10 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     }
 
     @Override
-    public boolean isUpdate(PersistentEntity entity, JsonStatus status) {
+    public boolean isUpdate(UserBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         UserBean bean=(UserBean)entity;
-        List<UserBean> userBeans=userBeanDao.find("select ob from UserBean ob where ob.loginName = ?1", bean.getLoginName());
+        List<UserBean> userBeans = dao.find("select ob from UserBean ob where ob.loginName = ?1", bean.getLoginName());
         if(userBeans!=null&&userBeans.size()>0){
             UserBean _userBean=userBeans.get(0);
             if(entity.getId()!=_userBean.getId()) {
@@ -101,9 +106,9 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     }
 
     @Override
-    public boolean isSave(PersistentEntity entity, JsonStatus status) {
+    public boolean isSave(UserBean entity, JsonStatus status) {
         UserBean bean=(UserBean)entity;
-        List<UserBean> userBeans=userBeanDao.find("select ob from UserBean ob where ob.loginName = ?1", bean.getLoginName());
+        List<UserBean> userBeans = dao.find("select ob from UserBean ob where ob.loginName = ?1", bean.getLoginName());
         if(userBeans!=null&&userBeans.size()>0){
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经存在！");
@@ -114,7 +119,7 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
 
     @Override
     public boolean isDelete(Long entityId, JsonStatus status) {
-        if (userBeanDao.get(UserBean.class.getName(),entityId) == null) {
+        if (dao.get(UserBean.class.getName(), entityId) == null) {
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经被删除！");
             return false;
@@ -126,9 +131,9 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
         this.shiroService = shiroService;
     }
 
-    //    public void setUserBeanDao(IUserBeanDao userBeanDao) {
-//        this.userBeanDao = userBeanDao;
-////        super.init(userBeanDao, UserBean.class.getName());
+    //    public void setUserBeanDao(IUserBeanDao dao) {
+//        this.dao = dao;
+////        super.init(dao, UserBean.class.getName());
 //    }
 //
 //    public void setRoleBeanDao(IRoleBeanDao roleBeanDao) {
@@ -144,13 +149,13 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     }
 
     public IUserBeanDao getUserBeanDao() {
-        return userBeanDao;
+        return dao;
     }
 
-    public void setUserBeanDao(IUserBeanDao userBeanDao) {
-        this.userBeanDao = userBeanDao;
-        super.init(userBeanDao, UserBean.class.getName());
-    }
+//    public void setUserBeanDao(IUserBeanDao dao) {
+//        this.dao = dao;
+//
+//    }
 
     public void init() {
         /*UserBeanImpl user = new UserBeanImpl();
@@ -166,7 +171,7 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
 
     public JsonData getAllUser() {
         JsonData jsonData=new JsonData();
-        List<UserBean> users=userBeanDao.getAll(UserBean.class.getName());
+        List<UserBean> users = dao.getAll(UserBean.class.getName());
         List<PersistentEntity> persistentEntities=new ArrayList<PersistentEntity>();
         if(users!=null&&users.size()>0){
             for(UserBean user:users){
@@ -183,13 +188,13 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     @Override
     public List<UserBean> queryUser(UserBean userBean, int is_ent) {
 
-        return userBeanDao.find("select a from UserBean a where a.is_ent_user =?1 and a.name LIKE ?2", is_ent, "%" + userBean.getName() + "%");
+        return dao.find("select a from UserBean a where a.is_ent_user =?1 and a.name LIKE ?2", is_ent, "%" + userBean.getName() + "%");
     }
 
     @Override
     public List<UserBean> queryUser(String userName, int pageNumber, int pageSize) {
 
-        return userBeanDao.findbyPage("select a from UserBean a where a.name LIKE ?1", pageNumber, pageSize, "%" + userName + "%");
+        return dao.findbyPage("select a from UserBean a where a.name LIKE ?1", pageNumber, pageSize, "%" + userName + "%");
     }
 
     @Override
@@ -229,16 +234,16 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
                 roleBeanList.add(roleBeanDao.getRole(role));
             }
         }
-        userBeanDao.save(userBean);
+        dao.save(userBean);
     }
 
     @Override
     public void saveUserRoleNew(UserBean userBean, List<String> roleSelect) {
         List<RoleBean> roleBeanList = new ArrayList<RoleBean>();
         if (userBean.getId() == 0L) {       //为新用户对象
-            userBean = userBeanDao.save(userBean);
+            userBean = dao.save(userBean);
         } else {                            //取出用户的角色集合
-            roleBeanList = userBeanDao.get(UserBean.class.getName(), userBean.getId()).getRoleList();
+            roleBeanList = dao.get(UserBean.class.getName(), userBean.getId()).getRoleList();
         }
         //删除全部该角色下的用户
         if (roleSelect != null) {
@@ -247,22 +252,22 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
                 //添加角色到用户
                 for (String roleName : roleSelect) {
                     RoleBean roleBean = roleBeanDao.getRole(roleName);
-                    UserBean user = userBeanDao.getUser(userBean.getId());
+                    UserBean user = dao.getUser(userBean.getId());
                     if (!user.getRoleList().contains(roleBean)) {
                         user.getRoleList().add(roleBean);
-                        userBeanDao.save(user);
+                        dao.save(user);
                     }
                 }
             }
         } else {
-            userBeanDao.save(userBean);
+            dao.save(userBean);
         }
     }
 
     private void removeRole(UserBean userBean, List<RoleBean> roleBeanList) {
         for (RoleBean roleBean : roleBeanList) {
             userBean.getRoleList().remove(roleBean);
-            userBeanDao.save(userBean);
+            dao.save(userBean);
         }
     }
 
@@ -305,7 +310,7 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     public String getCurrUserInQhdm() {
         UserBean userBean = getCurrentUser();
         if (userBean != null) {
-            List<String> qhdmList = userBeanDao.findByNativeSql("select t.xzqh_dm " +
+            List<String> qhdmList = dao.findByNativeSql("select t.xzqh_dm " +
                     "from urg_ent_organization t where t.jgdm=" + userBean.getJgdm(), String.class);
             if (qhdmList != null && qhdmList.size() > 0) {
                 return qhdmList.get(0);
@@ -318,20 +323,20 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
 
     @Override
     public List getUserTokenListByIds(Long id) {
-        return userBeanDao.findByNativeSql("select s.token from sys_user_rel s where s.token is not null and s.user_id in (" + id + ")", String.class);
+        return dao.findByNativeSql("select s.token from sys_user_rel s where s.token is not null and s.user_id in (" + id + ")", String.class);
     }
 
     @Override
     public List getUserTokenListJgdm(String jgdm, long user_id) {
         String jgdmStr = jgdm.replaceAll("(0+)$", "");
-        return userBeanDao.findByNativeSql("select sur.token from sys_user s " +
+        return dao.findByNativeSql("select sur.token from sys_user s " +
                 " left join sys_user_rel sur on sur.user_id=s.id where s.id!=" + user_id +
                 " and sur.token is not null and s.jgdm like '" + jgdmStr + "%'", String.class);
     }
 
     @Override
     public List getUserTokenListByNoticeId(Long notice_id, int reply_type, long user_id) {
-        return userBeanDao.findByNativeSql("select s.token from sys_user_rel s where s.token is not null and s.user_id in " +
+        return dao.findByNativeSql("select s.token from sys_user_rel s where s.token is not null and s.user_id in " +
                 "(select c.user_id from coop_notice_user_rel c " +
                 "where c.user_id != " + user_id + " and c.notice_id=" + notice_id + " and c.reply_type=" + reply_type + ")", String.class);
     }
@@ -339,28 +344,27 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl implements IUserB
     @Override
     public List getUseridListByGgdm(String jgdm, long user_id) {
         String jgdmStr = jgdm.replaceAll("(0+)$", "");
-        return userBeanDao.findByNativeSql("select s.id from sys_user s " +
+        return dao.findByNativeSql("select s.id from sys_user s " +
                 " where s.id!=" + user_id + " and s.jgdm like '" + jgdmStr + "%'", Long.class);
     }
 
     @Override
     public List<UserBean> getUserListByCond(int is_ent_user) {
-        return userBeanDao.findByNativeSql("select * from sys_user u where u.is_ent_user=" + is_ent_user, UserBean.class);
+        return dao.findByNativeSql("select * from sys_user u where u.is_ent_user=" + is_ent_user, UserBean.class);
     }
 
     @Override
     public UserBean getUserBeanByUsername(String username) {
-        return userBeanDao.findUnique("select a from UserBean a where a.loginName = ?1", username);
+        return dao.findUnique("select a from UserBean a where a.loginName = ?1", username);
     }
 
     @Override
     public void setUserUnavailable(String relateId) {
-        userBeanDao.update("update sys_user set available=0 where relateId=" + relateId);
+        dao.update("update sys_user set available=0 where relateId=" + relateId);
     }
 
     @Override
     public UserBean getUserByRelateId(String relateId) {
-        return userBeanDao.findUnique("select a from UserBean a where a.relateId = ?1", relateId);
+        return dao.findUnique("select a from UserBean a where a.relateId = ?1", relateId);
     }
-
 }

@@ -3,6 +3,7 @@ package cn.com.rexen.admin.core;
 import cn.com.rexen.admin.api.biz.IMessageBeanService;
 import cn.com.rexen.admin.api.dao.IMessageBeanDao;
 import cn.com.rexen.admin.entities.MessageBean;
+import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 
 import java.util.List;
@@ -15,16 +16,20 @@ import java.util.List;
  * @修改时间：
  * @修改备注：
  */
-public class MessageBeanServiceImpl extends GenericBizServiceImpl implements IMessageBeanService {
-    private IMessageBeanDao messageBeanDao;
+public class MessageBeanServiceImpl extends GenericBizServiceImpl<IMessageBeanDao, MessageBean> implements IMessageBeanService {
+    // private IMessageBeanDao messageBeanDao;
 
-    public void setMessageBeanDao(IMessageBeanDao messageBeanDao) {
-        this.messageBeanDao = messageBeanDao;
-        super.init(messageBeanDao, MessageBean.class.getName());
+    public MessageBeanServiceImpl() {
+        super.init(MessageBean.class.getName());
     }
+
+//    public void setMessageBeanDao(IMessageBeanDao messageBeanDao) {
+//        this.messageBeanDao = messageBeanDao;
+//
+//    }
 
     @Override
     public List<MessageBean> query(MessageBean bean) {
-        return messageBeanDao.find("select a from MessageBean a where a.title LIKE ?1", "%" + bean.getTitle() + "%");
+        return dao.find("select a from MessageBean a where a.title LIKE ?1", "%" + bean.getTitle() + "%");
     }
 }

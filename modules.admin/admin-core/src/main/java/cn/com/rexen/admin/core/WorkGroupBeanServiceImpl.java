@@ -8,6 +8,7 @@ import cn.com.rexen.admin.entities.WorkGroupBean;
 import cn.com.rexen.admin.entities.WorkGroupRoleBean;
 import cn.com.rexen.admin.entities.WorkGroupUserBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
+import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
@@ -24,12 +25,16 @@ import java.util.List;
  *         date:2015-7-27
  * @version 1.0.0
  */
-public class WorkGroupBeanServiceImpl extends GenericBizServiceImpl implements IWorkGroupBeanService {
+public class WorkGroupBeanServiceImpl extends GenericBizServiceImpl<IWorkGroupBeanDao, WorkGroupBean> implements IWorkGroupBeanService {
     private static final String FUNCTION_NAME = "工作组";
-    private IWorkGroupBeanDao workGroupBeanDao;
+    //    private IWorkGroupBeanDao dao;
     private IWorkGroupUserBeanDao workGroupUserBeanDao;
     private IWorkGroupRoleBeanDao workGroupRoleBeanDao;
     private IShiroService shiroService;
+
+    public WorkGroupBeanServiceImpl() {
+        super.init(WorkGroupBean.class.getName());
+    }
 
     public void setWorkGroupRoleBeanDao(IWorkGroupRoleBeanDao workGroupRoleBeanDao) {
         this.workGroupRoleBeanDao = workGroupRoleBeanDao;
@@ -44,14 +49,14 @@ public class WorkGroupBeanServiceImpl extends GenericBizServiceImpl implements I
     }
 
 
-    public void setWorkGroupBeanDao(IWorkGroupBeanDao dictBeanDao) {
-        this.workGroupBeanDao = dictBeanDao;
-        super.init(dictBeanDao, WorkGroupBean.class.getName());
-    }
+//    public void setWorkGroupBeanDao(IWorkGroupBeanDao dictBeanDao) {
+//        this.dao = dictBeanDao;
+//
+//    }
 
     @Override
     public List<WorkGroupBean> query(WorkGroupBean WorkGroupBean) {
-        return workGroupBeanDao.find("select a from WorkGroupBean a where a.name like ?1", "%" + WorkGroupBean.getName() + "%");
+        return dao.find("select a from WorkGroupBean a where a.name like ?1", "%" + WorkGroupBean.getName() + "%");
     }
 
     @Override
@@ -61,7 +66,7 @@ public class WorkGroupBeanServiceImpl extends GenericBizServiceImpl implements I
 
     @Override
     public boolean isDelete(Long entityId, JsonStatus status) {
-        if (workGroupBeanDao.get(WorkGroupBean.class.getName(),entityId) == null) {
+        if (dao.get(WorkGroupBean.class.getName(), entityId) == null) {
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经被删除！");
             return false;
@@ -70,7 +75,7 @@ public class WorkGroupBeanServiceImpl extends GenericBizServiceImpl implements I
     }
 
     @Override
-    public void beforeSaveEntity(PersistentEntity entity, JsonStatus status) {
+    public void beforeSaveEntity(WorkGroupBean entity, JsonStatus status) {
         String userName = shiroService.getCurrentUserName();
         Assert.notNull(userName, "用户名不能为空.");
         if(StringUtils.isNotEmpty(userName)) {
@@ -80,10 +85,10 @@ public class WorkGroupBeanServiceImpl extends GenericBizServiceImpl implements I
     }
 
     @Override
-    public boolean isUpdate(PersistentEntity entity, JsonStatus status) {
+    public boolean isUpdate(WorkGroupBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         WorkGroupBean bean=(WorkGroupBean)entity;
-        List<WorkGroupBean> beans= workGroupBeanDao.find("select ob from WorkGroupBean ob where ob.name = ?1", bean.getName());
+        List<WorkGroupBean> beans = dao.find("select ob from WorkGroupBean ob where ob.name = ?1", bean.getName());
         if(beans!=null&&beans.size()>0){
             WorkGroupBean _workGroup=beans.get(0);
             if(_workGroup.getId()!=entity.getId()) {
@@ -96,10 +101,10 @@ public class WorkGroupBeanServiceImpl extends GenericBizServiceImpl implements I
     }
 
     @Override
-    public boolean isSave(PersistentEntity entity, JsonStatus status) {
+    public boolean isSave(WorkGroupBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         WorkGroupBean bean=(WorkGroupBean)entity;
-        List<WorkGroupBean> beans= workGroupBeanDao.find("select ob from WorkGroupBean ob where ob.name = ?1", bean.getName());
+        List<WorkGroupBean> beans = dao.find("select ob from WorkGroupBean ob where ob.name = ?1", bean.getName());
         if(beans!=null&&beans.size()>0){
             status.setSuccess(false);
             status.setMsg(FUNCTION_NAME + "已经存在！");
@@ -109,7 +114,7 @@ public class WorkGroupBeanServiceImpl extends GenericBizServiceImpl implements I
     }
 
     @Override
-    public void beforeUpdateEntity(PersistentEntity entity, JsonStatus status) {
+    public void beforeUpdateEntity(WorkGroupBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         WorkGroupBean WorkGroup=(WorkGroupBean)entity;
         String userName = shiroService.getCurrentUserName();
@@ -121,7 +126,7 @@ public class WorkGroupBeanServiceImpl extends GenericBizServiceImpl implements I
 
     @Override
     public JsonData getAllWorkGroup(int page,int limit) {
-        return workGroupBeanDao.getAll(page,limit,WorkGroupBean.class.getName());
+        return dao.getAll(page, limit, WorkGroupBean.class.getName());
     }
 
     @Override

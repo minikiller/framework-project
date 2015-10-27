@@ -15,7 +15,7 @@ import java.util.List;
  * 修改时间:  2014/8/7 16:01
  * 修改备注:  [说明本次修改内容]
  */
-public interface IAreaBeanService extends IBizService {
+public interface IAreaBeanService extends IBizService<AreaBean> {
     List<AreaBean> query(AreaBean areaBean);
 
     List<AreaBean> getRootBeanList();

@@ -3,6 +3,7 @@ package cn.com.rexen.admin.core;
 import cn.com.rexen.admin.api.biz.IAboutBeanService;
 import cn.com.rexen.admin.api.dao.IAboutBeanDao;
 import cn.com.rexen.admin.entities.AboutBean;
+import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 
 /**
@@ -14,15 +15,10 @@ import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
  * 修改时间:  2014/8/7 16:02
  * 修改备注:  [说明本次修改内容]
  */
-public class AboutBeanServiceImpl extends GenericBizServiceImpl implements IAboutBeanService {
-
-    private IAboutBeanDao aboutBeanDao;
-
-    public void setAboutBeanDao(IAboutBeanDao aboutBeanDao) {
-        this.aboutBeanDao = aboutBeanDao;
-        super.init(aboutBeanDao, AboutBean.class.getName());
+public class AboutBeanServiceImpl extends GenericBizServiceImpl<IAboutBeanDao, AboutBean> implements IAboutBeanService {
+    public AboutBeanServiceImpl() {
+        super.init(AboutBean.class.getName());
     }
-
     @Override
     public AboutBean getSysInfo() {
         return null;

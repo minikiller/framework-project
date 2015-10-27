@@ -28,7 +28,7 @@
 
 
     <bean id="userBeanServiceImpl" class="cn.com.rexen.admin.core.UserBeanServiceImpl">
-        <property name="userBeanDao" ref="userBeanDao"/>
+        <property name="dao" ref="userBeanDao"/>
         <property name="roleBeanDao" ref="roleBeanDao"/>
         <property name="roleUserBeanDao" ref="roleUserBeanDao"/>
         <property name="departmentUserBeanDao" ref="depUserBeanDao"/>
@@ -46,7 +46,7 @@
              interface="cn.com.rexen.core.api.security.IUserLoginService"/>
     <!--角色dao服务注册-->
     <bean id="roleBeanServiceImpl" class="cn.com.rexen.admin.core.RoleBeanServiceImpl">
-        <property name="roleBeanDao" ref="roleBeanDao"/>
+        <property name="dao" ref="roleBeanDao"/>
         <property name="userBeanDao" ref="userBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="roleUserBeanDao" ref="roleUserBeanDao"/>
@@ -62,7 +62,7 @@
 
     <!--权限服务注册-->
     <bean id="permissionBeanServiceImpl" class="cn.com.rexen.admin.core.PermissionBeanServiceImpl">
-        <property name="permissionBeanDao" ref="permissionBeanDao"/>
+        <property name="dao" ref="permissionBeanDao"/>
         <property name="roleBeanDao" ref="roleBeanDao"/>
         <property name="roleBeanService" ref="roleBeanServiceImpl"/>
         <property name="roleApplicationBeanDao" ref="roleApplicationBeanDao"/>
@@ -76,7 +76,7 @@
 
     <!--字典服务注册-->
     <bean id="dictBeanServiceImpl" class="cn.com.rexen.admin.core.DictBeanServiceImpl">
-        <property name="dictBeanDao" ref="dictBeanDao"/>
+        <property name="dao" ref="dictBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
     </bean>
     <service id="dictBeanService" ref="dictBeanServiceImpl"
@@ -84,7 +84,7 @@
 
     <!--工作组服务注册-->
     <bean id="workGroupBeanServiceImpl" class="cn.com.rexen.admin.core.WorkGroupBeanServiceImpl">
-        <property name="workGroupBeanDao" ref="workGroupBeanDao"/>
+        <property name="dao" ref="workGroupBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="workGroupUserBeanDao" ref="workGroupUserBeanDao"/>
         <property name="workGroupRoleBeanDao" ref="workGroupRoleBeanDao"/>
@@ -95,7 +95,7 @@
 
     <!--区域服务注册-->
     <bean id="areaBeanServiceImpl" class="cn.com.rexen.admin.core.AreaBeanServiceImpl">
-        <property name="areaBeanDao" ref="areaBeanDao"/>
+        <property name="dao" ref="areaBeanDao"/>
         <property name="aboutBeanDao" ref="aboutBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="orgService" ref="orgBeanServiceImpl"/>
@@ -108,7 +108,7 @@
 
     <!--部门服务注册-->
     <bean id="depBeanServiceImpl" class="cn.com.rexen.admin.core.DepartmentBeanServiceImpl">
-        <property name="depBeanDao" ref="depBeanDao"/>
+        <property name="dao" ref="depBeanDao"/>
         <property name="userBeanDao" ref="userBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="depUserBeanDao" ref="depUserBeanDao"/>
@@ -118,7 +118,7 @@
 
     <!--机构服务注册-->
     <bean id="orgBeanServiceImpl" class="cn.com.rexen.admin.core.OrganizationBeanServiceImpl">
-        <property name="orgBeanDao" ref="orgBeanDao"/>
+        <property name="dao" ref="orgBeanDao"/>
         <property name="userBeanService" ref="userBeanServiceImpl"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="departmentBeanService" ref="depBeanServiceImpl"/>
@@ -129,24 +129,26 @@
 
     <!--机构服务注册-->
     <bean id="officeBeanServiceImpl" class="cn.com.rexen.admin.core.OfficeBeanServiceImpl">
-        <property name="officeBeanDao" ref="officeBeanDao"/>
+        <property name="dao" ref="officeBeanDao"/>
     </bean>
     <service id="officeBeanService" ref="officeBeanServiceImpl"
              interface="cn.com.rexen.admin.api.biz.IOfficeBeanService"/>
     <reference id="officeBeanDao" interface="cn.com.rexen.admin.api.dao.IOfficeBeanDao"/>
     <!--系统版本服务注册-->
     <bean id="aboutBeanServiceImpl" class="cn.com.rexen.admin.core.AboutBeanServiceImpl">
-        <property name="aboutBeanDao" ref="aboutBeanDao"/>
+        <property name="dao" ref="aboutBeanDao"/>
     </bean>
     <service id="aboutBeanService" ref="aboutBeanServiceImpl"
              interface="cn.com.rexen.admin.api.biz.IAboutBeanService"/>
 
 
+    <bean id="messageBeanServiceImpl" class="cn.com.rexen.admin.core.MessageBeanServiceImpl">
+        <property name="dao" ref="messageBeanDao"/>
+    </bean>
     <!--注册系统消息服务类-->
-    <service id="messageBeanService" interface="cn.com.rexen.admin.api.biz.IMessageBeanService">
-        <bean class="cn.com.rexen.admin.core.MessageBeanServiceImpl">
-            <property name="messageBeanDao" ref="messageBeanDao"/>
-        </bean>
+    <service id="messageBeanService" interface="cn.com.rexen.admin.api.biz.IMessageBeanService"
+             ref="messageBeanServiceImpl">
+
     </service>
 
 </blueprint>

@@ -33,9 +33,9 @@ import java.util.List;
  *         date:2015-7-27
  * @version 1.0.0
  */
-public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements IApplicationBeanService {
+public class ApplicationBeanServiceImpl extends GenericBizServiceImpl<IApplicationBeanDao, ApplicationBean> implements IApplicationBeanService {
     private static final String FUNCTION_NAME = "应用";
-    private IApplicationBeanDao applicationBeanDao;
+    //    private IApplicationBeanDao dao;
     private IFunctionBeanService functionBeanService;
     private IFunctionBeanDao functionBeanDao;
     private IShiroService shiroService;
@@ -43,6 +43,10 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
     private IRoleApplicationBeanDao roleApplicationBeanDao;
     private IWorkGroupBeanService workGroupBeanService;
 
+    public ApplicationBeanServiceImpl() {
+        super.init(ApplicationBean.class.getName());
+    }
+    
     public void setWorkGroupBeanService(IWorkGroupBeanService workGroupBeanService) {
         this.workGroupBeanService = workGroupBeanService;
     }
@@ -67,13 +71,13 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
         this.functionBeanService = functionBeanService;
     }
 
-    public void setApplicationBeanDao(IApplicationBeanDao applicationBeanDao) {
-        this.applicationBeanDao = applicationBeanDao;
-        super.init(applicationBeanDao, ApplicationBean.class.getName());
-    }
+//    public void setApplicationBeanDao(IApplicationBeanDao dao) {
+//        this.dao = dao;
+//        
+//    }
 
     @Override
-    public void beforeUpdateEntity(PersistentEntity entity, JsonStatus status) {
+    public void beforeUpdateEntity(ApplicationBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         String userName = shiroService.getCurrentUserName();
         Assert.notNull(userName, "用户名不能为空.");
@@ -83,7 +87,7 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
     }
 
     @Override
-    public void beforeSaveEntity(PersistentEntity entity, JsonStatus status) {
+    public void beforeSaveEntity(ApplicationBean entity, JsonStatus status) {
         String userName = shiroService.getCurrentUserName();
         Assert.notNull(userName, "用户名不能为空.");
         if(StringUtils.isNotEmpty(userName)) {
@@ -95,7 +99,7 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
 
     @Override
     public boolean isDelete(Long entityId, JsonStatus status) {
-        if (applicationBeanDao.get(ApplicationBean.class.getName(),entityId) == null) {
+        if (dao.get(ApplicationBean.class.getName(), entityId) == null) {
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经被删除！");
             return false;
@@ -109,7 +113,7 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
     }
 
     @Override
-    public void afterUpdateEntity(PersistentEntity entity, JsonStatus status) {
+    public void afterUpdateEntity(ApplicationBean entity, JsonStatus status) {
         ApplicationBean applicationBean=(ApplicationBean)entity;
         List<FunctionBean> functionBeans=functionBeanDao.find("select fb from FunctionBean fb where fb.applicationId=?1",entity.getId());
         if(functionBeans!=null&&!functionBeans.isEmpty()){
@@ -124,10 +128,10 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
     }
 
     @Override
-    public boolean isUpdate(PersistentEntity entity, JsonStatus status) {
+    public boolean isUpdate(ApplicationBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         ApplicationBean bean=(ApplicationBean)entity;
-        List<ApplicationBean> beans= applicationBeanDao.find("select ob from ApplicationBean ob where ob.name = ?1", bean.getName());
+        List<ApplicationBean> beans = dao.find("select ob from ApplicationBean ob where ob.name = ?1", bean.getName());
         if(beans!=null&&beans.size()>0){
             ApplicationBean applicationBean=beans.get(0);
             if(applicationBean.getId()!=entity.getId()) {
@@ -136,7 +140,7 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
                 return false;
             }
         }
-        beans= applicationBeanDao.find("select ob from ApplicationBean ob where ob.code = ?1", bean.getCode());
+        beans = dao.find("select ob from ApplicationBean ob where ob.code = ?1", bean.getCode());
         if(beans!=null&&beans.size()>0){
             ApplicationBean applicationBean=beans.get(0);
             if(applicationBean.getId()!=entity.getId()) {
@@ -149,16 +153,16 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
     }
 
     @Override
-    public boolean isSave(PersistentEntity entity, JsonStatus status) {
+    public boolean isSave(ApplicationBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         ApplicationBean bean=(ApplicationBean)entity;
-        List<ApplicationBean> beans= applicationBeanDao.find("select ob from ApplicationBean ob where ob.name = ?1 ", bean.getName());
+        List<ApplicationBean> beans = dao.find("select ob from ApplicationBean ob where ob.name = ?1 ", bean.getName());
         if(beans!=null&&beans.size()>0){
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经存在,请检查名称！");
             return false;
         }
-        beans= applicationBeanDao.find("select ob from ApplicationBean ob where ob.code = ?1 ", bean.getCode());
+        beans = dao.find("select ob from ApplicationBean ob where ob.code = ?1 ", bean.getCode());
         if(beans!=null&&beans.size()>0){
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经存在,请检查代码！");
@@ -172,7 +176,7 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
     public ApplicationDTO getTreesByAllApplications() {
         ApplicationDTO root=new ApplicationDTO();
         root.setId("-1");
-        List<ApplicationBean> beans=applicationBeanDao.getAll(ApplicationBean.class.getName());
+        List<ApplicationBean> beans = dao.getAll(ApplicationBean.class.getName());
         if(beans!=null&&beans.size()>0){
             if(beans!=null&&beans.size()>0) {
                 for(ApplicationBean applicationBean:beans){
@@ -191,7 +195,7 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl implements
     public AuthorizationDTO getAuthorizationTree() {
         AuthorizationDTO root=new AuthorizationDTO();
         root.setId("-1");
-        List<ApplicationBean> beans=applicationBeanDao.getAll(ApplicationBean.class.getName());
+        List<ApplicationBean> beans = dao.getAll(ApplicationBean.class.getName());
         if(beans!=null&&beans.size()>0){
             if(beans!=null&&beans.size()>0) {
                 for(ApplicationBean applicationBean:beans){

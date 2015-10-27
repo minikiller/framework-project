@@ -11,23 +11,24 @@
 
 
     <bean id="functionBeanService" class="cn.com.rexen.app.core.FunctionBeanServiceImpl">
-        <property name="functionBeanDao" ref="functionBeanDao"/>
+        <property name="dao" ref="functionBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
     </bean>
 
     <!--功能服务-->
     <service id="functionService" interface="cn.com.rexen.app.api.biz.IFunctionBeanService" ref="functionBeanService" />
 
+    <bean id="applicationBeanServiceImpl" class="cn.com.rexen.app.core.ApplicationBeanServiceImpl">
+        <property name="dao" ref="applicationBeanDao"/>
+        <property name="functionBeanService" ref="functionBeanService"/>
+        <property name="functionBeanDao" ref="functionBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
+    </bean>
+
     <!--应用服务-->
-    <service id="applicationBeanService" interface="cn.com.rexen.app.api.biz.IApplicationBeanService">
-        <bean class="cn.com.rexen.app.core.ApplicationBeanServiceImpl">
-            <property name="applicationBeanDao" ref="applicationBeanDao"/>
-            <property name="functionBeanService" ref="functionBeanService"/>
-            <property name="functionBeanDao" ref="functionBeanDao"/>
-            <property name="shiroService" ref="shiroService"/>
-        </bean>
+    <service id="applicationBeanService" interface="cn.com.rexen.app.api.biz.IApplicationBeanService"
+             ref="applicationBeanServiceImpl">
+
     </service>
-
-
 </blueprint>
 

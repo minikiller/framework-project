@@ -9,7 +9,7 @@
     </service>
 
     <bean id="couchdbAttachBeanServiceImpl" class="cn.com.rexen.couchdb.core.biz.CouchdbAttachBeanServiceImpl">
-        <property name="couchdbAttachBeanDao" ref="couchdbAttachBeanDao"/>
+        <property name="dao" ref="couchdbAttachBeanDao"/>
         <property name="couchdbService" ref="couchdbServiceImpl"/>
     </bean>
 

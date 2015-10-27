@@ -13,6 +13,6 @@ import java.util.List;
  * @修改时间：
  * @修改备注：
  */
-public interface IAuditBeanService extends IBizService {
+public interface IAuditBeanService extends IBizService<AuditBean> {
     List<AuditBean> query(String title);
 }

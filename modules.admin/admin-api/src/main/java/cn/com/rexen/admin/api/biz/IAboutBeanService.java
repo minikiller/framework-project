@@ -12,7 +12,7 @@ import cn.com.rexen.core.api.biz.IBizService;
  * 修改时间:  2014/8/7 16:01
  * 修改备注:  [说明本次修改内容]
  */
-public interface IAboutBeanService extends IBizService {
+public interface IAboutBeanService extends IBizService<AboutBean> {
     /**
      * 获得系统版本信息
      *

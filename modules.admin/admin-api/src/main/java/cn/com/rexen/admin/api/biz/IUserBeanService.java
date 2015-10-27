@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by dell on 14-1-17.
  */
-public interface IUserBeanService extends IBizService {
+public interface IUserBeanService extends IBizService<UserBean> {
 
 
     JsonData getAllUser();

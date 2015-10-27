@@ -10,6 +10,7 @@ import cn.com.rexen.app.dto.model.AuthorizationDTO;
 import cn.com.rexen.app.entities.ApplicationBean;
 import cn.com.rexen.app.entities.FunctionBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
+import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
@@ -31,9 +32,9 @@ import java.util.List;
  * @修改备注：
  */
 
-public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleBeanService {
+public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, RoleBean> implements IRoleBeanService {
     private static final String FUNCTION_NAME = "角色";
-    private IRoleBeanDao roleBeanDao;
+    //    private IRoleBeanDao dao;
     private IUserBeanDao userBeanDao;
     private IRoleUserBeanDao roleUserBeanDao;
     private IWorkGroupRoleBeanDao workGroupRoleBeanDao;
@@ -43,6 +44,10 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
     private IFunctionBeanDao functionBeanDao;
     private IFunctionBeanService functionBeanService;
     private IShiroService shiroService;
+
+    public RoleBeanServiceImpl() {
+        super.init(RoleBean.class.getName());
+    }
 
     public void setFunctionBeanService(IFunctionBeanService functionBeanService) {
         this.functionBeanService = functionBeanService;
@@ -81,13 +86,13 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
         this.shiroService = shiroService;
     }
 
-    public void setRoleBeanDao(IRoleBeanDao roleBeanDao) {
-        this.roleBeanDao = roleBeanDao;
-        super.init(roleBeanDao, RoleBean.class.getName());
-    }
+//    public void setRoleBeanDao(IRoleBeanDao dao) {
+//        this.dao = dao;
+//
+//    }
 
     @Override
-    public void beforeUpdateEntity(PersistentEntity entity, JsonStatus status) {
+    public void beforeUpdateEntity(RoleBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         String userName = shiroService.getCurrentUserName();
         Assert.notNull(userName, "用户名不能为空.");
@@ -97,7 +102,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
     }
 
     @Override
-    public void beforeSaveEntity(PersistentEntity entity, JsonStatus status) {
+    public void beforeSaveEntity(RoleBean entity, JsonStatus status) {
         String userName = shiroService.getCurrentUserName();
         Assert.notNull(userName, "用户名不能为空.");
         if(StringUtils.isNotEmpty(userName)) {
@@ -108,7 +113,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
 
     @Override
     public boolean isDelete(Long entityId, JsonStatus status) {
-        if (roleBeanDao.get(RoleBean.class.getName(),entityId) == null) {
+        if (dao.get(RoleBean.class.getName(), entityId) == null) {
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经被删除！");
             return false;
@@ -117,10 +122,10 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
     }
 
     @Override
-    public boolean isUpdate(PersistentEntity entity, JsonStatus status) {
+    public boolean isUpdate(RoleBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         RoleBean role=(RoleBean)entity;
-        List<RoleBean> beans=roleBeanDao.find("select ob from RoleBean ob where ob.name = ?1 ", role.getName());
+        List<RoleBean> beans = dao.find("select ob from RoleBean ob where ob.name = ?1 ", role.getName());
         if(beans!=null&&beans.size()>0){
             RoleBean _role=beans.get(0);
             if(_role.getId()!=role.getId()){
@@ -133,10 +138,10 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
     }
 
     @Override
-    public boolean isSave(PersistentEntity entity, JsonStatus status) {
+    public boolean isSave(RoleBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         RoleBean role=(RoleBean)entity;
-        List<RoleBean> beans=roleBeanDao.find("select ob from RoleBean ob where ob.name = ?1", role.getName());
+        List<RoleBean> beans = dao.find("select ob from RoleBean ob where ob.name = ?1", role.getName());
         if(beans!=null&&beans.size()>0){
             status.setSuccess(false);
             status.setMsg(FUNCTION_NAME + "已经存在！");
@@ -151,12 +156,12 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
 
     @Override
     public List<String> getRoleNameList() {
-        return roleBeanDao.getRoleNameList();
+        return dao.getRoleNameList();
     }
 
     @Override
     public List<String> getRoleNameList(UserBean userBean) {
-        return roleBeanDao.getRoleNameList(userBean);
+        return dao.getRoleNameList(userBean);
     }
 
 
@@ -165,7 +170,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
     @Override
     public JsonData getAllRole() {
         JsonData jsonData=new JsonData();
-        List<RoleBean> roles=roleBeanDao.getAll(RoleBean.class.getName());
+        List<RoleBean> roles = dao.getAll(RoleBean.class.getName());
         List<PersistentEntity> persistentEntityList=new ArrayList<PersistentEntity>();
         if(roles!=null&&roles.size()>0){
             for(RoleBean role:roles){
@@ -245,9 +250,9 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
         List<UserBean> userBeanList = new ArrayList<UserBean>();
         //为新对象
         if (roleBean.getId() == 0L) {
-            roleBean = roleBeanDao.save(roleBean);
+            roleBean = dao.save(roleBean);
         } else {
-            userBeanList = roleBeanDao.get(RoleBean.class.getName(), roleBean.getId()).getUserList();
+            userBeanList = dao.get(RoleBean.class.getName(), roleBean.getId()).getUserList();
         }
 
         //删除全部该角色下的用户
@@ -266,7 +271,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
 
     @Override
     public List<RoleBean> query(RoleBean roleBean) {
-        return roleBeanDao.find("select a from RoleBean a where a.name LIKE ?1", "%" + roleBean.getName() + "%");
+        return dao.find("select a from RoleBean a where a.name LIKE ?1", "%" + roleBean.getName() + "%");
     }
 
     @Override
@@ -280,7 +285,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
         List<RoleBean> roleBeans=new ArrayList<RoleBean>();
         if(roleUserBeans!=null&&!roleUserBeans.isEmpty()){
             for(RoleUserBean roleUserBean:roleUserBeans){
-                RoleBean roleBean=roleBeanDao.get(RoleBean.class.getName(),roleUserBean.getRoleId());
+                RoleBean roleBean = dao.get(RoleBean.class.getName(), roleUserBean.getRoleId());
                 roleBeans.add(roleBean);
             }
         }
@@ -293,7 +298,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl implements IRoleB
         List<RoleBean> roleBeans=new ArrayList<RoleBean>();
         if(workGroupRoleBeans!=null&&!workGroupRoleBeans.isEmpty()){
             for(WorkGroupRoleBean workGroupRoleBean:workGroupRoleBeans){
-                roleBeans.add(roleBeanDao.get(RoleBean.class.getName(), workGroupRoleBean.getRoleId()));
+                roleBeans.add(dao.get(RoleBean.class.getName(), workGroupRoleBean.getRoleId()));
             }
         }
         return roleBeans;

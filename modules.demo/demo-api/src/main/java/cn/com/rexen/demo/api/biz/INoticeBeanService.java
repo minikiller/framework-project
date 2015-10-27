@@ -14,7 +14,7 @@ import java.util.List;
  * @修改时间：
  * @修改备注：
  */
-public interface INoticeBeanService extends IBizService {
+public interface INoticeBeanService extends IBizService<NoticeBean> {
     List<NoticeBean> query(String title);
 
     JsonStatus startProcess(String id);

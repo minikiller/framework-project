@@ -4,6 +4,7 @@ import cn.com.rexen.admin.api.biz.IDictBeanService;
 import cn.com.rexen.admin.api.dao.IDictBeanDao;
 import cn.com.rexen.admin.entities.DictBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
+import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
@@ -24,19 +25,22 @@ import java.util.Map;
  * @修改备注：
  */
 
-public class DictBeanServiceImpl extends GenericBizServiceImpl implements IDictBeanService {
+public class DictBeanServiceImpl extends GenericBizServiceImpl<IDictBeanDao, DictBean> implements IDictBeanService {
     private static final String FUNCTION_NAME = "字典";
-    private IDictBeanDao dictBeanDao;
+    //    private IDictBeanDao dao;
     private IShiroService shiroService;
 
 
+    public DictBeanServiceImpl() {
+        super.init(DictBean.class.getName());
+    }
 
     public void setShiroService(IShiroService shiroService) {
         this.shiroService = shiroService;
     }
 
     @Override
-    public void beforeUpdateEntity(PersistentEntity entity, JsonStatus status) {
+    public void beforeUpdateEntity(DictBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         String userName = shiroService.getCurrentUserName();
         Assert.notNull(userName, "用户名不能为空.");
@@ -46,7 +50,7 @@ public class DictBeanServiceImpl extends GenericBizServiceImpl implements IDictB
     }
 
     @Override
-    public void beforeSaveEntity(PersistentEntity entity, JsonStatus status) {
+    public void beforeSaveEntity(DictBean entity, JsonStatus status) {
         String userName = shiroService.getCurrentUserName();
         Assert.notNull(userName, "用户名不能为空.");
         if(StringUtils.isNotEmpty(userName)) {
@@ -56,14 +60,13 @@ public class DictBeanServiceImpl extends GenericBizServiceImpl implements IDictB
     }
 
 
-    public void setDictBeanDao(IDictBeanDao dictBeanDao) {
-        this.dictBeanDao = dictBeanDao;
-        super.init(dictBeanDao, DictBean.class.getName());
-    }
+//    public void setDictBeanDao(IDictBeanDao dao) {
+//        this.dao = dao;
+//    }
 
     @Override
     public List<DictBean> getDictList(String type) {
-        return dictBeanDao.getDictList(type);
+        return dao.getDictList(type);
     }
 
     @Override
@@ -79,12 +82,12 @@ public class DictBeanServiceImpl extends GenericBizServiceImpl implements IDictB
 
     @Override
     public List<DictBean> query(DictBean dictBean) {
-        return dictBeanDao.find("select a from DictBean a where a.type like ?1", "%" + dictBean.getType() + "%");
+        return dao.find("select a from DictBean a where a.type like ?1", "%" + dictBean.getType() + "%");
     }
 
 
     public JsonData getAll(int page,int limit) {
-        return dictBeanDao.getAll(page, limit, DictBean.class.getName());
+        return dao.getAll(page, limit, DictBean.class.getName());
     }
 
 }

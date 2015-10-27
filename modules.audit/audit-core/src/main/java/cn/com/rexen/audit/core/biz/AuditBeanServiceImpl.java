@@ -17,8 +17,8 @@ import java.util.UUID;
  * @修改时间：
  * @修改备注：
  */
-public class AuditBeanServiceImpl extends GenericBizServiceImpl implements IAuditBeanService {
-    private IAuditBeanDao auditBeanDao;
+public class AuditBeanServiceImpl extends GenericBizServiceImpl<IAuditBeanDao, AuditBean> implements IAuditBeanService {
+//    private IAuditBeanDao dao;
 
     private JsonStatus jsonStatus = new JsonStatus();
 
@@ -26,17 +26,18 @@ public class AuditBeanServiceImpl extends GenericBizServiceImpl implements IAudi
 
     public AuditBeanServiceImpl() {
         uuid = UUID.randomUUID().toString();
+        super.init(AuditBean.class.getName());
     }
 
-    public void setAuditBeanDao(IAuditBeanDao auditBeanDao) {
-        this.auditBeanDao = auditBeanDao;
-        super.init(auditBeanDao, AuditBean.class.getName());
-    }
+//    public void setAuditBeanDao(IAuditBeanDao dao) {
+//        this.dao = dao;
+//       
+//    }
 
 
     @Override
     public List<AuditBean> query(String title) {
-        return auditBeanDao.find("select n from auditBean n where n.title LIKE ?1 ", "%" + title + "%");
+        return dao.find("select n from auditBean n where n.title LIKE ?1 ", "%" + title + "%");
     }
 
 }

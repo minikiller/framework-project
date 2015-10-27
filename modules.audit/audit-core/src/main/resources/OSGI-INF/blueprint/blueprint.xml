@@ -8,7 +8,7 @@
     </service>
 
     <bean id="beanServiceImpl" class="cn.com.rexen.audit.core.biz.AuditBeanServiceImpl" scope="prototype">
-        <property name="auditBeanDao" ref="auditBeanDao"/>
+        <property name="dao" ref="auditBeanDao"/>
     </bean>
 
     <reference id="auditBeanDao" interface="cn.com.rexen.audit.api.dao.IAuditBeanDao"/>

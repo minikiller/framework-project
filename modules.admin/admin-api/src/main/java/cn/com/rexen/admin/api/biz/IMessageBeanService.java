@@ -13,6 +13,6 @@ import java.util.List;
  * @修改时间：
  * @修改备注：
  */
-public interface IMessageBeanService extends IBizService {
+public interface IMessageBeanService extends IBizService<MessageBean> {
     List<MessageBean> query(MessageBean bean);
 }

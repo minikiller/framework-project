@@ -9,24 +9,26 @@ import cn.com.rexen.core.api.web.model.QueryDTO;
 import cn.com.rexen.core.util.Assert;
 import org.apache.log4j.Logger;
 
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
-//import com.wordnik.swagger.annotations.ApiOperation;
-//import com.wordnik.swagger.annotations.ApiParam;
 
 /**
  * @类描述： 对外服务的抽象接口实现, 封装了基本的对数据库的操作
  * @创建人：sunlf
  * @创建时间：2014-3-27 下午1:01:59
- * @修改人：sunlf
- * @修改时间：2014-3-27 下午1:01:59
+ * @修改人：chenyanxu
+ * @修改时间：2015-10-27 下午1:01:59
  * @修改备注：
  */
-public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IBizService {
+public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends PersistentEntity> implements IBizService<TP> {
     protected final Logger log = Logger.getLogger(getClass());
     protected T dao;
     protected String entityClassName;
 
+    public void setDao(T dao) {
+        this.dao = dao;
+    }
 
     @Override
     public void doDelete(long entityId,JsonStatus jsonStatus) {
@@ -36,14 +38,14 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
     }
 
     @Override
-    public void doSave(PersistentEntity entity,JsonStatus jsonStatus) {
+    public void doSave(TP entity, JsonStatus jsonStatus) {
         dao.save(entity);
         jsonStatus.setSuccess(true);
         jsonStatus.setMsg("新增成功！");
     }
 
     @Override
-    public void doUpdate(PersistentEntity entity,JsonStatus jsonStatus) {
+    public void doUpdate(TP entity, JsonStatus jsonStatus) {
         dao.save(entity);
         jsonStatus.setSuccess(true);
         jsonStatus.setMsg("修改成功！");
@@ -84,23 +86,23 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
     }
 
     @Override
-    public void beforeSaveEntity(PersistentEntity entity, JsonStatus status) {
+    public void beforeSaveEntity(TP entity, JsonStatus status) {
 
     }
 
     @Override
-    public void afterSaveEntity(PersistentEntity entity, JsonStatus status) {
+    public void afterSaveEntity(TP entity, JsonStatus status) {
 
     }
 
     @Override
-    public boolean isSave(PersistentEntity entity, JsonStatus status) {
+    public boolean isSave(TP entity, JsonStatus status) {
         return true;
     }
 
 
     @Override
-    public JsonStatus saveEntity(PersistentEntity entity) {
+    public JsonStatus saveEntity(TP entity) {
 
         log.debug("save entity of " + entityClassName);
         JsonStatus jsonStatus = new JsonStatus();
@@ -120,22 +122,22 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
     }
 
     @Override
-    public void beforeUpdateEntity(PersistentEntity entity, JsonStatus status) {
+    public void beforeUpdateEntity(TP entity, JsonStatus status) {
 
     }
 
     @Override
-    public void afterUpdateEntity(PersistentEntity entity, JsonStatus status) {
+    public void afterUpdateEntity(TP entity, JsonStatus status) {
 
     }
 
     @Override
-    public boolean isUpdate(PersistentEntity entity, JsonStatus status) {
+    public boolean isUpdate(TP entity, JsonStatus status) {
         return true;
     }
 
     @Override
-    public JsonStatus updateEntity(PersistentEntity entity) {
+    public JsonStatus updateEntity(TP entity) {
 
         log.debug("update entity of " + entityClassName);
         JsonStatus jsonStatus = new JsonStatus();
@@ -159,9 +161,10 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
         return dao.save(entity);
     }
 
+
     @Override
     public JsonData getAllEntityByQuery(QueryDTO queryDTO) {
-        Assert.notNull(queryDTO,"查询条件不能为空.");
+        Assert.notNull(queryDTO, "查询条件不能为空.");
         return dao.getAll(queryDTO.getPage(), queryDTO.getLimit(), entityClassName, dao.buildCriteriaQuery(queryDTO));
     }
 
@@ -177,18 +180,18 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao> implements IB
     }
 
     @Override
-    public PersistentEntity getEntity(long entityId) {
-        return (PersistentEntity) dao.get(entityClassName, entityId);
+    public TP getEntity(long entityId) {
+        return (TP) dao.get(entityClassName, entityId);
     }
 
     /**
      * 具体的业务类必须调用该方法
      *
-     * @param dao             具体的dao实现类
+
      * @param entityClassName 实体类的名字
      */
-    public void init(T dao, String entityClassName) {
-        this.dao = dao;
+    public void init(String entityClassName) {
+        //this.dao = dao;
         this.entityClassName = entityClassName;
     }
 }

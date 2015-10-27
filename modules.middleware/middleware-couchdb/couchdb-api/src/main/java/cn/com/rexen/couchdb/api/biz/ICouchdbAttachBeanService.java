@@ -14,7 +14,7 @@ import java.util.List;
  * @修改时间：
  * @修改备注：
  */
-public interface ICouchdbAttachBeanService extends IBizService {
+public interface ICouchdbAttachBeanService extends IBizService<CouchdbAttachBean> {
 
     /**
      * 保存附件

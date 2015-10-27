@@ -16,7 +16,7 @@ import java.util.Set;
  * @修改备注：
  */
 
-public interface IPermissionBeanService extends IBizService {
+public interface IPermissionBeanService extends IBizService<PermissionBean> {
     /**
      * 获得root权限信息
      *
