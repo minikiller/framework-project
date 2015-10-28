@@ -99,15 +99,15 @@ public class KalixAuthenticationFilter extends FormAuthenticationFilter {
                 if (log.isTraceEnabled()) {
                     log.trace("Login submission detected.  Attempting to execute login.");
                 }
-                if ("XMLHttpRequest"
+                /*if ("XMLHttpRequest"
                         .equalsIgnoreCase(((HttpServletRequest) request)
                                 .getHeader("X-Requested-With"))) {// 不是ajax请求
                     String vcode = request.getParameter("vcode");
                     HttpServletRequest httpservletrequest = (HttpServletRequest) request;
-                    /*String vvcode = (String) httpservletrequest
+                    *//*String vvcode = (String) httpservletrequest
                             .getSession()
                             .getAttribute(
-                                    com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);*/
+                                    com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);*//*
 
                     String vvcode = "123";
                     if (vvcode == null || "".equals(vvcode)
@@ -119,7 +119,7 @@ public class KalixAuthenticationFilter extends FormAuthenticationFilter {
                         out.close();
                         return false;
                     }
-                }
+                }*/
                 return executeLogin(request, response);
             } else {
                 if (log.isTraceEnabled()) {

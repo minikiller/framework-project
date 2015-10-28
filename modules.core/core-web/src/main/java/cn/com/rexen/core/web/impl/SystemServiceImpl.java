@@ -3,6 +3,7 @@ package cn.com.rexen.core.web.impl;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.api.web.*;
 import cn.com.rexen.core.api.web.model.*;
+import cn.com.rexen.core.web.Const;
 import cn.com.rexen.core.web.manager.ApplicationManager;
 import cn.com.rexen.core.web.manager.MenuManager;
 import cn.com.rexen.core.web.manager.ModuleManager;
@@ -18,6 +19,7 @@ import java.util.Map;
 
 /**
  * Created by sunlf on 2015/7/13.
+ * 系统菜单服务实现类
  */
 public class SystemServiceImpl implements ISystemService {
     private ISystem systemService;
@@ -46,6 +48,11 @@ public class SystemServiceImpl implements ISystemService {
         return systemBean;
     }
 
+    /**
+     * 返回实现IApplication接口的列表
+     *
+     * @return
+     */
     @Override
     public List<ApplicationBean> getApplicationList() {
         Subject subject=shiroService.getSubject();
@@ -58,8 +65,9 @@ public class SystemServiceImpl implements ISystemService {
             Mapper mapper = new DozerBeanMapper();
             for (IApplication application : applicationList) {
                 //调用isPermitted不能传入空字符,故此默认值为KALIX_NOT_PERMISSION
-                String permission=application.getPermission()!=null?application.getPermission():"KALIX_NOT_PERMISSION";
-                if (subject.hasRole(permission)) {
+                String permission = application.getPermission() != null ? application.getPermission() : Const.KALIX_NO_PERMISSION;
+                //具有权限或不进行权限验证，都通过
+                if (subject.hasRole(permission) || permission.equals(Const.KALIX_NO_PERMISSION)) {
                     ApplicationBean applicationBean = mapper.map(application, ApplicationBean.class);
                     applicationBeans.add(applicationBean);
                 }
@@ -68,6 +76,11 @@ public class SystemServiceImpl implements ISystemService {
         return applicationBeans;
     }
 
+    /**
+     * 返回实现IModule接口的列表
+     * @param applicationId
+     * @return
+     */
     @Override
     public List<ModuleBean> getModuleByApplication(String applicationId) {
         Subject subject=shiroService.getSubject();
@@ -80,8 +93,9 @@ public class SystemServiceImpl implements ISystemService {
         if(moduleList!=null&&!moduleList.isEmpty()){
             for(IModule module:moduleList) {
                 //调用isPermitted不能传入空字符,故此默认值为KALIX_NOT_PERMISSION
-                String modulePermission=module.getPermission()!=null?module.getPermission():"KALIX_NOT_PERMISSION";
-                if (subject.hasRole(modulePermission)) {
+                String modulePermission = module.getPermission() != null ? module.getPermission() : Const.KALIX_NO_PERMISSION;
+                //具有权限或不进行权限验证，都通过
+                if (subject.hasRole(modulePermission) || modulePermission.equals(Const.KALIX_NO_PERMISSION)) {
                     ModuleBean moduleBean = mapper.map(module, ModuleBean.class);
                     moduleBean.setText(module.getText());
                     moduleBeanList.add(moduleBean);
@@ -95,10 +109,11 @@ public class SystemServiceImpl implements ISystemService {
                 List<IMenu> allMenu=MenuManager.getInstall().getMenuList(moduleBean.getId());
                 //去掉没有权限的菜单
                 if(allMenu!=null&&!allMenu.isEmpty()){
-                    for(IMenu menu:allMenu){
-                        //调用isPermitted不能传入空字符,故此默认值为KALIX_NOT_PERMISSION
-                        String menuPermission=menu.getPermission()!=null?menu.getPermission():"KALIX_NOT_PERMISSION";
-                        if (subject.hasRole(menuPermission)) {
+                    for(IMenu menu:allMenu) {
+                        //调用hasRole不能传入空字符,故此默认值为KALIX_NOT_PERMISSION
+                        String menuPermission = menu.getPermission() != null ? menu.getPermission() : Const.KALIX_NO_PERMISSION;
+                        //具有权限或不进行权限验证，都通过
+                        if (subject.hasRole(menuPermission) || menuPermission.equals(Const.KALIX_NO_PERMISSION)) {
                             menuList.add(menu);
                         }
                     }
@@ -110,7 +125,7 @@ public class SystemServiceImpl implements ISystemService {
                         if(rootMenu!=null) {
                             menuBean=mapper.map(rootMenu, MenuBean.class);
                             menuBean.setText(rootMenu.getText());
-                            getMenuChilden(menuBean, menuList, mapper);
+                            getMenuChildren(menuBean, menuList, mapper);
                         }
                         moduleBean.getChildren().add(menuBean);
                     }
@@ -120,6 +135,11 @@ public class SystemServiceImpl implements ISystemService {
         return moduleBeanList;
     }
 
+    /**
+     * 返回实现IMenu接口的列表
+     * @param moduleId
+     * @return
+     */
     @Override
     public MenuBean getMenuByModule(String moduleId) {
         List<IMenu> menuList = MenuManager.getInstall().getMenuList(moduleId);
@@ -131,11 +151,16 @@ public class SystemServiceImpl implements ISystemService {
         if(rootMenu!=null) {
             menuBean=mapper.map(rootMenu, MenuBean.class);
             menuBean.setText(rootMenu.getText());
-            getMenuChilden(menuBean, menuList, mapper);
+            getMenuChildren(menuBean, menuList, mapper);
         }
         return menuBean;
     }
 
+    /**
+     * 获得授权的button
+     * @param permission
+     * @return
+     */
     @Override
     public Map getButtonsByPermission(String permission) {
         if(permission==null||permission.isEmpty())
@@ -175,7 +200,7 @@ public class SystemServiceImpl implements ISystemService {
      * @param menuBean
      * @param menuList
      */
-    private void getMenuChilden(MenuBean menuBean, List<IMenu> menuList, Mapper mapper) {
+    private void getMenuChildren(MenuBean menuBean, List<IMenu> menuList, Mapper mapper) {
         if(menuList==null||menuList.isEmpty())
             return;
         List<MenuBean> childMenuList = new ArrayList<>();
@@ -185,7 +210,7 @@ public class SystemServiceImpl implements ISystemService {
                 MenuBean mBean = mapper.map(menu, MenuBean.class);
                 mBean.setText(menu.getText());
                 childMenuList.add(mBean);
-                getMenuChilden(mBean, menuList, mapper);
+                getMenuChildren(mBean, menuList, mapper);
             }
         }
         menuBean.setChildren(childMenuList);
