@@ -136,7 +136,7 @@
                     </execution>
                 </executions>
             </plugin>-->
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.openjpa</groupId>
                 <artifactId>openjpa-maven-plugin</artifactId>
                 <dependencies>
@@ -145,13 +145,13 @@
                         <artifactId>cn.com.rexen.core.api</artifactId>
                         <version>1.0.0-SNAPSHOT</version>
                     </dependency>
-                    <!--<dependency>
+                    &lt;!&ndash;<dependency>
                         <groupId>cn.com.rexen.admin</groupId>
                         <artifactId>cn.com.rexen.admin.entities</artifactId>
                         <version>1.0.0-SNAPSHOT</version>
-                    </dependency>-->
+                    </dependency>&ndash;&gt;
                 </dependencies>
-            </plugin>
+            </plugin>-->
 
         </plugins>
     </build>
