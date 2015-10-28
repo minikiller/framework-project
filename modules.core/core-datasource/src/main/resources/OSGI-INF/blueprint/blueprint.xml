@@ -25,7 +25,10 @@
 	 ">
     <cm:property-placeholder persistent-id="ConfigDataSource" update-strategy="reload">
         <cm:default-properties>
-            <cm:property name="url" value="${db.connectionURL}"/>
+            <cm:property name="name" value="${db.name}"/>
+            <cm:property name="ip" value="${db.ip}"/>
+            <cm:property name="port" value="${db.port}"/>
+            <cm:property name="instance" value="${db.instance}"/>
             <cm:property name="user" value="${db.username}"/>
             <cm:property name="password" value="${db.password}"/>
         </cm:default-properties>
@@ -57,21 +60,36 @@
         </service-properties>
     </service>
 
-    <!--<bean id="dataSource" class="org.postgresql.jdbc2.optional.PoolingDataSource">
-        <property name="url" value="${url}"/>
-        <property name="user" value="${user}"/>
-        <property name="password" value="${password}"/>
-    </bean>-->
+    <!--<bean id="dataSource" class="${db.datasourceClass}">-->
+    <!--<property name="url" value="${url}"/>-->
+    <!--<property name="user" value="${user}"/>-->
+    <!--<property name="password" value="${password}"/>-->
+    <!--</bean>-->
 
-    <bean id="dataSource" class="${db.datasourceClass}">
-        <property name="url" value="${url}"/>
-        <property name="user" value="${user}"/>
-        <property name="password" value="${password}"/>
+    <bean id="dataSource" class="cn.com.rexen.core.datasource.DataSourceProxy">
+        <argument>
+            <value>${name}</value>
+        </argument>
+        <argument>
+            <value>${ip}</value>
+        </argument>
+        <argument>
+            <value>${port}</value>
+        </argument>
+        <argument>
+            <value>${instance}</value>
+        </argument>
+        <argument>
+            <value>${user}</value>
+        </argument>
+        <argument>
+            <value>${password}</value>
+        </argument>
     </bean>
 
     <service interface="javax.sql.DataSource" ref="dataSource">
         <service-properties>
-            <entry key="osgi.jndi.service.name" value="${db.datasource}"/>
+            <entry key="osgi.jndi.service.name" value="jdbc/ds"/>
         </service-properties>
     </service>
 

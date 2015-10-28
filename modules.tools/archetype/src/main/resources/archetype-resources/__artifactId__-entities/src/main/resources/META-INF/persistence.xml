@@ -40,7 +40,7 @@
     <persistence-unit transaction-type="JTA" name="${DartifactId}-cm">
         <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
         <!--<jta-data-source>osgi:service/javax.sql.XADataSource/(osgi.jndi.service.name=jdbc/TradeDataSource)</jta-data-source>-->
-        <non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=${db.datasource})
+        <non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=jdbc/ds)
         </non-jta-data-source>
         <!--<non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=jdbc/NoTxTradeDataSource)</non-jta-data-source>-->
 
