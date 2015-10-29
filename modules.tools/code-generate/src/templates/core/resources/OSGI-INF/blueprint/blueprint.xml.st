@@ -8,7 +8,7 @@
     \</service>
 
     \<bean id="beanServiceImpl" class="<packageName>.core.biz.<beanName>BeanServiceImpl">
-        \<property name="<pomName>BeanDao" ref="<pomName>BeanDao"/>
+        \<property name="dao" ref="<pomName>BeanDao"/>
     \</bean>
 
     \<reference id="<pomName>BeanDao" interface="<packageName>.api.dao.I<beanName>BeanDao"/>

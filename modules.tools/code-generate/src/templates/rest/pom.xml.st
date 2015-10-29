@@ -3,16 +3,17 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
+    \<modelVersion>4.0.0\</modelVersion>
+
     \<parent>
         \<groupId><packageName>\</groupId>
-        \<artifactId>modules.<pomName>\</artifactId>
-        \<version>1.0.0-SNAPSHOT\</version>
+        \<artifactId><pomName>-parent\</artifactId>
+        \<version><versionName>\</version>
     \</parent>
 
-    \<modelVersion>4.0.0\</modelVersion>
-    \<artifactId><packageName>.rest\</artifactId>
+    \<artifactId><pomName>-rest\</artifactId>
     \<packaging>bundle\</packaging>
-    \<name>Kalix :: <beanName> - Rest\</name>
+    \<name><projectName> :: <beanName> - Rest\</name>
     \<description><beanName> Rest Service\</description>
 
     \<properties>
@@ -20,37 +21,13 @@
         \<bundle.symbolicName><packageName>.rest\</bundle.symbolicName>
         \<bundle.namespace>${bundle.symbolicName}\</bundle.namespace>
     \</properties>
+
     \<dependencies>
-        \<!-- camel -->
         \<dependency>
-            \<groupId>org.apache.camel\</groupId>
-            \<artifactId>camel-core\</artifactId>
-        \</dependency>
-
-        \<dependency>
-            \<groupId>org.apache.camel\</groupId>
-            \<artifactId>camel-servlet\</artifactId>
-        \</dependency>
-        \<dependency>
-            \<groupId>org.apache.camel\</groupId>
-            \<artifactId>camel-metrics\</artifactId>
-        \</dependency>
-
-        \<!-- swagger api -->
-        \<dependency>
-            \<groupId>org.apache.camel\</groupId>
-            \<artifactId>camel-swagger\</artifactId>
-        \</dependency>
-        \<dependency>
-            \<groupId>cn.com.rexen.core\</groupId>
-            \<artifactId>cn.com.rexen.core.api\</artifactId>
-            \<scope>provided\</scope>
-        \</dependency>
-
-        \<!-- use for json binding -->
-        \<dependency>
-            \<groupId>org.apache.camel\</groupId>
-            \<artifactId>camel-jackson\</artifactId>
+            \<groupId>cn.com.rexen.kalix.poms\</groupId>
+            \<artifactId>poms-dm\</artifactId>
+            \<version><versionName>\</version>
+            \<type>pom\</type>
         \</dependency>
     \</dependencies>
 

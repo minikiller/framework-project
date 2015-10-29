@@ -6,11 +6,11 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 /**
- * Created by sunlf on 14-3-23.
+ * OSGI Init Method
  */
 public class InitActivator implements BundleActivator {
 
-    private static final String BUNDLE_NAME = " Kalix Notice API ";
+    private static final String BUNDLE_NAME = " <projectName> <beanName> API ";
     private static BundleContext context;
     private static Logger logger = Logger.getLogger(InitActivator.class);
 

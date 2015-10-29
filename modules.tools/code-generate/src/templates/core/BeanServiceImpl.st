@@ -7,7 +7,6 @@ import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * @类描述： 
@@ -17,21 +16,10 @@ import java.util.UUID;
  * @修改时间：
  * @修改备注：
  */
-public class <beanName>BeanServiceImpl extends GenericBizServiceImpl implements I<beanName>BeanService {
-    private I<beanName>BeanDao <pomName>BeanDao;
-
+public class <beanName>BeanServiceImpl extends GenericBizServiceImpl\<I<beanName>BeanDao, <beanName>Bean> implements I<beanName>BeanService {
     private JsonStatus jsonStatus = new JsonStatus();
 
-    private String uuid;
-
     public <beanName>BeanServiceImpl() {
-        uuid = UUID.randomUUID().toString();
+        super.init(<beanName>Bean.class.getName());
     }
-
-    public void set<beanName>BeanDao(I<beanName>BeanDao <pomName>BeanDao) {
-        this.<pomName>BeanDao = <pomName>BeanDao;
-        super.init(<pomName>BeanDao, <beanName>Bean.class.getName());
-    }
-
-
 }

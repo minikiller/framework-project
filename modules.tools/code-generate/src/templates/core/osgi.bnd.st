@@ -3,4 +3,4 @@
 #-----------------------------------------------------------------
 
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
-Bundle-Category: Rexen Kalix <beanName>
+Bundle-Category: Rexen  <projectName> <beanName>

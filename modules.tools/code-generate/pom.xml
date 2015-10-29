@@ -43,9 +43,13 @@
                     <inputDir>src/templates</inputDir>
                     <outputDir>${project.build.directory}/generate</outputDir>
                     <attributes>
-                        <beanName>Audit</beanName>
-                        <packageName>cn.com.rexen.extjs.audit</packageName>
-                        <pomName>audit</pomName>
+                        <beanName>News</beanName>
+                        <packageName>cn.com.rexen.roffice.news</packageName>
+                        <parentPackageName>cn.com.rexen.roffice.commons</parentPackageName>
+                        <pomName>news</pomName>
+                        <projectName>Roffice</projectName>
+                        <parentName>commons</parentName>
+                        <versionName>1.0.0-SNAPSHOT</versionName>
                     </attributes>
                     <sources>
                         <source>${basedir}/src/main/java</source>

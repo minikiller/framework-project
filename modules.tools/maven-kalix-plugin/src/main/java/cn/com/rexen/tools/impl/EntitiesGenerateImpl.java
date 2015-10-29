@@ -16,7 +16,7 @@ public class EntitiesGenerateImpl extends AbstractGenernateImpl {
 
     public EntitiesGenerateImpl(Map<String, String> attributes, File inputDir, File outputDir) {
         super(attributes, inputDir, outputDir, "entities");
-        fileMap.put("Bean", String.format(beanFileName, beanName));
+        fileMap.put("Bean", "//" + moduleName + "//" + String.format(beanFileName, beanName));
         fileMap.put("InitActivator", "//" + moduleName + "//internal//" + activatorFileName);
         fileMap.put("persistence.xml", "//META-INF//" + xmlFileName);
     }

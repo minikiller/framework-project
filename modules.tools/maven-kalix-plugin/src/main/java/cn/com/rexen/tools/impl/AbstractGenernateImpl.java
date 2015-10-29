@@ -22,11 +22,24 @@ public abstract class AbstractGenernateImpl implements IGenerate {
     public final static String JS_SOURCE_PATH = "src\\main\\";
     //处理java类的map
     public Map<String, String> fileMap = new HashMap<>();
+    //包名称
     protected String packageName;
+    //bean名称，要求首字母大写
     protected String beanName;
+    //bean小写名称
     protected String pomName;
+    //项目名称
+    protected String projectName;
+    //父模块名称
+    protected String parentName;
+    //目标版本名称
+    protected String versionName;
+
+    protected String parentPackageName;
+
     protected Map<File, File> files;
     protected File inputDir, outputDir;
+    //由超类实例化，分别为api，entities等
     protected String moduleName;
 
     protected Map<String, String> attributes;
@@ -40,6 +53,16 @@ public abstract class AbstractGenernateImpl implements IGenerate {
         Assert.notNull(packageName);
         pomName = attributes.get("pomName");
         Assert.notNull(pomName);
+        projectName = attributes.get("projectName");
+        Assert.notNull(projectName);
+        parentName = attributes.get("parentName");
+        Assert.notNull(parentName);
+        versionName = attributes.get("versionName");
+        Assert.notNull(versionName);
+        parentPackageName = attributes.get("parentPackageName");
+        Assert.notNull(parentPackageName);
+
+
         File target = new File(outputDir.getAbsolutePath() + "\\" + pomName + "-" + moduleName);
         if (!target.exists())
             target.mkdirs();

@@ -1,3 +1,3 @@
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 Include-Resource: src/main/webapp
-Bundle-Category: Rexen Extjs <beanName>
+Bundle-Category: Rexen  <projectName> <beanName>

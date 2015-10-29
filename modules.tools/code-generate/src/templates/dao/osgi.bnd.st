@@ -4,4 +4,4 @@
 
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 Import-Package:javax.persistence,<packageName>.dao,*
-Bundle-Category: Rexen Kalix <beanName>
+Bundle-Category: Rexen  <projectName> <beanName>

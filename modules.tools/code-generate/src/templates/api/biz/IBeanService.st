@@ -6,13 +6,13 @@ import <packageName>.entities.<beanName>Bean;
 import java.util.List;
 
 /**
- * @类描述：公告管理
- * @创建人： sunlf
- * @创建时间：2014/10/10
+ * @类描述：应用服务接口.
+ * @创建人：
+ * @创建时间：
  * @修改人：
  * @修改时间：
  * @修改备注：
  */
-public interface I<beanName>BeanService extends IBizService {
-    //public List\<<beanName>Bean> query(String text);
+public interface I<beanName>BeanService extends IBizService\<<beanName>Bean> {
+    //在此添加新的业务方法
 }
