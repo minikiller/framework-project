@@ -5,7 +5,7 @@
 
     <parent>
         <groupId>cn.com.rexen.kalix.poms</groupId>
-        <artifactId>poms-dm</artifactId>
+        <artifactId>modules.poms</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
@@ -14,10 +14,10 @@
     <name>Kalix :: Tools - karaf features</name>
     <packaging>pom</packaging>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <hibernate.version>3.5.6-Final</hibernate.version>
-    </properties>
+    <!--<properties>-->
+    <!--<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+    <!--<hibernate.version>3.5.6-Final</hibernate.version>-->
+    <!--</properties>-->
 
     <dependencyManagement>
         <dependencies>
@@ -34,7 +34,6 @@
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.7</version>
         </dependency>
     </dependencies>
 
@@ -136,7 +135,7 @@
                     </execution>
                 </executions>
             </plugin>-->
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.openjpa</groupId>
                 <artifactId>openjpa-maven-plugin</artifactId>
                 <dependencies>
@@ -145,13 +144,13 @@
                         <artifactId>cn.com.rexen.core.api</artifactId>
                         <version>1.0.0-SNAPSHOT</version>
                     </dependency>
-                    <!--<dependency>
+                    &lt;!&ndash;<dependency>
                         <groupId>cn.com.rexen.admin</groupId>
                         <artifactId>cn.com.rexen.admin.entities</artifactId>
                         <version>1.0.0-SNAPSHOT</version>
-                    </dependency>-->
+                    </dependency>&ndash;&gt;
                 </dependencies>
-            </plugin>
+            </plugin>-->
 
         </plugins>
     </build>
