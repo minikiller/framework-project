@@ -16,7 +16,7 @@ import java.util.Date;
  * @修改备注：
  */
 @Entity
-@Table(name = "sys_<pomName>")
+@Table(name = "roffice_<pomName>")
 public class <beanName>Bean extends PersistentEntity {
     @NotNull(message = "'标题'是必填项")
     private String text;   //标题
