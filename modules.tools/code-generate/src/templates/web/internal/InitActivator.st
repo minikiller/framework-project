@@ -10,7 +10,7 @@ import org.osgi.framework.BundleContext;
  */
 public class InitActivator implements BundleActivator {
 
-    private static final String BUNDLE_NAME = " Kalix <beanName> Web ";
+    private static final String BUNDLE_NAME = " <projectName> <beanName> Web ";
     private static BundleContext context;
     private static Logger logger = Logger.getLogger(InitActivator.class);
 
