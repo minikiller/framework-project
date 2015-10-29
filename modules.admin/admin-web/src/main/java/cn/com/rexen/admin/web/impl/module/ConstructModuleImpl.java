@@ -1,4 +1,4 @@
-package cn.com.rexen.admin.web.impl;
+package cn.com.rexen.admin.web.impl.module;
 
 import cn.com.rexen.core.api.web.IMenu;
 import cn.com.rexen.core.api.web.IModule;
@@ -6,9 +6,12 @@ import cn.com.rexen.core.api.web.IModule;
 import java.util.List;
 
 /**
- * Created by sunlf on 2015/7/19.
+ * 组织结构模块
+ * @author majian <br/>
+ *         date:2015-8-10
+ * @version 1.0.0
  */
-public class AdminModuleImpl implements IModule {
+public class ConstructModuleImpl implements IModule {
     @Override
     public List<IMenu> getMenus() {
         return null;
@@ -21,17 +24,17 @@ public class AdminModuleImpl implements IModule {
 
     @Override
     public String getId() {
-        return "sysModule";
+        return "constructModule";
     }
 
     @Override
     public String getText() {
-        return "系统管理";
+        return "组织结构";
     }
 
     @Override
     public String getDescription() {
-        return "系统管理";
+        return "组织结构";
     }
 
     @Override
@@ -46,11 +49,16 @@ public class AdminModuleImpl implements IModule {
 
     @Override
     public int getIndex() {
-        return 0;
+        return 5;
     }
 
     @Override
     public String getPermission() {
-        return "admin:sysModule";
+        return null;//"admin:constructModule";
+    }
+
+    @Override
+    public String getIconCls() {
+        return "right-icon x-fa fa-sitemap";
     }
 }

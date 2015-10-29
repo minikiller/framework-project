@@ -1,14 +1,14 @@
-package cn.com.rexen.admin.web.impl;
+package cn.com.rexen.demo.web.impl.menu;
 
 import cn.com.rexen.core.api.web.IMenu;
 
 /**
- * 机构菜单
+ * 公告菜单
  * @author majian <br/>
  *         date:2015-8-10
  * @version 1.0.0
  */
-public class OrganizationMenuImpl implements IMenu {
+public class NoticeMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {
         return true;
@@ -16,22 +16,22 @@ public class OrganizationMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return "sysModule";
+        return "demoWorkFlowModule";
     }
 
     @Override
     public String getParentMenuId() {
-        return "systemConstantMenu";
+        return null;
     }
 
     @Override
     public String getId() {
-        return "organizationMenu";
+        return "noticeMenu";
     }
 
     @Override
     public String getText() {
-        return "机构管理";
+        return "流程演示管理";
     }
 
     @Override
@@ -41,12 +41,12 @@ public class OrganizationMenuImpl implements IMenu {
 
     @Override
     public String getIcon() {
-        return "admin/resources/images/script.png";
+        return "admin/resources/images/building.png";
     }
 
     @Override
     public String getRouteId() {
-        return "AdminApplication/Org";
+        return "Kalix.demo.view.Notice";
     }
 
     @Override
@@ -56,6 +56,11 @@ public class OrganizationMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return "admin:sysModule:systemConstantMenu:organizationMenu";
+        return "test:demoWorkFlowModule:demoWorkFlowMenu:noticeMenu";
+    }
+
+    @Override
+    public String getIconCls() {
+        return "x-fa fa-file-o";
     }
 }

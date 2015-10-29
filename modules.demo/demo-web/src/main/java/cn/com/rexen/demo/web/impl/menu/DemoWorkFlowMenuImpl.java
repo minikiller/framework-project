@@ -1,37 +1,37 @@
-package cn.com.rexen.app.web.impl;
+package cn.com.rexen.demo.web.impl.menu;
 
 import cn.com.rexen.core.api.web.IMenu;
 
 /**
- * 应用菜单
+ * 流程演示菜单
  * @author majian <br/>
  *         date:2015-8-10
  * @version 1.0.0
  */
-public class ApplicationMenuImpl implements IMenu {
+public class DemoWorkFlowMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {
-        return true;
+        return false;
     }
 
     @Override
     public String getModuleId() {
-        return "appModule";
+        return "demoWorkFlowModule";
     }
 
     @Override
     public String getParentMenuId() {
-        return "appControlMenu";
+        return null;
     }
 
     @Override
     public String getId() {
-        return "applicationMenu";
+        return "demoWorkFlowMenu";
     }
 
     @Override
     public String getText() {
-        return "应用管理";
+        return "流程演示";
     }
 
     @Override
@@ -46,7 +46,7 @@ public class ApplicationMenuImpl implements IMenu {
 
     @Override
     public String getRouteId() {
-        return "Kalix.app.application.view.Application";
+        return null;
     }
 
     @Override
@@ -56,6 +56,11 @@ public class ApplicationMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return "admin:appModule:appControlMenu:applicationMenu";
+        return "test:demoWorkFlowModule:demoWorkFlowMenu";
+    }
+
+    @Override
+    public String getIconCls() {
+        return "x-fa fa-file-o";
     }
 }

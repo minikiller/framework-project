@@ -1,14 +1,14 @@
-package cn.com.rexen.admin.web.impl;
+package cn.com.rexen.demo.web.impl.menu;
 
 import cn.com.rexen.core.api.web.IMenu;
 
 /**
- * 部门菜单
+ * 待办任务列表
  * @author majian <br/>
  *         date:2015-8-10
  * @version 1.0.0
  */
-public class DepartmentMenuImpl implements IMenu {
+public class TaskMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {
         return true;
@@ -16,22 +16,22 @@ public class DepartmentMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return "sysModule";
+        return "demoWorkFlowModule";
     }
 
     @Override
     public String getParentMenuId() {
-        return "systemConstantMenu";
+        return null;
     }
 
     @Override
     public String getId() {
-        return "departmentMenu";
+        return "taskMenu";
     }
 
     @Override
     public String getText() {
-        return "部门管理";
+        return "待办任务列表";
     }
 
     @Override
@@ -46,7 +46,7 @@ public class DepartmentMenuImpl implements IMenu {
 
     @Override
     public String getRouteId() {
-        return "AdminApplication/Dep";
+        return "Kalix.workflow.view.Task";
     }
 
     @Override
@@ -56,6 +56,11 @@ public class DepartmentMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return "admin:sysModule:systemConstantMenu:departmentMenu";
+        return "test:demoWorkFlowModule:demoWorkFlowMenu:taskMenu";
+    }
+
+    @Override
+    public String getIconCls() {
+        return "x-fa fa-file-o";
     }
 }

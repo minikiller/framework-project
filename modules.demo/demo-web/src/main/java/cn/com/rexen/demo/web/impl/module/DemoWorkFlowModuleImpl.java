@@ -1,4 +1,4 @@
-package cn.com.rexen.app.web.impl;
+package cn.com.rexen.demo.web.impl.module;
 
 import cn.com.rexen.core.api.web.IMenu;
 import cn.com.rexen.core.api.web.IModule;
@@ -6,9 +6,9 @@ import cn.com.rexen.core.api.web.IModule;
 import java.util.List;
 
 /**
- * Created by sunlf on 2015/7/19.
+ * 工作流演示
  */
-public class AppModuleImpl implements IModule {
+public class DemoWorkFlowModuleImpl implements IModule {
     @Override
     public List<IMenu> getMenus() {
         return null;
@@ -16,27 +16,27 @@ public class AppModuleImpl implements IModule {
 
     @Override
     public String getApplicationId() {
-        return "AdminApplication";
+        return "TestApplication";
     }
 
     @Override
     public String getId() {
-        return "appModule";
+        return "demoWorkFlowModule";
     }
 
     @Override
     public String getText() {
-        return "模块管理";
+        return "工作流演示";
     }
 
     @Override
     public String getDescription() {
-        return "模块管理";
+        return "工作流演示";
     }
 
     @Override
     public String getIcon() {
-        return "resources/images/computer.png";
+        return "resources/images/wrench.png";
     }
 
     @Override
@@ -46,11 +46,16 @@ public class AppModuleImpl implements IModule {
 
     @Override
     public int getIndex() {
-        return 1;
+        return 0;
     }
 
     @Override
     public String getPermission() {
-        return "admin:appModule";
+        return "test:demoWorkFlowModule";
+    }
+
+    @Override
+    public String getIconCls() {
+        return "right-icon x-fa fa-desktop";
     }
 }

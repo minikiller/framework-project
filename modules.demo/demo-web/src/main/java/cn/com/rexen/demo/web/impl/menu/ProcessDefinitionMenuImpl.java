@@ -1,22 +1,22 @@
-package cn.com.rexen.admin.web.impl;
+package cn.com.rexen.demo.web.impl.menu;
 
 import cn.com.rexen.core.api.web.IMenu;
 
 /**
- * 系统常量菜单
+ * 流程定义菜单
  * @author majian <br/>
  *         date:2015-8-10
  * @version 1.0.0
  */
-public class SystemConstantMenuImpl implements IMenu {
+public class ProcessDefinitionMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {
-        return false;
+        return true;
     }
 
     @Override
     public String getModuleId() {
-        return "sysModule";
+        return "demoWorkFlowModule";
     }
 
     @Override
@@ -26,12 +26,12 @@ public class SystemConstantMenuImpl implements IMenu {
 
     @Override
     public String getId() {
-        return "systemConstantMenu";
+        return "processDefinitionMenu";
     }
 
     @Override
     public String getText() {
-        return "系统常量";
+        return "流程定义管理";
     }
 
     @Override
@@ -41,21 +41,26 @@ public class SystemConstantMenuImpl implements IMenu {
 
     @Override
     public String getIcon() {
-        return "admin/resources/images/bricks.png";
+        return "admin/resources/images/building.png";
     }
 
     @Override
     public String getRouteId() {
-        return null;
+        return "Kalix.workflow.view.ProcessDefinition";
     }
 
     @Override
     public int getIndex() {
-        return 1;
+        return 0;
     }
 
     @Override
     public String getPermission() {
-        return "admin:sysModule:systemConstantMenu";
+        return "test:demoWorkFlowModule:demoWorkFlowMenu:processDefinitionMenu";
+    }
+
+    @Override
+    public String getIconCls() {
+        return "x-fa fa-file-o";
     }
 }

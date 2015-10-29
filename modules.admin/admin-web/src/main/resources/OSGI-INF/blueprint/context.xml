@@ -23,51 +23,51 @@
 
     <!--系统应用-->
     <service interface="cn.com.rexen.core.api.web.IApplication">
-        <bean class="cn.com.rexen.admin.web.impl.AdminApplicationImpl"/>
+        <bean class="cn.com.rexen.admin.web.impl.app.AdminApplicationImpl"/>
     </service>
 
 
     <!--系统管理-->
     <service interface="cn.com.rexen.core.api.web.IModule">
-        <bean class="cn.com.rexen.admin.web.impl.AdminModuleImpl"/>
+        <bean class="cn.com.rexen.admin.web.impl.module.AdminModuleImpl"/>
     </service>
 
     <!--权限控制-->
-    <service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.admin.web.impl.PermissionControlMenuImpl"/>
+    <service interface="cn.com.rexen.core.api.web.IModule">
+        <bean class="cn.com.rexen.admin.web.impl.module.PermissionModuleImpl"/>
     </service>
     <!--系统常量-->
-    <service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.admin.web.impl.SystemConstantMenuImpl"/>
+    <service interface="cn.com.rexen.core.api.web.IModule">
+        <bean class="cn.com.rexen.admin.web.impl.module.ConstructModuleImpl"/>
     </service>
 
     <!--用户管理-->
     <service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.admin.web.impl.UserMenuImpl"/>
+        <bean class="cn.com.rexen.admin.web.impl.menu.UserMenuImpl"/>
     </service>
     <!--角色管理-->
     <service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.admin.web.impl.RoleMenuImpl"/>
+        <bean class="cn.com.rexen.admin.web.impl.menu.RoleMenuImpl"/>
     </service>
     <!--工作组管理-->
     <service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.admin.web.impl.WorkGroupMenuImpl"/>
+        <bean class="cn.com.rexen.admin.web.impl.menu.WorkGroupMenuImpl"/>
     </service>
 
     <!--字典管理-->
     <service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.admin.web.impl.DictMenuImpl"/>
+        <bean class="cn.com.rexen.admin.web.impl.menu.DictMenuImpl"/>
     </service>
     <!--区域管理-->
     <service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.admin.web.impl.AreaMenuImpl"/>
+        <bean class="cn.com.rexen.admin.web.impl.menu.AreaMenuImpl"/>
     </service>
     <!--机构管理-->
     <service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.admin.web.impl.OrganizationMenuImpl"/>
+        <bean class="cn.com.rexen.admin.web.impl.menu.OrganizationMenuImpl"/>
     </service>
     <!--部门管理-->
     <service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.admin.web.impl.DepartmentMenuImpl"/>
+        <bean class="cn.com.rexen.admin.web.impl.menu.DepartmentMenuImpl"/>
     </service>
 </blueprint>

@@ -1,4 +1,4 @@
-package cn.com.rexen.admin.web.impl;
+package cn.com.rexen.admin.web.impl.menu;
 
 import cn.com.rexen.core.api.web.IMenu;
 
@@ -6,15 +6,15 @@ import cn.com.rexen.core.api.web.IMenu;
  * Created by sunlf on 2015/7/19.
  * 权限控制菜单
  */
-public class PermissionControlMenuImpl implements IMenu {
+public class UserMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {
-        return false;
+        return true;
     }
 
     @Override
     public String getModuleId() {
-        return "sysModule";
+        return "permissionModule";
     }
 
     @Override
@@ -24,12 +24,12 @@ public class PermissionControlMenuImpl implements IMenu {
 
     @Override
     public String getId() {
-        return "permissionControlMenu";
+        return "userMenu";
     }
 
     @Override
     public String getText() {
-        return "权限控制";
+        return "用户管理";
     }
 
     @Override
@@ -39,12 +39,12 @@ public class PermissionControlMenuImpl implements IMenu {
 
     @Override
     public String getIcon() {
-        return "admin/resources/images/lock.png";
+        return "admin/resources/images/group.png";
     }
 
     @Override
     public String getRouteId() {
-        return null;
+        return "AdminApplication/User";
     }
 
     @Override
@@ -54,6 +54,11 @@ public class PermissionControlMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return "admin:sysModule:permissionControl";
+        return null;//"admin:sysModule:permissionControl:userMenu";
+    }
+
+    @Override
+    public String getIconCls() {
+        return "x-fa fa-user";
     }
 }

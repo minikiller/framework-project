@@ -1,14 +1,14 @@
-package cn.com.rexen.demo.web.impl;
+package cn.com.rexen.admin.web.impl.menu;
 
 import cn.com.rexen.core.api.web.IMenu;
 
 /**
- * 流程定义菜单
+ * 区域菜单
  * @author majian <br/>
  *         date:2015-8-10
  * @version 1.0.0
  */
-public class ProcessDefinitionMenuImpl implements IMenu {
+public class AreaMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {
         return true;
@@ -16,22 +16,22 @@ public class ProcessDefinitionMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return "demoWorkFlowModule";
+        return "constructModule";
     }
 
     @Override
     public String getParentMenuId() {
-        return "demoWorkFlowMenu";
+        return null;
     }
 
     @Override
     public String getId() {
-        return "processDefinitionMenu";
+        return "areaMenu";
     }
 
     @Override
     public String getText() {
-        return "流程定义管理";
+        return "区域管理";
     }
 
     @Override
@@ -41,12 +41,12 @@ public class ProcessDefinitionMenuImpl implements IMenu {
 
     @Override
     public String getIcon() {
-        return "admin/resources/images/building.png";
+        return "admin/resources/images/shape_square.png";
     }
 
     @Override
     public String getRouteId() {
-        return "Kalix.workflow.view.ProcessDefinition";
+        return "AdminApplication/Area";
     }
 
     @Override
@@ -56,6 +56,11 @@ public class ProcessDefinitionMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return "test:demoWorkFlowModule:demoWorkFlowMenu:processDefinitionMenu";
+        return null;//"admin:constructModule:areaMenu";
+    }
+
+    @Override
+    public String getIconCls() {
+        return "x-fa fa-home";
     }
 }

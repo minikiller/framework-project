@@ -1,14 +1,14 @@
-package cn.com.rexen.admin.web.impl;
+package cn.com.rexen.admin.web.impl.menu;
 
 import cn.com.rexen.core.api.web.IMenu;
 
 /**
- * 工作组菜单
+ * 字典菜单
  * @author majian <br/>
  *         date:2015-8-10
  * @version 1.0.0
  */
-public class WorkGroupMenuImpl implements IMenu {
+public class DictMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {
         return true;
@@ -21,17 +21,17 @@ public class WorkGroupMenuImpl implements IMenu {
 
     @Override
     public String getParentMenuId() {
-        return "permissionControlMenu";
+        return null;
     }
 
     @Override
     public String getId() {
-        return "workGroupMenu";
+        return "dictMenu";
     }
 
     @Override
     public String getText() {
-        return "工作组管理";
+        return "字典管理";
     }
 
     @Override
@@ -41,21 +41,26 @@ public class WorkGroupMenuImpl implements IMenu {
 
     @Override
     public String getIcon() {
-        return "admin/resources/images/cup.png";
+        return "admin/resources/images/book.png";
     }
 
     @Override
     public String getRouteId() {
-        return "AdminApplication/WorkGroup";
+        return "AdminApplication/Dict";
     }
 
     @Override
     public int getIndex() {
-        return 2;
+        return 0;
     }
 
     @Override
     public String getPermission() {
-        return "admin:sysModule:permissionControl:workGroupMenu";
+        return null;//"admin:sysModule:systemConstantMenu:dictMenu";
+    }
+
+    @Override
+    public String getIconCls() {
+        return "x-fa fa-table";
     }
 }

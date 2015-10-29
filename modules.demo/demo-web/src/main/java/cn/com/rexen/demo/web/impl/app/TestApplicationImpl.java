@@ -1,4 +1,4 @@
-package cn.com.rexen.demo.web.impl;
+package cn.com.rexen.demo.web.impl.app;
 
 import cn.com.rexen.core.api.web.IApplication;
 import cn.com.rexen.core.api.web.IModule;
@@ -47,5 +47,10 @@ public class TestApplicationImpl implements IApplication {
     @Override
     public String getPermission() {
         return "test";
+    }
+
+    @Override
+    public String getTitle() {
+        return "测试应用";
     }
 }

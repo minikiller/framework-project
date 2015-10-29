@@ -1,14 +1,14 @@
-package cn.com.rexen.demo.web.impl;
+package cn.com.rexen.app.web.impl.menu;
 
 import cn.com.rexen.core.api.web.IMenu;
 
 /**
- * 待办任务列表
+ * 应用菜单
  * @author majian <br/>
  *         date:2015-8-10
  * @version 1.0.0
  */
-public class TaskMenuImpl implements IMenu {
+public class ApplicationMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {
         return true;
@@ -16,22 +16,22 @@ public class TaskMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return "demoWorkFlowModule";
+        return "appModule";
     }
 
     @Override
     public String getParentMenuId() {
-        return "demoWorkFlowMenu";
+        return null;
     }
 
     @Override
     public String getId() {
-        return "taskMenu";
+        return "applicationMenu";
     }
 
     @Override
     public String getText() {
-        return "待办任务列表";
+        return "应用管理";
     }
 
     @Override
@@ -41,12 +41,12 @@ public class TaskMenuImpl implements IMenu {
 
     @Override
     public String getIcon() {
-        return "admin/resources/images/building.png";
+        return "app/resources/images/application.png";
     }
 
     @Override
     public String getRouteId() {
-        return "Kalix.workflow.view.Task";
+        return "/application";
     }
 
     @Override
@@ -56,6 +56,11 @@ public class TaskMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return "test:demoWorkFlowModule:demoWorkFlowMenu:taskMenu";
+        return null;//"admin:appModule:appControlMenu:applicationMenu";
+    }
+
+    @Override
+    public String getIconCls() {
+        return "x-fa fa-cubes";
     }
 }

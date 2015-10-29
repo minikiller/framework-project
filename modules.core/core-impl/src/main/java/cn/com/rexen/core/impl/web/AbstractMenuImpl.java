@@ -8,7 +8,7 @@ import cn.com.rexen.core.api.web.IMenu;
 public abstract class AbstractMenuImpl extends AbstractWebPageImpl implements IMenu {
     protected boolean leaf;
     protected String moduleId;
-    protected String parentMenuId;
+    protected String parentMenuId = null;
 
 
     @Override
@@ -54,5 +54,10 @@ public abstract class AbstractMenuImpl extends AbstractWebPageImpl implements IM
 
     public void setText(String title) {
         this.text = title;
+    }
+
+    @Override
+    public String getIconCls() {
+        return "x-fa fa-file-o";
     }
 }

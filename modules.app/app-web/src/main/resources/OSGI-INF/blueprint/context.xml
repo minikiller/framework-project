@@ -22,19 +22,19 @@
     </reference-list>-->
     <!--应用管理-->
     <service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.app.web.impl.ApplicationMenuImpl"/>
+        <bean class="cn.com.rexen.app.web.impl.menu.ApplicationMenuImpl"/>
     </service>
     <!--功能管理-->
     <service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.app.web.impl.FunctionMenuImpl"/>
+        <bean class="cn.com.rexen.app.web.impl.menu.FunctionMenuImpl"/>
     </service>
     <!--模块控制-->
-    <service interface="cn.com.rexen.core.api.web.IMenu">
+    <!--<service interface="cn.com.rexen.core.api.web.IMenu">
         <bean class="cn.com.rexen.app.web.impl.AppControlMenuImpl"/>
-    </service>
+    </service>-->
     <!--模块管理-->
     <service interface="cn.com.rexen.core.api.web.IModule">
-        <bean class="cn.com.rexen.app.web.impl.AppModuleImpl"/>
+        <bean class="cn.com.rexen.app.web.impl.module.AppModuleImpl"/>
     </service>
 
 </blueprint>

@@ -1,14 +1,14 @@
-package cn.com.rexen.admin.web.impl;
+package cn.com.rexen.admin.web.impl.menu;
 
 import cn.com.rexen.core.api.web.IMenu;
 
 /**
- * 区域菜单
+ * 机构菜单
  * @author majian <br/>
  *         date:2015-8-10
  * @version 1.0.0
  */
-public class AreaMenuImpl implements IMenu {
+public class OrganizationMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {
         return true;
@@ -16,22 +16,22 @@ public class AreaMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return "sysModule";
+        return "constructModule";
     }
 
     @Override
     public String getParentMenuId() {
-        return "systemConstantMenu";
+        return null;
     }
 
     @Override
     public String getId() {
-        return "areaMenu";
+        return "organizationMenu";
     }
 
     @Override
     public String getText() {
-        return "区域管理";
+        return "机构管理";
     }
 
     @Override
@@ -41,21 +41,26 @@ public class AreaMenuImpl implements IMenu {
 
     @Override
     public String getIcon() {
-        return "admin/resources/images/shape_square.png";
+        return "admin/resources/images/script.png";
     }
 
     @Override
     public String getRouteId() {
-        return "AdminApplication/Area";
+        return "AdminApplication/Org";
     }
 
     @Override
     public int getIndex() {
-        return 0;
+        return 10;
     }
 
     @Override
     public String getPermission() {
-        return "admin:sysModule:systemConstantMenu:areaMenu";
+        return null;//"admin:constructModule:organizationMenu";
+    }
+
+    @Override
+    public String getIconCls() {
+        return "x-fa fa-building";
     }
 }

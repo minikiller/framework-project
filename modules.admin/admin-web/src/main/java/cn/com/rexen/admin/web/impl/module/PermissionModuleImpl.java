@@ -1,4 +1,4 @@
-package cn.com.rexen.demo.web.impl;
+package cn.com.rexen.admin.web.impl.module;
 
 import cn.com.rexen.core.api.web.IMenu;
 import cn.com.rexen.core.api.web.IModule;
@@ -6,9 +6,10 @@ import cn.com.rexen.core.api.web.IModule;
 import java.util.List;
 
 /**
- * 工作流演示
+ * Created by sunlf on 2015/7/19.
+ * 权限控制菜单
  */
-public class DemoWorkFlowModuleImpl implements IModule {
+public class PermissionModuleImpl implements IModule {
     @Override
     public List<IMenu> getMenus() {
         return null;
@@ -16,22 +17,22 @@ public class DemoWorkFlowModuleImpl implements IModule {
 
     @Override
     public String getApplicationId() {
-        return "TestApplication";
+        return "AdminApplication";
     }
 
     @Override
     public String getId() {
-        return "demoWorkFlowModule";
+        return "permissionModule";
     }
 
     @Override
     public String getText() {
-        return "工作流演示";
+        return "权限管理";
     }
 
     @Override
     public String getDescription() {
-        return "工作流演示";
+        return "权限管理";
     }
 
     @Override
@@ -51,6 +52,11 @@ public class DemoWorkFlowModuleImpl implements IModule {
 
     @Override
     public String getPermission() {
-        return "test:demoWorkFlowModule";
+        return null;//"admin:permissionModule";
+    }
+
+    @Override
+    public String getIconCls() {
+        return "right-icon x-fa fa-user-secret";
     }
 }

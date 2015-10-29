@@ -8,13 +8,13 @@
         <cm:default-properties>
             <cm:property name="leaf" value="true"/>
             <cm:property name="moduleId" value="sysModule"/>
-            <cm:property name="parentMenuId" value="systemConstantMenu"/>
+            <!--<cm:property name="parentMenuId" value=""/>-->
             <cm:property name="id" value="auditModule"/>
             <cm:property name="text" value="审计管理"/>
             <cm:property name="icon" value="admin/resources/images/monitor.png"/>
             <cm:property name="routeId" value="Kalix.audit.view.Audit"/>
             <cm:property name="index" value="10"/>
-            <cm:property name="permission" value="admin:sysModule:systemConstantMenu:auditMenu"/>
+            <cm:property name="permission" value="admin:constructModule:auditMenu"/>
             <cm:property name="description" value="可以对业务操作进行审计管理"/>
         </cm:default-properties>
     </cm:property-placeholder>

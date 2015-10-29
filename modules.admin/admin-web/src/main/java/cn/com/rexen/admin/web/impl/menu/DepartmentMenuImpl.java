@@ -1,22 +1,22 @@
-package cn.com.rexen.demo.web.impl;
+package cn.com.rexen.admin.web.impl.menu;
 
 import cn.com.rexen.core.api.web.IMenu;
 
 /**
- * 流程演示菜单
+ * 部门菜单
  * @author majian <br/>
  *         date:2015-8-10
  * @version 1.0.0
  */
-public class DemoWorkFlowMenuImpl implements IMenu {
+public class DepartmentMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {
-        return false;
+        return true;
     }
 
     @Override
     public String getModuleId() {
-        return "demoWorkFlowModule";
+        return "constructModule";
     }
 
     @Override
@@ -26,12 +26,12 @@ public class DemoWorkFlowMenuImpl implements IMenu {
 
     @Override
     public String getId() {
-        return "demoWorkFlowMenu";
+        return "departmentMenu";
     }
 
     @Override
     public String getText() {
-        return "流程演示";
+        return "部门管理";
     }
 
     @Override
@@ -41,21 +41,26 @@ public class DemoWorkFlowMenuImpl implements IMenu {
 
     @Override
     public String getIcon() {
-        return "app/resources/images/application.png";
+        return "admin/resources/images/building.png";
     }
 
     @Override
     public String getRouteId() {
-        return null;
+        return "AdminApplication/Dep";
     }
 
     @Override
     public int getIndex() {
-        return 0;
+        return 30;
     }
 
     @Override
     public String getPermission() {
-        return "test:demoWorkFlowModule:demoWorkFlowMenu";
+        return null;//"admin:constructModule:departmentMenu";
+    }
+
+    @Override
+    public String getIconCls() {
+        return "x-fa fa-university";
     }
 }

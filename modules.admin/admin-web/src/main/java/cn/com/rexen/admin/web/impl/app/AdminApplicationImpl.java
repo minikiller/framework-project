@@ -1,4 +1,4 @@
-package cn.com.rexen.admin.web.impl;
+package cn.com.rexen.admin.web.impl.app;
 
 import cn.com.rexen.core.api.web.IApplication;
 import cn.com.rexen.core.api.web.IModule;
@@ -46,6 +46,11 @@ public class AdminApplicationImpl implements IApplication {
 
     @Override
     public String getPermission() {
-        return "admin";
+        return null;//"admin";
+    }
+
+    @Override
+    public String getTitle() {
+        return "系统应用";
     }
 }

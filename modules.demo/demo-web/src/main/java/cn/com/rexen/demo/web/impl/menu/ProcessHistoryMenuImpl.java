@@ -1,14 +1,14 @@
-package cn.com.rexen.app.web.impl;
+package cn.com.rexen.demo.web.impl.menu;
 
 import cn.com.rexen.core.api.web.IMenu;
 
 /**
- * 功能菜单
+ * 流程历史列表
  * @author majian <br/>
  *         date:2015-8-10
  * @version 1.0.0
  */
-public class FunctionMenuImpl implements IMenu {
+public class ProcessHistoryMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {
         return true;
@@ -16,22 +16,22 @@ public class FunctionMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return "appModule";
+        return "demoWorkFlowModule";
     }
 
     @Override
     public String getParentMenuId() {
-        return "appControlMenu";
+        return null;
     }
 
     @Override
     public String getId() {
-        return "functionMenu";
+        return "processHistoryMenu";
     }
 
     @Override
     public String getText() {
-        return "功能管理";
+        return "流程历史列表";
     }
 
     @Override
@@ -41,21 +41,26 @@ public class FunctionMenuImpl implements IMenu {
 
     @Override
     public String getIcon() {
-        return "app/resources/images/note.png";
+        return "admin/resources/images/building.png";
     }
 
     @Override
     public String getRouteId() {
-        return "Kalix.app.function.view.Function";
+        return "Kalix.workflow.view.ProcessHistory";
     }
 
     @Override
     public int getIndex() {
-        return 1;
+        return 0;
     }
 
     @Override
     public String getPermission() {
-        return "admin:appModule:appControlMenu:functionMenu";
+        return "test:demoWorkFlowModule:demoWorkFlowMenu:processHistoryMenu";
+    }
+
+    @Override
+    public String getIconCls() {
+        return "x-fa fa-file-o";
     }
 }

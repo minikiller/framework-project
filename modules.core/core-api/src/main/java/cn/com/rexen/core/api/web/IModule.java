@@ -17,4 +17,6 @@ public interface IModule extends IBaseWebPage {
      * @return
      */
     String getApplicationId();
+
+    String getIconCls();
 }
