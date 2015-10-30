@@ -56,7 +56,6 @@
                         </goals>
                         <configuration>
                             <tasks>
-
                                 <copy file="src/main/resources/ConfigDataSource.cfg"
                                       todir="${karaf.etc.path}"/>
                             </tasks>
