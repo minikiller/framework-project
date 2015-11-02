@@ -16,7 +16,7 @@ public class AppModuleImpl implements IModule {
 
     @Override
     public String getApplicationId() {
-        return "AdminApplication";
+        return "admin";
     }
 
     @Override
@@ -57,5 +57,15 @@ public class AppModuleImpl implements IModule {
     @Override
     public String getIconCls() {
         return "right-icon x-fa fa-database";
+    }
+
+    @Override
+    public boolean isExpanded() {
+        return false;
+    }
+
+    @Override
+    public boolean isSelectable() {
+        return false;
     }
 }

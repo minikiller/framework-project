@@ -12,9 +12,9 @@
             <cm:property name="id" value="auditModule"/>
             <cm:property name="text" value="审计管理"/>
             <cm:property name="icon" value="admin/resources/images/monitor.png"/>
-            <cm:property name="routeId" value="Kalix.audit.view.Audit"/>
+            <cm:property name="routeId" value="admin/Audit"/>
             <cm:property name="index" value="10"/>
-            <cm:property name="permission" value="admin:constructModule:auditMenu"/>
+            <!--<cm:property name="permission" value="admin:constructModule:auditMenu"/>-->
             <cm:property name="description" value="可以对业务操作进行审计管理"/>
         </cm:default-properties>
     </cm:property-placeholder>
@@ -22,13 +22,13 @@
     <bean id="auditMenuImpl" class="cn.com.rexen.audit.web.impl.AuditMenuImpl">
         <property name="leaf" value="${leaf}"/>
         <property name="moduleId" value="${moduleId}"/>
-        <property name="parentMenuId" value="${parentMenuId}"/>
+        <!--<property name="parentMenuId" value="${parentMenuId}"/>-->
         <property name="id" value="${id}"/>
         <property name="text" value="${text}"/>
         <property name="icon" value="${icon}"/>
         <property name="routeId" value="${routeId}"/>
         <property name="index" value="${index}"/>
-        <property name="permission" value="${permission}"/>
+        <!--<property name="permission" value="${permission}"/>-->
         <property name="description" value="${description}"/>
     </bean>
     <service interface="cn.com.rexen.core.api.web.IMenu" ref="auditMenuImpl"/>

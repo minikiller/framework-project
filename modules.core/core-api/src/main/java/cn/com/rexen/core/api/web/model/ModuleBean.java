@@ -6,6 +6,8 @@ import java.util.List;
  * Created by sunlf on 2015/7/14.
  */
 public class ModuleBean extends BaseWebPage {
+    private boolean selectable;
+    private boolean expanded;
 
     private List<MenuBean> children;
 
@@ -17,4 +19,19 @@ public class ModuleBean extends BaseWebPage {
         this.children = children;
     }
 
+    public boolean isExpanded() {
+        return expanded;
+    }
+
+    public void setExpanded(boolean expanded) {
+        this.expanded = expanded;
+    }
+
+    public boolean isSelectable() {
+        return selectable;
+    }
+
+    public void setSelectable(boolean selectable) {
+        this.selectable = selectable;
+    }
 }

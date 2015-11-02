@@ -11,7 +11,7 @@ public abstract class AbstractWebPageImpl implements IBaseWebPage {
     protected String icon;
     protected String routeId;
     protected int index;
-    protected String permission;
+    protected String permission = null;
     protected String description;
 
     @Override

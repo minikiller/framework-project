@@ -59,4 +59,14 @@ public class PermissionModuleImpl implements IModule {
     public String getIconCls() {
         return "right-icon x-fa fa-user-secret";
     }
+
+    @Override
+    public boolean isExpanded() {
+        return false;
+    }
+
+    @Override
+    public boolean isSelectable() {
+        return false;
+    }
 }

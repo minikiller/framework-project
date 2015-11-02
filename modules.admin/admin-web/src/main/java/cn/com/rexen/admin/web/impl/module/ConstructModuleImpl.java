@@ -61,4 +61,14 @@ public class ConstructModuleImpl implements IModule {
     public String getIconCls() {
         return "right-icon x-fa fa-sitemap";
     }
+
+    @Override
+    public boolean isExpanded() {
+        return false;
+    }
+
+    @Override
+    public boolean isSelectable() {
+        return false;
+    }
 }

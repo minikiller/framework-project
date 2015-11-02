@@ -59,4 +59,14 @@ public class WorkFlowModuleImpl implements IModule {
     public String getIconCls() {
         return "right-icon x-fa fa-desktop";
     }
+
+    @Override
+    public boolean isExpanded() {
+        return false;
+    }
+
+    @Override
+    public boolean isSelectable() {
+        return false;
+    }
 }

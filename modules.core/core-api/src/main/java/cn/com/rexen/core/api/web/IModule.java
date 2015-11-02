@@ -19,4 +19,8 @@ public interface IModule extends IBaseWebPage {
     String getApplicationId();
 
     String getIconCls();
+
+    boolean isSelectable();
+
+    boolean isExpanded();
 }

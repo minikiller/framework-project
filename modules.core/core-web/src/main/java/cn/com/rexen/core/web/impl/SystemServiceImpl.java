@@ -3,6 +3,7 @@ package cn.com.rexen.core.web.impl;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.api.web.*;
 import cn.com.rexen.core.api.web.model.*;
+import cn.com.rexen.core.util.StringUtils;
 import cn.com.rexen.core.web.Const;
 import cn.com.rexen.core.web.manager.ApplicationManager;
 import cn.com.rexen.core.web.manager.MenuManager;
@@ -65,7 +66,7 @@ public class SystemServiceImpl implements ISystemService {
             Mapper mapper = new DozerBeanMapper();
             for (IApplication application : applicationList) {
                 //调用isPermitted不能传入空字符,故此默认值为KALIX_NOT_PERMISSION
-                String permission = application.getPermission() != null ? application.getPermission() : Const.KALIX_NO_PERMISSION;
+                String permission = StringUtils.isEmpty(application.getPermission()) ? Const.KALIX_NO_PERMISSION : application.getPermission();
                 //具有权限或不进行权限验证，都通过
                 if (subject.hasRole(permission) || permission.equals(Const.KALIX_NO_PERMISSION)) {
                     ApplicationBean applicationBean = mapper.map(application, ApplicationBean.class);
@@ -93,7 +94,7 @@ public class SystemServiceImpl implements ISystemService {
         if(moduleList!=null&&!moduleList.isEmpty()){
             for(IModule module:moduleList) {
                 //调用isPermitted不能传入空字符,故此默认值为KALIX_NOT_PERMISSION
-                String modulePermission = module.getPermission() != null ? module.getPermission() : Const.KALIX_NO_PERMISSION;
+                String modulePermission = StringUtils.isEmpty(module.getPermission()) ? Const.KALIX_NO_PERMISSION : module.getPermission();
                 //具有权限或不进行权限验证，都通过
                 if (subject.hasRole(modulePermission) || modulePermission.equals(Const.KALIX_NO_PERMISSION)) {
                     ModuleBean moduleBean = mapper.map(module, ModuleBean.class);
@@ -111,7 +112,7 @@ public class SystemServiceImpl implements ISystemService {
                 if(allMenu!=null&&!allMenu.isEmpty()){
                     for(IMenu menu:allMenu) {
                         //调用hasRole不能传入空字符,故此默认值为KALIX_NOT_PERMISSION
-                        String menuPermission = menu.getPermission() != null ? menu.getPermission() : Const.KALIX_NO_PERMISSION;
+                        String menuPermission = StringUtils.isEmpty(menu.getPermission()) ? Const.KALIX_NO_PERMISSION : menu.getPermission();
                         //具有权限或不进行权限验证，都通过
                         if (subject.hasRole(menuPermission) || menuPermission.equals(Const.KALIX_NO_PERMISSION)) {
                             menuList.add(menu);
