@@ -38,15 +38,13 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
 
     @Override
     public void doSave(TP entity, JsonStatus jsonStatus) {
-
-        dao.save(entity);
-        jsonStatus.setSuccess(true);
         if (entity.getId() == 0) {
             jsonStatus.setMsg("新增成功！");
         } else {
             jsonStatus.setMsg("修改成功！");
         }
-
+        dao.save(entity);
+        jsonStatus.setSuccess(true);
     }
 
     @Override
