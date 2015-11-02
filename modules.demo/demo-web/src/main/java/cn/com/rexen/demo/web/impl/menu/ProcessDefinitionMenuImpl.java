@@ -1,6 +1,7 @@
 package cn.com.rexen.demo.web.impl.menu;
 
 import cn.com.rexen.core.api.web.IMenu;
+import cn.com.rexen.demo.web.Const;
 
 /**
  * 流程定义菜单
@@ -16,7 +17,7 @@ public class ProcessDefinitionMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return "demoWorkFlowModule";
+        return Const.MODULE_NAME;
     }
 
     @Override
@@ -46,12 +47,12 @@ public class ProcessDefinitionMenuImpl implements IMenu {
 
     @Override
     public String getRouteId() {
-        return "Kalix.workflow.view.ProcessDefinition";
+        return Const.APPLICATION_NAME + "/ProcessDefinition";
     }
 
     @Override
     public int getIndex() {
-        return 0;
+        return 10;
     }
 
     @Override

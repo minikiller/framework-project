@@ -2,6 +2,7 @@ package cn.com.rexen.demo.web.impl.app;
 
 import cn.com.rexen.core.api.web.IApplication;
 import cn.com.rexen.core.api.web.IModule;
+import cn.com.rexen.demo.web.Const;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  * Created by sunlf on 2015/7/14.
  */
 public class TestApplicationImpl implements IApplication {
+
     @Override
     public List<IModule> getModules() {
         return null;
@@ -16,7 +18,7 @@ public class TestApplicationImpl implements IApplication {
 
     @Override
     public String getId() {
-        return "TestApplication";
+        return Const.APPLICATION_NAME;
     }
 
     @Override
@@ -36,7 +38,7 @@ public class TestApplicationImpl implements IApplication {
 
     @Override
     public String getRouteId() {
-        return null;
+        return "";
     }
 
     @Override

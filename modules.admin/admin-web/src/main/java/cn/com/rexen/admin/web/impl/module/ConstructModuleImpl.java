@@ -19,7 +19,7 @@ public class ConstructModuleImpl implements IModule {
 
     @Override
     public String getApplicationId() {
-        return "AdminApplication";
+        return "admin";
     }
 
     @Override

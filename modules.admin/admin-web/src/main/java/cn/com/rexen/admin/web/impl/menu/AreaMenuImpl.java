@@ -46,7 +46,7 @@ public class AreaMenuImpl implements IMenu {
 
     @Override
     public String getRouteId() {
-        return "AdminApplication/Area";
+        return "admin/Area";
     }
 
     @Override

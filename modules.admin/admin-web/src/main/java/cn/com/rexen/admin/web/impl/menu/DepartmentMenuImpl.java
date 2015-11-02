@@ -46,7 +46,7 @@ public class DepartmentMenuImpl implements IMenu {
 
     @Override
     public String getRouteId() {
-        return "AdminApplication/Dep";
+        return "admin/Dep";
     }
 
     @Override

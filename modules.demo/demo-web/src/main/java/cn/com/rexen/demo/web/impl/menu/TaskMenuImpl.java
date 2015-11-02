@@ -1,6 +1,7 @@
 package cn.com.rexen.demo.web.impl.menu;
 
 import cn.com.rexen.core.api.web.IMenu;
+import cn.com.rexen.demo.web.Const;
 
 /**
  * 待办任务列表
@@ -16,7 +17,7 @@ public class TaskMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return "demoWorkFlowModule";
+        return Const.MODULE_NAME;
     }
 
     @Override
@@ -46,7 +47,7 @@ public class TaskMenuImpl implements IMenu {
 
     @Override
     public String getRouteId() {
-        return "Kalix.workflow.view.Task";
+        return Const.APPLICATION_NAME + "/Task";
     }
 
     @Override

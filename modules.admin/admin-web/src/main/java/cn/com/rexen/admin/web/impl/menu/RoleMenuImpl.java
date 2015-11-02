@@ -46,7 +46,7 @@ public class RoleMenuImpl implements IMenu {
 
     @Override
     public String getRouteId() {
-        return "AdminApplication/Role";
+        return "admin/Role";
     }
 
     @Override

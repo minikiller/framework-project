@@ -2,13 +2,14 @@ package cn.com.rexen.demo.web.impl.module;
 
 import cn.com.rexen.core.api.web.IMenu;
 import cn.com.rexen.core.api.web.IModule;
+import cn.com.rexen.demo.web.Const;
 
 import java.util.List;
 
 /**
  * 工作流演示
  */
-public class DemoWorkFlowModuleImpl implements IModule {
+public class WorkFlowModuleImpl implements IModule {
     @Override
     public List<IMenu> getMenus() {
         return null;
@@ -16,12 +17,12 @@ public class DemoWorkFlowModuleImpl implements IModule {
 
     @Override
     public String getApplicationId() {
-        return "TestApplication";
+        return Const.APPLICATION_NAME;
     }
 
     @Override
     public String getId() {
-        return "demoWorkFlowModule";
+        return Const.MODULE_NAME;
     }
 
     @Override

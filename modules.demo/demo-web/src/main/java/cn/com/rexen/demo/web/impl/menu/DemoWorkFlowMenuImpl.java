@@ -8,6 +8,7 @@ import cn.com.rexen.core.api.web.IMenu;
  *         date:2015-8-10
  * @version 1.0.0
  */
+@Deprecated
 public class DemoWorkFlowMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {

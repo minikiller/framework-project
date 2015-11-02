@@ -1,6 +1,7 @@
 package cn.com.rexen.demo.web.impl.menu;
 
 import cn.com.rexen.core.api.web.IMenu;
+import cn.com.rexen.demo.web.Const;
 
 /**
  * 流程历史列表
@@ -16,7 +17,7 @@ public class ProcessHistoryMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return "demoWorkFlowModule";
+        return Const.MODULE_NAME;
     }
 
     @Override
@@ -46,12 +47,12 @@ public class ProcessHistoryMenuImpl implements IMenu {
 
     @Override
     public String getRouteId() {
-        return "Kalix.workflow.view.ProcessHistory";
+        return Const.APPLICATION_NAME + "/ProcessHistory";
     }
 
     @Override
     public int getIndex() {
-        return 0;
+        return 20;
     }
 
     @Override

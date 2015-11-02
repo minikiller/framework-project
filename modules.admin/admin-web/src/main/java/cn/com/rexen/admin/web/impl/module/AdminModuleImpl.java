@@ -16,7 +16,7 @@ public class AdminModuleImpl implements IModule {
 
     @Override
     public String getApplicationId() {
-        return "AdminApplication";
+        return "admin";
     }
 
     @Override

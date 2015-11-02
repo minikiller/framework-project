@@ -9,7 +9,7 @@
 
     <!--工作流演示模块-->
     <service interface="cn.com.rexen.core.api.web.IModule">
-        <bean class="cn.com.rexen.demo.web.impl.module.DemoWorkFlowModuleImpl"/>
+        <bean class="cn.com.rexen.demo.web.impl.module.WorkFlowModuleImpl"/>
     </service>
 
     <!--流程演示-->

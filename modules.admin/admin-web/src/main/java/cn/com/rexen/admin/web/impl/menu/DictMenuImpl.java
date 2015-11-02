@@ -46,7 +46,7 @@ public class DictMenuImpl implements IMenu {
 
     @Override
     public String getRouteId() {
-        return "AdminApplication/Dict";
+        return "admin/Dict";
     }
 
     @Override

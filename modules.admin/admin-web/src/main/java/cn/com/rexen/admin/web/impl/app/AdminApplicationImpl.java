@@ -16,7 +16,7 @@ public class AdminApplicationImpl implements IApplication {
 
     @Override
     public String getId() {
-        return "AdminApplication";
+        return "admin";
     }
 
     @Override

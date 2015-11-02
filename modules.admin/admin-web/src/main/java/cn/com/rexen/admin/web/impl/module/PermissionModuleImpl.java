@@ -17,7 +17,7 @@ public class PermissionModuleImpl implements IModule {
 
     @Override
     public String getApplicationId() {
-        return "AdminApplication";
+        return "admin";
     }
 
     @Override

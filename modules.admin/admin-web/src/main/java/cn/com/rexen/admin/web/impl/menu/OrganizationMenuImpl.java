@@ -46,7 +46,7 @@ public class OrganizationMenuImpl implements IMenu {
 
     @Override
     public String getRouteId() {
-        return "AdminApplication/Org";
+        return "admin/Org";
     }
 
     @Override
