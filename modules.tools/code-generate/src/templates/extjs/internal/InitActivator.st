@@ -11,7 +11,7 @@ import org.osgi.service.http.HttpService;
  */
 public class InitActivator implements BundleActivator {
 
-    private static final String BUNDLE_NAME = " Kalix <beanName> Extjs ";
+    private static final String BUNDLE_NAME = " <projectName> <beanName> Extjs ";
     private static BundleContext context;
     private static Logger logger = Logger.getLogger(InitActivator.class);
     private ServiceReference reference;

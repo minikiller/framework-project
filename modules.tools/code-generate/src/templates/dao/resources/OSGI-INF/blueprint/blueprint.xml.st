@@ -7,10 +7,11 @@
            xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
     \<jpa:enable/>
     \<tx:enable-annotations/>
-    \<service interface="<packageName>.api.dao.I<beanName>BeanDao">
-        \<bean class="<packageName>.dao.<beanName>BeanDaoImpl">
-            \<tx:transaction method="*" value="Required"/>
-        \</bean>
-    \</service>
+
+    \<bean id="<pomName>BeanDaoImpl" class="<packageName>.dao.<beanName>BeanDaoImpl">
+        \<tx:transaction method="*" value="Required"/>
+    \</bean>
+
+    \<service interface="<packageName>.api.dao.I<beanName>BeanDao" ref="<pomName>BeanDaoImpl"/>
 \</blueprint>
 

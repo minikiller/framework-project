@@ -4,17 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     \<modelVersion>4.0.0\</modelVersion>
+
     \<parent>
             \<groupId><packageName>\</groupId>
-            \<artifactId>modules.<pomName>\</artifactId>
-            \<version>1.0.0-SNAPSHOT\</version>
-    \</parent>
+            \<artifactId><pomName>-parent\</artifactId>
+            \<version><versionName>\</version>
+        \</parent>
     
-    \<groupId><packageName>\</groupId>
-    \<artifactId><packageName>.extjs\</artifactId>
+    \<artifactId><pomName>-extjs\</artifactId>
     \<version>1.0.0-SNAPSHOT\</version>
-    \<name>Kalix :: <beanName> - Extjs\</name>
-    \<description>Kalix :: <beanName> - Extjs\</description>
+    \<name><projectName> :: <beanName> - Extjs\</name>
+    \<description><projectName> :: <beanName> - Extjs\</description>
     \<packaging>bundle\</packaging>
 
     \<properties>

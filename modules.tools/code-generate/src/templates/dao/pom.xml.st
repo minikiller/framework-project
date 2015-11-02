@@ -12,7 +12,7 @@
 
     \<artifactId><pomName>-dao\</artifactId>
     \<packaging>bundle\</packaging>
-    \<name><projectName> :: <beanName> - JPA\</name>
+    \<name><projectName> :: <beanName> - DAO\</name>
     \<description><beanName> JPA\</description>
 
     \<properties>

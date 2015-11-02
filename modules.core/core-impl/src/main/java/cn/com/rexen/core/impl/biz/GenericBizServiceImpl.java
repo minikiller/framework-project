@@ -9,7 +9,6 @@ import cn.com.rexen.core.api.web.model.QueryDTO;
 import cn.com.rexen.core.util.Assert;
 import org.apache.log4j.Logger;
 
-import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 
@@ -39,9 +38,15 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
 
     @Override
     public void doSave(TP entity, JsonStatus jsonStatus) {
+
         dao.save(entity);
         jsonStatus.setSuccess(true);
-        jsonStatus.setMsg("新增成功！");
+        if (entity.getId() == 0) {
+            jsonStatus.setMsg("新增成功！");
+        } else {
+            jsonStatus.setMsg("修改成功！");
+        }
+
     }
 
     @Override
@@ -115,7 +120,10 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
         } catch (Exception e) {
             e.printStackTrace();
             jsonStatus.setFailure(true);
-            jsonStatus.setMsg( "新增失败！");
+            if (entity.getId() == 0)
+                jsonStatus.setMsg("新增失败！");
+            else
+                jsonStatus.setMsg("修改失败！");
         }
         return jsonStatus;
 
