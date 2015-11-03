@@ -106,7 +106,7 @@ public abstract class PersistentEntity implements Serializable {
         return super.hashCode();
     }
 
-    public Serializable getIdentifier() {
+    private Serializable getIdentifier() {
         if (id == -1L) {
             return null;
         } else {
