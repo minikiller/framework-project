@@ -10,7 +10,7 @@
         \<version><versionName>\</version>
     \</parent>
 
-    \<artifactId><packageName>.entities\</artifactId>
+    \<artifactId><pomName>-entities\</artifactId>
     \<packaging>bundle\</packaging>
     \<name><projectName> :: <beanName> - Entities\</name>
     \<description><beanName> Entities\</description>

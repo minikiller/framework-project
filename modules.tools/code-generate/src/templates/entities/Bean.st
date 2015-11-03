@@ -15,6 +15,7 @@ import java.util.Date;
  * @修改时间：
  * @修改备注：
  */
+ //todo 修改模型定义
 @Entity
 @Table(name = "roffice_<pomName>")
 public class <beanName>Bean extends PersistentEntity {
