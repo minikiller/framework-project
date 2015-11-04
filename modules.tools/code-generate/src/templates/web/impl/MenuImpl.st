@@ -15,7 +15,7 @@ public class <beanName>MenuImpl implements IMenu {
 
     @Override
     public String getParentMenuId() {
-        return "<pomName>Menu";
+        return null;
     }
 
     @Override
