@@ -45,8 +45,7 @@ public abstract class BizEntity extends PersistentEntity {
         this.key = key;
     }
 
-    @Override
-    public Serializable getIdentifier() {
+    private Serializable getIdentifier() {
         return key;
     }
 }
