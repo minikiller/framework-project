@@ -18,11 +18,11 @@ Ext.define('<extjsPrefix>.view.<beanName>SearchForm', {
     items: [
         {
             xtype: 'textfield',
-            fieldLabel: '标题',
+            fieldLabel: '名称',
             labelAlign: 'right',
             labelWidth: 60,
             width: 200,
-            name: 'title'
+            name: 'name'
         },
         {
             xtype: 'button',

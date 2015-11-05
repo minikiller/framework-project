@@ -30,7 +30,15 @@ Ext.define('<extjsPrefix>.view.<beanName>ViewForm', {
         defaultType: 'displayfield',
         bodyPadding: 10,
         buttonAlign: "center",
-        items: [{
+        items: [
+        {
+            fieldLabel: '名称',
+            labelAlign: 'right',
+            bind: {
+                value: '{rec.name}'
+            }
+        },
+        {
             fieldLabel: '标题',
             labelAlign: 'right',
             bind: {
@@ -51,12 +59,11 @@ Ext.define('<extjsPrefix>.view.<beanName>ViewForm', {
         }, {
             fieldLabel: '发布时间',
             labelAlign: 'right',
+            xtype: 'datefield',
+            format: 'Y-m-d',
             bind: {
                 value: '{rec.publishDate}'
-            },
-            renderer: function (value) {
-                var createDate = new Date(value);
-                return createDate.format("yyyy-MM-dd hh:mm:ss");
+            }
             }
         },
         ],

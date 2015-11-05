@@ -49,10 +49,8 @@ Ext.define('<extjsPrefix>.view.<beanName>Grid', {
             text: '发布时间',
             dataIndex: 'publishDate',
             flex: 1,
-            renderer: function (value) {
-                var createDate = new Date(value);
-                return createDate.format("yyyy-MM-dd hh:mm:ss");
-            }
+            xtype: 'datecolumn',
+            format: 'Y-m-d'
         },
     ],
 

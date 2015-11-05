@@ -18,6 +18,9 @@ Ext.define('<extjsPrefix>.model.<beanName>Model', {
         name: 'title',
         type: 'string'
     }, {
+        name: 'name',
+        type: 'string'
+    },{
         name: 'content',
         type: 'string'
     }, {
@@ -25,7 +28,7 @@ Ext.define('<extjsPrefix>.model.<beanName>Model', {
         type: 'string'
     }, {
         name: 'publishDate',
-        type: 'int'
+        type: 'date'
     }, {
         name: 'version',
         type: 'int'
@@ -46,12 +49,17 @@ Ext.define('<extjsPrefix>.model.<beanName>Model', {
             message: '内容不能为空!'
         }
         ],
+        name: [{
+            type: 'presence',
+            message: '名称不能为空!'
+        }]
     },
 
     //需要提交给服务端的模型 key
     serverKeys: [
         'id',
         'title',
+        'name',
         'content',
         'version'
     ],

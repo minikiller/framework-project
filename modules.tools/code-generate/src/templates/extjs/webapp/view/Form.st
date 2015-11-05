@@ -29,6 +29,15 @@ Ext.define('<extjsPrefix>.view.<beanName>Form', {
     items: [{
         xtype: 'baseForm',
         items: [{
+            fieldLabel: '名称',
+            labelAlign: 'right',
+            allowBlank: false,
+            bind: {
+                activeError: '{validation.name}',
+                value: '{rec.name}'
+            }
+        },
+        {
             fieldLabel: '标题',
             labelAlign: 'right',
             allowBlank: false,
@@ -45,8 +54,16 @@ Ext.define('<extjsPrefix>.view.<beanName>Form', {
                 activeError: '{validation.content}',
                 value: '{rec.content}'
             }
-        },
-        ],
+        },{
+            fieldLabel: '发布时间',
+            labelAlign: 'right',
+            allowBlank: false,
+            xtype: 'datefield',
+            format: 'Y-m-d',
+            bind: {
+                value: '{rec.publishDate}'
+            }
+            }],
         buttons: [{
             text: '保存',
             glyph: 'xf0c7@FontAwesome',
