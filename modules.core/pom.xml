@@ -49,6 +49,11 @@
                 <artifactId>core-util</artifactId>
                 <version>${globle.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.core</groupId>
+                <artifactId>core-impl</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>

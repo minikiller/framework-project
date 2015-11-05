@@ -70,7 +70,6 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
     }
 
     @Override
-//    @ApiOperation(value = "删除实体", httpMethod = "DELETE", response = JsonStatus.class, notes = "add user")
     public JsonStatus deleteEntity(long entityId) {
         log.debug("remove entity of " + entityClassName + ";PK is " + entityId);
         JsonStatus jsonStatus = new JsonStatus();
@@ -86,6 +85,11 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
             jsonStatus.setMsg("删除失败！");
         }
         return jsonStatus;
+    }
+
+    @Override
+    public JsonStatus deleteEntity(TP entity){
+        return deleteEntity(entity.getId());
     }
 
     @Override
