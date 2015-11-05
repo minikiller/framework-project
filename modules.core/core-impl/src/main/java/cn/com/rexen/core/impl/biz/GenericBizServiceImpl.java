@@ -88,7 +88,7 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
     }
 
     @Override
-    public JsonStatus deleteEntity(TP entity){
+    public JsonStatus removeEntity(TP entity) {
         return deleteEntity(entity.getId());
     }
 
