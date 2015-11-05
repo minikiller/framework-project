@@ -13,7 +13,7 @@
 
     \<artifactId><pomName>-web\</artifactId>
     \<packaging>bundle\</packaging>
-    \<name>Kalix :: <beanName> - Web\</name>
+    \<name><projectName> :: <beanName> - Web\</name>
     \<description><beanName> Web Service\</description>
 
     \<properties>

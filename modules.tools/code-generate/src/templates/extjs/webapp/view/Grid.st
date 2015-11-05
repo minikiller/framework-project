@@ -33,22 +33,18 @@ Ext.define('<extjsPrefix>.view.<beanName>Grid', {
             dataIndex: 'id',
             hidden: true,
             flex: 1
-            //width: 40
         }, {
             text: '标题',
             dataIndex: 'title',
             flex: 1
-            //width: 80
         }, {
             text: '内容',
             dataIndex: 'content',
             flex: 3
-            //width: 60
         }, {
             text: '发布人',
             dataIndex: 'publishPeople',
             flex: 1
-            //width: 60
         }, {
             text: '发布时间',
             dataIndex: 'publishDate',

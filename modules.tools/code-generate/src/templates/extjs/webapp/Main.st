@@ -14,11 +14,13 @@ Ext.define('<extjsPrefix>.Main', {
     items: [
         {
             title: '<module_Name>查询',
+            iconCls: 'x-fa fa-search',
             xtype: '<pomName>SearchForm'
         }, {
             xtype: '<pomName>GridPanel',
             id: '<pomName>GridPanel',
             title: '<module_Name>列表',
+            iconCls: 'x-fa fa-search',
             margin: 10,
             store: {
                 type: '<pomName>Store'

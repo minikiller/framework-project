@@ -52,7 +52,7 @@ public class <beanName>MenuImpl implements IMenu {
 
         @Override
         public String getText() {
-            return "项目机会";
+            return "<module_Name>";
         }
 
         @Override

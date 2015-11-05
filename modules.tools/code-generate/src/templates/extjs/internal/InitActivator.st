@@ -13,6 +13,7 @@ public class InitActivator implements BundleActivator {
 
     private static final String BUNDLE_NAME = " <projectName> <beanName> Extjs ";
     public static final String KALIX_APP_ROFFICE_PATH = "/kalix/app/roffice/<pomName>";
+    public static final String KALIX_ROFFICE_RESOURCES_IMAGES = "/kalix/roffice/<pomName>/resources/images";
     private static BundleContext context;
     private static Logger logger = Logger.getLogger(InitActivator.class);
     private ServiceReference reference;
@@ -24,8 +25,9 @@ public class InitActivator implements BundleActivator {
         context = bundleContext;
 
         reference = bundleContext.getServiceReference(HttpService.class.getName());
-                httpService = (HttpService) bundleContext.getService(reference);
-                httpService.registerResources(KALIX_APP_ROFFICE_PATH, "/roffice/<pomName>", null);
+        httpService = (HttpService) bundleContext.getService(reference);
+        httpService.registerResources(KALIX_APP_ROFFICE_PATH, "/roffice/<pomName>", null);
+        httpService.registerResources(KALIX_ROFFICE_RESOURCES_IMAGES, "/resources/images", null);
     }
 
     @Override
@@ -34,6 +36,7 @@ public class InitActivator implements BundleActivator {
         context = null;
         if(httpService!=null){
             httpService.unregister(KALIX_APP_ROFFICE_PATH);
+            httpService.unregister(KALIX_ROFFICE_RESOURCES_IMAGES);
         }
         if (reference != null)
                     bundleContext.ungetService(reference);
