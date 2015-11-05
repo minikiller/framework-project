@@ -14,11 +14,11 @@ Ext.define('<extjsPrefix>.store.<beanName>Store', {
     pageSize: 10,
     proxy: {
         type: "ajax",
-        url: '/kalix/camel/rest/<pomName>s',
+        url: '/kalix/camel/rest/<pomName>s/list',
         paramsAsJson: true,
         actionMethods: {
             create: 'POST',
-            read: 'GET',
+            read: 'POST',
             update: 'POST',
             destroy: 'POST'
         },

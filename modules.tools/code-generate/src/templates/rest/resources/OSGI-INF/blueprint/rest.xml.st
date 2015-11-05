@@ -3,7 +3,9 @@
            xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
     \<reference id="<pomName>Service" interface="<packageName>.api.biz.I<beanName>BeanService"/>
+    
     \<camelContext id="<pomName>Camel" xmlns="http://camel.apache.org/schema/blueprint">
 
         \<restConfiguration component="servlet" bindingMode="json"
@@ -47,6 +49,13 @@
                 \<description>Find <beanName> by id\</description>
                 \<to uri="bean:<pomName>Service?method=getEntity(${header.id})"/>
             \</get>
+
+            <!-- this is a rest GET to find all <pomName> by name -->
+            \<post id="route-getAll<beanName>ByName" uri="/list" outType="cn.com.rexen.core.api.persistence.JsonData"
+                  type="<packageName>.api.query.<beanName>DTO">
+                \<description>Find all <beanName> by Name</description>
+                \<to uri="bean:<pomName>Service?method=getAllEntityByQuery"/>
+            \</post>
 
         \</rest>
     \</camelContext>
