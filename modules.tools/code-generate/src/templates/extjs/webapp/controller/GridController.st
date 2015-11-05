@@ -1,43 +1,43 @@
 /**
- * 用户表格控制器
+ * <module_Name>表格控制器
  *
- * @author majian
- *         date:2015-6-18
+ * @author
  * @version 1.0.0
  */
-Ext.define('Kalix.<pomName>.controller.<beanName>GridController', {
+Ext.define('<extjsPrefix>.controller.<beanName>GridController', {
     extend: 'Ext.app.ViewController',
+    requires: [
+        'kalix.core.Notify',
+        '<extjsPrefix>.view.<beanName>Form',
+        '<extjsPrefix>.viewModel.<beanName>ViewModel'
+    ],
     alias: 'controller.<pomName>GridController',
-
-    onPersonSelect: function (grid, record, index, eOpts) {
-        //this.setCurrent<beanName>(<pomName>);
-        console.log(record);
+    /**
+     * 查看操作.
+     */
+    onView: function (target, event) {
+        var grid = target.findParentByType('grid');
+        var selModel = grid.getSelectionModel();
+        if (selModel.hasSelection()) {
+            var view = Ext.create('<extjsPrefix>.view.<beanName>ViewForm');
+            var viewModel = view.lookupViewModel();
+            viewModel.set('rec', selModel.getSelection()[0]);
+            view.show();
+        } else {
+            Ext.Msg.alert(CONFIG.ALTER_TITLE_ERROR, "请选择要查看的记录！");
+        }
     },
+
     /**
      * 打开新增操作.
-     * @returns {Ext.panel.Panel}
      */
     onAdd: function () {
-        var addFormPanel = Ext.create('Kalix.<pomName>.view.<beanName>AddForm', {
-            url: this.getView().getViewModel().get("url")
-        });
-        var win = Ext.create('Ext.Window', {
-            width: 400,
-            height: 350,
-            border: false,
-            modal: true,
-            viewModel: {
-                type: '<pomName>ViewModel'
-            },
-            //resizable:false,
-            icon: 'admin/resources/images/group_add.png',
-            bind: {
-                text: '{addTitle}'
-            },
-            items: [addFormPanel]
-        });
-
-        win.show();
+        var view = Ext.create('<extjsPrefix>.view.<beanName>Form');
+        var viewModel = view.lookupViewModel();
+        viewModel.set('rec', Ext.create('<extjsPrefix>.model.<beanName>Model'));
+        viewModel.set('icon', viewModel.get('add_image_path'));
+        viewModel.set('title', '新增<module_Name>');
+        view.show();
     },
     /**
      * 打开编辑操作.
@@ -45,95 +45,55 @@ Ext.define('Kalix.<pomName>.controller.<beanName>GridController', {
      * @param rowIndex
      * @param colIndex
      */
-    onEdit: function (grid, rowIndex, colIndex) {
-
-        var sm = grid.getSelectionModel();
-        var rec = grid.getStore().getAt(rowIndex)
-        console.log(sm);
-        console.log('fdfdfdf' + rec);
-
-        /*var rec = grid.getStore().getAt(rowIndex);
-         var editFormPanel = Ext.create('Kalix.<pomName>.view.<beanName>EditForm', {
-         url: this.getView().getViewModel().get("url")
-         });
-         var <pomName>Model = Ext.create("Kalix.<pomName>.model.<beanName>Model", {
-         id: rec.data.id,
-         text: rec.data.text,
-         content: rec.data.content,
-         });*/
-        //var grid = this.lookupReference('fooGrid');
-        //this.setCurrent<beanName>(record);
-
-        var editFormPanel = Ext.create('Kalix.<pomName>.view.<beanName>EditForm', {
-            url: this.getView().getViewModel().get("url"),
-            //<pomName>Ref:this.lookupReference('<pomName>Ref'),
-        });
-        //editFormPanel.setCurrent<beanName>(rec.data);
-        /* var sm = this.getSelectionModel();
-         console.log(sm);
-         ;*/
-        editFormPanel.loadRecord(rec);
-
-        var win = Ext.create('Ext.Window', {
-            width: 400,
-            height: 350,
-            border: false,
-            modal: true,
-            viewModel: {
-                type: '<pomName>ViewModel'
-            },
-            //resizable:false,
-            icon: 'admin/resources/images/group_edit.png',
-            bind: {
-                text: '{editTitle}'
-            },
-            items: [editFormPanel]
-        });
-        //this.getView().getViewModel.set('rec',record);
-        win.show();
-    },
-    /**
-     * 批量删除操作.
-     */
-    onDeleteAll: function () {
-        var selModel = Ext.getCmp("<pomName>DataGrid").getSelectionModel();
+    onEdit: function (target, event) {
+        var grid = target.findParentByType('grid');
+        var selModel = grid.getSelectionModel();
         if (selModel.hasSelection()) {
+            var rec = selModel.getSelection()[0].clone();
+            var view = Ext.create('<extjsPrefix>.view.<beanName>Form');
+            var viewModel = view.lookupViewModel();
+
+            viewModel.set('rec', rec);
+            viewModel.set('icon', viewModel.get('edit_image_path'));
+            viewModel.set('title', '修改<module_Name>');
+            view.show();
+        } else {
+            Ext.Msg.alert(CONFIG.ALTER_TITLE_ERROR, "请选择要编辑的记录！");
+        }
+    },
+
+    /**
+     * 删除单个操作.
+     * @param grid
+     * @param rowIndex
+     * @param colIndex
+     */
+    onDelete: function (target, event) {
+        var grid = target.findParentByType('grid');
+        var selModel = grid.getSelectionModel();
+        if (selModel.hasSelection()) {
+            var deleteUrl = this.getViewModel().get("url");
+            var ids = _.reduce(selModel.getSelection(), function (memo, rec) {
+                memo.push(rec.get('id'));
+                return memo;
+            }, []).join('_');
+
             Ext.Msg.confirm("警告", "确定要删除吗？", function (button) {
                 if (button == "yes") {
-                    var rows = selModel.getSelection();
-                    var ids = "";
-                    for (var i = 0; i \< rows.length; i++) {
-                        if (rows[i] != null && rows[i].id != null) {
-                            ids += rows[i].id;
-                            if (i + 1 != rows.length) {
-                                ids += "_";
-                            }
-                        }
-                    }
                     Ext.Ajax.request({
-                        url: "/<pomName>DeleteAllServlet?ids=" + ids,
-                        method: "GET",
-                        callback: function (options, success, response) {
-                            var resp = Ext.JSON.decode(response.responseText);
-                            Ext.MessageBox.alert(CONFIG.ALTER_TITLE_INFO, resp.msg);
-                            if (resp.success) {
-                                var <pomName>name = Ext.getCmp("<pomName>name").getValue();
-                                var name = Ext.getCmp("name").getValue();
-                                var sex = Ext.getCmp("sex").getValue();
-                                var status = Ext.getCmp("status").getValue();
-                                var grid = Ext.getCmp("<pomName>DataGrid");
-                                var store = grid.getStore();
-                                store.reload({
-                                    params: {
-                                        start: 0,
-                                        limit: pageSize,
-                                        <pomName>name: <pomName>name,
-                                        name: name,
-                                        sex: sex,
-                                        status: status
-                                    }
-                                });
+                        url: deleteUrl + "?id=" + ids,
+                        method: 'DELETE',
+                        success: function (response, opts) {
+                            var res = Ext.JSON.decode(response.responseText);
+                            if (res.success) {
+                                kalix.getApplication().getStore('<pomName>Store').reload();
+                                kalix.core.Notify.success(res.msg, CONFIG.ALTER_TITLE_SUCCESS);
+                            } else {
+                                Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, res.msg);
                             }
+                        },
+                        failure: function (response, opts) {
+                            Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, res.msg);
                         }
                     });
                 }
@@ -141,32 +101,6 @@ Ext.define('Kalix.<pomName>.controller.<beanName>GridController', {
         } else {
             Ext.Msg.alert(CONFIG.ALTER_TITLE_ERROR, "请选择要删除的记录！");
         }
-    },
-    /**
-     * 删除单个操作.
-     * @param grid
-     * @param rowIndex
-     * @param colIndex
-     */
-    onDelete: function (grid, rowIndex, colIndex) {
-        var rec = grid.getStore().getAt(rowIndex);
-        var deleteUrl = this.getView().getViewModel().get("url");
-        Ext.Msg.confirm("警告", "确定要删除吗？", function (button) {
-            if (button == "yes") {
-                Ext.Ajax.request({
-                    url: deleteUrl + "?id=" + rec.id,
-                    method: 'DELETE',
-                    callback: function (options, success, response) {
-                        var resp = Ext.JSON.decode(response.responseText);
-                        Ext.MessageBox.alert(CONFIG.ALTER_TITLE_INFO, resp.msg);
-                        if (resp.success) {
-                            var grid = Ext.getCmp("<pomName>DataGrid");
-                            var store = grid.getStore();
-                            store.reload();
-                        }
-                    }
-                });
-            }
-        });
     }
+
 });

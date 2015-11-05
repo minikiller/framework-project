@@ -1,81 +1,61 @@
 /**
- * 用户表单控制器
+ * <module_Name>新增和修改表单控制器
  *
- * @author majian
- *         date:2015-6-18
+ * @author
  * @version 1.0.0
  */
-Ext.define('Kalix.<pomName>.controller.<beanName>FormController', {
+Ext.define('<extjsPrefix>.controller.<beanName>FormController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.<pomName>FormController',
+    requires: ['kalix.core.Notify'],
+    /**
+     * 重置操作.
+     *
+     */
+    onReset: function () {
+        var viewModel = this.getViewModel();
+        var model = viewModel.get('rec');
+
+        var modified = _.reduce(_.keys(model.getChanges()), function (memo, item) {
+            memo[item] = model.getModified(item);
+            return memo;
+        }, {});
+        model.set(modified);
+    },
 
     /**
-     * 重置操作.
-     * @returns {Ext.panel.Panel}
-     */
-    onAddReset: function () {
-        this.getView().reset();
-    },
-    /**
-     * 重置操作.
-     * @returns {Ext.panel.Panel}
-     */
-    onEditReset: function () {
-        this.getView().reset();
-    },
-    /**
-     * 保存操作.
-     * @returns {Ext.panel.Panel}
+     * 保存/更新操作.
+     *
      */
     onSave: function () {
-        var form = this.getView();
-        if (form.isValid()) {
-            form.submit({
-                success: function (form, action) {
-                    Ext.Msg.alert(CONFIG.ALTER_TITLE_SUCCESS, action.result.msg);
-                    var grid = Ext.ComponentQuery.query('<pomName>Grid')[0];
-                    var store = grid.getStore();
-                    store.reload();
-                    /*var <pomName>name = Ext.getCmp("<pomName>name").getValue();
-                     var name = Ext.getCmp("name").getValue();
-                     var sex = Ext.getCmp("sex").getValue();
-                     var status = Ext.getCmp("status").getValue();
-                     store.reload({
-                     params: {
-                     start: 0,
-                     limit: pageSize,
-                     <pomName>name: <pomName>name,
-                     name: name,
-                     sex: sex,
-                     status: status
-                     }
-                     });*/
+        var viewModel = this.getViewModel();
+        var model = viewModel.get('rec');
+        var view = this.getView();
+
+        if (model.isValid()) {
+            Ext.Ajax.request({
+                url: viewModel.get('url'),
+                method: 'POST',
+                params: model.toServerJSON(),
+                defaultPostHeader: 'application/json',
+                success: function (response, opts) {
+                    var res = Ext.JSON.decode(response.responseText);
+                    if (res.success) {
+                        view.close();
+                        kalix.getApplication().getStore('<pomName>Store').reload();
+                        kalix.core.Notify.success(res.msg, CONFIG.ALTER_TITLE_SUCCESS);
+                    } else {
+                        Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, res.msg);
+                    }
                 },
-                failure: function (form, action) {
-                    Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, action.result.msg);
+                failure: function (response, opts) {
+                    Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, res.msg);
                 }
             });
+        } else {
+            viewModel.set('validation', _.pick(model.getValidation().data, function (value, key, object) {
+                return value !== true;
+            }));
         }
     },
-    /**
-     * 更新操作.
-     * @returns {Ext.panel.Panel}
-     */
-    onUpdate: function () {
-        var form = this.getView();
-        if (form.isValid()) {
-            form.submit({
-                success: function (form, action) {
-                    Ext.Msg.alert(CONFIG.ALTER_TITLE_SUCCESS, action.result.msg);
-                    var grid = Ext.ComponentQuery.query('<pomName>Grid')[0];
-                    ;
-                    var store = grid.getStore();
-                    store.reload();
-                },
-                failure: function (form, action) {
-                    Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, action.result.msg);
-                }
-            });
-        }
-    }
 });

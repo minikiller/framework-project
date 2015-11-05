@@ -50,6 +50,13 @@ public interface IBizService<T extends PersistentEntity> extends IService {
     JsonStatus deleteEntity(long entityId);
 
     /**
+     * 删除实体.
+     * @param entity
+     * @return
+     */
+    JsonStatus deleteEntity(T entity);
+
+    /**
      * 执行删除.
      * @param entityId
      * @param jsonStatus

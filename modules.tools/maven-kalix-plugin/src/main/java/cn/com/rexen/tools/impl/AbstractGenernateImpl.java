@@ -41,6 +41,10 @@ public abstract class AbstractGenernateImpl implements IGenerate {
     protected File inputDir, outputDir;
     //由超类实例化，分别为api，entities等
     protected String moduleName;
+    //模块中文名称
+    protected String module_Name;
+    //extjs类前缀
+    protected String extjsPrefix;
 
     protected Map<String, String> attributes;
 
@@ -61,7 +65,10 @@ public abstract class AbstractGenernateImpl implements IGenerate {
         Assert.notNull(versionName);
         parentPackageName = attributes.get("parentPackageName");
         Assert.notNull(parentPackageName);
-
+        module_Name = attributes.get("module_Name");
+        Assert.notNull(module_Name);
+        extjsPrefix = attributes.get("extjsPrefix");
+        Assert.notNull(extjsPrefix);
 
         File target = new File(outputDir.getAbsolutePath() + "\\" + pomName + "-" + moduleName);
         if (!target.exists())
@@ -128,7 +135,8 @@ public abstract class AbstractGenernateImpl implements IGenerate {
                     }
                     //处理资源类型的文件
                     else if (fileName.contains(jsChar)) {
-                        File pd = new File(this.outputDir, JS_SOURCE_PATH+"webapp\\"+pomName);
+                        //js输出路径
+                        File pd = new File(this.outputDir, JS_SOURCE_PATH + "webapp\\" + projectName.toLowerCase() + "\\" + pomName);
                         File jsFile = new File(pd, fileName);
                         result.put(f, jsFile);
                     }

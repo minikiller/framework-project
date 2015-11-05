@@ -15,7 +15,7 @@ public class <beanName>MenuImpl implements IMenu {
 
     @Override
     public String getParentMenuId() {
-        return "<pomName>Menu";
+        return null;
     }
 
     @Override
@@ -24,32 +24,39 @@ public class <beanName>MenuImpl implements IMenu {
     }
 
     @Override
-    public String getTitle() {
-        return "审计管理";
-    }
+        public String getDescription() {
+            return null;
+        }
 
-    @Override
-    public String getDescription() {
-        return null;
-    }
+        @Override
+        public String getIcon() {
+            return "admin/resources/images/building.png";
+        }
 
-    @Override
-    public String getIcon() {
-        return "admin/resources/images/building.png";
-    }
+        @Override
+        public int getIndex() {
+            return 0;
+        }
 
-    @Override
-    public String getComponentClass() {
-        return "Kalix.<pomName>.view.<beanName>";
-    }
+        //todo add permission
+        @Override
+        public String getPermission() {
+            return "";
+        }
 
-    @Override
-    public int getIndex() {
-        return 0;
-    }
+        //todo change iconcls
+        @Override
+        public String getIconCls() {
+            return "x-fa fa-cubes";
+        }
 
-    @Override
-    public String getPermission() {
-        return "admin:<pomName>Module:<pomName>Menu:<pomName>Menu";
-    }
+        @Override
+        public String getText() {
+            return "项目机会";
+        }
+
+        @Override
+        public String getRouteId() {
+            return "roffice/<beanName>";
+        }
 }
