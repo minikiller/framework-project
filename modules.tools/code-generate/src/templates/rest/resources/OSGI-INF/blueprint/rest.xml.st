@@ -50,10 +50,10 @@
                 \<to uri="bean:<pomName>Service?method=getEntity(${header.id})"/>
             \</get>
 
-            <!-- this is a rest GET to find all <pomName> by name -->
+            \<!-- this is a rest GET to find all <pomName> by name -->
             \<post id="route-getAll<beanName>ByName" uri="/list" outType="cn.com.rexen.core.api.persistence.JsonData"
                   type="<packageName>.api.query.<beanName>DTO">
-                \<description>Find all <beanName> by Name</description>
+                \<description>Find all <beanName> by Name\</description>
                 \<to uri="bean:<pomName>Service?method=getAllEntityByQuery"/>
             \</post>
 

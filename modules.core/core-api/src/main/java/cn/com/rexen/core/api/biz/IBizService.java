@@ -5,7 +5,6 @@ import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.web.model.QueryDTO;
 
-import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 /**
@@ -54,7 +53,7 @@ public interface IBizService<T extends PersistentEntity> extends IService {
      * @param entity
      * @return
      */
-    JsonStatus deleteEntity(T entity);
+    JsonStatus removeEntity(T entity);
 
     /**
      * 执行删除.
