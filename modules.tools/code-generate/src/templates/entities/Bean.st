@@ -1,6 +1,7 @@
 package <packageName>.entities;
 
 import cn.com.rexen.core.api.persistence.PersistentEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

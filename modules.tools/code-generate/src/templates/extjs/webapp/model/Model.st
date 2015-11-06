@@ -60,6 +60,7 @@ Ext.define('<extjsPrefix>.model.<beanName>Model', {
         'id',
         'title',
         'name',
+        'publishDate',
         'content',
         'version'
     ],

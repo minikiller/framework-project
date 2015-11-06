@@ -59,14 +59,15 @@ Ext.define('<extjsPrefix>.view.<beanName>ViewForm', {
         }, {
             fieldLabel: '发布时间',
             labelAlign: 'right',
-            xtype: 'datefield',
             format: 'Y-m-d',
             bind: {
                 value: '{rec.publishDate}'
-            }
-            }
-        },
-        ],
+            },
+            renderer: function (value) {
+                var createDate = new Date(value);
+                return createDate.format("yyyy-MM-dd");
+        }
+        }],
         buttons: [{
             text: '关闭',
             glyph: 'xf00d@FontAwesome',

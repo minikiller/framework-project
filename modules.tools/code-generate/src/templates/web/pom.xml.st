@@ -28,6 +28,11 @@
             \<artifactId><pomName>-api\</artifactId>
             \<version><versionName>\</version>
         \</dependency>
+        \<dependency>
+            \<groupId>cn.com.rexen.roffice.core.web\</groupId>
+            \<artifactId>roffice-core-web\</artifactId>
+            \<version><versionName>\</version>
+        \</dependency>
     \</dependencies>
 
     \<build>

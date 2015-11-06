@@ -37,7 +37,12 @@ Ext.define('<extjsPrefix>.view.<beanName>Grid', {
             text: '标题',
             dataIndex: 'title',
             flex: 1
-        }, {
+        },{
+            text: '名称',
+            dataIndex: 'name',
+            flex: 1
+        },
+        {
             text: '内容',
             dataIndex: 'content',
             flex: 3
