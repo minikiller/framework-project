@@ -30,6 +30,17 @@ Ext.define('<extjsPrefix>.view.<beanName>SearchForm', {
             margin: '0 0 0 10',
             handler: 'onSearch',
             glyph: 'xf002@FontAwesome',
+        },
+        {
+            xtype: 'button',
+            text: '重置',
+            margin: '0 0 0 10',
+            glyph: 'xf0e2@FontAwesome',
+            listeners: {
+                click: function () {
+                    this.up('form').getForm().reset();
+                }
+            }
         }
     ]
 });
