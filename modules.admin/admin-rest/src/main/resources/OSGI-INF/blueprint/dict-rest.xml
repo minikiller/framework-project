@@ -50,6 +50,10 @@
 
             </get>
 
+            <get id="route-getDictListByType" uri="/list/{type}" outType="cn.com.rexen.admin.entities.DictBean">
+                <to uri="bean:dictService?method=getDictList(${header.type})"></to>
+            </get>
+
             <!-- this is a rest POST to create an dict -->
             <post id="route-addDict" type="cn.com.rexen.admin.entities.DictBean"
                   outType="cn.com.rexen.core.api.biz.JsonStatus">
