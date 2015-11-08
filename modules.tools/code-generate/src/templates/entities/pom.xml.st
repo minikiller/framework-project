@@ -34,6 +34,10 @@
             \<groupId>com.fasterxml.jackson.core\</groupId>
             \<artifactId>jackson-annotations\</artifactId>
         \</dependency>
+        \<dependency>
+            \<groupId>org.hibernate\</groupId>
+            \<artifactId>hibernate-entitymanager\</artifactId>
+        \</dependency>
     \</dependencies>
     \<build>
         \<plugins>
