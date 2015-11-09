@@ -80,6 +80,10 @@
                 <to uri="bean:dictService?method=getAllEntity(${header.page},${header.limit})"/>
             </get>
 
+            <get id="route-getAllDictNoPage" uri="/list" outType="cn.com.rexen.core.api.persistence.JsonData">
+                <description>Find all dicts</description>
+                <to uri="bean:dictService?method=getAllEntity()"/>
+            </get>
         </rest>
 
     </camelContext>
