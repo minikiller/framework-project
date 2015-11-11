@@ -8,6 +8,7 @@ import java.util.List;
 public class ModuleBean extends BaseWebPage {
     private boolean selectable;
     private boolean expanded;
+    private String applicationId;
 
     private List<MenuBean> children;
 
@@ -33,5 +34,13 @@ public class ModuleBean extends BaseWebPage {
 
     public void setSelectable(boolean selectable) {
         this.selectable = selectable;
+    }
+
+    public String getApplicationId() {
+        return applicationId;
+    }
+
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
     }
 }
