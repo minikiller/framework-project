@@ -145,6 +145,7 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
         return count;
     }
 
+
     /**
      * 获得结果集的总数
      * @param className
@@ -279,8 +280,25 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
         return createNativeQuery(sql, cls, parms).getResultList();
     }
 
+    private Long getNativeTotalCount(String className, Query query) {
+        List list = query.getResultList();
+        Long count = Long.valueOf(list.size());
+        return count;
+    }
+
+    @Override
+    public JsonData findByNativeSql(String sql, int page, int limit, Class cls, Object... parms) {
+        JsonData jsonData = new JsonData();
+        Query query = createNativeQuery(sql, cls, parms);
+
+        jsonData.setTotalCount(getNativeTotalCount(cls.getName(), query));
+        query.setFirstResult((page - 1) * limit);
+        query.setMaxResults(limit);
+        jsonData.setData(query.getResultList());
+        return jsonData;
+    }
     private Query createNativeQuery(String sql, Class cls, Object[] parameter) {
-        Query queryObject = entityManager.createNativeQuery(sql, cls);
+        Query queryObject = entityManager.createNativeQuery(sql, cls.getName());
         if (parameter != null) {
             for (int i = 0; i < parameter.length; i++) {
                 queryObject.setParameter(i + 1, parameter[i]);

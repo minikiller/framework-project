@@ -3,7 +3,6 @@ package cn.com.rexen.admin.dto.model;
 import cn.com.rexen.core.api.web.model.BaseDTO;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,10 +23,6 @@ public class AreaDTO extends BaseDTO {
     private String jd; //经度
     private String wd; //纬度
 
-    private Date creationDate;// 创建日期
-    private String createBy;    // 创建者
-    private String updateBy;    // 更新者
-    private Date updateDate; //更新日期
 
     public String getJd() {
         return jd;
@@ -45,9 +40,6 @@ public class AreaDTO extends BaseDTO {
         this.wd = wd;
     }
 
-    public Date getCreationDate() {
-        return creationDate;
-    }
 
     public String getText() {
         return text;
@@ -55,34 +47,6 @@ public class AreaDTO extends BaseDTO {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
-    }
-
-    public String getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
     }
 
     public String getParentName() {

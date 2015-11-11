@@ -133,17 +133,18 @@ public class KalixAuthenticationFilter extends FormAuthenticationFilter {
                 log.trace("Attempting to access a path which requires authentication.  Forwarding to the "
                         + "Authentication url [" + getLoginUrl() + "]");
             }
-            if (!"XMLHttpRequest"
-                    .equalsIgnoreCase(((HttpServletRequest) request)
-                            .getHeader("X-Requested-With"))) {// 不是ajax请求
-                saveRequestAndRedirectToLogin(request, response);
-            } else {
-                response.setCharacterEncoding("UTF-8");
-                PrintWriter out = response.getWriter();
-                out.println("{message:'login'}");
-                out.flush();
-                out.close();
-            }
+            saveRequestAndRedirectToLogin(request, response);
+//            if (!"XMLHttpRequest"
+//                    .equalsIgnoreCase(((HttpServletRequest) request)
+//                            .getHeader("X-Requested-With"))) {// 不是ajax请求
+//                saveRequestAndRedirectToLogin(request, response);
+//            } else {
+//                response.setCharacterEncoding("UTF-8");
+//                PrintWriter out = response.getWriter();
+//                out.println("{message:'login'}");
+//                out.flush();
+//                out.close();
+//            }
             return false;
         }
     }

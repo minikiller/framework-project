@@ -121,6 +121,8 @@ public interface IGenericDao<T, PK extends Serializable> extends IDaoService {
 
     List findByNativeSql(String sql, Class cls, Object... parms);
 
+    JsonData findByNativeSql(String sql, int page, int limit, Class cls, Object... parms);
+
     List findbyPage(String hql, int pageNumber, int pageSize, Object... values);
 
 
