@@ -203,7 +203,7 @@
                 <dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>
                 <jdbc.groupId>org.postgresql</jdbc.groupId>
                 <jdbc.artifactId>postgresql</jdbc.artifactId>
-                <jdbc.version>9.4-1201-jdbc41</jdbc.version>
+                <jdbc.version>9.4-1202-jdbc41</jdbc.version>
                 <jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
                 <jdbc.url>jdbc:postgresql://localhost/${db.name}</jdbc.url>
                 <jdbc.username>postgres</jdbc.username>
