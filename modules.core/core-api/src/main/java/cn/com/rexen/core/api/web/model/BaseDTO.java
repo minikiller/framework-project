@@ -10,13 +10,25 @@ import java.util.Date;
  * @version 1.0.0
  */
 public abstract class BaseDTO {
-    private String id;
+    protected String id;
 
-    private Date creationDate;// 创建日期
-    private String createBy;    // 创建者
-    private String updateBy;    // 更新者
-    private Date updateDate; //更新日期
-    private long version;
+    protected Date creationDate;// 创建日期
+    protected String createBy;    // 创建者
+    protected String updateBy;    // 更新者
+    protected Date updateDate; //更新日期
+    protected long version;
+
+    public BaseDTO() {
+    }
+
+    public BaseDTO(String id, String createBy, Date creationDate, String updateBy, Date updateDate, long version) {
+        this.createBy = createBy;
+        this.creationDate = creationDate;
+        this.id = id;
+        this.updateBy = updateBy;
+        this.updateDate = updateDate;
+        this.version = version;
+    }
 
     public String getCreateBy() {
         return createBy;
