@@ -33,7 +33,7 @@
             <to uri="mongodb://mongo?database={{mongodb.database}}&amp;collection={{header.collection}}&amp;operation=findAll&amp;dynamicity=true"/>
         </route>
     </camelContext>
-    <bean id="testMongo" class="cn.com.rexen.example.sequoiadb.TestMongoInsert" init-method="insert">
+    <bean id="testMongo" class="cn.com.rexen.example.jdbc.TestMongoInsert" init-method="insert">
         <property name="template" ref="templateId"/>
     </bean>
 

@@ -1,4 +1,4 @@
-package cn.com.rexen.example.sequoiadb;
+package cn.com.rexen.example.jdbc;
 
 public class AirportName {
     private String name;
