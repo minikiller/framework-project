@@ -18,6 +18,8 @@ import java.util.Date;
  */
  //todo 修改模型定义
 @Entity
+@DynamicInsert
+@DynamicUpdate
 @Table(name = "roffice_<pomName>")
 public class <beanName>Bean extends PersistentEntity {
     private String name;//项目名称

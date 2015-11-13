@@ -17,7 +17,7 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.symbolicName>cn.com.rexen.example.sequoiadb</bundle.symbolicName>
+        <bundle.symbolicName>cn.com.rexen.example.jdbc</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
     </properties>
 

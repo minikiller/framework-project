@@ -3,7 +3,6 @@ package cn.com.rexen.admin.dto.model;
 import cn.com.rexen.core.api.web.model.BaseDTO;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,44 +18,6 @@ public class WorkGroupDTO extends BaseDTO {
     private long parentId; //父节点
     private String parentName; //父节点名称
     private List<WorkGroupDTO> children=new ArrayList<WorkGroupDTO>();
-
-    private Date creationDate;// 创建日期
-    private String createBy;    // 创建者
-    private String updateBy;    // 更新者
-    private Date updateDate; //更新日期
-
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
-    }
-
-    public String getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
-    }
 
     public String getParentName() {
         return parentName;

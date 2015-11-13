@@ -20,6 +20,6 @@ public class DemoAuditFormImpl implements IFormHandler {
 
     @Override
     public String getComponentClass() {
-        return "Kalix.demo.view.AuditWindow";
+        return "kalix.demo.notice.view.AuditWindow";
     }
 }
