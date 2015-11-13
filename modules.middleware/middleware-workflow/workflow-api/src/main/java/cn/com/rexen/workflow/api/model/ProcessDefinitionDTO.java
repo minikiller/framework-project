@@ -9,7 +9,6 @@ public class ProcessDefinitionDTO extends BaseDTO {
     private String name;
     private String key;
     private String description;
-    private int version;
     private String category;
     private int suspensionState;
 
@@ -37,13 +36,6 @@ public class ProcessDefinitionDTO extends BaseDTO {
         this.description = description;
     }
 
-    public int getVersion() {
-        return version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
-    }
 
     public String getCategory() {
         return category;

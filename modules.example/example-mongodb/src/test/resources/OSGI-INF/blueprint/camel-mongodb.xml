@@ -24,7 +24,7 @@
 
     <camelContext id="mongodb-camel" xmlns="http://camel.apache.org/schema/blueprint">
         <contextScan>
-            <includes>cn.com.rexen.example.sequoiadb</includes>
+            <includes>cn.com.rexen.example.jdbc</includes>
         </contextScan>
         <route id="mongodb-insert">
             <from uri="direct:insert"/>

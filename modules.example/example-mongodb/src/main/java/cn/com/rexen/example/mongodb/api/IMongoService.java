@@ -1,4 +1,4 @@
-package cn.com.rexen.example.sequoiadb.api;
+package cn.com.rexen.example.jdbc.api;
 
 /**
  * Created by sunlf on 2015/8/25.

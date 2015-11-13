@@ -1,4 +1,4 @@
-package cn.com.rexen.example.sequoiadb;
+package cn.com.rexen.example.jdbc;
 
 import org.javers.core.Javers;
 import org.javers.core.JaversBuilder;
