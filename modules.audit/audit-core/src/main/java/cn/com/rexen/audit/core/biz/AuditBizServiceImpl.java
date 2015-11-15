@@ -9,14 +9,17 @@ import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 
+import javax.transaction.Transactional;
+
 /**
  * 支持审计的业务服务基类
  * Created by sunlf on 2015/8/27.
  */
+
 public abstract class AuditBizServiceImpl<T extends IGenericDao, TP extends PersistentEntity> extends GenericBizServiceImpl<T, TP> {
     protected AuditBean auditBean;
-    private IAuditBeanService auditBeanService;
-    private IShiroService shiroService;
+    protected IAuditBeanService auditBeanService;
+    protected IShiroService shiroService;
 
 
     public AuditBizServiceImpl() {
@@ -32,6 +35,7 @@ public abstract class AuditBizServiceImpl<T extends IGenericDao, TP extends Pers
     }
 
     @Override
+    @Transactional
     public void beforeUpdateEntity(TP entity, JsonStatus status) {
         auditBean = new AuditBean();
         auditBean.setAppName(getAppName());
@@ -46,17 +50,25 @@ public abstract class AuditBizServiceImpl<T extends IGenericDao, TP extends Pers
     }
 
     @Override
-    public void afterSaveEntity(TP entity, JsonStatus status) {
+    @Transactional
+    public void beforeSaveEntity(TP entity, JsonStatus status) {
         auditBean = new AuditBean();
         auditBean.setAppName(getAppName());
         auditBean.setFunName(getFunName());
-        auditBean.setAction("新增");
+        if (entity.getId() > 0) {
+            auditBean.setAction("更新");
+            final TP oldEntity = (TP) dao.get(entityClassName, entity.getId());
+            auditBean.setContent(AuditUtil.Match(entity, oldEntity, entityClassName));
+        } else {
+            auditBean.setAction("新增");
+            auditBean.setContent(entity.toString());
+        }
         auditBean.setActor(shiroService.getCurrentUserName());
-        auditBean.setContent(entity.toString());
         auditBeanService.saveEntity(auditBean);
     }
 
     @Override
+    @Transactional
     public void beforeDeleteEntity(Long id, JsonStatus status) {
         auditBean = new AuditBean();
         auditBean.setAppName(getAppName());

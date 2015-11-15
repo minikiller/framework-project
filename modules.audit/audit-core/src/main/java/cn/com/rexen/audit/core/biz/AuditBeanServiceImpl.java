@@ -6,6 +6,7 @@ import cn.com.rexen.audit.entities.AuditBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
 
@@ -40,12 +41,12 @@ public class AuditBeanServiceImpl extends GenericBizServiceImpl<IAuditBeanDao, A
         return dao.find("select n from auditBean n where n.title LIKE ?1 ", "%" + title + "%");
     }
 
-    //    @Transactional
+    @Transactional
     public void test() {
         AuditBean auditBean = new AuditBean();
         auditBean.setAction("dfd");
         auditBean.setAppName("fdfdfdfd");
-        dao.save(auditBean);
+        super.saveEntity(auditBean);
         throw new RuntimeException("this is text");
     }
 
