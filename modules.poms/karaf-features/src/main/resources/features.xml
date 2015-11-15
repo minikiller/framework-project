@@ -266,11 +266,13 @@
         <feature>webconsole</feature>
         <feature>jndi</feature>
         <feature version="2.2.0">jpa</feature>
-        <!--<feature>mysql-driver</feature>-->
+        <feature version="4.3.6.Final">hibernate</feature>
+        <feature>mysql-driver</feature>
         <feature>derby-driver</feature>
         <feature>postgresql-driver</feature>
         <!--<feature version="2.3.0">openjpa</feature>-->
-        <feature version="4.3.6.Final">hibernate</feature>
+        <feature>pax-jdbc-config</feature>
+        <feature>pax-jdbc-pool-dbcp2</feature>
         <feature>jsr303</feature>
         <feature>camel-blueprint</feature>
         <!--<feature>camel-jetty</feature>-->
@@ -305,6 +307,7 @@
     <!-- feature:repo-add mvn:cn.com.rexen.kalix/karaf-features/1.0.0-SNAPSHOT/xml/features-->
     <!-- feature:install -v kalix activiti-->
     <!-- feature:install -v activiti-->
+    <!--install -s mvn:org.postgresql/postgresql/9.4-1200-jdbc41-->
     <!-- install -s mvn:org.postgresql/postgresql/9.4-1202-jdbc41-->
     <!--install mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.cglib/3.1_1-->
 </features>

@@ -40,4 +40,13 @@ public class AuditBeanServiceImpl extends GenericBizServiceImpl<IAuditBeanDao, A
         return dao.find("select n from auditBean n where n.title LIKE ?1 ", "%" + title + "%");
     }
 
+    //    @Transactional
+    public void test() {
+        AuditBean auditBean = new AuditBean();
+        auditBean.setAction("dfd");
+        auditBean.setAppName("fdfdfdfd");
+        dao.save(auditBean);
+        throw new RuntimeException("this is text");
+    }
+
 }

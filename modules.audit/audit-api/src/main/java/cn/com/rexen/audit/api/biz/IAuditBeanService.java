@@ -15,4 +15,6 @@ import java.util.List;
  */
 public interface IAuditBeanService extends IBizService<AuditBean> {
     List<AuditBean> query(String title);
+
+    public void test();
 }

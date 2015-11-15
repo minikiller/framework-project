@@ -12,6 +12,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.metamodel.EntityType;
 import javax.persistence.metamodel.SingularAttribute;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -51,7 +52,7 @@ public class UserBeanDaoImpl extends BaseAdminDao<UserBean, Long> implements IUs
         return super.get(className, userId);
     }
 
-    //    @Transactional(Transactional.TxType.SUPPORTS)
+    @Transactional(Transactional.TxType.SUPPORTS)
     public UserBean getUser(String username) {
         UserBean user = this.findUnique("select u from UserBean u where u.loginName=?1", username);
         return user;

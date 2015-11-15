@@ -33,4 +33,9 @@
     </bean>
     <service interface="cn.com.rexen.core.api.web.IMenu" ref="auditMenuImpl"/>
 
+    <reference id="auditBeanService" interface="cn.com.rexen.audit.api.biz.IAuditBeanService"/>
+    <!--<bean id="TestAudit" class="cn.com.rexen.audit.web.TestAudit" init-method="init">
+        <property name="iAuditBeanService" ref="auditBeanService"/>
+    </bean>-->
+
 </blueprint>

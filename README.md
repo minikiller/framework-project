@@ -1,4 +1,4 @@
-kalix-project
+# kalix-project
 ============
 1.本项目使用karaf作为部署环境 <br/>
 2.使用openjpa作为持久化数据  <br/>
@@ -25,4 +25,15 @@ feature:repo-add mvn:cn.com.rexen.tools/karaf-features/1.0.0-SNAPSHOT/xml/featur
 
 install -s mvn:org.postgresql/postgresql/9.4-1202-jdbc41
 
+# 使用pax-jdbc
+用于配置数据源和数据连接池
 
+# 增加karaf的feature
+打开org.apache.karaf.features.cfg 文件，增加
+ mvn:cn.com.rexen.kalix/karaf-features/1.0.0-SNAPSHOT/xml/features
+# 查看数据源
+ ls DataSource
+
+# 查看jpa是否安装成功
+
+ls EntityManagerFactory
