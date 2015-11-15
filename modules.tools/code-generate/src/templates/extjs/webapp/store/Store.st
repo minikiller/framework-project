@@ -5,7 +5,7 @@
  * @version 1.0.0
  */
 Ext.define('<extjsPrefix>.store.<beanName>Store', {
-    extend: 'Ext.data.Store',
+    extend: 'kalix.store.BaseStore',
     model: '<extjsPrefix>.model.<beanName>Model',
     alias: 'store.<pomName>Store',
     xtype: '<pomName>Store',

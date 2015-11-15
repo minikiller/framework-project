@@ -16,7 +16,9 @@ public class MenuListener {
     }
 
     public void unregister(IMenu menu) {
-        logger.info("menu of " + menu.getText() + " is unregisered!");
-        MenuManager.getInstall().remove(menu);
+        if (menu != null) {
+            logger.info("menu of " + menu.getText() + " is unregisered!");
+            MenuManager.getInstall().remove(menu);
+        }
     }
 }

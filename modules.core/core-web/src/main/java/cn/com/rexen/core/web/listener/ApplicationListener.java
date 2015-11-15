@@ -16,7 +16,10 @@ public class ApplicationListener {
     }
 
     public void unregister(IApplication application) {
-        logger.info("application of " + application.getText() + " is unregisered!");
-        ApplicationManager.getInstall().remove(application);
+        if (application != null) {
+            logger.info("application of " + application.getText() + " is unregisered!");
+            ApplicationManager.getInstall().remove(application);
+        }
+
     }
 }

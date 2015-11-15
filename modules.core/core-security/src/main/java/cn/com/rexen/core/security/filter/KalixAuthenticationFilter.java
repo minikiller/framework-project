@@ -74,6 +74,7 @@ public class KalixAuthenticationFilter extends FormAuthenticationFilter {
             } else if ("LockedAccountException".equals(message)) {
                 out.println("{success:false,message:'账号被锁定'}");
             } else {
+                e.printStackTrace();
                 out.println("{success:false,message:'未知错误'}");
             }
             out.flush();
