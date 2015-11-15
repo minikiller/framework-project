@@ -4,12 +4,15 @@ import cn.com.rexen.admin.api.biz.IDictBeanService;
 import cn.com.rexen.admin.api.dao.IDictBeanDao;
 import cn.com.rexen.admin.entities.DictBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
+import cn.com.rexen.core.api.cache.ICacheManager;
 import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.Assert;
+import cn.com.rexen.core.util.ConfigUtil;
+import cn.com.rexen.core.util.SerializeUtil;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.HashMap;
@@ -29,6 +32,7 @@ public class DictBeanServiceImpl extends GenericBizServiceImpl<IDictBeanDao, Dic
     private static final String FUNCTION_NAME = "字典";
     //    private IDictBeanDao dao;
     private IShiroService shiroService;
+    private ICacheManager cacheManager;
 
 
     public DictBeanServiceImpl() {
@@ -90,4 +94,24 @@ public class DictBeanServiceImpl extends GenericBizServiceImpl<IDictBeanDao, Dic
         return dao.getAll(page, limit, DictBean.class.getName());
     }
 
+    @Override
+    public List getAllEntity() {
+        List rtn = null;
+
+        if (this.cacheManager.exists("all_dict_cache")) {
+            rtn = SerializeUtil.unserialize(cacheManager.getObj("all_dict_cache"));
+        } else {
+            Object obj = ConfigUtil.getConfigProp("dict_cache_timeout", "ConfigCache");
+            int cacheTimeout = obj == null ? 600 : new Integer(obj.toString());
+
+            rtn = super.getAllEntity();
+            this.cacheManager.save("all_dict_cache", rtn, cacheTimeout);
+        }
+
+        return rtn;
+    }
+
+    public void setCacheManager(ICacheManager cacheManager) {
+        this.cacheManager = cacheManager;
+    }
 }

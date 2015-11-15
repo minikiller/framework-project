@@ -6,6 +6,7 @@
 
 
     <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
+    <reference id="cacheManager" interface="cn.com.rexen.core.api.cache.ICacheManager"/>
     <reference id="workGroupBeanDao" interface="cn.com.rexen.admin.api.dao.IWorkGroupBeanDao"/>
     <reference id="workGroupUserBeanDao" interface="cn.com.rexen.admin.api.dao.IWorkGroupUserBeanDao"/>
     <reference id="workGroupRoleBeanDao" interface="cn.com.rexen.admin.api.dao.IWorkGroupRoleBeanDao"/>
@@ -78,6 +79,7 @@
     <bean id="dictBeanServiceImpl" class="cn.com.rexen.admin.core.DictBeanServiceImpl">
         <property name="dao" ref="dictBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
+        <property name="cacheManager" ref="cacheManager"/>
     </bean>
     <service id="dictBeanService" ref="dictBeanServiceImpl"
              interface="cn.com.rexen.admin.api.biz.IDictBeanService"/>
