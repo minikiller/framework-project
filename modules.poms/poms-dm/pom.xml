@@ -521,6 +521,16 @@
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
             </dependency>
+            <dependency>
+                <groupId>javax.transaction</groupId>
+                <artifactId>javax.transaction-api</artifactId>
+                <version>${javax.transaction.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.aries.transaction</groupId>
+                <artifactId>org.apache.aries.transaction.blueprint</artifactId>
+                <version>${aries.transaction.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -543,12 +553,10 @@
         <dependency>
             <groupId>javax.transaction</groupId>
             <artifactId>javax.transaction-api</artifactId>
-            <version>1.2</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.aries.transaction</groupId>
             <artifactId>org.apache.aries.transaction.blueprint</artifactId>
-            <version>1.1.1</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
 </project>
