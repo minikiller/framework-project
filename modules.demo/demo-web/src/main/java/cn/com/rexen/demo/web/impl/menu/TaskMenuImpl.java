@@ -57,7 +57,7 @@ public class TaskMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return "test:demoWorkFlowModule:demoWorkFlowMenu:taskMenu";
+        return Const.APPLICATION_NAME + ":" + getModuleId() + ":" + getId();
     }
 
     @Override

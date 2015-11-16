@@ -56,7 +56,7 @@ public class FunctionMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return null;//"admin:appModule:appControlMenu:functionMenu";
+        return "admin:" + getModuleId() + ":" + getId();
     }
 
     @Override

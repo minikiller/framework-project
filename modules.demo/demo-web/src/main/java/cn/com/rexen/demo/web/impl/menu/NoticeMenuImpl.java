@@ -57,7 +57,7 @@ public class NoticeMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return "test:demoWorkFlowModule:demoWorkFlowMenu:noticeMenu";
+        return Const.APPLICATION_NAME + ":" + getModuleId() + ":" + getId();
     }
 
     @Override

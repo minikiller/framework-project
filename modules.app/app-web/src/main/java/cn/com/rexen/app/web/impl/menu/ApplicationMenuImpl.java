@@ -56,7 +56,7 @@ public class ApplicationMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return null;//"admin:appModule:appControlMenu:applicationMenu";
+        return "admin:" + getModuleId() + ":" + getId();
     }
 
     @Override

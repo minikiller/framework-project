@@ -1,5 +1,6 @@
 package cn.com.rexen.admin.web.impl.menu;
 
+import cn.com.rexen.admin.web.impl.Const;
 import cn.com.rexen.core.api.web.IMenu;
 
 /**
@@ -56,7 +57,7 @@ public class OrganizationMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return null;//"admin:constructModule:organizationMenu";
+        return Const.APP_NAME + ":" + getModuleId() + ":" + getId();
     }
 
     @Override

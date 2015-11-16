@@ -1,5 +1,6 @@
 package cn.com.rexen.admin.web.impl.module;
 
+import cn.com.rexen.admin.web.impl.Const;
 import cn.com.rexen.core.api.web.IMenu;
 import cn.com.rexen.core.api.web.IModule;
 
@@ -19,7 +20,7 @@ public class ConstructModuleImpl implements IModule {
 
     @Override
     public String getApplicationId() {
-        return "admin";
+        return Const.APP_NAME;
     }
 
     @Override
@@ -54,7 +55,7 @@ public class ConstructModuleImpl implements IModule {
 
     @Override
     public String getPermission() {
-        return null;//"admin:constructModule";
+        return Const.APP_NAME + ":" + getId();
     }
 
     @Override

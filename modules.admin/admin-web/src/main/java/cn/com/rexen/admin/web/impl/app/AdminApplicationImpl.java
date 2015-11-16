@@ -1,5 +1,6 @@
 package cn.com.rexen.admin.web.impl.app;
 
+import cn.com.rexen.admin.web.impl.Const;
 import cn.com.rexen.core.api.web.IApplication;
 import cn.com.rexen.core.api.web.IModule;
 
@@ -16,7 +17,7 @@ public class AdminApplicationImpl implements IApplication {
 
     @Override
     public String getId() {
-        return "admin";
+        return Const.APP_NAME;
     }
 
     @Override
@@ -46,7 +47,7 @@ public class AdminApplicationImpl implements IApplication {
 
     @Override
     public String getPermission() {
-        return null;//"admin";
+        return Const.APP_NAME;
     }
 
     @Override

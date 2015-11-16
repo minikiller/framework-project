@@ -57,7 +57,7 @@ public class ProcessHistoryMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return "test:demoWorkFlowModule:demoWorkFlowMenu:processHistoryMenu";
+        return Const.APPLICATION_NAME + ":" + getModuleId() + ":" + getId();
     }
 
     @Override

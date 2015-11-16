@@ -57,7 +57,7 @@ public class ProcessDefinitionMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return "test:demoWorkFlowModule:demoWorkFlowMenu:processDefinitionMenu";
+        return Const.APPLICATION_NAME + ":" + getModuleId() + ":" + getId();
     }
 
     @Override

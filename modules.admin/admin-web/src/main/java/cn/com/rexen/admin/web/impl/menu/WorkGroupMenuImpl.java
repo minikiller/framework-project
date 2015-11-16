@@ -1,5 +1,6 @@
 package cn.com.rexen.admin.web.impl.menu;
 
+import cn.com.rexen.admin.web.impl.Const;
 import cn.com.rexen.core.api.web.IMenu;
 
 /**
@@ -56,7 +57,7 @@ public class WorkGroupMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return null;//"admin:sysModule:permissionControl:workGroupMenu";
+        return Const.APP_NAME + ":" + getModuleId() + ":" + getId();
     }
 
     @Override
