@@ -1,5 +1,9 @@
 \<?xml version="1.0" encoding="UTF-8"?>
-\<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+\<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xsi:schemaLocation="
+        http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd
+    ">
     \<persistence-unit transaction-type="JTA" name="<pomName>-cm">
         \<provider>org.hibernate.jpa.HibernatePersistenceProvider\</provider>
         \<jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=jdbc/ds)
