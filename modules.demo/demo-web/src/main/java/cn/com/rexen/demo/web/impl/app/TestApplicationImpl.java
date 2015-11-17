@@ -48,7 +48,7 @@ public class TestApplicationImpl implements IApplication {
 
     @Override
     public String getPermission() {
-        return "test";
+        return Const.APPLICATION_NAME;
     }
 
     @Override

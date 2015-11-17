@@ -52,7 +52,7 @@ public class WorkFlowModuleImpl implements IModule {
 
     @Override
     public String getPermission() {
-        return "test:demoWorkFlowModule";
+        return Const.APPLICATION_NAME + ":" + getId();
     }
 
     @Override

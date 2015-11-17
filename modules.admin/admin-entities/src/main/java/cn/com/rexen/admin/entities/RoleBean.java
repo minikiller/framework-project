@@ -22,6 +22,7 @@ public class RoleBean extends PersistentEntity {
     //    @NotNull(message = "'角色名称'是必填项")
     private String name;    // 角色名称
     private String remark;  //角色备注
+    private String app; //所属应用
     //    @XmlTransient
     @ManyToMany(mappedBy = "roleList", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @OrderBy("id")
@@ -71,5 +72,13 @@ public class RoleBean extends PersistentEntity {
 
     public void setPermissionList(List<PermissionBean> permissionList) {
         this.permissionList = permissionList;
+    }
+
+    public String getApp() {
+        return app;
+    }
+
+    public void setApp(String app) {
+        this.app = app;
     }
 }
