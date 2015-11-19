@@ -1,9 +1,12 @@
 package cn.com.rexen.core.util;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -111,5 +114,18 @@ public class SerializeUtil {
             }
         }
         return null;
+    }
+
+    public static Map<String, String> json2Map(String json) {
+        Gson gson = new Gson();
+
+        Map<String, String> map = gson.fromJson(json, new TypeToken<Map<String, String>>() {
+        }.getType());
+
+        if (map == null) {
+            map = new HashMap<>();
+        }
+
+        return map;
     }
 }
