@@ -47,7 +47,7 @@ public class ProcessDefinitionMenuImpl implements IMenu {
 
     @Override
     public String getRouteId() {
-        return Const.APPLICATION_NAME + "/ProcessDefinition";
+        return Const.APPLICATION_NAME + "/processdefinition";
     }
 
     @Override

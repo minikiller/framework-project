@@ -1,5 +1,6 @@
 package cn.com.rexen.core.api.web.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -9,8 +10,8 @@ import java.util.Date;
  *         date:2015-7-24
  * @version 1.0.0
  */
-public abstract class BaseDTO {
-    protected long id;
+public abstract class BaseDTO implements Serializable {
+    protected long id = -1;
 
     protected Date creationDate;// 创建日期
     protected String createBy;    // 创建者
@@ -19,15 +20,6 @@ public abstract class BaseDTO {
     protected long version;
 
     public BaseDTO() {
-    }
-
-    public BaseDTO(long id, String createBy, Date creationDate, String updateBy, Date updateDate, long version) {
-        this.createBy = createBy;
-        this.creationDate = creationDate;
-        this.id = id;
-        this.updateBy = updateBy;
-        this.updateDate = updateDate;
-        this.version = version;
     }
 
     public String getCreateBy() {

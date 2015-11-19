@@ -3,9 +3,6 @@ package cn.com.rexen.app.core;
 import cn.com.rexen.admin.api.biz.IRoleBeanService;
 import cn.com.rexen.admin.api.biz.IWorkGroupBeanService;
 import cn.com.rexen.admin.api.dao.IRoleApplicationBeanDao;
-import cn.com.rexen.admin.entities.RoleApplicationBean;
-import cn.com.rexen.admin.entities.RoleBean;
-import cn.com.rexen.admin.entities.WorkGroupUserBean;
 import cn.com.rexen.app.api.biz.IApplicationBeanService;
 import cn.com.rexen.app.api.biz.IFunctionBeanService;
 import cn.com.rexen.app.api.dao.IApplicationBeanDao;
@@ -15,8 +12,6 @@ import cn.com.rexen.app.dto.model.AuthorizationDTO;
 import cn.com.rexen.app.entities.ApplicationBean;
 import cn.com.rexen.app.entities.FunctionBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
-import cn.com.rexen.core.api.persistence.JsonData;
-import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.Assert;
@@ -24,7 +19,6 @@ import org.apache.commons.lang.StringUtils;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -175,7 +169,7 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl<IApplicati
     @Override
     public ApplicationDTO getTreesByAllApplications() {
         ApplicationDTO root=new ApplicationDTO();
-        root.setId("-1");
+        root.setId(-1);
         List<ApplicationBean> beans = dao.getAll(ApplicationBean.class.getName());
         if(beans!=null&&beans.size()>0){
             if(beans!=null&&beans.size()>0) {
@@ -194,7 +188,7 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl<IApplicati
     @Override
     public AuthorizationDTO getAuthorizationTree() {
         AuthorizationDTO root=new AuthorizationDTO();
-        root.setId("-1");
+        root.setId(-1);
         List<ApplicationBean> beans = dao.getAll(ApplicationBean.class.getName());
         if(beans!=null&&beans.size()>0){
             if(beans!=null&&beans.size()>0) {

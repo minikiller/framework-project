@@ -10,8 +10,6 @@ import cn.com.rexen.admin.dto.model.AreaDTO;
 import cn.com.rexen.admin.entities.AboutBean;
 import cn.com.rexen.admin.entities.AreaBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
-import cn.com.rexen.core.api.persistence.IGenericDao;
-import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.Assert;
@@ -264,7 +262,7 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl<IAreaBeanDao, Are
 //        List<DepartmentBean> departmentBeans=depBeanDao.find("select d from DepartmentBean d where d.id=?1",depId);
 //        Assert.notEmpty(departmentBeans,"当前用户所属部门不能为空.");
         AreaDTO root=new AreaDTO();
-        root.setId("-1");
+        root.setId(-1);
         List<AreaBean> beans = dao.getAll(AreaBean.class.getName());
         if(beans!=null&&beans.size()>0){
             List<AreaBean> rootElements = getRootElements(beans);
@@ -293,14 +291,14 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl<IAreaBeanDao, Are
     private void getChilden(AreaDTO root, List<AreaBean> elements, Mapper mapper) {
         List<AreaDTO> children = new ArrayList<AreaDTO>();
 
-        for (AreaBean AreaBean : elements) {
-            if (root.getId()!=null&&root.getId().equals(String.valueOf(AreaBean.getParentId()))) {
-                AreaDTO AreaDTO = mapper.map(AreaBean, AreaDTO.class);
-                AreaDTO.setLeaf(AreaBean.getIsLeaf()==0?false:true);
+        for (AreaBean areaBean : elements) {
+            if (root.getId() != -1 && (root.getId() == areaBean.getParentId())) {
+                AreaDTO AreaDTO = mapper.map(areaBean, AreaDTO.class);
+                AreaDTO.setLeaf(areaBean.getIsLeaf() == 0 ? false : true);
                 AreaDTO.setParentName(root.getName());
-                AreaDTO.setText(AreaBean.getName());
+                AreaDTO.setText(areaBean.getName());
                 children.add(AreaDTO);
-                if(AreaBean.getIsLeaf()==0) {
+                if (areaBean.getIsLeaf() == 0) {
                     getChilden(AreaDTO, elements, mapper);
                 }
             }

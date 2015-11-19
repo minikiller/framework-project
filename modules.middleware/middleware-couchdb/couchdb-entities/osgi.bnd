@@ -4,6 +4,6 @@
 
 #Bundle-Activator: ${bundle.namespace}.internal.ExampleActivator
 Meta-Persistence: META-INF/persistence.xml
-Import-Package:javax.persistence,org.hibernate.proxy,javassist.util.proxy,*
+Import-Package:*
 JPA-PersistenceUnits:couchdb-cm
 Bundle-Category: Rexen Kalix Attachment

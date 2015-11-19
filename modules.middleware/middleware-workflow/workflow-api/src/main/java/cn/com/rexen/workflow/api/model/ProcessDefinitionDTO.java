@@ -1,11 +1,10 @@
 package cn.com.rexen.workflow.api.model;
 
-import cn.com.rexen.core.api.web.model.BaseDTO;
-
 /**
  * Created by sunlf on 2015/7/30.
  */
-public class ProcessDefinitionDTO extends BaseDTO {
+public class ProcessDefinitionDTO {
+    private String id;
     private String name;
     private String key;
     private String description;
@@ -51,5 +50,13 @@ public class ProcessDefinitionDTO extends BaseDTO {
 
     public void setSuspensionState(int suspensionState) {
         this.suspensionState = suspensionState;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

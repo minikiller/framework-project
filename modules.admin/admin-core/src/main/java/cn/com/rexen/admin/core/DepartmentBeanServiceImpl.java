@@ -9,7 +9,6 @@ import cn.com.rexen.admin.entities.DepartmentBean;
 import cn.com.rexen.admin.entities.DepartmentUserBean;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
-import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
@@ -195,7 +194,7 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl<IDepartment
     public DepartmentDTO getAll() {
         List<DepartmentBean> beans = dao.getAll(DepartmentBean.class.getName());
         DepartmentDTO root=new DepartmentDTO();
-        root.setId("-1");
+        root.setId(-1);
         if(beans!=null&&beans.size()>0){
             List<DepartmentBean> rootElements = getRootElements(beans);
             if(rootElements!=null&&rootElements.size()>0) {
@@ -215,7 +214,7 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl<IDepartment
     public DepartmentDTO getAllByOrgId(Long orgId) {
         List<DepartmentBean> beans = dao.find("select ob from DepartmentBean ob where ob.orgId = ?1", orgId);
         DepartmentDTO root=new DepartmentDTO();
-        root.setId("-1");
+        root.setId(-1);
         if(beans!=null&&beans.size()>0){
             List<DepartmentBean> rootElements = getRootElements(beans);
             if(rootElements!=null&&rootElements.size()>0) {
@@ -242,7 +241,7 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl<IDepartment
         List<DepartmentDTO> children = new ArrayList<DepartmentDTO>();
 
         for (DepartmentBean departmentBean : elements) {
-            if (root.getId()!=null&&root.getId().equals(String.valueOf(departmentBean.getParentId()))) {
+            if (root.getId() != -1 && (root.getId() == departmentBean.getParentId())) {
                 DepartmentDTO departmentDTO = mapper.map(departmentBean, DepartmentDTO.class);
                 departmentDTO.setLeaf(departmentBean.getIsLeaf()==0?false:true);
                 departmentDTO.setParentName(root.getName());

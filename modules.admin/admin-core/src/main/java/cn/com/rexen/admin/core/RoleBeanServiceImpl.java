@@ -10,7 +10,6 @@ import cn.com.rexen.app.dto.model.AuthorizationDTO;
 import cn.com.rexen.app.entities.ApplicationBean;
 import cn.com.rexen.app.entities.FunctionBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
-import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
@@ -377,7 +376,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
     @Override
     public AuthorizationDTO getAuthorizationTree(long roleId) {
         AuthorizationDTO root=new AuthorizationDTO();
-        root.setId("-1");
+        root.setId(-1);
         List<ApplicationBean> beans=applicationBeanDao.getAll(ApplicationBean.class.getName());
         if(beans!=null&&beans.size()>0){
             if(beans!=null&&beans.size()>0) {

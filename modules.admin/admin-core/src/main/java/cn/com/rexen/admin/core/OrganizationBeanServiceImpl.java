@@ -7,16 +7,14 @@ import cn.com.rexen.admin.api.dao.IOrganizationBeanDao;
 import cn.com.rexen.admin.dto.model.OrganizationDTO;
 import cn.com.rexen.admin.entities.OrganizationBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
-import cn.com.rexen.core.api.persistence.IGenericDao;
-import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
-import java.util.ArrayList;
-import java.util.List;
-
 import cn.com.rexen.core.util.Assert;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 机构管理服务实现
@@ -210,7 +208,7 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
     public OrganizationDTO getAllOrg() {
         List<OrganizationBean> orgs = dao.getAll(OrganizationBean.class.getName());
         OrganizationDTO root=new OrganizationDTO();
-        root.setId("-1");
+        root.setId(-1);
         if(orgs!=null&&orgs.size()>0){
             List<OrganizationBean> rootElements = getRootElements(orgs);
             if(rootElements!=null&&rootElements.size()>0) {
@@ -238,7 +236,7 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
         List<OrganizationDTO> children = new ArrayList<OrganizationDTO>();
 
         for (OrganizationBean organizationBean : elements) {
-            if (root.getId()!=null&&root.getId().equals(String.valueOf(organizationBean.getParentId()))) {
+            if (root.getId() != -1 && (root.getId() == organizationBean.getParentId())) {
                 OrganizationDTO organizationDTO = mapper.map(organizationBean, OrganizationDTO.class);
                 organizationDTO.setLeaf(organizationBean.getIsLeaf() == 0 ? false : true);
                 organizationDTO.setParentName(root.getName());
@@ -270,7 +268,7 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
     public OrganizationDTO getAllByAreaId(Long id) {
         List<OrganizationBean> beans = dao.find("select ob from OrganizationBean ob where ob.areaId = ?1", id);
         OrganizationDTO root=new OrganizationDTO();
-        root.setId("-1");
+        root.setId(-1);
         if(beans!=null&&beans.size()>0){
             List<OrganizationBean> rootElements = getRootElements(beans);
             if(rootElements!=null&&rootElements.size()>0) {

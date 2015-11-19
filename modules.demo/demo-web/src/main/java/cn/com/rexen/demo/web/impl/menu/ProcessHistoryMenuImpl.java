@@ -47,7 +47,7 @@ public class ProcessHistoryMenuImpl implements IMenu {
 
     @Override
     public String getRouteId() {
-        return Const.APPLICATION_NAME + "/ProcessHistory";
+        return Const.APPLICATION_NAME + "/processhistory";
     }
 
     @Override

@@ -261,6 +261,7 @@
     </feature>
 
     <feature name="kalix" version="1.0.0">
+        <feature version="2.3.0">openjpa</feature>
         <feature>transaction</feature>
         <feature>war</feature>
         <feature>webconsole</feature>

@@ -3,6 +3,8 @@ package cn.com.rexen.demo.entities;
 import cn.com.rexen.core.api.persistence.WorkflowEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -17,6 +19,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "sys_demo")
+@Inheritance(strategy = InheritanceType.JOINED)
 /*@TypeDef(name = "jsonb", typeClass = JSONBUserType.class, parameters = {
         @Parameter(name = JSONBUserType.CLASS,
                 value = "cn.com.rexen.demo.entities.NoticeBean")})*/

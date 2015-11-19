@@ -1,17 +1,12 @@
 package cn.com.rexen.app.core;
 
 import cn.com.rexen.admin.entities.RoleFunctionBean;
-import cn.com.rexen.app.api.biz.IApplicationBeanService;
 import cn.com.rexen.app.api.biz.IFunctionBeanService;
-import cn.com.rexen.app.api.dao.IApplicationBeanDao;
 import cn.com.rexen.app.api.dao.IFunctionBeanDao;
-import cn.com.rexen.app.dto.model.ApplicationDTO;
 import cn.com.rexen.app.dto.model.AuthorizationDTO;
 import cn.com.rexen.app.dto.model.FunctionDTO;
-import cn.com.rexen.app.entities.ApplicationBean;
 import cn.com.rexen.app.entities.FunctionBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
-import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.Assert;
@@ -213,7 +208,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl<IFunctionBean
         List<FunctionDTO> children = new ArrayList<FunctionDTO>();
 
         for (FunctionBean functionBean : elements) {
-            if (root.getId()!=null&&root.getId().equals(String.valueOf(functionBean.getParentId()))) {
+            if (root.getId() != -1 && (root.getId() == functionBean.getParentId())) {
                 FunctionDTO functionDTO = mapper.map(functionBean, FunctionDTO.class);
                 functionDTO.setLeaf(functionBean.getIsLeaf() == 0 ? false : true);
                 functionDTO.setParentName(root.getName());
@@ -237,7 +232,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl<IFunctionBean
         List<AuthorizationDTO> children = new ArrayList<AuthorizationDTO>();
 
         for (FunctionBean functionBean : elements) {
-            if (root.getId()!=null&&root.getId().equals(String.valueOf(functionBean.getParentId()))) {
+            if (root.getId() != -1 && (root.getId() == functionBean.getParentId())) {
                 AuthorizationDTO functionDTO = mapper.map(functionBean, AuthorizationDTO.class);
                 functionDTO.setLeaf(functionBean.getIsLeaf() == 0 ? false : true);
                 functionDTO.setParentName(root.getName());
@@ -264,7 +259,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl<IFunctionBean
         List<AuthorizationDTO> children = new ArrayList<AuthorizationDTO>();
 
         for (FunctionBean functionBean : elements) {
-            if (root.getId()!=null&&root.getId().equals(String.valueOf(functionBean.getParentId()))) {
+            if (root.getId() != -1 && (root.getId() == functionBean.getParentId())) {
                 AuthorizationDTO functionDTO = mapper.map(functionBean, AuthorizationDTO.class);
                 functionDTO.setLeaf(functionBean.getIsLeaf() == 0 ? false : true);
                 functionDTO.setParentName(root.getName());
@@ -291,7 +286,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl<IFunctionBean
     public FunctionDTO getAllByApplicationId(long id) {
         List<FunctionBean> beans = dao.find("select ob from FunctionBean ob where ob.applicationId = ?1", id);
         FunctionDTO root=new FunctionDTO();
-        root.setId("-1");
+        root.setId(-1);
         if(beans!=null&&beans.size()>0){
             List<FunctionBean> rootElements = getRootElements(beans);
             if(rootElements!=null&&rootElements.size()>0) {
