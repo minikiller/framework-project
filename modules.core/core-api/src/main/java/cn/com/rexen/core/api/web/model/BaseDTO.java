@@ -10,7 +10,7 @@ import java.util.Date;
  * @version 1.0.0
  */
 public abstract class BaseDTO {
-    protected String id;
+    protected long id;
 
     protected Date creationDate;// 创建日期
     protected String createBy;    // 创建者
@@ -21,7 +21,7 @@ public abstract class BaseDTO {
     public BaseDTO() {
     }
 
-    public BaseDTO(String id, String createBy, Date creationDate, String updateBy, Date updateDate, long version) {
+    public BaseDTO(long id, String createBy, Date creationDate, String updateBy, Date updateDate, long version) {
         this.createBy = createBy;
         this.creationDate = creationDate;
         this.id = id;
@@ -62,11 +62,11 @@ public abstract class BaseDTO {
         this.updateDate = updateDate;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 

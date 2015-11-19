@@ -298,7 +298,7 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
         return jsonData;
     }
     private Query createNativeQuery(String sql, Class cls, Object[] parameter) {
-        Query queryObject = entityManager.createNativeQuery(sql, cls.getName());
+        Query queryObject = entityManager.createNativeQuery(sql, cls);
         if (parameter != null) {
             for (int i = 0; i < parameter.length; i++) {
                 queryObject.setParameter(i + 1, parameter[i]);

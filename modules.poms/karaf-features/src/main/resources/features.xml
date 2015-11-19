@@ -266,7 +266,8 @@
         <feature>webconsole</feature>
         <feature>jndi</feature>
         <feature version="2.2.0">jpa</feature>
-        <feature version="4.3.6.Final">hibernate</feature>
+        <!--<feature version="2.3.0">openjpa</feature>-->
+        <!--<feature version="4.3.6.Final">hibernate</feature>-->
         <feature>mysql-driver</feature>
         <feature>derby-driver</feature>
         <feature>postgresql-driver</feature>
