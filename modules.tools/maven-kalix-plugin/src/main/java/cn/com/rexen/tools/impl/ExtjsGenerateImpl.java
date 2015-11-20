@@ -40,8 +40,8 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
         fileMap.put("ViewModel", "//viewModel//" + String.format(viewModelFileName, beanName));
 
         fileMap.put("Main", "//" + mainFileName);
-        fileMap.put("Form", "//view//" + String.format(windowFileName, beanName));
-        fileMap.put("ViewForm", "//view//" + String.format(viewWindowFileName, beanName));
+        fileMap.put("Window", "//view//" + String.format(windowFileName, beanName));
+        fileMap.put("ViewWindow", "//view//" + String.format(viewWindowFileName, beanName));
         fileMap.put("SearchForm", "//view//" + String.format(searchFormFileName, beanName));
         fileMap.put("Grid", "//view//" + String.format(gridFileName,beanName));
     }

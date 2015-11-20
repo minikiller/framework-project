@@ -151,7 +151,6 @@ public interface IGenericDao<T, PK extends Serializable> extends IDaoService {
      */
     JsonData getAll(int page, int limit, CriteriaQuery criteriaQuery);
 
-
     CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO);
 
     /**

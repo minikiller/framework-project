@@ -19,6 +19,9 @@ import javax.persistence.metamodel.EntityType;
 import javax.persistence.metamodel.SingularAttribute;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -103,6 +106,47 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
         return jsonData;
     }
 
+    /**
+     * 自动根据beginDate和endDate参数查询dateField
+     *
+     * @param queryDTO
+     * @param dateField 需要查询的时间字段
+     * @return
+     */
+    protected CriteriaQuery buildBetweenDateCriteriaQuery(QueryDTO queryDTO, String dateField) {
+        Map map = queryDTO.getJsonMap();
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(persistentClass);
+        Root<T> root = criteriaQuery.from(persistentClass);
+        EntityType<T> bean_ = root.getModel(); //实体元数据
+        List<Predicate> predicatesList = new ArrayList<Predicate>();
+
+        if (map.get("beginDate") != null) {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Date beginDate = dateFormat.parse((String) map.get("beginDate"));
+                SingularAttribute<T, Date> begin = (SingularAttribute<T, Date>) bean_.getSingularAttribute(dateField);
+                predicatesList.add(criteriaBuilder.greaterThanOrEqualTo(root.get(begin), beginDate));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (map.get("endDate") != null) {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Date endDate = dateFormat.parse((String) map.get("endDate"));
+                SingularAttribute<T, Date> end = (SingularAttribute<T, Date>) bean_.getSingularAttribute(dateField);
+                predicatesList.add(criteriaBuilder.lessThanOrEqualTo(root.get(end), endDate));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+        criteriaQuery.where(predicatesList.toArray(new Predicate[predicatesList.size()]));
+        CriteriaQuery select = criteriaQuery.select(root);
+        return select;
+    }
     @Override
     public CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();

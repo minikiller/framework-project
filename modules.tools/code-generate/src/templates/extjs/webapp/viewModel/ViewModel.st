@@ -5,7 +5,7 @@
  * @version 1.0.0
  */
 
-Ext.define('<extjsPrefix>.viewModel.ReceiveViewModel', {
+Ext.define('<extjsPrefix>.viewModel.<beanName>ViewModel', {
     extend: 'Ext.app.ViewModel',
     alias: 'viewmodel.<pomName>ViewModel',
     data: {

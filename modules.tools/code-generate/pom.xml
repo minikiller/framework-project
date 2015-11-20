@@ -43,15 +43,15 @@
                     <inputDir>src/templates</inputDir>
                     <outputDir>${project.build.directory}/generate</outputDir>
                     <attributes>
-                        <beanName>Receive</beanName>
-                        <packageName>cn.com.rexen.roffice.receive</packageName>
-                        <parentPackageName>cn.com.rexen.roffice.sale</parentPackageName>
-                        <pomName>receive</pomName>
+                        <beanName>News</beanName>
+                        <packageName>cn.com.rexen.roffice.news</packageName>
+                        <parentPackageName>cn.com.rexen.roffice.commons</parentPackageName>
+                        <pomName>news</pomName>
                         <projectName>Roffice</projectName>
-                        <parentName>sale</parentName>
+                        <parentName>commons</parentName>
                         <versionName>1.0.0-SNAPSHOT</versionName>
-                        <module_Name>设备发票</module_Name>
-                        <extjsPrefix>kalix.roffice.receive</extjsPrefix>
+                        <module_Name>公司新闻</module_Name>
+                        <extjsPrefix>kalix.roffice.news</extjsPrefix>
                     </attributes>
                     <sources>
                         <source>${basedir}/src/main/java</source>
