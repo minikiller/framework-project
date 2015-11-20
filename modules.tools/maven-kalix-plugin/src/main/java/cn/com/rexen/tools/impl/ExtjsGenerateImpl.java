@@ -13,8 +13,8 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
     String activatorFileName = "InitActivator.java";
 
     //需要替换名字的js文件名
-    String searchFormControllerFileName = "%sSearchFormController.js";
-    String formControllerFileName = "%sFormController.js";
+//    String searchFormControllerFileName = "%sSearchFormController.js";
+//    String formControllerFileName = "%sFormController.js";
     String gridControllerFileName = "%sGridController.js";
 
     String modelFileName = "%sModel.js";
@@ -22,8 +22,8 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
     String viewModelFileName = "%sViewModel.js";
 
     String mainFileName = "Main.js";
-    String formFileName = "%sForm.js";
-    String viewFormFileName = "%sViewForm.js";
+    String windowFileName = "%sWindow.js";
+    String viewWindowFileName = "%sViewWindow.js";
     String searchFormFileName = "%sSearchForm.js";
     String gridFileName = "%sGrid.js";
 
@@ -31,8 +31,8 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
         super(attributes, inputDir, outputDir, "extjs");
         fileMap.put("InitActivator", "//" + moduleName + "//internal//" + activatorFileName);
         //js process
-        fileMap.put("SearchFormController", "//controller//" + String.format(searchFormControllerFileName, beanName));
-        fileMap.put("FormController", "//controller//" + String.format(formControllerFileName,beanName));
+//        fileMap.put("SearchFormController", "//controller//" + String.format(searchFormControllerFileName, beanName));
+//        fileMap.put("FormController", "//controller//" + String.format(formControllerFileName,beanName));
         fileMap.put("GridController", "//controller//" + String.format(gridControllerFileName,beanName));
 
         fileMap.put("Model", "//model//" + String.format(modelFileName,beanName));
@@ -40,8 +40,8 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
         fileMap.put("ViewModel", "//viewModel//" + String.format(viewModelFileName, beanName));
 
         fileMap.put("Main", "//" + mainFileName);
-        fileMap.put("Form", "//view//" + String.format(formFileName, beanName));
-        fileMap.put("ViewForm", "//view//" + String.format(viewFormFileName, beanName));
+        fileMap.put("Form", "//view//" + String.format(windowFileName, beanName));
+        fileMap.put("ViewForm", "//view//" + String.format(viewWindowFileName, beanName));
         fileMap.put("SearchForm", "//view//" + String.format(searchFormFileName, beanName));
         fileMap.put("Grid", "//view//" + String.format(gridFileName,beanName));
     }

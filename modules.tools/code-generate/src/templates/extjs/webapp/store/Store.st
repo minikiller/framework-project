@@ -10,22 +10,5 @@ Ext.define('<extjsPrefix>.store.<beanName>Store', {
     alias: 'store.<pomName>Store',
     xtype: '<pomName>Store',
     storeId: "<pomName>Store",
-    autoLoad: true,
-    pageSize: 10,
-    proxy: {
-        type: "ajax",
-        url: '/kalix/camel/rest/<pomName>s/list',
-        paramsAsJson: true,
-        actionMethods: {
-            create: 'POST',
-            read: 'POST',
-            update: 'POST',
-            destroy: 'POST'
-        },
-        reader: {
-            type: "json",
-            rootProperty: "data",
-            totalProperty: 'totalCount'
-        }
-    }
+    proxyUrl: '/kalix/camel/rest/<pomName>s'
 });

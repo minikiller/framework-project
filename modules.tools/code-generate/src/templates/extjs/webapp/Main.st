@@ -5,12 +5,14 @@
  * @version 1.0.0
  */
 Ext.define('<extjsPrefix>.Main', {
-    extend: 'Ext.container.Container',
+    extend: 'kalix.container.BaseContainer',
     requires: [
-        '<extjsPrefix>.store.<beanName>Store',  //用户模型集合
         '<extjsPrefix>.view.<beanName>Grid',
-        '<extjsPrefix>.view.<beanName>SearchForm'
+        '<extjsPrefix>.view.<beanName>SearchForm',
+        '<extjsPrefix>.viewModel.<beanName>ViewModel'
     ],
+    storeId: '<pomName>Store',
+    viewModel: '<pomName>ViewModel',
     items: [
         {
             title: '<module_Name>查询',
@@ -21,10 +23,7 @@ Ext.define('<extjsPrefix>.Main', {
             id: '<pomName>GridPanel',
             title: '<module_Name>列表',
             iconCls: 'x-fa fa-search',
-            margin: 10,
-            store: {
-                type: '<pomName>Store'
-            }
+            margin: 10
         }
     ]
 });
