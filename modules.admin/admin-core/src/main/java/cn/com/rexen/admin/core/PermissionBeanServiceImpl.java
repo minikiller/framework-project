@@ -12,7 +12,6 @@ import cn.com.rexen.app.api.dao.IApplicationBeanDao;
 import cn.com.rexen.app.api.dao.IFunctionBeanDao;
 import cn.com.rexen.app.entities.ApplicationBean;
 import cn.com.rexen.app.entities.FunctionBean;
-import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.Assert;
 
@@ -176,7 +175,7 @@ public class PermissionBeanServiceImpl extends GenericBizServiceImpl<IPermission
     private void fillApplicationCodeByRoles(List<String> applicationCodes, List<RoleApplicationBean> roleApplicationBeans){
         if(roleApplicationBeans!=null&&!roleApplicationBeans.isEmpty()){
             for(RoleApplicationBean roleApplicationBean:roleApplicationBeans){
-                ApplicationBean applicationBean=applicationBeanDao.get(ApplicationBean.class.getName(), roleApplicationBean.getApplicationId());
+                ApplicationBean applicationBean = applicationBeanDao.get(roleApplicationBean.getApplicationId());
                 if(applicationBean!=null)
                     applicationCodes.add(applicationBean.getCode());
             }
@@ -186,7 +185,7 @@ public class PermissionBeanServiceImpl extends GenericBizServiceImpl<IPermission
     private void fillFunctionCodeByRoles(List<String> functionCodes, List<RoleFunctionBean> roleFunctionBeans){
         if(roleFunctionBeans!=null&&!roleFunctionBeans.isEmpty()){
             for(RoleFunctionBean roleFunctionBean:roleFunctionBeans){
-                FunctionBean functionBean=functionBeanDao.get(FunctionBean.class.getName(), roleFunctionBean.getFunctionId());
+                FunctionBean functionBean = functionBeanDao.get(roleFunctionBean.getFunctionId());
                 if(functionBean!=null)
                     functionCodes.add(functionBean.getPermission());
             }

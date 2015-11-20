@@ -88,12 +88,12 @@ public class CouchdbAttachBeanServiceImpl extends GenericBizServiceImpl<ICouchdb
 
     @Override
     public void deleteAttach(long id) {
-        CouchdbAttachBean couchdbAttachBean = dao.get(CouchdbAttachBean.class.getName(), id);
+        CouchdbAttachBean couchdbAttachBean = dao.get(id);
         String couchdbAttachId = couchdbAttachBean.getCouchdbAttachId();
         if (couchdbAttachId != null && !"".equals(couchdbAttachId) && !"0".equals(couchdbAttachId)) {
             couchdbService.deleteAttach(couchdbAttachBean);
         }
-        dao.remove(CouchdbAttachBean.class.getName(), id);
+        dao.remove(id);
     }
 
     @Override

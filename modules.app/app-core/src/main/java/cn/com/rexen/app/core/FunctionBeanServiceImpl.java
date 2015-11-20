@@ -59,7 +59,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl<IFunctionBean
                 if(functionBean.getIsLeaf()==0){ //存在子节点
                     removeChildren(functionBean.getId());
                 }
-                dao.remove(FunctionBean.class.getName(), functionBean.getId());
+                dao.remove(functionBean.getId());
             }
         }
     }
@@ -70,7 +70,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl<IFunctionBean
         if(functionBeans!=null&&!functionBeans.isEmpty()) {
             removeChildren(entityId);
             FunctionBean function=functionBeans.get(0);
-            dao.remove(FunctionBean.class.getName(), entityId);
+            dao.remove(entityId);
             updateParent(function.getParentId());
             jsonStatus.setSuccess(true);
             jsonStatus.setMsg("删除" + FUNCTION_NAME + "成功！");
@@ -99,7 +99,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl<IFunctionBean
     @Override
     public void doUpdate(FunctionBean entity, JsonStatus jsonStatus) {
         Assert.notNull(entity, "实体不能为空.");
-        FunctionBean oldBean = dao.get(FunctionBean.class.getName(), entity.getId());
+        FunctionBean oldBean = dao.get(entity.getId());
         if(oldBean!=null){
             FunctionBean functionBean=(FunctionBean)entity;
             oldBean.setName(functionBean.getName());
@@ -121,7 +121,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl<IFunctionBean
         Assert.notNull(entity, "实体不能为空.");
         FunctionBean bean=(FunctionBean)entity;
         if(bean.getParentId()!=-1){
-            FunctionBean parentFunctionBean = dao.get(FunctionBean.class.getName(), bean.getParentId());
+            FunctionBean parentFunctionBean = dao.get(bean.getParentId());
             if(parentFunctionBean!=null&&parentFunctionBean.getIsLeaf()==1){
                 parentFunctionBean.setIsLeaf(0);
                 dao.save(parentFunctionBean);
@@ -156,7 +156,7 @@ public class FunctionBeanServiceImpl extends GenericBizServiceImpl<IFunctionBean
 
     @Override
     public boolean isDelete(Long entityId, JsonStatus status) {
-        if (dao.get(FunctionBean.class.getName(), entityId) == null) {
+        if (dao.get(entityId) == null) {
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经被删除！");
             return false;

@@ -6,7 +6,6 @@ import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.PermissionConstant;
 import cn.com.rexen.core.api.biz.JsonStatus;
-import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
@@ -67,7 +66,7 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl<IUserBeanDao, Use
         if (StringUtils.isNotEmpty(userName)) {
             userEntity.setUpdateBy(userName);
         }
-        UserBean userBean = dao.get(UserBean.class.getName(), entity.getId());
+        UserBean userBean = dao.get(entity.getId());
         //如果编辑时修改了密码将重新计算MD5
         if(userBean!=null&&!userBean.getPassword().equals(userEntity.getPassword())){
             userEntity.setPassword(MD5Util.encode(userEntity.getPassword()));
@@ -119,7 +118,7 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl<IUserBeanDao, Use
 
     @Override
     public boolean isDelete(Long entityId, JsonStatus status) {
-        if (dao.get(UserBean.class.getName(), entityId) == null) {
+        if (dao.get(entityId) == null) {
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经被删除！");
             return false;
@@ -171,7 +170,7 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl<IUserBeanDao, Use
 
     public JsonData getAllUser() {
         JsonData jsonData=new JsonData();
-        List<UserBean> users = dao.getAll(UserBean.class.getName());
+        List<UserBean> users = dao.getAll();
         List<PersistentEntity> persistentEntities=new ArrayList<PersistentEntity>();
         if(users!=null&&users.size()>0){
             for(UserBean user:users){
@@ -243,7 +242,7 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl<IUserBeanDao, Use
         if (userBean.getId() == 0L) {       //为新用户对象
             userBean = dao.save(userBean);
         } else {                            //取出用户的角色集合
-            roleBeanList = dao.get(UserBean.class.getName(), userBean.getId()).getRoleList();
+            roleBeanList = dao.get(userBean.getId()).getRoleList();
         }
         //删除全部该角色下的用户
         if (roleSelect != null) {

@@ -27,7 +27,7 @@ public interface IGenericDao<T, PK extends Serializable> extends IDaoService {
      *
      * @return List of populated objects
      */
-    List<T> getAllDistinct(String className);
+    List<T> getAllDistinct();
 
     /**
      * Gets all records that match a search term. "*" will get them all.
@@ -46,7 +46,7 @@ public interface IGenericDao<T, PK extends Serializable> extends IDaoService {
      * @param id the identifier (primary key) of the object to get
      * @return a populated object
      */
-    T get(String className, PK id);
+    T get(PK id);
 
     /**
      * Checks for existence of an object of type T using the id arg.
@@ -85,7 +85,7 @@ public interface IGenericDao<T, PK extends Serializable> extends IDaoService {
      *
      * @param id the identifier (primary key) of the object to remove
      */
-    void remove(String className, PK id);
+    void remove(PK id);
 
     /**
      * Find a list of records by using a named query
@@ -138,9 +138,9 @@ public interface IGenericDao<T, PK extends Serializable> extends IDaoService {
      *
      * @return List of populated objects
      */
-    List<T> getAll(String className);
+    List<T> getAll();
 
-    JsonData getAll(int pageNumber, int pageSize, String entityClassName);
+    JsonData getAll(int pageNumber, int pageSize);
 
     /**
      * 按指定条件查询
@@ -149,7 +149,7 @@ public interface IGenericDao<T, PK extends Serializable> extends IDaoService {
      * @param criteriaQuery
      * @return
      */
-    JsonData getAll(int page, int limit,String className,CriteriaQuery criteriaQuery);
+    JsonData getAll(int page, int limit, CriteriaQuery criteriaQuery);
 
 
     CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO);

@@ -15,14 +15,14 @@ public class OrganizationBeanDaoImpl extends BaseAdminDao<OrganizationBean, Long
 
     @Override
     public void removeOrg(Long orgId) {
-        super.remove(className, orgId);
+        super.remove(orgId);
     }
 
 
 
     @Override
     public OrganizationBean getOrg(Long orgId) {
-        return super.get(className, orgId);
+        return super.get(orgId);
     }
 
     @Override

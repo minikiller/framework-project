@@ -73,7 +73,7 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl<IAreaBeanDao, Are
 
     @Override
     public List<AreaBean> getRootBeanListByQhdm() {
-        AboutBean aboutBean = aboutBeanDao.get(AboutBean.class.getName(), 1L);
+        AboutBean aboutBean = aboutBeanDao.get(1L);
         String qhdm = "";
         if (aboutBean != null) {
             qhdm = aboutBean.getXzqh_dm();
@@ -111,7 +111,7 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl<IAreaBeanDao, Are
 
     @Override
     public boolean isDelete(Long entityId, JsonStatus status) {
-        if (dao.get(AreaBean.class.getName(), entityId) == null) {
+        if (dao.get(entityId) == null) {
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经被删除！");
             return false;
@@ -123,7 +123,7 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl<IAreaBeanDao, Are
     public JsonStatus deleteEntity(long entityId) {
         JsonStatus jsonStatus = new JsonStatus();
         try {
-            if (dao.get(AreaBean.class.getName(), entityId) == null) {
+            if (dao.get(entityId) == null) {
                 jsonStatus.setFailure(true);
                 jsonStatus.setMsg(FUNCTION_NAME + "{" + entityId + "}不存在！");
             } else {
@@ -131,7 +131,7 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl<IAreaBeanDao, Are
                 if(AreaBeans!=null&&!AreaBeans.isEmpty()) {
                     removeChildren(entityId);
                     AreaBean org=AreaBeans.get(0);
-                    dao.remove(AreaBean.class.getName(), entityId);
+                    dao.remove(entityId);
                     orgService.deleteByAreaId(entityId);
                     //departmentBeanService.deleteByOrgId(id);
                     updateParent(org.getParentId());
@@ -182,7 +182,7 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl<IAreaBeanDao, Are
         Assert.notNull(entity, "实体不能为空.");
         AreaBean bean=(AreaBean)entity;
         if(bean.getParentId()!=-1){
-            AreaBean parentAreaBean = (AreaBean) dao.get(AreaBean.class.getName(), bean.getParentId());
+            AreaBean parentAreaBean = (AreaBean) dao.get(bean.getParentId());
             if(parentAreaBean!=null&&parentAreaBean.getIsLeaf()==1){
                 parentAreaBean.setIsLeaf(0);
                 dao.save(parentAreaBean);
@@ -222,7 +222,7 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl<IAreaBeanDao, Are
     @Override
     public void beforeUpdateEntity(AreaBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
-        AreaBean oldArea = (AreaBean) dao.get(AreaBean.class.getName(), entity.getId());
+        AreaBean oldArea = (AreaBean) dao.get(entity.getId());
         AreaBean area=(AreaBean)entity;
         area.setParentId(oldArea.getParentId());
         area.setIsLeaf(oldArea.getIsLeaf());
@@ -245,7 +245,7 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl<IAreaBeanDao, Are
                 if(org.getIsLeaf()==0){ //存在子节点
                     removeChildren(org.getId());
                 }
-                dao.remove(AreaBean.class.getName(), org.getId());
+                dao.remove(org.getId());
                 orgService.deleteByAreaId(org.getId());
                 //departmentBeanService.deleteByOrgId(org.getId());
             }
@@ -263,7 +263,7 @@ public class AreaBeanServiceImpl extends GenericBizServiceImpl<IAreaBeanDao, Are
 //        Assert.notEmpty(departmentBeans,"当前用户所属部门不能为空.");
         AreaDTO root=new AreaDTO();
         root.setId(-1);
-        List<AreaBean> beans = dao.getAll(AreaBean.class.getName());
+        List<AreaBean> beans = dao.getAll();
         if(beans!=null&&beans.size()>0){
             List<AreaBean> rootElements = getRootElements(beans);
             if(rootElements!=null&&rootElements.size()>0) {

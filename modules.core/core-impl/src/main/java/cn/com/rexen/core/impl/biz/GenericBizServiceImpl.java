@@ -7,6 +7,7 @@ import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.web.model.QueryDTO;
 import cn.com.rexen.core.util.Assert;
+import cn.com.rexen.core.util.SerializeUtil;
 import org.apache.log4j.Logger;
 
 import javax.transaction.Transactional;
@@ -32,7 +33,7 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
 
     @Override
     public void doDelete(long entityId,JsonStatus jsonStatus) {
-        dao.remove(entityClassName, entityId);
+        dao.remove(entityId);
         jsonStatus.setSuccess(true);
         jsonStatus.setMsg("删除成功！");
     }
@@ -180,23 +181,34 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
     @Override
     public JsonData getAllEntityByQuery(QueryDTO queryDTO) {
         Assert.notNull(queryDTO, "查询条件不能为空.");
-        return dao.getAll(queryDTO.getPage(), queryDTO.getLimit(), entityClassName, dao.buildCriteriaQuery(queryDTO));
+        return dao.getAll(queryDTO.getPage(), queryDTO.getLimit(), dao.buildCriteriaQuery(queryDTO));
+    }
+
+    @Override
+    public JsonData getAllEntityByQuery(int page, int limit, String jsonStr) {
+        QueryDTO queryDto = new QueryDTO();
+
+        queryDto.setPage(page);
+        queryDto.setLimit(limit);
+        queryDto.setJsonMap(SerializeUtil.json2Map(jsonStr));
+
+        return getAllEntityByQuery(queryDto);
     }
 
     @Override
     public JsonData getAllEntity(int pageNumber,
                                  int pageSize) {
-        return dao.getAll(pageNumber, pageSize, entityClassName);
+        return dao.getAll(pageNumber, pageSize);
     }
 
     @Override
     public List getAllEntity() {
-        return dao.getAll(entityClassName);
+        return dao.getAll();
     }
 
     @Override
     public TP getEntity(long entityId) {
-        return (TP) dao.get(entityClassName, entityId);
+        return (TP) dao.get(entityId);
     }
 
     /**

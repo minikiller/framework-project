@@ -14,14 +14,14 @@ public class DepartmentBeanDaoImpl extends BaseAdminDao<DepartmentBean, Long> im
 
     @Override
     public void remove(Long orgId) {
-        super.remove(className, orgId);
+        super.remove(orgId);
     }
 
 
 
     @Override
     public DepartmentBean get(Long orgId) {
-        return super.get(className, orgId);
+        return super.get(orgId);
     }
 
     @Override

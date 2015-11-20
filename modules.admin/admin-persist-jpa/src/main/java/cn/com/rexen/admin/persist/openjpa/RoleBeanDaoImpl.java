@@ -35,7 +35,7 @@ public class RoleBeanDaoImpl extends BaseAdminDao<RoleBean, Long> implements IRo
 
     @Override
     public void removeRole(Long roleId) {
-        super.remove(className, roleId);
+        super.remove(roleId);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class RoleBeanDaoImpl extends BaseAdminDao<RoleBean, Long> implements IRo
 
     @Override
     public RoleBean getRole(Long roleId) {
-        return super.get(className, roleId);
+        return super.get(roleId);
     }
 
     @Override

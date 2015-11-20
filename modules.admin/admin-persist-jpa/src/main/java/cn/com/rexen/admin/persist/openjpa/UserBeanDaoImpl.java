@@ -34,7 +34,7 @@ public class UserBeanDaoImpl extends BaseAdminDao<UserBean, Long> implements IUs
     @Override
     public JsonData getUserList(int page,int limit) {
         log.debug("get user info");
-        return super.getAll(page,limit,className);
+        return super.getAll(page, limit);
     }
 
     @Override
@@ -44,12 +44,12 @@ public class UserBeanDaoImpl extends BaseAdminDao<UserBean, Long> implements IUs
 
     @Override
     public void removeUser(Long userId) {
-        super.remove(className, userId);
+        super.remove(userId);
     }
 
     @Override
     public UserBean getUser(Long userId) {
-        return super.get(className, userId);
+        return super.get(userId);
     }
 
     @Transactional(Transactional.TxType.SUPPORTS)
