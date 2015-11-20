@@ -105,7 +105,7 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
 
     @Override
     public boolean isDelete(Long entityId, JsonStatus status) {
-        if (dao.get(OrganizationBean.class.getName(), entityId) == null) {
+        if (dao.get(entityId) == null) {
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经被删除！");
             return false;
@@ -206,7 +206,7 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
     }
 
     public OrganizationDTO getAllOrg() {
-        List<OrganizationBean> orgs = dao.getAll(OrganizationBean.class.getName());
+        List<OrganizationBean> orgs = dao.getAll();
         OrganizationDTO root=new OrganizationDTO();
         root.setId(-1);
         if(orgs!=null&&orgs.size()>0){

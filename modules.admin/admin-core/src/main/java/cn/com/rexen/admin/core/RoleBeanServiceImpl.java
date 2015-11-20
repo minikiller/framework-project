@@ -112,7 +112,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
 
     @Override
     public boolean isDelete(Long entityId, JsonStatus status) {
-        if (dao.get(RoleBean.class.getName(), entityId) == null) {
+        if (dao.get(entityId) == null) {
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经被删除！");
             return false;
@@ -169,7 +169,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
     @Override
     public JsonData getAllRole() {
         JsonData jsonData=new JsonData();
-        List<RoleBean> roles = dao.getAll(RoleBean.class.getName());
+        List<RoleBean> roles = dao.getAll();
         List<PersistentEntity> persistentEntityList=new ArrayList<PersistentEntity>();
         if(roles!=null&&roles.size()>0){
             for(RoleBean role:roles){
@@ -251,7 +251,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
         if (roleBean.getId() == 0L) {
             roleBean = dao.save(roleBean);
         } else {
-            userBeanList = dao.get(RoleBean.class.getName(), roleBean.getId()).getUserList();
+            userBeanList = dao.get(roleBean.getId()).getUserList();
         }
 
         //删除全部该角色下的用户
@@ -284,7 +284,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
         List<RoleBean> roleBeans=new ArrayList<RoleBean>();
         if(roleUserBeans!=null&&!roleUserBeans.isEmpty()){
             for(RoleUserBean roleUserBean:roleUserBeans){
-                RoleBean roleBean = dao.get(RoleBean.class.getName(), roleUserBean.getRoleId());
+                RoleBean roleBean = dao.get(roleUserBean.getRoleId());
                 roleBeans.add(roleBean);
             }
         }
@@ -297,7 +297,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
         List<RoleBean> roleBeans=new ArrayList<RoleBean>();
         if(workGroupRoleBeans!=null&&!workGroupRoleBeans.isEmpty()){
             for(WorkGroupRoleBean workGroupRoleBean:workGroupRoleBeans){
-                roleBeans.add(dao.get(RoleBean.class.getName(), workGroupRoleBean.getRoleId()));
+                roleBeans.add(dao.get(workGroupRoleBean.getRoleId()));
             }
         }
         return roleBeans;
@@ -377,7 +377,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
     public AuthorizationDTO getAuthorizationTree(long roleId) {
         AuthorizationDTO root=new AuthorizationDTO();
         root.setId(-1);
-        List<ApplicationBean> beans=applicationBeanDao.getAll(ApplicationBean.class.getName());
+        List<ApplicationBean> beans = applicationBeanDao.getAll();
         if(beans!=null&&beans.size()>0){
             if(beans!=null&&beans.size()>0) {
                 //查询关联关系

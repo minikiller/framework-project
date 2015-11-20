@@ -5,9 +5,7 @@ import cn.com.rexen.admin.api.dao.IDictBeanDao;
 import cn.com.rexen.admin.entities.DictBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.cache.ICacheManager;
-import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.api.persistence.JsonData;
-import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.Assert;
@@ -91,7 +89,7 @@ public class DictBeanServiceImpl extends GenericBizServiceImpl<IDictBeanDao, Dic
 
 
     public JsonData getAll(int page,int limit) {
-        return dao.getAll(page, limit, DictBean.class.getName());
+        return dao.getAll(page, limit);
     }
 
     @Override

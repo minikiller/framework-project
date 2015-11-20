@@ -42,7 +42,7 @@ public abstract class AuditBizServiceImpl<T extends IGenericDao, TP extends Pers
         auditBean.setFunName(getFunName());
         auditBean.setAction("更新");
         auditBean.setActor(shiroService.getCurrentUserName());
-        final TP oldEntity = (TP) dao.get(entityClassName, entity.getId());
+        final TP oldEntity = (TP) dao.get(entity.getId());
 
         auditBean.setContent(AuditUtil.Match(entity, oldEntity, entityClassName));
 //        auditBean.setContent(AuditUtil.Match(oldEntity,entity));
@@ -57,7 +57,7 @@ public abstract class AuditBizServiceImpl<T extends IGenericDao, TP extends Pers
         auditBean.setFunName(getFunName());
         if (entity.getId() > 0) {
             auditBean.setAction("更新");
-            final TP oldEntity = (TP) dao.get(entityClassName, entity.getId());
+            final TP oldEntity = (TP) dao.get(entity.getId());
             auditBean.setContent(AuditUtil.Match(entity, oldEntity, entityClassName));
         } else {
             auditBean.setAction("新增");
@@ -75,7 +75,7 @@ public abstract class AuditBizServiceImpl<T extends IGenericDao, TP extends Pers
         auditBean.setFunName(getFunName());
         auditBean.setAction("删除");
         auditBean.setActor(shiroService.getCurrentUserName());
-        auditBean.setContent(dao.get(entityClassName, id).toString());
+        auditBean.setContent(dao.get(id).toString());
         auditBeanService.saveEntity(auditBean);
     }
 

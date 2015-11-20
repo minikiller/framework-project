@@ -93,7 +93,7 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl<IApplicati
 
     @Override
     public boolean isDelete(Long entityId, JsonStatus status) {
-        if (dao.get(ApplicationBean.class.getName(), entityId) == null) {
+        if (dao.get(entityId) == null) {
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经被删除！");
             return false;
@@ -170,7 +170,7 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl<IApplicati
     public ApplicationDTO getTreesByAllApplications() {
         ApplicationDTO root=new ApplicationDTO();
         root.setId(-1);
-        List<ApplicationBean> beans = dao.getAll(ApplicationBean.class.getName());
+        List<ApplicationBean> beans = dao.getAll();
         if(beans!=null&&beans.size()>0){
             if(beans!=null&&beans.size()>0) {
                 for(ApplicationBean applicationBean:beans){
@@ -189,7 +189,7 @@ public class ApplicationBeanServiceImpl extends GenericBizServiceImpl<IApplicati
     public AuthorizationDTO getAuthorizationTree() {
         AuthorizationDTO root=new AuthorizationDTO();
         root.setId(-1);
-        List<ApplicationBean> beans = dao.getAll(ApplicationBean.class.getName());
+        List<ApplicationBean> beans = dao.getAll();
         if(beans!=null&&beans.size()>0){
             if(beans!=null&&beans.size()>0) {
                 for(ApplicationBean applicationBean:beans){

@@ -8,9 +8,7 @@ import cn.com.rexen.admin.entities.WorkGroupBean;
 import cn.com.rexen.admin.entities.WorkGroupRoleBean;
 import cn.com.rexen.admin.entities.WorkGroupUserBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
-import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.api.persistence.JsonData;
-import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.Assert;
@@ -66,7 +64,7 @@ public class WorkGroupBeanServiceImpl extends GenericBizServiceImpl<IWorkGroupBe
 
     @Override
     public boolean isDelete(Long entityId, JsonStatus status) {
-        if (dao.get(WorkGroupBean.class.getName(), entityId) == null) {
+        if (dao.get(entityId) == null) {
             status.setFailure(true);
             status.setMsg(FUNCTION_NAME + "已经被删除！");
             return false;
@@ -126,7 +124,7 @@ public class WorkGroupBeanServiceImpl extends GenericBizServiceImpl<IWorkGroupBe
 
     @Override
     public JsonData getAllWorkGroup(int page,int limit) {
-        return dao.getAll(page, limit, WorkGroupBean.class.getName());
+        return dao.getAll(page, limit);
     }
 
     @Override

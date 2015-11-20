@@ -144,6 +144,14 @@ public interface IBizService<T extends PersistentEntity> extends IService {
     JsonData getAllEntityByQuery(QueryDTO queryDTO);
 
     /**
+     * @param page
+     * @param limit
+     * @param jsonStr
+     * @return
+     */
+    JsonData getAllEntityByQuery(int page, int limit, String jsonStr);
+
+    /**
      * 查询分页
      * @param pageNumber
      * @param pageSize

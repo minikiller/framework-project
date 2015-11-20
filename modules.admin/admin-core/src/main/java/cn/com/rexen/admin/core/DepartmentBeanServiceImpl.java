@@ -192,7 +192,7 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl<IDepartment
     }
 
     public DepartmentDTO getAll() {
-        List<DepartmentBean> beans = dao.getAll(DepartmentBean.class.getName());
+        List<DepartmentBean> beans = dao.getAll();
         DepartmentDTO root=new DepartmentDTO();
         root.setId(-1);
         if(beans!=null&&beans.size()>0){

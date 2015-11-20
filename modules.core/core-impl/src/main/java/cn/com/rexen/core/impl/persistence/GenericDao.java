@@ -13,9 +13,13 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.persistence.metamodel.EntityType;
+import javax.persistence.metamodel.SingularAttribute;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +38,8 @@ import java.util.Map;
 public abstract class GenericDao<T extends PersistentEntity, PK extends Serializable> implements IGenericDao<T, PK> {
     protected final Logger log = Logger.getLogger(getClass());
     protected EntityManager entityManager;
-    private Class<T> persistentClass;
+    private Class<T> persistentClass;//直接获取T Class，函数不需要className
+    private String className;
 
     public GenericDao() {
         Object obj = this.getClass().getGenericSuperclass();
@@ -45,6 +50,8 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
         } else if (type instanceof ParameterizedType) {
             this.persistentClass = (Class<T>) ((ParameterizedType) type).getRawType();
         }
+
+        className = this.persistentClass.getName();
     }
 
     /**
@@ -55,14 +62,11 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
      */
     public GenericDao(final Class<T> persistentClass) {
         this.persistentClass = persistentClass;
-    }
-
-    public void setEntityManager(EntityManager em) {
-        entityManager = em;
+        className = this.persistentClass.getName();
     }
 
     @Override
-    public List<T> getAll(String className) {
+    public List<T> getAll() {
         final Query query = entityManager.createQuery("select c from " + className + " c ");
         final List<T> resultList = query.getResultList();
         return resultList;
@@ -73,12 +77,11 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
      *
      * @param page
      * @param limit
-     * @param className
      * @return
      */
     @Override
-    public JsonData getAll(int page, int limit, String className) {
-        JsonData jsonData=new JsonData();
+    public JsonData getAll(int page, int limit) {
+        JsonData jsonData = new JsonData();
         Class entityClass = null;
         try {
             entityClass = Class.forName(className);
@@ -93,7 +96,7 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
         select.orderBy(criteriaBuilder.desc(from.get("creationDate")));
         TypedQuery typedQuery = entityManager.createQuery(select);
 
-        typedQuery.setFirstResult((page-1) * limit);
+        typedQuery.setFirstResult((page - 1) * limit);
         typedQuery.setMaxResults(limit);
         jsonData.setTotalCount(count);
         jsonData.setData(typedQuery.getResultList());
@@ -102,12 +105,27 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
 
     @Override
     public CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO) {
-        return null;
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(this.persistentClass);
+        Root<T> from = criteriaQuery.from(this.persistentClass);
+        EntityType<T> contractBean_ = from.getModel(); //实体元数据
+        List<Predicate> predicatesList = new ArrayList<Predicate>();
+        Map<String, String> jsonMap = queryDTO.getJsonMap();
+
+        for (Map.Entry<String, String> entry : jsonMap.entrySet()) {
+            SingularAttribute<T, String> contractNumber = (SingularAttribute<T, String>) contractBean_.getSingularAttribute(entry.getKey());
+            predicatesList.add(criteriaBuilder.like(from.get(contractNumber), "%" + entry.getValue() + "%"));
+        }
+
+        criteriaQuery.where(predicatesList.toArray(new Predicate[predicatesList.size()]));
+        CriteriaQuery select = criteriaQuery.select(from);
+        select.orderBy(criteriaBuilder.desc(from.get("updateDate")));
+        return select;
     }
 
     @Override
-    public JsonData getAll(int page, int limit,String className, CriteriaQuery criteriaQuery) {
-        JsonData jsonData=new JsonData();
+    public JsonData getAll(int page, int limit, CriteriaQuery criteriaQuery) {
+        JsonData jsonData = new JsonData();
         Class entityClass = null;
         try {
             entityClass = Class.forName(className);
@@ -125,6 +143,10 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
     @Override
     public EntityManager getEntityManager() {
         return entityManager;
+    }
+
+    public void setEntityManager(EntityManager em) {
+        entityManager = em;
     }
 
     /**
@@ -166,7 +188,7 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
     }
 
     @Override
-    public List<T> getAllDistinct(String className) {
+    public List<T> getAllDistinct() {
         final Query query = entityManager.createQuery("select Distinct c from " + className + " c ");
         final List<T> resultList = query.getResultList();
         return resultList;
@@ -178,7 +200,7 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
     }
 
     @Override
-    public T get(String className, PK id) {
+    public T get(PK id) {
 
         try {
             return (T) entityManager.find(Class.forName(className), id);
@@ -228,8 +250,8 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
     }
 
     @Override
-    public void remove(String className, PK id) {
-        Object object = get(className, id);
+    public void remove(PK id) {
+        Object object = get(id);
         entityManager.remove(object);
         entityManager.flush();
     }
