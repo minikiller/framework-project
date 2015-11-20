@@ -533,6 +533,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.osgi</groupId>
@@ -559,4 +560,15 @@
             <artifactId>org.apache.aries.transaction.blueprint</artifactId>
         </dependency>-->
     </dependencies>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.openjpa</groupId>
+                    <artifactId>openjpa-maven-plugin</artifactId>
+                    <version>${openjpa.Version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

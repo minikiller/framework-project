@@ -43,15 +43,15 @@
                     <inputDir>src/templates</inputDir>
                     <outputDir>${project.build.directory}/generate</outputDir>
                     <attributes>
-                        <beanName>PurchaseInvoice</beanName>
-                        <packageName>cn.com.rexen.roffice.purchaseinvoice</packageName>
+                        <beanName>Travel</beanName>
+                        <packageName>cn.com.rexen.roffice.travel</packageName>
                         <parentPackageName>cn.com.rexen.roffice.sale</parentPackageName>
-                        <pomName>purchaseinvoice</pomName>
+                        <pomName>travel</pomName>
                         <projectName>Roffice</projectName>
                         <parentName>sale</parentName>
                         <versionName>1.0.0-SNAPSHOT</versionName>
                         <module_Name>设备发票</module_Name>
-                        <extjsPrefix>kalix.roffice.purchaseinvoice</extjsPrefix>
+                        <extjsPrefix>kalix.roffice.travel</extjsPrefix>
                     </attributes>
                     <sources>
                         <source>${basedir}/src/main/java</source>
