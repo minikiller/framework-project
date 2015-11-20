@@ -144,26 +144,28 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
         }
 
         criteriaQuery.where(predicatesList.toArray(new Predicate[predicatesList.size()]));
+
         CriteriaQuery select = criteriaQuery.select(root);
+        select.orderBy(criteriaBuilder.desc(root.get("creationDate")));
         return select;
     }
     @Override
     public CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(this.persistentClass);
-        Root<T> from = criteriaQuery.from(this.persistentClass);
-        EntityType<T> contractBean_ = from.getModel(); //实体元数据
+        Root<T> root = criteriaQuery.from(this.persistentClass);
+        EntityType<T> contractBean_ = root.getModel(); //实体元数据
         List<Predicate> predicatesList = new ArrayList<Predicate>();
         Map<String, String> jsonMap = queryDTO.getJsonMap();
 
         for (Map.Entry<String, String> entry : jsonMap.entrySet()) {
             SingularAttribute<T, String> contractNumber = (SingularAttribute<T, String>) contractBean_.getSingularAttribute(entry.getKey());
-            predicatesList.add(criteriaBuilder.like(from.get(contractNumber), "%" + entry.getValue() + "%"));
+            predicatesList.add(criteriaBuilder.like(root.get(contractNumber), "%" + entry.getValue() + "%"));
         }
 
         criteriaQuery.where(predicatesList.toArray(new Predicate[predicatesList.size()]));
-        CriteriaQuery select = criteriaQuery.select(from);
-        select.orderBy(criteriaBuilder.desc(from.get("updateDate")));
+        CriteriaQuery select = criteriaQuery.select(root);
+        select.orderBy(criteriaBuilder.desc(root.get("creationDate")));
         return select;
     }
 
