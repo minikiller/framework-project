@@ -5,6 +5,7 @@ import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.IGenericDao;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
+import cn.com.rexen.core.api.web.model.BaseDTO;
 import cn.com.rexen.core.api.web.model.QueryDTO;
 import cn.com.rexen.core.util.Assert;
 import cn.com.rexen.core.util.SerializeUtil;
@@ -12,6 +13,7 @@ import org.apache.log4j.Logger;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -183,6 +185,52 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
         Assert.notNull(queryDTO, "查询条件不能为空.");
         return dao.getAll(queryDTO.getPage(), queryDTO.getLimit(), dao.buildCriteriaQuery(queryDTO));
     }
+
+    /**
+     * 只适应于字符类型的关联查询场景，需要自己实现getNativeQueryStr和getResultClass方法
+     *
+     * @param page
+     * @param limit
+     * @param jsonStr
+     * @return
+     */
+    @Override
+    public JsonData getAllByNativeQuery(int page, int limit, String jsonStr) {
+
+        Map<String, String> jsonMap = SerializeUtil.json2Map(jsonStr);
+        //获得查询的sql语句
+        String sql = getNativeQueryStr();
+        Assert.notNull(sql, "查询条件不能为空.");
+        //获得返回的结果类
+        Class<? extends BaseDTO> cls = getResultClass();
+        Assert.notNull(cls, "返回查询结果类不能为空.");
+
+        String posSql = " order by a.creationDate desc";
+        for (Map.Entry<String, String> entry : jsonMap.entrySet()) {
+            sql = sql + " and a." + entry.getKey() + " like '%" + entry.getValue() + "%'";
+        }
+
+        return dao.findByNativeSql(sql + posSql, page, limit, cls, null);
+    }
+
+    /**
+     * 需要重写该类实现getAllByNativeQuery
+     *
+     * @return
+     */
+    protected String getNativeQueryStr() {
+        return null;
+    }
+
+    /**
+     * 需要重写该类实现getAllByNativeQuery
+     *
+     * @return
+     */
+    protected Class<? extends BaseDTO> getResultClass() {
+        return null;
+    }
+
 
     @Override
     public JsonData getAllEntityByQuery(int page, int limit, String jsonStr) {
