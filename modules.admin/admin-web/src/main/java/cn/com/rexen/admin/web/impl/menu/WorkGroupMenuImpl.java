@@ -47,7 +47,7 @@ public class WorkGroupMenuImpl implements IMenu {
 
     @Override
     public String getRouteId() {
-        return "admin/WorkGroup";
+        return "admin/workgroup";
     }
 
     @Override

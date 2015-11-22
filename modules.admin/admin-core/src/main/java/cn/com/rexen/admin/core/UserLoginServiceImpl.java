@@ -30,6 +30,7 @@ public class UserLoginServiceImpl implements IUserLoginService {
     @Reference(id="userBeanDao",serviceInterface = IUserBeanDao.class)*/
     private IUserBeanDao userBeanDao;
 
+
     private IPermissionBeanService permissionBeanService;
 
     /**

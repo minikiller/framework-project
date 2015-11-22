@@ -266,6 +266,7 @@
         <feature>war</feature>
         <feature>webconsole</feature>
         <feature>jndi</feature>
+        <feature>eventadmin</feature>
         <feature version="2.2.0">jpa</feature>
         <!--<feature version="2.3.0">openjpa</feature>-->
         <!--<feature version="4.3.6.Final">hibernate</feature>-->

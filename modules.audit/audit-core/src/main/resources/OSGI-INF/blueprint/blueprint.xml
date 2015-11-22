@@ -4,6 +4,8 @@
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
 ">
     <tx:enable-annotations/>
+    <reference id="auditBeanDao" interface="cn.com.rexen.audit.api.dao.IAuditBeanDao"/>
+
     <service id="auditBeanService" interface="cn.com.rexen.audit.api.biz.IAuditBeanService"
              ref="beanServiceImpl">
     </service>
@@ -13,6 +15,22 @@
         <tx:transaction method="*" value="Required"/>
     </bean>
 
-    <reference id="auditBeanDao" interface="cn.com.rexen.audit.api.dao.IAuditBeanDao"/>
+    <service interface="org.osgi.service.event.EventHandler" ref="auditUserLoginEventImpl">
+        <service-properties>
+            <entry key="event.topics" value="cn/com/rexen/userlogin"/>
+        </service-properties>
+    </service>
+
+    <service interface="org.osgi.service.event.EventHandler" ref="auditUserLoginEventImpl">
+        <service-properties>
+            <entry key="event.topics" value="cn/com/rexen/userlogout"/>
+        </service-properties>
+    </service>
+
+    <bean id="auditUserLoginEventImpl" class="cn.com.rexen.audit.core.biz.AuditUserLoginEventImpl">
+        <property name="dao" ref="auditBeanDao"/>
+    </bean>
+
+
 </blueprint>
 

@@ -4,7 +4,9 @@ package cn.com.rexen.core.security;
 import cn.com.rexen.core.api.PermissionConstant;
 import cn.com.rexen.core.api.security.IAuthorizingRealm;
 import cn.com.rexen.core.api.security.IUserLoginService;
+import cn.com.rexen.core.security.model.Audit;
 import cn.com.rexen.core.util.JNDIHelper;
+import com.google.gson.Gson;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
@@ -14,9 +16,13 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.osgi.service.event.Event;
+import org.osgi.service.event.EventAdmin;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
@@ -27,10 +33,14 @@ import java.util.Map;
  */
 public class ShiroRealm extends AuthorizingRealm implements IAuthorizingRealm {
     private IUserLoginService userLoginService;
-
+    private EventAdmin eventAdmin;
     // --------------------------------------------------------------------------
     // Constructors
     // --------------------------------------------------------------------------
+
+    public void setEventAdmin(EventAdmin eventAdmin) {
+        this.eventAdmin = eventAdmin;
+    }
 
     public ShiroRealm() {
 
@@ -97,11 +107,53 @@ public class ShiroRealm extends AuthorizingRealm implements IAuthorizingRealm {
             session.setAttribute(PermissionConstant.SYS_CURRENT_USER, result);
 //            doGetAuthorizationInfo(SecurityUtils.getSubject().getPrincipals());
             userLoginService.updateUserLoginInfo((Long) result.get("user_id"), session.getHost());
+//            发送用户登录的事件
+            Audit audit = new Audit();
+            audit.setAppName("系统应用");
+            audit.setFunName("系统日志");
+            audit.setAction("系统登录");
+            audit.setActor(String.valueOf(result.get("name")));
+            audit.setContent("登录地址：" + session.getHost());
+            postLoginEvent(audit);
             return new SimpleAuthenticationInfo(userName, password, getName());
         }
 
         throw new AuthenticationException();
 
+    }
+
+    /**
+     * 用户登出发送事件
+     *
+     * @param principals
+     */
+    @Override
+    public void onLogout(PrincipalCollection principals) {
+        Session session = SecurityUtils.getSubject().getSession();
+        Audit audit = new Audit();
+        audit.setAppName("系统应用");
+        audit.setFunName("系统日志");
+        audit.setAction("系统登出");
+        audit.setActor(String.valueOf(session.getAttribute(PermissionConstant.SYS_CURRENT_USERNAME)));
+        audit.setContent("登出地址：" + session.getHost());
+        postLogoutEvent(audit);
+        super.onLogout(principals);
+    }
+
+    private void postLogoutEvent(Audit audit) {
+        Gson gson = new Gson();
+        Dictionary properties = new Hashtable();
+        properties.put("message", gson.toJson(audit));
+        Event event = new Event("cn/com/rexen/userlogout", properties);
+        eventAdmin.postEvent(event);
+    }
+
+    private void postLoginEvent(Audit audit) {
+        Gson gson = new Gson();
+        Dictionary properties = new Hashtable();
+        properties.put("message", gson.toJson(audit));
+        Event event = new Event("cn/com/rexen/userlogin", properties);
+        eventAdmin.postEvent(event);
     }
 
 }
