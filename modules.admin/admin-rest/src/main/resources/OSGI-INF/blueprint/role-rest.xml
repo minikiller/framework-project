@@ -13,7 +13,7 @@
         </restConfiguration>
 
         <!-- defines the rest services using the context-path /role -->
-        <rest path="/roles" consumes="application/json" produces="application/json">
+        <rest path="/roles" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
             <description>Role rest service</description>
 
             <!-- this is a rest GET to view an Role by the given id -->

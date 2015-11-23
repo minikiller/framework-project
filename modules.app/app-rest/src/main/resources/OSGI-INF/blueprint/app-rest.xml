@@ -14,7 +14,7 @@
         </restConfiguration>
 
         <!-- defines the rest services using the context-path /application -->
-        <rest path="/applications" consumes="application/json" produces="application/json">
+        <rest path="/applications" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
             <description>application rest service</description>
 
             <!-- this is a rest PUT to create an application -->
