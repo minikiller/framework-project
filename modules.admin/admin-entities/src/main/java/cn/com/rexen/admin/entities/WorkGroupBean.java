@@ -20,6 +20,7 @@ import javax.persistence.Table;
 public class WorkGroupBean extends PersistentEntity {
     private String name; //名称
     private String remark; //备注
+    private String app; //所属应用
 
     public String getRemark() {
         return remark;
@@ -35,5 +36,13 @@ public class WorkGroupBean extends PersistentEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getApp() {
+        return app;
+    }
+
+    public void setApp(String app) {
+        this.app = app;
     }
 }
