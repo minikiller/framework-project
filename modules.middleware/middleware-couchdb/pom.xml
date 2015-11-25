@@ -17,8 +17,8 @@
     <modules>
         <module>couchdb-api</module>
         <module>couchdb-core</module>
-        <module>couchdb-entities</module>
-        <module>couchdb-persist-jpa</module>
+        <!--<module>couchdb-entities</module>-->
+        <!--<module>couchdb-persist-jpa</module>-->
         <module>couchdb-rest</module>
     </modules>
 
@@ -32,89 +32,15 @@
     <name>Middleware :: Modules - CouchDB</name>
     <description>Modules CouchDB</description>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <!--<dependency>
-            <groupId>org.lightcouch</groupId>
-            <artifactId>lightcouch</artifactId>
-            <version>0.0.6</version>
-        </dependency>-->
-        <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-impl</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-util</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-        </dependency>
-
-
-        <!--<dependency>
-            <groupId>cn.com.rexen.couchdb</groupId>
-            <artifactId>cn.com.rexen.couchdb.api</artifactId>
-            <version>${project.version}</version>
-            <scope>provided</scope>
-        </dependency>-->
-
-        <!--<dependency>
-            <groupId>cn.com.rexen.couchdb</groupId>
-            <artifactId>cn.com.rexen.couchdb.core</artifactId>
-            <version>${project.version}</version>
-            <scope>provided</scope>
-        </dependency>-->
-
-        <!-- Testing -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!--<dependency>
-            <groupId>org.commonjava.couch</groupId>
-            <artifactId>shiro-couch</artifactId>
-            <version>1.2</version>
-        </dependency>-->
-
-
-    </dependencies>
-
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.middleware</groupId>
+                <artifactId>couchdb-api</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <build>
         <plugins>
 

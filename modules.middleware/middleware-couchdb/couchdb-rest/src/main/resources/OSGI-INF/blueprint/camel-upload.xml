@@ -5,22 +5,20 @@
        http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
-    <reference id="couchdbAttachBeanService" interface="cn.com.rexen.couchdb.api.biz.ICouchdbAttachBeanService"/>
+    <reference id="couchdbService" interface="cn.com.rexen.couchdb.api.biz.ICouchdbService"/>
+
     <bean id="attachmentProcessor" class="cn.com.rexen.couchdb.rest.AttachmentProcessor">
-        <property name="couchdbAttachBeanService" ref="couchdbAttachBeanService"/>
+        <property name="couchdbService" ref="couchdbService"/>
     </bean>
-    <bean id="multipartProcessor" class="cn.com.rexen.couchdb.rest.MultipartProcessor"/>
 
     <camelContext id="upload-camel" xmlns="http://camel.apache.org/schema/blueprint">
         <!-- 提供附件上传服务-->
         <route id="upload-route" streamCache="true">
             <from uri="servlet:///upload?httpMethodRestrict=POST"/>
-            <process ref="multipartProcessor"/>
             <process ref="attachmentProcessor"/>
             <marshal>
                 <json library="Jackson"/>
             </marshal>
         </route>
     </camelContext>
-
 </blueprint>

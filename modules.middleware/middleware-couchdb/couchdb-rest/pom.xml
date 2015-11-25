@@ -27,32 +27,14 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-core</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-servlet</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-metrics</artifactId>
-        </dependency>
-
-        <!-- swagger api -->
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-swagger</artifactId>
-        </dependency>
-        <!-- use for json binding -->
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-jackson</artifactId>
-        </dependency>
-
+        <!--<dependency>-->
+        <!--<groupId>org.apache.camel</groupId>-->
+        <!--<artifactId>camel-servlet</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
         </dependency>
-
         <dependency>
             <groupId>cn.com.rexen.kalix.middleware</groupId>
             <artifactId>couchdb-api</artifactId>

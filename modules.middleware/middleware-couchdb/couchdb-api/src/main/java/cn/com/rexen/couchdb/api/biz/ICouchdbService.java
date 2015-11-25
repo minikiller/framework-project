@@ -1,17 +1,10 @@
 package cn.com.rexen.couchdb.api.biz;
 
-import cn.com.rexen.couchdb.entities.CouchdbAttachBean;
-import org.lightcouch.Attachment;
-import org.lightcouch.Document;
+import cn.com.rexen.core.api.biz.JsonStatus;
 import org.lightcouch.Response;
 
 /**
- * @类描述：
- * @创建人：xukexin
- * @创建时间：2014/10/31 13:18
- * @修改人：
- * @修改时间：
- * @修改备注：
+ ** @author chenyanxu
  */
 public interface ICouchdbService {
     /**
@@ -26,11 +19,8 @@ public interface ICouchdbService {
 
     /**
      * 移除附件
-     *
-     * @param couchdbAttachBean
-     * @return
      */
-    boolean deleteAttach(CouchdbAttachBean couchdbAttachBean);
+    Response deleteAttach(String id, String rev);
 
     /**
      * 修改附件内容
@@ -40,7 +30,7 @@ public interface ICouchdbService {
      * @param type
      * @return
      */
-    String updateAttach(CouchdbAttachBean couchdbAttachBean, String value, String type);
+    //String updateAttach(CouchdbAttachBean couchdbAttachBean, String value, String type);
 
     /**
      * 获取文档对象
@@ -48,7 +38,7 @@ public interface ICouchdbService {
      * @param couchdbAttachBean
      * @return
      */
-    Document getDocumentByIdAndRev(CouchdbAttachBean couchdbAttachBean);
+    //Document getDocumentByIdAndRev(CouchdbAttachBean couchdbAttachBean);
 
     /**
      * 获取附件对象
@@ -56,6 +46,5 @@ public interface ICouchdbService {
      * @param couchdbAttachBean
      * @return
      */
-    Attachment getAttachmentByIdAndRev(CouchdbAttachBean couchdbAttachBean);
-
+    //Attachment getAttachmentByIdAndRev(CouchdbAttachBean couchdbAttachBean);
 }

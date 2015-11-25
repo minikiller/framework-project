@@ -1,33 +1,62 @@
 package cn.com.rexen.couchdb.rest;
 
 import cn.com.rexen.core.api.biz.JsonStatus;
-import cn.com.rexen.core.util.Assert;
-import cn.com.rexen.couchdb.api.biz.ICouchdbAttachBeanService;
+import cn.com.rexen.couchdb.api.biz.ICouchdbService;
 import org.apache.camel.Exchange;
-import org.apache.camel.Message;
 import org.apache.camel.Processor;
+import org.apache.camel.util.ObjectHelper;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload.servlet.ServletRequestContext;
+import org.lightcouch.Response;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.InputStream;
+import java.util.List;
 
 /**
  * 处理附件，写入到couchdb
  */
 public class AttachmentProcessor implements Processor {
-    private ICouchdbAttachBeanService couchdbAttachBeanService;
+    private ICouchdbService couchdbService;
     private JsonStatus jsonStatus = null;
-
-    public void setCouchdbAttachBeanService(ICouchdbAttachBeanService couchdbAttachBeanService) {
-        this.couchdbAttachBeanService = couchdbAttachBeanService;
-    }
+    private ServletFileUpload uploader = new ServletFileUpload(new DiskFileItemFactory());
 
     @Override
     public void process(Exchange exchange) throws Exception {
-
         try {
-            Message message = exchange.getIn();
-            FileItem item = (FileItem) message.getBody();
-            String main_id = exchange.getIn().getHeader(Const.MAIN_ID, String.class);
-            Assert.notNull(main_id);
-            couchdbAttachBeanService.saveAttach(new Long(main_id), item);
+            HttpServletRequest request = ObjectHelper.cast(HttpServletRequest.class,
+                    exchange.getIn().getHeader(Exchange.HTTP_SERVLET_REQUEST));
+            if (!ServletFileUpload.isMultipartContent(request)) {
+                throw new RuntimeException("Invalid Multipart Content request!");
+            }
+
+            ServletRequestContextWrapper wrapper = new ServletRequestContextWrapper(request);
+            wrapper.setInputStream(exchange.getIn().getBody(InputStream.class));
+            List<FileItem> items = uploader.parseRequest(wrapper);
+            if (items.isEmpty()) {
+                throw new RuntimeException("Invalid Multipart/form-data Content, file item is empty!");
+            }
+
+            FileItem fileItem = null;
+
+            if (items.size() == 1) {
+                fileItem = items.get(0);
+            }
+
+            if (fileItem != null) {
+                try {
+                    String fileName = fileItem.getName();
+                    //注意：获取内容转换成字符串的时候，必须用这种方式
+                    Response response = couchdbService.addAttachment(Base64.encodeBase64String(fileItem.get()),
+                            fileName, fileItem.getContentType());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
             jsonStatus = JsonStatus.successResult("上传文件成功！");
             exchange.getIn().setBody(jsonStatus);
         } catch (Exception e) {
@@ -35,7 +64,32 @@ public class AttachmentProcessor implements Processor {
             exchange.getOut().setBody(jsonStatus);
             e.printStackTrace();
         }
+    }
 
-//        System.out.println(message);
+    public ICouchdbService getCouchdbService() {
+        return couchdbService;
+    }
+
+    public void setCouchdbService(ICouchdbService couchdbService) {
+        this.couchdbService = couchdbService;
+    }
+
+
+    public static final class ServletRequestContextWrapper extends ServletRequestContext {
+
+        public InputStream inputStream;
+
+        public ServletRequestContextWrapper(HttpServletRequest request) {
+            super(request);
+        }
+
+        @Override
+        public InputStream getInputStream() {
+            return inputStream;
+        }
+
+        public void setInputStream(InputStream inputStream) {
+            this.inputStream = inputStream;
+        }
     }
 }

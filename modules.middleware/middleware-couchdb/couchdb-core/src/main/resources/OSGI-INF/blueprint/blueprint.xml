@@ -3,22 +3,8 @@
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0
            http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
 
-
-    <service id="couchdbAttachBeanService" interface="cn.com.rexen.couchdb.api.biz.ICouchdbAttachBeanService"
-             ref="couchdbAttachBeanServiceImpl">
-    </service>
-
-    <bean id="couchdbAttachBeanServiceImpl" class="cn.com.rexen.couchdb.core.biz.CouchdbAttachBeanServiceImpl">
-        <property name="dao" ref="couchdbAttachBeanDao"/>
-        <property name="couchdbService" ref="couchdbServiceImpl"/>
-    </bean>
-
-    <reference id="couchdbAttachBeanDao" interface="cn.com.rexen.couchdb.api.dao.ICouchdbAttachBeanDao"/>
-
-    <service id="couchdbService" interface="cn.com.rexen.couchdb.api.biz.ICouchdbService" ref="couchdbServiceImpl">
-    </service>
-
     <bean id="couchdbServiceImpl" class="cn.com.rexen.couchdb.core.biz.CouchdbServiceImpl">
     </bean>
 
+    <service id="couchdbService" interface="cn.com.rexen.couchdb.api.biz.ICouchdbService" ref="couchdbServiceImpl"/>
 </blueprint>

@@ -1,9 +1,0 @@
-#-----------------------------------------------------------------
-# Use this file to add customized Bnd instructions for the bundle
-#-----------------------------------------------------------------
-
-#Bundle-Activator: ${bundle.namespace}.internal.ExampleActivator
-Meta-Persistence: META-INF/persistence.xml
-Import-Package:*
-JPA-PersistenceUnits:couchdb-cm
-Bundle-Category: Rexen Kalix Attachment

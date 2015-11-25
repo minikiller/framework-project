@@ -149,18 +149,28 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
         select.orderBy(criteriaBuilder.desc(root.get("creationDate")));
         return select;
     }
+
     @Override
     public CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(this.persistentClass);
         Root<T> root = criteriaQuery.from(this.persistentClass);
-        EntityType<T> contractBean_ = root.getModel(); //实体元数据
+        EntityType<T> bean_ = root.getModel(); //实体元数据
         List<Predicate> predicatesList = new ArrayList<Predicate>();
         Map<String, String> jsonMap = queryDTO.getJsonMap();
 
         for (Map.Entry<String, String> entry : jsonMap.entrySet()) {
-            SingularAttribute<T, String> contractNumber = (SingularAttribute<T, String>) contractBean_.getSingularAttribute(entry.getKey());
-            predicatesList.add(criteriaBuilder.like(root.get(contractNumber), "%" + entry.getValue() + "%"));
+            SingularAttribute<T, String> attribute = (SingularAttribute<T, String>) bean_.getSingularAttribute(entry.getKey());
+            String attrJavaTypeName = attribute.getJavaType().getName();
+            if (attrJavaTypeName.equals(String.class.getName())) {
+                predicatesList.add(criteriaBuilder.like(root.get(attribute), "%" + entry.getValue() + "%"));
+            } else if (attrJavaTypeName.equals(long.class.getName()) || attrJavaTypeName.equals(Long.class.getName())) {
+                predicatesList.add(criteriaBuilder.equal(root.get(attribute), new Long(entry.getValue())));
+            } else if (attrJavaTypeName.equals(int.class.getName()) || attrJavaTypeName.equals(Integer.class.getName())) {
+                predicatesList.add(criteriaBuilder.equal(root.get(attribute), new Integer(entry.getValue())));
+            } else if (attrJavaTypeName.equals(short.class.getName()) || attrJavaTypeName.equals(Short.class.getName())) {
+                predicatesList.add(criteriaBuilder.equal(root.get(attribute), new Short(entry.getValue())));
+            }
         }
 
         criteriaQuery.where(predicatesList.toArray(new Predicate[predicatesList.size()]));
@@ -216,11 +226,12 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
 
     /**
      * 获得结果集的总数
+     *
      * @param className
      * @param criteriaQuery
      * @return
      */
-    private Long getTotalCount(String className,CriteriaQuery criteriaQuery) {
+    private Long getTotalCount(String className, CriteriaQuery criteriaQuery) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Long> countQuery = criteriaBuilder.createQuery(Long.class);
         countQuery.where(criteriaQuery.getRestriction());
@@ -365,6 +376,7 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
         jsonData.setData(query.getResultList());
         return jsonData;
     }
+
     private Query createNativeQuery(String sql, Class cls, Object[] parameter) {
         Query queryObject = entityManager.createNativeQuery(sql, cls);
         if (parameter != null) {

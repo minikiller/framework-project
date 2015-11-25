@@ -21,27 +21,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.com.rexen.kalix.middleware</groupId>
-            <artifactId>couchdb-entities</artifactId>
-            <version>${globle.version}</version>
-            <scope>provided</scope>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-api</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.servicemix.specs</groupId>
-            <artifactId>org.apache.servicemix.specs.jsr339-api-m10</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.apache.servicemix.bundles</groupId>
             <artifactId>org.apache.servicemix.bundles.lightcouch</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-        </dependency>
-
     </dependencies>
     <build>
 
