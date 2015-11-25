@@ -14,7 +14,7 @@
         </restConfiguration>
 
         <!-- defines the rest services using the context-path /area -->
-        <rest path="/demos" consumes="application/json" produces="application/json">
+        <rest path="/demos" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
             <description>demo rest service</description>
 
 

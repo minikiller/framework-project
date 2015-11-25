@@ -283,7 +283,7 @@
         <feature>camel-jackson</feature>
         <feature>camel-servlet</feature>
         <feature>camel-dozer</feature>
-        <!--<feature version="2.17.0">camel-swagger</feature>-->
+        <feature>camel-swagger-java</feature>
         <feature>camel-shiro</feature>
         <feature>shiro-core</feature>
         <!--<feature>shiro-web</feature>-->

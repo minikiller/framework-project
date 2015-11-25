@@ -170,16 +170,16 @@ public class UserBeanServiceImpl extends GenericBizServiceImpl<IUserBeanDao, Use
 
     public JsonData getAllUser() {
         JsonData jsonData=new JsonData();
-        List<UserBean> users = dao.getAll();
-        List<PersistentEntity> persistentEntities=new ArrayList<PersistentEntity>();
+        List<PersistentEntity> users = dao.findByNativeSql("select * from sys_user order by name asc", UserBean.class, null);
+        /*List<PersistentEntity> persistentEntities=new ArrayList<PersistentEntity>();
         if(users!=null&&users.size()>0){
             for(UserBean user:users){
                 if(user!=null) {
                     persistentEntities.add(user);
                 }
             }
-        }
-        jsonData.setData(persistentEntities);
+        }*/
+        jsonData.setData(users);
         jsonData.setTotalCount((long) users.size());
        return jsonData;
     }

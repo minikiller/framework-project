@@ -14,7 +14,7 @@
         </restConfiguration>
 
         <!-- defines the rest services using the context-path /user -->
-        <rest path="/users" consumes="application/json" produces="application/json">
+        <rest path="/users" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
             <description>User rest service</description>
 
             <!-- this is a rest GET to view an user by the given id -->

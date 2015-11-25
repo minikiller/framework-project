@@ -14,7 +14,7 @@
         </restConfiguration>
 
         <!-- defines the rest services using the context-path /dep -->
-        <rest path="/deps" consumes="application/json" produces="application/json">
+        <rest path="/deps" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
             <description>dep rest service</description>
 
             <!-- this is a rest GET to view an dep by the given id -->

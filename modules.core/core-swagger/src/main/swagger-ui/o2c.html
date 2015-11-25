@@ -10,7 +10,12 @@
             function (key, value) {
                 return key === "" ? value : decodeURIComponent(value)
             }
-    ) : {};
+    ) : {}
+
+    if (window.opener.swaggerUi.tokenUrl)
+        window.opener.processOAuthCode(qp);
+    else
     window.opener.onOAuthComplete(qp);
+
     window.close();
 </script>
