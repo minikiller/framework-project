@@ -38,7 +38,6 @@ install -s mvn:org.postgresql/postgresql/9.4-1202-jdbc41
 
 ls EntityManagerFactory
 
-# 总体架构图
-## Extensions
+## 总体架构图
 
-![Extensions Tab Screenshot](https://github.com/danielpacak/osgi-enterprise-webconsole/raw/master/README/osgi-web-console-extensions-tab.png)
+![Extensions Tab Screenshot](https://raw.githubusercontent.com/sunlingfeng-rexen/framework-project/master/construct.png)
