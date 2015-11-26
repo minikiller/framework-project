@@ -27,8 +27,10 @@ public class AttachmentProcessor implements Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
         try {
-            HttpServletRequest request = ObjectHelper.cast(HttpServletRequest.class,
-                    exchange.getIn().getHeader(Exchange.HTTP_SERVLET_REQUEST));
+            HttpServletRequest request = ObjectHelper.cast(HttpServletRequest.class, exchange.getIn().getHeader(Exchange.HTTP_SERVLET_REQUEST));
+
+            request.setCharacterEncoding("utf-8");
+
             if (!ServletFileUpload.isMultipartContent(request)) {
                 throw new RuntimeException("Invalid Multipart Content request!");
             }
@@ -46,6 +48,7 @@ public class AttachmentProcessor implements Processor {
                 fileItem = items.get(0);
             }
 
+
             if (fileItem != null) {
                 try {
                     String fileName = fileItem.getName();
@@ -59,6 +62,7 @@ public class AttachmentProcessor implements Processor {
 
             jsonStatus = JsonStatus.successResult("上传文件成功！");
             exchange.getIn().setBody(jsonStatus);
+            exchange.getIn().setHeader("Content-Type", "text/xml;charset=UTF-8");
         } catch (Exception e) {
             jsonStatus = JsonStatus.failureResult("上传文件失败！异常为{" + e.toString() + "}");
             exchange.getOut().setBody(jsonStatus);
