@@ -37,3 +37,8 @@ install -s mvn:org.postgresql/postgresql/9.4-1202-jdbc41
 # 查看jpa是否安装成功
 
 ls EntityManagerFactory
+
+# 总体架构图
+## Extensions
+
+![Extensions Tab Screenshot](https://github.com/danielpacak/osgi-enterprise-webconsole/raw/master/README/osgi-web-console-extensions-tab.png)
