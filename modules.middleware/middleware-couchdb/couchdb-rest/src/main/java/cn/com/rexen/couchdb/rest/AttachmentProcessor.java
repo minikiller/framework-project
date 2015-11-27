@@ -6,14 +6,18 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.util.ObjectHelper;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.binary.Base64OutputStream;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.servlet.ServletRequestContext;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.lightcouch.Response;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 /**
@@ -29,11 +33,11 @@ public class AttachmentProcessor implements Processor {
         try {
             HttpServletRequest request = ObjectHelper.cast(HttpServletRequest.class, exchange.getIn().getHeader(Exchange.HTTP_SERVLET_REQUEST));
 
-            request.setCharacterEncoding("utf-8");
-
             if (!ServletFileUpload.isMultipartContent(request)) {
                 throw new RuntimeException("Invalid Multipart Content request!");
             }
+
+            uploader.setHeaderEncoding("utf-8");
 
             ServletRequestContextWrapper wrapper = new ServletRequestContextWrapper(request);
             wrapper.setInputStream(exchange.getIn().getBody(InputStream.class));
@@ -48,12 +52,21 @@ public class AttachmentProcessor implements Processor {
                 fileItem = items.get(0);
             }
 
+            Response response = null;
+
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            OutputStream out = new Base64OutputStream(stream);
+            IOUtils.copy(fileItem.getInputStream(), out);
+
+            String base64Str = stream.toString();
+            fileItem.getInputStream().close();
+            out.close();
 
             if (fileItem != null) {
                 try {
                     String fileName = fileItem.getName();
-                    //注意：获取内容转换成字符串的时候，必须用这种方式
-                    Response response = couchdbService.addAttachment(Base64.encodeBase64String(fileItem.get()),
+
+                    response = couchdbService.addAttachment(Base64.encodeBase64String(fileItem.get()),
                             fileName, fileItem.getContentType());
                 } catch (Exception e) {
                     e.printStackTrace();
