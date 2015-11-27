@@ -1,21 +1,22 @@
 \<?xml version="1.0" encoding="UTF-8"?>
-\<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-             xsi:schemaLocation="
-        http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd
-    ">
+\<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
     \<persistence-unit transaction-type="JTA" name="<pomName>-cm">
-        \<provider>org.hibernate.jpa.HibernatePersistenceProvider\</provider>
-        \<jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=jdbc/ds)
-        \</jta-data-source>
+        \<provider>org.apache.openjpa.persistence.PersistenceProviderImpl\</provider>
+        \<non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=${db.datasource})
+        \</non-jta-data-source>
         \<class>cn.com.rexen.core.api.persistence.PersistentEntity\</class>
         \<class><packageName>.entities.<beanName>Bean\</class>
         \<properties>
-            \<property name="hibernate.hbm2ddl.auto" value="update"/>
-            \<property name="hibernate.archive.autodetection" value="class"/>
-            \<property name="hibernate.id.new_generator_mappings" value="true"/>
-            \<property name="hibernate.cache.use_second_level_cache" value="false"/>
-            \<property name="hibernate.show_sql" value="true"/>
+            \<property name="openjpa.BrokerImpl" value="non-finalizing"/>
+            \<property name="openjpa.Sequence" value="table(Table=OPENJPASEQ, Increment=100)"/>
+            \<property name="openjpa.jdbc.UpdateManager"
+                      value="org.apache.openjpa.jdbc.kernel.BatchingConstraintUpdateManager"/>
+
+            \<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema"/>
+            \<property name="openjpa.jdbc.DBDictionary" value="postgres"/>
+            \<property name="openjpa.Log" value="SQL=Info"/>
+            \<property name="openjpa.ConnectionFactoryProperties" value="PrintParameters=true"/>
+            \<property name="openjpa.RuntimeUnenhancedClasses" value="supported"/>
         \</properties>
     \</persistence-unit>
 \</persistence>

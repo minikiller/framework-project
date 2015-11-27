@@ -24,40 +24,35 @@ Ext.define('<extjsPrefix>.view.<beanName>Grid', {
 
     //todo 在此修改grid显示列
     columns: {
-        defaults: {flex: 1},
+        defaults: {flex: 1,renderer: 'addTooltip'},
         items: [
             {
                 xtype: "rownumberer",
                 text: "行号",
                 width: 50,
-                align: 'center'
+                align: 'center',
+                renderer:this.update
             },
             {
                 text: '编号',
                 dataIndex: 'id',
                 hidden: true,
-                flex: 1
             }, {
                 text: '标题',
                 dataIndex: 'title',
-                flex: 1
             }, {
                 text: '名称',
                 dataIndex: 'name',
-                flex: 1
             },
             {
                 text: '内容',
                 dataIndex: 'content',
-                flex: 3
             }, {
                 text: '发布人',
                 dataIndex: 'publishPeople',
-                flex: 1
             }, {
                 text: '发布时间',
                 dataIndex: 'publishDate',
-                flex: 1,
                 xtype: 'datecolumn',
                 format: 'Y-m-d'
             },

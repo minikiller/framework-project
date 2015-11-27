@@ -2,8 +2,6 @@ package <packageName>.entities;
 
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -20,8 +18,6 @@ import java.util.Date;
  */
  //todo 修改模型定义
 @Entity
-@DynamicInsert
-@DynamicUpdate
 @Table(name = "roffice_<pomName>")
 public class <beanName>Bean extends PersistentEntity {
     private String name;//项目名称

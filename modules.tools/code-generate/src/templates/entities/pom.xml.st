@@ -27,8 +27,12 @@
             \<artifactId>org.apache.servicemix.specs.jsr303-api-1.0.0\</artifactId>
         \</dependency>
         \<dependency>
-            \<groupId>org.hibernate.javax.persistence\</groupId>
-            \<artifactId>hibernate-jpa-2.1-api\</artifactId>
+            \<groupId>org.apache.geronimo.specs\</groupId>
+            \<artifactId>geronimo-jpa_2.0_spec\</artifactId>
+        \</dependency>
+        \<dependency>
+            \<groupId>org.apache.openjpa\</groupId>
+            \<artifactId>openjpa\</artifactId>
         \</dependency>
         \<dependency>
             \<groupId>com.fasterxml.jackson.core\</groupId>
@@ -41,7 +45,55 @@
     \</dependencies>
     \<build>
         \<plugins>
-        \</plugins>
+                    \<plugin>
+                        \<groupId>org.apache.maven.plugins\</groupId>
+                        \<artifactId>maven-antrun-plugin\</artifactId>
+                        \<executions>
+                            \<execution>
+                                \<phase>compile\</phase>
+                                \<configuration>
+                                    \<tasks>
+                                        \<path id="enhance.path.ref">
+                                            \<fileset dir="${project.build.outputDirectory}">
+                                                \<include name="*Bean*/*.class"/>
+                                            \</fileset>
+                                        \</path>
+                                        \<pathconvert property="enhance.files" refid="enhance.path.ref" pathsep=" "/>
+                                        \<java classname="org.apache.openjpa.enhance.PCEnhancer">
+                                            \<arg line="-p persistence.xml"/>
+                                            \<arg line="${enhance.files}"/>
+                                            \<classpath>
+                                                \<path refid="maven.dependency.classpath"/>
+                                                \<path refid="maven.compile.classpath"/>
+                                            \</classpath>
+                                        \</java>
+                                    \</tasks>
+                                \</configuration>
+                                \<goals>
+                                    \<goal>run\</goal>
+                                \</goals>
+                            \</execution>
+                            \<execution>
+                                \<id>deploy\</id>
+                                \<phase>install\</phase>
+                                \<goals>
+                                    \<goal>run\</goal>
+                                \</goals>
+                                \<configuration>
+                                    \<target>
+                                        \<copy file="target/${project.artifactId}-${project.version}.jar"
+                                              todir="${karaf.path}"/>
+                                    \</target>
+                                \</configuration>
+                            \</execution>
+                        \</executions>
+                    \</plugin>
+                    \<plugin>
+                        \<groupId>org.apache.openjpa\</groupId>
+                        \<artifactId>openjpa-maven-plugin\</artifactId>
+                        \<version>2.3.0\</version>
+                    \</plugin>
+                \</plugins>
     \</build>
 
 \</project>
