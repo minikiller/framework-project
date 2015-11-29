@@ -7,7 +7,7 @@
 
 
     <reference id="attachmentBeanService" interface="cn.com.rexen.attachment.api.biz.IAttachmentBeanService"/>
-    <camelContext id="attachment-rest-attachment" xmlns="http://camel.apache.org/schema/blueprint">
+    <camelContext id="attachmentCamel" xmlns="http://camel.apache.org/schema/blueprint">
         <restConfiguration component="servlet" bindingMode="json" contextPath="/kalix/camel/rest" host="localhost"
                            port="8181">
         </restConfiguration>

@@ -20,7 +20,7 @@ public interface ICouchdbService {
     /**
      * 移除附件
      */
-    Response deleteAttach(String id, String rev);
+    JsonStatus deleteAttach(String id, String rev);
 
     /**
      * 修改附件内容
@@ -47,4 +47,10 @@ public interface ICouchdbService {
      * @return
      */
     //Attachment getAttachmentByIdAndRev(CouchdbAttachBean couchdbAttachBean);
+
+    /**
+     *
+     * @return
+     */
+    String getDBUrl();
 }

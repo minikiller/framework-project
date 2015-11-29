@@ -31,7 +31,6 @@ public class CouchdbServiceImpl implements ICouchdbService {
         Attachment attachment = new Attachment();
         Document document = new Document();
         Response response = null;
-
         try {
             attachment.setContentType(type);
             attachment.setData(value);
@@ -50,16 +49,24 @@ public class CouchdbServiceImpl implements ICouchdbService {
      * @return
      */
     @Override
-    public Response deleteAttach(String id, String rev) {
+    public JsonStatus deleteAttach(String id, String rev) {
         Response response = null;
 
         try{
             response = dbClient.remove(id, rev);
+
+            return JsonStatus.successResult("");
         }catch (Exception e){
             e.printStackTrace();
-        }
 
-        return response;
+            return JsonStatus.failureResult("");
+
+        }
+    }
+
+    @Override
+    public String getDBUrl() {
+        return dbClient.getDBUri().toString();
     }
 
 //    @Override

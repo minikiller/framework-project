@@ -11,7 +11,7 @@
         <property name="couchdbService" ref="couchdbService"/>
     </bean>
 
-    <camelContext id="upload-camel" xmlns="http://camel.apache.org/schema/blueprint">
+    <camelContext id="uploadCamel" xmlns="http://camel.apache.org/schema/blueprint">
         <!-- 提供附件上传服务-->
         <route id="upload-route" streamCache="true">
             <from uri="servlet:///upload?httpMethodRestrict=POST"/>

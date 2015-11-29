@@ -21,7 +21,7 @@ public class AttachmentBean extends PersistentEntity {
     private long attachmentSize;            //附件大小
     private String attachmentPath;          //附件路径
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date uploadDate;                //上传日期
+    private Date uploadDate=new Date();                //上传日期
 
     public long getMainId() {
         return mainId;

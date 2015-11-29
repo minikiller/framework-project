@@ -1,11 +1,10 @@
 package cn.com.rexen.couchdb.rest;
 
-import cn.com.rexen.core.api.biz.JsonStatus;
+import cn.com.rexen.couchdb.api.biz.CouchdbJsonStatus;
 import cn.com.rexen.couchdb.api.biz.ICouchdbService;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.util.ObjectHelper;
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Base64OutputStream;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -25,8 +24,8 @@ import java.util.List;
  */
 public class AttachmentProcessor implements Processor {
     private ICouchdbService couchdbService;
-    private JsonStatus jsonStatus = null;
     private ServletFileUpload uploader = new ServletFileUpload(new DiskFileItemFactory());
+    private CouchdbJsonStatus jsonStatus;
 
     @Override
     public void process(Exchange exchange) throws Exception {
@@ -54,30 +53,41 @@ public class AttachmentProcessor implements Processor {
 
             Response response = null;
 
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            OutputStream out = new Base64OutputStream(stream);
-            IOUtils.copy(fileItem.getInputStream(), out);
-
-            String base64Str = stream.toString();
-            fileItem.getInputStream().close();
-            out.close();
+            //exchange.getIn().setHeader("Content-Type", "application/json;charset=utf-8");
+            exchange.getIn().setHeader("Content-Type", "text/html;charset=utf-8");
 
             if (fileItem != null) {
+                if(fileItem.getSize()>(10*1024*1024)){
+                    jsonStatus = CouchdbJsonStatus.failureResult("文件过大（上限10MB）！");
+                    exchange.getIn().setBody(jsonStatus);
+
+                    return;
+                }
+
                 try {
                     String fileName = fileItem.getName();
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    OutputStream out = new Base64OutputStream(stream);
+                    IOUtils.copy(fileItem.getInputStream(), out);
+                    String base64Str = stream.toString();
+                    fileItem.getInputStream().close();
+                    out.close();
 
-                    response = couchdbService.addAttachment(Base64.encodeBase64String(fileItem.get()),
+                    response = couchdbService.addAttachment(base64Str,
                             fileName, fileItem.getContentType());
+                    jsonStatus = CouchdbJsonStatus.successResult("上传文件成功！", response.getId(), response.getRev(), fileName, fileItem.getContentType(), fileItem.getSize());
+                    jsonStatus.setAttachmentPath(couchdbService.getDBUrl()+response.getId()+"/"+fileName);
+                    exchange.getIn().setBody(jsonStatus);
                 } catch (Exception e) {
                     e.printStackTrace();
+                    jsonStatus = CouchdbJsonStatus.failureResult("上传文件失败！异常为{" + e.toString() + "}");
                 }
             }
 
-            jsonStatus = JsonStatus.successResult("上传文件成功！");
-            exchange.getIn().setBody(jsonStatus);
-            exchange.getIn().setHeader("Content-Type", "text/xml;charset=UTF-8");
+
+
         } catch (Exception e) {
-            jsonStatus = JsonStatus.failureResult("上传文件失败！异常为{" + e.toString() + "}");
+            jsonStatus = CouchdbJsonStatus.failureResult("上传文件失败！异常为{" + e.toString() + "}");
             exchange.getOut().setBody(jsonStatus);
             e.printStackTrace();
         }
