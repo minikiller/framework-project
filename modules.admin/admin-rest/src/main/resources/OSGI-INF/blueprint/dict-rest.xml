@@ -26,11 +26,8 @@
              knows the url to the REST services.
              Notice: This is optional, but needed if the RestRegistry should enlist accurate information.
              You can access the RestRegistry from JMX at runtime -->
-        <restConfiguration component="servlet" bindingMode="json"
-                           contextPath="/kalix/camel/rest" host="localhost"
-                           port="8181">
-
-        <dataFormatProperty key="prettyPrint" value="true"/>
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="true"/>
         </restConfiguration>
 
         <!-- defines the rest services using the context-path /dicts -->

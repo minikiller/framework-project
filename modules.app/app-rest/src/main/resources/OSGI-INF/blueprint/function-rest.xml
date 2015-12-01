@@ -6,11 +6,8 @@
     <reference id="functionService" interface="cn.com.rexen.app.api.biz.IFunctionBeanService"/>
     <camelContext id="functionCamel" xmlns="http://camel.apache.org/schema/blueprint">
 
-        <restConfiguration component="servlet" bindingMode="json"
-                           contextPath="/kalix/camel/rest" host="localhost"
-                           port="8181">
-
-        <dataFormatProperty key="prettyPrint" value="true"/>
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="true"/>
         </restConfiguration>
 
         <!-- defines the rest services using the context-path /function -->

@@ -5,12 +5,12 @@
        http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
-
     <reference id="attachmentBeanService" interface="cn.com.rexen.attachment.api.biz.IAttachmentBeanService"/>
     <camelContext id="attachmentCamel" xmlns="http://camel.apache.org/schema/blueprint">
-        <restConfiguration component="servlet" bindingMode="json" contextPath="/kalix/camel/rest" host="localhost"
-                           port="8181">
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="true"/>
         </restConfiguration>
+
         <rest path="/attachments" consumes="application/json" produces="application/json">
             <get id="route-getAllAttachment" outType="cn.com.rexen.core.api.persistence.JsonData">
                 <description>Find all attachments</description>

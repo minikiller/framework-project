@@ -6,11 +6,8 @@
     <reference id="depService" interface="cn.com.rexen.admin.api.biz.IDepartmentBeanService"/>
     <camelContext id="depCamel" xmlns="http://camel.apache.org/schema/blueprint">
 
-        <restConfiguration component="servlet" bindingMode="json"
-                           contextPath="/kalix/camel/rest" host="localhost"
-                           port="8181">
-
-        <dataFormatProperty key="prettyPrint" value="true"/>
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="true"/>
         </restConfiguration>
 
         <!-- defines the rest services using the context-path /dep -->
@@ -68,7 +65,7 @@
             </get>
 
             <!-- this is a rest GET to view an user by the given id -->
-            <get id="route-saveDepartmentUsers" uri="/departmentUsers"  outType="cn.com.rexen.core.api.biz.JsonStatus">
+            <get id="route-saveDepartmentUsers" uri="/departmentUsers" outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>save departmentUsers</description>
                 <to uri="bean:depService?method=saveDepartmentUsers(${header.depId},${header.userIds})"/>
             </get>

@@ -8,8 +8,8 @@
     <reference id="couchdbServiceForDelete" interface="cn.com.rexen.couchdb.api.biz.ICouchdbService"/>
 
     <camelContext id="couchdbCamel" xmlns="http://camel.apache.org/schema/blueprint">
-        <restConfiguration component="servlet" bindingMode="json" contextPath="/kalix/camel/rest" host="localhost"
-                           port="8181">
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="true"/>
         </restConfiguration>
         <rest path="/couchdb" consumes="application/json" produces="application/json">
             <delete id="route-removeCouchdb"
