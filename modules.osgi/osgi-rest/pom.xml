@@ -7,14 +7,15 @@
         <groupId>cn.com.rexen.kalix.osgi</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
-    <name>Kalix :: OSGI - API</name>
-
-    <artifactId>osgi-api</artifactId>
+    <name>Kalix :: OSGI - Rest</name>
+    <groupId>cn.com.rexen.kalix.osgi</groupId>
+    <artifactId>osgi-rest</artifactId>
     <packaging>bundle</packaging>
-    <properties>
-        <bundle.symbolicName>cn.com.rexen.kalix.osgi.api</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
-    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.osgi</groupId>
+            <artifactId>osgi-api</artifactId>
+        </dependency>
+    </dependencies>
 </project>

@@ -9,10 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.com.rexen.kalix.osgi</groupId>
     <artifactId>osgi-core</artifactId>
     <packaging>bundle</packaging>
     <name>Kalix :: OSGI - Core</name>
+
+    <properties>
+        <bundle.symbolicName>cn.com.rexen.kalix.osgi.core</bundle.symbolicName>
+        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>cn.com.rexen.kalix.osgi</groupId>

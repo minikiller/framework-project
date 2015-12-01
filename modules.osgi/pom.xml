@@ -12,6 +12,7 @@
     <modules>
         <module>osgi-api</module>
         <module>osgi-core</module>
+        <module>osgi-rest</module>
     </modules>
     <groupId>cn.com.rexen.kalix.osgi</groupId>
     <artifactId>modules.osgi</artifactId>

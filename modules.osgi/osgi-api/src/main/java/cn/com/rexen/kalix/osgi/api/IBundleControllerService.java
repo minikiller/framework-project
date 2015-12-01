@@ -4,7 +4,7 @@ package cn.com.rexen.kalix.osgi.api;
  * Created by lenovo on 2015/11/30.
  */
 public interface IBundleControllerService {
-    void start(Class cls);
+    void start(String id);
 
-    void stop(Class Cls);
+    void stop(String id);
 }

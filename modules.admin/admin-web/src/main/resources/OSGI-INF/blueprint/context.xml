@@ -20,10 +20,12 @@
             <bean class="cn.com.rexen.core.web.impl.BodyImpl"/>
         </reference-listener>
     </reference-list>-->
-
+    <bean id="adminApplicationImpl" class="cn.com.rexen.admin.web.impl.app.AdminApplicationImpl"/>
     <!--系统应用-->
-    <service interface="cn.com.rexen.core.api.web.IApplication">
-        <bean class="cn.com.rexen.admin.web.impl.app.AdminApplicationImpl"/>
+    <service interface="cn.com.rexen.core.api.web.IApplication" ref="adminApplicationImpl">
+        <service-properties>
+            <entry key="id" value="admin"/>
+        </service-properties>
     </service>
 
 
