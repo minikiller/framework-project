@@ -1,40 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--suppress ALL -->
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>cn.com.rexen.kalix.admin</groupId>
-        <artifactId>modules.admin</artifactId>
+        <artifactId>modules.osgi</artifactId>
+        <groupId>cn.com.rexen.kalix.osgi</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
-
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>admin-web</artifactId>
+
+    <artifactId>osgi-core</artifactId>
     <packaging>bundle</packaging>
-    <name>System :: Admin - Web</name>
-    <description>Kalix Admin Web</description>
+    <name>Kalix :: OSGI - Core</name>
 
     <properties>
-        <bundle.symbolicName>cn.com.rexen.admin.web</bundle.symbolicName>
+        <bundle.symbolicName>cn.com.rexen.kalix.osgi.core</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
     </properties>
 
-
     <dependencies>
         <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.enterprise</artifactId>
+            <groupId>cn.com.rexen.kalix.osgi</groupId>
+            <artifactId>osgi-api</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>cn.com.rexen.kalix.demo</groupId>
+            <artifactId>demo-web</artifactId>
+            <version>${globle.version}</version>
+        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
-
-
 </project>
