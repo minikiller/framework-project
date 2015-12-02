@@ -26,7 +26,7 @@
         <module>core-impl</module>
         <module>core-web</module>
         <module>core-rest</module>
-        <module>core-swagger</module>
+        <!--<module>core-swagger</module>-->
         <module>core-security</module>
         <!--<module>core-jsonb</module>-->
     </modules>

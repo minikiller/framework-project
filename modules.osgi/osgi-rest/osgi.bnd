@@ -1,3 +1,5 @@
 #-----------------------------------------------------------------
 # Use this file to add customized Bnd instructions for the bundle
 #-----------------------------------------------------------------
+
+#Import-Package:cn.com.rexen.kalix.osgi.api,*

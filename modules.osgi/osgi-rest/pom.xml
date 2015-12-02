@@ -12,6 +12,12 @@
     <groupId>cn.com.rexen.kalix.osgi</groupId>
     <artifactId>osgi-rest</artifactId>
     <packaging>bundle</packaging>
+
+    <properties>
+        <bundle.symbolicName>cn.com.rexen.kalix.osgi.rest</bundle.symbolicName>
+        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>cn.com.rexen.kalix.osgi</groupId>
