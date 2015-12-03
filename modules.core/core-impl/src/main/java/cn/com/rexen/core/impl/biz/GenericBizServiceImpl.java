@@ -254,6 +254,18 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
         return dao.getAll();
     }
 
+    /**
+     * 用于报表的查询，返回全部数据
+     *
+     * @return
+     */
+    @Override
+    public JsonData getAllEntityforReport(String jsonStr) {
+        QueryDTO queryDto = new QueryDTO();
+        queryDto.setJsonMap(SerializeUtil.json2Map(jsonStr));
+        return dao.getAll(dao.buildCriteriaQuery(queryDto));
+    }
+
     @Override
     public TP getEntity(long entityId) {
         return (TP) dao.get(entityId);
@@ -262,7 +274,6 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
     /**
      * 具体的业务类必须调用该方法
      *
-
      * @param entityClassName 实体类的名字
      */
     public void init(String entityClassName) {

@@ -197,6 +197,21 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
     }
 
     @Override
+    public JsonData getAll(CriteriaQuery criteriaQuery) {
+        JsonData jsonData = new JsonData();
+        Class entityClass = null;
+        try {
+            entityClass = Class.forName(className);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        TypedQuery typedQuery = entityManager.createQuery(criteriaQuery);
+        jsonData.setTotalCount(getTotalCount(className, criteriaQuery));
+        jsonData.setData(typedQuery.getResultList());
+        return jsonData;
+    }
+
+    @Override
     public EntityManager getEntityManager() {
         return entityManager;
     }

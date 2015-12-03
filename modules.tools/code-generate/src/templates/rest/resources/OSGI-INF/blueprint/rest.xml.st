@@ -8,7 +8,7 @@
     
     \<camelContext id="<pomName>Camel" xmlns="http://camel.apache.org/schema/blueprint">
 
-        \<restConfiguration component="servlet" bindingMode="json" contextPath="/kalix/camel/rest" host="localhost" port="8181">
+        \<restConfiguration component="servlet" bindingMode="json">
             \<dataFormatProperty key="prettyPrint" value="true"/>
         \</restConfiguration>
 

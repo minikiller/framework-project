@@ -169,5 +169,12 @@ public interface IBizService<T extends PersistentEntity> extends IService {
 
     List getAllEntity();
 
+    /**
+     * 用于报表的查询，返回全部数据
+     *
+     * @return
+     */
+    JsonData getAllEntityforReport(String jsonStr);
+
     T getEntity(long entityId);
 }
