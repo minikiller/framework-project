@@ -1,12 +1,14 @@
 package cn.com.rexen.kalix.osgi.api;
 
+import java.util.Map;
+
 /**
  * @author chenyanxu
  */
 public interface IBundleService {
-    BundleJsonStatus start(String id);
+    Map start(String id);
 
-    BundleJsonStatus stop(String id);
+    Map stop(String id);
 
-    BundleJsonStatus getAppStatus(String appIds);//connect by '_'
+    Map getAppStatus(String appIds);//connect by '_'
 }
