@@ -9,9 +9,15 @@ import cn.com.rexen.core.api.web.model.BaseDTO;
 import cn.com.rexen.core.api.web.model.QueryDTO;
 import cn.com.rexen.core.util.Assert;
 import cn.com.rexen.core.util.SerializeUtil;
+import com.google.gson.Gson;
 import org.apache.log4j.Logger;
+import org.osgi.service.event.Event;
+import org.osgi.service.event.EventAdmin;
 
 import javax.transaction.Transactional;
+import java.lang.reflect.ParameterizedType;
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +34,18 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
     protected final Logger log = Logger.getLogger(getClass());
     protected T dao;
     protected String entityClassName;
+    private EventAdmin eventAdmin;
+
+    public GenericBizServiceImpl() {
+        Object obj = this.getClass().getGenericSuperclass();
+        ParameterizedType genericSuperclass = (ParameterizedType) this.getClass().getGenericSuperclass();
+        java.lang.reflect.Type type = genericSuperclass.getActualTypeArguments()[1];
+        if (type instanceof Class) {
+            this.entityClassName = ((Class<T>) type).getName();
+        } else if (type instanceof ParameterizedType) {
+            this.entityClassName = ((Class<T>) ((ParameterizedType) type).getRawType()).getName();
+        }
+    }
 
     public void setDao(T dao) {
         this.dao = dao;
@@ -61,12 +79,12 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
 
     @Override
     public void beforeDeleteEntity(Long id, JsonStatus status) {
-
+        postEvent(this.entityClassName.replace(".", "/") + "/before/delete", id);
     }
 
     @Override
     public void afterDeleteEntity(Long id, JsonStatus status) {
-
+        postEvent(this.entityClassName.replace(".", "/") + "/after/delete", id);
     }
 
     @Override
@@ -100,13 +118,13 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
     @Override
     @Transactional
     public void beforeSaveEntity(TP entity, JsonStatus status) {
-
+        postEvent(this.entityClassName.replace(".", "/") + "/before/save", entity);
     }
 
     @Override
     @Transactional
     public void afterSaveEntity(TP entity, JsonStatus status) {
-
+        postEvent(this.entityClassName.replace(".", "/") + "/after/save", entity);
     }
 
     @Override
@@ -141,12 +159,12 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
 
     @Override
     public void beforeUpdateEntity(TP entity, JsonStatus status) {
-
+        postEvent(this.entityClassName.replace(".", "/") + "/before/update", entity);
     }
 
     @Override
     public void afterUpdateEntity(TP entity, JsonStatus status) {
-
+        postEvent(this.entityClassName.replace(".", "/") + "/after/update", entity);
     }
 
     @Override
@@ -279,5 +297,27 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
     public void init(String entityClassName) {
         //this.dao = dao;
         this.entityClassName = entityClassName;
+    }
+
+    public void setEventAdmin(EventAdmin eventAdmin) {
+        this.eventAdmin = eventAdmin;
+    }
+
+//    private void postEvent(Long id) {
+//        Gson gson = new Gson();
+//        Dictionary properties = new Hashtable();
+//        properties.put("message", gson.toJson(id));
+//        Event event = new Event("cn/com/rexen/userlogin", properties);
+//        eventAdmin.postEvent(event);
+//    }
+
+    private void postEvent(String topic, Object obj) {
+        if (eventAdmin != null) {
+            Gson gson = new Gson();
+            Dictionary properties = new Hashtable();
+            properties.put("message", gson.toJson(obj));
+            Event event = new Event(topic, properties);
+            eventAdmin.postEvent(event);
+        }
     }
 }
