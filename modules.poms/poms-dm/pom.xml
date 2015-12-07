@@ -531,6 +531,11 @@
                 <artifactId>org.apache.aries.transaction.blueprint</artifactId>
                 <version>${aries.transaction.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.servicemix.bundles</groupId>
+                <artifactId>org.apache.servicemix.bundles.poi</artifactId>
+                <version>${excel.poi.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

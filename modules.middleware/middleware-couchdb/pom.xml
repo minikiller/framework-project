@@ -22,13 +22,6 @@
         <module>couchdb-rest</module>
     </modules>
 
-    <properties>
-        <bundle.symbolicName>cn.com.rexen.middleware.couchdb</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <junit.version>4.8.2</junit.version>
-        <httpclient.version>4.2.5</httpclient.version>
-    </properties>
     <name>Middleware :: Modules - CouchDB</name>
     <description>Modules CouchDB</description>
 

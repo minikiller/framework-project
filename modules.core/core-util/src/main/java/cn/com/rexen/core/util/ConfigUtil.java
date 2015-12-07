@@ -34,4 +34,16 @@ public class ConfigUtil {
         }
         return null;
     }
+
+    public static Dictionary<String, Object> getAllConfig(String configId) {
+        try {
+            ConfigurationAdmin configurationAdmin = JNDIHelper.getJNDIServiceForName(ConfigurationAdmin.class.getName());
+            Configuration config = configurationAdmin.getConfiguration(configId);
+            Dictionary<String, Object> dictionary = config.getProperties();
+            return dictionary;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
