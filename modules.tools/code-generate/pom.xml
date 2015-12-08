@@ -43,15 +43,15 @@
                     <inputDir>src/templates</inputDir>
                     <outputDir>${project.build.directory}/generate</outputDir>
                     <attributes>
-                        <beanName>WorkGroup</beanName>
-                        <packageName>cn.com.rexen.admin.workgroup</packageName>
+                        <beanName>Dict</beanName>
+                        <packageName>cn.com.rexen.admin.dict</packageName>
                         <parentPackageName>cn.com.rexen.kalix.admin</parentPackageName>
-                        <pomName>workgroup</pomName>
-                        <projectName>WorkGroup</projectName>
+                        <pomName>dict</pomName>
+                        <projectName>Dict</projectName>
                         <parentName>admin</parentName>
                         <versionName>1.0.0-SNAPSHOT</versionName>
-                        <module_Name>工作组</module_Name>
-                        <extjsPrefix>kalix.admin.workgroup</extjsPrefix>
+                        <module_Name>字典</module_Name>
+                        <extjsPrefix>kalix.admin.dict</extjsPrefix>
                     </attributes>
                     <sources>
                         <source>${basedir}/src/main/java</source>
