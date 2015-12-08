@@ -15,9 +15,14 @@
             <description>user rest service</description>
 
             <!-- this is a rest GET to find all user -->
-            <get id="route-getAllUser" outType="cn.com.rexen.core.api.persistence.JsonData">
+            <get id="route-getAllUserbyPage" outType="cn.com.rexen.core.api.persistence.JsonData">
                 <description>Find all Users</description>
                 <to uri="bean:userService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+            </get>
+
+            <get uri="/all" id="route-getAllUser" outType="cn.com.rexen.core.api.persistence.JsonData">
+                <description>Find all users for report</description>
+                <to uri="bean:userService?method=getAllEntityforReport(${header.jsonStr})"/>
             </get>
 
             <!-- this is a rest POST to create a user -->
