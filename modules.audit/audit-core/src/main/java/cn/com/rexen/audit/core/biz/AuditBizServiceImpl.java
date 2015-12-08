@@ -21,9 +21,7 @@ public abstract class AuditBizServiceImpl<T extends IGenericDao, TP extends Pers
     protected IAuditBeanService auditBeanService;
     protected IShiroService shiroService;
 
-
     public AuditBizServiceImpl() {
-
     }
 
     public void setAuditBeanService(IAuditBeanService auditBeanService) {
@@ -47,6 +45,7 @@ public abstract class AuditBizServiceImpl<T extends IGenericDao, TP extends Pers
         auditBean.setContent(AuditUtil.Match(entity, oldEntity, entityClassName));
 //        auditBean.setContent(AuditUtil.Match(oldEntity,entity));
         auditBeanService.saveEntity(auditBean);
+        super.beforeUpdateEntity(entity, status);
     }
 
     @Override
@@ -65,6 +64,7 @@ public abstract class AuditBizServiceImpl<T extends IGenericDao, TP extends Pers
         }
         auditBean.setActor(shiroService.getCurrentUserName());
         auditBeanService.saveEntity(auditBean);
+        super.beforeSaveEntity(entity, status);
     }
 
     @Override
@@ -77,6 +77,7 @@ public abstract class AuditBizServiceImpl<T extends IGenericDao, TP extends Pers
         auditBean.setActor(shiroService.getCurrentUserName());
         auditBean.setContent(dao.get(id).toString());
         auditBeanService.saveEntity(auditBean);
+        super.beforeDeleteEntity(id, status);
     }
 
     /**

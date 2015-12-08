@@ -1,21 +1,11 @@
 package cn.com.rexen.admin.persist.openjpa;
 
 import cn.com.rexen.admin.api.dao.IUserBeanDao;
-import cn.com.rexen.admin.dto.model.query.UserDTO;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.persistence.JsonData;
-import cn.com.rexen.core.api.web.model.QueryDTO;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-import javax.persistence.metamodel.EntityType;
-import javax.persistence.metamodel.SingularAttribute;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by dell on 14-1-16.
@@ -63,7 +53,7 @@ public class UserBeanDaoImpl extends BaseAdminDao<UserBean, Long> implements IUs
         this.update("update UserBean u set u.loginIp=?1, u.loginDate=?2 where u.id = ?3", loginIp, new Date(), id);
     }
 
-    @Override
+    /*@Override
     public CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO) {
         UserDTO userDTO = (UserDTO) queryDTO;
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -87,7 +77,7 @@ public class UserBeanDaoImpl extends BaseAdminDao<UserBean, Long> implements IUs
         criteriaQuery.where(predicatesList.toArray(new Predicate[predicatesList.size()]));
         CriteriaQuery select = criteriaQuery.select(from);
         return select;
-    }
+    }*/
 
 
 }

@@ -28,10 +28,11 @@
             <artifactId>gson</artifactId>
         </dependency>
 
-        <!--<dependency>
-            <groupId>org.apache.openjpa</groupId>
-            <artifactId>openjpa</artifactId>
-        </dependency>-->
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.compendium</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
@@ -42,17 +43,6 @@
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
 
-        <!--<dependency>
-            <groupId>org.wicketstuff</groupId>
-            <artifactId>wicketstuff-client-and-server-validation</artifactId>
-            <version>1.5.10</version>
-            <classifier>sources</classifier>
-        </dependency>-->
-        <!--<dependency>
-            <groupId>com.code-troopers</groupId>
-            <artifactId>wicket-jsr303-parsley</artifactId>
-            <version>0.2</version>
-        </dependency>-->
         <!--<dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
