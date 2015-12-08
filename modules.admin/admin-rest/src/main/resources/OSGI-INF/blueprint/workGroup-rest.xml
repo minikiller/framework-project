@@ -3,7 +3,7 @@
            xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
-    <reference id="workGroupService" interface="cn.com.rexen.admin.api.biz.IWorkGroupBeanService"/>
+    <reference id="workgroupService" interface="cn.com.rexen.admin.api.biz.IWorkGroupBeanService"/>
     <camelContext id="workGroupCamel" xmlns="http://camel.apache.org/schema/blueprint">
 
         <restConfiguration component="servlet" bindingMode="json">
@@ -14,54 +14,66 @@
         <rest path="/workGroups" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
             <description>workGroup rest service</description>
 
-            <!-- this is a rest PUT to create an workGroup -->
+            <!-- this is a rest GET to find all workgroup -->
+            <get id="route-getAllWorkGroupByPage" outType="cn.com.rexen.core.api.persistence.JsonData">
+                <description>Find all WorkGroups</description>
+                <to uri="bean:workgroupService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+            </get>
+
+            <!-- this is a rest POST to create a workgroup -->
             <post id="route-addWorkGroup" type="cn.com.rexen.admin.entities.WorkGroupBean"
                   outType="cn.com.rexen.core.api.biz.JsonStatus">
-                <description>Create a workGroup</description>
-                <to uri="bean:workGroupService?method=saveEntity"/>
+                <description>Create a WorkGroup</description>
+                <to uri="bean:workgroupService?method=saveEntity"/>
             </post>
 
-            <!-- this is a rest PUT to update an workGroup -->
-            <put id="route-updateWorkGroup" type="cn.com.rexen.admin.entities.WorkGroupBean"
+            <!-- this is a rest GET to view a workgroup by the given id -->
+            <get uri="/{id}" id="route-getWorkGroup" outType="cn.com.rexen.admin.entities.WorkGroupBean">
+                <description>Find WorkGroup by id</description>
+                <to uri="bean:workgroupService?method=getEntity(${header.id})"/>
+            </get>
+
+            <!-- this is a rest PUT to update a workgroup -->
+            <put uri="/{id}" id="route-updateWorkGroup" type="cn.com.rexen.admin.entities.WorkGroupBean"
                  outType="cn.com.rexen.core.api.biz.JsonStatus">
-                <description>Updates a workGroup</description>
-                <to uri="bean:workGroupService?method=updateEntity"/>
+                <description>Updates a WorkGroup</description>
+                <to uri="bean:workgroupService?method=updateEntity"/>
             </put>
 
-            <!-- this is a rest DELETE to delete an workGroup -->
-            <delete id="route-deleteWorkGroup" outType="cn.com.rexen.core.api.biz.JsonStatus">
-                <description>Delete a workGroup</description>
-                <to uri="bean:workGroupService?method=deleteEntity(${header.id})"/>
+            <!-- this is a rest DELETE to delete a workgroup -->
+            <delete uri="/{id}" id="route-deleteWorkGroup" type="cn.com.rexen.admin.entities.WorkGroupBean"
+                    outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Delete a WorkGroup</description>
+                <to uri="bean:workgroupService?method=removeEntity"/>
             </delete>
 
-            <!-- this is a rest GET to find all workGroups -->
-            <get id="route-getAllWorkGroup" outType="cn.com.rexen.core.api.persistence.JsonData">
-                <description>Find all workGroups</description>
-                <to uri="bean:workGroupService?method=getAllWorkGroup(${header.page},${header.limit})"/>
+            <get uri="/all" id="route-getAllWorkGroup" outType="cn.com.rexen.core.api.persistence.JsonData">
+                <description>Find all users for WorkGroup</description>
+                <to uri="bean:workgroupService?method=getAllEntityforReport(${header.jsonStr})"/>
             </get>
 
             <!-- this is a rest GET to view an user by the given id -->
             <get id="route-getUsersByWorkGroupId" uri="/workGroupUsers/users/{id}" outType="java.util.List">
                 <description>Find users by WorkGroup Id</description>
-                <to uri="bean:workGroupService?method=getUsersByWorkGroupId(${header.id})"/>
+                <to uri="bean:workgroupService?method=getUsersByWorkGroupId(${header.id})"/>
             </get>
 
             <!-- this is a rest GET to view an user by the given id -->
             <get id="route-getRolesByWorkGroupId" uri="/workGroupRoles/roles/{id}" outType="java.util.List">
                 <description>Find users by WorkGroup Id</description>
-                <to uri="bean:workGroupService?method=getRolesByWorkGroupId(${header.id})"/>
+                <to uri="bean:workgroupService?method=getRolesByWorkGroupId(${header.id})"/>
             </get>
 
             <!-- this is a rest GET to view an user by the given id -->
             <get id="route-saveWorkGroupUsers" uri="/workGroupUsers"   outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>save WorkGroupUsers</description>
-                <to uri="bean:workGroupService?method=saveWorkGroupUsers(${header.groupId},${header.userIds})"/>
+                <to uri="bean:workgroupService?method=saveWorkGroupUsers(${header.groupId},${header.userIds})"/>
             </get>
 
             <!-- this is a rest GET to view an user by the given id -->
             <get id="route-saveWorkGroupRoles" uri="/workGroupRoles"   outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>save WorkGroupUsers</description>
-                <to uri="bean:workGroupService?method=saveWorkGroupRoles(${header.groupId},${header.roleIds})"/>
+                <to uri="bean:workgroupService?method=saveWorkGroupRoles(${header.groupId},${header.roleIds})"/>
             </get>
 
         </rest>

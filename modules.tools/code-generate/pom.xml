@@ -43,15 +43,15 @@
                     <inputDir>src/templates</inputDir>
                     <outputDir>${project.build.directory}/generate</outputDir>
                     <attributes>
-                        <beanName>Role</beanName>
-                        <packageName>cn.com.rexen.admin.role</packageName>
+                        <beanName>WorkGroup</beanName>
+                        <packageName>cn.com.rexen.admin.workgroup</packageName>
                         <parentPackageName>cn.com.rexen.kalix.admin</parentPackageName>
-                        <pomName>role</pomName>
-                        <projectName>Role</projectName>
+                        <pomName>workgroup</pomName>
+                        <projectName>WorkGroup</projectName>
                         <parentName>admin</parentName>
                         <versionName>1.0.0-SNAPSHOT</versionName>
-                        <module_Name>角色</module_Name>
-                        <extjsPrefix>kalix.admin.role</extjsPrefix>
+                        <module_Name>工作组</module_Name>
+                        <extjsPrefix>kalix.admin.workgroup</extjsPrefix>
                     </attributes>
                     <sources>
                         <source>${basedir}/src/main/java</source>
