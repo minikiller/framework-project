@@ -5,45 +5,52 @@
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
     <reference id="roleService" interface="cn.com.rexen.admin.api.biz.IRoleBeanService"/>
     <camelContext id="roleCamel" xmlns="http://camel.apache.org/schema/blueprint">
+
         <restConfiguration component="servlet" bindingMode="json">
             <dataFormatProperty key="prettyPrint" value="true"/>
         </restConfiguration>
 
         <!-- defines the rest services using the context-path /role -->
-        <rest path="/roles" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
-            <description>Role rest service</description>
+        <rest path="/roles" consumes="application/json" produces="application/json">
+            <description>role rest service</description>
 
-            <!-- this is a rest GET to view an Role by the given id -->
-            <get id="route-getRole" uri="/{id}" outType="cn.com.rexen.admin.entities.RoleBean">
-                <description>Find Role by id</description>
-                <to uri="bean:roleService?method=getRole(${header.id})"/>
+            <!-- this is a rest GET to find all role -->
+            <get id="route-getAllRolebyPage" outType="cn.com.rexen.core.api.persistence.JsonData">
+                <description>Find all Roles</description>
+                <to uri="bean:roleService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
             </get>
 
-            <!-- this is a rest PUT to create an Role -->
+            <!--<get uri="/all" id="route-getAllUser" outType="cn.com.rexen.core.api.persistence.JsonData">
+                <description>Find all roles for report</description>
+                <to uri="bean:roleService?method=getAllEntityforReport(${header.jsonStr})"/>
+            </get>-->
+
+            <!-- this is a rest POST to create a role -->
             <post id="route-addRole" type="cn.com.rexen.admin.entities.RoleBean"
                   outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Create a Role</description>
                 <to uri="bean:roleService?method=saveEntity"/>
             </post>
 
-            <!-- this is a rest PUT to update an Role -->
-            <put id="route-updateRole" type="cn.com.rexen.admin.entities.RoleBean"
+            <!-- this is a rest GET to view a role by the given id -->
+            <get uri="/{id}" id="route-getRole" outType="cn.com.rexen.admin.entities.RoleBean">
+                <description>Find Role by id</description>
+                <to uri="bean:roleService?method=getEntity(${header.id})"/>
+            </get>
+
+            <!-- this is a rest PUT to update a role -->
+            <put uri="/{id}" id="route-updateRole" type="cn.com.rexen.admin.entities.RoleBean"
                  outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Updates a Role</description>
                 <to uri="bean:roleService?method=updateEntity"/>
             </put>
 
-            <!-- this is a rest DELETE to delete an Role -->
-            <delete id="route-deleteRole" outType="cn.com.rexen.core.api.biz.JsonStatus">
+            <!-- this is a rest DELETE to delete a role -->
+            <delete uri="/{id}" id="route-deleteRole" type="cn.com.rexen.admin.entities.RoleBean"
+                    outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Delete a Role</description>
-                <to uri="bean:roleService?method=deleteEntity(${header.id})"/>
+                <to uri="bean:roleService?method=removeEntity"/>
             </delete>
-
-            <!-- this is a rest GET to find all Roles -->
-            <get id="route-getAllRole" outType="cn.com.rexen.core.api.persistence.JsonData">
-                <description>Find all Roles</description>
-                <to uri="bean:roleService?method=getAllEntity(${header.page},${header.limit})"/>
-            </get>
 
             <!-- this is a rest GET to view an user by the given id -->
             <get id="route-getUsersByRoleId" uri="/roleUsers/users/{id}" outType="java.util.List">
@@ -76,6 +83,5 @@
             </get>
 
         </rest>
-
     </camelContext>
 </blueprint>

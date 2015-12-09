@@ -43,15 +43,15 @@
                     <inputDir>src/templates</inputDir>
                     <outputDir>${project.build.directory}/generate</outputDir>
                     <attributes>
-                        <beanName>Task</beanName>
-                        <packageName>cn.com.rexen.roffice.task</packageName>
-                        <parentPackageName>cn.com.rexen.roffice.sale</parentPackageName>
-                        <pomName>task</pomName>
-                        <projectName>Roffice</projectName>
-                        <parentName>sale</parentName>
+                        <beanName>Audit</beanName>
+                        <packageName>cn.com.rexen.admin</packageName>
+                        <parentPackageName>cn.com.rexen.kalix.admin</parentPackageName>
+                        <pomName>audit</pomName>
+                        <projectName>Audit</projectName>
+                        <parentName>admin</parentName>
                         <versionName>1.0.0-SNAPSHOT</versionName>
-                        <module_Name>任务目标</module_Name>
-                        <extjsPrefix>kalix.roffice.task</extjsPrefix>
+                        <module_Name>审计</module_Name>
+                        <extjsPrefix>kalix.admin.audit</extjsPrefix>
                     </attributes>
                     <sources>
                         <source>${basedir}/src/main/java</source>

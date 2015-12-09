@@ -1,6 +1,6 @@
 package cn.com.rexen.core.api.persistence;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,6 +17,7 @@ import java.util.Date;
 
 @MappedSuperclass
 @Access(AccessType.FIELD)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class PersistentEntity implements Serializable {
 
     @Id
