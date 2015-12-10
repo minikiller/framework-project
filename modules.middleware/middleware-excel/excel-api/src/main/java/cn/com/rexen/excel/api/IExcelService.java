@@ -11,7 +11,7 @@ import java.util.Map;
 public interface IExcelService {
     Object OpenExcel(String excelPath);
 
-    Object OpenExcel(InputStream is);
+    Object OpenExcel(InputStream is, String fileName);
 
     Object OpenSheet(Object wb, String sheetName);
 
@@ -21,5 +21,7 @@ public interface IExcelService {
 
     Map<String, Integer> GetColumnDic(Object sheet, int columnRowIndex, Dictionary<String, Object> dic);
 
-    Map<String, Object> GetRowMap(Object sheet, int rowIndex, Dictionary<String, Integer> dic);
+    Map<String, Object> GetRowMap(Object sheet, int rowIndex, Map<String, Integer> columnMap);
+
+    String GetJsonRowString(Object sheet, int rowIndex, Map<String, Integer> columnMap);
 }

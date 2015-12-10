@@ -2,5 +2,5 @@
 # Use this file to add customized Bnd instructions for the bundle
 #-----------------------------------------------------------------
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
-Embed-Dependency:*; artifactId=!excel-api|!core-util
+Embed-Dependency:*; artifactId=!excel-api|core-util
 Import-Package: cn.com.rexen.excel.api,cn.com.rexen.core.util,java.util.*,javax.crypto,javax.crypto.spec,javax.imageio,javax.imageio.metadata,javax.imageio.stream,javax.security.auth.x500,javax.swing,javax.xml.bind,javax.xml.bind.annotation,javax.xml.bind.annotation.adapters,javax.xml.crypto,javax.xml.crypto.dom,javax.xml.crypto.dsig,javax.xml.crypto.dsig.dom,javax.xml.crypto.dsig.keyinfo,javax.xml.crypto.dsig.spec,javax.xml.namespace,javax.xml.parsers,javax.xml.stream,javax.xml.stream.events,javax.xml.stream.util,javax.xml.transform,javax.xml.transform.dom,javax.xml.transform.stream,javax.xml.validation,javax.xml.xpath,org.apache.commons.codec.digest,org.osgi.framework,org.w3c.dom,org.w3c.dom.events,org.xml.sax,org.xml.sax.ext,org.xml.sax.helpers

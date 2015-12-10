@@ -1,7 +1,9 @@
 package cn.com.rexen.excel.core;
 
+import cn.com.rexen.core.util.SerializeUtil;
 import cn.com.rexen.excel.api.IExcelService;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -19,12 +21,23 @@ public class ExcelServiceImpl implements IExcelService {
     @Override
     public Object OpenExcel(String excelPath) {
         try {
-
-            // POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(excelPath));
             InputStream is = new FileInputStream(excelPath);
+
+            return OpenSheet(is, excelPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    @Override
+    public Object OpenExcel(InputStream is, String fileName) {
+        try {
+
             Object wb = null;
 
-            if (excelPath.indexOf(".xlsx") == -1) {
+            if (fileName.indexOf(".xlsx") == -1) {
                 wb = new HSSFWorkbook(is);
             } else {
                 wb = new XSSFWorkbook(is);
@@ -35,11 +48,6 @@ public class ExcelServiceImpl implements IExcelService {
             e.printStackTrace();
         }
 
-        return null;
-    }
-
-    @Override
-    public Object OpenExcel(InputStream is) {
         return null;
     }
 
@@ -85,44 +93,71 @@ public class ExcelServiceImpl implements IExcelService {
         Enumeration<String> keys = dic.keys();
         Enumeration<Object> elements = dic.elements();
         String temp = null;
-        Map<String, Integer> rtnDic = new HashMap<>();
+        Map<String, Integer> columnMap = new HashMap<>();
 
         while (keys.hasMoreElements()) {
             temp = keys.nextElement();
-
-            if (temp != null) {
-                configKeys.add(temp.trim());
-            } else {
-                break;
-            }
+            configKeys.add(temp.trim());
         }
 
         while (elements.hasMoreElements()) {
             temp = (String) elements.nextElement();
-
-            if (temp != null) {
-                configValues.add(temp.trim());
-            } else {
-                break;
-            }
+            configValues.add(temp.trim());
         }
 
         for (int idx = 0; idx < colNameList.size(); ++idx) {
             for (int configIndex = 0; configIndex < configKeys.size(); ++configIndex) {
                 if (colNameList.get(idx).equals(configValues.get(configIndex))) {
-                    rtnDic.put(configKeys.get(configIndex), idx);
+                    columnMap.put(configKeys.get(configIndex), idx);
 
                     break;
                 }
             }
         }
 
-        return rtnDic;
+
+        return columnMap;
     }
 
     @Override
-    public Map<String, Object> GetRowMap(Object sheet, int rowIndex, Dictionary<String, Integer> dic) {
+    public Map<String, Object> GetRowMap(Object sheet, int rowIndex, Map<String, Integer> columnMap) {
+        Map<String, Object> rowMap = new HashMap<String, Object>();
+        Sheet theSheet = (Sheet) sheet;
+        Row row = theSheet.getRow(rowIndex);
+        Iterator<Map.Entry<String, Integer>> iterator = columnMap.entrySet().iterator();
 
-        return null;
+        while (iterator.hasNext()) {
+            Map.Entry<String, Integer> entry = iterator.next();
+            Cell cell = row.getCell(entry.getValue());
+
+            switch (cell.getCellType()) {
+                case Cell.CELL_TYPE_STRING:
+                    rowMap.put(entry.getKey(), row.getCell(entry.getValue()).getStringCellValue());
+                    break;
+                case Cell.CELL_TYPE_NUMERIC:
+                    rowMap.put(entry.getKey(), row.getCell(entry.getValue()).getNumericCellValue());
+                    break;
+                case Cell.CELL_TYPE_BLANK:
+                    rowMap.put(entry.getKey(), null);
+                    break;
+                case Cell.CELL_TYPE_BOOLEAN:
+                    rowMap.put(entry.getKey(), row.getCell(entry.getValue()).getBooleanCellValue());
+                    break;
+                case Cell.CELL_TYPE_FORMULA:
+                    // rowMap.put(entry.getKey(), row.getCell(entry.getValue()).get());
+                    break;
+            }
+        }
+
+        return rowMap;
     }
+
+    @Override
+    public String GetJsonRowString(Object sheet, int rowIndex, Map<String, Integer> columnMap) {
+        Map rowMap = GetRowMap(sheet, rowIndex, columnMap);
+
+        return SerializeUtil.serializeJson(rowMap);
+    }
+
+
 }
