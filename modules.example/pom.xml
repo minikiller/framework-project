@@ -27,7 +27,8 @@
         <module>example-sequoiadb</module>
         <module>example-stringtemplate</module>
         <module>example-couchdb</module>-->
-        <module>example-jdbc</module>
+        <!--<module>example-jdbc</module>-->
+        <module>example-itest</module>
     </modules>
     <dependencyManagement>
 
