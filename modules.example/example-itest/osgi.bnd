@@ -1,0 +1,8 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+
+#Bundle-Activator: ${bundle.namespace}.Activator
+Bundle-Category: Rexen Kalix Example
+Import-Package:*
+#Require-Capability:org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)",osgi.extender; filter:="(osgi.extender=pax.cdi)"
