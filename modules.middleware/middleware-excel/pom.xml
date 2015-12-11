@@ -17,6 +17,7 @@
     <modules>
         <module>excel-api</module>
         <module>excel-core</module>
+        <module>excel-rest</module>
     </modules>
 
     <packaging>pom</packaging>
