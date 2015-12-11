@@ -5,4 +5,5 @@
 #Bundle-Activator: ${bundle.namespace}.Activator
 Bundle-Category: Rexen Kalix Example
 Import-Package:*
+Delegation-Annotations:*
 #Require-Capability:org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)",osgi.extender; filter:="(osgi.extender=pax.cdi)"

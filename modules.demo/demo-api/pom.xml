@@ -32,6 +32,12 @@
             <groupId>cn.com.rexen.kalix.demo</groupId>
             <artifactId>demo-entities</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.openengsb.labs.delegation</groupId>
+            <artifactId>org.openengsb.labs.delegation.service</artifactId>
+            <version>0.1.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

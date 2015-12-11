@@ -20,6 +20,7 @@
     <modules>
         <module>core-util</module>
         <module>core-api</module>
+        <module>core-delegate</module>
         <module>core-cache</module>
         <!--<module>core-mq</module>-->
         <!--<module>core-datasource</module>-->
