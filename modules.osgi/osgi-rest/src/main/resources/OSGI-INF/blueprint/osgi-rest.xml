@@ -11,11 +11,11 @@
         <rest path="/osgi/bundle" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
             <get id="route-bundleStart" uri="/start">
                 <description>start osgi bundle</description>
-                <to uri="bean:bundleService?method=start(${header.id})"/>
+                <to uri="bean:bundleService?method=startApp(${header.id})"/>
             </get>
             <get id="route-bundleStop" uri="/stop">
                 <description>stop osgi bundle</description>
-                <to uri="bean:bundleService?method=stop(${header.id})"/>
+                <to uri="bean:bundleService?method=stopApp(${header.id})"/>
             </get>
             <get id="route-bundleStatus" uri="/status">
                 <description>stop osgi bundle</description>
