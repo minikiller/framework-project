@@ -6,9 +6,9 @@ import java.util.Map;
  * @author chenyanxu
  */
 public interface IBundleService {
-    Map start(String id);
+    Map startApp(String id);
 
-    Map stop(String id);
+    Map stopApp(String id);
 
     Map getAppStatus(String appIds);//connect by '_'
 }
