@@ -304,6 +304,7 @@
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-collections/3.2.1_3</bundle>
         <bundle>mvn:org.apache.xbean/xbean-asm4-shaded/3.16</bundle>
         <bundle>mvn:org.apache.openjpa/openjpa/2.3.0</bundle>-->
+        <!--<bundle>mvn:org.bouncycastle/bcprov-jdk16/1.46</bundle>-->
         <configfile finalname="/etc/org.ops4j.datasource-kalix.cfg" override="true">
             mvn:cn.com.rexen.kalix/karaf-features/${project.version}/cfg/datasource
         </configfile>

@@ -22,6 +22,7 @@
         <!--<module>modules.notice</module>-->
         <module>modules.tools</module>
         <module>modules.osgi</module>
+        <module>modules.ext</module>
     </modules>
 
 
