@@ -1,6 +1,7 @@
 package cn.com.rexen.core.util;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
@@ -52,13 +53,13 @@ public class SerializeUtil {
     public static <T> T unserializeJson(String json, Class cls) {
 
         Gson mapper = new Gson();
+
         try {
             return (T) mapper.fromJson(json, cls);
-        } catch (Exception e) {
+        } catch (JsonSyntaxException e) {
             e.printStackTrace();
+            throw new RuntimeException("JSON Unserialize Error");
         }
-        return null;
-
     }
 
     @SuppressWarnings("unchecked")
