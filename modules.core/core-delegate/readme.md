@@ -9,8 +9,15 @@
     Delegation-Annotations:*
 
 3.在实体上加入如下
+```java
+package org.openengsb.labs.delegation.service;
 
-    @Provide(context = {"foo", "bar"}, alias = "mtestbean")
+import java.util.Collection;
+
+public interface ClassProvider {}
+```
+
+    ···@Provide(context = {"foo", "bar"}, alias = "mtestbean")
     public class TestBean implements Serializable {
 
 4.在其他的bundle里面获得bean

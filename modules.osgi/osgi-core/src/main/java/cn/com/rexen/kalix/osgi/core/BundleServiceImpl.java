@@ -4,6 +4,7 @@ import cn.com.rexen.kalix.osgi.api.IBundleService;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,16 +14,15 @@ import java.util.Map;
 public class BundleServiceImpl implements IBundleService {
     private BundleContext bundleContext;
     //private BundleJsonStatus jsonStatus;
-    private Map<String, Object> rtnMap;
+    private Map<String, Object> resultMap;
 
     public BundleServiceImpl() {
-        this.rtnMap = new HashMap<>();
+        this.resultMap = new HashMap<>();
     }
 
     @Override
     public Map start(String id) {
-        this.rtnMap.clear();
-
+        this.resultMap.clear();
         Bundle[] bundles = bundleContext.getBundles();
 
         for (int idx = 0; idx < bundles.length; ++idx) {
@@ -30,28 +30,28 @@ public class BundleServiceImpl implements IBundleService {
                 try {
                     bundles[idx].start();
                     //jsonStatus = BundleJsonStatus.successResult("服务启动成功");
-                    rtnMap.put("success", true);
-                    rtnMap.put("msg", "服务启动成功");
+                    resultMap.put("success", true);
+                    resultMap.put("msg", "服务启动成功");
                 } catch (BundleException e) {
                     e.printStackTrace();
                     //jsonStatus = BundleJsonStatus.failureResult("服务启动失败");
-                    rtnMap.put("success", false);
-                    rtnMap.put("msg", "服务启动失败");
+                    resultMap.put("success", false);
+                    resultMap.put("msg", "服务启动失败");
                 }
 
-                return rtnMap;
+                return resultMap;
             }
         }
 
-        rtnMap.put("success", false);
-        rtnMap.put("msg", "服务启动失败");
+        resultMap.put("success", false);
+        resultMap.put("msg", "服务启动失败");
 
-        return rtnMap;
+        return resultMap;
     }
 
     @Override
     public Map stop(String id) {
-        this.rtnMap.clear();
+        this.resultMap.clear();
         Bundle[] bundles = bundleContext.getBundles();
 
         for (int idx = 0; idx < bundles.length; ++idx) {
@@ -59,29 +59,29 @@ public class BundleServiceImpl implements IBundleService {
                 try {
                     bundles[idx].stop();
                     //jsonStatus = BundleJsonStatus.successResult("服务停止成功");
-                    rtnMap.put("success", true);
-                    rtnMap.put("msg", "服务停止成功");
+                    resultMap.put("success", true);
+                    resultMap.put("msg", "服务停止成功");
                 } catch (BundleException e) {
                     e.printStackTrace();
                     //jsonStatus = BundleJsonStatus.failureResult("服务停止失败");
-                    rtnMap.put("success", false);
-                    rtnMap.put("msg", "服务停止失败");
+                    resultMap.put("success", false);
+                    resultMap.put("msg", "服务停止失败");
                 }
 
-                return rtnMap;
+                return resultMap;
             }
         }
 
         //jsonStatus.setAppStatus(null);
-        rtnMap.put("success", false);
-        rtnMap.put("msg", "服务异常");
+        resultMap.put("success", false);
+        resultMap.put("msg", "服务异常");
         //return BundleJsonStatus.failureResult("服务异常");
-        return rtnMap;
+        return resultMap;
     }
 
     @Override
     public Map getAppStatus(String appIds) {
-        this.rtnMap.clear();
+        this.resultMap.clear();
         Bundle[] bundles = bundleContext.getBundles();
         String[] appIdArray = null;
         //Map<String, Boolean> appStatusMap = new HashMap<String, Boolean>();
@@ -94,11 +94,11 @@ public class BundleServiceImpl implements IBundleService {
                 for (int bundleIdx = 0; bundleIdx < bundles.length; ++bundleIdx) {
                     if (bundles[bundleIdx].getSymbolicName().matches("\\S*" + appIdArray[idx] + ".web")) {
                         if (bundles[bundleIdx].getState() == Bundle.ACTIVE) {
-                            this.rtnMap.put(appIdArray[idx], true);
+                            this.resultMap.put(appIdArray[idx], true);
                             //appStatusMap.put(appIdArray[idx], true);
                         } else {
                             //appStatusMap.put(appIdArray[idx], false);
-                            this.rtnMap.put(appIdArray[idx], false);
+                            this.resultMap.put(appIdArray[idx], false);
                         }
 
                         break;
@@ -114,18 +114,13 @@ public class BundleServiceImpl implements IBundleService {
 //            jsonStatus = BundleJsonStatus.failureResult("");
 //            jsonStatus.setAppStatus(null);
 //        }
-        if (this.rtnMap.size() > 0) {
-            this.rtnMap.put("success", true);
+        if (this.resultMap.size() > 0) {
+            this.resultMap.put("success", true);
         } else {
-            this.rtnMap.put("success", false);
+            this.resultMap.put("success", false);
         }
 
-        return rtnMap;
-    }
-
-
-    public BundleContext getBundleContext() {
-        return bundleContext;
+        return resultMap;
     }
 
     public void setBundleContext(BundleContext bundleContext) {
