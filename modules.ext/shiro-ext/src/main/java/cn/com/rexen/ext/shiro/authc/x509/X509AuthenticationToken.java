@@ -13,6 +13,7 @@
  */
 package cn.com.rexen.ext.shiro.authc.x509;
 
+import cn.com.rexen.ext.shiro.Util;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.HostAuthenticationToken;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -93,7 +94,7 @@ public class X509AuthenticationToken
 
     @Override
     public Object getPrincipal() {
-        return subjectDN;
+        return Util.getUserName(subjectDN.getName());
     }
 
     @Override

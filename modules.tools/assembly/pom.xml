@@ -143,26 +143,25 @@
                         <feature>wrapper</feature>
                     </installedFeatures>
                     <bootFeatures>
-                        <feature>wrap</feature>
                         <feature>aries-blueprint</feature>
-                        <feature>shell</feature>
-                        <feature>shell-compat</feature>
-                        <feature>jaas</feature>
-                        <feature>shell</feature>
-                        <feature>feature</feature>
-                        <feature>ssh</feature>
-                        <feature>management</feature>
                         <feature>bundle</feature>
                         <feature>config</feature>
                         <feature>deployer</feature>
                         <feature>diagnostic</feature>
+                        <feature>feature</feature>
                         <feature>instance</feature>
+                        <feature>jaas</feature>
                         <feature>kar</feature>
                         <feature>log</feature>
+                        <feature>management</feature>
                         <feature>package</feature>
                         <feature>service</feature>
+                        <feature>shell</feature>
+                        <feature>shell-compat</feature>
+                        <feature>ssh</feature>
                         <feature>system</feature>
-                        <feature>webconsole</feature>
+                        <feature>wrap</feature>
+                        <feature>scr</feature>
                         <feature>kalix</feature>
                     </bootFeatures>
 

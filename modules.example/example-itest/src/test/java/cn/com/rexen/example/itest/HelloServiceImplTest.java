@@ -5,15 +5,20 @@ import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.junit.PaxExam;
+import org.osgi.service.cm.ConfigurationAdmin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
+import static org.ops4j.pax.exam.CoreOptions.options;
+import static org.ops4j.pax.exam.OptionUtils.combine;
 
 /**
  * HelloServiceImpl Tester.
@@ -30,20 +35,17 @@ public class HelloServiceImplTest extends BaseTest {
     @Inject
     private HelloService helloService;
 
-    @Override
+    @Inject
+    private ConfigurationAdmin configAdminService;
+
     @Configuration
     public Option[] config() {
-        Option[] options = super.config();
-        List<Option> ops = new ArrayList();//
-        Option option = mavenBundle()
-                .groupId("cn.com.rexen.kalix.example")
-                .artifactId("example-itest")
-                .version("1.0.0-SNAPSHOT").start();
-        for (Option opt : options) {
-            ops.add(opt);
-        }
-        ops.add(option);
-        return ops.toArray(new Option[0]);
+
+        return options(
+                combine(baseConfig(),mavenBundle()
+                        .groupId("cn.com.rexen.kalix.example")
+                        .artifactId("example-itest")
+                        .version("1.0.0-SNAPSHOT").start()));
     }
 
     /**
@@ -54,5 +56,22 @@ public class HelloServiceImplTest extends BaseTest {
         assertEquals("Hello Pax!", helloService.getMessage());
     }
 
+    @Test
+    public void testConfigAdminService() throws Exception {
+        LOG.info("starting test");
+        org.osgi.service.cm.Configuration configuration = configAdminService.createFactoryConfiguration("de.nierbeck.microservices.karaf.calculator");
+
+        Dictionary<String, Object> dictionary = configuration.getProperties();
+        if (dictionary == null) {
+            dictionary = new Hashtable<String, Object>();
+        }
+
+        dictionary.put("institute", "JavaBank");
+        dictionary.put("fee", "1500");
+        LOG.info("updating configuration");
+
+        configuration.setBundleLocation(null);
+        configuration.update(dictionary);
+    }
 
 } 

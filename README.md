@@ -12,10 +12,12 @@
 10. core-archetype用于新建业务模块
 （例如：创建一个order业务模块
 
- `mvn archetype:generate -DgroupId=cn.com.rexen.order
+ ```xml
+ mvn archetype:generate -DgroupId=cn.com.rexen.order
  -DartifactId=order -Dversion=1.0-SNAPSHOT -Dpackage=cn.com.rexen.order
  -DarchetypeGroupId=cn.com.rexen.core -DarchetypeArtifactId=cn.com.rexen.core.archetype
- -DarchetypeVersion=1.0-SNAPSHOT -DarchetypeRepository=local）`
+ -DarchetypeVersion=1.0-SNAPSHOT -DarchetypeRepository=local）
+ ```
 
 11. 使用acitviti作为工作流引擎  <br/>
 12. core-util的CouchdbConfig實現了osgi的configAdmin（blueprint） <br/>
@@ -24,8 +26,10 @@
 15. 安装redis为window服务：redis-server --service-install redis.windows.conf
 16. 使用couchdb作为cms存储attachment
 
-    `feature:repo-add mvn:cn.com.rexen.tools/karaf-features/1.0.0-SNAPSHOT/xml/features
-    install -s mvn:org.postgresql/postgresql/9.4-1202-jdbc41`
+```xml
+feature:repo-add mvn:cn.com.rexen.tools/karaf-features/1.0.0-SNAPSHOT/xml/features
+install -s mvn:org.postgresql/postgresql/9.4-1202-jdbc41
+```
 
 ## 使用pax-jdbc
 用于配置数据源和数据连接池

@@ -8,6 +8,7 @@ import org.ops4j.pax.exam.options.MavenUrlReference;
 
 import java.io.File;
 
+import static org.ops4j.pax.exam.CoreOptions.junitBundles;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.*;
 
@@ -17,7 +18,11 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.*;
  <artifactId>assembly</artifactId>
  */
 public abstract class BaseTest {
-    public Option[] config() {
+    /**
+     * 安装了kalix feature的karaf测试环境
+     * @return
+     */
+    public Option[] baseConfig() {
         MavenArtifactUrlReference karafUrl = maven()
                 .groupId("cn.com.rexen.tools")
                 .artifactId("assembly")
@@ -49,8 +54,8 @@ public abstract class BaseTest {
                         .useDeployFolder(false),
                 keepRuntimeFolder(),
 //                configureConsole().ignoreLocalConsole(),
-                features(karafStandardRepo, "wrap"),
-                features(kalixRepo, "kalix"),
+                junitBundles(),
+//                features(kalixRepo, "kalix"),
 //                add datasource
                 ConfigurationAdminOptions.factoryConfiguration("org.ops4j.datasource-kalix")
                         .put("osgi.jdbc.driver.name", "PostgreSQL JDBC Driver-pool-xa")

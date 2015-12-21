@@ -44,10 +44,11 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://svn.apache.or
         <!-- 30天 -->
     </bean>
 
-    <reference id="eventAdmin" interface="org.osgi.service.event.EventAdmin"/>
+    <bean id="shiroRealm" class="cn.com.rexen.ext.shiro.realm.x509.ShiroCentificateRealm"/>
+    <!--<reference id="eventAdmin" interface="org.osgi.service.event.EventAdmin"/>
     <bean id="shiroRealm" class="cn.com.rexen.core.security.ShiroRealm">
         <property name="eventAdmin" ref="eventAdmin"/>
-    </bean>
+    </bean>-->
     <!--<reference id="shiroRealm" interface="cn.com.rexen.core.web.api.security.IAuthorizingRealm" filter="(key=urgent)" />-->
     <service interface="org.apache.shiro.web.mgt.WebSecurityManager" ref="webSecurityManager"/>
     <bean id="webSecurityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"

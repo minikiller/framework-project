@@ -13,6 +13,8 @@ import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
 import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
+import static org.ops4j.pax.exam.CoreOptions.options;
+import static org.ops4j.pax.exam.OptionUtils.combine;
 
 /**
  * Created by sunlf on 2015/12/12.
@@ -22,37 +24,26 @@ public class AdminDaoServiceTest extends BaseTest {
     @Inject
     private IUserBeanDao userBeanDao;
 
-    @Override
     @Configuration
     public Option[] config() {
-        Option[] options = super.config();
-        List<Option> ops = new ArrayList();//
-        for (Option opt : options) {
-            ops.add(opt);
+        return options(
+                combine(baseConfig(),mavenBundle()
+                        .groupId("cn.com.rexen.kalix.admin")
+                        .artifactId("admin-entities")
+                        .version("1.0.0-SNAPSHOT").start(),
+                        mavenBundle()
+                                .groupId("cn.com.rexen.kalix.admin")
+                                .artifactId("admin-dto")
+                                .version("1.0.0-SNAPSHOT").start(),
+                        mavenBundle()
+                                .groupId("cn.com.rexen.kalix.admin")
+                                .artifactId("admin-api")
+                                .version("1.0.0-SNAPSHOT").start(),
+                        mavenBundle()
+                                .groupId("cn.com.rexen.kalix.admin")
+                                .artifactId("admin-persist-jpa")
+                                .version("1.0.0-SNAPSHOT").start()));
         }
-        Option entityOption = mavenBundle()
-                .groupId("cn.com.rexen.kalix.admin")
-                .artifactId("admin-entities")
-                .version("1.0.0-SNAPSHOT").start();
-        Option dtoOption = mavenBundle()
-                .groupId("cn.com.rexen.kalix.admin")
-                .artifactId("admin-dto")
-                .version("1.0.0-SNAPSHOT").start();
-        Option apiOption = mavenBundle()
-                .groupId("cn.com.rexen.kalix.admin")
-                .artifactId("admin-api")
-                .version("1.0.0-SNAPSHOT").start();
-        Option daoOption = mavenBundle()
-                .groupId("cn.com.rexen.kalix.admin")
-                .artifactId("admin-persist-jpa")
-                .version("1.0.0-SNAPSHOT").start();
-
-        ops.add(entityOption);
-        ops.add(dtoOption);
-        ops.add(apiOption);
-        ops.add(daoOption);
-        return ops.toArray(new Option[0]);
-    }
 
     /**
      * Method: getMessage()

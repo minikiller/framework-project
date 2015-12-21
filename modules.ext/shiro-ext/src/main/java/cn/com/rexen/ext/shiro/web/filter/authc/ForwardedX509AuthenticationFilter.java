@@ -18,7 +18,7 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.codec.Hex;
-import org.apache.shiro.web.filter.authc.AuthenticatingFilter;
+import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,7 +45,7 @@ import java.util.List;
  * This is the Realm and CredentialMatcher responsibility to choose which headers to handle.
  */
 public class ForwardedX509AuthenticationFilter
-        extends AuthenticatingFilter {
+        extends FormAuthenticationFilter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ForwardedX509AuthenticationFilter.class);
     private static final String SSL_CLIENT_VERIFY = "X-SSL-Client-Verify";
@@ -53,7 +53,7 @@ public class ForwardedX509AuthenticationFilter
     private static final String SSL_CLIENT_S_DN = "X-SSL-Client-S-DN";
     private static final String SSL_CLIENT_I_DN = "X-SSL-Client-I-DN";
     private static final String SSL_CLIENT_M_SERIAL = "X-SSL-Client-M-Serial";
-    private boolean useCertificate = false;
+    private boolean useCertificate = true;
     private boolean useSubjectDN = false;
     private boolean useIssuerDN = false;
     private boolean useSerialNumber = false;
@@ -65,8 +65,7 @@ public class ForwardedX509AuthenticationFilter
     }
 
     @Override
-    protected AuthenticationToken createToken(ServletRequest request, ServletResponse response)
-            throws Exception {
+    protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
 
         if (!useCertificate && !useSubjectDN && !useIssuerDN && !useSerialNumber) {
