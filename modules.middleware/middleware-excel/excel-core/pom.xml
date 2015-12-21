@@ -49,5 +49,10 @@
             <groupId>cn.com.rexen.kalix.core</groupId>
             <artifactId>core-util</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.middleware</groupId>
+            <artifactId>couchdb-api</artifactId>
+            <version>${globle.version}</version>
+        </dependency>
     </dependencies>
 </project>

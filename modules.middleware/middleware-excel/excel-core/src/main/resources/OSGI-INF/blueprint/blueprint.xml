@@ -3,7 +3,10 @@
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0
            http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
 
+    <reference id="couchdbService" interface="cn.com.rexen.couchdb.api.biz.ICouchdbService"/>
+
     <bean id="excelServiceImpl" class="cn.com.rexen.excel.core.ExcelServiceImpl">
+        <property name="couchdbService" ref="couchdbService"/>
     </bean>
 
     <service id="excelService" interface="cn.com.rexen.excel.api.IExcelService"
