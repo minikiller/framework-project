@@ -8,6 +8,7 @@ import cn.com.rexen.core.api.security.IUserLoginService;
 import cn.com.rexen.core.util.MD5Util;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.subject.Subject;
 
@@ -60,6 +61,16 @@ public class UserLoginServiceImpl implements IUserLoginService {
         this.userBeanDao = userBeanDao;
     }
 
+    public boolean validateUserStatus(String username) {
+        UserBean user = userBeanDao.getUser(username);
+        if (user == null) {
+            throw new UnknownAccountException("Unknown Account Exception!");
+        }
+        if (user.getAvailable() == 0) {
+            throw new LockedAccountException("Unknown Account Exception!");
+        }
+        return true;
+    }
     @Override
     public Map login(String username, String password) {
         Map map = new HashMap();

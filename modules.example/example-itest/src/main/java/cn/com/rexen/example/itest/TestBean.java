@@ -16,11 +16,9 @@
  */
 package cn.com.rexen.example.itest;
 
-import org.openengsb.labs.delegation.service.Provide;
-
 import java.io.Serializable;
 
-@Provide(context = {"foo", "bar"}, alias = "mtestbean")
+//@Provide(context = {"foo", "bar"}, alias = "mtestbean")
 public class TestBean implements Serializable {
 
     private static final long serialVersionUID = 8283996056794425281L;

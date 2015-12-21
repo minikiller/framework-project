@@ -83,4 +83,12 @@ public interface IUserLoginService {
      */
     Map updateToken(HttpServletRequest request, String token, Long user_id);
 
+    /**
+     * 验证用户状态
+     *
+     * @param username
+     * @return
+     */
+    boolean validateUserStatus(String username);
+
 }
