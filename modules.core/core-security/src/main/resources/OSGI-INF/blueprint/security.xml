@@ -44,7 +44,7 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://svn.apache.or
         <!-- 30天 -->
     </bean>
 
-    <bean id="shiroRealm" class="cn.com.rexen.ext.shiro.realm.x509.ShiroCentificateRealm"/>
+    <bean id="shiroRealm" class="cn.com.rexen.core.security.ShiroCentificateRealm"/>
     <!--<reference id="eventAdmin" interface="org.osgi.service.event.EventAdmin"/>
     <bean id="shiroRealm" class="cn.com.rexen.core.security.ShiroRealm">
         <property name="eventAdmin" ref="eventAdmin"/>

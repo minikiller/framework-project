@@ -1,11 +1,11 @@
-package cn.com.rexen.ext.shiro.realm.x509;
+package cn.com.rexen.core.security;
 
 import cn.com.rexen.core.api.PermissionConstant;
 import cn.com.rexen.core.api.security.IUserLoginService;
+import cn.com.rexen.core.security.x509.X509AuthenticationInfo;
+import cn.com.rexen.core.security.x509.X509AuthenticationToken;
+import cn.com.rexen.core.security.x509.X509CredentialsIssuerDNSNMatcher;
 import cn.com.rexen.core.util.JNDIHelper;
-import cn.com.rexen.ext.shiro.authc.x509.X509AuthenticationInfo;
-import cn.com.rexen.ext.shiro.authc.x509.X509AuthenticationToken;
-import cn.com.rexen.ext.shiro.authc.x509.X509CredentialsIssuerDNSNMatcher;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
