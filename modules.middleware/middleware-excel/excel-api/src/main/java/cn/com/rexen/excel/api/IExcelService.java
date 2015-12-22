@@ -24,4 +24,6 @@ public interface IExcelService {
     Map<String, Object> GetRowMap(Object sheet, int rowIndex, Map<String, Integer> columnMap);
 
     String GetJsonRowString(Object sheet, int rowIndex, Map<String, Integer> columnMap);
+
+    Map<String, Object> GetExcelFromJson(String jsonStr);
 }
