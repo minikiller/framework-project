@@ -45,9 +45,8 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://svn.apache.or
     </bean>
 
     <reference id="eventAdmin" interface="org.osgi.service.event.EventAdmin"/>
-    <bean id="shiroRealm" class="cn.com.rexen.security.core.ShiroRealm">
-        <property name="eventAdmin" ref="eventAdmin"/>
-    </bean>
+
+    <reference id="shiroRealm" interface="cn.com.rexen.core.api.security.IAuthorizingRealm"/>
     <!--<reference id="shiroRealm" interface="cn.com.rexen.core.web.api.security.IAuthorizingRealm" filter="(key=urgent)" />-->
     <service interface="org.apache.shiro.web.mgt.WebSecurityManager" ref="webSecurityManager"/>
     <bean id="webSecurityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"

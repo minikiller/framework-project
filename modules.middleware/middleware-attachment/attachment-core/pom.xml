@@ -32,7 +32,7 @@
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-security</artifactId>
+            <artifactId>core-impl</artifactId>
         </dependency>
     </dependencies>
 

@@ -37,11 +37,6 @@
                 <artifactId>attachment-api</artifactId>
                 <version>${globle.version}</version>
             </dependency>
-            <dependency>
-                <groupId>cn.com.rexen.kalix.core</groupId>
-                <artifactId>core-security</artifactId>
-                <version>${globle.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 

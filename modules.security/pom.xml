@@ -9,27 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-
-    <groupId>cn.com.rexen.kalix.core</groupId>
-    <artifactId>modules.core</artifactId>
-    <name>Kalix :: Modules - Core</name>
+    <groupId>cn.com.rexen.kalix.security</groupId>
+    <artifactId>modules.security</artifactId>
+    <name>Kalix :: Modules - Security</name>
     <packaging>pom</packaging>
 
     <properties>
     </properties>
     <modules>
-        <module>core-util</module>
-        <module>core-api</module>
-        <module>core-delegate</module>
-        <module>core-cache</module>
-        <!--<module>core-mq</module>-->
-        <!--<module>core-datasource</module>-->
-        <module>core-impl</module>
-        <module>core-web</module>
-        <module>core-rest</module>
-        <!--<module>core-swagger</module>-->
-        <!--<module>core-security</module>-->
-        <!--<module>core-jsonb</module>-->
+        <!--<module>shiro-ext</module>-->
+        <module>security-core</module>
+        <module>security-impl</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -53,6 +43,12 @@
             <dependency>
                 <groupId>cn.com.rexen.kalix.core</groupId>
                 <artifactId>core-impl</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.com.rexen.kalix.security</groupId>
+                <artifactId>security-core</artifactId>
                 <version>${globle.version}</version>
             </dependency>
         </dependencies>
