@@ -11,9 +11,9 @@
  * limitations under the License.
  *
  */
-package cn.com.rexen.ext.shiro.web.filter.authc;
+package cn.com.rexen.core.security;
 
-import cn.com.rexen.ext.shiro.authc.x509.X509AuthenticationToken;
+import cn.com.rexen.core.security.x509.X509AuthenticationToken;
 import org.apache.shiro.ShiroException;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.web.filter.authc.AuthenticatingFilter;

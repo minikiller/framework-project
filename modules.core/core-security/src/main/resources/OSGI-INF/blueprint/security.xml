@@ -19,7 +19,7 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://svn.apache.or
 
     <service id="rememberMeManager" interface="org.apache.shiro.mgt.RememberMeManager">
         <!-- rememberMe管理器 -->
-        <bean class="cn.com.rexen.security.core.ShiroRememberMeManager">
+        <bean class="cn.com.rexen.core.security.ShiroRememberMeManager">
             <!-- rememberMe cookie加密的密钥 建议每个项目都不一样 默认AES算法 密钥长度（128 256 512 位）-->
             <property name="cookie" ref="rememberMeCookie"/>
         </bean>
@@ -28,7 +28,7 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://svn.apache.or
     <!-- 发布cookie 服务 -->
     <service id="sessionIdCookie" interface="org.apache.shiro.web.servlet.Cookie">
         <!-- 会话Cookie模板 -->
-        <bean class="cn.com.rexen.security.core.ShiroCookie">
+        <bean class="cn.com.rexen.core.security.ShiroCookie">
             <argument value="sid"/>
             <property name="httpOnly" value="true"/>
             <property name="maxAge" value="-1"/>
@@ -37,17 +37,18 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://svn.apache.or
 
     <!-- 发布记住cookie manager -->
 
-    <bean id="rememberMeCookie" class="cn.com.rexen.security.core.ShiroCookie">
+    <bean id="rememberMeCookie" class="cn.com.rexen.core.security.ShiroCookie">
         <argument value="remember"/>
         <property name="httpOnly" value="true"/>
         <property name="maxAge" value="2592000"/>
         <!-- 30天 -->
     </bean>
 
-    <reference id="eventAdmin" interface="org.osgi.service.event.EventAdmin"/>
-    <bean id="shiroRealm" class="cn.com.rexen.security.core.ShiroRealm">
+    <bean id="shiroRealm" class="cn.com.rexen.core.security.ShiroCentificateRealm"/>
+    <!--<reference id="eventAdmin" interface="org.osgi.service.event.EventAdmin"/>
+    <bean id="shiroRealm" class="cn.com.rexen.core.security.ShiroRealm">
         <property name="eventAdmin" ref="eventAdmin"/>
-    </bean>
+    </bean>-->
     <!--<reference id="shiroRealm" interface="cn.com.rexen.core.web.api.security.IAuthorizingRealm" filter="(key=urgent)" />-->
     <service interface="org.apache.shiro.web.mgt.WebSecurityManager" ref="webSecurityManager"/>
     <bean id="webSecurityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"
@@ -73,7 +74,7 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://svn.apache.or
 
     <!-- 发布session工厂 -->
 
-    <bean id="SessionFactory" class="cn.com.rexen.security.core.ShiroSessionFactory">
+    <bean id="SessionFactory" class="cn.com.rexen.core.security.ShiroSessionFactory">
 
     </bean>
 
@@ -99,20 +100,20 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://svn.apache.or
         <argument index="2" value="6379" type="int"/>
     </bean>
 
-    <bean id="jedisShiroSessionRepository" class="cn.com.rexen.security.core.JedisShiroSessionRepository">
+    <bean id="jedisShiroSessionRepository" class="cn.com.rexen.core.security.JedisShiroSessionRepository">
         <property name="jedisPool" ref="shardedJedisPool"/>
     </bean>
 
     <service ref="jedisShiroSessionRepository"
-             interface="cn.com.rexen.security.core.ShiroSessionRepository">
+             interface="cn.com.rexen.core.security.ShiroSessionRepository">
     </service>
 
-    <bean id="customShiroSessionDAO" class="cn.com.rexen.security.core.CustomShiroSessionDAO">
+    <bean id="customShiroSessionDAO" class="cn.com.rexen.core.security.CustomShiroSessionDAO">
         <property name="shiroSessionRepository" ref="jedisShiroSessionRepository"/>
     </bean>
 
     <!-- 用户授权信息Cache, 采用EhCache -->
-    <bean id="shiroCacheManager" class="cn.com.rexen.security.core.ShiroCacheManager">
+    <bean id="shiroCacheManager" class="cn.com.rexen.core.security.ShiroCacheManager">
         <property name="cacheManager" ref="cacheManager"/>
         <!--<property name="cacheManagerConfigFile" value="$[karaf.base]/etc/ehcache.xml"/>-->
     </bean>
@@ -122,7 +123,7 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://svn.apache.or
     <service id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService" ref="shiroServiceImpl">
 
     </service>
-    <bean id="shiroServiceImpl" class="cn.com.rexen.security.core.impl.ShiroServiceImpl" init-method="init">
+    <bean id="shiroServiceImpl" class="cn.com.rexen.core.security.impl.ShiroServiceImpl" init-method="init">
         <property name="securityManager" ref="webSecurityManager"/>
     </bean>
 </blueprint>
