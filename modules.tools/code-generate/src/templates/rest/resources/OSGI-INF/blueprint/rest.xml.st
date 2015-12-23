@@ -13,7 +13,7 @@
         \</restConfiguration>
 
         \<!-- defines the rest services using the context-path /<pomName> -->
-        \<rest path="/<pomName>s" consumes="application/json" produces="application/json">
+        \<rest path="/<pomName>s" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
             \<description><pomName> rest service\</description>
 
             \<!-- this is a rest GET to find all <pomName> -->
