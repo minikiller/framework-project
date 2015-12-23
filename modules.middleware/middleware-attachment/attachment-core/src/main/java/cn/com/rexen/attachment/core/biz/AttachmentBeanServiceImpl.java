@@ -1,6 +1,6 @@
 package cn.com.rexen.attachment.core.biz;
 
-import cn.com.rexen.core.security.impl.ShiroGenericBizServiceImpl;
+import cn.com.rexen.core.impl.biz.ShiroGenericBizServiceImpl;
 import cn.com.rexen.attachment.api.biz.IAttachmentBeanService;
 import cn.com.rexen.attachment.api.dao.IAttachmentBeanDao;
 import cn.com.rexen.attachment.entities.AttachmentBean;
