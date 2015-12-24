@@ -17,9 +17,9 @@
     <properties>
     </properties>
     <modules>
-        <!--<module>shiro-ext</module>-->
         <module>security-core</module>
         <module>security-impl</module>
+        <module>shiro-ext</module>
     </modules>
     <dependencyManagement>
         <dependencies>
