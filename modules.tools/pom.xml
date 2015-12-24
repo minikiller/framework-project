@@ -17,7 +17,7 @@
 
     <modules>
         <!--<module>archetype</module>-->
-        <module>assembly</module>
+        <!--<module>assembly</module>-->
         <module>maven-kalix-plugin</module>
         <module>code-generate</module>
         <module>karaf-command</module>
