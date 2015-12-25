@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.com.rexen.kalix.ext</groupId>
-        <artifactId>modules.ext</artifactId>
+        <artifactId>modules.security</artifactId>
+        <groupId>cn.com.rexen.kalix.security</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
