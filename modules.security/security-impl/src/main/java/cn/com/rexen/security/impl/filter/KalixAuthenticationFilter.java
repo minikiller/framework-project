@@ -48,11 +48,12 @@ public class KalixAuthenticationFilter extends FormAuthenticationFilter {
             httpServletResponse.setCharacterEncoding("UTF-8");
 
             Cookie cookie = new Cookie("currentUserName", UnicodeConverter.string2UnicodeCookie(name));
+            String contextPath = httpServletRequest.getContextPath();
 
             httpServletResponse.addCookie(cookie);
 
             PrintWriter out = httpServletResponse.getWriter();
-            out.println("{success:true,location:'/kalix/index.jsp',message:'登入成功',user:{name:'" + name + "',token:'" + session.getId() + "'}}");
+            out.println("{success:true,location:'" + contextPath + "/index.jsp',message:'登入成功',user:{name:'" + name + "',token:'" + session.getId() + "'}}");
             out.flush();
             out.close();
         }
