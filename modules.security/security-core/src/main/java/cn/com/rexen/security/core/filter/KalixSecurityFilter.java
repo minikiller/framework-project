@@ -1,6 +1,7 @@
 package cn.com.rexen.security.core.filter;
 
 import cn.com.rexen.core.util.JNDIHelper;
+import cn.com.rexen.core.util.SystemUtil;
 import org.apache.shiro.web.env.WebEnvironment;
 import org.apache.shiro.web.filter.mgt.FilterChainResolver;
 import org.apache.shiro.web.mgt.WebSecurityManager;
@@ -29,6 +30,7 @@ public class KalixSecurityFilter extends AbstractShiroFilter {
         WebEnvironment env = WebUtils.getRequiredWebEnvironment(getServletContext());
         try {
             securityManager = JNDIHelper.getJNDIServiceForName(WebSecurityManager.class.getName());
+            SystemUtil.errorPrintln("start shiro security manager succeed!");
         } catch (IOException e) {
             e.printStackTrace();
         }
