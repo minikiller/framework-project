@@ -11,5 +11,9 @@ public abstract class KalixBundleActivator implements BundleActivator {
 
     public KalixBundleActivator() {
         contextPath = (String) ConfigUtil.getConfigProp("path", "ConfigWebContext");
+
+        if (contextPath.equals("/")) {
+            contextPath = "";
+        }
     }
 }
