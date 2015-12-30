@@ -49,6 +49,24 @@
                 <to uri="bean:pluginService?method=removeEntity"/>
             </delete>
 
+            <!--start a plugin-->
+            <get id="route-startPlugin" uri="/start" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Start a plugin</description>
+                <to uri="bean:pluginService?method=startPlugin(${header.key})"/>
+            </get>
+
+            <!--stop a plugin-->
+            <get id="route-stopPlugin" uri="/stop" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Stop a plugin</description>
+                <to uri="bean:pluginService?method=stopPlugin(${header.key})"/>
+            </get>
+
+            <!--stop a plugin-->
+            <get id="route-statusPlugin" uri="/status" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Stop a plugin</description>
+                <to uri="bean:pluginService?method=getPluginStatus(${header.pluginIds})"/>
+            </get>
+
         </rest>
     </camelContext>
 </blueprint>
