@@ -23,5 +23,12 @@
         <tx:transaction method="*" value="Required"/>
     </bean>
 
+    <!--插件dao-->
+    <service id="pluginBeanDao" interface="cn.com.rexen.app.api.dao.IPluginBeanDao" ref="pluginBeanDaoImpl"/>
+
+    <bean id="pluginBeanDaoImpl" class="cn.com.rexen.app.persist.openjpa.PluginBeanDaoImpl">
+        <tx:transaction method="*" value="Required"/>
+    </bean>
+
 </blueprint>
 

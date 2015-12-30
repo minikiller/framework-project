@@ -4,11 +4,11 @@
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0
            http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
 
-
+    <!--service reference-->
     <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
     <reference id="applicationBeanDao" interface="cn.com.rexen.app.api.dao.IApplicationBeanDao"/>
     <reference id="functionBeanDao" interface="cn.com.rexen.app.api.dao.IFunctionBeanDao"/>
-
+    <reference id="pluginBeanDao" interface="cn.com.rexen.app.api.dao.IPluginBeanDao"/>
 
     <bean id="functionBeanService" class="cn.com.rexen.app.core.FunctionBeanServiceImpl">
         <property name="dao" ref="functionBeanDao"/>
@@ -28,6 +28,15 @@
     <!--应用服务-->
     <service id="applicationBeanService" interface="cn.com.rexen.app.api.biz.IApplicationBeanService"
              ref="applicationBeanServiceImpl">
+    </service>
+
+    <!--插件服务-->
+    <bean id="pluginBeanServiceImpl" class="cn.com.rexen.app.core.PluginBeanServiceImpl">
+        <property name="dao" ref="pluginBeanDao"/>
+    </bean>
+
+    <service id="pluginBeanService" interface="cn.com.rexen.app.api.biz.IPluginBeanService"
+             ref="pluginBeanServiceImpl">
 
     </service>
 </blueprint>

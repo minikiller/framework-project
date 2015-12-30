@@ -43,15 +43,15 @@
                     <inputDir>src/templates</inputDir>
                     <outputDir>${project.build.directory}/generate</outputDir>
                     <attributes>
-                        <beanName>Audit</beanName>
-                        <packageName>cn.com.rexen.admin</packageName>
-                        <parentPackageName>cn.com.rexen.kalix.admin</parentPackageName>
-                        <pomName>audit</pomName>
-                        <projectName>Audit</projectName>
-                        <parentName>admin</parentName>
+                        <beanName>Plugin</beanName>
+                        <packageName>cn.com.rexen.app</packageName>
+                        <parentPackageName>cn.com.rexen.kalix.app</parentPackageName>
+                        <pomName>plugin</pomName>
+                        <projectName>Plugin</projectName>
+                        <parentName>app</parentName>
                         <versionName>1.0.0-SNAPSHOT</versionName>
-                        <module_Name>审计</module_Name>
-                        <extjsPrefix>kalix.admin.audit</extjsPrefix>
+                        <module_Name>插件</module_Name>
+                        <extjsPrefix>kalix.app.plugin</extjsPrefix>
                     </attributes>
                     <sources>
                         <source>${basedir}/src/main/java</source>

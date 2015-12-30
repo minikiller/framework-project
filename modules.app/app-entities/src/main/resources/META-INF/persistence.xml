@@ -9,6 +9,7 @@
         <class>cn.com.rexen.core.api.persistence.PersistentEntity</class>
         <class>cn.com.rexen.app.entities.ApplicationBean</class>
         <class>cn.com.rexen.app.entities.FunctionBean</class>
+        <class>cn.com.rexen.app.entities.PluginBean</class>
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
