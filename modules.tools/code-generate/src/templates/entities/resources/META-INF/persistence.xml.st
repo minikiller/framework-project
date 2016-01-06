@@ -13,7 +13,6 @@
                       value="org.apache.openjpa.jdbc.kernel.BatchingConstraintUpdateManager"/>
 
             \<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema"/>
-            \<property name="openjpa.jdbc.DBDictionary" value="postgres"/>
             \<property name="openjpa.Log" value="SQL=Info"/>
             \<property name="openjpa.ConnectionFactoryProperties" value="PrintParameters=true"/>
             \<property name="openjpa.RuntimeUnenhancedClasses" value="supported"/>
