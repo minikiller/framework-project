@@ -46,6 +46,11 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-jackson</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>cn.com.rexen.kalix.demo</groupId>
+            <artifactId>demo-api</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
