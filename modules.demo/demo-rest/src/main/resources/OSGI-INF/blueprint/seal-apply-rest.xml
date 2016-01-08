@@ -10,7 +10,6 @@
             <dataFormatProperty key="prettyPrint" value="true"/>
         </restConfiguration>
         <rest path="/sealapplys" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
-
             <get id="route-getAllSealApply" outType="cn.com.rexen.core.api.persistence.JsonData">
                 <description>Find all SealApplys</description>
                 <to uri="bean:sealApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
@@ -37,6 +36,17 @@
                 <description>Delete a SealApply</description>
                 <to uri="bean:sealApplyService?method=removeEntity"/>
             </delete>
+        </rest>
+        <rest path="/sealapplys/workflow" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-startProcessSealApply" uri="/startProcess" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Start Process of SealApply</description>
+                <to uri="bean:sealApplyService?method=startProcess(${header.id})"/>
+            </get>
+            <get id="route-completeTaskSealApply" uri="/completeTask" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Complete Task of SealApply</description>
+                <to uri="bean:sealApplyService?method=completeTask(${header.taskId},${header.accepted},${header.comment})"/>
+            </get>
         </rest>
     </camelContext>
 </blueprint>

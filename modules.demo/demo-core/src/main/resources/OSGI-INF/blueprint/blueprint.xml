@@ -30,9 +30,12 @@
         <property name="shiroService" ref="shiroService"/>
     </bean>
 
-    <bean id="sealApplyBeanService" class="cn.com.rexen.demo.core.biz.SealApplyBeanService">
+    <bean id="sealApplyBeanService" class="cn.com.rexen.demo.core.biz.SealApplyBeanServiceImpl">
         <property name="dao" ref="sealAPplyBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
+        <property name="identityService" ref="identityService"/>
+        <property name="runtimeService" ref="runtimeService"/>
+        <property name="taskService" ref="taskService"/>
     </bean>
 
     <reference id="noticeBeanDao" interface="cn.com.rexen.demo.api.dao.INoticeBeanDao"/>
