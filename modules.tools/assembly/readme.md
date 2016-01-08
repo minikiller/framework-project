@@ -17,3 +17,7 @@ All the bundles from your feature will be copied to system/. The path to your fe
 ## 客户化
 [Custom distribution with custom startup script](http://karaf.922171.n3.nabble.com/Custom-distribution-with-custom-startup-script-td4038689.html)
 
+## reference
+
+https://github.com/juttayaya/karaf
+

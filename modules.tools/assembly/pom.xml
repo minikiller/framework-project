@@ -50,6 +50,11 @@
             <type>xml</type>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix</groupId>
+            <artifactId>branding</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
         <!--<dependency>
             <groupId>org.ops4j.pax.wicket</groupId>
             <artifactId>paxwicket</artifactId>
@@ -117,6 +122,32 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <inherited>false</inherited>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <!-- here the phase you need -->
+                        <phase>prepare-package</phase>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>cn.com.rexen.kalix</groupId>
+                                    <artifactId>branding</artifactId>
+                                    <version>1.0.0-SNAPSHOT</version>
+                                    <outputDirectory>target/assembly/lib</outputDirectory>
+                                    <destFileName>karaf-branding-1.0.0-SNAPSHOT.jar</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.karaf.tooling</groupId>
@@ -124,9 +155,42 @@
                 <version>${karaf.version}</version>
                 <extensions>true</extensions>
                 <executions>
+                    <!--<execution>
+                        <id>populate-system</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>features-add-to-repository</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</descriptor>
+                            </descriptors>
+                            <features>
+                                <feature>aries-blueprint</feature>
+                                <feature>bundle</feature>
+                                <feature>config</feature>
+                                <feature>deployer</feature>
+                                <feature>diagnostic</feature>
+                                <feature>feature</feature>
+                                <feature>instance</feature>
+                                <feature>jaas</feature>
+                                <feature>kar</feature>
+                                <feature>log</feature>
+                                <feature>management</feature>
+                                <feature>package</feature>
+                                <feature>service</feature>
+                                <feature>shell</feature>
+                                <feature>shell-compat</feature>
+                                <feature>ssh</feature>
+                                <feature>system</feature>
+                                <feature>wrap</feature>
+                            </features>
+                            <repository>target/assembly/system</repository>
+                        </configuration>
+                    </execution>-->
                     <execution>
                         <id>install-kar</id>
-                        <phase>compile</phase>
+                        <phase>process-resources</phase>
                         <goals>
                             <goal>assembly</goal>
                         </goals>
