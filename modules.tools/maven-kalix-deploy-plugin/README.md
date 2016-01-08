@@ -24,7 +24,8 @@ a maven plugin for easy deployment of an artifact on a Apache Karaf server via R
  					<password>karaf</password>
  					<skip>false</skip>
  				</configuration>
- 			</plugin>```
+ 			</plugin>
+```
 3.  在工程的pluin里面找到maven-kalix-deploy-plugin，执行deploy，此时当前的bundle就会被发布到karaf中，
     如果karaf已经存在该bundle，将会被更新。
 
