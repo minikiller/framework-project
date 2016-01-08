@@ -1,6 +1,6 @@
 package cn.com.rexen.demo.entities;
 
-import cn.com.rexen.core.api.persistence.PersistentEntity;
+import cn.com.rexen.core.api.persistence.WorkflowEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.Entity;
@@ -13,12 +13,12 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "sys_seal_apply")
-public class SealApplyBean extends PersistentEntity {
+public class SealApplyBean extends WorkflowEntity {
     //申请部门
     private String department;
     //申请时间
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date date;
+    private Date applyDate;
     //用印数
     private Integer usageCount;
     //印章类别
@@ -37,12 +37,12 @@ public class SealApplyBean extends PersistentEntity {
         this.department = department;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getApplyDate() {
+        return applyDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setApplyDate(Date date) {
+        this.applyDate = date;
     }
 
     public Integer getUsageCount() {
