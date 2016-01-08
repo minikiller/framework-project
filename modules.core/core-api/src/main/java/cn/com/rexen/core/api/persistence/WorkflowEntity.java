@@ -37,7 +37,8 @@ import javax.persistence.MappedSuperclass;
 public abstract class WorkflowEntity extends PersistentEntity {
     private String processInstanceId;//流程实例id
     private String currentNode;//当前环节
-    private WorkflowStaus status = WorkflowStaus.INACTIVE;//流程状态，“处理中”，“结束”
+    //private WorkflowStaus status = WorkflowStaus.INACTIVE;//流程状态，“处理中”，“结束”
+    private short status = 0;
 
     public String getProcessInstanceId() {
         return processInstanceId;
@@ -47,13 +48,21 @@ public abstract class WorkflowEntity extends PersistentEntity {
         this.processInstanceId = instanceId;
     }
 
-    public WorkflowStaus getStatus() {
-        return status;
+    public short getStatus() {
+        return this.status;
     }
 
-    public void setStatus(WorkflowStaus status) {
+    public void setStatus(short status) {
         this.status = status;
     }
+
+//    public WorkflowStaus getStatus() {
+//        return status;
+//    }
+//
+//    public void setStatus(WorkflowStaus status) {
+//        this.status = status;
+//    }
 
     public String getCurrentNode() {
         return currentNode;

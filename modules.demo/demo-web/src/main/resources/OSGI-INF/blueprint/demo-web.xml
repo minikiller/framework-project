@@ -22,6 +22,11 @@
         <bean class="cn.com.rexen.demo.web.impl.menu.NoticeMenuImpl"/>
     </service>
 
+    <!--印章使用申请-->
+    <service interface="cn.com.rexen.core.api.web.IMenu">
+        <bean class="cn.com.rexen.demo.web.impl.menu.SealApplyMenuImpl"/>
+    </service>
+
     <!--流程定义管理-->
     <service interface="cn.com.rexen.core.api.web.IMenu">
         <bean class="cn.com.rexen.demo.web.impl.menu.ProcessDefinitionMenuImpl"/>
