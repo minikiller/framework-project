@@ -32,6 +32,10 @@ public abstract class ShiroGenericBizServiceImpl<T extends IGenericDao, TP exten
         }
     }
 
+    public IShiroService getShiroService() {
+        return this.shiroService;
+    }
+
     public void setShiroService(IShiroService shiroService) {
         this.shiroService = shiroService;
     }
