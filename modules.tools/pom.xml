@@ -17,7 +17,8 @@
 
     <modules>
         <!--<module>archetype</module>-->
-        <!--<module>assembly</module>-->
+        <module>assembly</module>
+        <module>branding</module>
         <module>maven-kalix-plugin</module>
         <module>maven-kalix-deploy-plugin</module>
         <module>code-generate</module>
