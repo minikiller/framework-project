@@ -20,6 +20,6 @@ public class DemoModifyFormImpl implements IFormHandler {
 
     @Override
     public String getComponentClass() {
-        return "Kalix.demo.view.ModifyWindow";
+        return "kalix.demo.notice.view.ModifyWindow";
     }
 }

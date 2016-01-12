@@ -66,7 +66,10 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
         } else {
             jsonStatus.setMsg("修改成功！");
         }
-        dao.save(entity);
+
+        PersistentEntity newObj = (PersistentEntity) dao.save(entity);
+
+        jsonStatus.setTag(String.valueOf(newObj.getId()));
         jsonStatus.setSuccess(true);
     }
 
