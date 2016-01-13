@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>cn.com.rexen.kalix.core</groupId>
         <artifactId>modules.core</artifactId>
@@ -11,7 +10,7 @@
     <artifactId>core-restfultest</artifactId>
     <packaging>jar</packaging>
 
-    <name>Kalix :: Core - RestfulTest</name>
+    <name>Kalix :: Core - Restfultest</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,6 +20,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <version>4.12</version>
             <!--<scope>test</scope>-->
         </dependency>
         <dependency>
@@ -47,6 +47,7 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
+            <version>20140107</version>
         </dependency>
     </dependencies>
 </project>
