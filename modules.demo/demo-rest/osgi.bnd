@@ -5,4 +5,3 @@
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 Import-Package:cn.com.rexen.core.api.biz,cn.com.rexen.core.api.persistence,cn.com.rexen.demo.entities,*
 Bundle-Category: Rexen Kalix Demo
-Include-Resource: src/main/resources
