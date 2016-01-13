@@ -33,10 +33,10 @@
                 <description>Updates a News</description>
                 <to uri="bean:attachmentBeanService?method=updateEntity"/>
             </put>
-            <delete id="route-removeAttachment" type="cn.com.rexen.attachment.entities.AttachmentBean"
+            <delete id="route-removeAttachment"
                     outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Create a attachment</description>
-                <to uri="bean:attachmentBeanService?method=removeEntity"/>
+                <to uri="bean:attachmentBeanService?method=deleteEntity(${header.id})"/>
             </delete>
         </rest>
     </camelContext>

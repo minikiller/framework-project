@@ -41,10 +41,10 @@
             </put>
 
             <!-- this is a rest DELETE to delete a audit -->
-            <delete uri="/{id}" id="route-deleteAudit" type="cn.com.rexen.audit.entities.AuditBean"
+            <delete uri="/{id}" id="route-deleteAudit"
                     outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Delete a Audit</description>
-                <to uri="bean:auditService?method=removeEntity"/>
+                <to uri="bean:auditService?method=deleteEntity(${header.id})"/>
             </delete>
 
         </rest>

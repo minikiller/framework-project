@@ -46,10 +46,10 @@
             </put>
 
             <!-- this is a rest DELETE to delete a dict -->
-            <delete uri="/{id}" id="route-deleteDict" type="cn.com.rexen.admin.entities.DictBean"
+            <delete uri="/{id}" id="route-deleteDict"
                     outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Delete a Dict</description>
-                <to uri="bean:dictService?method=removeEntity"/>
+                <to uri="bean:dictService?method=deleteEntity(${header.id})"/>
             </delete>
 
 
