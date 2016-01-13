@@ -22,7 +22,7 @@ import javax.ws.rs.core.MediaType;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestHTTPRequests extends APITest {
     private String token;
-    private static long id = 14102;
+    private static long id;
     private boolean succeed;
 
 
