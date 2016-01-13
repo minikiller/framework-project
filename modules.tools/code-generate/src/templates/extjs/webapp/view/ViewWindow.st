@@ -19,7 +19,10 @@ Ext.define('<extjsPrefix>.view.<beanName>ViewWindow', {
     items: [{
             defaults: {readOnly: true},
             xtype: 'baseForm',
-            items: [{
+            items: [
+    <ViewWindowItems>
+    /*
+            {
                 fieldLabel: '名称',
                 allowBlank: false,
                 bind: {
@@ -50,6 +53,13 @@ Ext.define('<extjsPrefix>.view.<beanName>ViewWindow', {
                 bind: {
                     value: '{rec.publishDate}'
                 }
-                }]
-        }]
+                }
+     */
+
+                ]
+            }
+
+        ]
+
+
 });

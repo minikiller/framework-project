@@ -10,7 +10,9 @@ Ext.define('<extjsPrefix>.model.<beanName>Model', {
     extend: 'kalix.model.BaseModel',
 
     //todo 在此修改模型定义
-    fields: [{
+    fields: [
+    <ModelFields>
+    /*{
         name: 'title',
         type: 'string'
     }, {
@@ -26,10 +28,13 @@ Ext.define('<extjsPrefix>.model.<beanName>Model', {
         name: 'publishDate',
         type: 'date'
     }
+    */
     ],
     //todo 在此修改模型验证提示信息
-    validators: {
-        title: [
+    <Validators>
+    /*
+     validators: {
+       title: [
             {
                 type: 'length',
                 max: '20',
@@ -47,4 +52,6 @@ Ext.define('<extjsPrefix>.model.<beanName>Model', {
             message: '名称不能为空!'
         }]
     }
+        */
+
 });
