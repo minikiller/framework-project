@@ -43,10 +43,10 @@
             </put>
 
             <!-- this is a rest DELETE to delete a plugin -->
-            <delete uri="/{id}" id="route-deletePlugin" type="cn.com.rexen.app.entities.PluginBean"
+            <delete uri="/{id}" id="route-deletePlugin"
                     outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Delete a Plugin</description>
-                <to uri="bean:pluginService?method=removeEntity"/>
+                <to uri="bean:pluginService?method=deleteEntity(${header.id})"/>
             </delete>
 
             <!--start a plugin-->

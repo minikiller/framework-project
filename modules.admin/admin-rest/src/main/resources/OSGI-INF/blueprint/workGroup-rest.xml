@@ -41,10 +41,10 @@
             </put>
 
             <!-- this is a rest DELETE to delete a workgroup -->
-            <delete uri="/{id}" id="route-deleteWorkGroup" type="cn.com.rexen.admin.entities.WorkGroupBean"
+            <delete uri="/{id}" id="route-deleteWorkGroup"
                     outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Delete a WorkGroup</description>
-                <to uri="bean:workgroupService?method=removeEntity"/>
+                <to uri="bean:workgroupService?method=deleteEntity(${header.id})"/>
             </delete>
 
             <get uri="/all" id="route-getAllWorkGroup" outType="cn.com.rexen.core.api.persistence.JsonData">

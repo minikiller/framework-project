@@ -31,10 +31,10 @@
                 <description>Updates a SealApply</description>
                 <to uri="bean:sealApplyService?method=updateEntity"/>
             </put>
-            <delete id="route-removeSealApply" type="cn.com.rexen.demo.entities.SealApplyBean"
+            <delete id="route-removeSealApply"
                     outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Delete a SealApply</description>
-                <to uri="bean:sealApplyService?method=removeEntity"/>
+                <to uri="bean:sealApplyService?method=deleteEntity(${header.id})"/>
             </delete>
         </rest>
         <rest path="/sealapplys/workflow" consumes="application/json;charset=utf-8"

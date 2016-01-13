@@ -41,10 +41,10 @@
             </put>
 
             <!-- this is a rest DELETE to delete a application -->
-            <delete uri="/{id}" id="route-deleteApplication" type="cn.com.rexen.app.entities.ApplicationBean"
+            <delete uri="/{id}" id="route-deleteApplication"
                     outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Delete a Application</description>
-                <to uri="bean:applicationService?method=removeEntity"/>
+                <to uri="bean:applicationService?method=deleteEntity(${header.id})"/>
             </delete>
 
             <!-- this is a rest GET to view an user by the given id -->
