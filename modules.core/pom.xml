@@ -30,6 +30,7 @@
         <module>core-swagger</module>
         <!--<module>core-security</module>-->
         <!--<module>core-jsonb</module>-->
+        <module>core-restfultest</module>
     </modules>
     <dependencyManagement>
         <dependencies>
