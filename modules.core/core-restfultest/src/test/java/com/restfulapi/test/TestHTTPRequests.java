@@ -21,14 +21,18 @@ import javax.ws.rs.core.MediaType;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestHTTPRequests extends APITest {
+    //login cookie token
     private String token;
+    //insert entity id return by tag
     private static long id;
+    //insert delete update status
     private boolean succeed;
 
 
     /**
      * return json format is :{success:true,location:'/kalix/index.jsp',message:'登入成功',
      * user:{name:'管理员',token:'70841dfd-97f3-43e3-b1d9-dded905d9f73'}}
+     * 登录，获得服务器返回的token
      */
     @Before
     public void login() {
@@ -106,12 +110,13 @@ public class TestHTTPRequests extends APITest {
         succeed = jsonObject.getBoolean("success");
         Assert.assertTrue(succeed);
     }
-
+    /**
+     * test for delete a entity method
+     */
     @Test
     public void test005DELETEHttpRequest() {
         String uri = String.format(getValue("delete.uri"), id);
-        String payload = String.format(loadFile("delete.json"), id);
-        APIResponse response = APIRequest.DELETE(uri).header("Cookie", "JSESSIONID=" + token).type(MediaType.APPLICATION_JSON_TYPE).body(payload)
+        APIResponse response = APIRequest.DELETE(uri).header("Cookie", "JSESSIONID=" + token)
                 .invoke().assertStatus(200);
         String returnString = response.getBody(String.class);
         JSONObject jsonObject = new JSONObject(returnString);
