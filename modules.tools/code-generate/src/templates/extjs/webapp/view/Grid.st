@@ -30,6 +30,7 @@ Ext.define('<extjsPrefix>.view.<beanName>Grid', {
                 xtype: "rownumberer",
                 text: "行号",
                 width: 50,
+                flex: 0,
                 align: 'center',
                 renderer:this.update
             },
@@ -37,7 +38,10 @@ Ext.define('<extjsPrefix>.view.<beanName>Grid', {
                 text: '编号',
                 dataIndex: 'id',
                 hidden: true,
-            }, {
+            },
+            <GridItems>
+       /*
+            {
                 text: '标题',
                 dataIndex: 'title',
             }, {
@@ -56,6 +60,7 @@ Ext.define('<extjsPrefix>.view.<beanName>Grid', {
                 xtype: 'datecolumn',
                 format: 'Y-m-d'
             },
+            */
             {
                 xtype: 'securityGridColumnRUD',
                 //todo change permission

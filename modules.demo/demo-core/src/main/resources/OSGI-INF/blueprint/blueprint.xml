@@ -6,6 +6,7 @@
     <service id="demoBeanService" interface="cn.com.rexen.demo.api.biz.INoticeBeanService"
              ref="beanServiceImpl">
     </service>
+    <service interface="cn.com.rexen.demo.api.biz.ISealApplyBeanService" ref="sealApplyBeanService"/>
 
     <reference id="repositoryService" interface="org.activiti.engine.RepositoryService"/>
     <reference id="formService" interface="org.activiti.engine.FormService"/>
@@ -15,6 +16,7 @@
     <reference id="userLoginService" interface="cn.com.rexen.core.api.security.IUserLoginService"/>
     <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
     <reference id="auditBeanService" interface="cn.com.rexen.audit.api.biz.IAuditBeanService"/>
+
 
     <bean id="beanServiceImpl" class="cn.com.rexen.demo.core.biz.NoticeBeanServiceImpl" scope="prototype">
         <property name="dao" ref="noticeBeanDao"/>
@@ -28,6 +30,15 @@
         <property name="shiroService" ref="shiroService"/>
     </bean>
 
+    <bean id="sealApplyBeanService" class="cn.com.rexen.demo.core.biz.SealApplyBeanServiceImpl">
+        <property name="dao" ref="sealAPplyBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
+        <property name="identityService" ref="identityService"/>
+        <property name="runtimeService" ref="runtimeService"/>
+        <property name="taskService" ref="taskService"/>
+    </bean>
+
     <reference id="noticeBeanDao" interface="cn.com.rexen.demo.api.dao.INoticeBeanDao"/>
+    <reference id="sealAPplyBeanDao" interface="cn.com.rexen.demo.api.dao.ISealApplyBeanDao"/>
 </blueprint>
 

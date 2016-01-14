@@ -8,17 +8,24 @@ package cn.com.rexen.core.api.persistence;
  * @修改时间：
  * @修改备注：
  */
-public enum WorkflowStaus {
-    INACTIVE("未申请"), ACTIVE("处理中"), FINISH("结束");
+public interface WorkflowStaus {
+    //INACTIVE("未申请"), ACTIVE("处理中"), FINISH("结束");
+    //INACTIVE, ACTIVE, FINISH;
+    public static short INACTIVE = 0;//未申请
+    public static short ACTIVE = 1;//处理中
+    public static short FINISH = 2;//结束
+    //private String statusCode;
 
-    private String statusCode;
+    // WorkflowStaus(String s) {
+    //    statusCode = s;
+    //}
 
-    WorkflowStaus(String s) {
-        statusCode = s;
-    }
+    //public String getStatusCode() {
+    //   return statusCode;
+    //}
 
-    public String getStatusCode() {
-        return statusCode;
-    }
-
+    //@Override
+    //public String toString() {
+    //     return "111";
+    // }
 }

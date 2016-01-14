@@ -53,6 +53,7 @@ public interface IBizService<T extends PersistentEntity> extends IService {
      * @param entity
      * @return
      */
+    @Deprecated
     JsonStatus removeEntity(T entity);
 
     /**

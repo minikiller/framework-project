@@ -1,5 +1,7 @@
 package cn.com.rexen.tools.impl;
 
+import org.stringtemplate.v4.ST;
+
 import java.io.File;
 import java.util.Map;
 
@@ -51,5 +53,7 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
 
     }
 
+    @Override
+    public void setAttributes(Map<String, String> attributes){this.attributes = attributes;};
 
 }

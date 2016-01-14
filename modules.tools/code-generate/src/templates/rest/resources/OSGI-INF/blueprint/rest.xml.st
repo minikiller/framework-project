@@ -43,10 +43,10 @@
             \</put>
 
             \<!-- this is a rest DELETE to delete a <pomName> -->
-            \<delete uri="/{id}" id="route-delete<beanName>" type="<packageName>.entities.<beanName>Bean"
+            \<delete uri="/{id}" id="route-delete<beanName>"
                 outType="cn.com.rexen.core.api.biz.JsonStatus">
                 \<description>Delete a <beanName>\</description>
-                \<to uri="bean:<pomName>Service?method=removeEntity"/>
+                \<to uri="bean:<pomName>Service?method=deleteEntity(${header.id})"/>
             \</delete>
 
         \</rest>

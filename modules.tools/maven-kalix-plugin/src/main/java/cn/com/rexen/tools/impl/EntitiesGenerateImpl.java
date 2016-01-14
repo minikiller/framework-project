@@ -26,5 +26,6 @@ public class EntitiesGenerateImpl extends AbstractGenernateImpl {
 
     }
 
-
+    @Override
+    public void setAttributes(Map<String, String> attributes){this.attributes = attributes;};
 }

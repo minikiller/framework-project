@@ -9,11 +9,39 @@ package cn.com.rexen.core.api.biz;
  */
 //@ApiModel(description = "A dummy bean ...")
 public class JsonStatus {
+    private static JsonStatus jsonStatus = new JsonStatus();
     Boolean success = false;
     Boolean failure = false;
     String msg;
+    String tag;
 
-    private static JsonStatus jsonStatus = new JsonStatus();
+    /**
+     * 返回成功json状态
+     *
+     * @param msg
+     * @return
+     */
+    public static JsonStatus successResult(String msg) {
+        jsonStatus.setTag("");
+        jsonStatus.setMsg(msg);
+        jsonStatus.setSuccess(true);
+        jsonStatus.setFailure(false);
+        return jsonStatus;
+    }
+
+    /**
+     * 返回失败json状态
+     *
+     * @param msg
+     * @return
+     */
+    public static JsonStatus failureResult(String msg) {
+        jsonStatus.setTag("");
+        jsonStatus.setMsg(msg);
+        jsonStatus.setSuccess(false);
+        jsonStatus.setFailure(true);
+        return jsonStatus;
+    }
 
     //    @ApiModelProperty(value = "an identifier", required = true)
     public Boolean getSuccess() {
@@ -41,29 +69,11 @@ public class JsonStatus {
         this.msg = msg;
     }
 
-    /**
-     * 返回成功json状态
-     *
-     * @param msg
-     * @return
-     */
-    public static JsonStatus successResult(String msg) {
-        jsonStatus.setMsg(msg);
-        jsonStatus.setSuccess(true);
-        jsonStatus.setFailure(false);
-        return jsonStatus;
+    public String getTag() {
+        return tag;
     }
 
-    /**
-     * 返回失败json状态
-     *
-     * @param msg
-     * @return
-     */
-    public static JsonStatus failureResult(String msg) {
-        jsonStatus.setMsg(msg);
-        jsonStatus.setSuccess(false);
-        jsonStatus.setFailure(true);
-        return jsonStatus;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 }

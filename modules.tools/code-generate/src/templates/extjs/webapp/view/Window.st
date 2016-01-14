@@ -20,9 +20,14 @@ Ext.define('<extjsPrefix>.view.<beanName>Window', {
     xtype: "<pomName>Window",
     width: 400,
     //todo 在此修改表单
-    items: [{
+    items: [
+
+        {
         xtype: 'baseForm',
-        items: [{
+        items: [
+            <WindowItems>
+            /*
+        {
             fieldLabel: '名称',
             allowBlank: false,
             bind: {
@@ -54,5 +59,7 @@ Ext.define('<extjsPrefix>.view.<beanName>Window', {
                 value: '{rec.publishDate}'
             }
             }]
-    }]
+        }
+    */
+    ]
 });

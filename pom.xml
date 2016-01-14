@@ -19,11 +19,11 @@
         <module>modules.demo</module>
         <module>modules.example</module>
         <module>modules.middleware</module>
-        <!--<module>modules.notice</module>-->
         <module>modules.tools</module>
         <module>modules.osgi</module>
         <module>modules.security</module>
-        <module>modules.duty</module>
+
+        <!--<module>modules.notice</module>-->
     </modules>
 
 
@@ -106,6 +106,13 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*-rest.xml</include>
+                </includes>
+                <filtering>false</filtering>
             </resource>
         </resources>
         <plugins>
