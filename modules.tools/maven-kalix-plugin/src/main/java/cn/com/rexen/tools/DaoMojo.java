@@ -2,7 +2,7 @@ package cn.com.rexen.tools;
 
 import cn.com.rexen.tools.api.IGenerate;
 import cn.com.rexen.tools.impl.*;
-import com.thoughtworks.qdox.JavaDocBuilder;
+import com.thoughtworks.qdox.JavaProjectBuilder;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
@@ -19,7 +19,7 @@ public class DaoMojo extends AbstractBaseKalixMojo {
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-        this.docBuilder = new JavaDocBuilder();
+        this.docBuilder = new JavaProjectBuilder();
         for (String r : sources) {
             docBuilder.addSourceTree(new File(r));
         }
