@@ -1,6 +1,13 @@
 package cn.com.rexen.tools.impl;
 
+import cn.com.rexen.tools.api.IGenerate;
+import com.thoughtworks.qdox.model.DocletTag;
+import com.thoughtworks.qdox.model.JavaField;
+import com.thoughtworks.qdox.model.JavaType;
+import org.apache.maven.plugin.MojoExecutionException;
+
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,5 +34,45 @@ public class EntitiesGenerateImpl extends AbstractGenernateImpl {
     }
 
     @Override
-    public void setAttributes(Map<String, String> attributes){this.attributes = attributes;};
+    public void setAttributes(Map<String, String> attributes){this.attributes = attributes;}
+
+    @Override
+    public void beforeGenJavaSource() throws MojoExecutionException{
+        String result = getSetCreate();
+        attributes.put("classBody",result);
+    }
+
+    private String getSetCreate() throws MojoExecutionException {
+        StringBuffer resultBuffer = new StringBuffer("");
+        List<JavaField> fields = getClassFields();
+        String fieldName;
+        JavaType fieldType;//获取字段类型
+        DocletTag fieldTag;//describe
+        for (JavaField field : fields){
+            fieldName = field.getName();
+            fieldType = field.getType();
+            fieldTag = field.getTagByName("describe"); // @describe
+
+
+            resultBuffer.append("\t/**\r\n\t*@describe " + fieldTag.getValue() + "\r\n\t*/\r\n");
+            resultBuffer.append("\tprivate " + fieldType.getValue() + " " + fieldName + ";\r\n");
+
+            //getter
+            if(fieldType.getValue().equals("boolean")) {
+                resultBuffer.append("\tpublic " + fieldType.getValue() + " is" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
+            }else{
+                resultBuffer.append("\tpublic " + fieldType.getValue() + " get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
+            }
+            resultBuffer.append("(){\r\n");
+            resultBuffer.append("\t\treturn this." + fieldName + ";\r\n");
+            resultBuffer.append("\t}\r\n\r\n");
+
+            //setter
+            resultBuffer.append("\tpublic void set" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
+            resultBuffer.append("(" + fieldType.getValue() + " " + fieldName + ") {\r\n");
+            resultBuffer.append("\t\tthis." + fieldName + " = " + fieldName + ";\r\n");
+            resultBuffer.append("\t}\r\n\r\n");
+        }
+        return resultBuffer.toString();
+    }
 }

@@ -5,7 +5,7 @@
 
     \<parent>
         \<groupId><parentPackageName>\</groupId>
-        \<artifactId><parentName>-parent\</artifactId>
+        \<artifactId><parentName>\</artifactId>
         \<version><versionName>\</version>
     \</parent>
 

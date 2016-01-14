@@ -48,17 +48,22 @@
                     <inputDir>src/templates</inputDir>
                     <outputDir>${project.build.directory}/generate</outputDir>
                     <attributes>
-                        <beanName>Student</beanName>
+                        <parentName>modules.app</parentName>
+                        <projectName>Kalix</projectName>
                         <packageName>cn.com.rexen.bean</packageName>
                         <parentPackageName>cn.com.rexen.kalix.app</parentPackageName>
-                        <pomName>student</pomName>
-                        <projectName>Student</projectName>
-                        <parentName>app</parentName>
                         <versionName>1.0.0-SNAPSHOT</versionName>
                         <module_Name>学生</module_Name>
-                        <extjsPrefix>kalix.app.student</extjsPrefix>
+                        <pomName>student</pomName>
+                        <beanName>Student</beanName>
                         <!-- 实体java类所在的位置-->
                         <beanDir>src/main/java</beanDir>
+                        <extjsPrefix>kalix.app.student</extjsPrefix>
+
+                        <!-- 配置权限-->
+                        <permission_app>admin</permission_app><!-- 应用-->
+                        <permission_module>constructModule</permission_module><!-- 模块-->
+                        <permission_menu>studentMenu</permission_menu><!-- 菜单-->
                     </attributes>
                     <sources>
                         <source>${basedir}/src/main/java</source>

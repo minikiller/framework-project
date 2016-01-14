@@ -44,9 +44,9 @@ Ext.define('<extjsPrefix>.view.<beanName>Grid', {
                 xtype: 'securityGridColumnRUD',
                 //todo change permission
                 permissions: [
-                    'roffice:deployModule:<pomName>Menu:view',
-                    'roffice:deployModule:<pomName>Menu:edit',
-                    'roffice:deployModule:<pomName>Menu:delete'
+                    '<permission_app>:<permission_module>:<permission_menu>:view',
+                    '<permission_app>:<permission_module>:<permission_menu>:edit',
+                    '<permission_app>:<permission_module>:<permission_menu>:delete'
                 ]
             }
         ]
@@ -58,7 +58,7 @@ Ext.define('<extjsPrefix>.view.<beanName>Grid', {
                 text: '添加',
                 xtype: 'button',
                 //todo change permission
-                permission: 'roffice:deployModule:<pomName>Menu:add',
+                permission: '<permission_app>:<permission_module>:<permission_menu>:add',
                 bind: {icon: '{add_image_path}'},
                 handler: 'onAdd'
             }

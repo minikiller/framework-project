@@ -56,6 +56,10 @@ public abstract class AbstractGenernateImpl implements IGenerate {
 
     protected String beanDir;
 
+    protected String permission_app;
+    protected String permission_module;
+    protected String permission_menu;
+
     protected Map<String, String> attributes;
 
     public AbstractGenernateImpl(Map<String, String> attributes, File inputDir, File outputDir, String moduleName) {
@@ -82,6 +86,13 @@ public abstract class AbstractGenernateImpl implements IGenerate {
         beanDir = attributes.get("beanDir");
         Assert.notNull(beanDir);
 
+        permission_app = attributes.get("permission_app");
+        Assert.notNull(permission_app);
+        permission_module = attributes.get("permission_module");
+        Assert.notNull(permission_module);
+        permission_menu = attributes.get("permission_menu");
+        Assert.notNull(permission_menu);
+
         File target = new File(outputDir.getAbsolutePath() + "\\" + pomName + "-" + moduleName);
         if (!target.exists())
             target.mkdirs();
@@ -93,6 +104,7 @@ public abstract class AbstractGenernateImpl implements IGenerate {
 
     @Override
     public void genJavaSource() throws MojoExecutionException {
+        beforeGenJavaSource();
         //处理api模板
         Map<File, File> apiFiles = new LinkedHashMap<File, File>();
         // looks like maven may change empty String to null?

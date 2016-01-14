@@ -26,5 +26,8 @@ public class DaoGenerateImpl extends AbstractGenernateImpl {
 
     }
 
+    @Override
+    public void beforeGenJavaSource(){
 
+    }
 }

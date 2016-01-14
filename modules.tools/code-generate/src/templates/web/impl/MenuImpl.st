@@ -1,7 +1,6 @@
 package <packageName>.web.impl;
 
 import cn.com.rexen.core.api.web.IMenu;
-import cn.com.rexen.roffice.core.web.app.Const;
 
 public class <beanName>MenuImpl implements IMenu {
     @Override
