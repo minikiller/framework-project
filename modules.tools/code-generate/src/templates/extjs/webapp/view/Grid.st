@@ -40,27 +40,6 @@ Ext.define('<extjsPrefix>.view.<beanName>Grid', {
                 hidden: true,
             },
             <GridItems>
-       /*
-            {
-                text: '标题',
-                dataIndex: 'title',
-            }, {
-                text: '名称',
-                dataIndex: 'name',
-            },
-            {
-                text: '内容',
-                dataIndex: 'content',
-            }, {
-                text: '发布人',
-                dataIndex: 'publishPeople',
-            }, {
-                text: '发布时间',
-                dataIndex: 'publishDate',
-                xtype: 'datecolumn',
-                format: 'Y-m-d'
-            },
-            */
             {
                 xtype: 'securityGridColumnRUD',
                 //todo change permission

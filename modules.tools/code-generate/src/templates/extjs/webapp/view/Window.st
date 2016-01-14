@@ -26,40 +26,7 @@ Ext.define('<extjsPrefix>.view.<beanName>Window', {
         xtype: 'baseForm',
         items: [
             <WindowItems>
-            /*
-        {
-            fieldLabel: '名称',
-            allowBlank: false,
-            bind: {
-                activeError: '{validation.name}',
-                value: '{rec.name}'
-            }
-        },
-        {
-            fieldLabel: '标题',
-            allowBlank: false,
-            bind: {
-                activeError: '{validation.title}',
-                value: '{rec.title}'
-            }
-        }, {
-            fieldLabel: '内容',
-            allowBlank: false,
-            xtype: 'textarea',
-            bind: {
-                activeError: '{validation.content}',
-                value: '{rec.content}'
-            }
-        },{
-            fieldLabel: '发布时间',
-            allowBlank: false,
-            xtype: 'datefield',
-            format: 'Y-m-d',
-            bind: {
-                value: '{rec.publishDate}'
-            }
-            }]
+        ]
         }
-    */
     ]
 });
