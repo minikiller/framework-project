@@ -35,7 +35,6 @@ public class EntitiesMojo extends AbstractBaseKalixMojo {
         //create entities code generate
         IGenerate entitiesGenerate = new EntitiesGenerateImpl(attributes, inputDir, outputDir);
         entitiesGenerate.genJavaSource();
-
     }
 
 

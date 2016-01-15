@@ -2,7 +2,7 @@
 \<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
     \<persistence-unit transaction-type="JTA" name="<pomName>-cm">
         \<provider>org.apache.openjpa.persistence.PersistenceProviderImpl\</provider>
-        \<jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=${db.datasource})
+        \<jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=jdbc/ds)
         \</jta-data-source>
         \<class>cn.com.rexen.core.api.persistence.PersistentEntity\</class>
         \<class><packageName>.entities.<beanName>Bean\</class>

@@ -56,9 +56,18 @@ public abstract class AbstractGenernateImpl implements IGenerate {
 
     protected String beanDir;
 
+    // 配置权限
     protected String permission_app;
     protected String permission_module;
     protected String permission_menu;
+
+    // 配置菜单
+    protected String module_id;
+    protected String menu_id;
+    protected String menu_text;
+    protected String menu_index;
+    protected String menu_icon_class;
+    protected String menu_route_id;
 
     protected Map<String, String> attributes;
 
@@ -92,6 +101,25 @@ public abstract class AbstractGenernateImpl implements IGenerate {
         Assert.notNull(permission_module);
         permission_menu = attributes.get("permission_menu");
         Assert.notNull(permission_menu);
+
+
+        module_id = attributes.get("module_id");
+        Assert.notNull(module_id);
+
+        menu_id = attributes.get("menu_id");
+        Assert.notNull(menu_id);
+
+        menu_text = attributes.get("menu_text");
+        Assert.notNull(menu_text);
+
+        menu_index = attributes.get("menu_index");
+        Assert.notNull(menu_index);
+
+        menu_icon_class = attributes.get("menu_icon_class");
+        Assert.notNull(menu_icon_class);
+
+        menu_route_id = attributes.get("menu_route_id");
+        Assert.notNull(menu_route_id);
 
         File target = new File(outputDir.getAbsolutePath() + "\\" + pomName + "-" + moduleName);
         if (!target.exists())

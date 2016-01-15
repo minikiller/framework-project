@@ -98,8 +98,10 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
                 resultBuffer.append("\ttype: 'list'\r\n");
             }else if(fieldType.equals("Integer") || fieldType.equals("int")){
                 resultBuffer.append("\ttype: 'int'\r\n");
-            }else {
-                resultBuffer.append("\ttype: 'object'\r\n");
+            }else if(fieldType.equals("Boolean") || fieldType.equals("boolean")){
+                resultBuffer.append("\ttype: 'boolean'\r\n");
+            }else{
+                resultBuffer.delete(resultBuffer.length() -3, resultBuffer.length());
             }
 
             resultBuffer.append("\t},");
@@ -190,7 +192,6 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
             resultBuffer.append("\t\t}\r\n\t},\r\n");
         }
         resultBuffer.delete(resultBuffer.length() - 3,resultBuffer.length());
-        resultBuffer.append("\r\n\t}");
         return resultBuffer.toString();
     }
     private String getWindowItems() throws MojoExecutionException{

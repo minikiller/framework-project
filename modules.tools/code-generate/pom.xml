@@ -48,10 +48,10 @@
                     <inputDir>src/templates</inputDir>
                     <outputDir>${project.build.directory}/generate</outputDir>
                     <attributes>
-                        <parentName>modules.app</parentName>
+                        <parentName>kalix-project</parentName>
+                        <parentPackageName>cn.com.rexen.kalix</parentPackageName>
                         <projectName>Kalix</projectName>
                         <packageName>cn.com.rexen.bean</packageName>
-                        <parentPackageName>cn.com.rexen.kalix.app</parentPackageName>
                         <versionName>1.0.0-SNAPSHOT</versionName>
                         <module_Name>学生</module_Name>
                         <pomName>student</pomName>
@@ -64,6 +64,14 @@
                         <permission_app>admin</permission_app><!-- 应用-->
                         <permission_module>constructModule</permission_module><!-- 模块-->
                         <permission_menu>studentMenu</permission_menu><!-- 菜单-->
+
+                        <!-- 配置菜单-->
+                        <module_id>constructModule</module_id>
+                        <menu_id>studentMenu</menu_id>
+                        <menu_text>学生管理</menu_text>
+                        <menu_index>50</menu_index>
+                        <menu_icon_class>x-fa fa-cutlery</menu_icon_class>
+                        <menu_route_id>app/student</menu_route_id>
                     </attributes>
                     <sources>
                         <source>${basedir}/src/main/java</source>

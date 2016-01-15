@@ -1,8 +1,8 @@
 package <packageName>.extjs.internal;
 
+import cn.com.rexen.core.api.osgi.KalixBundleActivator;
 import cn.com.rexen.core.util.SystemUtil;
 import org.apache.log4j.Logger;
-import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.http.HttpService;
