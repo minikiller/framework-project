@@ -82,11 +82,9 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
         List<JavaField> fields = getClassFields();
         String fieldName;
         String fieldType;//获取字段类型
-        DocletTag fieldTag;//@describe
         for (JavaField field : fields){
             fieldName = field.getName();
             fieldType = field.getType().getValue();
-            fieldTag = field.getTagByName("describe"); // @describe
 
             resultBuffer.append("\t{\r\n");
             resultBuffer.append("\tname:'" + fieldName + "',\r\n");
@@ -114,7 +112,6 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
         List<JavaField> fields = getClassFields();
         String fieldName;
         DocletTag fieldTag,fieldValidatorTag;//@describe,@validator
-        int a;
         for (JavaField field : fields){
             fieldName = field.getName();
             fieldTag = field.getTagByName("describe"); // @describe
@@ -136,7 +133,6 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
         List<JavaField> fields = getClassFields();
         String fieldName;
         DocletTag fieldTag,fieldValidatorTag;//@describe,@validator
-        int a;
         for (JavaField field : fields){
             fieldName = field.getName();
             fieldTag = field.getTagByName("describe"); // @describe
@@ -161,7 +157,12 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
             fieldName = field.getName();
             fieldTag = field.getTagByName("describe"); // @describe
             resultBuffer.append("\t{\r\n");
-            resultBuffer.append("\t\txtype:'" + "textfield" + "',\r\n");
+            if(field.getType().getValue().equals("Date")){
+                resultBuffer.append("\t\txtype:'datefield',\r\n");
+                resultBuffer.append("\t\tformat: 'Y-m-d',\r\n");
+            }else {
+                resultBuffer.append("\t\txtype:'" + "textfield" + "',\r\n");
+            }
             resultBuffer.append("\t\tfieldLabel:'" + fieldTag.getValue() + "',\r\n");
             resultBuffer.append("\t\tlabelAlign:'right',\r\n");
             resultBuffer.append("\t\tlabelWidth:60,\r\n");
@@ -176,15 +177,15 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
         StringBuffer resultBuffer = new StringBuffer("");
         List<JavaField> fields = getClassFields();
         String fieldName;
-        DocletTag fieldTag,fieldValidatorTag;//@describe,@validator
+        DocletTag fieldTag;//@describe
         for (JavaField field : fields){
             resultBuffer.append("\t{\n");
             fieldName = field.getName();
             fieldTag = field.getTagByName("describe"); // @describe
             resultBuffer.append("\t\tfieldLabel:'" + fieldTag.getValue() + "',\r\n");
             resultBuffer.append("\t\tallowBlank:false,\r\n");
-            if(field.getType().equals("Date")){
-                resultBuffer.append("\t\txtype:false,\r\n");
+            if(field.getType().getValue().equals("Date")){
+                resultBuffer.append("\t\txtype:'datefield',\r\n");
                 resultBuffer.append("\t\tformat: 'Y-m-d',\r\n");
             }
             resultBuffer.append("\t\tbind: {\r\n");
