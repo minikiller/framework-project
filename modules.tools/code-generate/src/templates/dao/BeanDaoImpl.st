@@ -31,22 +31,6 @@ public class <beanName>BeanDaoImpl extends GenericDao\<<beanName>Bean, Long> imp
     public void setEntityManager(EntityManager em) {
         super.setEntityManager(em);
     }
-    //todo add custom query 
-    @Override
-        public CriteriaQuery buildCriteriaQuery(QueryDTO queryDTO) {
-            <beanName>DTO <pomName>Dto = (<beanName>DTO) queryDTO;
-            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-            CriteriaQuery\<<beanName>Bean> criteriaQuery = criteriaBuilder.createQuery(<beanName>Bean.class);
-            Root\<<beanName>Bean> from = criteriaQuery.from(<beanName>Bean.class);
-            EntityType\<<beanName>Bean> bean_ = from.getModel(); //实体元数据
-            List\<Predicate> predicatesList = new ArrayList\<Predicate>();
-    
-            if (<pomName>Dto.getName() != null && !<pomName>Dto.getName().trim().isEmpty()) {
-                SingularAttribute\<<beanName>Bean, String> name = (SingularAttribute\<<beanName>Bean, String>) bean_.getSingularAttribute("name");
-                predicatesList.add(criteriaBuilder.like(from.get(name), "%" + <pomName>Dto.getName() + "%"));
-            }
-            criteriaQuery.where(predicatesList.toArray(new Predicate[predicatesList.size()]));
-            CriteriaQuery select = criteriaQuery.select(from);
-            return select;
-        }
+    //todo add custom query
+
 }

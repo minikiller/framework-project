@@ -1,6 +1,6 @@
 package cn.com.rexen.tools;
 
-import com.thoughtworks.qdox.JavaDocBuilder;
+import com.thoughtworks.qdox.JavaProjectBuilder;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.project.MavenProject;
 
@@ -32,7 +32,7 @@ public abstract class AbstractBaseKalixMojo extends AbstractMojo{
      */
     protected File outputDir;
 
-    JavaDocBuilder docBuilder;
+    JavaProjectBuilder docBuilder;
     /**
      * Input root directory
      *

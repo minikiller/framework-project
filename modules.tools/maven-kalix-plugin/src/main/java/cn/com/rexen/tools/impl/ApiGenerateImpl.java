@@ -28,5 +28,9 @@ public class ApiGenerateImpl extends AbstractGenernateImpl {
 
     }
 
+    @Override
+    public void beforeGenJavaSource(){
+
+    }
 
 }

@@ -20,7 +20,7 @@
         <module>assembly</module>
         <module>branding</module>
         <module>maven-kalix-plugin</module>
-        <module>maven-kalix-deploy-plugin</module>
+        <!--<module>maven-kalix-deploy-plugin</module>-->
         <module>code-generate</module>
         <module>karaf-command</module>
         <!--<module>webconsole</module>-->
