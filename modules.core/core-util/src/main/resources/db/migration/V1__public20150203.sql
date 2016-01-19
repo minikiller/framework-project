@@ -681,47 +681,7 @@ VALUES ('10002', '1', 'boolean', 'accepted', '7501', '7501', NULL, NULL, NULL, '
 INSERT INTO "public"."act_ru_variable"
 VALUES ('5002', '1', 'boolean', 'accepted', '2501', '2501', NULL, NULL, NULL, '1', NULL, NULL);
 
--- ----------------------------
--- Table structure for cm_contract
--- ----------------------------
-DROP TABLE IF EXISTS "public"."cm_contract";
-CREATE TABLE "public"."cm_contract" (
-  "id"              INT8 NOT NULL,
-  "createby"        VARCHAR(255) COLLATE "default",
-  "creationdate"    TIMESTAMP(6),
-  "updateby"        VARCHAR(255) COLLATE "default",
-  "updatedate"      TIMESTAMP(6),
-  "version_"        INT8,
-  "archive"         BOOL,
-  "archive_date"    DATE,
-  "constractdate"   DATE,
-  "constractnumber" VARCHAR(100) COLLATE "default",
-  "contractstatus"  INT4,
-  "createdate"      TIMESTAMP(6),
-  "expectedcost"    FLOAT4,
-  "expiredate"      DATE,
-  "grossprofit"     FLOAT4,
-  "grossprofitrate" FLOAT4,
-  "guarantee"       VARCHAR(80) COLLATE "default",
-  "managerid"       INT8 NOT NULL,
-  "partya"          VARCHAR(255) COLLATE "default",
-  "partyb"          VARCHAR(100) COLLATE "default",
-  "projectname"     VARCHAR(100) COLLATE "default",
-  "projectstatus"   VARCHAR(10) COLLATE "default",
-  "projecttype"     VARCHAR(20) COLLATE "default",
-  "receivables"     FLOAT4,
-  "receivemoney"    FLOAT4,
-  "remark"          VARCHAR(255) COLLATE "default",
-  "sellerid"        INT8 NOT NULL,
-  "summoney"        FLOAT4,
-  "userid"          INT8 NOT NULL
-)
-WITH (OIDS =FALSE
-);
 
--- ----------------------------
--- Records of cm_contract
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for couchdb_attach
@@ -4361,11 +4321,6 @@ CREATE INDEX "act_idx_variable_task_id" ON "public"."act_ru_variable" USING BTRE
 -- Primary Key structure for table act_ru_variable
 -- ----------------------------
 ALTER TABLE "public"."act_ru_variable" ADD PRIMARY KEY ("id_");
-
--- ----------------------------
--- Primary Key structure for table cm_contract
--- ----------------------------
-ALTER TABLE "public"."cm_contract" ADD PRIMARY KEY ("id");
 
 -- ----------------------------
 -- Primary Key structure for table couchdb_attach
