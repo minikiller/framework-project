@@ -96,6 +96,11 @@
                                     <type>cfg</type>
                                     <classifier>ConfigShiro</classifier>
                                 </artifact>
+                                <artifact>
+                                    <file>target/classes/ConfigCache.cfg</file>
+                                    <type>cfg</type>
+                                    <classifier>ConfigCache</classifier>
+                                </artifact>
                             </artifacts>
                         </configuration>
                     </execution>

@@ -329,6 +329,9 @@
         <configfile finalname="/etc/ConfigShiro.cfg" override="true">
             mvn:cn.com.rexen.kalix/karaf-features/${project.version}/cfg/ConfigShiro
         </configfile>
+        <configfile finalname="/etc/ConfigCache.cfg" override="true">
+            mvn:cn.com.rexen.kalix/karaf-features/${project.version}/cfg/ConfigCache
+        </configfile>
     </feature>
 
     <!--osgi:install -s 'wrap:mvn:org.jasig.cas.client/cas-client-core/3.2.1$Bundle-SymbolicName=cas-client-core&Bundle-Version=3.2.0'-->
