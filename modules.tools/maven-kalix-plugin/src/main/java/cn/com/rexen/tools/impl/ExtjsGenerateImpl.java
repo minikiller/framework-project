@@ -34,6 +34,11 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
     String searchFormFileName = "%sSearchForm.js";
     String gridFileName = "%sGrid.js";
 
+    String addFileName = "%s_add.png";
+    String deleteFileName = "%s_delete.png";
+    String editFileName = "%s_edit.png";
+    String viewFileName = "%s_view.png";
+
     public ExtjsGenerateImpl(Map<String, String> attributes, File inputDir, File outputDir) {
         super(attributes, inputDir, outputDir, "extjs");
         fileMap.put("InitActivator", "//" + moduleName + "//internal//" + activatorFileName);
@@ -51,6 +56,12 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
         fileMap.put("ViewWindow", "//view//" + String.format(viewWindowFileName, beanName));
         fileMap.put("SearchForm", "//view//" + String.format(searchFormFileName, beanName));
         fileMap.put("Grid", "//view//" + String.format(gridFileName,beanName));
+
+        // 图片资源
+        fileMap.put("_add","//images//" + String.format(addFileName, pomName));
+        fileMap.put("_delete","//images//" + String.format(deleteFileName, pomName));
+        fileMap.put("_edit","//images//" + String.format(editFileName, pomName));
+        fileMap.put("_view","//images//" + String.format(viewFileName, pomName));
     }
 
     @Override
@@ -87,7 +98,7 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
             fieldType = field.getType().getValue();
 
             resultBuffer.append("\t{\r\n");
-            resultBuffer.append("\tname:'" + fieldName + "',\r\n");
+            resultBuffer.append("\tname: '" + fieldName + "',\r\n");
             if(fieldType.equals("String")) {
                 resultBuffer.append("\ttype: 'string'\r\n");
             }else if(fieldType.equals("Date")){
@@ -119,8 +130,8 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
             if(fieldValidatorTag != null){
                 resultBuffer.append("\t\t"+fieldName);
                 resultBuffer.append(":[{\r\n");
-                resultBuffer.append("\t\t\ttype:'" + "presence" + "',\r\n");
-                resultBuffer.append("\t\t\tmessage:'" + fieldTag.getValue() + fieldValidatorTag.getValue() + "'\r\n");
+                resultBuffer.append("\t\t\ttype: '" + "presence" + "',\r\n");
+                resultBuffer.append("\t\t\tmessage: '" + fieldTag.getValue() + fieldValidatorTag.getValue() + "'\r\n");
                 resultBuffer.append("\t\t}],\r\n");
             }
         }
@@ -137,12 +148,12 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
             fieldName = field.getName();
             fieldTag = field.getTagByName("describe"); // @describe
             resultBuffer.append("\t{\r\n");
-            resultBuffer.append("\t\ttext:'" + fieldTag.getValue() + "',\r\n");
-            resultBuffer.append("\t\tdataIndex:'" + fieldName + "'");
+            resultBuffer.append("\t\ttext: '" + fieldTag.getValue() + "',\r\n");
+            resultBuffer.append("\t\tdataIndex: '" + fieldName + "'");
             if(field.getType().getValue().equals("Date")){
                 resultBuffer.append(",\r\n");
-                resultBuffer.append("\t\txtype:'datecolumn',\r\n");
-                resultBuffer.append("\t\tformat:'Y-m-d'");
+                resultBuffer.append("\t\txtype: 'datecolumn',\r\n");
+                resultBuffer.append("\t\tformat: 'Y-m-d'");
             }
             resultBuffer.append("\r\n\t},\r\n");
         }
@@ -158,16 +169,18 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
             fieldTag = field.getTagByName("describe"); // @describe
             resultBuffer.append("\t{\r\n");
             if(field.getType().getValue().equals("Date")){
-                resultBuffer.append("\t\txtype:'datefield',\r\n");
+                resultBuffer.append("\t\txtype: 'datefield',\r\n");
                 resultBuffer.append("\t\tformat: 'Y-m-d',\r\n");
+            }else if(field.getType().getValue().equals("int") || field.getType().getValue().equals("Integer")){
+                resultBuffer.append("\t\txtype: 'numberfield',\r\n");
             }else {
-                resultBuffer.append("\t\txtype:'" + "textfield" + "',\r\n");
+                resultBuffer.append("\t\txtype: '" + "textfield" + "',\r\n");
             }
-            resultBuffer.append("\t\tfieldLabel:'" + fieldTag.getValue() + "',\r\n");
-            resultBuffer.append("\t\tlabelAlign:'right',\r\n");
-            resultBuffer.append("\t\tlabelWidth:60,\r\n");
-            resultBuffer.append("\t\twidth:200,\r\n");
-            resultBuffer.append("\t\tname:'" + fieldName + "'\r\n");
+            resultBuffer.append("\t\tfieldLabel: '" + fieldTag.getValue() + "',\r\n");
+            resultBuffer.append("\t\tlabelAlign: 'right',\r\n");
+            resultBuffer.append("\t\tlabelWidth: 60,\r\n");
+            resultBuffer.append("\t\twidth: 200,\r\n");
+            resultBuffer.append("\t\tname: '" + fieldName + "'\r\n");
             resultBuffer.append("\t},\r\n");
         }
         resultBuffer.delete(resultBuffer.length()-3,resultBuffer.length());
@@ -182,11 +195,14 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
             resultBuffer.append("\t{\n");
             fieldName = field.getName();
             fieldTag = field.getTagByName("describe"); // @describe
-            resultBuffer.append("\t\tfieldLabel:'" + fieldTag.getValue() + "',\r\n");
-            resultBuffer.append("\t\tallowBlank:false,\r\n");
+            resultBuffer.append("\t\tfieldLabel: '" + fieldTag.getValue() + "',\r\n");
+            resultBuffer.append("\t\tallowBlank: false,\r\n");
             if(field.getType().getValue().equals("Date")){
-                resultBuffer.append("\t\txtype:'datefield',\r\n");
+                resultBuffer.append("\t\txtype: 'datefield',\r\n");
                 resultBuffer.append("\t\tformat: 'Y-m-d',\r\n");
+            }
+            if(field.getType().getValue().equals("int") || field.getType().getValue().equals("Integer")){
+                resultBuffer.append("\t\txtype: 'numberfield',\r\n");
             }
             resultBuffer.append("\t\tbind: {\r\n");
             resultBuffer.append("\t\t\tvalue: '{rec." +fieldName+ "}'\r\n");

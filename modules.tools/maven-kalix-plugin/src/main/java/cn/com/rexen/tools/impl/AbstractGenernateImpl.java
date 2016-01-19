@@ -143,6 +143,11 @@ public abstract class AbstractGenernateImpl implements IGenerate {
             File outputFile = fileEntry.getValue();
             String input = Util.readFile(inputFile, encoding);
             ST stringTemplate;
+            if(outputFile.getName().contains(".png")){
+                //png文件拷贝
+
+                continue;
+            }
             try {
                 stringTemplate = new ST(input);
                 if (attributes != null) {
@@ -166,6 +171,7 @@ public abstract class AbstractGenernateImpl implements IGenerate {
                              File outputDir) {
         CharSequence javaChar = "java";
         CharSequence resourceChar = "xml";
+        CharSequence imageChar = "png";
         CharSequence jsChar = "js";
         for (File f : inputDir.listFiles()) {
             String name = f.getName();
@@ -184,6 +190,12 @@ public abstract class AbstractGenernateImpl implements IGenerate {
                     }
                     //处理资源类型的文件
                     else if (fileName.contains(resourceChar)) {
+                        File pd = new File(this.outputDir, RESOURCES_SOURCE_PATH);
+                        File resourceFile = new File(pd, fileName);
+                        result.put(f, resourceFile);
+                    }
+                    //处理图片文件
+                    else if(fileName.contains(imageChar)){
                         File pd = new File(this.outputDir, RESOURCES_SOURCE_PATH);
                         File resourceFile = new File(pd, fileName);
                         result.put(f, resourceFile);
