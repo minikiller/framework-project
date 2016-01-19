@@ -1,0 +1,16 @@
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+">
+
+    <service id="studentBeanService" interface="cn.com.rexen.bean.api.biz.IStudentBeanService"
+             ref="beanServiceImpl">
+    </service>
+
+    <bean id="beanServiceImpl" class="cn.com.rexen.bean.core.biz.StudentBeanServiceImpl">
+        <property name="dao" ref="studentBeanDao"/>
+    </bean>
+
+    <reference id="studentBeanDao" interface="cn.com.rexen.bean.api.dao.IStudentBeanDao"/>
+</blueprint>
+
