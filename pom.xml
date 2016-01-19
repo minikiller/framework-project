@@ -10,23 +10,6 @@
     <packaging>pom</packaging>
     <description>Parent of Project</description>
 
-    <modules>
-        <module>modules.poms</module>
-        <module>modules.core</module>
-        <module>modules.admin</module>
-        <module>modules.app</module>
-        <module>modules.audit</module>
-        <module>modules.demo</module>
-        <module>modules.example</module>
-        <module>modules.middleware</module>
-        <module>modules.tools</module>
-        <module>modules.osgi</module>
-        <module>modules.security</module>
-        <module>modules.duty</module>
-        <!--<module>modules.notice</module>-->
-    </modules>
-
-
     <organization>
         <name>ReXen Tech Company</name>
         <url>http://www.rexen.com.cn/</url>
@@ -88,6 +71,36 @@
         <bundle.symbolicName>define_in_child_module</bundle.symbolicName>
         <bundle.namespace>define_in_child_module</bundle.namespace>
     </properties>
+
+    <modules>
+        <module>modules.poms</module>
+        <module>modules.core</module>
+        <module>modules.admin</module>
+        <module>modules.app</module>
+        <module>modules.audit</module>
+        <module>modules.demo</module>
+        <module>modules.example</module>
+        <module>modules.middleware</module>
+        <module>modules.tools</module>
+        <module>modules.osgi</module>
+        <module>modules.security</module>
+        <module>modules.duty</module>
+        <!--<module>modules.notice</module>-->
+    </modules>
+
+    <distributionManagement>
+        <repository>
+            <id>private-nexus-library-releases</id>
+            <name>private-nexus-library-releases</name>
+            <url>http://172.18.82.10:8081/nexus/content/repositories/releases/</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>private-nexus-library-snapshots</id>
+            <name>private-nexus-library-snapshots</name>
+            <url>http://172.18.82.10:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 
     <build>
