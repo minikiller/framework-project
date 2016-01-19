@@ -34,8 +34,7 @@ Ext.define('kalix.app.student.view.StudentSearchForm', {
     		name:'sex'
     	},
     	{
-    		xtype:'datefield',
-			format: 'Y-m-d',
+    		xtype:'textfield',
     		fieldLabel:'出生日期',
     		labelAlign:'right',
     		labelWidth:60,

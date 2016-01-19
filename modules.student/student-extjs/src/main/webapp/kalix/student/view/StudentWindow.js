@@ -49,9 +49,8 @@ Ext.define('kalix.app.student.view.StudentWindow', {
             	{
             		fieldLabel:'出生日期',
             		allowBlank:false,
-					xtype: 'datefield',
-					editable: false,
-					format: 'Y-m-d',
+            		xtype:'datefield',
+            		format: 'Y-m-d',
             		bind: {
             			value: '{rec.birthday}'
             		}

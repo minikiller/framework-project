@@ -17,8 +17,8 @@ Ext.define('kalix.app.student.viewModel.StudentViewModel', {
         view_title: '查看学生',
         add_title: '添加学生',
         edit_title: '修改学生',
-        add_image_path: '/kalix/admin/student/resources/images/student_add.png',
-        view_image_path: '/kalix/admin/student/resources/images/student_view.png',
-        edit_image_path: '/kalix/admin/student/resources/images/student_edit.png',
+        add_image_path: '/kalix/app/student/resources/images/student_add.png',
+        view_image_path: '/kalix/app/student/resources/images/student_view.png',
+        edit_image_path: '/kalix/app/student/resources/images/student_edit.png',
     }
 });
