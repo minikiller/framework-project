@@ -1,10 +1,8 @@
 package cn.com.rexen.tools.impl;
 
-import cn.com.rexen.tools.api.IGenerate;
 import com.thoughtworks.qdox.model.DocletTag;
 import com.thoughtworks.qdox.model.JavaField;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.stringtemplate.v4.ST;
 
 import java.io.File;
 import java.util.List;
@@ -102,11 +100,13 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
             if(fieldType.equals("String")) {
                 resultBuffer.append("\ttype: 'string'\r\n");
             }else if(fieldType.equals("Date")){
-                resultBuffer.append("\ttype: 'date'\r\n");
+                resultBuffer.append("\ttype: 'date',\r\n");
+                resultBuffer.append("\tdateFormat: 'Y-m-d H:i:s'");
             }else if(fieldType.equals("List")){
                 resultBuffer.append("\ttype: 'list'\r\n");
             }else if(fieldType.equals("Integer") || fieldType.equals("int")){
-                resultBuffer.append("\ttype: 'int'\r\n");
+                resultBuffer.append("\ttype: 'int',\r\n");
+                resultBuffer.append("\tdefaultValue: 0\r\n");
             }else if(fieldType.equals("Boolean") || fieldType.equals("boolean")){
                 resultBuffer.append("\ttype: 'boolean'\r\n");
             }else{
@@ -153,7 +153,8 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
             if(field.getType().getValue().equals("Date")){
                 resultBuffer.append(",\r\n");
                 resultBuffer.append("\t\txtype: 'datecolumn',\r\n");
-                resultBuffer.append("\t\tformat: 'Y-m-d'");
+                resultBuffer.append("\t\tformat: 'Y-m-d',");
+                resultBuffer.append("\t\trenderer:null");
             }
             resultBuffer.append("\r\n\t},\r\n");
         }

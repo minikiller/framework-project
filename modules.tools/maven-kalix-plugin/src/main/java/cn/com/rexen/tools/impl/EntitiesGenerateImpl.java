@@ -1,6 +1,5 @@
 package cn.com.rexen.tools.impl;
 
-import cn.com.rexen.tools.api.IGenerate;
 import com.thoughtworks.qdox.model.DocletTag;
 import com.thoughtworks.qdox.model.JavaField;
 import com.thoughtworks.qdox.model.JavaType;
@@ -55,6 +54,9 @@ public class EntitiesGenerateImpl extends AbstractGenernateImpl {
 
 
             resultBuffer.append("\t/**\r\n\t*@describe " + fieldTag.getValue() + "\r\n\t*/\r\n");
+            if (fieldType.getValue().equals("Date")) {
+                resultBuffer.append("@JsonFormat(pattern = \"yyyy-MM-dd HH:mm:ss\",timezone =\"GMT+8\")\r\n");
+            }
             resultBuffer.append("\tprivate " + fieldType.getValue() + " " + fieldName + ";\r\n");
 
             //getter
