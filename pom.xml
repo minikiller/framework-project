@@ -23,8 +23,6 @@
         <module>modules.osgi</module>
         <module>modules.security</module>
         <module>modules.duty</module>
-        <module>modules.student</module>
-
         <!--<module>modules.notice</module>-->
     </modules>
 
@@ -65,7 +63,7 @@
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven-source-plugin.version>2.4</maven-source-plugin.version>
 
-        <karaf.version>4.0.3</karaf.version>
+        <karaf.version>4.0.4</karaf.version>
         <karaf.etc.path>d:/java-develop/tools/apache-karaf-${karaf.version}/etc</karaf.etc.path>
         <karaf.path>d:/java-develop/tools/apache-karaf-${karaf.version}/deploy</karaf.path>
         <karaf.bin.path>d:/java-develop/tools/apache-karaf-${karaf.version}/bin</karaf.bin.path>
