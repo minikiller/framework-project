@@ -7,3 +7,5 @@
    已实现该插件的为security-impl和shiro-ext两个bundle。
    Kalix-Plugin:shiro-ext；
    Kalix-Plugin:shiro-form；
+
+** bundleTracker 在app-core的InitActivator代码中实现
