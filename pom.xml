@@ -32,17 +32,6 @@
         <url>http://www.rexen.com.cn/</url>
     </organization>
 
-    <distributionManagement>
-        <repository>
-            <id>nexus-release</id>
-            <url>http://172.17.2.246:8081/nexus/content/repositories/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <url>http://172.17.2.246:8081/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
     <scm>
         <url>https://github.com/sunlingfeng-rexen/kalix-project.git</url>
         <connection>scm:git:git@github.com:sunlingfeng-rexen/kalix-project.git</connection>
@@ -422,7 +411,7 @@
     </repositories>
     <profiles>
         <profile>
-            <id>development</id>
+            <id>development-mysql</id>
             <properties>
                 <db.name>mysql</db.name>
                 <db.datasource>jdbc/mysqlds</db.datasource>
@@ -433,7 +422,7 @@
             </properties>
         </profile>
         <profile>
-            <id>production</id>
+            <id>production-pg</id>
             <properties>
                 <db.name>postgres</db.name>
                 <db.datasource>jdbc/postgres</db.datasource>
