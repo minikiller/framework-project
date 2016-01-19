@@ -260,16 +260,28 @@
         <bundle>wrap:mvn:org.jasig.cas.client/cas-client-core/3.2.1</bundle>
     </feature>
 
+    <feature name="jpa" description="OSGi Persistence Container" version="2.2.0">
+        <details>JPA implementation provided by Apache Aries JPA 2.x. NB: this feature doesn't provide the JPA engine, you have to install one by yourself (OpenJPA for instance)</details>
+        <feature version="[1.1,2)" prerequisite="false" dependency="false">transaction-api</feature>
+        <feature version="[2.0.0,2.2.0)" prerequisite="false" dependency="false">persistence-api</feature>
+        <bundle dependency="true">mvn:org.apache.felix/org.apache.felix.coordinator/1.0.0</bundle>
+        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.api/2.2.0</bundle>
+        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.container/2.2.0</bundle>
+        <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.support/2.2.0</bundle>
+        <conditional>
+            <condition>aries-blueprint</condition>
+            <bundle>mvn:org.apache.aries.jpa/org.apache.aries.jpa.blueprint/2.2.0</bundle>
+        </conditional>
+    </feature>
+
     <feature name="kalix" version="1.0.0">
-        <feature version="2.3.0">openjpa</feature>
+        <feature version="2.4.0">openjpa</feature>
         <feature>transaction</feature>
         <feature>war</feature>
         <feature>webconsole</feature>
         <feature>jndi</feature>
         <feature>eventadmin</feature>
         <feature version="2.2.0">jpa</feature>
-        <!--<feature version="2.3.0">openjpa</feature>-->
-        <!--<feature version="4.3.6.Final">hibernate</feature>-->
         <feature>mysql-driver</feature>
         <feature>derby-driver</feature>
         <feature>postgresql-driver</feature>
@@ -308,8 +320,17 @@
         <configfile finalname="/etc/org.ops4j.datasource-kalix.cfg" override="true">
             mvn:cn.com.rexen.kalix/karaf-features/${project.version}/cfg/datasource
         </configfile>
-        <configfile finalname="/etc/cn.com.rexen.kalix.CouchdbConfig.cfg" override="true">
+        <configfile finalname="/etc/ConfigCouchdb.cfg" override="true">
             mvn:cn.com.rexen.kalix/karaf-features/${project.version}/cfg/couchdb
+        </configfile>
+        <configfile finalname="/etc/ConfigWebContext.cfg" override="true">
+            mvn:cn.com.rexen.kalix/karaf-features/${project.version}/cfg/ConfigWebContext
+        </configfile>
+        <configfile finalname="/etc/ConfigShiro.cfg" override="true">
+            mvn:cn.com.rexen.kalix/karaf-features/${project.version}/cfg/ConfigShiro
+        </configfile>
+        <configfile finalname="/etc/ConfigCache.cfg" override="true">
+            mvn:cn.com.rexen.kalix/karaf-features/${project.version}/cfg/ConfigCache
         </configfile>
     </feature>
 

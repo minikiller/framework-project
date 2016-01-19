@@ -8,19 +8,18 @@ import org.lightcouch.CouchDbClient;
 import org.lightcouch.Document;
 import org.lightcouch.Response;
 
-import java.util.Map;
-
 /**
  * @author chenyanxu
  */
 public class CouchdbServiceImpl implements ICouchdbService {
+    public static final String CONFIG_COUCH_DB = "ConfigCouchdb";
     private final CouchDbClient dbClient;
-    private String db_name = (String) ConfigUtil.getConfigProp("DB_NAME", "CouchDBConfig");
-    private String protocol = (String) ConfigUtil.getConfigProp("PROTOCOL", "CouchDBConfig");
-    private String ip = (String) ConfigUtil.getConfigProp("IP", "CouchDBConfig");
-    private int port = Integer.parseInt((String) ConfigUtil.getConfigProp("PORT", "CouchDBConfig"));
-    private String user = (String) ConfigUtil.getConfigProp("USER", "CouchDBConfig");
-    private String password = (String) ConfigUtil.getConfigProp("PASSWORD", "CouchDBConfig");
+    private String db_name = (String) ConfigUtil.getConfigProp("DB_NAME", CONFIG_COUCH_DB);
+    private String protocol = (String) ConfigUtil.getConfigProp("PROTOCOL", CONFIG_COUCH_DB);
+    private String ip = (String) ConfigUtil.getConfigProp("IP", CONFIG_COUCH_DB);
+    private int port = Integer.parseInt((String) ConfigUtil.getConfigProp("PORT", CONFIG_COUCH_DB));
+    private String user = (String) ConfigUtil.getConfigProp("USER", CONFIG_COUCH_DB);
+    private String password = (String) ConfigUtil.getConfigProp("PASSWORD", CONFIG_COUCH_DB);
 
     public CouchdbServiceImpl() {
         dbClient = new CouchDbClient(db_name, true, protocol, ip, port, user, password);

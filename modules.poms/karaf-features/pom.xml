@@ -86,6 +86,21 @@
                                     <type>cfg</type>
                                     <classifier>datasource</classifier>
                                 </artifact>
+                                <artifact>
+                                    <file>target/classes/ConfigWebContext.cfg</file>
+                                    <type>cfg</type>
+                                    <classifier>ConfigWebContext</classifier>
+                                </artifact>
+                                <artifact>
+                                    <file>target/classes/ConfigShiro.cfg</file>
+                                    <type>cfg</type>
+                                    <classifier>ConfigShiro</classifier>
+                                </artifact>
+                                <artifact>
+                                    <file>target/classes/ConfigCache.cfg</file>
+                                    <type>cfg</type>
+                                    <classifier>ConfigCache</classifier>
+                                </artifact>
                             </artifacts>
                         </configuration>
                     </execution>

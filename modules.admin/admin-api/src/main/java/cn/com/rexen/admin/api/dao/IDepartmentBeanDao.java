@@ -11,27 +11,4 @@ import cn.com.rexen.core.api.persistence.IGenericDao;
  */
 public interface IDepartmentBeanDao extends IGenericDao<DepartmentBean, Long> {
 
-
-    /**
-     * 获得bean.
-     * @param id
-     * @return
-     */
-    DepartmentBean get(Long id);
-
-    /**
-     * 删除一个bean.
-     *
-     * @param id ID
-     */
-    void remove(Long id);
-
-
-    /**
-     * 保存bean.
-     *
-     * @param bean the object to be saved
-     * @return the persisted User object
-     */
-    DepartmentBean save(DepartmentBean bean);
 }
