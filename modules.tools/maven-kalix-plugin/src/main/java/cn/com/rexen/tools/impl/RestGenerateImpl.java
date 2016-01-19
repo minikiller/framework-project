@@ -24,5 +24,8 @@ public class RestGenerateImpl extends AbstractGenernateImpl {
 
     }
 
+    @Override
+    public void beforeGenJavaSource(){
 
+    }
 }

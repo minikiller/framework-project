@@ -19,7 +19,7 @@
     <modules>
         <module>security-core</module>
         <module>security-impl</module>
-        <module>shiro-ext</module>
+        <!--<module>shiro-ext</module>-->
     </modules>
     <dependencyManagement>
         <dependencies>

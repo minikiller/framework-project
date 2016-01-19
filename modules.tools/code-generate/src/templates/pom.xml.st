@@ -5,7 +5,7 @@
 
     \<parent>
         \<groupId><parentPackageName>\</groupId>
-        \<artifactId><parentName>-parent\</artifactId>
+        \<artifactId><parentName>\</artifactId>
         \<version><versionName>\</version>
     \</parent>
 
@@ -32,6 +32,13 @@
 
     \<dependencyManagement>
         \<dependencies>
+                    \<dependency>
+                        \<groupId>cn.com.rexen.kalix.poms\</groupId>
+                        \<artifactId>poms-dm\</artifactId>
+                        \<version>${globle.version}\</version>
+                        \<type>pom\</type>
+                        \<scope>import\</scope>
+                    \</dependency>
         \</dependencies>
     \</dependencyManagement>
 

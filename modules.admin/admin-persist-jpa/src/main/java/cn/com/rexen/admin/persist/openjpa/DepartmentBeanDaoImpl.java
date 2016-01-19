@@ -12,21 +12,4 @@ import cn.com.rexen.admin.entities.DepartmentBean;
 public class DepartmentBeanDaoImpl extends BaseAdminDao<DepartmentBean, Long> implements IDepartmentBeanDao {
     private final String className = DepartmentBean.class.getName();
 
-    @Override
-    public void remove(Long orgId) {
-        super.remove(orgId);
-    }
-
-
-
-    @Override
-    public DepartmentBean get(Long orgId) {
-        return super.get(orgId);
-    }
-
-    @Override
-    public DepartmentBean save(DepartmentBean bean) {
-        return super.save(bean);
-    }
-
 }

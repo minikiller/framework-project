@@ -9,12 +9,7 @@ Ext.define('<extjsPrefix>.view.<beanName>SearchForm', {
     xtype: '<pomName>SearchForm',
     storeId: '<pomName>Store',
     items: [
-        {
-            xtype: 'textfield',
-            fieldLabel: '名称',
-            labelAlign: 'right',
-            labelWidth: 60,
-            width: 200,
-            name: 'name'
-        }]
+    <SearchFormItems>
+    ]
+
 });

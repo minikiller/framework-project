@@ -96,8 +96,7 @@
     <!--部门dao-->
     <service id="depBeanDao" interface="cn.com.rexen.admin.api.dao.IDepartmentBeanDao" ref="departmentBeanDaoImpl"/>
 
-    <bean id="departmentBeanDaoImpl"
-          class="cn.com.rexen.admin.persist.openjpa.DepartmentBeanDaoImpl"> <!--init-method="init">-->
+    <bean id="departmentBeanDaoImpl" class="cn.com.rexen.admin.persist.openjpa.DepartmentBeanDaoImpl">
         <tx:transaction method="*" value="Required"/>
     </bean>
 

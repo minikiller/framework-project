@@ -21,6 +21,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.thoughtworks.qdox</groupId>
+            <artifactId>qdox</artifactId>
+            <version>2.0-M3</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-core</artifactId>
             <version>2.0.9</version>
@@ -43,15 +48,30 @@
                     <inputDir>src/templates</inputDir>
                     <outputDir>${project.build.directory}/generate</outputDir>
                     <attributes>
-                        <beanName>Plugin</beanName>
-                        <packageName>cn.com.rexen.app</packageName>
-                        <parentPackageName>cn.com.rexen.kalix.app</parentPackageName>
-                        <pomName>plugin</pomName>
-                        <projectName>Plugin</projectName>
-                        <parentName>app</parentName>
+                        <parentName>kalix-project</parentName>
+                        <parentPackageName>cn.com.rexen.kalix</parentPackageName>
+                        <projectName>Kalix</projectName>
+                        <packageName>cn.com.rexen.bean</packageName>
                         <versionName>1.0.0-SNAPSHOT</versionName>
-                        <module_Name>插件</module_Name>
-                        <extjsPrefix>kalix.app.plugin</extjsPrefix>
+                        <module_Name>学生</module_Name>
+                        <pomName>student</pomName>
+                        <beanName>Student</beanName>
+                        <!-- 实体java类所在的位置-->
+                        <beanDir>src/main/java</beanDir>
+                        <extjsPrefix>kalix.app.student</extjsPrefix>
+
+                        <!-- 配置权限-->
+                        <permission_app>admin</permission_app><!-- 应用-->
+                        <permission_module>constructModule</permission_module><!-- 模块-->
+                        <permission_menu>studentMenu</permission_menu><!-- 菜单-->
+
+                        <!-- 配置菜单-->
+                        <module_id>constructModule</module_id>
+                        <menu_id>studentMenu</menu_id>
+                        <menu_text>学生管理</menu_text>
+                        <menu_index>50</menu_index>
+                        <menu_icon_class>x-fa fa-cutlery</menu_icon_class>
+                        <menu_route_id>app/student</menu_route_id>
                     </attributes>
                     <sources>
                         <source>${basedir}/src/main/java</source>

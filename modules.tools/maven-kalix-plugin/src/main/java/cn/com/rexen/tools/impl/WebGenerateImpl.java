@@ -26,5 +26,8 @@ public class WebGenerateImpl extends AbstractGenernateImpl {
 
     }
 
+    @Override
+    public void beforeGenJavaSource(){
 
+    }
 }

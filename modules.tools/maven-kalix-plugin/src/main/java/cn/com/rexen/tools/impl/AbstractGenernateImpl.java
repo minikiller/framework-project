@@ -3,13 +3,21 @@ package cn.com.rexen.tools.impl;
 import cn.com.rexen.core.util.Assert;
 import cn.com.rexen.tools.Util;
 import cn.com.rexen.tools.api.IGenerate;
+import com.thoughtworks.qdox.JavaProjectBuilder;
+import com.thoughtworks.qdox.model.DocletTag;
+import com.thoughtworks.qdox.model.JavaClass;
+import com.thoughtworks.qdox.model.JavaField;
+import com.thoughtworks.qdox.model.JavaType;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.compiler.STException;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -46,6 +54,21 @@ public abstract class AbstractGenernateImpl implements IGenerate {
     //extjs类前缀
     protected String extjsPrefix;
 
+    protected String beanDir;
+
+    // 配置权限
+    protected String permission_app;
+    protected String permission_module;
+    protected String permission_menu;
+
+    // 配置菜单
+    protected String module_id;
+    protected String menu_id;
+    protected String menu_text;
+    protected String menu_index;
+    protected String menu_icon_class;
+    protected String menu_route_id;
+
     protected Map<String, String> attributes;
 
     public AbstractGenernateImpl(Map<String, String> attributes, File inputDir, File outputDir, String moduleName) {
@@ -69,6 +92,34 @@ public abstract class AbstractGenernateImpl implements IGenerate {
         Assert.notNull(module_Name);
         extjsPrefix = attributes.get("extjsPrefix");
         Assert.notNull(extjsPrefix);
+        beanDir = attributes.get("beanDir");
+        Assert.notNull(beanDir);
+
+        permission_app = attributes.get("permission_app");
+        Assert.notNull(permission_app);
+        permission_module = attributes.get("permission_module");
+        Assert.notNull(permission_module);
+        permission_menu = attributes.get("permission_menu");
+        Assert.notNull(permission_menu);
+
+
+        module_id = attributes.get("module_id");
+        Assert.notNull(module_id);
+
+        menu_id = attributes.get("menu_id");
+        Assert.notNull(menu_id);
+
+        menu_text = attributes.get("menu_text");
+        Assert.notNull(menu_text);
+
+        menu_index = attributes.get("menu_index");
+        Assert.notNull(menu_index);
+
+        menu_icon_class = attributes.get("menu_icon_class");
+        Assert.notNull(menu_icon_class);
+
+        menu_route_id = attributes.get("menu_route_id");
+        Assert.notNull(menu_route_id);
 
         File target = new File(outputDir.getAbsolutePath() + "\\" + pomName + "-" + moduleName);
         if (!target.exists())
@@ -76,10 +127,12 @@ public abstract class AbstractGenernateImpl implements IGenerate {
         this.outputDir = target;
         this.moduleName = moduleName;
 
+
     }
 
     @Override
     public void genJavaSource() throws MojoExecutionException {
+        beforeGenJavaSource();
         //处理api模板
         Map<File, File> apiFiles = new LinkedHashMap<File, File>();
         // looks like maven may change empty String to null?
@@ -105,6 +158,8 @@ public abstract class AbstractGenernateImpl implements IGenerate {
             }
         }
     }
+
+
 
     //递归确定模板文件以及对应的目标目录文件
     private void findFiles(Map<File, File> result, File inputDir,
@@ -150,5 +205,28 @@ public abstract class AbstractGenernateImpl implements IGenerate {
 
             }
         }
+    }
+
+    public Map<String, String> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(Map<String, String> attributes) {
+        this.attributes = attributes;
+    }
+
+    // 获取实体类信息
+    public List<JavaField> getClassFields() throws MojoExecutionException {
+        List<com.thoughtworks.qdox.model.JavaField> fields = null;
+        JavaProjectBuilder builder = new JavaProjectBuilder();
+        try {
+            builder.addSource(new FileReader(beanDir + "\\"+ packageName.replaceAll("\\.", "/") + "/" + beanName + "Bean.java"));
+            JavaClass cls = builder.getClassByName(packageName + "." + beanName + "Bean");
+            fields = cls.getFields();//获取所有字段
+        } catch (FileNotFoundException e) {
+            throw new MojoExecutionException("Problem when trying to process beanName'"
+                    + "': " + e.getMessage(), e);
+        }
+        return fields;
     }
 }

@@ -26,5 +26,8 @@ public class CoreGenerateImpl extends AbstractGenernateImpl {
 
     }
 
+    @Override
+    public void beforeGenJavaSource(){
 
+    }
 }
