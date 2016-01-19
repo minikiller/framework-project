@@ -155,7 +155,56 @@
                 <version>${karaf.version}</version>
                 <extensions>true</extensions>
                 <executions>
-                    <!--<execution>
+                    <execution>
+                        <id>install-kar</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>assembly</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>package</id>
+                        <goals>
+                            <goal>archive</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <installedFeatures>
+                        <feature>wrapper</feature>
+                    </installedFeatures>
+                    <!--<startupFeatures>
+                        <feature>eventadmin</feature>
+                    </startupFeatures>-->
+                    <bootFeatures>
+                        <feature>wrap</feature>
+                        <feature>aries-blueprint</feature>
+                        <feature>shell</feature>
+                        <feature>shell-compat</feature>
+                        <feature>feature</feature>
+                        <feature>jaas</feature>
+                        <feature>ssh</feature>
+                        <feature>management</feature>
+                        <feature>bundle</feature>
+                        <feature>config</feature>
+                        <feature>deployer</feature>
+                        <feature>diagnostic</feature>
+                        <feature>feature</feature>
+                        <feature>instance</feature>
+                        <feature>kar</feature>
+                        <feature>log</feature>
+                        <feature>package</feature>
+                        <feature>service</feature>
+                        <feature>system</feature>
+                        <feature>kalix</feature>
+                    </bootFeatures>
+                    <!--<karafDirectory>${assembly.directory}</karafDirectory>
+                    <startSsh>true</startSsh>
+                    <keepRunning>true</keepRunning>
+                    <deployProjectArtifact>false</deployProjectArtifact>-->
+                </configuration>
+                <!--<executions>
+                    <execution>
                         <id>populate-system</id>
                         <phase>generate-resources</phase>
                         <goals>
@@ -187,7 +236,7 @@
                             </features>
                             <repository>target/assembly/system</repository>
                         </configuration>
-                    </execution>-->
+                    </execution>
                     <execution>
                         <id>install-kar</id>
                         <phase>process-resources</phase>
@@ -201,8 +250,25 @@
                             <goal>archive</goal>
                         </goals>
                     </execution>
+                    &lt;!&ndash;<execution>
+                        <id>run</id>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <karafDirectory>target/assembly</karafDirectory>
+                            <startSsh>true</startSsh>
+                            <keepRunning>true</keepRunning>
+                            <deployProjectArtifact>false</deployProjectArtifact>
+                        </configuration>
+                    </execution>&ndash;&gt;
                 </executions>
+
                 <configuration>
+                    <karafDirectory>${assembly.directory}</karafDirectory>
+                    <startSsh>true</startSsh>
+                    <keepRunning>true</keepRunning>
+                    <deployProjectArtifact>false</deployProjectArtifact>
                     <installedFeatures>
                         <feature>wrapper</feature>
                     </installedFeatures>
@@ -229,7 +295,7 @@
                         <feature>kalix</feature>
                     </bootFeatures>
 
-                </configuration>
+                </configuration>-->
             </plugin>
         </plugins>
         <pluginManagement>
