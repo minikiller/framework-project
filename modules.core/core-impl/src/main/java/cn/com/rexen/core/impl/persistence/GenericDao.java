@@ -11,10 +11,7 @@ import org.apache.log4j.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import javax.persistence.metamodel.EntityType;
 import javax.persistence.metamodel.SingularAttribute;
 import java.io.Serializable;
@@ -22,10 +19,7 @@ import java.lang.reflect.ParameterizedType;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 //import javax.transaction.Transactional;
 
@@ -159,17 +153,51 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
         List<Predicate> predicatesList = new ArrayList<Predicate>();
         Map<String, String> jsonMap = queryDTO.getJsonMap();
 
+
         for (Map.Entry<String, String> entry : jsonMap.entrySet()) {
-            SingularAttribute<T, String> attribute = (SingularAttribute<T, String>) bean_.getSingularAttribute(entry.getKey());
-            String attrJavaTypeName = attribute.getJavaType().getName();
+            String key = entry.getKey();
+            String value = entry.getValue();
+            SingularAttribute<T, Object> attribute = null;
+
+            String attrJavaTypeName = null;
+
+            if (value == null || value.trim().isEmpty()) {
+                continue;
+            }
+
+            if (key.contains("__begin__gt") || key.contains("__end__lt")) {
+                attribute = (SingularAttribute<T, Object>) bean_.getSingularAttribute(key.split("__")[0]);
+            } else {
+                attribute = (SingularAttribute<T, Object>) bean_.getSingularAttribute(key);
+            }
+
+            attrJavaTypeName = attribute.getJavaType().getName();
+
             if (attrJavaTypeName.equals(String.class.getName())) {
-                predicatesList.add(criteriaBuilder.like(root.get(attribute), "%" + entry.getValue() + "%"));
+                SingularAttribute<T, String> tempAttribute = (SingularAttribute<T, String>)bean_.getSingularAttribute(key);
+                predicatesList.add(criteriaBuilder.like(root.get(tempAttribute), "%" + value + "%"));
             } else if (attrJavaTypeName.equals(long.class.getName()) || attrJavaTypeName.equals(Long.class.getName())) {
-                predicatesList.add(criteriaBuilder.equal(root.get(attribute), new Long(entry.getValue())));
+                predicatesList.add(criteriaBuilder.equal(root.get(attribute), new Long(value)));
             } else if (attrJavaTypeName.equals(int.class.getName()) || attrJavaTypeName.equals(Integer.class.getName())) {
-                predicatesList.add(criteriaBuilder.equal(root.get(attribute), new Integer(entry.getValue())));
+                predicatesList.add(criteriaBuilder.equal(root.get(attribute), new Integer(value)));
             } else if (attrJavaTypeName.equals(short.class.getName()) || attrJavaTypeName.equals(Short.class.getName())) {
-                predicatesList.add(criteriaBuilder.equal(root.get(attribute), new Short(entry.getValue())));
+                predicatesList.add(criteriaBuilder.equal(root.get(attribute), new Short(value)));
+            } else if(attrJavaTypeName.equals(Date.class.getName())){
+                SingularAttribute<T, Date> tempAttribute = (SingularAttribute<T, Date>)bean_.getSingularAttribute(key.split("__")[0]);
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+                try {
+                    Date date = dateFormat.parse(value);
+
+                    if(key.contains("__begin__gt")){
+                        predicatesList.add(criteriaBuilder.greaterThanOrEqualTo(root.get(tempAttribute), date));
+                    }
+                    else if(key.contains("__end__lt")){
+                        predicatesList.add(criteriaBuilder.lessThanOrEqualTo(root.get(tempAttribute), date));
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
