@@ -168,21 +168,47 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
         for (JavaField field : fields){
             fieldName = field.getName();
             fieldTag = field.getTagByName("describe"); // @describe
-            resultBuffer.append("\t{\r\n");
             if(field.getType().getValue().equals("Date")){
+                resultBuffer.append("\t{\r\n");
                 resultBuffer.append("\t\txtype: 'datefield',\r\n");
                 resultBuffer.append("\t\tformat: 'Y-m-d',\r\n");
+                resultBuffer.append("\t\tfieldLabel: '" + fieldTag.getValue() + ":',\r\n");
+                resultBuffer.append("\t\tlabelAlign: 'right',\r\n");
+                resultBuffer.append("\t\tlabelWidth: 120,\r\n");
+                resultBuffer.append("\t\twidth: 260,\r\n");
+                resultBuffer.append("\t\tname: '" + fieldName + "__begin__gt'\r\n");
+                resultBuffer.append("\t},\r\n");
+
+                resultBuffer.append("\t{\r\n");
+                resultBuffer.append("\t\txtype: 'datefield',\r\n");
+                resultBuffer.append("\t\tformat: 'Y-m-d',\r\n");
+                resultBuffer.append("\t\theadLabel: true,\r\n");
+                resultBuffer.append("\t\tlabelAlign: 'right',\r\n");
+                resultBuffer.append("\t\tlabelWidth: 60,\r\n");
+                resultBuffer.append("\t\twidth: 200,\r\n");
+                resultBuffer.append("\t\tname: '" + fieldName + "__end__lt'\r\n");
+                resultBuffer.append("\t},\r\n");
             }else if(field.getType().getValue().equals("int") || field.getType().getValue().equals("Integer")){
+                resultBuffer.append("\t{\r\n");
                 resultBuffer.append("\t\txtype: 'numberfield',\r\n");
+                //resultBuffer.append("\t\tvalue: '0',\r\n");
+                resultBuffer.append("\t\tfieldLabel: '" + fieldTag.getValue() + "',\r\n");
+                resultBuffer.append("\t\tlabelAlign: 'right',\r\n");
+                resultBuffer.append("\t\tlabelWidth: 60,\r\n");
+                resultBuffer.append("\t\twidth: 200,\r\n");
+                resultBuffer.append("\t\tname: '" + fieldName + "'\r\n");
+                resultBuffer.append("\t},\r\n");
             }else {
+                resultBuffer.append("\t{\r\n");
                 resultBuffer.append("\t\txtype: '" + "textfield" + "',\r\n");
+                resultBuffer.append("\t\tfieldLabel: '" + fieldTag.getValue() + "',\r\n");
+                resultBuffer.append("\t\tlabelAlign: 'right',\r\n");
+                resultBuffer.append("\t\tlabelWidth: 60,\r\n");
+                resultBuffer.append("\t\twidth: 200,\r\n");
+                resultBuffer.append("\t\tname: '" + fieldName + "'\r\n");
+                resultBuffer.append("\t},\r\n");
             }
-            resultBuffer.append("\t\tfieldLabel: '" + fieldTag.getValue() + "',\r\n");
-            resultBuffer.append("\t\tlabelAlign: 'right',\r\n");
-            resultBuffer.append("\t\tlabelWidth: 60,\r\n");
-            resultBuffer.append("\t\twidth: 200,\r\n");
-            resultBuffer.append("\t\tname: '" + fieldName + "'\r\n");
-            resultBuffer.append("\t},\r\n");
+
         }
         resultBuffer.delete(resultBuffer.length()-3,resultBuffer.length());
         return resultBuffer.toString();
