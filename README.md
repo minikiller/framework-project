@@ -46,4 +46,4 @@ ls EntityManagerFactory
 
 ## 总体架构图
 
-![Extensions Tab Screenshot](https://raw.githubusercontent.com/sunlingfeng-rexen/framework-project/master/construct.png)
+![Extensions Tab Screenshot](https://github.com/minikiller/framework-project/blob/master/construct.png)
