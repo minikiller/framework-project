@@ -14,6 +14,7 @@
  */
 package cn.com.rexen.core.i18n.impl;
 
+import cn.com.rexen.core.i18n.api.I18nService;
 import org.apache.felix.ipojo.ComponentInstance;
 import org.apache.felix.ipojo.Factory;
 import org.apache.felix.ipojo.annotations.Component;
@@ -160,9 +161,9 @@ public class I18nExtender implements BundleListener {
 			return;
 		}
 		Properties configuration = new Properties();
-		configuration.put("i18n.resources", new String[] {resourceName});
-		configuration.put("i18n.locale", locale);
-		configuration.put("i18n.url", url);
+		configuration.put(I18nService.RESOURCE_PROPERTY, new String[]{resourceName});
+		configuration.put(I18nService.LOCALE_PROPERTY, locale);
+		configuration.put(I18nService.RESOURCE_URL, url);
 
 		ComponentInstance ci;
 		try {

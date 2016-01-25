@@ -381,17 +381,17 @@ public class I18NServiceSelectorImpl implements I18nServiceSelector {
 		I18nService noVariantMatch = null;
 		I18nService noVariantnoCountryMatch = null;
 		for (I18nService svc : services) {
-			if (fullMatch == null && svc.getLocale().equals(locales.get(0))) {
+			if (fullMatch == null && svc.getLocale().toString().equalsIgnoreCase(locales.get(0).toString())) {
 				fullMatch = svc;
 			}
 
 			if (noVariantMatch == null && locales.size() >= 2
-					&& svc.getLocale().equals(locales.get(1))) {
+					&& svc.getLocale().toString().equalsIgnoreCase(locales.get(1).toString())) {
 				noVariantMatch = svc;
 			}
 
 			if (noVariantnoCountryMatch == null && locales.size() >= 3
-					&& svc.getLocale().equals(locales.get(2))) {
+					&& svc.getLocale().toString().equalsIgnoreCase(locales.get(2).toString())) {
 				noVariantnoCountryMatch = svc;
 			}
 		}
