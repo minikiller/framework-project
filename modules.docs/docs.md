@@ -36,5 +36,6 @@
 
 ## 二、项目结构
 ### 1、kalix-project
+### 2、Cache
 
 
