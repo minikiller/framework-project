@@ -52,7 +52,7 @@
         <db.name>kalix</db.name>
 
         <maven-pax-plugin.version>1.5</maven-pax-plugin.version>
-        <maven-bundle-plugin.version>2.5.4</maven-bundle-plugin.version>
+        <maven-bundle-plugin.version>3.0.1</maven-bundle-plugin.version>
         <maven-surefire-plugin.version>2.16</maven-surefire-plugin.version>
         <maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
         <depends-maven-plugin.version>1.2</depends-maven-plugin.version>
@@ -85,7 +85,6 @@
         <module>modules.osgi</module>
         <module>modules.security</module>
         <module>modules.duty</module>
-        <module>modules.student</module>
         <!--<module>modules.notice</module>-->
     </modules>
 
@@ -159,7 +158,7 @@
                 <artifactId>maven-dependency-plugin</artifactId>
             </plugin>
             <!--对js和css做压缩和混淆-->
-            <plugin>
+            <!--<plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>yuicompressor-maven-plugin</artifactId>
                 <version>${yuicompressor-maven-plugin.version}</version>
@@ -175,7 +174,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
             <plugin>
                 <groupId>org.ops4j</groupId>
                 <artifactId>maven-pax-plugin</artifactId>
