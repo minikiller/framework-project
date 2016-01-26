@@ -334,6 +334,32 @@
         </configfile>
     </feature>
 
+    <feature name="ipojo" version="1.12.1" description="Apache Felix iPOJO Core Runtime">
+        <bundle>mvn:org.apache.felix/org.apache.felix.ipojo/1.12.1</bundle>
+    </feature>
+    <feature name="ipojo-command" version="1.12.1" description="Apache Felix iPOJO Shell Command">
+        <feature version="1.12.1">ipojo</feature>
+        <bundle>
+            mvn:org.apache.felix/org.apache.felix.ipojo.gogo/1.12.1
+        </bundle>
+    </feature>
+    <feature name="ipojo-all" version="1.12.1" description="Apache Felix iPOJO All Runtime Bundles">
+        <feature version="1.12.1">ipojo-command</feature>
+        <bundle>
+            mvn:org.apache.felix/org.apache.felix.ipojo.composite/1.12.1
+        </bundle>
+        <bundle>
+            mvn:org.apache.felix/org.apache.felix.ipojo.api/1.12.1
+        </bundle>
+    </feature>
+    <feature name="ipojo-webconsole" version="1.12.1" description="Apache Felix iPOJO Web Console Plugin">
+        <feature version="1.12.1">ipojo</feature>
+        <feature>webconsole</feature>
+        <bundle>
+            mvn:org.apache.felix/org.apache.felix.ipojo.webconsole/1.7.0
+        </bundle>
+    </feature>
+
     <!--osgi:install -s 'wrap:mvn:org.jasig.cas.client/cas-client-core/3.2.1$Bundle-SymbolicName=cas-client-core&Bundle-Version=3.2.0'-->
     <!-- feature:repo-add mvn:cn.com.rexen.kalix/karaf-features/1.0.0-SNAPSHOT/xml/features-->
     <!-- feature:install -v kalix activiti-->

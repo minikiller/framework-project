@@ -20,7 +20,7 @@ public class InitActivator implements BundleActivator {
 
     @Override
     public void start(BundleContext bundleContext) throws Exception {
-        SystemUtil.succeedPrintln(String.format("Start-up %s bundle!!", BUNDLE_NAME));
+        SystemUtil.succeedPrintln(String.format("Start-up %s bundle!!", BUNDLE_NAME) + bundleContext.getBundle());
         InitActivator.bundleContext = bundleContext;
 //        String httpServiceFilter = String.format("(objectClass=%s)", HttpService.class.getName());
         ServiceReference<HttpService> httpServiceRefs = bundleContext.getServiceReference(HttpService.class);
@@ -34,7 +34,7 @@ public class InitActivator implements BundleActivator {
 
     @Override
     public void stop(BundleContext bundleContext) throws Exception {
-        SystemUtil.succeedPrintln(String.format("Stop %s bundle!!", BUNDLE_NAME));
+        SystemUtil.succeedPrintln(String.format("Stop %s bundle!!", BUNDLE_NAME) + bundleContext.getBundle());
         InitActivator.bundleContext = null;
         if (httpService != null) {
             httpService.unregister("/webconsole");

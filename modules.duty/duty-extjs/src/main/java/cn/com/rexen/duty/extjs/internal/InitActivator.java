@@ -3,7 +3,6 @@ package cn.com.rexen.duty.extjs.internal;
 import cn.com.rexen.core.api.osgi.KalixBundleActivator;
 import cn.com.rexen.core.util.SystemUtil;
 import org.apache.log4j.Logger;
-import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.http.HttpService;
@@ -22,7 +21,7 @@ public class InitActivator extends KalixBundleActivator {
 
     @Override
     public void start(BundleContext bundleContext) throws Exception {
-        SystemUtil.succeedPrintln(String.format("Start-up %s bundle!!", BUNDLE_NAME));
+        SystemUtil.succeedPrintln(String.format("Start-up %s bundle!!", BUNDLE_NAME) + bundleContext.getBundle());
         context = bundleContext;
 
         reference = bundleContext.getServiceReference(HttpService.class.getName());
@@ -33,7 +32,7 @@ public class InitActivator extends KalixBundleActivator {
 
     @Override
     public void stop(BundleContext bundleContext) throws Exception {
-        SystemUtil.succeedPrintln(String.format("Stop %s bundle!!", BUNDLE_NAME));
+        SystemUtil.succeedPrintln(String.format("Stop %s bundle!!", BUNDLE_NAME) + bundleContext.getBundle());
         context = null;
         if(httpService!=null){
             httpService.unregister(contextPath +"/app/app/duty");
