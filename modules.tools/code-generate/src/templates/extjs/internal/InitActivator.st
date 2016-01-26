@@ -21,7 +21,7 @@ public class InitActivator extends KalixBundleActivator {
 
     @Override
     public void start(BundleContext bundleContext) throws Exception {
-        SystemUtil.succeedPrintln(String.format("Start-up %s bundle!!", BUNDLE_NAME));
+        SystemUtil.succeedPrintln(String.format("Start-up %s bundle!!", BUNDLE_NAME) + bundleContext.getBundle());
         context = bundleContext;
 
         reference = bundleContext.getServiceReference(HttpService.class.getName());
@@ -32,7 +32,7 @@ public class InitActivator extends KalixBundleActivator {
 
     @Override
     public void stop(BundleContext bundleContext) throws Exception {
-        SystemUtil.succeedPrintln(String.format("Stop %s bundle!!", BUNDLE_NAME));
+        SystemUtil.succeedPrintln(String.format("Stop %s bundle!!", BUNDLE_NAME) + bundleContext.getBundle());
         context = null;
         if(httpService!=null){
             httpService.unregister(KALIX_APP_ROFFICE_PATH);

@@ -16,7 +16,7 @@ public class InitActivator implements BundleActivator {
 
     @Override
     public void start(BundleContext bundleContext) throws Exception {
-//        SystemUtil.succeedPrintln(String.format("Start-up %s bundle!!", BUNDLE_NAME));
+//        SystemUtil.succeedPrintln(String.format("Start-up %s bundle!!", BUNDLE_NAME) + bundleContext.getBundle());
         /*ServiceReference<WebContainer> serviceReference = bundleContext.getServiceReference(WebContainer.class);
         WebContainer webContainer = bundleContext.getService(serviceReference);
         HttpContext httpContext=webContainer.createDefaultHttpContext();
@@ -26,7 +26,7 @@ public class InitActivator implements BundleActivator {
 
     @Override
     public void stop(BundleContext bundleContext) throws Exception {
-//        SystemUtil.succeedPrintln(String.format("Stop %s bundle!!", BUNDLE_NAME));
+//        SystemUtil.succeedPrintln(String.format("Stop %s bundle!!", BUNDLE_NAME) + bundleContext.getBundle());
         context = null;
     }
 }
