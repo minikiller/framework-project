@@ -45,39 +45,38 @@
     描述：审计
     modules.core
     描述：
-        cn.com.rexen.core.api.biz：
-        cn.com.rexen.core.api.cache：
-        cn.com.rexen.core.api.dao：
-        cn.com.rexen.core.api.internal：
-        cn.com.rexen.core.api.osgi：
-        cn.com.rexen.core.api.persistence：
-        cn.com.rexen.core.api.security：
-        cn.com.rexen.core.api.system：
-        cn.com.rexen.core.api.web：
+        cn.com.rexen.core.api.biz：业务服务接口
+        cn.com.rexen.core.api.cache：缓存接口
+        cn.com.rexen.core.api.dao：数据库接口
+        cn.com.rexen.core.api.osgi：获取webcontext
+        cn.com.rexen.core.api.persistence：数据持久化接口
+        cn.com.rexen.core.api.security：安全框架接口
+        cn.com.rexen.core.api.system：系统服务接口
+        cn.com.rexen.core.api.web：应用模块菜单等接口
     modules.demo
-    描述：
+    描述：示例
     modules.docs
-    描述：
+    描述：文档
     modules.duty
-    描述：
+    描述：职务管理
     modules.example
-    描述：
+    描述：示例
     modules.middleware
-    描述：
+    描述：中间插件
     modules.notice
-    描述：
+    描述：通知
     modules.osgi
-    描述：
+    描述：控制bundle生命周期
     modules.poms
-    描述：
+    描述：打包及依赖管理
     modules.security
-    描述：
+    描述：安全框架
     modules.student
-    描述：
+    描述：学生管理
     modules.tools
-    描述：
+    描述：工具
 
-### 2、各模块相关目录结构说明
+### 2、相关目录结构说明
     ***-api:
         cn.com.rexen.***.api.biz：各功能的Service接口类，命名规则I***Service，如IUserBeanService。
         cn.com.rexen.***.api.dao：各功能的Dao接口类命名规则I***Dao如IUserBeanDao。
@@ -90,23 +89,23 @@
     ***-dto：
         cn.com.rexen.***.dto：各功能的组合模型类，命名规则***DTO，如部门模型类DepartmentDTO。
     ***-entities：
-        cn.com.rexen.a***.entities：各功能的实体实现类，命名规则***Bean，如UserBean。
+        cn.com.rexen.***.entities：各功能的实体实现类，命名规则***Bean，如UserBean。
     ***-persist-jpa(***-dao)：
         cn.com.rexen.***.persist.openjpa：各功能的DAO实现类，命名规则***DaoImpl，如UserBeanDaoImpl。
     ***-rest：
         cn.com.rexen.***.rest.internal：bundle的启动和停止。
         src/main/resources：
     ***-extjs：
-        controller：控制器，命名规则：***GridController.js
-        model：模型，命名规则：***Model.js
-        store：数组仓库，命名规则：***Store.js
-        view：
-            ***Grid.js：列表
-            ***SearchForm.js：查询表单
-            ***DutyViewWindow.js：查看表单
-            ***Window.js：新增和修改表单
+        controller：控制器，命名规则：***GridController.js，如UserGridController.js
+        model：模型，命名规则：***Model.js，如UserModel.js
+        store：数组仓库，命名规则：***Store.js，如UserStore.js
+        view：视图
+            ***Grid.js：列表，如UserGrid.js
+            ***SearchForm.js：查询表单，如UserSearchForm.js
+            ***ViewWindow.js：查看表单，如UserViewWindow.js
+            ***Window.js：新增和修改表单，如UserWindow.js
         viwModel：
-            ***ViewModel.js：查看模型
+            ***ViewModel.js：查看模型，如UserViewModel.js
         Main.js：
     ***-web：
         cn.com.rexen.***.web.impl：菜单实现类
@@ -116,6 +115,8 @@
         项目的对象模型，作为maven项目的实现，主要描述了项目：包括配置文件；开发者需要遵循的规则，
         缺陷管理系统，组织和licenses，项目的url，项目的依赖性，以及其他所有的项目相关因素。
 
-### 2、Cache
-
+### 3、主要框架
+    Shiro：一个强大易用的Java安全框架，提供了认证、授权、加密和会话管理功能，可为任何应用提供安全保障，
+           从命令行应用、移动应用到大型网络及企业应用。
+        http://blog.csdn.net/xiaoxian8023/article/details/17892041
 
