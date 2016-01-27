@@ -14,7 +14,7 @@
     - [ExtJs](#extjs)
 - [项目结构](#项目结构)
     - [kalix-project](#kalix-project)
-        - [modules admin](#modules-admin)
+        - [admin](#admin)
         - [modules.app](#app)
         - [modules.audit](#audit)
         - [modules.core](#core)
@@ -80,7 +80,7 @@
 
 # 项目结构
 # kalix-project
-# modules.admin
+# admin
 描述：后台管理功能模块的接口类。包括工作组管理服务接口、用户管理服务接口、角色管理服务接口、权限服务接口、机构管理服务接口、
     系统消息服务接口、字典管理服务接口、部门管理服务接口、区域管理服务接口、系统版本服务接口等。
 # modules.app
