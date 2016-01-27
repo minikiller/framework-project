@@ -130,7 +130,7 @@
         cn.com.rexen.***.dto：各功能的组合模型类，命名规则***DTO，如部门模型类DepartmentDTO。
 # ***-entities
         cn.com.rexen.***.entities：各功能的实体实现类，命名规则***Bean，如UserBean。
-# ***-persist-jpa(dao)
+# ***-persist-jpa
         cn.com.rexen.***.persist.openjpa：各功能的DAO实现类，命名规则***DaoImpl，如UserBeanDaoImpl。
 # ***-rest
         cn.com.rexen.***.rest.internal：bundle的启动和停止。
