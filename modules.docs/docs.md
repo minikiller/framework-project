@@ -15,27 +15,27 @@
 - [项目结构](#项目结构)
     - [kalix-project](#kalix-project)
         - [admin](#admin)
-        - [modules\.app](#modules\.app)
-        - [modules\.audit](#modules.audit)
-        - [modules.core](#core)
-        - [modules.demo](#demo)
-        - [modules.docs](#docs)
-        - [modules.example](#example)
-        - [modules.middleware](#middleware)
-        - [modules.notice](#notice)
-        - [modules.osgi](#osgi)
-        - [modules.poms](#poms)
-        - [modules.security](#security)
-        - [modules.tools](#tools)
+        - [app](#app)
+        - [audit](#audit)
+        - [core](#core)
+        - [demo](#demo)
+        - [docs](#docs)
+        - [example](#example)
+        - [middleware](#middleware)
+        - [notice](#notice)
+        - [osgi](#osgi)
+        - [poms](#poms)
+        - [security](#security)
+        - [tools](#tools)
     - [目录结构说明](#目录结构说明)
-        - [***-api](#api)
-        - [***-core](#core)
-        - [***-dto](#dto)
-        - [***-entities](#entities)
-        - [***-persist-jpa(dao)](#persist-jpa)
-        - [***-rest](#rest)
-        - [***-extjs](#extjs)
-        - [***-web](#web)
+        - [-api](#-api)
+        - [-core](#-core)
+        - [-dto](#-dto)
+        - [-entities](#-entities)
+        - [-persist-jpa(dao)](#-persist-jpa)
+        - [-rest](#-rest)
+        - [-extjs](#-extjs)
+        - [-web](#-web)
         - [pom.xml](#pom)
 
 # 简介
@@ -83,11 +83,11 @@
 # admin
 描述：后台管理功能模块的接口类。包括工作组管理服务接口、用户管理服务接口、角色管理服务接口、权限服务接口、机构管理服务接口、
     系统消息服务接口、字典管理服务接口、部门管理服务接口、区域管理服务接口、系统版本服务接口等。
-# modules\.app
+# app
 描述：应用服务、功能服务、插件服务
-# modules\.audit
+# audit
 描述：审计
-# modules.core
+# core
 描述：
         cn.com.rexen.core.api.biz：业务服务接口
         cn.com.rexen.core.api.cache：缓存接口
@@ -97,23 +97,23 @@
         cn.com.rexen.core.api.security：安全框架接口
         cn.com.rexen.core.api.system：系统服务接口
         cn.com.rexen.core.api.web：应用模块菜单等接口
-# modules.demo
+# demo
 描述：示例
-# modules.docs
+# docs
 描述：文档
-# modules.example
+# example
 描述：示例
-# modules.middleware
+# middleware
 描述：中间插件
-# modules.notice
+# notice
 描述：通知
-# modules.osgi
+# osgi
 描述：控制bundle生命周期
-# modules.poms
+# poms
 描述：打包及依赖管理
-# modules.security
+# security
 描述：安全框架
-# modules.tools
+# tools
 描述：工具
 
 # 目录结构说明
