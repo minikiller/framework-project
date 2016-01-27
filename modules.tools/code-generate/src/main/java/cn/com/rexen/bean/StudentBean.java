@@ -13,10 +13,6 @@ public class StudentBean {
      */
     private String name;
     /**
-     * @describe 是否党员
-     */
-    private boolean party;
-    /**
      * @describe 性别
      */
     private String sex;
