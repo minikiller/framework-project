@@ -27,7 +27,7 @@
         - [poms](#poms)
         - [security](#security)
         - [tools](#tools)
-    - [目录结构说明](#目录结构说明)
+    - [目录结构](#目录结构)
         - [-api](#-api)
         - [-core](#-core)
         - [-dto](#-dto)
@@ -116,7 +116,7 @@
 # tools
 描述：工具
 
-# 目录结构说明
+# 目录结构
 # ***-api
         cn.com.rexen.***.api.biz：各功能的Service接口类，命名规则I***Service，如IUserBeanService。
         cn.com.rexen.***.api.dao：各功能的Dao接口类命名规则I***Dao如IUserBeanDao。
