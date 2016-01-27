@@ -2,7 +2,7 @@
 - [简介](#简介)
 - [开发环境](#开发环境)
     - [OS](#OS)
-    - [IntelliJ IDEA](#IntelliJ IDEA)
+    - [IntelliJ IDEA](#IntelliJ-IDEA)
     - [Maven](#Maven)
     - [JDK](#JDK)
     - [Karaf](#Karaf)
