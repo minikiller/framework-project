@@ -1,17 +1,17 @@
 # 开发文档
 - [简介](#简介)
 - [开发环境](#开发环境)
-    - [操作系统](操作系统)
-    - [IntelliJ IDEA](IntelliJ IDEA)
-    - [Maven](Maven)
-    - [JDK](JDK)
-    - [Karaf](Karaf)
-    - [PostgreSQL](PostgreSQL)
-    - [Redis](Redis)
-    - [Git](Git)
-    - [CouchDB](CouchDB)
-    - [OpenJPA](OpenJPA)
-    - [ExtJs](ExtJs)
+    - [操作系统](#操作系统)
+    - [IntelliJ IDEA](#IntelliJ IDEA)
+    - [Maven](#Maven)
+    - [JDK](#JDK)
+    - [Karaf](#Karaf)
+    - [PostgreSQL](#PostgreSQL)
+    - [Redis](#Redis)
+    - [Git](#Git)
+    - [CouchDB](#CouchDB)
+    - [OpenJPA](#OpenJPA)
+    - [ExtJs](#ExtJs)
 # 项目结构
 
 # 简介
