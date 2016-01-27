@@ -14,7 +14,7 @@
     - [ExtJs](#extjs)
 - [项目结构](#项目结构)
     - [kalix-project](#kalix-project)
-        - [modules.admin](#modules-admin)
+        - [modules admin](#modules-admin)
         - [modules.app](#app)
         - [modules.audit](#audit)
         - [modules.core](#core)
