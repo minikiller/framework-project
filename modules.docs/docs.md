@@ -16,7 +16,7 @@
     - [kalix-project](#kalix-project)
         - [admin](#admin)
         - [modules\.app](#modules\.app)
-        - [modules.audit](#modules.audit)
+        - [modules\.audit](#modules.audit)
         - [modules.core](#core)
         - [modules.demo](#demo)
         - [modules.docs](#docs)
