@@ -32,7 +32,7 @@
         - [-core](#-core)
         - [-dto](#-dto)
         - [-entities](#-entities)
-        - [-persist-jpa(dao)](#-persist-jpa)
+        - [-persist-jpa](#-persist-jpa)
         - [-rest](#-rest)
         - [-extjs](#-extjs)
         - [-web](#-web)
