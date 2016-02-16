@@ -42,8 +42,8 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://svn.apache.or
     <bean id="cacheManager" class="cn.com.rexen.core.impl.cache.DefaultCacheManager" init-method="init">
         <property name="pool" ref="shardedJedisPool"/>
     </bean>
-    <bean id="df" class="cn.com.rexen.core.impl.cache.TestCache" init-method="init">
+    <!--<bean id="df" class="cn.com.rexen.core.impl.cache.TestCache" init-method="init">
         <property name="cacheManager" ref="cacheManager"/>
-    </bean>
+    </bean>-->
 
 </blueprint>
