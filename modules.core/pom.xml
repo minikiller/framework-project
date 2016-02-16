@@ -29,7 +29,7 @@
         <module>core-rest</module>
         <module>core-swagger</module>
         <module>core-restfultest</module>
-        <module>core-i18n</module>
+        <!--<module>core-i18n</module>-->
         <!--<module>core-security</module>-->
         <!--<module>core-jsonb</module>-->
     </modules>
