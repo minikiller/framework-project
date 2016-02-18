@@ -10,7 +10,7 @@ import org.osgi.framework.BundleContext;
  */
 public class InitActivator implements BundleActivator {
 
-    private static final String BUNDLE_NAME = " Kalix Duty Entities ";
+    private static final String BUNDLE_NAME = " Admin Duty Entities ";
     private static BundleContext context;
     private static Logger logger = Logger.getLogger(InitActivator.class);
 

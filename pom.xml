@@ -79,7 +79,7 @@
         <module>modules.app</module>
         <module>modules.audit</module>
         <module>modules.demo</module>
-        <module>modules.example</module>
+        <!--<module>modules.example</module>-->
         <module>modules.middleware</module>
         <module>modules.tools</module>
         <module>modules.osgi</module>
@@ -435,7 +435,7 @@
             </properties>
         </profile>
         <profile>
-            <id>production-pg</id>
+            <id>production-postgresql</id>
             <properties>
                 <db.name>postgres</db.name>
                 <db.datasource>jdbc/postgres</db.datasource>

@@ -13,7 +13,7 @@
     <groupId>cn.com.rexen.duty</groupId>
     <artifactId>modules.duty</artifactId>
 
-    <name>Duty :: Modules - Duty</name>
+    <name>Admin :: Modules - Duty</name>
 
     <packaging>pom</packaging>
 

@@ -63,6 +63,6 @@ public class SealApplyMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-file-o";
+        return "x-fa fa-calendar";
     }
 }

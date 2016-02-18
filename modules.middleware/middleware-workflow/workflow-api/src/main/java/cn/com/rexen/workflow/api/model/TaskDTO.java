@@ -13,6 +13,7 @@ public class TaskDTO extends BaseDTO {
     private String createTime;//创建时间
     private String processInstanceId;//流程实例id
     private String entityId;//业务实体id
+    private String businessKey;//业务主键
 
     public String getName() {
         return name;
@@ -60,5 +61,13 @@ public class TaskDTO extends BaseDTO {
 
     public void setEntityId(String entityId) {
         this.entityId = entityId;
+    }
+
+    public String getBusinessKey() {
+        return businessKey;
+    }
+
+    public void setBusinessKey(String businessKey) {
+        this.businessKey = businessKey;
     }
 }

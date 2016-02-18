@@ -62,6 +62,6 @@ public class TaskMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-file-o";
+        return "x-fa fa-cutlery";
     }
 }

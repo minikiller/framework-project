@@ -1,7 +1,7 @@
 /*
 Navicat PGSQL Data Transfer
 
-Source Server         : localhost
+Source Server         : pg
 Source Server Version : 90404
 Source Host           : localhost:5432
 Source Database       : kalix
@@ -11,7 +11,7 @@ Target Server Type    : PGSQL
 Target Server Version : 90404
 File Encoding         : 65001
 
-Date: 2015-12-03 15:37:25
+Date: 2016-02-16 15:25:35
 */
 
 
@@ -71,7 +71,8 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of act_ge_bytearray
 -- ----------------------------
-INSERT INTO "public"."act_ge_bytearray" VALUES ('2', '1', 'OSGI-INF/activiti/notice.bpmn20.xml', '1', E'<?xml version="1.0" encoding="UTF-8"?>\\015\\012<definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn"\\015\\012             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"\\015\\012             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC"\\015\\012             xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"\\015\\012             typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"\\015\\012             targetNamespace="http://www.activiti.org/test">\\015\\012    <process id="fireworks" name="\\347\\203\\237\\350\\212\\261\\347\\210\\206\\347\\253\\271\\347\\273\\217\\350\\220\\245\\350\\256\\270\\345\\217\\257\\350\\257\\201" isExecutable="true">\\015\\012        <documentation>\\347\\203\\237\\350\\212\\261\\347\\210\\206\\347\\253\\271\\347\\273\\217\\350\\220\\245\\350\\256\\270\\345\\217\\257\\350\\257\\201\\346\\265\\201\\347\\250\\213</documentation>\\015\\012        <startEvent id="startevent1" name="Start" activiti:formKey="start.form"></startEvent>\\015\\012        <userTask id="usertask2" name="\\347\\254\\246\\345\\220\\210\\346\\200\\247\\345\\256\\241\\346\\211\\271" activiti:assignee="qwer" activiti:formKey="audit.form">\\015\\012            <documentation>\\015\\012                \\347\\203\\237\\350\\212\\261\\347\\210\\206\\347\\253\\271\\347\\273\\217\\350\\220\\245\\350\\256\\270\\345\\217\\257\\350\\257\\201\\346\\265\\201\\347\\250\\213\\015\\012            </documentation>\\015\\012            <extensionElements>\\015\\012                <activiti:formProperty id="accepted" name="\\345\\210\\244\\346\\226\\255\\347\\216\\257\\350\\212\\202" variable="accepted"\\015\\012                                       type="boolean"></activiti:formProperty>\\015\\012            </extensionElements>\\015\\012        </userTask>\\015\\012        <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>\\015\\012        <sequenceFlow id="flow3" sourceRef="usertask2" targetRef="exclusivegateway1"></sequenceFlow>\\015\\012        <userTask id="usertask3" name="\\347\\216\\260\\345\\234\\272\\345\\244\\215\\346\\240\\270\\345\\256\\241\\346\\211\\271" activiti:assignee="qwer" activiti:formKey="audit.form">\\015\\012            <documentation>\\015\\012                \\347\\203\\237\\350\\212\\261\\347\\210\\206\\347\\253\\271\\347\\273\\217\\350\\220\\245\\350\\256\\270\\345\\217\\257\\350\\257\\201\\346\\265\\201\\347\\250\\213\\015\\012            </documentation>\\015\\012            <extensionElements>\\015\\012                <activiti:formProperty id="accepted" name="\\345\\210\\244\\346\\226\\255\\347\\216\\257\\350\\212\\202" variable="accepted"\\015\\012                                       type="boolean"></activiti:formProperty>\\015\\012            </extensionElements>\\015\\012            <!--<humanPerformer>\\015\\012                <resourceAssignmentExpression>\\015\\012                    <formalExpression>${assignee}</formalExpression>\\015\\012                </resourceAssignmentExpression>\\015\\012            </humanPerformer>\\015\\012            <multiInstanceLoopCharacteristics isSequential="false">\\015\\012                <loopDataInputRef>assigneeList</loopDataInputRef>\\015\\012                <inputDataItem name="assignee"></inputDataItem>\\015\\012                <completionCondition>${nrOfCompletedInstances/nrOfInstances == 1}</completionCondition>\\015\\012            </multiInstanceLoopCharacteristics>-->\\015\\012        </userTask>\\015\\012        <sequenceFlow id="flow4" name="\\345\\220\\214\\346\\204\\217" sourceRef="exclusivegateway1" targetRef="usertask3">\\015\\012            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>\\015\\012        </sequenceFlow>\\015\\012        <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>\\015\\012        <sequenceFlow id="flow5" sourceRef="usertask3" targetRef="exclusivegateway2"></sequenceFlow>\\015\\012        <userTask id="usertask4" name="\\345\\256\\241\\346\\211\\271\\345\\247\\224\\345\\221\\230\\344\\274\\232\\344\\274\\232\\347\\255\\276" activiti:assignee="qwer" activiti:formKey="audit.form">\\015\\012            <documentation>\\015\\012                \\347\\203\\237\\350\\212\\261\\347\\210\\206\\347\\253\\271\\347\\273\\217\\350\\220\\245\\350\\256\\270\\345\\217\\257\\350\\257\\201\\346\\265\\201\\347\\250\\213\\015\\012            </documentation>\\015\\012            <extensionElements>\\015\\012                <activiti:formProperty id="accepted" name="\\345\\210\\244\\346\\226\\255\\347\\216\\257\\350\\212\\202" variable="accepted"\\015\\012                                       type="boolean"></activiti:formProperty>\\015\\012            </extensionElements>\\015\\012        </userTask>\\015\\012        <sequenceFlow id="flow6" name="\\345\\220\\214\\346\\204\\217" sourceRef="exclusivegateway2" targetRef="usertask4">\\015\\012            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>\\015\\012        </sequenceFlow>\\015\\012        <exclusiveGateway id="exclusivegateway3" name="Exclusive Gateway"></exclusiveGateway>\\015\\012        <sequenceFlow id="flow7" sourceRef="usertask4" targetRef="exclusivegateway3"></sequenceFlow>\\015\\012        <userTask id="usertask5" name="\\345\\261\\200\\351\\225\\277\\345\\256\\241\\346\\211\\271" activiti:assignee="qwer" activiti:formKey="audit.form">\\015\\012            <documentation>\\015\\012                \\347\\203\\237\\350\\212\\261\\347\\210\\206\\347\\253\\271\\347\\273\\217\\350\\220\\245\\350\\256\\270\\345\\217\\257\\350\\257\\201\\346\\265\\201\\347\\250\\213\\015\\012            </documentation>\\015\\012            <extensionElements>\\015\\012                <activiti:formProperty id="accepted" name="\\345\\210\\244\\346\\226\\255\\347\\216\\257\\350\\212\\202" variable="accepted"\\015\\012                                       type="boolean"></activiti:formProperty>\\015\\012            </extensionElements>\\015\\012        </userTask>\\015\\012        <sequenceFlow id="flow8" name="\\345\\220\\214\\346\\204\\217" sourceRef="exclusivegateway3" targetRef="usertask5">\\015\\012            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>\\015\\012        </sequenceFlow>\\015\\012        <exclusiveGateway id="exclusivegateway4" name="Exclusive Gateway"></exclusiveGateway>\\015\\012        <sequenceFlow id="flow9" sourceRef="usertask5" targetRef="exclusivegateway4"></sequenceFlow>\\015\\012        <userTask id="usertask6" name="\\351\\242\\201\\345\\217\\221\\350\\257\\201\\344\\273\\266" activiti:assignee="qwer" activiti:formKey="end.form">\\015\\012            <documentation>\\015\\012                \\347\\203\\237\\350\\212\\261\\347\\210\\206\\347\\253\\271\\347\\273\\217\\350\\220\\245\\350\\256\\270\\345\\217\\257\\350\\257\\201\\346\\265\\201\\347\\250\\213\\015\\012            </documentation>\\015\\012            <extensionElements>\\015\\012                <activiti:formProperty id="name" name="\\345\\215\\225\\344\\275\\215\\345\\220\\215\\347\\247\\260"></activiti:formProperty>\\015\\012                <activiti:formProperty id="head" name="\\344\\270\\273\\350\\246\\201\\350\\264\\237\\350\\264\\243\\344\\272\\272"></activiti:formProperty>\\015\\012                <activiti:formProperty id="phone" name="\\350\\264\\237\\350\\264\\243\\344\\272\\272\\347\\224\\265\\350\\257\\235"></activiti:formProperty>\\015\\012                <activiti:formProperty id="address" name="\\346\\263\\250\\345\\206\\214\\345\\234\\260\\345\\235\\200"></activiti:formProperty>\\015\\012                <activiti:formProperty id="economicsType" name="\\347\\273\\217\\346\\265\\216\\347\\261\\273\\345\\236\\213"></activiti:formProperty>\\015\\012                <activiti:formProperty id="storageAddress" name="\\344\\273\\223\\345\\202\\250\\350\\256\\276\\346\\226\\275\\345\\234\\260\\345\\235\\200"></activiti:formProperty>\\015\\012                <activiti:formProperty id="scope" name="\\350\\256\\270\\345\\217\\257\\347\\273\\217\\350\\220\\245\\350\\214\\203\\345\\233\\264"></activiti:formProperty>\\015\\012                <activiti:formProperty id="code" name="\\347\\231\\273\\350\\256\\260\\347\\274\\226\\345\\217\\267"></activiti:formProperty>\\015\\012                <activiti:formProperty id="card" name="FM\\345\\256\\211\\350\\256\\270\\350\\257\\201\\345\\255\\227"></activiti:formProperty>\\015\\012                <activiti:formProperty id="validityDate" name="\\346\\234\\211\\346\\225\\210\\346\\234\\237"></activiti:formProperty>\\015\\012                <activiti:formProperty id="unitsDate" name="\\345\\217\\221\\350\\257\\201\\346\\234\\272\\345\\205\\263"></activiti:formProperty>\\015\\012                <activiti:formProperty id="linkHandle" name="\\345\\275\\223\\345\\211\\215\\345\\212\\236\\347\\220\\206\\347\\216\\257\\350\\212\\202"></activiti:formProperty>\\015\\012                <activiti:formProperty id="proposerId" name="\\345\\256\\241\\350\\257\\267\\344\\272\\272ID"></activiti:formProperty>\\015\\012                <activiti:formProperty id="enterpriseId" name="\\344\\274\\201\\344\\270\\232ID"></activiti:formProperty>\\015\\012            </extensionElements>\\015\\012        </userTask>\\015\\012        <sequenceFlow id="flow10" name="\\345\\220\\214\\346\\204\\217" sourceRef="exclusivegateway4" targetRef="usertask6">\\015\\012            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>\\015\\012        </sequenceFlow>\\015\\012        <endEvent id="endevent1" name="End"></endEvent>\\015\\012        <sequenceFlow id="flow11" sourceRef="usertask6" targetRef="endevent1"></sequenceFlow>\\015\\012        <userTask id="usertask7" name="\\345\\256\\241\\346\\211\\271\\344\\277\\256\\346\\224\\271" activiti:formKey="modify.form">\\015\\012            <extensionElements>\\015\\012                <activiti:formProperty id="name" name="\\345\\215\\225\\344\\275\\215\\345\\220\\215\\347\\247\\260"></activiti:formProperty>\\015\\012                <activiti:formProperty id="head" name="\\344\\270\\273\\350\\246\\201\\350\\264\\237\\350\\264\\243\\344\\272\\272"></activiti:formProperty>\\015\\012                <activiti:formProperty id="phone" name="\\350\\264\\237\\350\\264\\243\\344\\272\\272\\347\\224\\265\\350\\257\\235"></activiti:formProperty>\\015\\012                <activiti:formProperty id="address" name="\\346\\263\\250\\345\\206\\214\\345\\234\\260\\345\\235\\200"></activiti:formProperty>\\015\\012                <activiti:formProperty id="economicsType" name="\\347\\273\\217\\346\\265\\216\\347\\261\\273\\345\\236\\213"></activiti:formProperty>\\015\\012                <activiti:formProperty id="storageAddress" name="\\344\\273\\223\\345\\202\\250\\350\\256\\276\\346\\226\\275\\345\\234\\260\\345\\235\\200"></activiti:formProperty>\\015\\012                <activiti:formProperty id="scope" name="\\350\\256\\270\\345\\217\\257\\347\\273\\217\\350\\220\\245\\350\\214\\203\\345\\233\\264"></activiti:formProperty>\\015\\012                <activiti:formProperty id="code" name="\\347\\231\\273\\350\\256\\260\\347\\274\\226\\345\\217\\267"></activiti:formProperty>\\015\\012                <activiti:formProperty id="card" name="FM\\345\\256\\211\\350\\256\\270\\350\\257\\201\\345\\255\\227"></activiti:formProperty>\\015\\012                <activiti:formProperty id="validityDate" name="\\346\\234\\211\\346\\225\\210\\346\\234\\237"></activiti:formProperty>\\015\\012                <activiti:formProperty id="unitsDate" name="\\345\\217\\221\\350\\257\\201\\346\\234\\272\\345\\205\\263"></activiti:formProperty>\\015\\012                <activiti:formProperty id="linkHandle" name="\\345\\275\\223\\345\\211\\215\\345\\212\\236\\347\\220\\206\\347\\216\\257\\350\\212\\202"></activiti:formProperty>\\015\\012                <activiti:formProperty id="proposerId" name="\\345\\256\\241\\350\\257\\267\\344\\272\\272ID"></activiti:formProperty>\\015\\012                <activiti:formProperty id="enterpriseId" name="\\344\\274\\201\\344\\270\\232ID"></activiti:formProperty>\\015\\012            </extensionElements>\\015\\012            <humanPerformer>\\015\\012                <resourceAssignmentExpression>\\015\\012                    <formalExpression>${assignee}</formalExpression>\\015\\012                </resourceAssignmentExpression>\\015\\012            </humanPerformer>\\015\\012        </userTask>\\015\\012        <sequenceFlow id="flow16" sourceRef="usertask7" targetRef="usertask2"></sequenceFlow>\\015\\012        <sequenceFlow id="flow12" name="\\344\\270\\215\\345\\220\\214\\346\\204\\217" sourceRef="exclusivegateway4" targetRef="usertask7">\\015\\012            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>\\015\\012        </sequenceFlow>\\015\\012        <sequenceFlow id="flow13" name="\\344\\270\\215\\345\\220\\214\\346\\204\\217" sourceRef="exclusivegateway3" targetRef="usertask7">\\015\\012            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>\\015\\012        </sequenceFlow>\\015\\012        <sequenceFlow id="flow14" name="\\344\\270\\215\\345\\220\\214\\346\\204\\217" sourceRef="exclusivegateway2" targetRef="usertask7">\\015\\012            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>\\015\\012        </sequenceFlow>\\015\\012        <sequenceFlow id="flow15" name="\\344\\270\\215\\345\\220\\214\\346\\204\\217" sourceRef="exclusivegateway1" targetRef="usertask7">\\015\\012            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>\\015\\012        </sequenceFlow>\\015\\012        <sequenceFlow id="flow17" sourceRef="startevent1" targetRef="usertask2"></sequenceFlow>\\015\\012    </process>\\015\\012    <bpmndi:BPMNDiagram id="BPMNDiagram_fireworks">\\015\\012        <bpmndi:BPMNPlane bpmnElement="fireworks" id="BPMNPlane_fireworks">\\015\\012            <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">\\015\\012                <omgdc:Bounds height="35.0" width="35.0" x="240.0" y="164.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="usertask2" id="BPMNShape_usertask2">\\015\\012                <omgdc:Bounds height="55.0" width="105.0" x="320.0" y="155.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">\\015\\012                <omgdc:Bounds height="40.0" width="40.0" x="450.0" y="164.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="usertask3" id="BPMNShape_usertask3">\\015\\012                <omgdc:Bounds height="55.0" width="105.0" x="530.0" y="156.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="exclusivegateway2" id="BPMNShape_exclusivegateway2">\\015\\012                <omgdc:Bounds height="40.0" width="40.0" x="660.0" y="162.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="usertask4" id="BPMNShape_usertask4">\\015\\012                <omgdc:Bounds height="55.0" width="105.0" x="740.0" y="154.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="exclusivegateway3" id="BPMNShape_exclusivegateway3">\\015\\012                <omgdc:Bounds height="40.0" width="40.0" x="870.0" y="163.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="usertask5" id="BPMNShape_usertask5">\\015\\012                <omgdc:Bounds height="55.0" width="105.0" x="950.0" y="154.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="exclusivegateway4" id="BPMNShape_exclusivegateway4">\\015\\012                <omgdc:Bounds height="40.0" width="40.0" x="1090.0" y="161.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="usertask6" id="BPMNShape_usertask6">\\015\\012                <omgdc:Bounds height="55.0" width="105.0" x="1170.0" y="154.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">\\015\\012                <omgdc:Bounds height="35.0" width="35.0" x="1310.0" y="165.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="usertask7" id="BPMNShape_usertask7">\\015\\012                <omgdc:Bounds height="55.0" width="105.0" x="320.0" y="250.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">\\015\\012                <omgdi:waypoint x="425.0" y="182.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="450.0" y="184.0"></omgdi:waypoint>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">\\015\\012                <omgdi:waypoint x="490.0" y="184.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="530.0" y="183.0"></omgdi:waypoint>\\015\\012                <bpmndi:BPMNLabel>\\015\\012                    <omgdc:Bounds height="14.0" width="24.0" x="489.0" y="165.0"></omgdc:Bounds>\\015\\012                </bpmndi:BPMNLabel>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">\\015\\012                <omgdi:waypoint x="635.0" y="183.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="660.0" y="182.0"></omgdi:waypoint>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">\\015\\012                <omgdi:waypoint x="700.0" y="182.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="740.0" y="181.0"></omgdi:waypoint>\\015\\012                <bpmndi:BPMNLabel>\\015\\012                    <omgdc:Bounds height="14.0" width="24.0" x="699.0" y="165.0"></omgdc:Bounds>\\015\\012                </bpmndi:BPMNLabel>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">\\015\\012                <omgdi:waypoint x="845.0" y="181.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="870.0" y="183.0"></omgdi:waypoint>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">\\015\\012                <omgdi:waypoint x="910.0" y="183.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="950.0" y="181.0"></omgdi:waypoint>\\015\\012                <bpmndi:BPMNLabel>\\015\\012                    <omgdc:Bounds height="14.0" width="24.0" x="909.0" y="165.0"></omgdc:Bounds>\\015\\012                </bpmndi:BPMNLabel>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">\\015\\012                <omgdi:waypoint x="1055.0" y="181.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="1090.0" y="181.0"></omgdi:waypoint>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">\\015\\012                <omgdi:waypoint x="1130.0" y="181.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="1170.0" y="181.0"></omgdi:waypoint>\\015\\012                <bpmndi:BPMNLabel>\\015\\012                    <omgdc:Bounds height="14.0" width="24.0" x="1129.0" y="164.0"></omgdc:Bounds>\\015\\012                </bpmndi:BPMNLabel>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">\\015\\012                <omgdi:waypoint x="1275.0" y="181.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="1310.0" y="182.0"></omgdi:waypoint>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow16" id="BPMNEdge_flow16">\\015\\012                <omgdi:waypoint x="372.0" y="250.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="372.0" y="210.0"></omgdi:waypoint>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">\\015\\012                <omgdi:waypoint x="1110.0" y="201.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="1109.0" y="277.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="425.0" y="277.0"></omgdi:waypoint>\\015\\012                <bpmndi:BPMNLabel>\\015\\012                    <omgdc:Bounds height="14.0" width="36.0" x="1093.0" y="229.0"></omgdc:Bounds>\\015\\012                </bpmndi:BPMNLabel>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow13" id="BPMNEdge_flow13">\\015\\012                <omgdi:waypoint x="890.0" y="203.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="889.0" y="277.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="425.0" y="277.0"></omgdi:waypoint>\\015\\012                <bpmndi:BPMNLabel>\\015\\012                    <omgdc:Bounds height="14.0" width="36.0" x="873.0" y="229.0"></omgdc:Bounds>\\015\\012                </bpmndi:BPMNLabel>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow14" id="BPMNEdge_flow14">\\015\\012                <omgdi:waypoint x="680.0" y="202.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="679.0" y="277.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="425.0" y="277.0"></omgdi:waypoint>\\015\\012                <bpmndi:BPMNLabel>\\015\\012                    <omgdc:Bounds height="14.0" width="36.0" x="663.0" y="229.0"></omgdc:Bounds>\\015\\012                </bpmndi:BPMNLabel>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow15" id="BPMNEdge_flow15">\\015\\012                <omgdi:waypoint x="470.0" y="204.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="470.0" y="277.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="425.0" y="277.0"></omgdi:waypoint>\\015\\012                <bpmndi:BPMNLabel>\\015\\012                    <omgdc:Bounds height="14.0" width="36.0" x="452.0" y="229.0"></omgdc:Bounds>\\015\\012                </bpmndi:BPMNLabel>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow17" id="BPMNEdge_flow17">\\015\\012                <omgdi:waypoint x="275.0" y="181.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="320.0" y="182.0"></omgdi:waypoint>\\015\\012            </bpmndi:BPMNEdge>\\015\\012        </bpmndi:BPMNPlane>\\015\\012    </bpmndi:BPMNDiagram>\\015\\012</definitions>\\015\\012', 'f');
+INSERT INTO "public"."act_ge_bytearray" VALUES ('2', '1', 'OSGI-INF/activiti/notice.bpmn20.xml', '1', E'<?xml version="1.0" encoding="UTF-8"?>\\015\\012<definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn"\\015\\012             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"\\015\\012             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC"\\015\\012             xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"\\015\\012             typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"\\015\\012             targetNamespace="http://www.activiti.org/test">\\015\\012    <process id="fireworks" name="\\345\\215\\260\\347\\253\\240\\344\\275\\277\\347\\224\\250\\347\\224\\263\\350\\257\\267\\346\\265\\201\\347\\250\\213" isExecutable="true">\\015\\012        <documentation>\\345\\215\\260\\347\\253\\240\\344\\275\\277\\347\\224\\250\\347\\224\\263\\350\\257\\267\\346\\265\\201\\347\\250\\213</documentation>\\015\\012        <startEvent id="startevent1" name="Start" activiti:formKey="start.form"></startEvent>\\015\\012        <userTask id="usertask2" name="\\351\\203\\250\\351\\227\\250\\350\\264\\237\\350\\264\\243\\344\\272\\272\\345\\256\\241\\346\\211\\271" activiti:assignee="qwer" activiti:formKey="audit.form">\\015\\012            <documentation>\\345\\215\\260\\347\\253\\240\\344\\275\\277\\347\\224\\250\\347\\224\\263\\350\\257\\267\\346\\265\\201\\347\\250\\213</documentation>\\015\\012            <extensionElements>\\015\\012                <activiti:formProperty id="accepted" name="\\345\\210\\244\\346\\226\\255\\347\\216\\257\\350\\212\\202" type="boolean"\\015\\012                                       variable="accepted"></activiti:formProperty>\\015\\012            </extensionElements>\\015\\012        </userTask>\\015\\012        <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>\\015\\012        <sequenceFlow id="flow3" sourceRef="usertask2" targetRef="exclusivegateway1"></sequenceFlow>\\015\\012        <userTask id="usertask3" name="\\345\\210\\206\\345\\205\\254\\345\\217\\270\\350\\264\\237\\350\\264\\243\\344\\272\\272\\345\\256\\241\\346\\211\\271" activiti:assignee="qwer" activiti:formKey="audit.form">\\015\\012            <documentation>\\345\\215\\260\\347\\253\\240\\344\\275\\277\\347\\224\\250\\347\\224\\263\\350\\257\\267\\346\\265\\201\\347\\250\\213</documentation>\\015\\012            <extensionElements>\\015\\012                <activiti:formProperty id="accepted" name="\\345\\210\\244\\346\\226\\255\\347\\216\\257\\350\\212\\202" type="boolean"\\015\\012                                       variable="accepted"></activiti:formProperty>\\015\\012            </extensionElements>\\015\\012        </userTask>\\015\\012        <sequenceFlow id="flow4" name="\\345\\220\\214\\346\\204\\217" sourceRef="exclusivegateway1" targetRef="usertask3">\\015\\012            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>\\015\\012        </sequenceFlow>\\015\\012        <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>\\015\\012        <sequenceFlow id="flow5" sourceRef="usertask3" targetRef="exclusivegateway2"></sequenceFlow>\\015\\012        <userTask id="usertask4" name="\\346\\263\\225\\345\\276\\213\\351\\241\\276\\351\\227\\256\\345\\256\\241\\346\\211\\271" activiti:assignee="qwer" activiti:formKey="audit.form">\\015\\012            <documentation>\\345\\215\\260\\347\\253\\240\\344\\275\\277\\347\\224\\250\\347\\224\\263\\350\\257\\267\\346\\265\\201\\347\\250\\213</documentation>\\015\\012            <extensionElements>\\015\\012                <activiti:formProperty id="accepted" name="\\345\\210\\244\\346\\226\\255\\347\\216\\257\\350\\212\\202" type="boolean"\\015\\012                                       variable="accepted"></activiti:formProperty>\\015\\012            </extensionElements>\\015\\012        </userTask>\\015\\012        <sequenceFlow id="flow6" name="\\345\\220\\214\\346\\204\\217" sourceRef="exclusivegateway2" targetRef="usertask4">\\015\\012            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>\\015\\012        </sequenceFlow>\\015\\012        <exclusiveGateway id="exclusivegateway3" name="Exclusive Gateway"></exclusiveGateway>\\015\\012        <sequenceFlow id="flow7" sourceRef="usertask4" targetRef="exclusivegateway3"></sequenceFlow>\\015\\012        <userTask id="usertask5" name="\\346\\200\\273\\347\\273\\217\\347\\220\\206\\345\\256\\241\\346\\211\\271" activiti:assignee="qwer" activiti:formKey="audit.form">\\015\\012            <documentation>\\345\\215\\260\\347\\253\\240\\344\\275\\277\\347\\224\\250\\347\\224\\263\\350\\257\\267\\346\\265\\201\\347\\250\\213</documentation>\\015\\012            <extensionElements>\\015\\012                <activiti:formProperty id="accepted" name="\\345\\210\\244\\346\\226\\255\\347\\216\\257\\350\\212\\202" type="boolean"\\015\\012                                       variable="accepted"></activiti:formProperty>\\015\\012            </extensionElements>\\015\\012        </userTask>\\015\\012        <sequenceFlow id="flow8" name="\\345\\220\\214\\346\\204\\217" sourceRef="exclusivegateway3" targetRef="usertask5">\\015\\012            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>\\015\\012        </sequenceFlow>\\015\\012        <exclusiveGateway id="exclusivegateway4" name="Exclusive Gateway"></exclusiveGateway>\\015\\012        <sequenceFlow id="flow9" sourceRef="usertask5" targetRef="exclusivegateway4"></sequenceFlow>\\015\\012        <endEvent id="endevent1" name="End"></endEvent>\\015\\012        <userTask id="usertask7" name="\\345\\256\\241\\346\\211\\271\\344\\277\\256\\346\\224\\271" activiti:assignee="${assignee}" activiti:formKey="modify.form">\\015\\012            <extensionElements>\\015\\012                <activiti:formProperty id="name" name="\\345\\215\\225\\344\\275\\215\\345\\220\\215\\347\\247\\260"></activiti:formProperty>\\015\\012                <activiti:formProperty id="head" name="\\344\\270\\273\\350\\246\\201\\350\\264\\237\\350\\264\\243\\344\\272\\272"></activiti:formProperty>\\015\\012                <activiti:formProperty id="phone" name="\\350\\264\\237\\350\\264\\243\\344\\272\\272\\347\\224\\265\\350\\257\\235"></activiti:formProperty>\\015\\012                <activiti:formProperty id="address" name="\\346\\263\\250\\345\\206\\214\\345\\234\\260\\345\\235\\200"></activiti:formProperty>\\015\\012                <activiti:formProperty id="economicsType" name="\\347\\273\\217\\346\\265\\216\\347\\261\\273\\345\\236\\213"></activiti:formProperty>\\015\\012                <activiti:formProperty id="storageAddress" name="\\344\\273\\223\\345\\202\\250\\350\\256\\276\\346\\226\\275\\345\\234\\260\\345\\235\\200"></activiti:formProperty>\\015\\012                <activiti:formProperty id="scope" name="\\350\\256\\270\\345\\217\\257\\347\\273\\217\\350\\220\\245\\350\\214\\203\\345\\233\\264"></activiti:formProperty>\\015\\012                <activiti:formProperty id="code" name="\\347\\231\\273\\350\\256\\260\\347\\274\\226\\345\\217\\267"></activiti:formProperty>\\015\\012                <activiti:formProperty id="card" name="FM\\345\\256\\211\\350\\256\\270\\350\\257\\201\\345\\255\\227"></activiti:formProperty>\\015\\012                <activiti:formProperty id="validityDate" name="\\346\\234\\211\\346\\225\\210\\346\\234\\237"></activiti:formProperty>\\015\\012                <activiti:formProperty id="unitsDate" name="\\345\\217\\221\\350\\257\\201\\346\\234\\272\\345\\205\\263"></activiti:formProperty>\\015\\012                <activiti:formProperty id="linkHandle" name="\\345\\275\\223\\345\\211\\215\\345\\212\\236\\347\\220\\206\\347\\216\\257\\350\\212\\202"></activiti:formProperty>\\015\\012                <activiti:formProperty id="proposerId" name="\\345\\256\\241\\350\\257\\267\\344\\272\\272ID"></activiti:formProperty>\\015\\012                <activiti:formProperty id="enterpriseId" name="\\344\\274\\201\\344\\270\\232ID"></activiti:formProperty>\\015\\012            </extensionElements>\\015\\012        </userTask>\\015\\012        <sequenceFlow id="flow16" sourceRef="usertask7" targetRef="usertask2"></sequenceFlow>\\015\\012        <sequenceFlow id="flow12" name="\\344\\270\\215\\345\\220\\214\\346\\204\\217" sourceRef="exclusivegateway4" targetRef="usertask7">\\015\\012            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>\\015\\012        </sequenceFlow>\\015\\012        <sequenceFlow id="flow13" name="\\344\\270\\215\\345\\220\\214\\346\\204\\217" sourceRef="exclusivegateway3" targetRef="usertask7">\\015\\012            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>\\015\\012        </sequenceFlow>\\015\\012        <sequenceFlow id="flow14" name="\\344\\270\\215\\345\\220\\214\\346\\204\\217" sourceRef="exclusivegateway2" targetRef="usertask7">\\015\\012            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>\\015\\012        </sequenceFlow>\\015\\012        <sequenceFlow id="flow15" name="\\344\\270\\215\\345\\220\\214\\346\\204\\217" sourceRef="exclusivegateway1" targetRef="usertask7">\\015\\012            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>\\015\\012        </sequenceFlow>\\015\\012        <sequenceFlow id="flow17" sourceRef="startevent1" targetRef="usertask2"></sequenceFlow>\\015\\012        <sequenceFlow id="flow18" name="\\345\\220\\214\\346\\204\\217" sourceRef="exclusivegateway4" targetRef="endevent1"></sequenceFlow>\\015\\012    </process>\\015\\012    <bpmndi:BPMNDiagram id="BPMNDiagram_fireworks">\\015\\012        <bpmndi:BPMNPlane bpmnElement="fireworks" id="BPMNPlane_fireworks">\\015\\012            <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">\\015\\012                <omgdc:Bounds height="35.0" width="34.0" x="30.0" y="173.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="usertask2" id="BPMNShape_usertask2">\\015\\012                <omgdc:Bounds height="55.0" width="105.0" x="100.0" y="164.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">\\015\\012                <omgdc:Bounds height="40.0" width="40.0" x="230.0" y="173.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="usertask3" id="BPMNShape_usertask3">\\015\\012                <omgdc:Bounds height="55.0" width="105.0" x="310.0" y="165.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="exclusivegateway2" id="BPMNShape_exclusivegateway2">\\015\\012                <omgdc:Bounds height="40.0" width="40.0" x="440.0" y="171.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="usertask4" id="BPMNShape_usertask4">\\015\\012                <omgdc:Bounds height="55.0" width="105.0" x="520.0" y="163.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="exclusivegateway3" id="BPMNShape_exclusivegateway3">\\015\\012                <omgdc:Bounds height="40.0" width="40.0" x="650.0" y="172.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="usertask5" id="BPMNShape_usertask5">\\015\\012                <omgdc:Bounds height="55.0" width="105.0" x="730.0" y="163.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="exclusivegateway4" id="BPMNShape_exclusivegateway4">\\015\\012                <omgdc:Bounds height="40.0" width="40.0" x="870.0" y="170.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">\\015\\012                <omgdc:Bounds height="35.0" width="35.0" x="950.0" y="173.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNShape bpmnElement="usertask7" id="BPMNShape_usertask7">\\015\\012                <omgdc:Bounds height="55.0" width="105.0" x="100.0" y="259.0"></omgdc:Bounds>\\015\\012            </bpmndi:BPMNShape>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">\\015\\012                <omgdi:waypoint x="205.0" y="191.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="230.0" y="193.0"></omgdi:waypoint>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">\\015\\012                <omgdi:waypoint x="270.0" y="193.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="310.0" y="192.0"></omgdi:waypoint>\\015\\012                <bpmndi:BPMNLabel>\\015\\012                    <omgdc:Bounds height="11.0" width="22.0" x="269.0" y="174.0"></omgdc:Bounds>\\015\\012                </bpmndi:BPMNLabel>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">\\015\\012                <omgdi:waypoint x="415.0" y="192.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="440.0" y="191.0"></omgdi:waypoint>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">\\015\\012                <omgdi:waypoint x="480.0" y="191.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="520.0" y="190.0"></omgdi:waypoint>\\015\\012                <bpmndi:BPMNLabel>\\015\\012                    <omgdc:Bounds height="11.0" width="22.0" x="479.0" y="174.0"></omgdc:Bounds>\\015\\012                </bpmndi:BPMNLabel>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">\\015\\012                <omgdi:waypoint x="625.0" y="190.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="650.0" y="192.0"></omgdi:waypoint>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">\\015\\012                <omgdi:waypoint x="690.0" y="192.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="730.0" y="190.0"></omgdi:waypoint>\\015\\012                <bpmndi:BPMNLabel>\\015\\012                    <omgdc:Bounds height="11.0" width="22.0" x="689.0" y="174.0"></omgdc:Bounds>\\015\\012                </bpmndi:BPMNLabel>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">\\015\\012                <omgdi:waypoint x="835.0" y="190.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="870.0" y="190.0"></omgdi:waypoint>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow16" id="BPMNEdge_flow16">\\015\\012                <omgdi:waypoint x="152.0" y="259.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="152.0" y="219.0"></omgdi:waypoint>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">\\015\\012                <omgdi:waypoint x="890.0" y="210.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="889.0" y="286.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="205.0" y="286.0"></omgdi:waypoint>\\015\\012                <bpmndi:BPMNLabel>\\015\\012                    <omgdc:Bounds height="11.0" width="33.0" x="873.0" y="238.0"></omgdc:Bounds>\\015\\012                </bpmndi:BPMNLabel>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow13" id="BPMNEdge_flow13">\\015\\012                <omgdi:waypoint x="670.0" y="212.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="669.0" y="286.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="205.0" y="286.0"></omgdi:waypoint>\\015\\012                <bpmndi:BPMNLabel>\\015\\012                    <omgdc:Bounds height="11.0" width="33.0" x="653.0" y="238.0"></omgdc:Bounds>\\015\\012                </bpmndi:BPMNLabel>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow14" id="BPMNEdge_flow14">\\015\\012                <omgdi:waypoint x="460.0" y="211.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="459.0" y="286.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="205.0" y="286.0"></omgdi:waypoint>\\015\\012                <bpmndi:BPMNLabel>\\015\\012                    <omgdc:Bounds height="11.0" width="33.0" x="443.0" y="238.0"></omgdc:Bounds>\\015\\012                </bpmndi:BPMNLabel>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow15" id="BPMNEdge_flow15">\\015\\012                <omgdi:waypoint x="250.0" y="213.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="250.0" y="286.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="205.0" y="286.0"></omgdi:waypoint>\\015\\012                <bpmndi:BPMNLabel>\\015\\012                    <omgdc:Bounds height="11.0" width="33.0" x="232.0" y="238.0"></omgdc:Bounds>\\015\\012                </bpmndi:BPMNLabel>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow17" id="BPMNEdge_flow17">\\015\\012                <omgdi:waypoint x="64.0" y="190.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="100.0" y="191.0"></omgdi:waypoint>\\015\\012            </bpmndi:BPMNEdge>\\015\\012            <bpmndi:BPMNEdge bpmnElement="flow18" id="BPMNEdge_flow18">\\015\\012                <omgdi:waypoint x="910.0" y="190.0"></omgdi:waypoint>\\015\\012                <omgdi:waypoint x="950.0" y="190.0"></omgdi:waypoint>\\015\\012                <bpmndi:BPMNLabel>\\015\\012                    <omgdc:Bounds height="11.0" width="100.0" x="909.0" y="173.0"></omgdc:Bounds>\\015\\012                </bpmndi:BPMNLabel>\\015\\012            </bpmndi:BPMNEdge>\\015\\012        </bpmndi:BPMNPlane>\\015\\012    </bpmndi:BPMNDiagram>\\015\\012</definitions>\\015\\012', 'f');
+INSERT INTO "public"."act_ge_bytearray" VALUES ('3', '1', 'OSGI-INF/activiti/notice.fireworks.png', '1', E'\\211PNG\\015\\012\\032\\012\\000\\000\\000\\015IHDR\\000\\000\\003\\343\\000\\000\\001D\\010\\006\\000\\000\\000L\\002\\357\\257\\000\\0004VIDATx\\332\\355\\335\\013\\224\\235U}(\\360\\264j}Re\\211\\213r\\251\\245\\336\\305eQ/\\265,[/\\245\\024K-\\012Ty)\\311t&<"P^5d\\202"\\362\\310%\\210\\334 FHf\\022\\320\\026y\\313C\\344e$<2\\017H\\212\\344\\362*"/\\345\\002"\\004\\220H#\\344\\362\\022\\344\\334\\375?\\316\\236\\373\\345\\344\\314\\363\\314\\2349g\\346\\367[k\\2579s\\316\\231\\327\\236\\357\\277\\367\\376\\357\\275\\277\\357\\2336\\015\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\030\\251R\\251\\364\\326\\307\\036{\\354\\312\\325\\253W\\377\\266\\273\\273\\273\\264b\\305\\012\\245\\001JWWWi\\345\\312\\225\\277Je\\177G\\2518R\\304\\021\\240\\321\\326h\\003L2\\321\\027\\255Z\\265\\252\\364\\334s\\317\\225^{\\3555\\245\\201\\312\\332\\265kK\\267\\336z\\353\\013\\251o\\332\\317\\221*\\216\\024q\\004h\\2645\\332\\230\\324RLjM"\\021?\\372\\242\\206\\356\\223^Kq\\365\\220#U\\034)\\342\\010\\320hk\\2641\\251\\245\\230\\324\\232Db"\\3131\\333\\330%\\365G\\257;R\\305\\221"\\216\\000\\215\\266F\\033\\223Z\\212I\\255I$v38^\\033\\276?*9R\\305\\221"\\216\\000\\215\\266F\\033\\223Z\\212I\\255)\\330\\037\\375\\337_?Sz\\354\\316\\363K\\017t}\\265\\\\\\342q<\\3478\\327\\037!\\216\\304\\021\\240\\321V4\\332\\342H\\021G\\214C\\034\\255_\\267\\246t\\377M\\363J?\\276\\376\\330\\015J<\\027\\2579\\326\\305\\2218\\022G\\342hB\\275O\\024\\202F[\\243\\215I-e2\\304\\321\\373\\304\\321\\206\\345\\311\\007~\\260Q_\\224\\313S\\017,s\\254\\213#\\375\\2218\\022G\\023g\\367TJ}\\037\\001\\215\\266F\\033\\223ZJ\\323\\306\\321\\224\\033\\324\\014''\\216\\036\\352\\375\\372\\200\\375Q\\274\\346X\\027G&\\265\\304\\2218\\232\\020\\273\\246\\262.\\225\\263\\372>~\\306\\350\\0204\\332\\032m\\203\\037\\223ZJ3\\306\\321\\224\\034\\324\\014''\\216\\356_1\\177\\3008\\212\\327\\034\\353\\342\\310\\244\\2268\\022G\\023\\326g}\\246\\020wk%\\344\\033jmm\\335\\254\\245\\245\\345\\237\\222o\\244\\322\\233\\312\\223\\251\\224\\012\\345\\231TnO\\357\\371\\267\\364\\336C\\323\\343?\\235\\262\\225\\365\\340\\203\\017n\\365\\375\\357\\177\\177\\321\\302\\205\\013\\177<\\177\\376\\374_\\267\\267\\267\\2771s\\346\\314\\376\\312:\\354\\260\\303^;\\356\\270\\343\\326\\234|\\362\\311\\267}\\371\\313_n\\237>}\\372{4\\332\\212F\\333\\340\\307\\244\\22682\\250\\321\\037\\211#\\223Z\\342H\\231B\\311\\370\\256\\003\\304\\327\\256\\023\\031w\\207}{\\331\\273\\032\\245\\202f\\314\\230\\261kJ\\260\\257I9\\344+\\025\\311\\367P\\345\\365H\\316S\\231\\265\\313.\\273\\274uJ\\014\\250\\257\\275\\366\\332\\375\\226.]z\\377\\347?\\377\\3717\\217=\\366\\330\\322\\325W_]\\272\\367\\336{\\313\\367\\016~\\343\\2157J\\3417\\277\\371M\\371\\363x>^?\\351\\244\\223\\336L\\211\\372\\033\\263g\\317^\\236*z;\\215\\266b\\360\\3238\\203\\237z5\\306\\342H\\034\\031\\324\\324''\\216\\342Z\\013\\003\\305Q\\274\\346X\\027G\\215:\\251%\\216\\224I\\230\\214\\357>D\\337\\224_\\257iq\\246\\275\\263g\\247\\366\\305\\335\\007\\314\\355\\350\\335\\265\\262\\264w\\366\\236\\334~\\326\\312-*\\277f\\376\\374\\357\\375Az\\375\\324x<gQ\\317\\016\\023Q9)\\211\\376\\253T\\356\\034a\\002>Py(V\\313''m\\022\\336\\335\\335\\275\\325\\342\\305\\213\\177r\\360\\301\\007\\227.\\271\\344\\222\\322\\2325kJ#\\021\\311\\371e\\227]V:\\344\\220C^I\\337\\343\\322\\330\\2060\\231\\222q\\215\\266F\\273\\021\\006?\\215\\334\\030K\\306\\305\\221AM}\\342\\350\\221\\333\\226\\014\\030G\\361\\232c]\\177T\\217I-q\\244H\\306\\207\\335''\\325\\034w\\021k\\22515\\273c\\371\\037\\316?\\277\\367\\035\\355\\035=K\\212\\317\\227cpq\\357\\211s\\027\\367\\0364\\267\\243\\373S\\351\\365\\013\\343\\271\\243\\226\\366\\326u\\027s\\312\\005\\027\\364\\255l\\367''\\324\\261\\313z\\301\\202\\005\\245+\\257\\274\\262\\364\\300\\003\\017\\224\\236y\\346\\231\\322+\\257\\274\\262\\301b\\357\\317~\\366\\263\\362bo\\274\\357\\200\\003\\016\\250\\226\\224\\337\\220\\276\\317\\037O\\252D\\374\\342\\213/>\\374\\210#\\216x\\343\\234s\\316)\\255[\\267\\256T\\213\\027_|\\261\\264p\\341\\302WS\\345=\\037[\\022&K2\\256\\321\\326h7\\304\\340\\247\\201\\033c\\223Z\\342\\310\\240\\246>q\\364\\374\\232\\373J\\367\\337|\\362\\306\\023Z\\351\\271x\\315\\261nR\\253.\\223Z\\342H\\231\\332\\311\\370\\256#\\214\\243]k\\211\\273\\210\\251\\210\\257c\\226\\336\\372\\301\\210\\273(s;z\\376\\356\\230%]\\333\\314\\351\\350=.\\336\\363/K\\272\\336\\177\\314\\342\\236\\177,O\\212\\245X+\\307hGw\\373\\234%\\275\\237\\211\\347\\346,\\356\\371n|\\217\\361\\256\\2308u\\271\\357|\\360\\376\\004z\\326\\254Y\\345\\305\\336H\\266G\\342\\245\\227^*]{\\355\\265\\245\\366\\366\\366\\015\\022\\362\\226\\226\\226u\\351\\343.\\223"\\021?\\377\\374\\363;\\216<\\362\\3107W\\257^]\\032Kw\\336ygi\\377\\375\\367\\177\\271\\031\\266\\023h\\2645\\332M3\\370i\\340\\306\\330\\244\\22682\\250\\251O\\034Ey\\374\\256\\2136\\212\\241x\\316qnR\\253n\\223Z\\342H\\231\\272\\311\\370h\\343''\\276n\\375h\\372\\256\\034S\\355\\035\\2753\\363\\016\\2249\\235\\275-}\\273T:6|o\\317\\321\\033\\354T)\\177M\\327\\316\\365\\250\\230\\276D|U1q\\2367o^y\\005\\274\\026q\\252\\364\\362\\345\\313K\\305\\353\\227\\245\\262>\\225\\375\\232:\\021?\\373\\354\\263;\\2168\\342\\210\\322\\243\\217>Z\\032\\017\\017?\\374pl/\\210\\212:\\242\\331\\223q\\215\\266F\\273\\021\\006?\\215\\334\\030\\233\\324\\022G\\0065u\\352\\217^}\\265\\364\\310\\217\\316\\331xB+=\\027\\2579\\326Mj\\325cRK\\034)S4\\031\\257u,7\\252\\257\\217\\311\\257\\371\\363\\347\\377~\\373\\342\\236\\343\\3131\\265\\250k\\363\\210\\267\\271gvo\\331\\336\\321\\335\\232\\337\\367\\305%\\335[\\245\\347\\017\\311\\023d\\345I\\262\\305=\\207\\315]\\332\\273u=*\\247rE<\\266\\243\\347k\\216\\215\\2058\\215:\\256iV\\370\\031\\257\\264\\264\\2644\\347\\205)\\317;\\357\\274\\303\\2237k\\235\\251\\030\\312\\317\\177\\376\\363H\\310\\237o\\344\\255\\004\\032m\\215v3\\255\\3505jclRK\\034\\031\\324\\214\\177\\034\\255_\\267\\246\\364\\263\\333:\\007\\334a\\022\\257\\305{\\034\\357&\\265\\306{RK\\034)S0\\031\\337}\\332\\330\\234v8\\242\\357\\023;L~\\027C\\275\\333\\267w\\366\\314\\213\\211\\254\\210\\273\\270\\356B{g\\357>\\305\\211\\255\\024\\227\\237\\235\\333\\331s\\324\\206\\223_=\\337\\251G\\345\\364\\235#\\336\\237(\\217\\365\\256\\353,\\3161\\217\\363\\311\\213+\\344\\351go\\333TG\\322\\205\\027^\\270\\345\\321G\\037\\375\\372\\335w\\337]\\252\\207\\373\\356\\273\\357\\371\\2313g>\\326\\250\\027u\\323hk\\264\\233a\\360\\323\\350\\215\\261I-qdP3\\216q\\224\\342\\343\\231GzJ?\\271\\361\\204\\001\\373\\242\\\\\\342=\\361^1eRk\\274\\276^\\034)S\\364\\226\\2655\\237n8\\232\\270\\213S=\\242\\304E\\023\\343\\264\\220x.b,.\\210\\030;T\\346\\317\\357\\355\\277\\345WLr\\305\\316\\223\\331\\035]\\037\\236\\323\\321\\375\\205\\362\\204Xg\\357\\266\\343\\2752\\336w\\325\\364\\327\\213+\\342\\343).\\366v\\332i\\247mp\\177\\362f\\272x\\370\\264\\323O?\\375\\236%K\\226\\224\\352\\351\\2143\\316x8n\\340\\336T\\311\\270F[\\243\\335@\\203\\237Fo\\214Mj\\211#\\203\\232\\361\\211\\243\\241bGL\\231\\324\\252\\367\\244\\2268R\\246\\350-ks\\237\\365{\\251\\034\\324\\367q$*\\277nX\\273%\\343:\\013qa\\304\\342sG\\236\\275j\\323\\362\\305\\022;{\\276\\335\\377\\276\\305=\\307\\307ss:zN\\313\\261\\027\\261\\026\\317\\315]\\334}q1.\\307Z\\312\\361\\376\\243x\\216\\370XnM\\037\\354\\242\\341\\377\\374\\317\\377\\\\\\274\\250\\333YMq4]~\\371\\345\\237\\212\\363\\304\\343\\352t\\365\\024\\025\\326\\326\\326\\366b*\\3337C2\\256\\321\\326h7\\332\\340\\247\\321\\033c\\223Z\\342\\310\\240f|\\342h8\\2613XL9\\366Mj\\215\\365\\244\\2268R\\246\\360-k\\243\\317\\211\\235\\035\\245\\276\\217\\2777\\202>\\253\\332\\327\\015\\331w\\2458:\\246\\362\\2718EdnG\\317)\\371:\\015\\021\\17719\\366\\273\\347\\273O/\\22685d<\\257\\242\\036w\\317*^5}\\274O\\201.\\212]\\336\\025\\027t\\373\\323\\206?\\242\\276\\366\\265\\257\\335\\023\\367\\003\\237\\010\\347\\236{\\356]\\251\\222\\316o\\206d\\\\\\243\\255\\321n\\270\\301O\\2037\\306&\\265\\304\\221A\\315\\370\\304\\321h\\373\\242\\\\\\034\\373&\\265\\306|RK\\034)S\\367\\226\\265\\007\\365\\365=\\245\\021\\364]\\305>+\\227\\003\\307a\\221gB\\244\\334nYN\\210\\343\\366e\\365\\266p\\341\\302bB\\376\\215\\206\\256\\254k\\256\\271\\346}\\207\\037~\\370o\\237\\177\\376\\371\\011I\\306_I\\332\\332\\332~9k\\326\\254\\3675z2\\256\\321\\326h7\\332\\340\\247\\321\\231\\324\\022G\\0065\\343\\270\\303D\\021G\\0154\\251%\\216\\224)|\\313\\332j}\\320`qW\\355\\375\\347Vy\\377\\256\\315\\330w\\305y\\332qE\\363H\\204\\343\\266c#\\275\\217\\370X\\210\\273\\202\\025\\357?\\336hy\\346\\006\\3169\\347\\234\\005\\261\\217\\177"\\315\\236=\\373\\307\\351\\037\\267\\277F[1\\370\\231\\374\\203\\037\\223Z\\342\\310\\240F\\177$\\216Lj\\211#e"\\342(\\345\\033+R\\371\\333\\032\\372\\254\\335G\\020?\\325\\342n\\270}\\326\\264F\\034\\013\\016\\247\\376R\\362\\373O9\\021\\216+\\234O\\224\\366\\366\\366\\376\\204<\\375\\316\\3734l\\343\\264h\\321\\242;\\226-[6\\241\\311\\370E\\027]\\264\\252^''\\330\\0177\\0105\\332\\032m\\203\\037\\203\\037q4h[\\272m\\015\\367\\3614\\250\\321\\037\\211\\243>5\\236\\3178\\245''\\265\\246O\\237\\376G\\251\\376NJ\\037\\337#\\216\\214\\353\\206\\031o99[\\221\\372\\260\\277\\036\\341\\230o\\250\\276c\\250\\270\\033i\\237U\\374\\371k\\033!\\356\\206S\\177\\261-\\274^WP\\037\\314\\025W\\\\\\321\\034\\027r\\2337o\\336\\332z\\335\\316l \\253W\\257\\2767n\\010\\337(\\007\\221F\\333\\340\\307\\340G2.\\216\\206N\\306\\373:\\270\\377H\\345\\013\\263f\\315z\\207A\\215\\376H\\034\\215\\3528\\350\\355;\\006\\2663\\2515\\362\\276<oCM\\345+\\203\\335\\306H\\034I\\306\\213\\355n\\241\\3340\\304\\244\\350H\\307`\\003\\305\\335\\357\\217\\262\\317j\\250\\305\\231\\341\\324_\\264i\\371\\365\\207\\037~x"\\363\\313\\342\\312\\370\\212\\206\\035,\\037u\\324Q\\277Y\\263f\\315\\204&\\343\\317>\\373\\3543q/\\270F9\\2104\\332\\006?\\006?V\\364\\304\\321\\360\\006\\301\\205\\262v\\030+T\\0065\\372#q\\264\\361q\\360P\\337\\377\\377\\365\\270\\335\\3530\\357\\213kR\\353w+\\343\\357\\251\\210\\2418O\\365\\033\\325\\372vq$\\031\\037\\240\\335\\355O\\326\\252\\264\\277\\243]\\014\\251\\026W?\\255\\241\\317j\\230\\305\\231\\341\\324_\\372\\374\\311\\374|=\\257\\242^\\351\\027\\277\\370\\305\\006\\367\\034o\\330d<N\\254\\257\\307}\\337\\206\\022\\025\\325(\\007\\221F\\333\\340\\307\\340\\307\\212\\2368\\032r\\020\\374G\\003\\264\\247\\353\\373bj[\\203\\032\\375\\2218\\032\\326q\\360x\\361\\377\\237Wy\\007\\231\\3302\\2515\\2748\\272\\254\\230\\224\\213#\\311\\370`\\307KqR\\264o\\\\S\\353\\361]-\\356j\\351\\263\\032bqf8\\365W\\374\\374\\225W^\\231\\260\\334\\3627\\277\\371\\315\\006\\277[\\303&\\343\\361\\3135\\202\\211N\\306+\\203P\\243m\\360c\\360cEO\\034\\215\\331\\240f\\017\\203\\032\\375\\321d.7\\337|s-q\\364\\314\\000\\377\\377X]:b\\227]vy\\253I-q4\\025\\3120\\376\\227u)\\237\\375\\354gsL\\324z\\236\\361\\357W\\211\\263\\237\\366=_\\213\\263\\032\\245\\256\\206*\\215\\220_6|2\\336H+\\343\\215T4\\332\\006?\\006?V\\364\\246J\\034\\355\\271\\347\\236\\357\\212\\335!mmm[\\245A\\353\\237\\245\\217\\177\\231\\376\\237;\\247\\347vO\\237\\1776\\356v\\221>?,\\225\\271\\351\\363\\023\\323\\307\\323\\342b(\\303hK_O\\203\\232\\327\\014j\\032\\243?\\212[\\275\\254Z\\265j\\243\\347\\243.\\317=\\367\\334\\252_\\023\\257\\235x\\342\\211\\375\\237o\\273\\355\\266\\245\\217~\\364\\243U\\337{\\327]w\\225\\326\\257__.\\373\\356\\273o\\371\\\\\\301O~\\362\\223\\245\\353\\256\\273\\256\\374y|\\214\\357w\\307\\035w\\364\\177M\\274''\\236{\\362\\311''7\\372~O=\\365\\324\\240\\177O|\\335\\342\\305\\213\\207|\\317\\227\\276\\364\\245\\376\\307q\\301\\332\\374\\270\\370{\\324R^}\\365\\325h\\373\\342\\177\\365r\\337\\351\\032O\\364\\355\\276\\272;\\225\\225)VnL\\037\\257N\\357\\271$}\\374v_\\354D\\014\\235\\230\\236k\\037\\352\\377\\037\\327e\\2301c\\306\\347\\232aRk\\372\\364\\351\\177\\260\\327^{mr\\340\\201\\007\\276\\177\\377\\375\\367\\337"NgI\\277\\3776i\\254\\371\\347\\321\\256\\244\\277w\\307\\364\\334.\\351\\271O\\245\\307{\\246\\362\\271TZ\\323s\\263\\242\\215I\\017g\\247\\362\\305T\\216O\\237\\317O\\345\\177\\245\\307\\337L\\037;\\243\\356R\\271 \\225KS\\271\\252\\357>\\3067\\015#\\206~\\033mQ\\275\\372\\243\\307\\037\\177\\274\\334\\256\\026\\217\\301SO=\\265\\352{\\357\\271\\347\\236\\362\\353/\\275\\364R)n1\\234\\313\\203\\017>X\\272\\375\\366\\333\\207\\3749\\305\\317\\327\\255[W\\216\\247F\\217\\227\\006^\\031\\2773.JZ\\030\\377\\015uZb-\\361\\366\\235i\\223o\\022\\271\\277\\376\\254\\214\\217P\\2343>\\221\\373\\371\\303\\332\\265k\\237\\236\\300s\\306\\253\\006\\341h\\033\\355\\010\\262\\177\\375\\327\\177\\355\\377<\\032\\325\\201\\336\\373\\354\\263\\317\\016\\330\\300E\\303<\\330\\3178\\372\\350\\243\\313\\217c\\3203\\234\\337\\353\\206\\033n(\\275\\363\\235\\357\\354\\377<\\032\\372\\241\\376\\216tl\\214\\350\\357\\256g#o\\360cEO\\031\\323$\\342\\245B\\034=\\230\\312]\\2058\\212A\\357\\3059\\216\\322\\373\\277\\226\\036\\237\\320\\027G/\\014\\020?1\\331uBle\\217D\\277\\020G\\0065u\\354\\217\\006j\\207\\343v\\246\\225\\317\\305\\025o\\253M\\324l\\271\\345\\226\\375\\211v$\\323\\037\\370\\300\\007J[m\\265U\\177b}\\333m\\267m\\360}\\322\\377\\273\\324\\335\\335]J\\211X\\351\\222K.)?\\177\\353\\255\\267\\226_\\033\\250\\277\\212\\327\\016?\\374\\360r\\277\\024I{L\\014<\\362\\310#\\345\\347?\\361\\211O\\364\\277/\\276O\\374\\334\\224\\350\\225?\\306\\357\\266\\303\\016;\\224\\037G\\271\\352\\252\\253J\\037\\372\\320\\207\\006\\234h\\210\\307\\227^z\\351F\\217\\307zR+\\035\\367\\177\\022\\247i\\344I\\255\\364q\\267\\364q\\337<\\251\\325\\027;\\021C_\\033\\316\\244Vz\\337o>\\367\\271\\317\\275\\332\\350\\223Z\\351o\\211\\337\\367\\265\\364\\373\\276\\230>\\376*\\225\\247\\373v\\241\\3754\\275v__\\273\\362\\243\\276\\213;\\335\\224\\236\\373A*\\337\\357K\\256\\317\\357kc:RY\\030Ix*''GR\\236>?&.\\022\\331Ww\\007E\\362\\036\\223\\204\\021#\\221\\324\\017\\322\\217?\\222>\\376\\313>\\373\\354\\363\\276\\230$\\250g\\177\\024\\365\\032\\311t\\214\\001\\007\\033\\343\\304k\\307\\037\\177|\\371q\\304R\\032\\017\\367\\177M\\032\\203\\364\\277\\357\\351\\247\\237.\\307\\323\\216;\\356\\030w *\\2173\\343=\\327\\\\sM\\371\\343\\241\\207\\036Z\\216\\341\\234\\3307z\\2744X2^\\231\\204W\\366\\021\\353\\307i1f4}W#.\\306lT\\177\\316\\031\\037\\241\\023O<\\361W\\367\\336{o#\\\\M}U\\243\\034D\\243\\031\\374D#\\032\\003\\2203\\3168\\243\\034d\\221\\374\\306%\\365?\\374\\341\\017\\227\\033\\315<\\260\\350\\354\\354,\\277?f\\212\\342\\343\\333\\336\\366\\266\\322\\307>\\366\\261\\362\\212\\305n\\273\\355V\\372\\364\\247?\\335?\\310\\211\\006\\264\\362\\347\\304\\252F\\274\\226:\\346\\376\\367\\305\\340\\247Z2\\377\\221\\217|\\244\\264\\363\\316;\\227\\337w\\312)\\247\\224\\336\\375\\356w\\227\\037\\307 )\\312P\\035I\\265\\357\\333H\\203"\\203\\237\\311\\261\\242\\227''f\\362\\000$&\\251\\006{\\177~o\\014t>\\376\\361\\217W}O\\014\\372#\\236\\242\\304\\244R\\261D\\234FB\\0211i\\262\\253\\346\\035&\\217W\\236/\\036\\027O\\2325k\\326\\373\\014j&\\256?\\252V\\362\\000\\375\\205\\027^(\\017\\354{{{\\313m|\\356G\\316;\\357\\274R\\372\\271\\375\\375N\\254J\\177\\360\\203\\037,\\367M\\305c(\\372\\264\\235v\\332\\251\\377\\330J\\377\\353\\376\\237\\021\\375Y\\304\\302\\267\\276\\365\\255\\322\\326[o]\\356\\257\\336\\373\\336\\367\\226\\277g\\254\\330\\345~0V\\003s\\234T&\\364\\225\\307t$\\347\\305\\317\\213}\\305\\333\\337\\376\\366\\322\\351\\247\\237\\276\\301\\317\\317\\211M\\374\\336\\371o\\213\\277+\\372\\343x\\234c3\\036\\337w\\337}\\345I\\206&\\272\\366\\202I\\255\\352q\\264\\266\\362\\264\\263To\\207V\\336\\341\\241\\036\\311x\\034O\\027\\\\pAy\\374\\025\\307_\\036wE,U\\256\\216\\347U\\361\\3126>\\372\\247\\034c\\325b"\\276_~\\034\\343\\367\\370\\030?\\363\\211''\\236(?\\216\\370n\\364xi\\220d\\374\\366\\270\\367\\364\\000Ix-\\307\\367@\\327\\005\\252v\\232\\342H\\342\\256\\321NS\\034\\260\\376\\\\M}\\204\\276\\371\\315o\\336\\265|\\371\\362)s\\237\\361\\341\\006\\341H\\033\\355\\030\\270\\304`%o\\321\\213 \\313\\203\\230h\\340b\\266\\2638\\240\\311\\203\\220H\\014rb^,\\321\\200G"Q\\3713\\342k\\3626\\303h\\024\\243\\301\\034\\354\\367\\312\\035B1\\031\\217\\3571\\324\\337\\027\\357\\331b\\213-\\006}}\\242\\033y\\203\\237\\346_\\321\\273\\377\\376\\373\\313uq\\375\\365\\327o\\260\\2320\\320\\373#V\\362\\226\\277\\374x\\240\\201|\\034w\\221x\\344\\230,\\226\\370\\272j\\2613\\025''\\273\\306\\362B\\210\\021[\\0065\\023\\337\\037\\015\\324G\\345v7>\\026\\267\\200\\017\\2642^\\234\\330\\311\\023\\305\\233o\\276\\371\\006+\\343q\\034G\\022\\020\\357\\215\\011\\251\\230 \\213\\327b{z\\364o\\371gE\\362_\\371\\263"i\\310}e\\374\\214\\370<?\\227\\177\\337b\\262\\037\\361\\034\\011L\\361}q\\314\\307\\343\\030\\360U\\353\\263*\\343b\\323M7-\\307O\\2364\\217\\217\\361y\\203\\335\\225\\340\\033\\203\\304\\222I\\255\\201''\\005\\343J\\352\\363\\007\\230\\014\\254K2\\036\\307T\\214\\177*\\237\\217I\\251\\275\\367\\336{\\203\\376)\\267\\3151\\301\\225w\\200\\304\\252w<\\216\\217\\321\\247T\\236\\276\\221\\307\\224\\271\\037\\213\\325\\362\\342\\312x1\\006\\0329^&8\\031\\037l%\\274\\326\\343|\\250\\013\\364\\376\\336(\\373\\256\\277\\232\\3268\\027\\360\\035\\262\\376\\372N+\\231\\360\\373\\214\\307\\317.\\264\\255\\235\\015\\233\\214/]\\272t\\341i\\247\\2356\\241\\311\\370\\2349sb\\353\\322\\254F9\\210F\\333h\\347\\201C$\\226yK^|\\314\\253\\001\\305$#7\\2141X\\251\\366\\275*\\223\\361\\030\\354\\244\\377U\\271A?\\356\\270\\343\\312\\215q\\254\\250\\347\\201y\\236!\\315\\357\\317\\003\\371<\\230\\217\\344e\\223M6)\\237\\373\\227\\237\\033h\\0252''9\\361\\263\\006\\372[\\033\\241\\2217\\370i\\376\\025\\275i\\025\\347\\322\\3051\\027\\333U\\007{\\377\\036{\\354\\261\\301\\347\\261\\033\\245\\362}\\305s\\357bgJ\\224\\274\\362\\036\\203\\233\\274\\275\\317dW\\355\\267\\010\\214\\322\\326\\326\\266\\275AMc\\365G\\325J\\0347\\321OD_0\\3206\\365x\\234\\317w\\315+wq\\354D\\377\\0251S\\231\\214\\307\\304Q\\361\\373\\3041X\\231\\214\\347\\2760\\257\\342\\345\\237\\225c2\\367\\221\\261:\\237\\337\\233''\\352\\212+\\343\\371gD\\242\\222\\337\\027\\337+\\036G2\\0371X-\\226\\266\\331f\\233\\362\\337P\\354\\207\\343\\361\\366\\333o?\\341IDL\\376\\346S\\243b+v\\345j\\256I\\255\\341M\\012\\366\\235B\\263Y=\\342h,\\222\\361\\030\\323\\305\\373\\362\\261\\037\\355x\\274\\347\\3143\\317\\334`\\225=\\367''q\\214\\347m\\350\\321\\237\\305*z<\\3161\\024\\375E\\036\\213\\025\\023\\370F\\215\\227\\211L\\306k0\\324\\361>\\334;\\345\\214\\264\\357\\312c\\320}\\2465\\211\\276]\\251\\345\\361\\341\\202\\005\\013&,\\277<\\366\\330c\\213\\343\\324\\375\\032\\266\\302\\026-Z\\264y\\032\\374\\276\\031+=\\023tr}\\314d\\376z\\030+*u5\\222F;\\032\\303H\\214c\\333i4\\\\\\321\\220E\\003\\033[\\365"\\341\\314\\015d\\361\\374\\361\\334\\200\\026/\\3621X2\\036\\003\\223j\\203\\246h\\320\\363\\367*\\376\\316y\\265=\\006]\\361}\\212\\211\\371v\\333mWZ\\270p\\341\\200\\177O\\254\\336\\347d\\241\\332\\252}\\2434\\362\\006?\\315\\275\\242\\027\\177{|\\217j\\317W\\333\\242\\227W\\022"\\261,^\\260fZ\\305u\\032\\362i#y\\242\\250\\262\\344\\343\\2658\\3613\\225''\\273jL\\306\\377\\324\\240\\246\\261\\372\\243\\341L\\032G,\\305\\256\\2168.\\362\\251U\\307\\034sLyu-J\\364_y"+''\\313\\371\\353\\213\\333\\324#\\331.\\036\\343\\271O\\210\\276oZ\\337v\\364\\370\\230w\\206\\345\\211\\352\\201\\222\\361<\\371U|o\\265d<~~\\216\\261\\203\\017>\\270\\3748b\\242\\230\\354\\304\\244Z[[\\333\\006}ce\\3779\\324d[\\275\\372\\243hCk\\330\\0355\\345''\\265\\006Z\\011\\237\\250d<\\267\\265\\321\\277\\305\\002M>V\\363iD\\225\\327\\015\\212\\370\\210\\266=\\306\\341\\305\\035\\\\\\261c,\\357:\\031h\\233zN\\320\\243\\337\\211\\307y\\007J\\243\\307K\\223&\\343\\203\\305\\335HoY;\\334\\270\\313?\\257\\251\\372\\254\\2313g\\376q\\337N\\225R\\\\(\\374\\305\\027_\\234\\350\\363\\305_\\031\\346-\\214''\\316)\\247\\234\\362\\323k\\257\\275v\\242\\266\\020\\334\\226\\022\\242k\\232}\\360\\023\\215h\\261\\321\\214D3\\017\\272\\243\\001\\313\\003\\352\\374\\236\\221&\\343\\305\\2065\\006)\\361\\363\\362\\352A\\265d\\274\\362\\3751\\370\\312\\003\\252h\\204c\\313\\341P\\253\\217y\\313\\356@\\011\\371D7\\362\\006?\\315\\273\\242\\027\\003\\226H\\006b\\245-V\\303b\\313u{{{\\377\\261\\024\\347lO\\253\\262\\2355\\257\\356\\306\\343\\330\\266]\\274\\032s\\361BO\\371=\\371J\\316\\371\\373\\346U\\357\\312cn*OvM\\340\\340\\307\\240\\246\\216\\311x\\034\\313q\\354L+\\234S:\\330\\225\\236\\213\\347\\235F\\037\\022\\023\\\\\\021\\267q\\334F\\274\\306\\343(\\305\\353#\\304{\\3636\\365\\350\\243r\\037\\230W\\271\\363\\307\\201\\222\\361\\270J{\\216\\325<\\371V-\\031/\\306hNL\\342w)Np\\345\\253SO\\2538e\\243\\370\\265\\361w\\015\\026\\203M\\220D\\230\\324\\232\\240I\\255\\301\\256p\\036\\223Pq\\374\\276\\345-o\\351\\277\\010[$\\336\\305SCrl\\304\\256\\247\\330j\\036\\375XL\\004\\347I\\2508\\007<b0&\\234\\253M\\246E<\\347c7\\037\\343\\221\\324WK\\336\\0331^\\2328\\031\\317qW9\\026;h\\332\\310/\\320[-\\356\\016l\\264\\305\\227\\032\\306\\211\\375\\347\\215_}\\365\\325u\\317/\\3179\\347\\234b2~~\\303WXGG\\307\\314X\\325\\215K\\300\\327S\\334Rm\\377\\375\\367_\\023\\267\\271h\\366F;\\257\\320\\305\\300<\\317\\214\\346\\201G\\361BJ\\225\\203\\220\\321&\\343\\271\\301\\216\\006~8\\311x\\014\\236\\342*\\234\\361\\\\\\234\\177Z\\355{\\027;\\210H\\002\\006\\333\\006\\334\\010\\215\\274\\301Os\\016~\\342X(&\\003\\261\\202\\020\\027\\254)\\036\\177\\021;\\305\\213\\247M+l\\273\\316\\333\\311s\\\\\\025W\\315\\213\\003\\221i}\\347\\323\\015t\\274V\\233\\000\\232\\212\\223]\\023<\\3701\\250\\251c\\022\\021\\311Aq\\327I\\324S$\\000\\003\\305P\\261m\\217\\244\\242\\362\\234\\361|l\\346\\335*\\371\\275\\361z\\254\\260\\307\\367\\212\\325\\275X\\255\\213~''''*\\225+\\203\\225\\247r\\025\\217\\343j\\311xL\\274U\\306\\305f\\233mV\\236\\320\\033j\\307HL\\206\\305\\304B\\376[s\\2347q\\022aR\\253A\\222\\3618\\266\\242_\\212I\\245\\330i\\222\\373\\263\\3306\\036\\307}\\234\\022\\032\\311w~\\177$\\317\\371q\\354\\274*&\\327\\325\\332\\354\\210\\217i}\\327i\\210\\3760~V\\361\\202\\277\\321\\227V\\336\\272\\260Q\\343\\245\\311\\223\\361b\\237\\262{\\225\\370\\031\\311\\235r\\006\\372\\272\\011\\275.\\320X(nU\\217\\034\\263\\236\\2678[\\263fMyE>\\377\\374\\021\\236J7q\\276\\362\\225\\257\\374\\242\\336\\027r\\213U\\361\\2309\\031\\341E\\024\\032\\262\\321\\316\\253W\\221\\210Vn\\263\\213\\255|9A\\317\\311w-\\311xn\\020\\343\\340\\216\\2062\\022\\207\\342\\326\\335j\\311B\\236i\\215\\347\\342\\252\\236\\225\\253\\210\\225\\267\\230\\251\\274\\300VN\\316\\033\\251\\2217\\370\\231\\034\\203\\237\\370\\273\\343\\234\\353b\\\\\\3448\\032\\350\\375\\371\\274\\272\\301\\216\\227x_\\014~\\212[\\275\\213\\027\\212\\033,\\031\\237J\\223]\\0150\\3701\\250\\251S\\022\\221W\\256\\343X\\210k\\020\\304q\\033\\003\\3708^\\343\\334\\357\\350#\\212;P\\252]\\334-\\3563\\236\\217\\365j\\307v\\336\\371\\221W\\364r\\354E"\\236o\\303T\\371Z\\345\\265S\\342x\\355\\273\\312\\1779\\251\\031\\354\\357\\311qQY\\362*a\\376\\375\\363\\3577\\255p\\365\\352\\274\\215\\276r\\373p\\023&\\021&\\265&8\\031/\\336\\2526vL\\305E@+\\217\\325|\\361\\304\\274\\202\\036\\217c<\\026\\223\\306\\305\\304|Z\\305)\\0331\\001\\235\\257uR\\355:C\\225m\\177q\\005\\276Q\\343e\\022$\\343\\325\\306\\202\\277\\327\\027/#\\275\\016P\\345\\327\\355\\336\\354}V\\350\\273\\337\\370OrB\\\\\\317\\035\\330_\\375\\352W\\213wW\\270\\246i*m\\336\\274y;\\037t\\320Ao\\326\\353~pi\\360\\370\\3138W\\274Qg+F\\332h\\3079\\236\\321H\\345\\253+\\347\\301G\\236\\365\\217$4''\\002\\203\\015B\\2421\\314\\211{\\265[\\037E\\003\\031\\253\\210\\321\\200\\347U\\302\\030T\\015\\324\\310F\\262\\022\\215z$\\3671\\363\\232\\007[\\2615\\270ZC\\035+l\\225\\317\\347\\363Nc\\266\\267r\\313\\324D6\\362\\006?\\315?\\370\\251\\214\\203XA\\233Vq\\001\\232\\312\\343,\\316\\313.\\036\\003\\003\\235{\\035\\357]\\264hQ\\377\\205\\334\\246Uls\\037(\\031\\237j\\223]\\0152\\3701\\250\\251C\\022\\021\\307\\177\\345\\251\\036\\321OU\\273?r\\361\\363\\342\\305\\016\\213\\023O\\225\\267i*N\\370DlG\\237\\027\\253\\344\\003\\335\\202/''\\356\\305\\353\\251T\\034\\227\\245\\241\\256;Q\\334!S\\3556\\210\\305\\277\\247\\330G\\305kq\\032K\\354R\\031(yi\\262$\\302\\244\\326\\004\\257\\214\\347\\022c\\276\\350?b\\254\\026\\245Zr\\236\\023\\362\\3748\\306W\\371\\216\\0311\\346\\312;ObLYy\\207\\221H\\374\\343\\324\\2438v\\343=\\305s\\323#6\\007\\232\\314n\\244x\\231$\\311\\370`\\2133c9\\266lZ\\305\\325\\361X\\251\\376\\371\\317\\177>\\356\\371e,,\\027\\266\\247\\307\\235^\\266k\\252JK\\203\\334\\357,X\\260\\340\\315\\330>>\\336\\216<\\362\\310\\333S%\\235:Y\\032\\355\\234\\214\\307y?y\\365j\\260A\\177>\\317\\265\\270]\\267x\\217\\342i\\025[lc\\000\\025+\\005\\261*Q\\355\\326Oy\\213aqe!V:\\342\\374\\325\\312\\225\\267<I\\220W;\\242a\\215\\253z\\026\\257\\212[\\355VKy\\202\\241Q\\032y\\203\\237\\346\\036\\374\\344\\230\\211\\343<\\017\\342\\343\\242c\\325\\006\\372QN>\\371\\344\\362\\252s$\\242\\271\\241\\315\\211j\\265\\201N\\265\\225\\340\\030\\364\\347-\\350\\325n\\3675\\025''\\273\\032h\\360cP3\\301ID\\263\\225\\361>\\177\\265\\011\\223\\010\\223Z\\342\\250)\\342e\\022%\\343c\\331wM\\370\\235r\\306C\\032\\253-\\313c\\266\\330\\3514\\236\\027\\014\\217\\005\\210\\342\\366\\364T\\216h\\312J\\233={\\366\\003g\\235u\\326\\270&\\344_\\376\\362\\227oo\\324\\355\\351\\215\\332h7z#:\\021\\277\\237\\301O\\363\\016~bR&\\222\\336h\\224\\363V\\3538wuZ\\305\\225\\233\\213%.N\\026+\\305\\221|\\026\\217\\267|\\276i\\236\\010\\033j%~\\336\\274y\\033M\\204M\\345\\311\\256\\006\\033\\374\\030\\324H"\\232\\262\\230\\324\\022G\\312\\224M\\306\\307b\\3146)\\306|\\325\\304\\335\\262\\372n!\\\\N\\220\\343\\364\\301\\361\\270FY$\\342\\261C\\244\\251.\\3326\\220H\\220\\017=\\364\\320''\\317>\\373\\354\\337\\216GB~\\302\\011''\\374{\\252\\240G\\322?\\347=\\032m\\305\\340\\307\\340\\307d\\327\\304\\376~\\0158\\3701\\250\\321\\037\\351\\217Lj\\211#q\\324\\254\\011\\371gF\\031g\\223.\\021\\317ZZZ\\376:\\225u9Q\\216s\\272c\\247\\342XnM\\257X\\021\\277\\241\\321\\363\\314!\\305=\\033\\017>\\370\\340\\207\\027-Z\\364\\362X]\\375\\356\\345\\227_\\376\\325\\321G\\037\\335\\025\\367vn\\370{\\275i\\2645\\332\\006?\\342H\\034\\031\\324\\210#\\305\\244\\226I-E2>~c\\270I\\2715\\275\\232\\270\\245p\\276\\367x\\276\\316\\301\\352\\325\\253k\\276jz\\234\\302XH\\302''G"\\236\\305\\037r\\310!\\207\\\\t\\350\\241\\207\\276\\364\\300\\003\\017\\324TY\\251\\262W\\315\\2349\\363\\311TA\\3474K\\005i\\2645\\332\\006?\\342H\\034\\031\\324\\210#\\305\\244\\2268R$\\343\\343\\320w\\375\\325\\264&\\274em-f\\314\\230\\261k\\312\\005\\327\\027\\223\\347\\005\\013\\026\\224O3\\034\\211_\\374\\342\\027\\345\\373\\210W\\254\\206\\227\\267\\246O\\232D\\274(\\375a\\373\\035p\\300\\001O\\237t\\322IO\\375\\370\\307?~m\\004[\\327_\\277\\373\\356\\273o;\\362\\310#\\343\\246\\357O\\266\\264\\264\\374\\223F[1\\3701\\370Q\\304\\221A\\2158\\022G&\\265\\304\\2212I\\223\\361<\\026\\\\?\\310\\230.\\237\\2168e\\022\\361\\302\\012\\371\\266\\221\\027V$\\321\\245\\331\\263g\\227.\\273\\354\\262\\322\\252U\\253\\312W]\\317\\347\\225\\307\\307H\\276c\\025=\\256\\305\\023\\327\\027\\252\\374\\332\\270jz\\323^\\254m\\270\\342<\\362\\224L\\177\\245\\255\\255\\355\\027\\207\\036z\\350\\263_\\377\\372\\327\\037\\354\\352\\352z\\364\\261\\307\\036{\\261PY\\353S\\345\\375d\\371\\362\\345\\275\\247\\235vZOJ\\340\\177\\332W\\331''5\\343,\\205F[\\243m\\360#\\216\\304\\221A\\2158RLj\\211#E\\034\\215a\\334M\\231\\255\\351\\003\\211\\2740%\\345\\013*W\\311GS\\342>\\342Mw\\373\\262Z\\305}\\301#1\\217=\\371q!\\266\\212Jy&\\256\\222\\236\\312\\374T\\311\\177\\333\\310WK\\327hk\\264\\015~\\304\\221\\3224\\203\\237)=\\250\\021G\\342\\310\\244\\2268\\022G\\223"!\\237\\362\\211x\\321\\314\\2313\\3778ns]\\274\\270\\3330K\\234{~~\\344\\244j\\321\\340G\\321h\\033\\374\\210#qdP#\\216\\304\\221I-q\\244H\\306\\007\\213\\273\\263$\\342\\325\\315\\2325\\353\\035}\\347\\223\\177\\243o\\261\\267r\\033\\3733\\255\\255\\255+\\322\\307\\3168\\355\\271\\031.\\004\\216F[\\243m\\360#\\216\\224\\3118\\370\\231\\222\\203\\032q$\\216Lj\\211#q\\324\\324v\\217\\244r\\332$\\276}\\031h\\2645\\332\\006?\\342H\\231\\032\\203\\237)7\\250\\021G\\342\\310\\244\\2268\\022G\\315k\\372\\364\\351oI\\375\\326\\033\\262+\\320hk\\264\\015~\\304\\221\\322\\324\\203\\237\\2518\\250\\021G\\342\\310\\244\\2268\\022G\\315k\\217=\\366x{\\212\\267\\327dW\\240\\321\\326h\\033\\374\\210#\\245\\251\\343\\250oP\\363\\252\\376H\\021G&\\265\\304\\2218j\\006{\\356\\271\\347\\273R\\274\\275$\\273\\002\\215\\266F{\\202\\365%\\343\\342H\\021G\\0065\\342H\\034\\231\\324\\022G\\312\\024H\\306\\367\\332k\\257MZ[[_\\224]\\201F[\\243-\\031\\027GJS\\307\\321T\\034\\324tww;V\\033\\273\\274\\222\\342\\350u\\223Z\\342H\\231Zq4\\\\mmm\\233\\246x\\373O\\331\\025h\\2645\\332\\222q\\311\\270\\322\\324\\311\\370T\\034\\324\\254\\\\\\271\\362\\231\\347\\236{\\316\\361\\332\\240e\\315\\2325\\227\\2478z\\250\\231\\216\\251\\2313g\\376a\\212\\243\\027\\304\\221"\\216\\306_\\334\\212+\\305\\333Z\\331\\025h\\2645\\332\\222q\\223ZJSOjM\\305AMOO\\317\\336\\267\\334r\\313\\257\\177\\371\\313_\\276\\354\\230m\\254\\370\\211\\276\\250\\253\\253\\353\\211T\\3663\\251%\\216\\224\\251\\025G#\\350\\2676O\\361\\366\\254\\354\\0124\\332\\032m\\311\\270I-\\245\\251''\\265\\246O\\237\\376G)\\216\\236\\231j}Rj\\357>\\223\\376Ww\\306\\344I\\354fP\\032\\242\\304\\377\\342\\241f\\354\\213R\\034} \\305\\321s\\342H\\021Gu\\211\\267-S\\274=%\\273\\202)\\334h_v\\331e\\245H\\0045\\332\\222q\\223ZJ3Oj\\031\\324\\200I-h\\262x\\373\\223\\024oO\\250\\011\\230\\302R#\\260,\\022\\301]v\\331\\345\\255jC2nR\\313JD\\023\\257\\350\\031\\324@\\355qdR\\013\\352\\027o\\037J\\361\\366\\230\\232\\200)\\252\\245\\245\\345\\257S#\\360z$\\202\\255\\255\\255\\273\\253\\021\\31184\\253\\266\\266\\266\\377\\232\\342\\350Q5\\0015\\305\\321V)\\216~\\256&\\240.\\361\\366\\337R\\274\\375LM\\300\\324M\\306\\257\\211$\\260\\257\\334\\251F$\\343`P\\003S:\\216LjA\\235\\264\\266\\266n\\233\\342\\355!5\\001S3\\371\\373\\253\\274*\\236KJ\\316?\\243f$\\343\\320\\214R\\373\\365g)\\216\\036T\\023PS\\034m\\223\\342\\350\\247j\\002\\352\\022o\\333\\245x\\373\\211\\232\\200\\251\\231\\374-+&\\342yu\\334\\271\\343\\222q0\\250\\201)\\033G&\\265\\240~\\361\\366\\027)\\336\\356U\\0230\\365\\022\\277\\215V\\305simm\\335G\\015I\\306\\241\\331\\264\\265\\265m\\237\\0066\\377\\241&`\\364f\\316\\234\\371\\347)\\216\\356S\\023P\\227d\\374\\243i\\374w\\267\\232\\200\\251\\227\\370\\335P-\\021\\357+\\267\\253!\\31184a2\\376\\227)\\216\\356R\\023PS\\034\\231\\324\\202\\372\\305\\333\\377H\\375\\326\\377V\\0230\\265\\222\\276\\001W\\305\\235;.\\031\\007\\203\\032\\230\\362c\\004\\027t\\205:hmm\\3351\\305\\333\\217\\324\\004L\\255\\216v\\331`\\211\\270+\\253K\\306\\241Ic\\350oR\\271MM@Mq\\264C*\\253\\325\\004\\324%\\031\\377\\333\\024o\\253\\324\\004\\350|%\\202\\376\\007\\320\\3541\\264s*+\\325\\004\\214\\336\\214\\0313vJq\\364\\357j\\002\\352\\322o\\355\\222J\\257\\232\\000\\215\\201D\\320\\377\\000\\232=\\211\\370\\373\\326\\326\\326\\0365\\0015\\305\\321\\307S\\034\\335\\252&\\240.c\\277\\177H\\245KM\\200\\306@"\\350\\177\\000\\315\\236D\\354\\232\\222\\210\\025j\\002F/\\305\\320''LjA}\\264\\265\\265\\355\\226\\306\\1777\\251\\011\\220\\010J\\004\\375\\017\\240\\351\\0075---7\\252\\011\\250)\\031\\377d\\352\\217nV\\023P\\227~\\353\\037S\\277u\\275\\232\\000\\211\\240D\\320\\377\\000\\232=\\206>\\235\\312\\017\\325\\004\\324\\224\\214\\357\\036\\267?U\\023P\\227x\\3333%\\343?P\\023`\\020+\\021\\364?\\200f\\217\\241\\275R\\271NM\\300\\350\\305\\255M\\343\\256+j\\002\\352\\322o\\355\\233\\312\\325j\\0024\\006\\022A\\377\\003h\\366$\\342\\263)\\216\\256R\\023PS\\034\\355\\235\\342\\350Z5\\001u\\031\\373\\355\\227\\312\\225j\\0024\\006\\022A\\377\\003h\\366$bzkk\\353\\367\\324\\004\\214^\\212\\241\\317\\245X\\372\\276\\232\\200\\272\\214\\375ZR\\271\\\\M\\200\\306@"\\350\\177\\000\\315\\236D\\204\\313\\324\\004\\324\\024G3R\\177t\\205\\232\\200\\361\\327\\322\\32223\\305\\334%j\\002$\\202\\022\\301\\006\\376\\037\\034\\366\\355e\\357RC0d\\022\\261\\177\\212\\243\\213\\007{\\217X\\202!\\373\\242\\266T\\276+\\216\\240.\\311\\370\\201\\251\\357\\272P\\274\\201\\316W2^\\243\\366%];\\266\\237\\265r\\213\\\\\\346,\\351\\375L\\377\\343\\316\\236\\275\\346v\\364\\374]\\371}\\235=;\\265/\\356>`nG\\357\\256\\305r\\320\\021_*\\265w\\366\\236\\034\\357\\257\\374\\336\\363\\347\\177\\357\\017\\322{N\\215\\307s\\026\\365\\354\\240\\266\\021K\\033\\307\\322\\265\\267<x\\306\\251g]pS<\\026K\\210\\243\\321\\305\\321\\017V\\375\\354\\364\\257\\236y\\336\\012q\\004\\343\\037o\\337\\357\\376\\3117\\276\\266\\350\\302\\033\\305\\033H\\306%\\343c\\350\\350\\305\\275\\333\\245\\206\\367\\224\\252\\015vj\\204+\\033\\333\\331\\035\\313\\377\\260\\265mf\\251\\275\\243gI\\361\\371r\\343\\274\\270\\367\\304\\271\\213{\\017\\232\\333\\321\\375\\251\\364\\372\\205\\361\\334QK{\\337\\243\\226\\021K\\033\\306Rj\\307\\016\\371\\346\\242\\316\\013\\347\\237\\337\\373\\016\\261\\004\\243\\213\\243\\226\\226\\226\\317\\2478\\272X\\034A]\\372\\255\\177>s\\361\\222\\013\\304\\033H\\306%\\343c\\244\\257A\\275w\\316\\242\\256\\217Tm\\210Sc\\033\\311\\3671Ko\\375`\\2365\\215\\031\\323\\375?\\177xiNG\\357q\\361\\236\\177Y\\322\\365\\376c\\026\\367\\374cy\\34645\\302\\345\\306\\273\\243\\273=fZ\\343\\2719\\213{\\276\\033\\337Cm#\\226\\376\\177,\\375\\373\\235\\017\\036\\273\\240\\343\\242\\037\\034\\263\\244k\\033\\261\\004\\243\\213\\243;\\356\\375?_<m\\361\\005?\\024G0\\376\\361v\\353\\355\\367\\035\\267\\240\\363\\342\\353\\304\\033H\\306%\\343c$5\\232\\213\\332;{\\276\\035\\333\\212\\242\\001\\215\\206\\271\\370znl\\333;zg\\346mJs:{\\343j\\232\\245\\364u\\035\\033\\276\\267\\347\\350\\342V\\366\\337}M\\327\\316j\\031\\261\\264q,]\\272\\374\\316\\216S;/\\277\\251\\374\\234X\\202Q\\305\\321\\3457\\336\\275\\350kK\\256\\270Y\\034\\301\\370\\307\\333\\305\\313n\\357<\\355\\354\\357\\335(\\336@2.\\031\\037\\213F\\270\\263g^y\\265;5\\304\\361yl%\\372\\335\\014\\346\\312\\017\\364\\277\\247\\243g\\311\\374\\371\\363\\177\\277}q\\317\\361\\345\\306vQ\\327\\346\\221\\214\\317<\\360\\220R{Gwk~\\337\\027\\227to\\225\\236?\\244x\\016\\322\\334\\305=\\207\\315]\\332\\273\\265\\232F,m\\034K=\\377~\\367\\011_[\\372\\275\\033\\346\\236\\331\\275\\245X\\202\\321\\305Q\\357\\217\\356\\371J\\212\\243\\233\\304\\021\\214\\177\\274\\335\\320}\\333I\\247\\177\\373\\352\\345\\342\\015$\\343\\222\\361\\032\\034y\\366\\252M\\347vv\\177>\\237\\307S\\234\\335\\214\\213m\\344\\363\\200b\\353\\321\\357\\032\\327\\336\\355\\243\\321\\216\\031\\316h\\220\\343=\\007\\035\\365\\225Rq\\3063}\\315g\\347v\\366\\034\\265\\341\\254h\\317w\\3246b\\251z,\\235y\\311\\312\\037.<\\347\\322\\313\\332;{\\367\\021K\\210\\243\\321\\305\\3217/Y\\271,\\305\\321\\025\\342\\010\\306?\\336\\276q\\321-\\327/\\372\\267+/\\025o \\031\\227\\214\\217RlA*\\236\\033\\024[\\223\\346,\\3569\\263\\262\\241\\216\\217q\\016P\\224\\270\\232f\\234/\\024\\317E\\343\\033_s\\310\\027O/\\315\\237\\337\\373\\326\\37451\\373\\031[\\222fwt}xNG\\367\\027\\342\\271/v\\366nkV\\024\\261T=\\226.\\274\\346\\226\\245\\027\\\\p\\321\\231\\261\\015P,!\\216F\\027G\\027\\\\\\335\\273\\344\\374\\363/\\\\$\\216\\240.\\361vN\\352\\267\\026\\2127\\220\\214K\\306\\307H4\\262\\261\\355\\274\\352k\\035\\335\\355\\225\\347\\017E#\\035\\317\\035v\\342\\322\\376\\377A\\254\\226\\227\\033\\370\\216\\236\\323r\\243\\034\\215p<7wq\\367\\305\\305\\006\\033\\304\\322\\357\\\\wC\\367\\374\\213.\\271ta\\336"(\\226`\\344q\\364\\203\\033{\\376\\347E\\027\\177\\367Lq\\004u\\350\\267\\226w}\\365\\222K/?C\\274\\201d\\\\2>F\\342\\312\\3501\\223Y\\265!^\\334sL\\345sq\\356P\\334\\002c\\326\\027N,\\345\\344<\\032\\363\\337=\\337}z\\261\\3049C\\256\\240\\211X\\252\\036K\\313\\226-;\\351\\264\\177\\273qe\\036\\010\\211%\\030y\\034\\335|\\363\\315''\\234\\372\\355\\345\\253\\304\\021\\214\\177\\274\\375\\360\\207?\\234w\\352\\277\\336\\240\\337\\002\\311\\270d\\334\\377\\000\\232[KK\\313\\377lmm=EM@M}\\321I\\251\\234\\252&\\240.\\3616?\\225\\223\\325\\004h\\014$\\202\\376\\007\\320\\324"\\021\\217\\204\\\\M\\200\\344\\000\\232$\\336N\\215\\01105\\001\\032\\003\\211\\240\\377\\0014{\\014\\235\\226\\312\\011j\\002$\\007\\320\\014Z[[\\027\\244r\\274\\232\\000\\235\\257D\\320\\377\\000\\232=\\206NO\\34585\\001\\265%\\007---_Q\\023P\\227x;#\\305\\333\\261j\\002\\014b%\\202\\376\\007\\320\\324\\322\\200fa\\032\\330|QM\\200\\344\\000\\232$\\336\\276\\231\\342\\355\\0305\\001\\022A\\211\\240\\377\\0014{2~V\\032\\330\\264\\253\\011\\250\\251/:3\\225\\271j\\002\\352\\022o\\213S9ZM\\200\\306@"\\350\\177\\000\\315\\036C\\235)!\\377\\202\\232\\000\\311\\0014I\\274-I\\345_\\324\\004h\\014$\\202\\376\\007\\320\\3541tvJ\\306\\217T\\0230z)\\206\\226\\266\\266\\266\\036\\245&\\240.\\375\\3269\\251\\034\\241&@c \\021\\364?\\200f\\217\\241o\\247r\\230\\232\\200\\232\\222\\361o\\245d\\374p5\\001u\\211\\267\\177K\\361v\\250\\232\\000\\203X\\211\\240\\377\\0014{\\014}''\\225\\203\\325\\004H\\016\\240\\031\\244X;/\\305\\334\\347\\325\\004\\030\\304J\\004\\375\\017\\240\\331c\\350\\2024\\2609HM@Mqt~*\\263\\324\\004\\324%\\031\\2770%\\343\\007\\252\\011\\030\\201R\\251\\364\\326\\307\\036{\\354\\312\\325\\253W\\377\\266\\273\\273\\273\\264b\\305\\212\\246/\\221\\0106\\373\\337\\320\\325\\325UZ\\271r\\345\\257R\\331_2\\016SrPsI\\032\\324\\314T\\023PS_tQ*\\007\\250\\011\\250K\\274}7\\22565\\001#\\020\\211\\370\\252U\\253J\\317=\\367\\\\\\351\\265\\327^S\\032\\250\\254]\\273\\266t\\353\\255\\267\\276\\220\\022\\363\\375$\\3430\\345\\222\\361\\313R2\\376Oj\\002j\\352\\213.M\\261\\324\\252&\\240.\\361vy*-j\\002F V\\304%\\342\\015\\235\\220\\277\\266b\\305\\212\\207$\\3430\\345\\222\\361\\357\\245d|\\272\\232\\200\\232\\372\\242+R,\\315P\\0230\\376R\\237\\365\\375\\024o\\237S\\0230\\002\\2615]\\322\\333\\330%%\\343\\257K\\306a\\312%\\021W\\247\\262\\257\\232\\200\\232\\342\\350\\252\\224 |VM@]\\222\\361kR2\\276\\217\\232\\200\\021\\210\\363\\223%\\274\\015\\237\\2147]b+\\031\\207\\232c\\350\\272T\\366R\\023PS\\034]\\233\\022\\204\\275\\325\\004\\324%\\031\\377AJ\\306\\367T\\0230\\016\\311\\370\\377\\375\\3653\\245\\307\\356<\\277\\364@\\327W\\313%\\036\\307s\\222e\\311\\270d\\034\\306ePs}[[\\333?\\252\\011\\250\\251/\\372a*\\237V\\023P\\227x[\\236\\372\\256=\\324\\004\\214q2\\276~\\335\\232\\322\\3757\\315+\\375\\370\\372c7(\\361\\\\\\274&a\\226\\214K\\306a\\314\\223\\361\\033S2\\276\\233\\232\\200\\232\\372\\242\\033Z[[wW\\023P\\227x\\273)\\365]\\237R\\0230\\306\\311\\370\\223\\017\\374`\\243D<\\227\\247\\036X&a\\226\\214K\\306a\\354c\\250k\\306\\214\\031\\273\\252\\011\\030\\275\\224\\210\\257\\020GP\\277~+\\225\\177P\\0230\\306\\311\\370C\\275_\\0370\\031\\217\\327$\\314\\222q\\3118\\214y\\014\\365\\246\\262\\213\\232\\200\\232\\222\\361\\236\\224\\214\\377\\275\\232\\200\\272\\364[\\267\\244\\230\\373;5\\001c\\234\\214\\337\\277b\\376\\200\\311x\\274&a\\226\\214K\\306a\\314che*;\\253\\011\\250-\\216R2\\376q5\\001u\\211\\267U)\\031\\377[5\\001\\222q\\311\\270d\\034\\232}P\\363\\2434\\250\\331QM@Mqt[*\\177\\243&\\240.\\361v\\273~\\013\\306!\\031\\217\\253\\247\\017\\224\\214\\307k\\022f\\311\\270d\\034\\306<\\206\\376w[[\\333\\377P\\023PS\\034\\255Ne\\0075\\001u\\211\\267;ZZZ>\\246&`\\214\\223\\361Gn[2`2\\036\\257I\\230%\\343\\222q\\030\\363\\030\\272;\\015j>\\252&\\240\\2468\\272\\253\\255\\255\\355/\\325\\004\\350\\267\\240i\\223\\361\\347\\327\\334W\\272\\377\\346\\2237\\336\\242\\236\\236\\213\\327$\\314\\222q\\3118\\214y\\014\\335\\233\\0065\\177\\241&`\\364R\\014\\375GJ\\306\\267W\\023P\\227~\\353\\307\\255\\255\\255\\037Q\\0230\\306\\311x\\224\\307\\357\\272h\\243d<\\236\\223,K\\306%\\3430.1\\364\\223\\224Hl\\247&@\\034A\\223\\304\\333\\375)\\031\\377\\357j\\002\\306:\\031\\177\\365\\325\\322#?:g\\343-\\352\\351\\271xM\\302,\\031\\227\\214\\303\\230\\307\\320CiP\\263\\255\\232\\200\\232\\342\\350\\301\\224\\214\\377\\231\\232\\000\\375\\0264e2\\276~\\335\\232\\322\\317n\\353\\034\\360\\234\\361x-\\336#i\\226\\214K\\306aLc\\350gmmm\\377MM\\2008\\202&\\211\\267G\\246O\\237\\276\\265\\232\\200\\261H\\306_}\\265\\364\\314#=\\245\\237\\334x\\302\\200\\211x.\\361\\236x\\257Ur\\311\\270d\\034\\306,\\206\\036K\\203\\232\\017\\251\\011\\250)\\216\\036M\\311\\370\\177U\\023\\240\\337\\202\\246I\\306\\207Z\\015\\267J.\\031\\227\\214\\303\\270\\307\\320\\023iP\\363''j\\002\\304\\021\\2107\\230B\\311\\370pV\\303\\007[%\\227@K\\306%\\343Ps\\014=\\225\\0065[\\252\\011\\020G\\320$\\361\\266&\\225\\377\\242&\\240\\306d|\\264\\211x.\\022h\\311\\270d\\034j\\216\\241g[[[7W\\023 \\216@\\274\\301\\024J\\306\\025\\311\\270d\\034&<\\206\\326\\246A\\315fj\\002\\304\\0214I\\274\\375\\352\\300\\003\\017|\\277\\232\\000\\311\\370\\224J\\306\\323@\\343[\\251\\001|C2\\016\\223GKK\\313\\272Y\\263f\\275OM@M}\\321\\177\\266\\265\\265m\\252&@\\277\\005\\222qeL\\223\\361H\\302S\\371m$\\276\\215\\226\\374J\\306\\2416)\\266_\\334k\\257\\2756Q\\023 \\216@\\274\\201d\\\\i\\220d\\2742\\011\\227\\214\\303\\344\\223b\\350\\345\\351\\323\\247\\277SM@Mq\\364\\322\\236{\\356\\371.5\\001\\372-\\220\\214+5%\\343---\\027\\306v\\364\\312$\\\\2\\016\\223rP\\363Z\\032\\324\\374\\201\\232\\000q\\004\\342\\015$\\343\\312\\004&\\343\\325V\\302%\\3430\\251\\0075o\\244A\\315[\\324\\004\\210#\\020o \\031W&0\\031\\037*\\021W\\024EQ\\024EQ\\224\\211,2+h\\322d<\\375*\\245\\305\\213\\027\\017\\371\\236/}\\351K\\375\\217\\227-[\\326\\377\\370\\216;\\356\\330\\350\\375\\367\\335w_\\371\\265\\207\\037~\\270\\374\\371UW]U\\332d\\223MF\\374{]y\\345\\225\\015\\261M}\\372\\364\\351\\313SC\\367\\246\\006\\020\\000\\000@2>\\252r\\353\\255\\267\\226\\256\\273\\356\\272\\322\\201\\007\\036X\\376\\270\\345\\226[\\226v\\330a\\207\\362\\343(\\2218\\177\\350C\\037\\332(1>\\367\\334s\\373\\037_z\\351\\245\\033=\\256|\\377\\361\\307\\037\\277\\301\\347\\037\\375\\350G\\313\\337\\177\\217=\\366(\\265\\265\\265\\365\\277\\266\\333n\\273\\225\\216>\\372\\350\\322#\\217<R\\372\\340\\007?Xjoo/\\335\\177\\377\\375\\345\\257\\271\\367\\336{\\033\\352\\002n)\\361\\356jiiyS2\\016\\000\\000 \\031\\037\\361\\212s1\\201~\\373\\333\\337^:\\375\\364\\323\\373?\\177\\333\\333\\336\\326\\237H?\\372\\350\\243\\345\\004:\\276f\\227]v)]q\\305\\025\\345\\307\\017>\\370`\\377\\367\\212U\\360\\273\\356\\272\\253\\377\\353_y\\345\\225\\376\\325\\363\\333o\\277\\275t\\303\\0157\\224n\\276\\371\\346\\362\\347O=\\365T\\371\\265\\245K\\227V\\375\\335\\336\\371\\316w\\226\\272\\273\\273K\\037\\370\\300\\007J;\\356\\270c\\377\\004A|M\\374.\\215rk\\263X)/&\\345\\216f\\000\\000\\000\\311\\370\\240\\345\\205\\027^(\\335s\\317=\\245\\247\\237~\\272\\\\\\246\\365\\255z\\307\\343\\330V\\276\\305\\026[TM\\340\\213+\\343\\233n\\272iy\\005=\\036G\\262\\035\\037\\343\\363x\\375\\274\\363\\316\\353\\337b\\276\\367\\336{\\367o\\201?\\363\\3143\\373\\337?\\320\\357\\366\\336\\367\\276\\267\\377\\373\\345\\004\\177\\332\\004nW\\037(\\031\\317b\\245<\\266\\257;\\232\\001\\000\\000$\\343\\303Z\\035\\277\\350\\242\\213J\\353\\327\\257\\357Ov\\343q\\254^\\277\\373\\335\\357\\256\\372\\376m\\266\\331\\246\\234 \\307\\343X\\361\\316\\317o\\277\\375\\366\\375\\357{\\366\\331g\\313\\253\\356\\361\\336\\330z\\376\\211O|\\242\\374\\334v\\333mW\\336\\236\\036\\253\\334oy\\313[\\312\\253\\361\\361|\\376\\036\\361\\276xm\\253\\255\\266*}\\344#\\037)''\\344\\217?\\376x\\377\\353\\361Z#&\\343\\000\\000\\000H\\306G\\224\\214\\357\\264\\323N\\375[\\300\\017>\\370\\340\\362\\343X\\025\\217\\325\\354\\374\\276U\\253V\\225\\317\\357\\216\\367\\344\\337wZa\\245:\\036\\307\\326\\365\\374\\376\\330\\206\\236\\237\\277\\346\\232k\\312\\347\\203\\177\\353[\\337\\352_\\031\\217$<V\\346\\327\\255[\\267\\301\\357R\\374\\036\\317?\\377|\\377V\\367\\330\\016\\037\\037c%_2\\016\\000\\000@\\323''\\343\\305\\204:\\257<\\307\\212tl\\025\\317\\357{\\351\\245\\227\\312\\311\\361\\264\\212\\213\\266\\025\\2776\\316\\031\\217\\344\\271\\362\\373\\177\\372\\323\\237.\\355\\273\\357\\276\\345Dz\\353\\255\\267.o\\203\\217\\225\\367x\\355\\372\\353\\257\\0370\\031\\317%\\316c\\217s\\307#\\251o\\224\\013\\270\\001\\000\\000 \\031\\257)\\031\\317[\\303\\247\\025V\\3067\\333l\\263\\362\\325\\314\\207:g<ngv\\333m\\267\\225\\037?\\361\\304\\023\\345\\217q\\005\\364\\312d\\374c\\037\\373X\\377\\255\\316"\\311\\217\\213\\235\\345\\367\\237q\\306\\031\\033$\\364\\261m=\\266\\274\\237|\\362\\311\\345\\347\\343Bn\\323\\2068\\307\\\\2\\016\\000\\000@\\323$\\343\\225\\211\\366@\\347d\\257]\\273\\266?y\\216\\325\\360\\274}<J\\376\\332X\\371\\236V\\270\\017y~>\\266\\247\\307y\\350qU\\364#\\2168\\242\\364\\344\\223O\\226N=\\365\\324\\362\\325\\332\\213W_\\317\\337/.\\374\\226W\\330\\343\\352\\353\\233o\\276y\\377\\305\\334\\342s\\3118\\000\\000\\000\\223*\\031\\217\\355\\343\\003\\275\\236\\267\\226\\347\\213\\266\\025\\023\\367x\\355\\223\\237\\374d\\371\\342l\\371|\\361\\374=#\\211\\217\\244\\273\\267\\267\\267\\374zlY\\217m\\357\\225\\337?V\\330\\363\\363q_\\361\\235w\\336\\271\\324\\331\\331\\331\\377z\\276h\\334\\005\\027\\\\ \\031\\007\\000\\000`r$\\343\\225\\347{O\\344\\367\\036\\317\\337E2\\016\\000\\000@\\303$\\343\\212d\\034\\000\\000@2\\256H\\306\\001\\000\\000\\220\\214K\\306\\001\\000\\000\\220\\214+\\222q\\000\\000\\000$\\343\\222q\\000\\000\\000$\\343\\212d\\034\\000\\000\\000\\311\\270d\\034\\000\\000\\000\\311\\270"\\031\\007\\000\\000\\220\\214+\\222q\\000\\000\\000$\\343\\222q\\000\\000\\000$\\343\\212d\\034\\000\\000\\000\\311\\270d\\034\\000\\000\\000\\311\\270"\\031\\007\\000\\000`#\\335\\335\\335\\022\\336\\306.\\257\\244d\\374uG*\\000\\000\\300$\\262r\\345\\312g\\236{\\3569Io\\203\\2265k\\326\\\\\\236\\222\\361\\207\\034\\251\\000\\000\\000\\223HOO\\317\\336\\267\\334r\\313\\257\\177\\371\\313_\\276,\\371m\\254\\025\\361H\\304\\273\\272\\272\\236He?G*\\000\\000\\300$\\223\\222\\275\\317\\254X\\261\\342\\316\\330\\016\\035\\347''+\\015Q\\342\\177\\361\\220D\\034\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\206\\341\\377\\001\\005\\2423\\3303\\322#\\025\\000\\000\\000\\000IEND\\256B`\\202', 't');
 
 -- ----------------------------
 -- Table structure for act_ge_property
@@ -89,9 +90,9 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of act_ge_property
 -- ----------------------------
-INSERT INTO "public"."act_ge_property" VALUES ('next.dbid', '15001', '7');
-INSERT INTO "public"."act_ge_property" VALUES ('schema.history', 'create(5.17.0.2) upgrade(5.17.0.2->5.18.0.0)', '2');
-INSERT INTO "public"."act_ge_property" VALUES ('schema.version', '5.18.0.0', '2');
+INSERT INTO "public"."act_ge_property" VALUES ('next.dbid', '2501', '2');
+INSERT INTO "public"."act_ge_property" VALUES ('schema.history', 'create(5.20.0.1)', '1');
+INSERT INTO "public"."act_ge_property" VALUES ('schema.version', '5.20.0.1', '1');
 
 -- ----------------------------
 -- Table structure for act_hi_actinst
@@ -120,20 +121,6 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of act_hi_actinst
 -- ----------------------------
-INSERT INTO "public"."act_hi_actinst" VALUES ('10004', 'fireworks:1:3', '7501', '7501', 'exclusivegateway1', null, null, 'Exclusive Gateway', 'exclusiveGateway', null, '2015-11-10 19:47:11.627', '2015-11-10 19:47:11.628', '1', '');
-INSERT INTO "public"."act_hi_actinst" VALUES ('10005', 'fireworks:1:3', '7501', '7501', 'usertask3', '10006', null, '现场复核审批', 'userTask', 'qwer', '2015-11-10 19:47:11.628', '2015-11-10 19:52:59.049', '347421', '');
-INSERT INTO "public"."act_hi_actinst" VALUES ('10009', 'fireworks:1:3', '7501', '7501', 'exclusivegateway2', null, null, 'Exclusive Gateway', 'exclusiveGateway', null, '2015-11-10 19:52:59.049', '2015-11-10 19:52:59.049', '0', '');
-INSERT INTO "public"."act_hi_actinst" VALUES ('10010', 'fireworks:1:3', '7501', '7501', 'usertask4', '10011', null, '审批委员会会签', 'userTask', 'qwer', '2015-11-10 19:52:59.049', '2015-11-10 19:53:25.96', '26911', '');
-INSERT INTO "public"."act_hi_actinst" VALUES ('10014', 'fireworks:1:3', '7501', '7501', 'exclusivegateway3', null, null, 'Exclusive Gateway', 'exclusiveGateway', null, '2015-11-10 19:53:25.96', '2015-11-10 19:53:25.96', '0', '');
-INSERT INTO "public"."act_hi_actinst" VALUES ('10015', 'fireworks:1:3', '7501', '7501', 'usertask5', '10016', null, '局长审批', 'userTask', 'qwer', '2015-11-10 19:53:25.96', null, null, '');
-INSERT INTO "public"."act_hi_actinst" VALUES ('12503', 'fireworks:1:3', '12501', '12501', 'startevent1', null, null, 'Start', 'startEvent', null, '2015-11-28 21:42:48.153', '2015-11-28 21:42:48.16', '7', '');
-INSERT INTO "public"."act_hi_actinst" VALUES ('12504', 'fireworks:1:3', '12501', '12501', 'usertask2', '12505', null, '符合性审批', 'userTask', 'qwer', '2015-11-28 21:42:48.161', null, null, '');
-INSERT INTO "public"."act_hi_actinst" VALUES ('2503', 'fireworks:1:3', '2501', '2501', 'startevent1', null, null, 'Start', 'startEvent', null, '2015-09-10 17:39:48.195', '2015-09-10 17:39:48.206', '11', '');
-INSERT INTO "public"."act_hi_actinst" VALUES ('2504', 'fireworks:1:3', '2501', '2501', 'usertask2', '2505', null, '符合性审批', 'userTask', 'qwer', '2015-09-10 17:39:48.207', '2015-09-10 21:47:42.538', '14874331', '');
-INSERT INTO "public"."act_hi_actinst" VALUES ('5004', 'fireworks:1:3', '2501', '2501', 'exclusivegateway1', null, null, 'Exclusive Gateway', 'exclusiveGateway', null, '2015-09-10 21:47:42.538', '2015-09-10 21:47:42.539', '1', '');
-INSERT INTO "public"."act_hi_actinst" VALUES ('5005', 'fireworks:1:3', '2501', '2501', 'usertask3', '5006', null, '现场复核审批', 'userTask', 'qwer', '2015-09-10 21:47:42.539', null, null, '');
-INSERT INTO "public"."act_hi_actinst" VALUES ('7503', 'fireworks:1:3', '7501', '7501', 'startevent1', null, null, 'Start', 'startEvent', null, '2015-11-09 20:54:28.103', '2015-11-09 20:54:28.111', '8', '');
-INSERT INTO "public"."act_hi_actinst" VALUES ('7504', 'fireworks:1:3', '7501', '7501', 'usertask2', '7505', null, '符合性审批', 'userTask', 'qwer', '2015-11-09 20:54:28.111', '2015-11-10 19:47:11.626', '82363515', '');
 
 -- ----------------------------
 -- Table structure for act_hi_attachment
@@ -182,10 +169,6 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of act_hi_comment
 -- ----------------------------
-INSERT INTO "public"."act_hi_comment" VALUES ('10001', 'comment', '2015-11-10 19:47:11.472', 'qwer', '7505', '7501', 'AddComment', 'sdfdff', E'sdfdff');
-INSERT INTO "public"."act_hi_comment" VALUES ('10007', 'comment', '2015-11-10 19:52:59.037', 'qwer', '10006', '7501', 'AddComment', 'sdsd', E'sdsd');
-INSERT INTO "public"."act_hi_comment" VALUES ('10012', 'comment', '2015-11-10 19:53:25.948', 'qwer', '10011', '7501', 'AddComment', 'sdsd', E'sdsd');
-INSERT INTO "public"."act_hi_comment" VALUES ('5001', 'comment', '2015-09-10 21:47:42.354', 'qwer', '2505', '2501', 'AddComment', 'sdsf', E'sdsf');
 
 -- ----------------------------
 -- Table structure for act_hi_detail
@@ -215,10 +198,6 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of act_hi_detail
 -- ----------------------------
-INSERT INTO "public"."act_hi_detail" VALUES ('10003', 'VariableUpdate', '7501', '7501', null, '7504', 'accepted', 'boolean', '0', '2015-11-10 19:47:11.588', null, null, '1', null, null);
-INSERT INTO "public"."act_hi_detail" VALUES ('10008', 'VariableUpdate', '7501', '7501', null, '10005', 'accepted', 'boolean', '1', '2015-11-10 19:52:59.041', null, null, '1', null, null);
-INSERT INTO "public"."act_hi_detail" VALUES ('10013', 'VariableUpdate', '7501', '7501', null, '10010', 'accepted', 'boolean', '1', '2015-11-10 19:53:25.952', null, null, '1', null, null);
-INSERT INTO "public"."act_hi_detail" VALUES ('5003', 'VariableUpdate', '2501', '2501', null, '2504', 'accepted', 'boolean', '0', '2015-09-10 21:47:42.515', null, null, '1', null, null);
 
 -- ----------------------------
 -- Table structure for act_hi_identitylink
@@ -239,12 +218,6 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of act_hi_identitylink
 -- ----------------------------
-INSERT INTO "public"."act_hi_identitylink" VALUES ('12502', null, 'starter', 'admin', null, '12501');
-INSERT INTO "public"."act_hi_identitylink" VALUES ('12506', null, 'participant', 'qwer', null, '12501');
-INSERT INTO "public"."act_hi_identitylink" VALUES ('2502', null, 'starter', 'admin', null, '2501');
-INSERT INTO "public"."act_hi_identitylink" VALUES ('2506', null, 'participant', 'qwer', null, '2501');
-INSERT INTO "public"."act_hi_identitylink" VALUES ('7502', null, 'starter', 'admin', null, '7501');
-INSERT INTO "public"."act_hi_identitylink" VALUES ('7506', null, 'participant', 'qwer', null, '7501');
 
 -- ----------------------------
 -- Table structure for act_hi_procinst
@@ -273,9 +246,6 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of act_hi_procinst
 -- ----------------------------
-INSERT INTO "public"."act_hi_procinst" VALUES ('12501', '12501', 'fireworks:501', 'fireworks:1:3', '2015-11-28 21:42:48.152', null, null, 'admin', 'startevent1', null, null, null, '', null);
-INSERT INTO "public"."act_hi_procinst" VALUES ('2501', '2501', 'fireworks:2', 'fireworks:1:3', '2015-09-10 17:39:48.195', null, null, 'admin', 'startevent1', null, null, null, '', null);
-INSERT INTO "public"."act_hi_procinst" VALUES ('7501', '7501', 'fireworks:354', 'fireworks:1:3', '2015-11-09 20:54:28.103', null, null, 'admin', 'startevent1', null, null, null, '', null);
 
 -- ----------------------------
 -- Table structure for act_hi_taskinst
@@ -310,13 +280,6 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of act_hi_taskinst
 -- ----------------------------
-INSERT INTO "public"."act_hi_taskinst" VALUES ('10006', 'fireworks:1:3', 'usertask3', '7501', '7501', '现场复核审批', null, '烟花爆竹经营许可证流程', null, 'qwer', '2015-11-10 19:47:11.628', '2015-11-10 19:52:59.029', '2015-11-10 19:52:59.049', '347421', 'completed', '50', null, 'audit.form', null, '');
-INSERT INTO "public"."act_hi_taskinst" VALUES ('10011', 'fireworks:1:3', 'usertask4', '7501', '7501', '审批委员会会签', null, '烟花爆竹经营许可证流程', null, 'qwer', '2015-11-10 19:52:59.049', '2015-11-10 19:53:25.94', '2015-11-10 19:53:25.96', '26911', 'completed', '50', null, 'audit.form', null, '');
-INSERT INTO "public"."act_hi_taskinst" VALUES ('10016', 'fireworks:1:3', 'usertask5', '7501', '7501', '局长审批', null, '烟花爆竹经营许可证流程', null, 'qwer', '2015-11-10 19:53:25.96', null, null, null, null, '50', null, 'audit.form', null, '');
-INSERT INTO "public"."act_hi_taskinst" VALUES ('12505', 'fireworks:1:3', 'usertask2', '12501', '12501', '符合性审批', null, '烟花爆竹经营许可证流程', null, 'qwer', '2015-11-28 21:42:48.161', null, null, null, null, '50', null, 'audit.form', null, '');
-INSERT INTO "public"."act_hi_taskinst" VALUES ('2505', 'fireworks:1:3', 'usertask2', '2501', '2501', '符合性审批', null, '烟花爆竹经营许可证流程', null, 'qwer', '2015-09-10 17:39:48.207', '2015-09-10 21:47:42.343', '2015-09-10 21:47:42.526', '14874319', 'completed', '50', null, 'audit.form', null, '');
-INSERT INTO "public"."act_hi_taskinst" VALUES ('5006', 'fireworks:1:3', 'usertask3', '2501', '2501', '现场复核审批', null, '烟花爆竹经营许可证流程', null, 'qwer', '2015-09-10 21:47:42.539', null, null, null, null, '50', null, 'audit.form', null, '');
-INSERT INTO "public"."act_hi_taskinst" VALUES ('7505', 'fireworks:1:3', 'usertask2', '7501', '7501', '符合性审批', null, '烟花爆竹经营许可证流程', null, 'qwer', '2015-11-09 20:54:28.111', '2015-11-10 19:47:11.456', '2015-11-10 19:47:11.608', '82363497', 'completed', '50', null, 'audit.form', null, '');
 
 -- ----------------------------
 -- Table structure for act_hi_varinst
@@ -345,8 +308,24 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of act_hi_varinst
 -- ----------------------------
-INSERT INTO "public"."act_hi_varinst" VALUES ('10002', '7501', '7501', null, 'accepted', 'boolean', '2', null, null, '1', null, null, '2015-11-10 19:47:11.588', '2015-11-10 19:53:25.952');
-INSERT INTO "public"."act_hi_varinst" VALUES ('5002', '2501', '2501', null, 'accepted', 'boolean', '0', null, null, '1', null, null, '2015-09-10 21:47:42.515', '2015-09-10 21:47:42.515');
+
+-- ----------------------------
+-- Table structure for act_procdef_info
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."act_procdef_info";
+CREATE TABLE "public"."act_procdef_info" (
+"id_" varchar(64) COLLATE "default" NOT NULL,
+"proc_def_id_" varchar(64) COLLATE "default" NOT NULL,
+"rev_" int4,
+"info_json_id_" varchar(64) COLLATE "default"
+)
+WITH (OIDS=FALSE)
+
+;
+
+-- ----------------------------
+-- Records of act_procdef_info
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for act_re_deployment
@@ -366,7 +345,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of act_re_deployment
 -- ----------------------------
-INSERT INTO "public"."act_re_deployment" VALUES ('1', 'cn.com.rexen.demo.rest', null, '', '2015-09-10 17:21:46.165');
+INSERT INTO "public"."act_re_deployment" VALUES ('1', 'cn.com.rexen.demo.rest', null, '', '2016-02-16 15:19:30.785');
 
 -- ----------------------------
 -- Table structure for act_re_model
@@ -422,7 +401,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of act_re_procdef
 -- ----------------------------
-INSERT INTO "public"."act_re_procdef" VALUES ('fireworks:1:3', '3', 'http://www.activiti.org/test', '烟花爆竹经营许可证', 'fireworks', '1', '1', 'OSGI-INF/activiti/notice.bpmn20.xml', null, '烟花爆竹经营许可证流程', 't', 't', '1', '');
+INSERT INTO "public"."act_re_procdef" VALUES ('fireworks:1:4', '1', 'http://www.activiti.org/test', '印章使用申请流程', 'fireworks', '1', '1', 'OSGI-INF/activiti/notice.bpmn20.xml', 'OSGI-INF/activiti/notice.fireworks.png', '印章使用申请流程', 't', 't', '1', '');
 
 -- ----------------------------
 -- Table structure for act_ru_event_subscr
@@ -479,9 +458,6 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of act_ru_execution
 -- ----------------------------
-INSERT INTO "public"."act_ru_execution" VALUES ('12501', '1', '12501', 'fireworks:501', null, 'fireworks:1:3', null, 'usertask2', 't', 'f', 't', 'f', '1', '2', '', null, null);
-INSERT INTO "public"."act_ru_execution" VALUES ('2501', '2', '2501', 'fireworks:2', null, 'fireworks:1:3', null, 'usertask3', 't', 'f', 't', 'f', '1', '2', '', null, null);
-INSERT INTO "public"."act_ru_execution" VALUES ('7501', '4', '7501', 'fireworks:354', null, 'fireworks:1:3', null, 'usertask5', 't', 'f', 't', 'f', '1', '2', '', null, null);
 
 -- ----------------------------
 -- Table structure for act_ru_identitylink
@@ -504,12 +480,6 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of act_ru_identitylink
 -- ----------------------------
-INSERT INTO "public"."act_ru_identitylink" VALUES ('12502', '1', null, 'starter', 'admin', null, '12501', null);
-INSERT INTO "public"."act_ru_identitylink" VALUES ('12506', '1', null, 'participant', 'qwer', null, '12501', null);
-INSERT INTO "public"."act_ru_identitylink" VALUES ('2502', '1', null, 'starter', 'admin', null, '2501', null);
-INSERT INTO "public"."act_ru_identitylink" VALUES ('2506', '1', null, 'participant', 'qwer', null, '2501', null);
-INSERT INTO "public"."act_ru_identitylink" VALUES ('7502', '1', null, 'starter', 'admin', null, '7501', null);
-INSERT INTO "public"."act_ru_identitylink" VALUES ('7506', '1', null, 'participant', 'qwer', null, '7501', null);
 
 -- ----------------------------
 -- Table structure for act_ru_job
@@ -574,9 +544,6 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of act_ru_task
 -- ----------------------------
-INSERT INTO "public"."act_ru_task" VALUES ('10016', '1', '7501', '7501', 'fireworks:1:3', '局长审批', null, '烟花爆竹经营许可证流程', 'usertask5', null, 'qwer', null, '50', '2015-11-10 19:53:25.96', null, null, '1', '', 'audit.form');
-INSERT INTO "public"."act_ru_task" VALUES ('12505', '1', '12501', '12501', 'fireworks:1:3', '符合性审批', null, '烟花爆竹经营许可证流程', 'usertask2', null, 'qwer', null, '50', '2015-11-28 21:42:48.161', null, null, '1', '', 'audit.form');
-INSERT INTO "public"."act_ru_task" VALUES ('5006', '1', '2501', '2501', 'fireworks:1:3', '现场复核审批', null, '烟花爆竹经营许可证流程', 'usertask3', null, 'qwer', null, '50', '2015-09-10 21:47:42.539', null, null, '1', '', 'audit.form');
 
 -- ----------------------------
 -- Table structure for act_ru_variable
@@ -602,51 +569,6 @@ WITH (OIDS=FALSE)
 
 -- ----------------------------
 -- Records of act_ru_variable
--- ----------------------------
-INSERT INTO "public"."act_ru_variable" VALUES ('10002', '1', 'boolean', 'accepted', '7501', '7501', null, null, null, '1', null, null);
-INSERT INTO "public"."act_ru_variable" VALUES ('5002', '1', 'boolean', 'accepted', '2501', '2501', null, null, null, '1', null, null);
-
--- ----------------------------
--- Table structure for cm_contract
--- ----------------------------
-DROP TABLE IF EXISTS "public"."cm_contract";
-CREATE TABLE "public"."cm_contract" (
-"id" int8 NOT NULL,
-"createby" varchar(255) COLLATE "default",
-"creationdate" timestamp(6),
-"updateby" varchar(255) COLLATE "default",
-"updatedate" timestamp(6),
-"version_" int8,
-"archive" bool,
-"archive_date" date,
-"constractdate" date,
-"constractnumber" varchar(100) COLLATE "default",
-"contractstatus" int4,
-"createdate" timestamp(6),
-"expectedcost" float4,
-"expiredate" date,
-"grossprofit" float4,
-"grossprofitrate" float4,
-"guarantee" varchar(80) COLLATE "default",
-"managerid" int8 NOT NULL,
-"partya" varchar(255) COLLATE "default",
-"partyb" varchar(100) COLLATE "default",
-"projectname" varchar(100) COLLATE "default",
-"projectstatus" varchar(10) COLLATE "default",
-"projecttype" varchar(20) COLLATE "default",
-"receivables" float4,
-"receivemoney" float4,
-"remark" varchar(255) COLLATE "default",
-"sellerid" int8 NOT NULL,
-"summoney" float4,
-"userid" int8 NOT NULL
-)
-WITH (OIDS=FALSE)
-
-;
-
--- ----------------------------
--- Records of cm_contract
 -- ----------------------------
 
 -- ----------------------------
@@ -713,6 +635,9 @@ INSERT INTO "public"."middleware_attachment" VALUES ('24011', '管理员', '2015
 INSERT INTO "public"."middleware_attachment" VALUES ('24012', '管理员', '2015-11-30 10:43:39.954', '管理员', '2015-11-30 10:43:39.954', 'd69201a83f5a40c780b5a658c848f9a2', '协同办公及项目管理系统设计说明书.doc', 'http://localhost:5984/kalix/d69201a83f5a40c780b5a658c848f9a2/协同办公及项目管理系统设计说明书.doc', '1-f1344850337acd7cf5cfb927a52f7213', '371712', 'application/msword', '40', '2015-11-30 10:43:39.954', '1');
 INSERT INTO "public"."middleware_attachment" VALUES ('24013', '管理员', '2015-11-30 10:48:27.625', '管理员', '2015-11-30 10:48:27.625', '404ddb5fb2cb4b7b85605f249e98ff15', 'oa.EAP', 'http://localhost:5984/kalix/404ddb5fb2cb4b7b85605f249e98ff15/oa.EAP', '1-71720b886ae2e7dc299636e3ffeb517e', '1296384', 'application/octet-stream', '31', '2015-11-30 10:48:27.625', '1');
 INSERT INTO "public"."middleware_attachment" VALUES ('24014', '管理员', '2015-11-30 10:48:33.823', '管理员', '2015-11-30 10:48:33.823', '54eff5d322d1470c943abeb6c6b89350', '2015年营销任务完成情况表20151113.xlsx', 'http://localhost:5984/kalix/54eff5d322d1470c943abeb6c6b89350/2015年营销任务完成情况表20151113.xlsx', '1-4c21641e3f536529e66d7b5777dc1624', '81035', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', '31', '2015-11-30 10:48:33.823', '1');
+INSERT INTO "public"."middleware_attachment" VALUES ('37910', 'qwer', '2016-01-12 14:28:57.471', 'qwer', '2016-01-12 14:28:57.471', '771b9805c0a8461d811760cdb00bde5b', 'link.txt', 'http://localhost:5984/kalix/771b9805c0a8461d811760cdb00bde5b/link.txt', '1-51f096c44320524dcb5f80431b15e8de', '6956', 'text/plain', '37811', '2016-01-12 14:28:57.471', '1');
+INSERT INTO "public"."middleware_attachment" VALUES ('39210', '管理员', '2016-01-21 14:08:42.315', '管理员', '2016-01-21 14:08:42.315', 'c9759f5ae5c140e98b985b121aabb6ee', 'DB_TABLES.xlsx', 'http://127.0.0.1:5984/kalix/c9759f5ae5c140e98b985b121aabb6ee/DB_TABLES.xlsx', '1-36963f3eed868c57f11dc5f19fa258fc', '11257', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', '2', '2016-01-21 14:08:42.315', '1');
+INSERT INTO "public"."middleware_attachment" VALUES ('39211', '管理员', '2016-01-21 14:09:25.306', '管理员', '2016-01-21 14:09:25.306', '6eeed5abf59044728cd15830f005ae0b', '20131124180032078.png', 'http://127.0.0.1:5984/kalix/6eeed5abf59044728cd15830f005ae0b/20131124180032078.png', '1-a5590e2de0b4f4ecfe0114c17213d63c', '1280327', 'image/png', '2', '2016-01-21 14:09:25.306', '1');
 
 -- ----------------------------
 -- Table structure for openjpaseq
@@ -729,7 +654,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of openjpaseq
 -- ----------------------------
-INSERT INTO "public"."openjpaseq" VALUES ('0', '26810');
+INSERT INTO "public"."openjpaseq" VALUES ('0', '40310');
 
 -- ----------------------------
 -- Table structure for roffice_chance
@@ -903,6 +828,8 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of roffice_contract_detail
 -- ----------------------------
+INSERT INTO "public"."roffice_contract_detail" VALUES ('35710', '管理员', '2016-01-05 17:17:19.136', '管理员', '2016-01-05 17:17:19.136', '1', '2016-01-31 00:00:00', 't', '6', '3', '2', '1', '5', '2', '4', '7');
+INSERT INTO "public"."roffice_contract_detail" VALUES ('38910', '管理员', '2016-01-21 10:17:19.733', '管理员', '2016-01-21 10:17:19.733', '1', '2016-01-27 00:00:00', 't', '0', 'adf', '7', '1231', '0', 'af', 'adf', 'asdf');
 
 -- ----------------------------
 -- Table structure for roffice_deploy
@@ -974,7 +901,7 @@ CREATE TABLE "public"."roffice_news" (
 "updateby" varchar(255) COLLATE "default",
 "updatedate" timestamp(6),
 "version_" int8,
-"content" varchar(255) COLLATE "default",
+"content" varchar(1000) COLLATE "default",
 "publishdate" timestamp(6),
 "publishpeople" varchar(255) COLLATE "default",
 "title" varchar(255) COLLATE "default"
@@ -986,6 +913,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of roffice_news
 -- ----------------------------
+INSERT INTO "public"."roffice_news" VALUES ('27410', null, '2015-12-07 14:16:27.498', null, '2015-12-23 15:01:16.962', '2', '<p><strong>sdsd</strong></p>', '2015-12-07 14:16:27', '管理员', 'dsdsd');
 
 -- ----------------------------
 -- Table structure for roffice_note
@@ -998,7 +926,7 @@ CREATE TABLE "public"."roffice_note" (
 "updateby" varchar(255) COLLATE "default",
 "updatedate" timestamp(6),
 "version_" int8,
-"content" varchar(255) COLLATE "default",
+"content" varchar(1000) COLLATE "default",
 "name" varchar(255) COLLATE "default",
 "publishdate" timestamp(6),
 "publishpeople" varchar(255) COLLATE "default",
@@ -1012,11 +940,17 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of roffice_note
 -- ----------------------------
-INSERT INTO "public"."roffice_note" VALUES ('25310', null, '2015-12-02 11:02:44.361', null, '2015-12-02 16:51:02.052', '3', '1.调整销售管理内容菜单内容；
-2.任务目标统计功能增强，增加合计和小计。
-3.统计报表增加权限控制。
-4.列表中可以双击查看。
-5.修改合同列表显示数据项。', '协同办公内容更新20151202', '2015-12-02 11:02:44', '管理员', null, '3');
+INSERT INTO "public"."roffice_note" VALUES ('25310', null, '2015-12-02 11:02:44.361', null, '2015-12-07 11:31:58.891', '4', '<ul style="list-style-type: disc;">
+<li><span style="font-size: 12pt;"><strong>1.调整销售管理内容菜单内容； </strong></span></li>
+<li><span style="font-size: 12pt;"><strong>2.任务目标统计功能增强，增加合计和小计。 </strong></span></li>
+<li><span style="font-size: 12pt;"><strong>3.统计报表增加权限控制。 </strong></span></li>
+<li><span style="font-size: 12pt;"><strong>4.列表中可以双击查看。 </strong></span></li>
+<li><span style="font-size: 12pt;"><strong>5.修改合同列表显示数据项。</strong></span></li>
+</ul>', '协同办公内容更新20151202', '2015-12-02 11:02:44', '管理员', null, '3');
+INSERT INTO "public"."roffice_note" VALUES ('27510', null, '2015-12-07 14:25:09.393', null, '2015-12-07 14:25:09.393', '1', '<p>sdsdsd</p>', 'sdsd', '2015-12-07 14:25:09.396', '管理员', null, '3');
+INSERT INTO "public"."roffice_note" VALUES ('27511', null, '2015-12-07 14:31:48.519', null, '2015-12-07 14:31:48.519', '1', '<p>sssssd</p>', 'sddssssssssssssss', '2015-12-07 14:31:48.52', '管理员', null, '3');
+INSERT INTO "public"."roffice_note" VALUES ('27512', null, '2015-12-07 14:32:16.858', null, '2015-12-07 14:32:16.858', '1', '<p>dsdsd</p>', 'sdsds', '2015-12-07 14:32:29.953', '管理员', null, '3');
+INSERT INTO "public"."roffice_note" VALUES ('27513', null, '2015-12-07 14:35:30.089', null, '2015-12-07 14:35:30.089', '1', '<p>dsdsd</p>', 'sdsds', '2015-12-07 14:35:35.878', '管理员', null, '3');
 
 -- ----------------------------
 -- Table structure for roffice_pay
@@ -1401,9 +1335,9 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of sys_application
 -- ----------------------------
-INSERT INTO "public"."sys_application" VALUES ('58', '管理员', '2015-11-16 16:13:12.556', '管理员', '2015-11-16 16:13:12.556', '0', 'roffice', '', '协同办公', '');
-INSERT INTO "public"."sys_application" VALUES ('7901', null, '2015-08-14 09:02:40', '管理员2', '2015-08-14 09:02:40', '16', 'admin', '', '系统应用', '顶部导航栏');
-INSERT INTO "public"."sys_application" VALUES ('12501', '管理员2', '2015-08-14 09:02:44', '管理员2', '2015-08-14 09:02:44', '5', 'workflow', '', '测试应用', '');
+INSERT INTO "public"."sys_application" VALUES ('58', '管理员', '2015-12-09 11:47:52.84', '管理员', '2015-12-09 11:48:10.429', '4', 'roffice', '', '协同办公', '协同办公');
+INSERT INTO "public"."sys_application" VALUES ('7901', null, '2015-12-09 11:48:10.109', '管理员', '2015-12-09 11:48:10.121', '20', 'admin', '', '系统应用', '顶部导航栏');
+INSERT INTO "public"."sys_application" VALUES ('12501', '管理员2', '2015-12-09 11:48:10.351', '管理员', '2015-12-09 12:43:00.553', '11', 'workflow', '', '测试应用', 'sdsd121');
 
 -- ----------------------------
 -- Table structure for sys_area
@@ -1547,7 +1481,7 @@ CREATE TABLE "public"."sys_audit" (
 "action" varchar(255) COLLATE "default",
 "actor" varchar(255) COLLATE "default",
 "appname" varchar(255) COLLATE "default",
-"content" varchar(255) COLLATE "default",
+"content" varchar(10000) COLLATE "default",
 "funname" varchar(255) COLLATE "default"
 )
 WITH (OIDS=FALSE)
@@ -1584,6 +1518,226 @@ INSERT INTO "public"."sys_audit" VALUES ('26710', null, '2015-12-03 14:29:44.388
 INSERT INTO "public"."sys_audit" VALUES ('26711', null, '2015-12-03 14:58:21.839', null, '2015-12-03 14:58:21.839', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
 INSERT INTO "public"."sys_audit" VALUES ('26712', null, '2015-12-03 15:02:28.787', null, '2015-12-03 15:02:28.787', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
 INSERT INTO "public"."sys_audit" VALUES ('26713', null, '2015-12-03 15:02:36.22', null, '2015-12-03 15:02:36.22', '1', '系统登录', '徐峰', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('26810', null, '2015-12-03 17:26:36.861', null, '2015-12-03 17:26:36.861', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('26910', null, '2015-12-04 00:43:18.217', null, '2015-12-04 00:43:18.217', '1', '系统登录', '管理员', '系统应用', '登录地址：127.0.0.1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('27010', null, '2015-12-04 10:50:43.946', null, '2015-12-04 10:50:43.946', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('27110', null, '2015-12-04 16:05:08.503', null, '2015-12-04 16:05:08.503', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('27211', null, '2015-12-07 11:53:11.692', null, '2015-12-07 11:53:11.692', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('27213', null, '2015-12-07 12:39:17.056', null, '2015-12-07 12:39:17.056', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('27310', null, '2015-12-07 14:16:15.735', null, '2015-12-07 14:16:15.735', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('27312', null, '2015-12-07 15:41:47.16', null, '2015-12-07 15:41:47.16', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('27313', null, '2015-12-07 15:47:00.459', null, '2015-12-07 15:47:00.459', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('27314', null, '2015-12-07 15:47:22.217', null, '2015-12-07 15:47:22.217', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('27315', null, '2015-12-07 16:25:31.988', null, '2015-12-07 16:25:31.988', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('27316', null, '2015-12-07 17:10:32.562', null, '2015-12-07 17:10:32.562', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('27610', null, '2015-12-07 22:01:54.532', null, '2015-12-07 22:01:54.532', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('27710', null, '2015-12-07 22:35:48.057', null, '2015-12-07 22:35:48.057', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('27910', null, '2015-12-07 23:32:25.657', null, '2015-12-07 23:32:25.657', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('28010', null, '2015-12-08 09:39:55.633', null, '2015-12-08 09:39:55.633', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('28011', null, '2015-12-08 10:32:52.789', null, '2015-12-08 10:32:52.789', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('28012', null, '2015-12-08 10:36:38.878', null, '2015-12-08 10:36:38.878', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('28013', null, '2015-12-08 10:36:44.864', null, '2015-12-08 10:36:44.864', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('28610', null, '2015-12-08 12:34:41.079', null, '2015-12-08 12:34:41.079', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('28611', null, '2015-12-08 13:10:49.287', null, '2015-12-08 13:10:49.287', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('28612', null, '2015-12-08 13:31:09.281', null, '2015-12-08 13:31:09.281', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('28613', null, '2015-12-08 13:39:32.25', null, '2015-12-08 13:39:32.25', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('28614', null, '2015-12-08 13:39:41.057', null, '2015-12-08 13:39:41.057', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('28615', null, '2015-12-08 13:48:43.069', null, '2015-12-08 13:48:43.069', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('28616', null, '2015-12-08 13:48:50.469', null, '2015-12-08 13:48:50.469', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('28617', null, '2015-12-08 15:51:34.51', null, '2015-12-08 15:51:34.51', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('28618', null, '2015-12-08 16:14:53.575', null, '2015-12-08 16:14:53.575', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('29410', null, '2015-12-08 16:25:06.049', null, '2015-12-08 16:25:06.049', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('29411', null, '2015-12-08 16:25:11.545', null, '2015-12-08 16:25:11.545', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('29412', null, '2015-12-08 16:55:46.55', null, '2015-12-08 16:55:46.55', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('29413', null, '2015-12-08 17:07:37.981', null, '2015-12-08 17:07:37.981', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('29414', null, '2015-12-08 20:13:16.184', null, '2015-12-08 20:13:16.184', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('29415', null, '2015-12-08 20:28:36.712', null, '2015-12-08 20:28:36.712', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('29416', null, '2015-12-08 20:43:26.017', null, '2015-12-08 20:43:26.017', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('29417', null, '2015-12-08 20:43:35.337', null, '2015-12-08 20:43:35.337', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('29418', null, '2015-12-08 20:46:01.774', null, '2015-12-08 20:46:01.774', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('30410', null, '2015-12-09 10:43:59.054', null, '2015-12-09 10:43:59.054', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('30411', null, '2015-12-09 10:44:43.795', null, '2015-12-09 10:44:43.795', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('30910', null, '2015-12-09 11:21:59.575', null, '2015-12-09 11:21:59.575', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('30911', null, '2015-12-09 11:22:06.681', null, '2015-12-09 11:22:06.681', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('30912', null, '2015-12-09 11:45:34.939', null, '2015-12-09 11:45:34.939', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('30913', null, '2015-12-09 12:20:44.4', null, '2015-12-09 12:20:44.4', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('30914', null, '2015-12-09 13:23:09.484', null, '2015-12-09 13:23:09.484', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('30915', null, '2015-12-09 13:23:14.397', null, '2015-12-09 13:23:14.397', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31110', null, '2015-12-09 13:34:33.675', null, '2015-12-09 13:34:33.675', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31111', null, '2015-12-09 13:34:43.9', null, '2015-12-09 13:34:43.9', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31210', null, '2015-12-09 13:55:40.035', null, '2015-12-09 13:55:40.035', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31211', null, '2015-12-09 13:55:51.144', null, '2015-12-09 13:55:51.144', '1', '系统登录', 'qwer', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31310', null, '2015-12-09 14:05:40.831', null, '2015-12-09 14:05:40.831', '1', '系统登出', 'qwer', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31311', null, '2015-12-09 14:05:49.061', null, '2015-12-09 14:05:49.061', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31312', null, '2015-12-09 14:07:30.443', null, '2015-12-09 14:07:30.443', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31410', null, '2015-12-09 14:25:26.822', null, '2015-12-09 14:25:26.822', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31411', null, '2015-12-09 14:25:58.717', null, '2015-12-09 14:25:58.717', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31412', null, '2015-12-09 14:26:04.63', null, '2015-12-09 14:26:04.63', '1', '系统登录', 'qwer', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31413', null, '2015-12-09 14:30:29.653', null, '2015-12-09 14:30:29.653', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31414', null, '2015-12-09 14:55:20.318', null, '2015-12-09 14:55:20.318', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31415', null, '2015-12-09 14:55:25.653', null, '2015-12-09 14:55:25.653', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31416', null, '2015-12-09 14:55:39.146', null, '2015-12-09 14:55:39.146', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31417', null, '2015-12-09 14:55:43.522', null, '2015-12-09 14:55:43.522', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31418', null, '2015-12-09 14:55:59.636', null, '2015-12-09 14:55:59.636', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31419', null, '2015-12-09 14:56:04.696', null, '2015-12-09 14:56:04.696', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31420', null, '2015-12-09 16:06:59.472', null, '2015-12-09 16:06:59.472', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31910', null, '2015-12-09 17:03:28.633', null, '2015-12-09 17:03:28.633', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('31911', null, '2015-12-09 17:04:19.182', null, '2015-12-09 17:04:19.182', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('32010', null, '2015-12-09 18:27:32.918', null, '2015-12-09 18:27:32.918', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('32011', null, '2015-12-09 18:28:09.137', null, '2015-12-09 18:28:09.137', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('32110', null, '2015-12-09 19:09:49.02', null, '2015-12-09 19:09:49.02', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('32111', null, '2015-12-09 19:12:11.626', null, '2015-12-09 19:12:11.626', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('32210', null, '2015-12-09 19:26:56.576', null, '2015-12-09 19:26:56.576', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('32211', null, '2015-12-09 19:27:03.364', null, '2015-12-09 19:27:03.364', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('32310', null, '2015-12-09 20:38:16.914', null, '2015-12-09 20:38:16.914', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('32410', null, '2015-12-09 21:03:46.772', null, '2015-12-09 21:03:46.772', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('32510', null, '2015-12-09 22:41:04.054', null, '2015-12-09 22:41:04.054', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('32610', null, '2015-12-10 09:59:59.429', null, '2015-12-10 09:59:59.429', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('32611', null, '2015-12-10 10:02:07.139', null, '2015-12-10 10:02:07.139', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('32612', null, '2015-12-10 10:09:44.672', null, '2015-12-10 10:09:44.672', '1', '系统登录', '管理员', '系统应用', '登录地址：172.16.5.233', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('32613', null, '2015-12-10 12:18:00.927', null, '2015-12-10 12:18:00.927', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('32810', null, '2015-12-10 20:53:53.146', null, '2015-12-10 20:53:53.146', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('32811', null, '2015-12-10 21:13:10.213', null, '2015-12-10 21:13:10.213', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('32812', null, '2015-12-10 21:13:18.606', null, '2015-12-10 21:13:18.606', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('33310', null, '2015-12-15 09:54:14.274', null, '2015-12-15 09:54:14.274', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('33410', null, '2015-12-15 14:47:29.568', null, '2015-12-15 14:47:29.568', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('33510', null, '2015-12-15 20:29:08.156', null, '2015-12-15 20:29:08.156', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('33610', null, '2015-12-16 16:07:22.73', null, '2015-12-16 16:07:22.73', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('33611', null, '2015-12-16 16:27:33.758', null, '2015-12-16 16:27:33.758', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('33710', null, '2015-12-23 15:01:16.845', null, '2015-12-23 15:01:16.845', '1', '更新', 'admin', '协同办公', 'NewsBean{字段名:[content],旧值[<p><strong>sdsd</strong></p>],新值[<p>sdsd</p>];字段名:[publishDate],旧值[Mon Dec 07 14:16:27 CST 2015],新值[Mon Dec 07 14:16:27 CST 2015];}', '公司新闻');
+INSERT INTO "public"."sys_audit" VALUES ('33810', null, '2015-12-23 23:06:46.054', null, '2015-12-23 23:06:46.054', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('33811', null, '2015-12-23 23:07:52.701', null, '2015-12-23 23:07:52.701', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('33812', null, '2015-12-23 23:08:04.419', null, '2015-12-23 23:08:04.419', '1', '系统登录', 'qwer', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('33910', null, '2015-12-23 23:31:14.114', null, '2015-12-23 23:31:14.114', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('33911', null, '2015-12-23 23:34:16.804', null, '2015-12-23 23:34:16.804', '1', '系统登录', '管理员', '系统应用', '登录地址：127.0.0.1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('33912', null, '2015-12-23 23:47:42.711', null, '2015-12-23 23:47:42.711', '1', '系统登录', '管理员', '系统应用', '登录地址：127.0.0.1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34010', null, '2015-12-23 23:50:31.986', null, '2015-12-23 23:50:31.986', '1', '系统登录', '管理员', '系统应用', '登录地址：127.0.0.1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34011', null, '2015-12-23 23:52:28.481', null, '2015-12-23 23:52:28.481', '1', '系统登录', '管理员', '系统应用', '登录地址：127.0.0.1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34012', null, '2015-12-23 23:53:03.276', null, '2015-12-23 23:53:03.276', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34110', null, '2015-12-24 00:26:36.352', null, '2015-12-24 00:26:36.352', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34111', null, '2015-12-24 00:26:43.211', null, '2015-12-24 00:26:43.211', '1', '系统登录', 'qwer', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34210', null, '2015-12-31 16:47:45.418', null, '2015-12-31 16:47:45.418', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34410', null, '2016-01-04 13:54:59.554', null, '2016-01-04 13:54:59.554', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34411', null, '2016-01-04 14:15:11.721', null, '2016-01-04 14:15:11.721', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34412', null, '2016-01-04 14:15:17.749', null, '2016-01-04 14:15:17.749', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34413', null, '2016-01-04 14:18:31.992', null, '2016-01-04 14:18:31.992', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34414', null, '2016-01-04 14:18:37.048', null, '2016-01-04 14:18:37.048', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34510', null, '2016-01-04 14:52:08.96', null, '2016-01-04 14:52:08.96', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34511', null, '2016-01-04 15:03:49.839', null, '2016-01-04 15:03:49.839', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34512', null, '2016-01-04 15:25:28.23', null, '2016-01-04 15:25:28.23', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34513', null, '2016-01-04 16:08:33.606', null, '2016-01-04 16:08:33.606', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34610', null, '2016-01-05 09:20:41.467', null, '2016-01-05 09:20:41.467', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34611', null, '2016-01-05 09:33:33.795', null, '2016-01-05 09:33:33.795', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34612', null, '2016-01-05 09:33:43.399', null, '2016-01-05 09:33:43.399', '1', '系统登录', 'qwer', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34613', null, '2016-01-05 09:34:18.51', null, '2016-01-05 09:34:18.51', '1', '更新', 'qwer', 'Hello', 'NoticeBean{字段名:[currentNode],旧值[现场复核审批],新值[符合性审批];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('34614', null, '2016-01-05 09:39:20.103', null, '2016-01-05 09:39:20.103', '1', '新增', 'qwer', 'Hello', 'NoticeBean{id=''0''content=''zz'', title=''ww'', publishPeople=''null'', publishDate=null}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('34615', null, '2016-01-05 09:40:04.462', null, '2016-01-05 09:40:04.462', '1', '更新', 'qwer', 'Hello', 'NoticeBean{字段名:[currentNode],旧值[部门负责人审批],新值[null];字段名:[processInstanceId],旧值[15011],新值[null];字段名:[status],旧值[ACTIVE],新值[INACTIVE];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('34810', null, '2016-01-05 13:57:56.114', null, '2016-01-05 13:57:56.114', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34811', null, '2016-01-05 14:35:08.559', null, '2016-01-05 14:35:08.559', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34812', null, '2016-01-05 14:35:14.236', null, '2016-01-05 14:35:14.236', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34910', null, '2016-01-05 14:40:48.419', null, '2016-01-05 14:40:48.419', '1', '系统登录', '管理员', '系统应用', '登录地址：127.0.0.1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34911', null, '2016-01-05 15:39:31.02', null, '2016-01-05 15:39:31.02', '1', '新增', '管理员', 'Hello', 'NoticeBean{id=''0''content=''23333'', title=''111'', publishPeople=''null'', publishDate=null}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('34912', null, '2016-01-05 15:39:51.733', null, '2016-01-05 15:39:51.733', '1', '更新', '管理员', 'Hello', 'NoticeBean{字段名:[currentNode],旧值[部门负责人审批],新值[null];字段名:[processInstanceId],旧值[17501],新值[null];字段名:[status],旧值[ACTIVE],新值[INACTIVE];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('34913', null, '2016-01-05 16:04:28.801', null, '2016-01-05 16:04:28.801', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34914', null, '2016-01-05 16:26:24.562', null, '2016-01-05 16:26:24.562', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34915', null, '2016-01-05 16:26:30.549', null, '2016-01-05 16:26:30.549', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34916', null, '2016-01-05 16:30:00.885', null, '2016-01-05 16:30:00.885', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('34917', null, '2016-01-05 16:30:06.455', null, '2016-01-05 16:30:06.455', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('35810', null, '2016-01-06 10:59:22.521', null, '2016-01-06 10:59:22.521', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('35910', null, '2016-01-07 08:03:46.499', null, '2016-01-07 08:03:46.499', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('35911', null, '2016-01-07 08:44:11.84', null, '2016-01-07 08:44:11.84', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('35912', null, '2016-01-07 08:46:19.889', null, '2016-01-07 08:46:19.889', '1', '删除', '管理员', 'Hello', 'NoticeBean{id=''501''content=''as'', title=''as'', publishPeople=''null'', publishDate=null}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('35913', null, '2016-01-07 08:46:41.311', null, '2016-01-07 08:46:41.311', '1', '新增', '管理员', 'Hello', 'NoticeBean{id=''0''content=''111'', title=''1223'', publishPeople=''null'', publishDate=null}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('35914', null, '2016-01-07 08:46:50.614', null, '2016-01-07 08:46:50.614', '1', '更新', '管理员', 'Hello', 'NoticeBean{字段名:[currentNode],旧值[部门负责人审批],新值[null];字段名:[processInstanceId],旧值[20001],新值[null];字段名:[status],旧值[ACTIVE],新值[INACTIVE];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('35915', null, '2016-01-07 08:57:51.841', null, '2016-01-07 08:57:51.841', '1', '新增', '管理员', 'Hello', 'NoticeBean{id=''0''content=''11111'', title=''zzz'', publishPeople=''null'', publishDate=null}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('35916', null, '2016-01-07 10:05:59.933', null, '2016-01-07 10:05:59.933', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('35917', null, '2016-01-07 10:19:52.042', null, '2016-01-07 10:19:52.042', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('35918', null, '2016-01-07 10:19:59.857', null, '2016-01-07 10:19:59.857', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('35919', null, '2016-01-07 13:23:53.416', null, '2016-01-07 13:23:53.416', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36410', null, '2016-01-07 13:38:44.735', null, '2016-01-07 13:38:44.735', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36411', null, '2016-01-07 13:38:50.253', null, '2016-01-07 13:38:50.253', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36412', null, '2016-01-07 13:41:48.355', null, '2016-01-07 13:41:48.355', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36413', null, '2016-01-07 13:41:55.817', null, '2016-01-07 13:41:55.817', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36414', null, '2016-01-07 15:01:02.847', null, '2016-01-07 15:01:02.847', '1', '系统登录', '管理员', '系统应用', '登录地址：127.0.0.1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36415', null, '2016-01-07 15:08:38.631', null, '2016-01-07 15:08:38.631', '1', '系统登录', '管理员', '系统应用', '登录地址：127.0.0.1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36416', null, '2016-01-07 15:10:47.559', null, '2016-01-07 15:10:47.559', '1', '系统登出', '管理员', '系统应用', '登出地址：127.0.0.1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36417', null, '2016-01-07 15:11:05.794', null, '2016-01-07 15:11:05.794', '1', '系统登录', '管理员', '系统应用', '登录地址：127.0.0.1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36418', null, '2016-01-07 15:11:19.98', null, '2016-01-07 15:11:19.98', '1', '系统登出', '管理员', '系统应用', '登出地址：127.0.0.1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36419', null, '2016-01-07 15:11:29.581', null, '2016-01-07 15:11:29.581', '1', '系统登录', '管理员', '系统应用', '登录地址：127.0.0.1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36420', null, '2016-01-07 15:11:48.467', null, '2016-01-07 15:11:48.467', '1', '系统登出', '管理员', '系统应用', '登出地址：127.0.0.1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36421', null, '2016-01-07 15:12:13.139', null, '2016-01-07 15:12:13.139', '1', '系统登出', '管理员', '系统应用', '登出地址：127.0.0.1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36422', null, '2016-01-07 15:12:21.832', null, '2016-01-07 15:12:21.832', '1', '系统登录', '管理员', '系统应用', '登录地址：127.0.0.1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36423', null, '2016-01-07 15:12:37.441', null, '2016-01-07 15:12:37.441', '1', '系统登录', '管理员', '系统应用', '登录地址：127.0.0.1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36510', null, '2016-01-08 09:30:45.634', null, '2016-01-08 09:30:45.634', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36511', null, '2016-01-08 09:58:37.382', null, '2016-01-08 09:58:37.382', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36512', null, '2016-01-08 10:01:13.094', null, '2016-01-08 10:01:13.094', '1', '删除', '管理员', 'Hello', 'NoticeBean{id=''36011''content=''11111'', title=''zzz'', publishPeople=''null'', publishDate=null}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('36513', null, '2016-01-08 10:49:04.85', null, '2016-01-08 10:49:04.85', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36514', null, '2016-01-08 14:25:35.233', null, '2016-01-08 14:25:35.233', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36515', null, '2016-01-08 14:27:52.701', null, '2016-01-08 14:27:52.701', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36516', null, '2016-01-08 14:27:58.018', null, '2016-01-08 14:27:58.018', '1', '系统登录', 'qwer', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36910', null, '2016-01-08 14:39:39.285', null, '2016-01-08 14:39:39.285', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('36911', null, '2016-01-08 15:05:54.532', null, '2016-01-08 15:05:54.532', '1', '新增', '管理员', 'Hello', 'NoticeBean{id=''0''content=''zzzz'', title=''23123'', publishPeople=''null'', publishDate=null}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('36912', null, '2016-01-08 15:07:11.256', null, '2016-01-08 15:07:11.256', '1', '新增', '管理员', 'Hello', 'NoticeBean{id=''0''content=''333'', title=''111'', publishPeople=''null'', publishDate=null}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('37110', null, '2016-01-08 16:24:13.158', null, '2016-01-08 16:24:13.158', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37111', null, '2016-01-08 16:30:38.62', null, '2016-01-08 16:30:38.62', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37112', null, '2016-01-08 16:30:43.323', null, '2016-01-08 16:30:43.323', '1', '系统登录', 'qwer', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37113', null, '2016-01-08 16:42:41.803', null, '2016-01-08 16:42:41.803', '1', '系统登出', 'qwer', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37114', null, '2016-01-08 16:42:47.253', null, '2016-01-08 16:42:47.253', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37115', null, '2016-01-08 16:56:57.207', null, '2016-01-08 16:56:57.207', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37116', null, '2016-01-08 16:57:06.444', null, '2016-01-08 16:57:06.444', '1', '系统登录', 'qwer', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37310', null, '2016-01-11 10:02:18.41', null, '2016-01-11 10:02:18.41', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37311', null, '2016-01-11 10:02:27.627', null, '2016-01-11 10:02:27.627', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37312', null, '2016-01-11 10:02:34.455', null, '2016-01-11 10:02:34.455', '1', '系统登录', 'qwer', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37313', null, '2016-01-11 10:52:28.242', null, '2016-01-11 10:52:28.242', '1', '系统登录', 'qwer', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37314', null, '2016-01-11 13:33:23.751', null, '2016-01-11 13:33:23.751', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37315', null, '2016-01-11 13:53:21.614', null, '2016-01-11 13:53:21.614', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37316', null, '2016-01-11 13:53:28.812', null, '2016-01-11 13:53:28.812', '1', '系统登录', 'qwer', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37317', null, '2016-01-11 16:30:42.674', null, '2016-01-11 16:30:42.674', '1', '系统登录', 'qwer', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37710', null, '2016-01-12 14:13:43.943', null, '2016-01-12 14:13:43.943', '1', '系统登录', 'qwer', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37711', null, '2016-01-12 14:29:14.268', null, '2016-01-12 14:29:14.268', '1', '系统登出', 'qwer', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37712', null, '2016-01-12 14:29:22.313', null, '2016-01-12 14:29:22.313', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37713', null, '2016-01-12 14:30:41.446', null, '2016-01-12 14:30:41.446', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37714', null, '2016-01-12 14:30:46.373', null, '2016-01-12 14:30:46.373', '1', '系统登录', 'qwer', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('37715', null, '2016-01-12 14:58:22.513', null, '2016-01-12 14:58:22.513', '1', '更新', 'qwer', 'Hello', 'NoticeBean{字段名:[content],旧值[1111],新值[null];字段名:[id],旧值[37811],新值[null];字段名:[status],旧值[0],新值[null];字段名:[title],旧值[qqq],新值[null];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('37716', null, '2016-01-12 14:58:32.391', null, '2016-01-12 14:58:32.391', '1', '更新', 'qwer', 'Hello', 'NoticeBean{字段名:[content],旧值[1111],新值[null];字段名:[id],旧值[37811],新值[null];字段名:[status],旧值[0],新值[null];字段名:[title],旧值[qqq],新值[null];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('37717', null, '2016-01-12 14:59:18.137', null, '2016-01-12 14:59:18.137', '1', '更新', 'qwer', 'Hello', 'NoticeBean{字段名:[content],旧值[1111],新值[null];字段名:[id],旧值[37811],新值[null];字段名:[status],旧值[0],新值[null];字段名:[title],旧值[qqq],新值[null];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('37718', null, '2016-01-12 15:04:34.091', null, '2016-01-12 15:04:34.091', '1', '更新', 'qwer', 'Hello', 'NoticeBean{字段名:[content],旧值[1111],新值[null];字段名:[id],旧值[37811],新值[null];字段名:[status],旧值[0],新值[null];字段名:[title],旧值[qqq],新值[null];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('37719', null, '2016-01-12 15:04:42.168', null, '2016-01-12 15:04:42.168', '1', '更新', 'qwer', 'Hello', 'NoticeBean{字段名:[content],旧值[1111],新值[null];字段名:[id],旧值[37811],新值[null];字段名:[status],旧值[0],新值[null];字段名:[title],旧值[qqq],新值[null];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('37720', null, '2016-01-12 15:04:57.205', null, '2016-01-12 15:04:57.205', '1', '更新', 'qwer', 'Hello', 'NoticeBean{字段名:[content],旧值[1111],新值[null];字段名:[id],旧值[37811],新值[null];字段名:[status],旧值[0],新值[null];字段名:[title],旧值[qqq],新值[null];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('37721', null, '2016-01-12 15:05:17.983', null, '2016-01-12 15:05:17.983', '1', '更新', 'qwer', 'Hello', 'NoticeBean{字段名:[content],旧值[1111],新值[null];字段名:[id],旧值[37811],新值[null];字段名:[status],旧值[0],新值[null];字段名:[title],旧值[qqq],新值[null];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('37722', null, '2016-01-12 15:06:26.367', null, '2016-01-12 15:06:26.367', '1', '新增', 'qwer', 'Hello', 'NoticeBean{id=''0''content=''xxxx'', title=''yyy'', publishPeople=''null'', publishDate=null}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('37723', null, '2016-01-12 15:07:22.54', null, '2016-01-12 15:07:22.54', '1', '删除', 'qwer', 'Hello', 'NoticeBean{id=''38010''content=''xxxx'', title=''yyy'', publishPeople=''null'', publishDate=null}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('37724', null, '2016-01-12 15:07:51.382', null, '2016-01-12 15:07:51.382', '1', '更新', 'qwer', 'Hello', 'NoticeBean{字段名:[content],旧值[2],新值[null];字段名:[id],旧值[37811],新值[null];字段名:[status],旧值[0],新值[null];字段名:[title],旧值[1],新值[null];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('37725', null, '2016-01-12 15:15:09.867', null, '2016-01-12 15:15:09.867', '1', '更新', 'qwer', 'Hello', 'NoticeBean{字段名:[content],旧值[3],新值[null];字段名:[id],旧值[37811],新值[null];字段名:[status],旧值[0],新值[null];字段名:[title],旧值[2],新值[null];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('37726', null, '2016-01-12 15:18:00.594', null, '2016-01-12 15:18:00.594', '1', '新增', 'qwer', 'Hello', 'NoticeBean{id=''0''content=''22'', title=''11'', publishPeople=''null'', publishDate=null}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('37727', null, '2016-01-12 15:19:08.654', null, '2016-01-12 15:19:08.654', '1', '更新', 'qwer', 'Hello', 'NoticeBean{字段名:[content],旧值[dd],新值[null];字段名:[id],旧值[37811],新值[null];字段名:[status],旧值[0],新值[null];字段名:[title],旧值[ss],新值[null];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('37728', null, '2016-01-12 15:22:29.118', null, '2016-01-12 15:22:29.118', '1', '更新', 'qwer', 'Hello', 'NoticeBean{字段名:[content],旧值[dd],新值[null];字段名:[id],旧值[37811],新值[null];字段名:[status],旧值[0],新值[null];字段名:[title],旧值[ss],新值[null];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('37729', null, '2016-01-12 15:23:26.228', null, '2016-01-12 15:23:26.228', '1', '更新', 'qwer', 'Hello', 'NoticeBean{字段名:[content],旧值[dd],新值[null];字段名:[id],旧值[37811],新值[null];字段名:[status],旧值[0],新值[null];字段名:[title],旧值[ss],新值[null];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('37730', null, '2016-01-12 15:26:10.439', null, '2016-01-12 15:26:10.439', '1', '更新', 'qwer', 'Hello', 'NoticeBean{字段名:[content],旧值[dd],新值[null];字段名:[id],旧值[37510],新值[null];字段名:[status],旧值[0],新值[null];字段名:[title],旧值[ss],新值[null];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('38110', null, '2016-01-12 16:36:46.137', null, '2016-01-12 16:36:46.137', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('38310', null, '2016-01-13 10:52:27.648', null, '2016-01-13 10:52:27.648', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('38311', null, '2016-01-13 10:54:47.994', null, '2016-01-13 10:54:47.994', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('38312', null, '2016-01-13 13:42:32.317', null, '2016-01-13 13:42:32.317', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('38313', null, '2016-01-13 13:44:50.387', null, '2016-01-13 13:44:50.387', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('38510', null, '2016-01-13 14:41:47.066', null, '2016-01-13 14:41:47.066', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('38710', null, '2016-01-18 09:54:09.744', null, '2016-01-18 09:54:09.744', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('38810', null, '2016-01-21 10:15:54.698', null, '2016-01-21 10:15:54.698', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('39010', null, '2016-01-21 10:25:37.155', null, '2016-01-21 10:25:37.155', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('39011', null, '2016-01-21 10:25:53.315', null, '2016-01-21 10:25:53.315', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('39012', null, '2016-01-21 11:54:02.665', null, '2016-01-21 11:54:02.665', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('39013', null, '2016-01-21 13:05:15.003', null, '2016-01-21 13:05:15.003', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('39110', null, '2016-01-21 14:08:04.801', null, '2016-01-21 14:08:04.801', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('39111', null, '2016-01-21 14:10:30.146', null, '2016-01-21 14:10:30.146', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('39310', null, '2016-01-21 16:12:45.88', null, '2016-01-21 16:12:45.88', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('39410', null, '2016-02-02 09:43:42.362', null, '2016-02-02 09:43:42.362', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('39411', null, '2016-02-02 09:45:02.306', null, '2016-02-02 09:45:02.306', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('39412', null, '2016-02-02 09:45:33.7', null, '2016-02-02 09:45:33.7', '1', '系统登录', 'qwer', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('39413', null, '2016-02-02 10:02:40.749', null, '2016-02-02 10:02:40.749', '1', '更新', 'qwer', 'Hello', 'NoticeBean{字段名:[content],旧值[],新值[null];字段名:[id],旧值[39511],新值[null];字段名:[status],旧值[0],新值[null];字段名:[title],旧值[],新值[null];}', 'test');
+INSERT INTO "public"."sys_audit" VALUES ('39414', null, '2016-02-02 10:05:13.415', null, '2016-02-02 10:05:13.415', '1', '系统登出', 'qwer', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('39415', null, '2016-02-02 10:05:17.624', null, '2016-02-02 10:05:17.624', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('39610', null, '2016-02-16 14:48:16.331', null, '2016-02-16 14:48:16.331', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('39611', null, '2016-02-16 15:00:19.35', null, '2016-02-16 15:00:19.35', '1', '系统登出', '管理员', '系统应用', '登出地址：0:0:0:0:0:0:0:1', '系统日志');
+INSERT INTO "public"."sys_audit" VALUES ('39612', null, '2016-02-16 15:00:22.252', null, '2016-02-16 15:00:22.252', '1', '系统登录', '管理员', '系统应用', '登录地址：0:0:0:0:0:0:0:1', '系统日志');
 
 -- ----------------------------
 -- Table structure for sys_demo
@@ -1611,7 +1765,6 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of sys_demo
 -- ----------------------------
-INSERT INTO "public"."sys_demo" VALUES ('501', null, '2015-11-19 20:44:50.113', null, '2015-11-28 21:42:48.268', '符合性审批', '12501', '1', 'as', null, null, 'as', '2');
 
 -- ----------------------------
 -- Table structure for sys_department
@@ -1651,7 +1804,6 @@ INSERT INTO "public"."sys_department" VALUES ('56', '管理员', '2015-11-16 16:
 INSERT INTO "public"."sys_department" VALUES ('57', '管理员', '2015-11-16 16:01:58.446', '管理员', '2015-11-16 16:01:58.446', '0', '010', '010', '1', '财务部', '47', '-1');
 INSERT INTO "public"."sys_department" VALUES ('4601', 'fdad2222', '2015-07-24 16:58:16', 'fdad2222', '2015-07-24 16:58:16', '1', '010101', '010101', '1', '办事处一部', '4501', '-1');
 INSERT INTO "public"."sys_department" VALUES ('6801', '管理员', '2015-07-29 13:29:53', '管理员', '2015-07-31 11:19:39', '12', '020202', '020202', '0', '办事处二部', '4501', '-1');
-INSERT INTO "public"."sys_department" VALUES ('10802', '管理员2', '2015-08-03 15:41:37', '管理员2', '2015-08-03 15:41:37', '1', '2', '3', '1', '3', '4501', '6801');
 INSERT INTO "public"."sys_department" VALUES ('10803', '管理员2', '2015-08-03 15:41:39', '管理员2', '2015-08-03 15:41:39', '1', '2', '4', '1', '4', '4501', '6801');
 INSERT INTO "public"."sys_department" VALUES ('10804', '管理员2', '2015-08-03 15:41:41', '管理员2', '2015-08-03 15:41:41', '1', '2', '5', '1', '5', '4501', '6801');
 INSERT INTO "public"."sys_department" VALUES ('10805', '管理员2', '2015-08-03 15:41:43', '管理员2', '2015-08-03 15:41:43', '1', '2', '6', '1', '6', '4501', '6801');
@@ -1731,10 +1883,41 @@ WITH (OIDS=FALSE)
 -- Records of sys_dict
 -- ----------------------------
 INSERT INTO "public"."sys_dict" VALUES ('1001', null, '2015-07-10 13:21:44', null, '2015-07-10 13:21:44', '3', '性别', '男', '1', 'sex', '1');
-INSERT INTO "public"."sys_dict" VALUES ('1101', null, '2015-07-23 15:52:06', 'fdad2222', '2015-07-23 15:52:06', '7', '233333', '女', '2', 'sex', '1');
+INSERT INTO "public"."sys_dict" VALUES ('1101', null, '2015-07-23 15:52:06', '管理员', '2015-12-08 20:45:37.306', '8', '233333', '女', '2', 'sex', '0');
 INSERT INTO "public"."sys_dict" VALUES ('3000', null, null, null, null, '0', null, '草稿', '1', 'contractStatus', '0');
 INSERT INTO "public"."sys_dict" VALUES ('3001', null, null, null, null, '0', null, '进行中', '2', 'contractStatus', '1');
 INSERT INTO "public"."sys_dict" VALUES ('3002', '', null, null, null, '0', null, '完成', '3', 'contractStatus', '2');
+INSERT INTO "public"."sys_dict" VALUES ('35110', '管理员', '2016-01-05 16:05:24.389', '管理员', '2016-01-05 16:05:24.389', '1', '', '公司公章', '1', 'sealType', '0');
+INSERT INTO "public"."sys_dict" VALUES ('35111', '管理员', '2016-01-05 16:05:48.424', '管理员', '2016-01-05 16:05:48.424', '1', '', '公司合同专用章', '2', 'sealType', '1');
+INSERT INTO "public"."sys_dict" VALUES ('35112', '管理员', '2016-01-05 16:06:38.843', '管理员', '2016-01-05 16:06:38.843', '1', '', '学院公章', '3', 'sealType', '2');
+INSERT INTO "public"."sys_dict" VALUES ('35113', '管理员', '2016-01-05 16:07:21.421', '管理员', '2016-01-05 16:07:21.421', '1', '', '学院合同专用章', '4', 'sealType', '3');
+INSERT INTO "public"."sys_dict" VALUES ('35114', '管理员', '2016-01-05 16:07:41.13', '管理员', '2016-01-05 16:07:41.13', '1', '', '法人印章', '5', 'sealType', '4');
+INSERT INTO "public"."sys_dict" VALUES ('36310', '管理员', '2016-01-07 10:36:20.469', '管理员', '2016-01-07 10:36:20.469', '1', '', '未申请', '1', 'workflowStatus', '0');
+INSERT INTO "public"."sys_dict" VALUES ('36311', '管理员', '2016-01-07 13:24:16.903', '管理员', '2016-01-07 13:24:16.903', '1', '', '处理中', '2', 'workflowStatus', '1');
+INSERT INTO "public"."sys_dict" VALUES ('36312', '管理员', '2016-01-07 13:24:35.322', '管理员', '2016-01-07 13:24:35.322', '1', '', '结束', '3', 'workflowStatus', '2');
+
+-- ----------------------------
+-- Table structure for sys_duty
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."sys_duty";
+CREATE TABLE "public"."sys_duty" (
+"id" int8 NOT NULL,
+"createby" varchar(255) COLLATE "default",
+"creationdate" timestamp(6),
+"updateby" varchar(255) COLLATE "default",
+"updatedate" timestamp(6),
+"comment" varchar(255) COLLATE "default",
+"department" varchar(255) COLLATE "default",
+"name" varchar(255) COLLATE "default",
+"version_" int8
+)
+WITH (OIDS=FALSE)
+
+;
+
+-- ----------------------------
+-- Records of sys_duty
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for sys_function
@@ -1762,106 +1945,145 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of sys_function
 -- ----------------------------
-INSERT INTO "public"."sys_function" VALUES ('59', '管理员', '2015-11-16 16:15:41.364', '管理员', '2015-12-02 09:37:04.774', '2', '58', 'cmModule', '0', '销售管理', '-1', 'roffice:cmModule', '');
-INSERT INTO "public"."sys_function" VALUES ('60', '管理员', '2015-11-16 16:16:31.564', '管理员', '2015-12-02 09:37:04.613', '2', '58', 'contractMenu', '0', '项目合同', '59', 'roffice:cmModule:contractMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('61', '管理员', '2015-11-16 16:17:09.76', '管理员', '2015-12-02 09:37:04.684', '2', '58', 'invoiceMenu', '0', '合同发票', '59', 'roffice:cmModule:invoiceMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('62', '管理员', '2015-11-16 16:17:29.394', '管理员', '2015-12-02 09:37:04.713', '2', '58', 'contractDetailMenu', '0', '合同清单', '59', 'roffice:cmModule:contractDetailMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('207', 'qwer', '2015-11-16 21:55:09.021', 'qwer', '2015-11-16 22:07:05.191', '1', '7901', 'sysModule', '0', '系统管理', '-1', 'admin:sysModule', '');
-INSERT INTO "public"."sys_function" VALUES ('208', 'qwer', '2015-11-16 21:55:42.383', 'qwer', '2015-11-16 22:05:17.276', '1', '7901', 'constructModule', '0', '组织结构', '-1', 'admin:constructModule', '');
-INSERT INTO "public"."sys_function" VALUES ('209', 'qwer', '2015-11-16 21:56:17.097', 'qwer', '2015-11-16 22:03:07.612', '1', '7901', 'permissionModule', '0', '权限管理', '-1', 'admin:permissionModule', '');
-INSERT INTO "public"."sys_function" VALUES ('210', '管理员', '2015-11-16 22:03:07.596', '管理员', '2015-11-16 22:19:37.39', '1', '7901', 'userMenu', '0', '用户管理', '209', 'admin:permissionModule:userMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('211', '管理员', '2015-11-16 22:03:27.573', '管理员', '2015-11-16 22:03:27.573', '0', '7901', 'roleMenu', '1', '角色管理', '209', 'admin:permissionModule:roleMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('212', '管理员', '2015-11-16 22:03:48.698', '管理员', '2015-11-16 22:03:48.698', '0', '7901', 'workGroupMenu', '1', '工作组管理', '209', 'admin:permissionModule:workGroupMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('213', 'qwer', '2015-11-16 22:05:17.263', '管理员', '2015-11-17 01:12:30.635', '2', '7901', 'areaMenu', '1', '区域管理', '208', 'admin:constructModule:areaMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('214', 'qwer', '2015-11-16 22:05:34.047', 'qwer', '2015-11-16 22:05:34.047', '0', '7901', 'organizationMenu', '1', '机构管理', '208', 'admin:constructModule:organizationMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('215', 'qwer', '2015-11-16 22:05:49.971', 'qwer', '2015-11-16 22:05:49.971', '0', '7901', 'departmentMenu', '1', '部门管理', '208', 'admin:constructModule:departmentMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('216', 'qwer', '2015-11-16 22:07:05.172', 'qwer', '2015-11-16 22:07:05.172', '0', '7901', 'dictMenu', '1', '字典管理', '207', 'admin:sysModule:dictMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('217', 'qwer', '2015-11-16 22:07:30.504', 'qwer', '2015-11-16 22:07:30.504', '0', '7901', 'auditMenu', '1', '审计管理', '207', 'admin:sysModule:auditMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('250', 'qwer', '2015-11-16 22:09:51.329', 'qwer', '2015-11-16 22:10:12.735', '1', '7901', 'appModule', '0', '模块管理', '-1', 'admin:appModule', '');
-INSERT INTO "public"."sys_function" VALUES ('251', 'qwer', '2015-11-16 22:10:12.722', 'qwer', '2015-11-16 22:10:12.722', '0', '7901', 'applicationMenu', '1', '应用管理', '250', 'admin:appModule:applicationMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('252', 'qwer', '2015-11-16 22:10:37.541', 'qwer', '2015-11-16 22:10:37.541', '0', '7901', 'functionMenu', '1', '功能管理', '250', 'admin:appModule:functionMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('275', '管理员', '2015-11-16 22:17:40.313', '管理员', '2015-11-17 00:56:22.128', '4', '12501', 'noticeMenu', '1', '流程演示管理', '13713', 'workflow:workFlowModule:noticeMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('276', '管理员', '2015-11-16 22:17:58.518', '管理员', '2015-11-17 00:56:20.275', '4', '12501', 'processDefinitionMenu', '1', '流程定义管理', '13713', 'workflow:workFlowModule:processDefinitionMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('277', '管理员', '2015-11-16 22:18:15.666', '管理员', '2015-11-17 00:56:21.173', '4', '12501', 'processHistoryMenu', '1', '流程历史列表', '13713', 'workflow:workFlowModule:processHistoryMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('278', '管理员', '2015-11-16 22:18:29.509', '管理员', '2015-11-17 00:56:21.655', '4', '12501', 'taskMenu', '1', '待办任务列表', '13713', 'workflow:workFlowModule:taskMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('279', '管理员', '2015-11-16 22:19:37.378', '管理员', '2015-11-16 22:19:37.378', '0', '7901', 'add', '1', '添加', '210', 'admin:permissionModule:userMenu:add', '添加按钮');
-INSERT INTO "public"."sys_function" VALUES ('280', '管理员', '2015-11-16 22:19:53.522', '管理员', '2015-11-16 22:19:53.522', '0', '7901', 'delete', '1', '删除', '210', 'admin:permissionModule:userMenu:delete', '删除按钮');
-INSERT INTO "public"."sys_function" VALUES ('281', '管理员', '2015-11-16 22:20:12.907', '管理员', '2015-11-16 23:01:14.104', '1', '7901', 'edit', '1', '编辑', '210', 'admin:permissionModule:userMenu:edit', '编辑按钮');
-INSERT INTO "public"."sys_function" VALUES ('282', '管理员', '2015-11-16 22:20:30.729', '管理员', '2015-11-16 22:20:30.729', '0', '7901', 'view', '1', '查看', '210', 'admin:permissionModule:userMenu:view', '查看按钮');
-INSERT INTO "public"."sys_function" VALUES ('339', '管理员', '2015-11-16 22:46:58.021', '管理员', '2015-11-16 22:50:30.349', '1', '58', 'commonsModule', '0', '通用功能', '-1', 'roffice:commonsModule', '');
-INSERT INTO "public"."sys_function" VALUES ('340', '管理员', '2015-11-16 22:47:22.318', '管理员', '2015-11-16 22:51:19.485', '1', '58', 'saleModule', '0', '售前服务', '-1', 'roffice:saleModule', '');
-INSERT INTO "public"."sys_function" VALUES ('341', '管理员', '2015-11-16 22:48:28.152', '管理员', '2015-11-16 22:53:37.138', '1', '58', 'deployModule', '0', '项目交付', '-1', 'roffice:deployModule', '');
-INSERT INTO "public"."sys_function" VALUES ('342', '管理员', '2015-11-16 22:50:30.335', '管理员', '2015-11-16 23:02:38.043', '1', '58', 'newsMenu', '0', '公司新闻', '339', 'roffice:commonsModule:newsMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('343', '管理员', '2015-11-16 22:50:47.011', '管理员', '2015-11-16 23:03:18.101', '1', '58', 'noteMenu', '0', '公司公告', '339', 'roffice:commonsModule:noteMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('344', '管理员', '2015-11-16 22:51:19.47', '管理员', '2015-11-16 23:14:01.174', '1', '58', 'travelMenu', '0', '出差记录', '340', 'roffice:saleModule:travelMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('345', '管理员', '2015-11-16 22:51:32.33', '管理员', '2015-11-16 23:10:24.884', '1', '58', 'supportMenu', '0', '项目支持', '340', 'roffice:saleModule:supportMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('346', '管理员', '2015-11-16 22:51:45.391', '管理员', '2015-11-16 23:11:11.654', '1', '58', 'chanceMenu', '0', '项目机会', '59', 'roffice:cmModule:chanceMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('347', '管理员', '2015-11-16 22:52:27.79', '管理员', '2015-11-16 23:14:48.135', '1', '58', 'projectMenu', '0', '项目管理', '340', 'roffice:saleModule:projectMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('348', '管理员', '2015-11-16 22:53:37.125', '管理员', '2015-11-16 23:15:36.254', '1', '58', 'receiveMenu', '0', '项目回款', '59', 'roffice:cmModule:receiveMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('349', '管理员', '2015-11-16 22:54:03.281', '管理员', '2015-11-16 23:16:19.292', '1', '58', 'deployMenu', '0', '实施项目', '341', 'roffice:deployModule:deployMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('350', '管理员', '2015-11-16 22:54:27.832', '管理员', '2015-11-16 23:16:54.668', '1', '58', 'payMenu', '0', '采购付款', '59', 'roffice:cmModule:payMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('351', '管理员', '2015-11-16 22:54:52.582', '管理员', '2015-11-16 23:17:36.474', '1', '58', 'purchaseInvoiceMenu', '0', '设备发票', '59', 'roffice:cmModule:purchaseInvoiceMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('352', '管理员', '2015-11-16 22:57:42.971', '管理员', '2015-12-02 09:37:04.662', '1', '58', 'add', '1', '添加', '60', 'roffice:cmModule:contractMenu:add', '');
-INSERT INTO "public"."sys_function" VALUES ('353', '管理员', '2015-11-16 22:57:55.784', '管理员', '2015-12-02 09:37:04.667', '1', '58', 'delete', '1', '删除', '60', 'roffice:cmModule:contractMenu:delete', '');
-INSERT INTO "public"."sys_function" VALUES ('354', '管理员', '2015-11-16 22:58:06.556', '管理员', '2015-12-02 09:37:04.68', '2', '58', 'edit', '1', '编辑', '60', 'roffice:cmModule:contractMenu:edit', '');
-INSERT INTO "public"."sys_function" VALUES ('355', '管理员', '2015-11-16 22:58:15.813', '管理员', '2015-12-02 09:37:04.675', '1', '58', 'view', '1', '查看', '60', 'roffice:cmModule:contractMenu:view', '');
-INSERT INTO "public"."sys_function" VALUES ('356', '管理员', '2015-11-16 22:59:05.814', '管理员', '2015-12-02 09:37:04.694', '1', '58', 'add', '1', '添加', '61', 'roffice:cmModule:invoiceMenu:add', '');
-INSERT INTO "public"."sys_function" VALUES ('357', '管理员', '2015-11-16 22:59:15.676', '管理员', '2015-12-02 09:37:04.7', '1', '58', 'delete', '1', '删除', '61', 'roffice:cmModule:invoiceMenu:delete', '');
-INSERT INTO "public"."sys_function" VALUES ('358', '管理员', '2015-11-16 23:00:43.388', '管理员', '2015-12-02 09:37:04.705', '1', '58', 'edit', '1', '编辑', '61', 'roffice:cmModule:invoiceMenu:edit', '');
-INSERT INTO "public"."sys_function" VALUES ('359', '管理员', '2015-11-16 23:00:57.85', '管理员', '2015-12-02 09:37:04.709', '1', '58', 'view', '1', '查看', '61', 'roffice:cmModule:invoiceMenu:view', '');
-INSERT INTO "public"."sys_function" VALUES ('360', '管理员', '2015-11-16 23:01:38.901', '管理员', '2015-12-02 09:37:04.722', '1', '58', 'add', '1', '添加', '62', 'roffice:cmModule:contractDetailMenu:add', '');
-INSERT INTO "public"."sys_function" VALUES ('361', '管理员', '2015-11-16 23:01:54.397', '管理员', '2015-12-02 09:37:04.726', '1', '58', 'delete', '1', '删除', '62', 'roffice:cmModule:contractDetailMenu:delete', '');
-INSERT INTO "public"."sys_function" VALUES ('362', '管理员', '2015-11-16 23:02:08.026', '管理员', '2015-12-02 09:37:04.732', '1', '58', 'edit', '1', '编辑', '62', 'roffice:cmModule:contractDetailMenu:edit', '');
-INSERT INTO "public"."sys_function" VALUES ('363', '管理员', '2015-11-16 23:02:16.935', '管理员', '2015-12-02 09:37:04.739', '1', '58', 'view', '1', '查看', '62', 'roffice:cmModule:contractDetailMenu:view', '');
-INSERT INTO "public"."sys_function" VALUES ('364', '管理员', '2015-11-16 23:02:38.03', '管理员', '2015-11-16 23:02:38.03', '0', '58', 'add', '1', '添加', '342', 'roffice:commonsModule:newsMenu:add', '');
-INSERT INTO "public"."sys_function" VALUES ('365', '管理员', '2015-11-16 23:02:48.739', '管理员', '2015-11-16 23:02:48.739', '0', '58', 'delete', '1', '删除', '342', 'roffice:commonsModule:newsMenu:delete', '');
-INSERT INTO "public"."sys_function" VALUES ('366', '管理员', '2015-11-16 23:02:56.941', '管理员', '2015-11-16 23:02:56.941', '0', '58', 'edit', '1', '编辑', '342', 'roffice:commonsModule:newsMenu:edit', '');
-INSERT INTO "public"."sys_function" VALUES ('367', '管理员', '2015-11-16 23:03:03.728', '管理员', '2015-11-16 23:03:03.728', '0', '58', 'view', '1', '查看', '342', 'roffice:commonsModule:newsMenu:view', '');
-INSERT INTO "public"."sys_function" VALUES ('368', '管理员', '2015-11-16 23:03:18.088', '管理员', '2015-11-16 23:03:18.088', '0', '58', 'add', '1', '添加', '343', 'roffice:commonsModule:noteMenu:add', '');
-INSERT INTO "public"."sys_function" VALUES ('369', '管理员', '2015-11-16 23:03:26.517', '管理员', '2015-11-16 23:03:26.517', '0', '58', 'delete', '1', '删除', '343', 'roffice:commonsModule:noteMenu:delete', '');
-INSERT INTO "public"."sys_function" VALUES ('370', '管理员', '2015-11-16 23:03:33.874', '管理员', '2015-11-16 23:03:33.874', '0', '58', 'edit', '1', '编辑', '343', 'roffice:commonsModule:noteMenu:edit', '');
-INSERT INTO "public"."sys_function" VALUES ('371', '管理员', '2015-11-16 23:03:40.774', '管理员', '2015-11-16 23:03:40.774', '0', '58', 'view', '1', '查看', '343', 'roffice:commonsModule:noteMenu:view', '');
-INSERT INTO "public"."sys_function" VALUES ('372', '管理员', '2015-11-16 23:10:24.872', '管理员', '2015-11-16 23:10:24.872', '0', '58', 'add', '1', '添加', '345', 'roffice:saleModule:supportMenu:add', '');
-INSERT INTO "public"."sys_function" VALUES ('373', '管理员', '2015-11-16 23:10:39.964', '管理员', '2015-11-16 23:10:39.964', '0', '58', 'delete', '1', '删除', '345', 'roffice:saleModule:supportMenu:delete', '');
-INSERT INTO "public"."sys_function" VALUES ('374', '管理员', '2015-11-16 23:10:47.534', '管理员', '2015-11-16 23:10:47.534', '0', '58', 'edit', '1', '编辑', '345', 'roffice:saleModule:supportMenu:edit', '');
-INSERT INTO "public"."sys_function" VALUES ('375', '管理员', '2015-11-16 23:10:55.042', '管理员', '2015-11-16 23:10:55.042', '0', '58', 'view', '1', '查看', '345', 'roffice:saleModule:supportMenu:view', '');
-INSERT INTO "public"."sys_function" VALUES ('376', '管理员', '2015-11-16 23:11:11.641', '管理员', '2015-11-16 23:11:11.641', '0', '58', 'add', '1', '添加', '346', 'roffice:saleModule:chanceMenu:add', '');
-INSERT INTO "public"."sys_function" VALUES ('377', '管理员', '2015-11-16 23:11:28.595', '管理员', '2015-11-16 23:11:28.595', '0', '58', 'delete', '1', '删除', '346', 'roffice:saleModule:chanceMenu:delete', '');
-INSERT INTO "public"."sys_function" VALUES ('378', '管理员', '2015-11-16 23:11:35.045', '管理员', '2015-11-16 23:11:35.045', '0', '58', 'edit', '1', '编辑', '346', 'roffice:saleModule:chanceMenu:edit', '');
-INSERT INTO "public"."sys_function" VALUES ('379', '管理员', '2015-11-16 23:11:41.267', '管理员', '2015-11-16 23:11:41.267', '0', '58', 'view', '1', '查看', '346', 'roffice:saleModule:chanceMenu:view', '');
-INSERT INTO "public"."sys_function" VALUES ('380', '管理员', '2015-11-16 23:14:01.16', '管理员', '2015-11-16 23:14:01.16', '0', '58', 'add', '1', '添加', '344', 'roffice:saleModule:travelMenu:add', '');
-INSERT INTO "public"."sys_function" VALUES ('381', '管理员', '2015-11-16 23:14:15.377', '管理员', '2015-11-16 23:14:15.377', '0', '58', 'delete', '1', '删除', '344', 'roffice:saleModule:travelMenu:delete', '');
-INSERT INTO "public"."sys_function" VALUES ('382', '管理员', '2015-11-16 23:14:22.949', '管理员', '2015-11-16 23:14:22.949', '0', '58', 'edit', '1', '编辑', '344', 'roffice:saleModule:travelMenu:edit', '');
-INSERT INTO "public"."sys_function" VALUES ('383', '管理员', '2015-11-16 23:14:31.525', '管理员', '2015-11-16 23:14:31.525', '0', '58', 'view', '1', '查看', '344', 'roffice:saleModule:travelMenu:view', '');
-INSERT INTO "public"."sys_function" VALUES ('384', '管理员', '2015-11-16 23:14:48.122', '管理员', '2015-11-16 23:14:48.122', '0', '58', 'add', '1', '添加', '347', 'roffice:saleModule:projectMenu:add', '');
-INSERT INTO "public"."sys_function" VALUES ('385', '管理员', '2015-11-16 23:15:00.03', '管理员', '2015-11-16 23:15:00.03', '0', '58', 'delete', '1', '删除', '347', 'roffice:saleModule:projectMenu:delete', '');
-INSERT INTO "public"."sys_function" VALUES ('386', '管理员', '2015-11-16 23:15:07.841', '管理员', '2015-11-16 23:15:07.841', '0', '58', 'edit', '1', '编辑', '347', 'roffice:saleModule:projectMenu:edit', '');
-INSERT INTO "public"."sys_function" VALUES ('387', '管理员', '2015-11-16 23:15:16.382', '管理员', '2015-11-16 23:15:16.382', '0', '58', 'view', '1', '查看', '347', 'roffice:saleModule:projectMenu:view', '');
-INSERT INTO "public"."sys_function" VALUES ('388', '管理员', '2015-11-16 23:15:36.242', '管理员', '2015-11-16 23:15:36.242', '0', '58', 'add', '1', '添加', '348', 'roffice:deployModule:receiveMenu:add', '');
-INSERT INTO "public"."sys_function" VALUES ('389', '管理员', '2015-11-16 23:15:44.374', '管理员', '2015-11-16 23:15:44.374', '0', '58', 'delete', '1', '删除', '348', 'roffice:deployModule:receiveMenu:delete', '');
-INSERT INTO "public"."sys_function" VALUES ('390', '管理员', '2015-11-16 23:15:51.77', '管理员', '2015-11-16 23:15:51.77', '0', '58', 'edit', '1', '编辑', '348', 'roffice:deployModule:receiveMenu:edit', '');
-INSERT INTO "public"."sys_function" VALUES ('391', '管理员', '2015-11-16 23:15:58.976', '管理员', '2015-11-16 23:15:58.976', '0', '58', 'view', '1', '查看', '348', 'roffice:deployModule:receiveMenu:view', '');
-INSERT INTO "public"."sys_function" VALUES ('392', '管理员', '2015-11-16 23:16:19.279', '管理员', '2015-11-16 23:16:19.279', '0', '58', 'add', '1', '添加', '349', 'roffice:deployModule:deployMenu:add', '');
-INSERT INTO "public"."sys_function" VALUES ('393', '管理员', '2015-11-16 23:16:26.768', '管理员', '2015-11-16 23:16:26.768', '0', '58', 'delete', '1', '删除', '349', 'roffice:deployModule:deployMenu:delete', '');
-INSERT INTO "public"."sys_function" VALUES ('394', '管理员', '2015-11-16 23:16:34.753', '管理员', '2015-11-16 23:16:34.753', '0', '58', 'edit', '1', '编辑', '349', 'roffice:deployModule:deployMenu:edit', '');
-INSERT INTO "public"."sys_function" VALUES ('395', '管理员', '2015-11-16 23:16:42.834', '管理员', '2015-11-16 23:16:42.834', '0', '58', 'view', '1', '查看', '349', 'roffice:deployModule:deployMenu:view', '');
-INSERT INTO "public"."sys_function" VALUES ('396', '管理员', '2015-11-16 23:16:54.656', '管理员', '2015-11-16 23:16:54.656', '0', '58', 'add', '1', '添加', '350', 'roffice:deployModule:payMenu:add', '');
-INSERT INTO "public"."sys_function" VALUES ('397', '管理员', '2015-11-16 23:17:05.751', '管理员', '2015-11-16 23:17:05.751', '0', '58', 'delete', '1', '删除', '350', 'roffice:deployModule:payMenu:delete', '');
-INSERT INTO "public"."sys_function" VALUES ('398', '管理员', '2015-11-16 23:17:12.62', '管理员', '2015-11-16 23:17:12.62', '0', '58', 'edit', '1', '编辑', '350', 'roffice:deployModule:payMenu:edit', '');
-INSERT INTO "public"."sys_function" VALUES ('399', '管理员', '2015-11-16 23:17:22.981', '管理员', '2015-11-16 23:17:22.981', '0', '58', 'view', '1', '查看', '350', 'roffice:deployModule:payMenu:view', '');
-INSERT INTO "public"."sys_function" VALUES ('400', '管理员', '2015-11-16 23:17:36.46', '管理员', '2015-11-16 23:17:36.46', '0', '58', 'add', '1', '添加', '351', 'roffice:deployModule:purchaseInvoiceMenu:add', '');
-INSERT INTO "public"."sys_function" VALUES ('401', '管理员', '2015-11-16 23:17:43.831', '管理员', '2015-11-16 23:17:43.831', '0', '58', 'delete', '1', '删除', '351', 'roffice:deployModule:purchaseInvoiceMenu:delete', '');
-INSERT INTO "public"."sys_function" VALUES ('402', '管理员', '2015-11-16 23:17:51.504', '管理员', '2015-11-16 23:17:51.504', '0', '58', 'edit', '1', '编辑', '351', 'roffice:deployModule:purchaseInvoiceMenu:edit', '');
-INSERT INTO "public"."sys_function" VALUES ('403', '管理员', '2015-11-16 23:17:58.222', '管理员', '2015-11-16 23:17:58.222', '0', '58', 'view', '1', '查看', '351', 'roffice:deployModule:purchaseInvoiceMenu:view', '');
-INSERT INTO "public"."sys_function" VALUES ('13713', '管理员2', '2015-08-13 10:37:43', '管理员', '2015-11-17 00:56:22.586', '11', '12501', 'workFlowModule', '0', '工作流演示', '-1', 'workflow:workFlowModule', '工作流演示模块');
-INSERT INTO "public"."sys_function" VALUES ('22810', '管理员', '2015-11-27 21:04:39.326', '管理员', '2015-12-02 09:37:04.746', '3', '58', 'taskMenu', '0', '任务目标', '59', 'roffice:cmModule:taskMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('22811', '管理员', '2015-11-27 21:05:03.693', '管理员', '2015-12-02 09:37:04.756', '2', '58', 'add', '1', '添加', '22810', 'roffice:cmModule:taskMenu:add', '');
-INSERT INTO "public"."sys_function" VALUES ('22812', '管理员', '2015-11-27 21:05:25.198', '管理员', '2015-12-02 09:37:04.762', '2', '58', 'delete', '1', '删除', '22810', 'roffice:cmModule:taskMenu:delete', '');
-INSERT INTO "public"."sys_function" VALUES ('22813', '管理员', '2015-11-27 21:05:35.009', '管理员', '2015-12-02 09:37:04.77', '3', '58', 'edit', '1', '编辑', '22810', 'roffice:cmModule:taskMenu:edit', '');
-INSERT INTO "public"."sys_function" VALUES ('22814', '管理员', '2015-11-27 21:05:46.814', '管理员', '2015-12-02 09:37:04.766', '2', '58', 'view', '1', '查看', '22810', 'roffice:cmModule:taskMenu:view', '');
-INSERT INTO "public"."sys_function" VALUES ('24710', '管理员', '2015-12-02 10:37:00.19', '管理员', '2015-12-02 10:40:02.237', '2', '58', 'reportModule', '0', '统计报表', '-1', 'roffice:reportModule', '');
-INSERT INTO "public"."sys_function" VALUES ('24711', '管理员', '2015-12-02 10:40:02.219', '管理员', '2015-12-02 10:40:02.219', '1', '58', 'contactReportMenu', '1', '合同报表', '24710', 'roffice:reportModule:contactReportMenu', '');
-INSERT INTO "public"."sys_function" VALUES ('25810', '管理员', '2015-12-02 19:50:46.328', '管理员', '2015-12-02 19:50:46.328', '1', '58', 'receiveReportMenu', '1', '合同回款情况', '24710', 'roffice:reportModule:receiveReportMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('59', '管理员', '2015-11-16 16:15:41.364', '管理员', '2015-12-09 11:48:10.485', '6', '58', 'cmModule', '0', '销售管理', '-1', 'roffice:cmModule', '');
+INSERT INTO "public"."sys_function" VALUES ('60', '管理员', '2015-11-16 16:16:31.564', '管理员', '2015-12-09 11:48:10.54', '6', '58', 'contractMenu', '0', '项目合同', '59', 'roffice:cmModule:contractMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('61', '管理员', '2015-11-16 16:17:09.76', '管理员', '2015-12-09 11:48:10.535', '6', '58', 'invoiceMenu', '0', '合同发票', '59', 'roffice:cmModule:invoiceMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('62', '管理员', '2015-11-16 16:17:29.394', '管理员', '2015-12-09 11:48:10.564', '6', '58', 'contractDetailMenu', '0', '合同清单', '59', 'roffice:cmModule:contractDetailMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('207', 'qwer', '2015-11-16 21:55:09.021', 'qwer', '2015-12-09 11:48:10.2', '5', '7901', 'sysModule', '0', '系统管理', '-1', 'admin:sysModule', '');
+INSERT INTO "public"."sys_function" VALUES ('208', 'qwer', '2015-11-16 21:55:42.383', 'qwer', '2015-12-09 11:48:10.197', '5', '7901', 'constructModule', '0', '组织结构', '-1', 'admin:constructModule', '');
+INSERT INTO "public"."sys_function" VALUES ('209', 'qwer', '2015-11-16 21:56:17.097', 'qwer', '2015-12-09 11:48:10.17', '5', '7901', 'permissionModule', '0', '权限管理', '-1', 'admin:permissionModule', '');
+INSERT INTO "public"."sys_function" VALUES ('210', '管理员', '2015-11-16 22:03:07.596', '管理员', '2015-12-09 11:48:10.207', '5', '7901', 'userMenu', '0', '用户管理', '209', 'admin:permissionModule:userMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('211', '管理员', '2015-11-16 22:03:27.573', '管理员', '2015-12-09 11:48:10.214', '5', '7901', 'roleMenu', '0', '角色管理', '209', 'admin:permissionModule:roleMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('212', '管理员', '2015-11-16 22:03:48.698', '管理员', '2015-12-09 11:48:10.166', '5', '7901', 'workGroupMenu', '0', '工作组管理', '209', 'admin:permissionModule:workGroupMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('213', 'qwer', '2015-11-16 22:05:17.263', '管理员', '2015-12-10 20:57:08.582', '7', '7901', 'areaMenu', '0', '区域管理', '208', 'admin:constructModule:areaMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('214', 'qwer', '2015-11-16 22:05:34.047', 'qwer', '2015-12-10 20:58:57.567', '5', '7901', 'organizationMenu', '0', '机构管理', '208', 'admin:constructModule:organizationMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('215', 'qwer', '2015-11-16 22:05:49.971', 'qwer', '2015-12-10 20:58:21.655', '5', '7901', 'departmentMenu', '0', '部门管理', '208', 'admin:constructModule:departmentMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('216', 'qwer', '2015-11-16 22:07:05.172', 'qwer', '2015-12-09 11:48:10.174', '5', '7901', 'dictMenu', '0', '字典管理', '207', 'admin:sysModule:dictMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('217', 'qwer', '2015-11-16 22:07:30.504', 'qwer', '2015-12-09 11:48:10.18', '5', '7901', 'auditMenu', '0', '审计管理', '207', 'admin:sysModule:auditMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('250', 'qwer', '2015-11-16 22:09:51.329', 'qwer', '2015-12-09 11:48:10.141', '5', '7901', 'appModule', '0', '模块管理', '-1', 'admin:appModule', '');
+INSERT INTO "public"."sys_function" VALUES ('251', 'qwer', '2015-11-16 22:10:12.722', 'qwer', '2015-12-09 11:48:10.187', '5', '7901', 'applicationMenu', '0', '应用管理', '250', 'admin:appModule:applicationMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('252', 'qwer', '2015-11-16 22:10:37.541', 'qwer', '2015-12-09 11:48:10.145', '4', '7901', 'functionMenu', '1', '功能管理', '250', 'admin:appModule:functionMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('275', '管理员', '2015-11-16 22:17:40.313', '管理员', '2015-12-09 12:43:00.581', '10', '12501', 'noticeMenu', '1', '流程演示管理', '13713', 'workflow:workFlowModule:noticeMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('276', '管理员', '2015-11-16 22:17:58.518', '管理员', '2015-12-09 12:43:00.595', '10', '12501', 'processDefinitionMenu', '1', '流程定义管理', '13713', 'workflow:workFlowModule:processDefinitionMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('277', '管理员', '2015-11-16 22:18:15.666', '管理员', '2015-12-09 12:43:00.591', '10', '12501', 'processHistoryMenu', '1', '流程历史列表', '13713', 'workflow:workFlowModule:processHistoryMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('278', '管理员', '2015-11-16 22:18:29.509', '管理员', '2015-12-09 12:43:00.572', '10', '12501', 'taskMenu', '1', '待办任务列表', '13713', 'workflow:workFlowModule:taskMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('279', '管理员', '2015-11-16 22:19:37.378', '管理员', '2015-12-09 11:48:10.204', '4', '7901', 'add', '1', '添加', '210', 'admin:permissionModule:userMenu:add', '添加按钮');
+INSERT INTO "public"."sys_function" VALUES ('280', '管理员', '2015-11-16 22:19:53.522', '管理员', '2015-12-09 11:48:10.154', '4', '7901', 'delete', '1', '删除', '210', 'admin:permissionModule:userMenu:delete', '删除按钮');
+INSERT INTO "public"."sys_function" VALUES ('281', '管理员', '2015-11-16 22:20:12.907', '管理员', '2015-12-09 11:48:10.222', '5', '7901', 'edit', '1', '编辑', '210', 'admin:permissionModule:userMenu:edit', '编辑按钮');
+INSERT INTO "public"."sys_function" VALUES ('282', '管理员', '2015-11-16 22:20:30.729', '管理员', '2015-12-09 11:48:10.211', '4', '7901', 'view', '1', '查看', '210', 'admin:permissionModule:userMenu:view', '查看按钮');
+INSERT INTO "public"."sys_function" VALUES ('339', '管理员', '2015-11-16 22:46:58.021', '管理员', '2015-12-09 11:48:10.57', '5', '58', 'commonsModule', '0', '通用功能', '-1', 'roffice:commonsModule', '');
+INSERT INTO "public"."sys_function" VALUES ('340', '管理员', '2015-11-16 22:47:22.318', '管理员', '2015-12-09 11:48:10.573', '5', '58', 'saleModule', '0', '售前服务', '-1', 'roffice:saleModule', '');
+INSERT INTO "public"."sys_function" VALUES ('341', '管理员', '2015-11-16 22:48:28.152', '管理员', '2015-12-09 11:48:10.471', '5', '58', 'deployModule', '0', '项目交付', '-1', 'roffice:deployModule', '');
+INSERT INTO "public"."sys_function" VALUES ('342', '管理员', '2015-11-16 22:50:30.335', '管理员', '2015-12-09 11:48:10.494', '5', '58', 'newsMenu', '0', '公司新闻', '339', 'roffice:commonsModule:newsMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('343', '管理员', '2015-11-16 22:50:47.011', '管理员', '2015-12-09 11:48:10.499', '5', '58', 'noteMenu', '0', '公司公告', '339', 'roffice:commonsModule:noteMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('344', '管理员', '2015-11-16 22:51:19.47', '管理员', '2015-12-09 11:48:10.509', '5', '58', 'travelMenu', '0', '出差记录', '340', 'roffice:saleModule:travelMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('345', '管理员', '2015-11-16 22:51:32.33', '管理员', '2015-12-09 11:48:10.502', '5', '58', 'supportMenu', '0', '项目支持', '340', 'roffice:saleModule:supportMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('346', '管理员', '2015-11-16 22:51:45.391', '管理员', '2015-12-09 11:48:10.506', '5', '58', 'chanceMenu', '0', '项目机会', '59', 'roffice:cmModule:chanceMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('347', '管理员', '2015-11-16 22:52:27.79', '管理员', '2015-12-09 11:48:10.513', '5', '58', 'projectMenu', '0', '项目管理', '340', 'roffice:saleModule:projectMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('348', '管理员', '2015-11-16 22:53:37.125', '管理员', '2015-12-09 11:48:10.567', '5', '58', 'receiveMenu', '0', '项目回款', '59', 'roffice:cmModule:receiveMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('349', '管理员', '2015-11-16 22:54:03.281', '管理员', '2015-12-09 11:48:10.518', '5', '58', 'deployMenu', '0', '实施项目', '341', 'roffice:deployModule:deployMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('350', '管理员', '2015-11-16 22:54:27.832', '管理员', '2015-12-09 11:48:10.523', '5', '58', 'payMenu', '0', '采购付款', '59', 'roffice:cmModule:payMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('351', '管理员', '2015-11-16 22:54:52.582', '管理员', '2015-12-09 11:48:10.532', '5', '58', 'purchaseInvoiceMenu', '0', '设备发票', '59', 'roffice:cmModule:purchaseInvoiceMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('352', '管理员', '2015-11-16 22:57:42.971', '管理员', '2015-12-09 11:48:10.476', '5', '58', 'add', '1', '添加', '60', 'roffice:cmModule:contractMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('353', '管理员', '2015-11-16 22:57:55.784', '管理员', '2015-12-09 11:48:10.544', '5', '58', 'delete', '1', '删除', '60', 'roffice:cmModule:contractMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('354', '管理员', '2015-11-16 22:58:06.556', '管理员', '2015-12-09 11:48:10.553', '6', '58', 'edit', '1', '编辑', '60', 'roffice:cmModule:contractMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('355', '管理员', '2015-11-16 22:58:15.813', '管理员', '2015-12-09 11:48:10.548', '5', '58', 'view', '1', '查看', '60', 'roffice:cmModule:contractMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('356', '管理员', '2015-11-16 22:59:05.814', '管理员', '2015-12-09 11:48:10.48', '5', '58', 'add', '1', '添加', '61', 'roffice:cmModule:invoiceMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('357', '管理员', '2015-11-16 22:59:15.676', '管理员', '2015-12-09 11:48:10.56', '5', '58', 'delete', '1', '删除', '61', 'roffice:cmModule:invoiceMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('358', '管理员', '2015-11-16 23:00:43.388', '管理员', '2015-12-09 11:48:10.755', '5', '58', 'edit', '1', '编辑', '61', 'roffice:cmModule:invoiceMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('359', '管理员', '2015-11-16 23:00:57.85', '管理员', '2015-12-09 11:48:10.595', '5', '58', 'view', '1', '查看', '61', 'roffice:cmModule:invoiceMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('360', '管理员', '2015-11-16 23:01:38.901', '管理员', '2015-12-09 11:48:10.783', '5', '58', 'add', '1', '添加', '62', 'roffice:cmModule:contractDetailMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('361', '管理员', '2015-11-16 23:01:54.397', '管理员', '2015-12-09 11:48:10.758', '5', '58', 'delete', '1', '删除', '62', 'roffice:cmModule:contractDetailMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('362', '管理员', '2015-11-16 23:02:08.026', '管理员', '2015-12-09 11:48:10.576', '5', '58', 'edit', '1', '编辑', '62', 'roffice:cmModule:contractDetailMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('363', '管理员', '2015-11-16 23:02:16.935', '管理员', '2015-12-09 11:48:10.579', '5', '58', 'view', '1', '查看', '62', 'roffice:cmModule:contractDetailMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('364', '管理员', '2015-11-16 23:02:38.03', '管理员', '2015-12-09 11:48:10.592', '4', '58', 'add', '1', '添加', '342', 'roffice:commonsModule:newsMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('365', '管理员', '2015-11-16 23:02:48.739', '管理员', '2015-12-09 11:48:10.599', '4', '58', 'delete', '1', '删除', '342', 'roffice:commonsModule:newsMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('366', '管理员', '2015-11-16 23:02:56.941', '管理员', '2015-12-09 11:48:10.778', '4', '58', 'edit', '1', '编辑', '342', 'roffice:commonsModule:newsMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('367', '管理员', '2015-11-16 23:03:03.728', '管理员', '2015-12-09 11:48:10.603', '4', '58', 'view', '1', '查看', '342', 'roffice:commonsModule:newsMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('368', '管理员', '2015-11-16 23:03:18.088', '管理员', '2015-12-09 11:48:10.608', '4', '58', 'add', '1', '添加', '343', 'roffice:commonsModule:noteMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('369', '管理员', '2015-11-16 23:03:26.517', '管理员', '2015-12-09 11:48:10.611', '4', '58', 'delete', '1', '删除', '343', 'roffice:commonsModule:noteMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('370', '管理员', '2015-11-16 23:03:33.874', '管理员', '2015-12-09 11:48:10.615', '4', '58', 'edit', '1', '编辑', '343', 'roffice:commonsModule:noteMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('371', '管理员', '2015-11-16 23:03:40.774', '管理员', '2015-12-09 11:48:10.622', '4', '58', 'view', '1', '查看', '343', 'roffice:commonsModule:noteMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('372', '管理员', '2015-11-16 23:10:24.872', '管理员', '2015-12-09 11:48:10.627', '4', '58', 'add', '1', '添加', '345', 'roffice:saleModule:supportMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('373', '管理员', '2015-11-16 23:10:39.964', '管理员', '2015-12-09 11:48:10.631', '4', '58', 'delete', '1', '删除', '345', 'roffice:saleModule:supportMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('374', '管理员', '2015-11-16 23:10:47.534', '管理员', '2015-12-09 11:48:10.634', '4', '58', 'edit', '1', '编辑', '345', 'roffice:saleModule:supportMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('375', '管理员', '2015-11-16 23:10:55.042', '管理员', '2015-12-09 11:48:10.637', '4', '58', 'view', '1', '查看', '345', 'roffice:saleModule:supportMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('376', '管理员', '2015-11-16 23:11:11.641', '管理员', '2015-12-09 11:48:10.64', '4', '58', 'add', '1', '添加', '346', 'roffice:saleModule:chanceMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('377', '管理员', '2015-11-16 23:11:28.595', '管理员', '2015-12-09 11:48:10.643', '4', '58', 'delete', '1', '删除', '346', 'roffice:saleModule:chanceMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('378', '管理员', '2015-11-16 23:11:35.045', '管理员', '2015-12-09 11:48:10.647', '4', '58', 'edit', '1', '编辑', '346', 'roffice:saleModule:chanceMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('379', '管理员', '2015-11-16 23:11:41.267', '管理员', '2015-12-09 11:48:10.652', '4', '58', 'view', '1', '查看', '346', 'roffice:saleModule:chanceMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('380', '管理员', '2015-11-16 23:14:01.16', '管理员', '2015-12-09 11:48:10.658', '4', '58', 'add', '1', '添加', '344', 'roffice:saleModule:travelMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('381', '管理员', '2015-11-16 23:14:15.377', '管理员', '2015-12-09 11:48:10.662', '4', '58', 'delete', '1', '删除', '344', 'roffice:saleModule:travelMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('382', '管理员', '2015-11-16 23:14:22.949', '管理员', '2015-12-09 11:48:10.667', '4', '58', 'edit', '1', '编辑', '344', 'roffice:saleModule:travelMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('383', '管理员', '2015-11-16 23:14:31.525', '管理员', '2015-12-09 11:48:10.67', '4', '58', 'view', '1', '查看', '344', 'roffice:saleModule:travelMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('384', '管理员', '2015-11-16 23:14:48.122', '管理员', '2015-12-09 11:48:10.674', '4', '58', 'add', '1', '添加', '347', 'roffice:saleModule:projectMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('385', '管理员', '2015-11-16 23:15:00.03', '管理员', '2015-12-09 11:48:10.677', '4', '58', 'delete', '1', '删除', '347', 'roffice:saleModule:projectMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('386', '管理员', '2015-11-16 23:15:07.841', '管理员', '2015-12-09 11:48:10.682', '4', '58', 'edit', '1', '编辑', '347', 'roffice:saleModule:projectMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('387', '管理员', '2015-11-16 23:15:16.382', '管理员', '2015-12-09 11:48:10.688', '4', '58', 'view', '1', '查看', '347', 'roffice:saleModule:projectMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('388', '管理员', '2015-11-16 23:15:36.242', '管理员', '2015-12-09 11:48:10.693', '4', '58', 'add', '1', '添加', '348', 'roffice:deployModule:receiveMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('389', '管理员', '2015-11-16 23:15:44.374', '管理员', '2015-12-09 11:48:10.699', '4', '58', 'delete', '1', '删除', '348', 'roffice:deployModule:receiveMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('390', '管理员', '2015-11-16 23:15:51.77', '管理员', '2015-12-09 11:48:10.702', '4', '58', 'edit', '1', '编辑', '348', 'roffice:deployModule:receiveMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('391', '管理员', '2015-11-16 23:15:58.976', '管理员', '2015-12-09 11:48:10.705', '4', '58', 'view', '1', '查看', '348', 'roffice:deployModule:receiveMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('392', '管理员', '2015-11-16 23:16:19.279', '管理员', '2015-12-09 11:48:10.708', '4', '58', 'add', '1', '添加', '349', 'roffice:deployModule:deployMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('393', '管理员', '2015-11-16 23:16:26.768', '管理员', '2015-12-09 11:48:10.711', '4', '58', 'delete', '1', '删除', '349', 'roffice:deployModule:deployMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('394', '管理员', '2015-11-16 23:16:34.753', '管理员', '2015-12-09 11:48:10.715', '4', '58', 'edit', '1', '编辑', '349', 'roffice:deployModule:deployMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('395', '管理员', '2015-11-16 23:16:42.834', '管理员', '2015-12-09 11:48:10.721', '4', '58', 'view', '1', '查看', '349', 'roffice:deployModule:deployMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('396', '管理员', '2015-11-16 23:16:54.656', '管理员', '2015-12-09 11:48:10.726', '4', '58', 'add', '1', '添加', '350', 'roffice:deployModule:payMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('397', '管理员', '2015-11-16 23:17:05.751', '管理员', '2015-12-09 11:48:10.729', '4', '58', 'delete', '1', '删除', '350', 'roffice:deployModule:payMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('398', '管理员', '2015-11-16 23:17:12.62', '管理员', '2015-12-09 11:48:10.732', '4', '58', 'edit', '1', '编辑', '350', 'roffice:deployModule:payMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('399', '管理员', '2015-11-16 23:17:22.981', '管理员', '2015-12-09 11:48:10.735', '4', '58', 'view', '1', '查看', '350', 'roffice:deployModule:payMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('400', '管理员', '2015-11-16 23:17:36.46', '管理员', '2015-12-09 11:48:10.738', '4', '58', 'add', '1', '添加', '351', 'roffice:deployModule:purchaseInvoiceMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('401', '管理员', '2015-11-16 23:17:43.831', '管理员', '2015-12-09 11:48:10.741', '4', '58', 'delete', '1', '删除', '351', 'roffice:deployModule:purchaseInvoiceMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('402', '管理员', '2015-11-16 23:17:51.504', '管理员', '2015-12-09 11:48:10.744', '4', '58', 'edit', '1', '编辑', '351', 'roffice:deployModule:purchaseInvoiceMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('403', '管理员', '2015-11-16 23:17:58.222', '管理员', '2015-12-09 11:48:10.748', '4', '58', 'view', '1', '查看', '351', 'roffice:deployModule:purchaseInvoiceMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('13713', '管理员2', '2015-08-13 10:37:43', '管理员', '2015-12-09 12:43:00.577', '17', '12501', 'workFlowModule', '0', '工作流演示', '-1', 'workflow:workFlowModule', '工作流演示模块');
+INSERT INTO "public"."sys_function" VALUES ('22810', '管理员', '2015-11-27 21:04:39.326', '管理员', '2015-12-09 11:48:10.791', '7', '58', 'taskMenu', '0', '任务目标', '59', 'roffice:cmModule:taskMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('22811', '管理员', '2015-11-27 21:05:03.693', '管理员', '2015-12-09 11:48:10.585', '6', '58', 'add', '1', '添加', '22810', 'roffice:cmModule:taskMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('22812', '管理员', '2015-11-27 21:05:25.198', '管理员', '2015-12-09 11:48:10.794', '6', '58', 'delete', '1', '删除', '22810', 'roffice:cmModule:taskMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('22813', '管理员', '2015-11-27 21:05:35.009', '管理员', '2015-12-09 11:48:10.765', '7', '58', 'edit', '1', '编辑', '22810', 'roffice:cmModule:taskMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('22814', '管理员', '2015-11-27 21:05:46.814', '管理员', '2015-12-09 11:48:10.761', '6', '58', 'view', '1', '查看', '22810', 'roffice:cmModule:taskMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('24710', '管理员', '2015-12-02 10:37:00.19', '管理员', '2015-12-09 11:48:10.771', '6', '58', 'reportModule', '0', '统计报表', '-1', 'roffice:reportModule', '');
+INSERT INTO "public"."sys_function" VALUES ('24711', '管理员', '2015-12-02 10:40:02.219', '管理员', '2015-12-09 11:48:10.768', '5', '58', 'contactReportMenu', '1', '合同报表', '24710', 'roffice:reportModule:contactReportMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('25810', '管理员', '2015-12-02 19:50:46.328', '管理员', '2015-12-09 11:48:10.775', '5', '58', 'receiveReportMenu', '1', '合同回款情况', '24710', 'roffice:reportModule:receiveReportMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('28210', '管理员', '2015-12-08 10:33:25.197', '管理员', '2015-12-09 11:48:10.237', '5', '7901', 'key', '1', '修改密码', '210', 'admin:permissionModule:userMenu:key', '');
+INSERT INTO "public"."sys_function" VALUES ('28710', '管理员', '2015-12-08 13:31:39.957', '管理员', '2015-12-09 11:48:10.241', '5', '7901', 'add', '1', '添加', '211', 'admin:permissionModule:roleMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('28711', '管理员', '2015-12-08 13:32:09.066', '管理员', '2015-12-09 11:48:10.268', '5', '7901', 'delete', '1', '删除', '211', 'admin:permissionModule:roleMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('28712', '管理员', '2015-12-08 13:32:19.069', '管理员', '2015-12-09 11:48:10.272', '5', '7901', 'edit', '1', '编辑', '211', 'admin:permissionModule:roleMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('28713', '管理员', '2015-12-08 13:32:30.426', '管理员', '2015-12-09 11:48:10.275', '5', '7901', 'view', '1', '查看', '211', 'admin:permissionModule:roleMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('28714', '管理员', '2015-12-08 13:33:01.283', '管理员', '2015-12-09 11:48:10.279', '5', '7901', 'addUser', '1', '添加用户', '211', 'admin:permissionModule:roleMenu:addUser', '');
+INSERT INTO "public"."sys_function" VALUES ('28715', '管理员', '2015-12-08 13:33:14.04', '管理员', '2015-12-09 11:48:10.285', '5', '7901', 'auth', '1', '权限分配', '211', 'admin:permissionModule:roleMenu:auth', '');
+INSERT INTO "public"."sys_function" VALUES ('28716', '管理员', '2015-12-08 15:55:41.773', '管理员', '2015-12-09 11:48:10.333', '5', '7901', 'add', '1', '添加', '212', 'admin:permissionModule:workGroupMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('28717', '管理员', '2015-12-08 15:55:53.587', '管理员', '2015-12-09 11:48:10.245', '5', '7901', 'delete', '1', '删除', '212', 'admin:permissionModule:workGroupMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('28718', '管理员', '2015-12-08 15:56:04.178', '管理员', '2015-12-09 11:48:10.249', '5', '7901', 'edit', '1', '编辑', '212', 'admin:permissionModule:workGroupMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('28719', '管理员', '2015-12-08 15:56:13.119', '管理员', '2015-12-09 11:48:10.256', '5', '7901', 'view', '1', '查看', '212', 'admin:permissionModule:workGroupMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('28720', '管理员', '2015-12-08 16:04:30.673', '管理员', '2015-12-09 11:48:10.261', '5', '7901', 'addUser', '1', '添加用户', '212', 'admin:permissionModule:workGroupMenu:addUser', '');
+INSERT INTO "public"."sys_function" VALUES ('28721', '管理员', '2015-12-08 16:04:44.74', '管理员', '2015-12-09 11:48:10.264', '5', '7901', 'addRole', '1', '添加角色', '212', 'admin:permissionModule:workGroupMenu:addRole', '');
+INSERT INTO "public"."sys_function" VALUES ('30110', '管理员', '2015-12-08 20:30:16.519', '管理员', '2015-12-09 11:48:10.309', '5', '7901', 'add', '1', '添加', '216', 'admin:sysModule:dictMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('30111', '管理员', '2015-12-08 20:30:27.579', '管理员', '2015-12-09 11:48:10.313', '5', '7901', 'delete', '1', '删除', '216', 'admin:sysModule:dictMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('30112', '管理员', '2015-12-08 20:30:36.057', '管理员', '2015-12-09 11:48:10.321', '5', '7901', 'edit', '1', '编辑', '216', 'admin:sysModule:dictMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('30113', '管理员', '2015-12-08 20:30:44.506', '管理员', '2015-12-09 11:48:10.293', '5', '7901', 'view', '1', '查看', '216', 'admin:sysModule:dictMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('30114', '管理员', '2015-12-08 20:31:12.759', '管理员', '2015-12-09 11:48:10.299', '5', '7901', 'delete', '1', '删除', '217', 'admin:sysModule:auditMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('30115', '管理员', '2015-12-08 20:31:21.375', '管理员', '2015-12-09 11:48:10.302', '5', '7901', 'view', '1', '查看', '217', 'admin:sysModule:auditMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('30510', '管理员', '2015-12-09 11:00:46.142', '管理员', '2015-12-09 11:48:10.325', '5', '7901', 'add', '1', '添加', '251', 'admin:appModule:applicationMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('30511', '管理员', '2015-12-09 11:00:53.872', '管理员', '2015-12-09 11:48:10.329', '5', '7901', 'delete', '1', '删除', '251', 'admin:appModule:applicationMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('30512', '管理员', '2015-12-09 11:01:01.545', '管理员', '2015-12-09 11:48:10.226', '5', '7901', 'edit', '1', '编辑', '251', 'admin:appModule:applicationMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('30513', '管理员', '2015-12-09 11:01:10.502', '管理员', '2015-12-09 11:48:10.23', '5', '7901', 'view', '1', '查看', '251', 'admin:appModule:applicationMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('30514', '管理员', '2015-12-09 11:01:46.4', '管理员', '2015-12-09 11:48:10.234', '5', '7901', 'control', '1', '控制', '251', 'admin:appModule:applicationMenu:control', '');
+INSERT INTO "public"."sys_function" VALUES ('32910', '管理员', '2015-12-10 20:57:08.549', '管理员', '2015-12-10 20:57:08.549', '1', '7901', 'add', '1', '添加', '213', 'admin:constructModule:areaMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('32911', '管理员', '2015-12-10 20:57:18.299', '管理员', '2015-12-10 20:57:18.299', '1', '7901', 'delete', '1', '删除', '213', 'admin:constructModule:areaMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('32912', '管理员', '2015-12-10 20:57:27.381', '管理员', '2015-12-10 20:57:27.381', '1', '7901', 'edit', '1', '编辑', '213', 'admin:constructModule:areaMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('32913', '管理员', '2015-12-10 20:57:38.697', '管理员', '2015-12-10 20:57:38.697', '1', '7901', 'view', '1', '查看', '213', 'admin:constructModule:areaMenu:view', '');
+INSERT INTO "public"."sys_function" VALUES ('32914', '管理员', '2015-12-10 20:58:21.631', '管理员', '2015-12-10 20:58:21.631', '1', '7901', 'add', '1', '添加', '215', 'admin:constructModule:departmentMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('32915', '管理员', '2015-12-10 20:58:32.771', '管理员', '2015-12-10 20:58:32.771', '1', '7901', 'delete', '1', '删除', '215', 'admin:constructModule:departmentMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('32916', '管理员', '2015-12-10 20:58:40.359', '管理员', '2015-12-10 20:58:40.359', '1', '7901', 'edit', '1', '编辑', '215', 'admin:constructModule:departmentMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('32917', '管理员', '2015-12-10 20:58:57.545', '管理员', '2015-12-10 20:58:57.545', '1', '7901', 'add', '1', '添加', '214', 'admin:constructModule:organizationMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('32918', '管理员', '2015-12-10 20:59:06.222', '管理员', '2015-12-10 20:59:06.222', '1', '7901', 'delete', '1', '删除', '214', 'admin:constructModule:organizationMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('32919', '管理员', '2015-12-10 20:59:14.768', '管理员', '2015-12-10 20:59:14.768', '1', '7901', 'edit', '1', '编辑', '214', 'admin:constructModule:organizationMenu:edit', '');
+INSERT INTO "public"."sys_function" VALUES ('35210', '管理员', '2016-01-05 16:28:33.068', '管理员', '2016-01-05 16:28:33.068', '1', '12501', 'sealApplyMenu', '1', '印章使用申请', '13713', 'workflow:workFlowModule:sealApplyMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('39710', '管理员', '2016-02-16 14:58:03.267', '管理员', '2016-02-16 14:58:45.973', '2', '7901', 'dutyMenu', '0', '职务管理', '208', 'admin:constructModule:dutyMenu', '');
+INSERT INTO "public"."sys_function" VALUES ('39711', '管理员', '2016-02-16 14:58:45.96', '管理员', '2016-02-16 14:58:45.96', '1', '7901', 'add', '1', '添加', '39710', 'admin:constructModule:dutyMenu:add', '');
+INSERT INTO "public"."sys_function" VALUES ('39712', '管理员', '2016-02-16 14:58:58.704', '管理员', '2016-02-16 14:59:22.328', '2', '7901', 'delete', '1', '删除', '39710', 'admin:constructModule:dutyMenu:delete', '');
+INSERT INTO "public"."sys_function" VALUES ('39713', '管理员', '2016-02-16 14:59:41.867', '管理员', '2016-02-16 14:59:41.867', '1', '7901', 'edit', '1', '编辑', '39710', 'admin:constructModule:dutyMenu:edit', '');
 
 -- ----------------------------
 -- Table structure for sys_hello
@@ -2018,6 +2240,7 @@ INSERT INTO "public"."sys_organization" VALUES ('8', '管理员', '2015-09-24 09
 INSERT INTO "public"."sys_organization" VALUES ('9', '管理员', '2015-09-24 09:59:18.711', '管理员', '2015-09-24 09:59:18.711', '0', '2', '000', '000', '1', '测试机构', '-1');
 INSERT INTO "public"."sys_organization" VALUES ('47', '管理员', '2015-11-16 15:58:48.207', '管理员', '2015-11-16 15:58:48.207', '0', '10', '001', '001', '1', '吉林省锐迅信息技术股份有限公司', '-1');
 INSERT INTO "public"."sys_organization" VALUES ('4501', 'fdad2222', '2015-07-24 16:57:59', '管理员', '2015-07-31 11:40:37', '17', '1', '0101', '0101', '1', '吉林省办事处', '-1');
+INSERT INTO "public"."sys_organization" VALUES ('32710', '管理员', '2015-12-10 11:25:17.727', '管理员', '2015-12-10 11:25:17.727', '1', '12', '12', '21', '1', 'sdsd', '-1');
 
 -- ----------------------------
 -- Table structure for sys_permission
@@ -2045,6 +2268,30 @@ WITH (OIDS=FALSE)
 
 -- ----------------------------
 -- Records of sys_permission
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for sys_plugin
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."sys_plugin";
+CREATE TABLE "public"."sys_plugin" (
+"id" int8 NOT NULL,
+"createby" varchar(255) COLLATE "default",
+"creationdate" timestamp(6),
+"updateby" varchar(255) COLLATE "default",
+"updatedate" timestamp(6),
+"bundleid" varchar(255) COLLATE "default",
+"code" varchar(255) COLLATE "default",
+"name" varchar(255) COLLATE "default",
+"remark" varchar(255) COLLATE "default",
+"version_" int8
+)
+WITH (OIDS=FALSE)
+
+;
+
+-- ----------------------------
+-- Records of sys_plugin
 -- ----------------------------
 
 -- ----------------------------
@@ -2081,7 +2328,7 @@ INSERT INTO "public"."sys_role" VALUES ('19912', '管理员', '2015-11-23 17:53:
 INSERT INTO "public"."sys_role" VALUES ('19913', '管理员', '2015-11-23 17:53:45.916', '管理员', '2015-11-23 17:53:45.916', '1', '售前服务管理员角色', '售前服务可以修改的管理员角色', '协同办公');
 INSERT INTO "public"."sys_role" VALUES ('19914', '管理员', '2015-11-23 17:54:20.618', '管理员', '2015-11-23 17:54:20.618', '1', '项目交付普通角色', '项目交付模块只能查看的普通角色', '协同办公');
 INSERT INTO "public"."sys_role" VALUES ('19915', '管理员', '2015-11-23 17:54:36.366', '管理员', '2015-11-23 17:54:36.366', '1', '项目交付管理员角色', '项目交付模块可以修改的管理员角色', '协同办公');
-INSERT INTO "public"."sys_role" VALUES ('24810', '管理员', '2015-12-02 10:44:27.22', '管理员', '2015-12-02 10:44:27.22', '1', '统计报表查看角色', '', '协同办公');
+INSERT INTO "public"."sys_role" VALUES ('24810', '管理员', '2015-12-02 10:44:27.22', '管理员', '2015-12-08 13:49:30.552', '2', '统计报表查看角色', '统计报表查看角色', '协同办公');
 
 -- ----------------------------
 -- Table structure for sys_role_application
@@ -2104,9 +2351,6 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of sys_role_application
 -- ----------------------------
-INSERT INTO "public"."sys_role_application" VALUES ('163', 'qwer', '2015-11-16 16:27:12.843', 'qwer', '2015-11-16 16:27:12.843', '0', '7901', '4901');
-INSERT INTO "public"."sys_role_application" VALUES ('186', 'qwer', '2015-11-16 16:27:13.015', 'qwer', '2015-11-16 16:27:13.015', '0', '12501', '4901');
-INSERT INTO "public"."sys_role_application" VALUES ('193', 'qwer', '2015-11-16 16:27:13.095', 'qwer', '2015-11-16 16:27:13.095', '0', '58', '4901');
 INSERT INTO "public"."sys_role_application" VALUES ('404', '管理员', '2015-11-17 00:11:36.699', '管理员', '2015-11-17 00:11:36.699', '0', '7901', '14002');
 INSERT INTO "public"."sys_role_application" VALUES ('423', '管理员', '2015-11-17 00:11:36.783', '管理员', '2015-11-17 00:11:36.783', '0', '12501', '14002');
 INSERT INTO "public"."sys_role_application" VALUES ('429', '管理员', '2015-11-17 00:11:36.807', '管理员', '2015-11-17 00:11:36.807', '0', '58', '14002');
@@ -2120,9 +2364,12 @@ INSERT INTO "public"."sys_role_application" VALUES ('20013', '管理员', '2015-
 INSERT INTO "public"."sys_role_application" VALUES ('20014', '管理员', '2015-11-23 17:57:00.889', '管理员', '2015-11-23 17:57:00.889', '1', '58', '19914');
 INSERT INTO "public"."sys_role_application" VALUES ('20015', '管理员', '2015-11-23 17:57:15.449', '管理员', '2015-11-23 17:57:15.449', '1', '58', '19915');
 INSERT INTO "public"."sys_role_application" VALUES ('25910', '管理员', '2015-12-02 19:51:10.159', '管理员', '2015-12-02 19:51:10.159', '1', '58', '24810');
-INSERT INTO "public"."sys_role_application" VALUES ('25911', '管理员', '2015-12-02 19:53:48.705', '管理员', '2015-12-02 19:53:48.705', '1', '7901', '1212');
-INSERT INTO "public"."sys_role_application" VALUES ('25912', '管理员', '2015-12-02 19:53:48.763', '管理员', '2015-12-02 19:53:48.763', '1', '58', '1212');
-INSERT INTO "public"."sys_role_application" VALUES ('25913', '管理员', '2015-12-02 19:53:49.022', '管理员', '2015-12-02 19:53:49.022', '1', '12501', '1212');
+INSERT INTO "public"."sys_role_application" VALUES ('29813', '管理员', '2015-12-08 17:50:37.53', '管理员', '2015-12-08 17:50:37.53', '1', '7901', '4901');
+INSERT INTO "public"."sys_role_application" VALUES ('29814', '管理员', '2015-12-08 17:50:37.591', '管理员', '2015-12-08 17:50:37.591', '1', '58', '4901');
+INSERT INTO "public"."sys_role_application" VALUES ('29815', '管理员', '2015-12-08 17:50:37.824', '管理员', '2015-12-08 17:50:37.824', '1', '12501', '4901');
+INSERT INTO "public"."sys_role_application" VALUES ('39910', '管理员', '2016-02-16 15:00:07.075', '管理员', '2016-02-16 15:00:07.075', '1', '58', '1212');
+INSERT INTO "public"."sys_role_application" VALUES ('39911', '管理员', '2016-02-16 15:00:07.477', '管理员', '2016-02-16 15:00:07.477', '1', '7901', '1212');
+INSERT INTO "public"."sys_role_application" VALUES ('39912', '管理员', '2016-02-16 15:00:07.712', '管理员', '2016-02-16 15:00:07.712', '1', '12501', '1212');
 
 -- ----------------------------
 -- Table structure for sys_role_function
@@ -2145,37 +2392,6 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of sys_role_function
 -- ----------------------------
-INSERT INTO "public"."sys_role_function" VALUES ('164', 'qwer', '2015-11-16 16:27:12.85', 'qwer', '2015-11-16 16:27:12.85', '0', '13701', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('165', 'qwer', '2015-11-16 16:27:12.854', 'qwer', '2015-11-16 16:27:12.854', '0', '13702', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('166', 'qwer', '2015-11-16 16:27:12.863', 'qwer', '2015-11-16 16:27:12.863', '0', '13703', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('167', 'qwer', '2015-11-16 16:27:12.868', 'qwer', '2015-11-16 16:27:12.868', '0', '14501', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('168', 'qwer', '2015-11-16 16:27:12.872', 'qwer', '2015-11-16 16:27:12.872', '0', '14801', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('169', 'qwer', '2015-11-16 16:27:12.876', 'qwer', '2015-11-16 16:27:12.876', '0', '15101', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('170', 'qwer', '2015-11-16 16:27:12.891', 'qwer', '2015-11-16 16:27:12.891', '0', '15102', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('171', 'qwer', '2015-11-16 16:27:12.898', 'qwer', '2015-11-16 16:27:12.898', '0', '13704', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('172', 'qwer', '2015-11-16 16:27:12.902', 'qwer', '2015-11-16 16:27:12.902', '0', '13705', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('173', 'qwer', '2015-11-16 16:27:12.906', 'qwer', '2015-11-16 16:27:12.906', '0', '13706', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('174', 'qwer', '2015-11-16 16:27:12.914', 'qwer', '2015-11-16 16:27:12.914', '0', '13707', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('175', 'qwer', '2015-11-16 16:27:12.92', 'qwer', '2015-11-16 16:27:12.92', '0', '13708', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('176', 'qwer', '2015-11-16 16:27:12.924', 'qwer', '2015-11-16 16:27:12.924', '0', '13709', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('177', 'qwer', '2015-11-16 16:27:12.93', 'qwer', '2015-11-16 16:27:12.93', '0', '13710', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('178', 'qwer', '2015-11-16 16:27:12.938', 'qwer', '2015-11-16 16:27:12.938', '0', '13711', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('179', 'qwer', '2015-11-16 16:27:12.949', 'qwer', '2015-11-16 16:27:12.949', '0', '13712', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('180', 'qwer', '2015-11-16 16:27:12.953', 'qwer', '2015-11-16 16:27:12.953', '0', '12', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('181', 'qwer', '2015-11-16 16:27:12.957', 'qwer', '2015-11-16 16:27:12.957', '0', '66', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('182', 'qwer', '2015-11-16 16:27:12.968', 'qwer', '2015-11-16 16:27:12.968', '0', '99', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('183', 'qwer', '2015-11-16 16:27:12.973', 'qwer', '2015-11-16 16:27:12.973', '0', '143', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('184', 'qwer', '2015-11-16 16:27:12.99', 'qwer', '2015-11-16 16:27:12.99', '0', '144', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('185', 'qwer', '2015-11-16 16:27:13.006', 'qwer', '2015-11-16 16:27:13.006', '0', '145', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('187', 'qwer', '2015-11-16 16:27:13.025', 'qwer', '2015-11-16 16:27:13.025', '0', '13713', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('188', 'qwer', '2015-11-16 16:27:13.031', 'qwer', '2015-11-16 16:27:13.031', '0', '13714', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('189', 'qwer', '2015-11-16 16:27:13.036', 'qwer', '2015-11-16 16:27:13.036', '0', '13715', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('190', 'qwer', '2015-11-16 16:27:13.045', 'qwer', '2015-11-16 16:27:13.045', '0', '13716', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('191', 'qwer', '2015-11-16 16:27:13.06', 'qwer', '2015-11-16 16:27:13.06', '0', '13717', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('192', 'qwer', '2015-11-16 16:27:13.09', 'qwer', '2015-11-16 16:27:13.09', '0', '13718', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('194', 'qwer', '2015-11-16 16:27:13.101', 'qwer', '2015-11-16 16:27:13.101', '0', '59', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('195', 'qwer', '2015-11-16 16:27:13.105', 'qwer', '2015-11-16 16:27:13.105', '0', '60', '4901');
-INSERT INTO "public"."sys_role_function" VALUES ('196', 'qwer', '2015-11-16 16:27:13.11', 'qwer', '2015-11-16 16:27:13.11', '0', '62', '4901');
 INSERT INTO "public"."sys_role_function" VALUES ('405', '管理员', '2015-11-17 00:11:36.703', '管理员', '2015-11-17 00:11:36.703', '0', '209', '14002');
 INSERT INTO "public"."sys_role_function" VALUES ('406', '管理员', '2015-11-17 00:11:36.714', '管理员', '2015-11-17 00:11:36.714', '0', '211', '14002');
 INSERT INTO "public"."sys_role_function" VALUES ('407', '管理员', '2015-11-17 00:11:36.719', '管理员', '2015-11-17 00:11:36.719', '0', '212', '14002');
@@ -2380,106 +2596,244 @@ INSERT INTO "public"."sys_role_function" VALUES ('20192', '管理员', '2015-11-
 INSERT INTO "public"."sys_role_function" VALUES ('26010', '管理员', '2015-12-02 19:51:10.166', '管理员', '2015-12-02 19:51:10.166', '1', '24710', '24810');
 INSERT INTO "public"."sys_role_function" VALUES ('26011', '管理员', '2015-12-02 19:51:10.172', '管理员', '2015-12-02 19:51:10.172', '1', '24711', '24810');
 INSERT INTO "public"."sys_role_function" VALUES ('26012', '管理员', '2015-12-02 19:51:10.175', '管理员', '2015-12-02 19:51:10.175', '1', '25810', '24810');
-INSERT INTO "public"."sys_role_function" VALUES ('26013', '管理员', '2015-12-02 19:53:48.709', '管理员', '2015-12-02 19:53:48.709', '1', '209', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26014', '管理员', '2015-12-02 19:53:48.713', '管理员', '2015-12-02 19:53:48.713', '1', '211', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26015', '管理员', '2015-12-02 19:53:48.716', '管理员', '2015-12-02 19:53:48.716', '1', '212', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26016', '管理员', '2015-12-02 19:53:48.719', '管理员', '2015-12-02 19:53:48.719', '1', '210', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26017', '管理员', '2015-12-02 19:53:48.721', '管理员', '2015-12-02 19:53:48.721', '1', '279', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26018', '管理员', '2015-12-02 19:53:48.725', '管理员', '2015-12-02 19:53:48.725', '1', '280', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26019', '管理员', '2015-12-02 19:53:48.727', '管理员', '2015-12-02 19:53:48.727', '1', '282', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26020', '管理员', '2015-12-02 19:53:48.73', '管理员', '2015-12-02 19:53:48.73', '1', '281', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26021', '管理员', '2015-12-02 19:53:48.734', '管理员', '2015-12-02 19:53:48.734', '1', '208', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26022', '管理员', '2015-12-02 19:53:48.737', '管理员', '2015-12-02 19:53:48.737', '1', '214', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26023', '管理员', '2015-12-02 19:53:48.74', '管理员', '2015-12-02 19:53:48.74', '1', '215', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26024', '管理员', '2015-12-02 19:53:48.743', '管理员', '2015-12-02 19:53:48.743', '1', '213', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26025', '管理员', '2015-12-02 19:53:48.746', '管理员', '2015-12-02 19:53:48.746', '1', '207', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26026', '管理员', '2015-12-02 19:53:48.748', '管理员', '2015-12-02 19:53:48.748', '1', '216', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26027', '管理员', '2015-12-02 19:53:48.751', '管理员', '2015-12-02 19:53:48.751', '1', '217', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26028', '管理员', '2015-12-02 19:53:48.754', '管理员', '2015-12-02 19:53:48.754', '1', '250', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26029', '管理员', '2015-12-02 19:53:48.757', '管理员', '2015-12-02 19:53:48.757', '1', '251', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26030', '管理员', '2015-12-02 19:53:48.76', '管理员', '2015-12-02 19:53:48.76', '1', '252', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26031', '管理员', '2015-12-02 19:53:48.766', '管理员', '2015-12-02 19:53:48.766', '1', '339', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26032', '管理员', '2015-12-02 19:53:48.769', '管理员', '2015-12-02 19:53:48.769', '1', '342', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26033', '管理员', '2015-12-02 19:53:48.772', '管理员', '2015-12-02 19:53:48.772', '1', '364', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26034', '管理员', '2015-12-02 19:53:48.775', '管理员', '2015-12-02 19:53:48.775', '1', '365', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26035', '管理员', '2015-12-02 19:53:48.778', '管理员', '2015-12-02 19:53:48.778', '1', '366', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26036', '管理员', '2015-12-02 19:53:48.781', '管理员', '2015-12-02 19:53:48.781', '1', '367', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26037', '管理员', '2015-12-02 19:53:48.784', '管理员', '2015-12-02 19:53:48.784', '1', '343', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26038', '管理员', '2015-12-02 19:53:48.787', '管理员', '2015-12-02 19:53:48.787', '1', '368', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26039', '管理员', '2015-12-02 19:53:48.79', '管理员', '2015-12-02 19:53:48.79', '1', '369', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26040', '管理员', '2015-12-02 19:53:48.793', '管理员', '2015-12-02 19:53:48.793', '1', '370', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26041', '管理员', '2015-12-02 19:53:48.796', '管理员', '2015-12-02 19:53:48.796', '1', '371', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26042', '管理员', '2015-12-02 19:53:48.799', '管理员', '2015-12-02 19:53:48.799', '1', '340', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26043', '管理员', '2015-12-02 19:53:48.802', '管理员', '2015-12-02 19:53:48.802', '1', '345', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26044', '管理员', '2015-12-02 19:53:48.805', '管理员', '2015-12-02 19:53:48.805', '1', '372', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26045', '管理员', '2015-12-02 19:53:48.807', '管理员', '2015-12-02 19:53:48.807', '1', '373', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26046', '管理员', '2015-12-02 19:53:48.81', '管理员', '2015-12-02 19:53:48.81', '1', '374', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26047', '管理员', '2015-12-02 19:53:48.813', '管理员', '2015-12-02 19:53:48.813', '1', '375', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26048', '管理员', '2015-12-02 19:53:48.815', '管理员', '2015-12-02 19:53:48.815', '1', '344', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26049', '管理员', '2015-12-02 19:53:48.819', '管理员', '2015-12-02 19:53:48.819', '1', '380', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26050', '管理员', '2015-12-02 19:53:48.822', '管理员', '2015-12-02 19:53:48.822', '1', '381', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26051', '管理员', '2015-12-02 19:53:48.825', '管理员', '2015-12-02 19:53:48.825', '1', '382', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26052', '管理员', '2015-12-02 19:53:48.828', '管理员', '2015-12-02 19:53:48.828', '1', '383', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26053', '管理员', '2015-12-02 19:53:48.831', '管理员', '2015-12-02 19:53:48.831', '1', '347', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26054', '管理员', '2015-12-02 19:53:48.834', '管理员', '2015-12-02 19:53:48.834', '1', '384', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26055', '管理员', '2015-12-02 19:53:48.837', '管理员', '2015-12-02 19:53:48.837', '1', '385', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26056', '管理员', '2015-12-02 19:53:48.84', '管理员', '2015-12-02 19:53:48.84', '1', '386', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26057', '管理员', '2015-12-02 19:53:48.844', '管理员', '2015-12-02 19:53:48.844', '1', '387', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26058', '管理员', '2015-12-02 19:53:48.846', '管理员', '2015-12-02 19:53:48.846', '1', '341', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26059', '管理员', '2015-12-02 19:53:48.85', '管理员', '2015-12-02 19:53:48.85', '1', '349', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26060', '管理员', '2015-12-02 19:53:48.853', '管理员', '2015-12-02 19:53:48.853', '1', '392', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26061', '管理员', '2015-12-02 19:53:48.856', '管理员', '2015-12-02 19:53:48.856', '1', '393', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26062', '管理员', '2015-12-02 19:53:48.861', '管理员', '2015-12-02 19:53:48.861', '1', '394', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26063', '管理员', '2015-12-02 19:53:48.865', '管理员', '2015-12-02 19:53:48.865', '1', '395', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26064', '管理员', '2015-12-02 19:53:48.867', '管理员', '2015-12-02 19:53:48.867', '1', '59', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26065', '管理员', '2015-12-02 19:53:48.87', '管理员', '2015-12-02 19:53:48.87', '1', '348', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26066', '管理员', '2015-12-02 19:53:48.874', '管理员', '2015-12-02 19:53:48.874', '1', '388', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26067', '管理员', '2015-12-02 19:53:48.876', '管理员', '2015-12-02 19:53:48.876', '1', '389', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26068', '管理员', '2015-12-02 19:53:48.879', '管理员', '2015-12-02 19:53:48.879', '1', '390', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26069', '管理员', '2015-12-02 19:53:48.882', '管理员', '2015-12-02 19:53:48.882', '1', '391', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26070', '管理员', '2015-12-02 19:53:48.885', '管理员', '2015-12-02 19:53:48.885', '1', '346', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26071', '管理员', '2015-12-02 19:53:48.888', '管理员', '2015-12-02 19:53:48.888', '1', '376', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26072', '管理员', '2015-12-02 19:53:48.891', '管理员', '2015-12-02 19:53:48.891', '1', '377', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26073', '管理员', '2015-12-02 19:53:48.894', '管理员', '2015-12-02 19:53:48.894', '1', '378', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26074', '管理员', '2015-12-02 19:53:48.897', '管理员', '2015-12-02 19:53:48.897', '1', '379', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26075', '管理员', '2015-12-02 19:53:48.9', '管理员', '2015-12-02 19:53:48.9', '1', '350', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26076', '管理员', '2015-12-02 19:53:48.903', '管理员', '2015-12-02 19:53:48.903', '1', '396', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26077', '管理员', '2015-12-02 19:53:48.906', '管理员', '2015-12-02 19:53:48.906', '1', '397', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26078', '管理员', '2015-12-02 19:53:48.909', '管理员', '2015-12-02 19:53:48.909', '1', '398', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26079', '管理员', '2015-12-02 19:53:48.912', '管理员', '2015-12-02 19:53:48.912', '1', '399', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26080', '管理员', '2015-12-02 19:53:48.914', '管理员', '2015-12-02 19:53:48.914', '1', '351', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26081', '管理员', '2015-12-02 19:53:48.917', '管理员', '2015-12-02 19:53:48.917', '1', '400', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26082', '管理员', '2015-12-02 19:53:48.921', '管理员', '2015-12-02 19:53:48.921', '1', '401', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26083', '管理员', '2015-12-02 19:53:48.924', '管理员', '2015-12-02 19:53:48.924', '1', '402', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26084', '管理员', '2015-12-02 19:53:48.93', '管理员', '2015-12-02 19:53:48.93', '1', '403', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26085', '管理员', '2015-12-02 19:53:48.937', '管理员', '2015-12-02 19:53:48.937', '1', '61', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26086', '管理员', '2015-12-02 19:53:48.94', '管理员', '2015-12-02 19:53:48.94', '1', '356', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26087', '管理员', '2015-12-02 19:53:48.944', '管理员', '2015-12-02 19:53:48.944', '1', '357', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26088', '管理员', '2015-12-02 19:53:48.946', '管理员', '2015-12-02 19:53:48.946', '1', '358', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26089', '管理员', '2015-12-02 19:53:48.949', '管理员', '2015-12-02 19:53:48.949', '1', '359', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26090', '管理员', '2015-12-02 19:53:48.952', '管理员', '2015-12-02 19:53:48.952', '1', '60', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26091', '管理员', '2015-12-02 19:53:48.955', '管理员', '2015-12-02 19:53:48.955', '1', '352', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26092', '管理员', '2015-12-02 19:53:48.96', '管理员', '2015-12-02 19:53:48.96', '1', '353', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26093', '管理员', '2015-12-02 19:53:48.963', '管理员', '2015-12-02 19:53:48.963', '1', '355', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26094', '管理员', '2015-12-02 19:53:48.966', '管理员', '2015-12-02 19:53:48.966', '1', '354', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26095', '管理员', '2015-12-02 19:53:48.97', '管理员', '2015-12-02 19:53:48.97', '1', '62', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26096', '管理员', '2015-12-02 19:53:48.972', '管理员', '2015-12-02 19:53:48.972', '1', '360', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26097', '管理员', '2015-12-02 19:53:48.976', '管理员', '2015-12-02 19:53:48.976', '1', '361', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26098', '管理员', '2015-12-02 19:53:48.981', '管理员', '2015-12-02 19:53:48.981', '1', '362', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26099', '管理员', '2015-12-02 19:53:48.987', '管理员', '2015-12-02 19:53:48.987', '1', '363', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26100', '管理员', '2015-12-02 19:53:48.993', '管理员', '2015-12-02 19:53:48.993', '1', '22810', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26101', '管理员', '2015-12-02 19:53:48.996', '管理员', '2015-12-02 19:53:48.996', '1', '22811', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26102', '管理员', '2015-12-02 19:53:49', '管理员', '2015-12-02 19:53:49', '1', '22812', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26103', '管理员', '2015-12-02 19:53:49.003', '管理员', '2015-12-02 19:53:49.003', '1', '22814', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26104', '管理员', '2015-12-02 19:53:49.007', '管理员', '2015-12-02 19:53:49.007', '1', '22813', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26105', '管理员', '2015-12-02 19:53:49.01', '管理员', '2015-12-02 19:53:49.01', '1', '24710', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26106', '管理员', '2015-12-02 19:53:49.014', '管理员', '2015-12-02 19:53:49.014', '1', '24711', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26107', '管理员', '2015-12-02 19:53:49.018', '管理员', '2015-12-02 19:53:49.018', '1', '25810', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26108', '管理员', '2015-12-02 19:53:49.026', '管理员', '2015-12-02 19:53:49.026', '1', '13713', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26109', '管理员', '2015-12-02 19:53:49.031', '管理员', '2015-12-02 19:53:49.031', '1', '278', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26210', '管理员', '2015-12-02 19:53:49.038', '管理员', '2015-12-02 19:53:49.038', '1', '275', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26211', '管理员', '2015-12-02 19:53:49.046', '管理员', '2015-12-02 19:53:49.046', '1', '277', '1212');
-INSERT INTO "public"."sys_role_function" VALUES ('26212', '管理员', '2015-12-02 19:53:49.049', '管理员', '2015-12-02 19:53:49.049', '1', '276', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('29935', '管理员', '2015-12-08 17:50:37.534', '管理员', '2015-12-08 17:50:37.534', '1', '209', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29936', '管理员', '2015-12-08 17:50:37.537', '管理员', '2015-12-08 17:50:37.537', '1', '210', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29937', '管理员', '2015-12-08 17:50:37.54', '管理员', '2015-12-08 17:50:37.54', '1', '279', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29938', '管理员', '2015-12-08 17:50:37.543', '管理员', '2015-12-08 17:50:37.543', '1', '280', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29939', '管理员', '2015-12-08 17:50:37.545', '管理员', '2015-12-08 17:50:37.545', '1', '282', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29940', '管理员', '2015-12-08 17:50:37.548', '管理员', '2015-12-08 17:50:37.548', '1', '281', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29941', '管理员', '2015-12-08 17:50:37.551', '管理员', '2015-12-08 17:50:37.551', '1', '28210', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29942', '管理员', '2015-12-08 17:50:37.553', '管理员', '2015-12-08 17:50:37.553', '1', '211', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29943', '管理员', '2015-12-08 17:50:37.556', '管理员', '2015-12-08 17:50:37.556', '1', '28710', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29944', '管理员', '2015-12-08 17:50:37.559', '管理员', '2015-12-08 17:50:37.559', '1', '28711', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29945', '管理员', '2015-12-08 17:50:37.561', '管理员', '2015-12-08 17:50:37.561', '1', '28712', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29946', '管理员', '2015-12-08 17:50:37.564', '管理员', '2015-12-08 17:50:37.564', '1', '28713', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29947', '管理员', '2015-12-08 17:50:37.567', '管理员', '2015-12-08 17:50:37.567', '1', '28714', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29948', '管理员', '2015-12-08 17:50:37.569', '管理员', '2015-12-08 17:50:37.569', '1', '28715', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29949', '管理员', '2015-12-08 17:50:37.572', '管理员', '2015-12-08 17:50:37.572', '1', '212', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29950', '管理员', '2015-12-08 17:50:37.574', '管理员', '2015-12-08 17:50:37.574', '1', '28716', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29951', '管理员', '2015-12-08 17:50:37.577', '管理员', '2015-12-08 17:50:37.577', '1', '28717', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29952', '管理员', '2015-12-08 17:50:37.58', '管理员', '2015-12-08 17:50:37.58', '1', '28718', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29953', '管理员', '2015-12-08 17:50:37.583', '管理员', '2015-12-08 17:50:37.583', '1', '28719', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29954', '管理员', '2015-12-08 17:50:37.586', '管理员', '2015-12-08 17:50:37.586', '1', '28720', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29955', '管理员', '2015-12-08 17:50:37.588', '管理员', '2015-12-08 17:50:37.588', '1', '28721', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29956', '管理员', '2015-12-08 17:50:37.595', '管理员', '2015-12-08 17:50:37.595', '1', '339', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29957', '管理员', '2015-12-08 17:50:37.598', '管理员', '2015-12-08 17:50:37.598', '1', '342', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29958', '管理员', '2015-12-08 17:50:37.6', '管理员', '2015-12-08 17:50:37.6', '1', '364', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29959', '管理员', '2015-12-08 17:50:37.603', '管理员', '2015-12-08 17:50:37.603', '1', '365', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29960', '管理员', '2015-12-08 17:50:37.606', '管理员', '2015-12-08 17:50:37.606', '1', '366', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29961', '管理员', '2015-12-08 17:50:37.609', '管理员', '2015-12-08 17:50:37.609', '1', '367', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29962', '管理员', '2015-12-08 17:50:37.613', '管理员', '2015-12-08 17:50:37.613', '1', '343', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29963', '管理员', '2015-12-08 17:50:37.616', '管理员', '2015-12-08 17:50:37.616', '1', '368', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29964', '管理员', '2015-12-08 17:50:37.618', '管理员', '2015-12-08 17:50:37.618', '1', '369', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29965', '管理员', '2015-12-08 17:50:37.622', '管理员', '2015-12-08 17:50:37.622', '1', '370', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29966', '管理员', '2015-12-08 17:50:37.625', '管理员', '2015-12-08 17:50:37.625', '1', '371', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29967', '管理员', '2015-12-08 17:50:37.628', '管理员', '2015-12-08 17:50:37.628', '1', '340', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29968', '管理员', '2015-12-08 17:50:37.631', '管理员', '2015-12-08 17:50:37.631', '1', '345', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29969', '管理员', '2015-12-08 17:50:37.635', '管理员', '2015-12-08 17:50:37.635', '1', '372', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29970', '管理员', '2015-12-08 17:50:37.638', '管理员', '2015-12-08 17:50:37.638', '1', '373', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29971', '管理员', '2015-12-08 17:50:37.641', '管理员', '2015-12-08 17:50:37.641', '1', '374', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29972', '管理员', '2015-12-08 17:50:37.644', '管理员', '2015-12-08 17:50:37.644', '1', '375', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29973', '管理员', '2015-12-08 17:50:37.647', '管理员', '2015-12-08 17:50:37.647', '1', '344', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29974', '管理员', '2015-12-08 17:50:37.65', '管理员', '2015-12-08 17:50:37.65', '1', '380', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29975', '管理员', '2015-12-08 17:50:37.653', '管理员', '2015-12-08 17:50:37.653', '1', '381', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29976', '管理员', '2015-12-08 17:50:37.656', '管理员', '2015-12-08 17:50:37.656', '1', '382', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29977', '管理员', '2015-12-08 17:50:37.658', '管理员', '2015-12-08 17:50:37.658', '1', '383', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29978', '管理员', '2015-12-08 17:50:37.661', '管理员', '2015-12-08 17:50:37.661', '1', '347', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29979', '管理员', '2015-12-08 17:50:37.664', '管理员', '2015-12-08 17:50:37.664', '1', '384', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29980', '管理员', '2015-12-08 17:50:37.667', '管理员', '2015-12-08 17:50:37.667', '1', '385', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29981', '管理员', '2015-12-08 17:50:37.669', '管理员', '2015-12-08 17:50:37.669', '1', '386', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29982', '管理员', '2015-12-08 17:50:37.672', '管理员', '2015-12-08 17:50:37.672', '1', '387', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29983', '管理员', '2015-12-08 17:50:37.675', '管理员', '2015-12-08 17:50:37.675', '1', '341', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29984', '管理员', '2015-12-08 17:50:37.678', '管理员', '2015-12-08 17:50:37.678', '1', '349', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29985', '管理员', '2015-12-08 17:50:37.681', '管理员', '2015-12-08 17:50:37.681', '1', '392', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29986', '管理员', '2015-12-08 17:50:37.683', '管理员', '2015-12-08 17:50:37.683', '1', '393', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29987', '管理员', '2015-12-08 17:50:37.686', '管理员', '2015-12-08 17:50:37.686', '1', '394', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29988', '管理员', '2015-12-08 17:50:37.688', '管理员', '2015-12-08 17:50:37.688', '1', '395', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29989', '管理员', '2015-12-08 17:50:37.691', '管理员', '2015-12-08 17:50:37.691', '1', '59', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29990', '管理员', '2015-12-08 17:50:37.695', '管理员', '2015-12-08 17:50:37.695', '1', '348', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29991', '管理员', '2015-12-08 17:50:37.699', '管理员', '2015-12-08 17:50:37.699', '1', '388', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29992', '管理员', '2015-12-08 17:50:37.705', '管理员', '2015-12-08 17:50:37.705', '1', '389', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29993', '管理员', '2015-12-08 17:50:37.708', '管理员', '2015-12-08 17:50:37.708', '1', '390', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29994', '管理员', '2015-12-08 17:50:37.71', '管理员', '2015-12-08 17:50:37.71', '1', '391', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29995', '管理员', '2015-12-08 17:50:37.713', '管理员', '2015-12-08 17:50:37.713', '1', '346', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29996', '管理员', '2015-12-08 17:50:37.716', '管理员', '2015-12-08 17:50:37.716', '1', '376', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29997', '管理员', '2015-12-08 17:50:37.718', '管理员', '2015-12-08 17:50:37.718', '1', '377', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29998', '管理员', '2015-12-08 17:50:37.721', '管理员', '2015-12-08 17:50:37.721', '1', '378', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('29999', '管理员', '2015-12-08 17:50:37.724', '管理员', '2015-12-08 17:50:37.724', '1', '379', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30000', '管理员', '2015-12-08 17:50:37.727', '管理员', '2015-12-08 17:50:37.727', '1', '350', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30001', '管理员', '2015-12-08 17:50:37.729', '管理员', '2015-12-08 17:50:37.729', '1', '396', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30002', '管理员', '2015-12-08 17:50:37.732', '管理员', '2015-12-08 17:50:37.732', '1', '397', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30003', '管理员', '2015-12-08 17:50:37.735', '管理员', '2015-12-08 17:50:37.735', '1', '398', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30004', '管理员', '2015-12-08 17:50:37.738', '管理员', '2015-12-08 17:50:37.738', '1', '399', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30005', '管理员', '2015-12-08 17:50:37.741', '管理员', '2015-12-08 17:50:37.741', '1', '351', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30006', '管理员', '2015-12-08 17:50:37.744', '管理员', '2015-12-08 17:50:37.744', '1', '400', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30007', '管理员', '2015-12-08 17:50:37.747', '管理员', '2015-12-08 17:50:37.747', '1', '401', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30008', '管理员', '2015-12-08 17:50:37.75', '管理员', '2015-12-08 17:50:37.75', '1', '402', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30009', '管理员', '2015-12-08 17:50:37.752', '管理员', '2015-12-08 17:50:37.752', '1', '403', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30010', '管理员', '2015-12-08 17:50:37.756', '管理员', '2015-12-08 17:50:37.756', '1', '61', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30011', '管理员', '2015-12-08 17:50:37.761', '管理员', '2015-12-08 17:50:37.761', '1', '356', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30012', '管理员', '2015-12-08 17:50:37.764', '管理员', '2015-12-08 17:50:37.764', '1', '357', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30013', '管理员', '2015-12-08 17:50:37.767', '管理员', '2015-12-08 17:50:37.767', '1', '358', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30014', '管理员', '2015-12-08 17:50:37.77', '管理员', '2015-12-08 17:50:37.77', '1', '359', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30015', '管理员', '2015-12-08 17:50:37.772', '管理员', '2015-12-08 17:50:37.772', '1', '60', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30016', '管理员', '2015-12-08 17:50:37.775', '管理员', '2015-12-08 17:50:37.775', '1', '352', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30017', '管理员', '2015-12-08 17:50:37.778', '管理员', '2015-12-08 17:50:37.778', '1', '353', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30018', '管理员', '2015-12-08 17:50:37.781', '管理员', '2015-12-08 17:50:37.781', '1', '355', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30019', '管理员', '2015-12-08 17:50:37.784', '管理员', '2015-12-08 17:50:37.784', '1', '354', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30020', '管理员', '2015-12-08 17:50:37.787', '管理员', '2015-12-08 17:50:37.787', '1', '62', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30021', '管理员', '2015-12-08 17:50:37.789', '管理员', '2015-12-08 17:50:37.789', '1', '360', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30022', '管理员', '2015-12-08 17:50:37.793', '管理员', '2015-12-08 17:50:37.793', '1', '361', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30023', '管理员', '2015-12-08 17:50:37.796', '管理员', '2015-12-08 17:50:37.796', '1', '362', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30024', '管理员', '2015-12-08 17:50:37.799', '管理员', '2015-12-08 17:50:37.799', '1', '363', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30025', '管理员', '2015-12-08 17:50:37.802', '管理员', '2015-12-08 17:50:37.802', '1', '22810', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30026', '管理员', '2015-12-08 17:50:37.805', '管理员', '2015-12-08 17:50:37.805', '1', '22811', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30027', '管理员', '2015-12-08 17:50:37.807', '管理员', '2015-12-08 17:50:37.807', '1', '22812', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30028', '管理员', '2015-12-08 17:50:37.81', '管理员', '2015-12-08 17:50:37.81', '1', '22814', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30029', '管理员', '2015-12-08 17:50:37.813', '管理员', '2015-12-08 17:50:37.813', '1', '22813', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30030', '管理员', '2015-12-08 17:50:37.816', '管理员', '2015-12-08 17:50:37.816', '1', '24710', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30031', '管理员', '2015-12-08 17:50:37.819', '管理员', '2015-12-08 17:50:37.819', '1', '24711', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30032', '管理员', '2015-12-08 17:50:37.821', '管理员', '2015-12-08 17:50:37.821', '1', '25810', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('30033', '管理员', '2015-12-08 17:50:37.826', '管理员', '2015-12-08 17:50:37.826', '1', '13713', '4901');
+INSERT INTO "public"."sys_role_function" VALUES ('40010', '管理员', '2016-02-16 15:00:07.09', '管理员', '2016-02-16 15:00:07.09', '1', '59', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40011', '管理员', '2016-02-16 15:00:07.11', '管理员', '2016-02-16 15:00:07.11', '1', '60', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40012', '管理员', '2016-02-16 15:00:07.118', '管理员', '2016-02-16 15:00:07.118', '1', '352', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40013', '管理员', '2016-02-16 15:00:07.126', '管理员', '2016-02-16 15:00:07.126', '1', '353', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40014', '管理员', '2016-02-16 15:00:07.134', '管理员', '2016-02-16 15:00:07.134', '1', '354', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40015', '管理员', '2016-02-16 15:00:07.142', '管理员', '2016-02-16 15:00:07.142', '1', '355', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40016', '管理员', '2016-02-16 15:00:07.15', '管理员', '2016-02-16 15:00:07.15', '1', '61', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40017', '管理员', '2016-02-16 15:00:07.158', '管理员', '2016-02-16 15:00:07.158', '1', '356', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40018', '管理员', '2016-02-16 15:00:07.162', '管理员', '2016-02-16 15:00:07.162', '1', '357', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40019', '管理员', '2016-02-16 15:00:07.17', '管理员', '2016-02-16 15:00:07.17', '1', '358', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40020', '管理员', '2016-02-16 15:00:07.174', '管理员', '2016-02-16 15:00:07.174', '1', '359', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40021', '管理员', '2016-02-16 15:00:07.178', '管理员', '2016-02-16 15:00:07.178', '1', '62', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40022', '管理员', '2016-02-16 15:00:07.186', '管理员', '2016-02-16 15:00:07.186', '1', '360', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40023', '管理员', '2016-02-16 15:00:07.194', '管理员', '2016-02-16 15:00:07.194', '1', '361', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40024', '管理员', '2016-02-16 15:00:07.198', '管理员', '2016-02-16 15:00:07.198', '1', '362', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40025', '管理员', '2016-02-16 15:00:07.202', '管理员', '2016-02-16 15:00:07.202', '1', '363', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40026', '管理员', '2016-02-16 15:00:07.206', '管理员', '2016-02-16 15:00:07.206', '1', '346', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40027', '管理员', '2016-02-16 15:00:07.214', '管理员', '2016-02-16 15:00:07.214', '1', '376', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40028', '管理员', '2016-02-16 15:00:07.218', '管理员', '2016-02-16 15:00:07.218', '1', '377', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40029', '管理员', '2016-02-16 15:00:07.222', '管理员', '2016-02-16 15:00:07.222', '1', '378', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40030', '管理员', '2016-02-16 15:00:07.226', '管理员', '2016-02-16 15:00:07.226', '1', '379', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40031', '管理员', '2016-02-16 15:00:07.23', '管理员', '2016-02-16 15:00:07.23', '1', '348', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40032', '管理员', '2016-02-16 15:00:07.234', '管理员', '2016-02-16 15:00:07.234', '1', '388', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40033', '管理员', '2016-02-16 15:00:07.238', '管理员', '2016-02-16 15:00:07.238', '1', '389', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40034', '管理员', '2016-02-16 15:00:07.242', '管理员', '2016-02-16 15:00:07.242', '1', '390', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40035', '管理员', '2016-02-16 15:00:07.246', '管理员', '2016-02-16 15:00:07.246', '1', '391', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40036', '管理员', '2016-02-16 15:00:07.254', '管理员', '2016-02-16 15:00:07.254', '1', '350', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40037', '管理员', '2016-02-16 15:00:07.262', '管理员', '2016-02-16 15:00:07.262', '1', '396', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40038', '管理员', '2016-02-16 15:00:07.27', '管理员', '2016-02-16 15:00:07.27', '1', '397', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40039', '管理员', '2016-02-16 15:00:07.274', '管理员', '2016-02-16 15:00:07.274', '1', '398', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40040', '管理员', '2016-02-16 15:00:07.278', '管理员', '2016-02-16 15:00:07.278', '1', '399', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40041', '管理员', '2016-02-16 15:00:07.286', '管理员', '2016-02-16 15:00:07.286', '1', '351', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40042', '管理员', '2016-02-16 15:00:07.29', '管理员', '2016-02-16 15:00:07.29', '1', '400', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40043', '管理员', '2016-02-16 15:00:07.294', '管理员', '2016-02-16 15:00:07.294', '1', '401', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40044', '管理员', '2016-02-16 15:00:07.298', '管理员', '2016-02-16 15:00:07.298', '1', '402', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40045', '管理员', '2016-02-16 15:00:07.302', '管理员', '2016-02-16 15:00:07.302', '1', '403', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40046', '管理员', '2016-02-16 15:00:07.306', '管理员', '2016-02-16 15:00:07.306', '1', '22810', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40047', '管理员', '2016-02-16 15:00:07.314', '管理员', '2016-02-16 15:00:07.314', '1', '22811', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40048', '管理员', '2016-02-16 15:00:07.318', '管理员', '2016-02-16 15:00:07.318', '1', '22812', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40049', '管理员', '2016-02-16 15:00:07.322', '管理员', '2016-02-16 15:00:07.322', '1', '22813', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40050', '管理员', '2016-02-16 15:00:07.326', '管理员', '2016-02-16 15:00:07.326', '1', '22814', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40051', '管理员', '2016-02-16 15:00:07.33', '管理员', '2016-02-16 15:00:07.33', '1', '339', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40052', '管理员', '2016-02-16 15:00:07.334', '管理员', '2016-02-16 15:00:07.334', '1', '342', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40053', '管理员', '2016-02-16 15:00:07.338', '管理员', '2016-02-16 15:00:07.338', '1', '364', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40054', '管理员', '2016-02-16 15:00:07.342', '管理员', '2016-02-16 15:00:07.342', '1', '365', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40055', '管理员', '2016-02-16 15:00:07.346', '管理员', '2016-02-16 15:00:07.346', '1', '366', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40056', '管理员', '2016-02-16 15:00:07.35', '管理员', '2016-02-16 15:00:07.35', '1', '367', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40057', '管理员', '2016-02-16 15:00:07.354', '管理员', '2016-02-16 15:00:07.354', '1', '343', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40058', '管理员', '2016-02-16 15:00:07.358', '管理员', '2016-02-16 15:00:07.358', '1', '368', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40059', '管理员', '2016-02-16 15:00:07.361', '管理员', '2016-02-16 15:00:07.361', '1', '369', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40060', '管理员', '2016-02-16 15:00:07.366', '管理员', '2016-02-16 15:00:07.366', '1', '370', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40061', '管理员', '2016-02-16 15:00:07.37', '管理员', '2016-02-16 15:00:07.37', '1', '371', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40062', '管理员', '2016-02-16 15:00:07.374', '管理员', '2016-02-16 15:00:07.374', '1', '340', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40063', '管理员', '2016-02-16 15:00:07.378', '管理员', '2016-02-16 15:00:07.378', '1', '344', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40064', '管理员', '2016-02-16 15:00:07.385', '管理员', '2016-02-16 15:00:07.385', '1', '380', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40065', '管理员', '2016-02-16 15:00:07.389', '管理员', '2016-02-16 15:00:07.389', '1', '381', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40066', '管理员', '2016-02-16 15:00:07.393', '管理员', '2016-02-16 15:00:07.393', '1', '382', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40067', '管理员', '2016-02-16 15:00:07.397', '管理员', '2016-02-16 15:00:07.397', '1', '383', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40068', '管理员', '2016-02-16 15:00:07.401', '管理员', '2016-02-16 15:00:07.401', '1', '345', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40069', '管理员', '2016-02-16 15:00:07.405', '管理员', '2016-02-16 15:00:07.405', '1', '372', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40070', '管理员', '2016-02-16 15:00:07.409', '管理员', '2016-02-16 15:00:07.409', '1', '373', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40071', '管理员', '2016-02-16 15:00:07.413', '管理员', '2016-02-16 15:00:07.413', '1', '374', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40072', '管理员', '2016-02-16 15:00:07.417', '管理员', '2016-02-16 15:00:07.417', '1', '375', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40073', '管理员', '2016-02-16 15:00:07.421', '管理员', '2016-02-16 15:00:07.421', '1', '347', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40074', '管理员', '2016-02-16 15:00:07.425', '管理员', '2016-02-16 15:00:07.425', '1', '384', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40075', '管理员', '2016-02-16 15:00:07.429', '管理员', '2016-02-16 15:00:07.429', '1', '385', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40076', '管理员', '2016-02-16 15:00:07.433', '管理员', '2016-02-16 15:00:07.433', '1', '386', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40077', '管理员', '2016-02-16 15:00:07.437', '管理员', '2016-02-16 15:00:07.437', '1', '387', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40078', '管理员', '2016-02-16 15:00:07.441', '管理员', '2016-02-16 15:00:07.441', '1', '341', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40079', '管理员', '2016-02-16 15:00:07.445', '管理员', '2016-02-16 15:00:07.445', '1', '349', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40080', '管理员', '2016-02-16 15:00:07.449', '管理员', '2016-02-16 15:00:07.449', '1', '392', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40081', '管理员', '2016-02-16 15:00:07.453', '管理员', '2016-02-16 15:00:07.453', '1', '393', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40082', '管理员', '2016-02-16 15:00:07.457', '管理员', '2016-02-16 15:00:07.457', '1', '394', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40083', '管理员', '2016-02-16 15:00:07.461', '管理员', '2016-02-16 15:00:07.461', '1', '395', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40084', '管理员', '2016-02-16 15:00:07.465', '管理员', '2016-02-16 15:00:07.465', '1', '24710', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40085', '管理员', '2016-02-16 15:00:07.469', '管理员', '2016-02-16 15:00:07.469', '1', '24711', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40086', '管理员', '2016-02-16 15:00:07.473', '管理员', '2016-02-16 15:00:07.473', '1', '25810', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40087', '管理员', '2016-02-16 15:00:07.481', '管理员', '2016-02-16 15:00:07.481', '1', '207', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40088', '管理员', '2016-02-16 15:00:07.485', '管理员', '2016-02-16 15:00:07.485', '1', '216', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40089', '管理员', '2016-02-16 15:00:07.489', '管理员', '2016-02-16 15:00:07.489', '1', '30110', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40090', '管理员', '2016-02-16 15:00:07.493', '管理员', '2016-02-16 15:00:07.493', '1', '30111', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40091', '管理员', '2016-02-16 15:00:07.497', '管理员', '2016-02-16 15:00:07.497', '1', '30112', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40092', '管理员', '2016-02-16 15:00:07.501', '管理员', '2016-02-16 15:00:07.501', '1', '30113', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40093', '管理员', '2016-02-16 15:00:07.505', '管理员', '2016-02-16 15:00:07.505', '1', '217', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40094', '管理员', '2016-02-16 15:00:07.509', '管理员', '2016-02-16 15:00:07.509', '1', '30114', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40095', '管理员', '2016-02-16 15:00:07.513', '管理员', '2016-02-16 15:00:07.513', '1', '30115', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40096', '管理员', '2016-02-16 15:00:07.517', '管理员', '2016-02-16 15:00:07.517', '1', '208', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40097', '管理员', '2016-02-16 15:00:07.521', '管理员', '2016-02-16 15:00:07.521', '1', '213', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40098', '管理员', '2016-02-16 15:00:07.525', '管理员', '2016-02-16 15:00:07.525', '1', '32910', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40099', '管理员', '2016-02-16 15:00:07.529', '管理员', '2016-02-16 15:00:07.529', '1', '32911', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40100', '管理员', '2016-02-16 15:00:07.533', '管理员', '2016-02-16 15:00:07.533', '1', '32912', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40101', '管理员', '2016-02-16 15:00:07.537', '管理员', '2016-02-16 15:00:07.537', '1', '32913', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40102', '管理员', '2016-02-16 15:00:07.541', '管理员', '2016-02-16 15:00:07.541', '1', '214', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40103', '管理员', '2016-02-16 15:00:07.545', '管理员', '2016-02-16 15:00:07.545', '1', '32917', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40104', '管理员', '2016-02-16 15:00:07.549', '管理员', '2016-02-16 15:00:07.549', '1', '32918', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40105', '管理员', '2016-02-16 15:00:07.553', '管理员', '2016-02-16 15:00:07.553', '1', '32919', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40106', '管理员', '2016-02-16 15:00:07.557', '管理员', '2016-02-16 15:00:07.557', '1', '215', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40107', '管理员', '2016-02-16 15:00:07.561', '管理员', '2016-02-16 15:00:07.561', '1', '32914', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40108', '管理员', '2016-02-16 15:00:07.565', '管理员', '2016-02-16 15:00:07.565', '1', '32915', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40109', '管理员', '2016-02-16 15:00:07.569', '管理员', '2016-02-16 15:00:07.569', '1', '32916', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40110', '管理员', '2016-02-16 15:00:07.573', '管理员', '2016-02-16 15:00:07.573', '1', '39710', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40111', '管理员', '2016-02-16 15:00:07.585', '管理员', '2016-02-16 15:00:07.585', '1', '39711', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40112', '管理员', '2016-02-16 15:00:07.589', '管理员', '2016-02-16 15:00:07.589', '1', '39712', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40113', '管理员', '2016-02-16 15:00:07.593', '管理员', '2016-02-16 15:00:07.593', '1', '39713', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40114', '管理员', '2016-02-16 15:00:07.597', '管理员', '2016-02-16 15:00:07.597', '1', '209', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40115', '管理员', '2016-02-16 15:00:07.601', '管理员', '2016-02-16 15:00:07.601', '1', '210', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40116', '管理员', '2016-02-16 15:00:07.605', '管理员', '2016-02-16 15:00:07.605', '1', '279', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40117', '管理员', '2016-02-16 15:00:07.609', '管理员', '2016-02-16 15:00:07.609', '1', '280', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40118', '管理员', '2016-02-16 15:00:07.613', '管理员', '2016-02-16 15:00:07.613', '1', '281', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40119', '管理员', '2016-02-16 15:00:07.617', '管理员', '2016-02-16 15:00:07.617', '1', '282', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40120', '管理员', '2016-02-16 15:00:07.621', '管理员', '2016-02-16 15:00:07.621', '1', '28210', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40121', '管理员', '2016-02-16 15:00:07.625', '管理员', '2016-02-16 15:00:07.625', '1', '211', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40122', '管理员', '2016-02-16 15:00:07.629', '管理员', '2016-02-16 15:00:07.629', '1', '28710', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40123', '管理员', '2016-02-16 15:00:07.633', '管理员', '2016-02-16 15:00:07.633', '1', '28711', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40124', '管理员', '2016-02-16 15:00:07.637', '管理员', '2016-02-16 15:00:07.637', '1', '28712', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40125', '管理员', '2016-02-16 15:00:07.641', '管理员', '2016-02-16 15:00:07.641', '1', '28713', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40126', '管理员', '2016-02-16 15:00:07.645', '管理员', '2016-02-16 15:00:07.645', '1', '28714', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40127', '管理员', '2016-02-16 15:00:07.649', '管理员', '2016-02-16 15:00:07.649', '1', '28715', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40128', '管理员', '2016-02-16 15:00:07.653', '管理员', '2016-02-16 15:00:07.653', '1', '212', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40129', '管理员', '2016-02-16 15:00:07.657', '管理员', '2016-02-16 15:00:07.657', '1', '28716', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40130', '管理员', '2016-02-16 15:00:07.661', '管理员', '2016-02-16 15:00:07.661', '1', '28717', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40131', '管理员', '2016-02-16 15:00:07.665', '管理员', '2016-02-16 15:00:07.665', '1', '28718', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40132', '管理员', '2016-02-16 15:00:07.669', '管理员', '2016-02-16 15:00:07.669', '1', '28719', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40133', '管理员', '2016-02-16 15:00:07.672', '管理员', '2016-02-16 15:00:07.672', '1', '28720', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40134', '管理员', '2016-02-16 15:00:07.677', '管理员', '2016-02-16 15:00:07.677', '1', '28721', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40135', '管理员', '2016-02-16 15:00:07.68', '管理员', '2016-02-16 15:00:07.68', '1', '250', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40136', '管理员', '2016-02-16 15:00:07.684', '管理员', '2016-02-16 15:00:07.684', '1', '251', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40137', '管理员', '2016-02-16 15:00:07.688', '管理员', '2016-02-16 15:00:07.688', '1', '30510', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40138', '管理员', '2016-02-16 15:00:07.692', '管理员', '2016-02-16 15:00:07.692', '1', '30511', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40139', '管理员', '2016-02-16 15:00:07.696', '管理员', '2016-02-16 15:00:07.696', '1', '30512', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40140', '管理员', '2016-02-16 15:00:07.701', '管理员', '2016-02-16 15:00:07.701', '1', '30513', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40141', '管理员', '2016-02-16 15:00:07.705', '管理员', '2016-02-16 15:00:07.705', '1', '30514', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40142', '管理员', '2016-02-16 15:00:07.708', '管理员', '2016-02-16 15:00:07.708', '1', '252', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40143', '管理员', '2016-02-16 15:00:07.716', '管理员', '2016-02-16 15:00:07.716', '1', '13713', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40144', '管理员', '2016-02-16 15:00:07.72', '管理员', '2016-02-16 15:00:07.72', '1', '275', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40145', '管理员', '2016-02-16 15:00:07.724', '管理员', '2016-02-16 15:00:07.724', '1', '276', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40146', '管理员', '2016-02-16 15:00:07.728', '管理员', '2016-02-16 15:00:07.728', '1', '277', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40147', '管理员', '2016-02-16 15:00:07.732', '管理员', '2016-02-16 15:00:07.732', '1', '278', '1212');
+INSERT INTO "public"."sys_role_function" VALUES ('40148', '管理员', '2016-02-16 15:00:07.736', '管理员', '2016-02-16 15:00:07.736', '1', '35210', '1212');
 
 -- ----------------------------
 -- Table structure for sys_role_permission
@@ -2518,9 +2872,6 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of sys_role_user
 -- ----------------------------
-INSERT INTO "public"."sys_role_user" VALUES ('107', '管理员', '2015-11-16 16:25:41.051', '管理员', '2015-11-16 16:25:41.051', '0', '1212', '5601');
-INSERT INTO "public"."sys_role_user" VALUES ('108', '管理员', '2015-11-16 16:25:41.066', '管理员', '2015-11-16 16:25:41.066', '0', '1212', '7001');
-INSERT INTO "public"."sys_role_user" VALUES ('109', '管理员', '2015-11-16 16:25:41.078', '管理员', '2015-11-16 16:25:41.078', '0', '1212', '11501');
 INSERT INTO "public"."sys_role_user" VALUES ('1806', '管理员', '2015-11-17 01:52:55.053', '管理员', '2015-11-17 01:52:55.053', '0', '1673', '26');
 INSERT INTO "public"."sys_role_user" VALUES ('1807', '管理员', '2015-11-17 01:52:55.057', '管理员', '2015-11-17 01:52:55.057', '0', '1673', '28');
 INSERT INTO "public"."sys_role_user" VALUES ('6306', '管理员', '2015-07-29 10:31:41', '管理员', '2015-07-29 10:31:41', '1', '1213', '110');
@@ -2529,6 +2880,40 @@ INSERT INTO "public"."sys_role_user" VALUES ('13101', '管理员2', '2015-08-12 
 INSERT INTO "public"."sys_role_user" VALUES ('14201', '管理员2', '2015-08-13 10:42:49', '管理员2', '2015-08-13 10:42:49', '1', '14001', '14101');
 INSERT INTO "public"."sys_role_user" VALUES ('14202', '管理员2', '2015-08-13 10:43:05', '管理员2', '2015-08-13 10:43:05', '1', '14002', '14102');
 INSERT INTO "public"."sys_role_user" VALUES ('19310', '管理员', '2015-11-23 09:55:54.395', '管理员', '2015-11-23 09:55:54.395', '1', '1674', '28');
+INSERT INTO "public"."sys_role_user" VALUES ('29711', '管理员', '2015-12-08 17:47:38.845', '管理员', '2015-12-08 17:47:38.845', '1', '24810', '28110');
+INSERT INTO "public"."sys_role_user" VALUES ('39814', '管理员', '2016-02-16 15:00:12.498', '管理员', '2016-02-16 15:00:12.498', '1', '1212', '5601');
+INSERT INTO "public"."sys_role_user" VALUES ('39815', '管理员', '2016-02-16 15:00:12.506', '管理员', '2016-02-16 15:00:12.506', '1', '1212', '7001');
+INSERT INTO "public"."sys_role_user" VALUES ('39816', '管理员', '2016-02-16 15:00:12.51', '管理员', '2016-02-16 15:00:12.51', '1', '1212', '11501');
+INSERT INTO "public"."sys_role_user" VALUES ('39817', '管理员', '2016-02-16 15:00:12.514', '管理员', '2016-02-16 15:00:12.514', '1', '1212', '28111');
+
+-- ----------------------------
+-- Table structure for sys_seal_apply
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."sys_seal_apply";
+CREATE TABLE "public"."sys_seal_apply" (
+"id" int8 NOT NULL,
+"createby" varchar(255) COLLATE "default",
+"creationdate" timestamp(6),
+"updateby" varchar(255) COLLATE "default",
+"updatedate" timestamp(6),
+"currentnode" varchar(255) COLLATE "default",
+"processinstanceid" varchar(255) COLLATE "default",
+"status" int2,
+"applydate" timestamp(6),
+"department" varchar(255) COLLATE "default",
+"operator" varchar(255) COLLATE "default",
+"remark" varchar(255) COLLATE "default",
+"sealtype" int4,
+"usagecount" int4,
+"version_" int8
+)
+WITH (OIDS=FALSE)
+
+;
+
+-- ----------------------------
+-- Records of sys_seal_apply
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -2639,15 +3024,17 @@ INSERT INTO "public"."sys_user" VALUES ('97', '管理员', '2015-11-16 13:18:40.
 INSERT INTO "public"."sys_user" VALUES ('98', '管理员', '2015-11-16 13:19:51.931', '管理员', '2015-11-16 13:19:51.931', '0', '1', 'zhaoshuangyan@rexen.com.cn', '0', null, null, null, 'zhaoshuangyan', '18943169138', '赵双燕', 'ICy5YqxZB1uWSwcVLSNLcA==', '900', '', null);
 INSERT INTO "public"."sys_user" VALUES ('99', '管理员', '2015-11-16 13:21:02.102', '管理员', '2015-11-16 13:21:02.102', '0', '1', 'liuboyang@rexen.com.cn', '0', null, null, null, 'liuboyang', '13944825622', '刘博洋', 'ICy5YqxZB1uWSwcVLSNLcA==', '', '', null);
 INSERT INTO "public"."sys_user" VALUES ('100', '管理员', '2015-11-16 13:35:25.977', '管理员', '2015-11-16 13:35:25.977', '0', '1', 'Sunrui@rexen.com.cn', '0', null, null, null, 'sunrui', '18343118980', '孙瑞', 'ICy5YqxZB1uWSwcVLSNLcA==', '952', '', null);
-INSERT INTO "public"."sys_user" VALUES ('101', '管理员', '2015-11-16 13:36:37.011', '管理员', '2015-11-16 13:36:37.011', '0', '1', 'wangwei@rexen.com.cn', '0', null, null, null, 'wangwei', '18610488242', '王威', 'ICy5YqxZB1uWSwcVLSNLcA==', '', '', null);
-INSERT INTO "public"."sys_user" VALUES ('5601', '2', '2015-07-30 16:42:50', '管理员', '2015-07-30 16:42:50', '203', '1', '123', '0', null, '2015-12-03 14:58:21.823', '0:0:0:0:0:0:0:1', 'admin', '123', '管理员', 'ICy5YqxZB1uWSwcVLSNLcA==', '123', '', null);
+INSERT INTO "public"."sys_user" VALUES ('101', '管理员', '2015-11-16 13:36:37.011', '管理员', '2015-12-07 23:46:25.859', '2', '1', 'wangwei@rexen.com.cn', '0', null, null, '', 'wangwei', '18610488242', '王威', 'ICy5YqxZB1uWSwcVLSNLcA==', '', '', null);
+INSERT INTO "public"."sys_user" VALUES ('5601', '2', '2015-07-30 16:42:50', '管理员', '2015-07-30 16:42:50', '333', '1', '123', '0', null, '2016-02-16 15:00:22.241', '0:0:0:0:0:0:0:1', 'admin', '123', '管理员', 'ICy5YqxZB1uWSwcVLSNLcA==', '123', '', null);
 INSERT INTO "public"."sys_user" VALUES ('7001', '管理员', '2015-08-18 10:06:33', '管理员2', '2015-08-18 10:06:33', '4', '1', 'zhangsan@163.com', '0', null, '2015-07-30 16:43:35', '0:0:0:0:0:0:0:1', 'zhangsan', '1305004812', '张三', 'ICy5YqxZB1uWSwcVLSNLcA==', '', '', null);
 INSERT INTO "public"."sys_user" VALUES ('8301', null, '2015-07-30 16:00:12', '张三', '2015-07-30 16:00:12', '3', '1', 'lisi@163.com', '0', null, null, null, 'lisi', '13050041542', '李四', 'ICy5YqxZB1uWSwcVLSNLcA==', '', '', null);
 INSERT INTO "public"."sys_user" VALUES ('11401', '管理员2', '2015-08-05 11:44:29', '管理员2', '2015-08-05 11:44:29', '1', '1', '123@123.com', '0', null, null, null, 'wangwu', '123456', '王五', 'ICy5YqxZB1uWSwcVLSNLcA==', '', '', null);
-INSERT INTO "public"."sys_user" VALUES ('11501', '管理员2', '2015-08-18 10:00:28', '管理员2', '2015-08-18 10:00:28', '30', '1', '123', '0', null, '2015-11-22 20:43:14.827', '0:0:0:0:0:0:0:1', 'qwer', '123', 'qwer', 'ICy5YqxZB1uWSwcVLSNLcA==', '123', '', null);
+INSERT INTO "public"."sys_user" VALUES ('11501', '管理员2', '2015-08-18 10:00:28', '管理员2', '2015-08-18 10:00:28', '45', '1', '123', '0', null, '2016-02-02 09:45:33.691', '0:0:0:0:0:0:0:1', 'qwer', '123', 'qwer', 'ICy5YqxZB1uWSwcVLSNLcA==', '123', '', null);
 INSERT INTO "public"."sys_user" VALUES ('14101', '管理员2', '2015-08-18 10:01:49', '管理员2', '2015-08-18 10:01:50', '29', '1', 'quanxiankongzhi@123.com', '0', null, '2015-08-17 14:01:32', '0:0:0:0:0:0:0:1', 'quanxiankongzhi', '123', '权限控制人', 'ICy5YqxZB1uWSwcVLSNLcA==', '', '', null);
 INSERT INTO "public"."sys_user" VALUES ('14102', '管理员2', '2015-08-18 10:02:00', '管理员2', '2015-08-18 10:02:00', '5', '1', 'xitongchangliang@123.com', '0', null, '2015-08-13 16:42:45', '0:0:0:0:0:0:0:1', 'xitongchangliang', '123456', '系统常量管理人', 'ICy5YqxZB1uWSwcVLSNLcA==', '', '', null);
 INSERT INTO "public"."sys_user" VALUES ('15601', '管理员2', '2015-08-18 10:01:08', '管理员2', '2015-08-18 10:01:08', '3', '1', 'jiami@123.com', '0', null, '2015-08-18 10:00:44', '0:0:0:0:0:0:0:1', 'jiami', '1308504852', '加密账户', 'ICy5YqxZB1uWSwcVLSNLcA==', '', '', null);
+INSERT INTO "public"."sys_user" VALUES ('28110', '管理员', '2015-12-08 09:41:01.068', '管理员', '2015-12-08 11:09:06.532', '3', '1', 'wewe@sina.com', '0', null, null, '', '12121344', '15643117897', '12123144', 'ICy5YqxZB1uWSwcVLSNLcA==', '', '', null);
+INSERT INTO "public"."sys_user" VALUES ('28111', '管理员', '2015-12-08 11:10:16.738', '管理员', '2015-12-08 12:37:17.249', '2', '1', '1221@sn.com', '0', null, null, '', 'qw', '15643117897', 'e', 'ICy5YqxZB1uWSwcVLSNLcA==', '', '', null);
 
 -- ----------------------------
 -- Table structure for sys_user_rel
@@ -2711,7 +3098,7 @@ WITH (OIDS=FALSE)
 -- Records of sys_workgroup
 -- ----------------------------
 INSERT INTO "public"."sys_workgroup" VALUES ('6201', '管理员', '2015-11-24 11:07:19.432', '管理员', '2015-11-24 11:07:19.436', '5', '超级管理员工作组', '超级管理员权限', '系统应用');
-INSERT INTO "public"."sys_workgroup" VALUES ('7501', '管理员', '2015-11-24 11:07:34.008', '管理员', '2015-11-24 11:07:34.013', '4', '普通管理员工作组', '', '系统应用');
+INSERT INTO "public"."sys_workgroup" VALUES ('7501', '管理员', '2015-11-24 11:07:34.008', '管理员', '2015-12-08 16:59:14.615', '5', '普通管理员工作组', '普通管理员工作组', '系统应用');
 INSERT INTO "public"."sys_workgroup" VALUES ('20610', '管理员', '2015-11-24 11:06:22.369', '管理员', '2015-11-24 11:06:22.376', '3', '老总工作组', '具有全部协同办公系统权限', '协同办公');
 INSERT INTO "public"."sys_workgroup" VALUES ('20611', '管理员', '2015-11-24 11:06:59.25', '管理员', '2015-11-24 11:06:59.255', '2', '研发体系工作组', '具有全部查看权限', '协同办公');
 INSERT INTO "public"."sys_workgroup" VALUES ('20612', '管理员', '2015-11-24 11:06:52.092', '管理员', '2015-11-24 11:06:52.097', '2', '项目交付工作组', '具有交付查看权限', '协同办公');
@@ -2743,7 +3130,6 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 INSERT INTO "public"."sys_workgroup_role" VALUES ('1785', '管理员', '2015-11-17 01:48:57.065', '管理员', '2015-11-17 01:48:57.065', '0', '1776', '1673');
 INSERT INTO "public"."sys_workgroup_role" VALUES ('7704', null, '2015-07-29 17:06:47', null, '2015-07-29 17:06:47', '1', '1', '1');
-INSERT INTO "public"."sys_workgroup_role" VALUES ('10301', '管理员', '2015-07-31 14:46:36', '管理员', '2015-07-31 14:46:36', '1', '7501', '1212');
 INSERT INTO "public"."sys_workgroup_role" VALUES ('12401', 'qwer', '2015-08-11 15:20:49', 'qwer', '2015-08-11 15:20:49', '1', '6201', '1212');
 INSERT INTO "public"."sys_workgroup_role" VALUES ('20715', '管理员', '2015-11-24 09:12:51.162', '管理员', '2015-11-24 09:12:51.162', '1', '20614', '19915');
 INSERT INTO "public"."sys_workgroup_role" VALUES ('20716', '管理员', '2015-11-24 09:12:51.168', '管理员', '2015-11-24 09:12:51.168', '1', '20614', '1673');
@@ -2757,6 +3143,7 @@ INSERT INTO "public"."sys_workgroup_role" VALUES ('26111', '管理员', '2015-12
 INSERT INTO "public"."sys_workgroup_role" VALUES ('26112', '管理员', '2015-12-02 19:51:32.937', '管理员', '2015-12-02 19:51:32.937', '1', '20610', '19915');
 INSERT INTO "public"."sys_workgroup_role" VALUES ('26113', '管理员', '2015-12-02 19:51:32.94', '管理员', '2015-12-02 19:51:32.94', '1', '20610', '1674');
 INSERT INTO "public"."sys_workgroup_role" VALUES ('26114', '管理员', '2015-12-02 19:51:32.943', '管理员', '2015-12-02 19:51:32.943', '1', '20610', '24810');
+INSERT INTO "public"."sys_workgroup_role" VALUES ('29613', '管理员', '2015-12-08 17:36:56.967', '管理员', '2015-12-08 17:36:56.967', '1', '7501', '1212');
 
 -- ----------------------------
 -- Table structure for sys_workgroup_user
@@ -2779,7 +3166,6 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of sys_workgroup_user
 -- ----------------------------
-INSERT INTO "public"."sys_workgroup_user" VALUES ('10001', '管理员', '2015-07-31 14:39:06', '管理员', '2015-07-31 14:39:06', '1', '7501', '9901');
 INSERT INTO "public"."sys_workgroup_user" VALUES ('10004', '管理员', '2015-07-31 14:42:20', '管理员', '2015-07-31 14:42:20', '1', '6201', '7001');
 INSERT INTO "public"."sys_workgroup_user" VALUES ('20810', '管理员', '2015-11-24 09:08:15.27', '管理员', '2015-11-24 09:08:15.27', '1', '20610', '26');
 INSERT INTO "public"."sys_workgroup_user" VALUES ('20811', '管理员', '2015-11-24 09:08:15.28', '管理员', '2015-11-24 09:08:15.28', '1', '20610', '25');
@@ -2795,6 +3181,8 @@ INSERT INTO "public"."sys_workgroup_user" VALUES ('20820', '管理员', '2015-11
 INSERT INTO "public"."sys_workgroup_user" VALUES ('20821', '管理员', '2015-11-24 09:16:02.032', '管理员', '2015-11-24 09:16:02.032', '1', '20615', '87');
 INSERT INTO "public"."sys_workgroup_user" VALUES ('20822', '管理员', '2015-11-24 09:16:02.038', '管理员', '2015-11-24 09:16:02.038', '1', '20615', '88');
 INSERT INTO "public"."sys_workgroup_user" VALUES ('20823', '管理员', '2015-11-24 09:38:33.414', '管理员', '2015-11-24 09:38:33.414', '1', '20616', '95');
+INSERT INTO "public"."sys_workgroup_user" VALUES ('29514', '管理员', '2015-12-08 17:50:50.497', '管理员', '2015-12-08 17:50:50.497', '1', '7501', '28111');
+INSERT INTO "public"."sys_workgroup_user" VALUES ('29515', '管理员', '2015-12-08 17:50:50.501', '管理员', '2015-12-08 17:50:50.501', '1', '7501', '28110');
 
 -- ----------------------------
 -- Alter Sequences Owned By 
@@ -2809,7 +3197,7 @@ ALTER TABLE "public"."act_evt_log" ADD PRIMARY KEY ("log_nr_");
 -- ----------------------------
 -- Indexes structure for table act_ge_bytearray
 -- ----------------------------
-CREATE INDEX "act_idx_bytear_depl" ON "public"."act_ge_bytearray" USING btree (deployment_id_);
+CREATE INDEX "act_idx_bytear_depl" ON "public"."act_ge_bytearray" USING btree ("deployment_id_");
 
 -- ----------------------------
 -- Primary Key structure for table act_ge_bytearray
@@ -2824,10 +3212,10 @@ ALTER TABLE "public"."act_ge_property" ADD PRIMARY KEY ("name_");
 -- ----------------------------
 -- Indexes structure for table act_hi_actinst
 -- ----------------------------
-CREATE INDEX "act_idx_hi_act_inst_end" ON "public"."act_hi_actinst" USING btree (end_time_);
-CREATE INDEX "act_idx_hi_act_inst_exec" ON "public"."act_hi_actinst" USING btree (execution_id_, act_id_);
-CREATE INDEX "act_idx_hi_act_inst_procinst" ON "public"."act_hi_actinst" USING btree (proc_inst_id_, act_id_);
-CREATE INDEX "act_idx_hi_act_inst_start" ON "public"."act_hi_actinst" USING btree (start_time_);
+CREATE INDEX "act_idx_hi_act_inst_end" ON "public"."act_hi_actinst" USING btree ("end_time_");
+CREATE INDEX "act_idx_hi_act_inst_exec" ON "public"."act_hi_actinst" USING btree ("execution_id_", "act_id_");
+CREATE INDEX "act_idx_hi_act_inst_procinst" ON "public"."act_hi_actinst" USING btree ("proc_inst_id_", "act_id_");
+CREATE INDEX "act_idx_hi_act_inst_start" ON "public"."act_hi_actinst" USING btree ("start_time_");
 
 -- ----------------------------
 -- Primary Key structure for table act_hi_actinst
@@ -2847,11 +3235,11 @@ ALTER TABLE "public"."act_hi_comment" ADD PRIMARY KEY ("id_");
 -- ----------------------------
 -- Indexes structure for table act_hi_detail
 -- ----------------------------
-CREATE INDEX "act_idx_hi_detail_act_inst" ON "public"."act_hi_detail" USING btree (act_inst_id_);
-CREATE INDEX "act_idx_hi_detail_name" ON "public"."act_hi_detail" USING btree (name_);
-CREATE INDEX "act_idx_hi_detail_proc_inst" ON "public"."act_hi_detail" USING btree (proc_inst_id_);
-CREATE INDEX "act_idx_hi_detail_task_id" ON "public"."act_hi_detail" USING btree (task_id_);
-CREATE INDEX "act_idx_hi_detail_time" ON "public"."act_hi_detail" USING btree (time_);
+CREATE INDEX "act_idx_hi_detail_act_inst" ON "public"."act_hi_detail" USING btree ("act_inst_id_");
+CREATE INDEX "act_idx_hi_detail_name" ON "public"."act_hi_detail" USING btree ("name_");
+CREATE INDEX "act_idx_hi_detail_proc_inst" ON "public"."act_hi_detail" USING btree ("proc_inst_id_");
+CREATE INDEX "act_idx_hi_detail_task_id" ON "public"."act_hi_detail" USING btree ("task_id_");
+CREATE INDEX "act_idx_hi_detail_time" ON "public"."act_hi_detail" USING btree ("time_");
 
 -- ----------------------------
 -- Primary Key structure for table act_hi_detail
@@ -2861,9 +3249,9 @@ ALTER TABLE "public"."act_hi_detail" ADD PRIMARY KEY ("id_");
 -- ----------------------------
 -- Indexes structure for table act_hi_identitylink
 -- ----------------------------
-CREATE INDEX "act_idx_hi_ident_lnk_procinst" ON "public"."act_hi_identitylink" USING btree (proc_inst_id_);
-CREATE INDEX "act_idx_hi_ident_lnk_task" ON "public"."act_hi_identitylink" USING btree (task_id_);
-CREATE INDEX "act_idx_hi_ident_lnk_user" ON "public"."act_hi_identitylink" USING btree (user_id_);
+CREATE INDEX "act_idx_hi_ident_lnk_procinst" ON "public"."act_hi_identitylink" USING btree ("proc_inst_id_");
+CREATE INDEX "act_idx_hi_ident_lnk_task" ON "public"."act_hi_identitylink" USING btree ("task_id_");
+CREATE INDEX "act_idx_hi_ident_lnk_user" ON "public"."act_hi_identitylink" USING btree ("user_id_");
 
 -- ----------------------------
 -- Primary Key structure for table act_hi_identitylink
@@ -2873,8 +3261,8 @@ ALTER TABLE "public"."act_hi_identitylink" ADD PRIMARY KEY ("id_");
 -- ----------------------------
 -- Indexes structure for table act_hi_procinst
 -- ----------------------------
-CREATE INDEX "act_idx_hi_pro_i_buskey" ON "public"."act_hi_procinst" USING btree (business_key_);
-CREATE INDEX "act_idx_hi_pro_inst_end" ON "public"."act_hi_procinst" USING btree (end_time_);
+CREATE INDEX "act_idx_hi_pro_i_buskey" ON "public"."act_hi_procinst" USING btree ("business_key_");
+CREATE INDEX "act_idx_hi_pro_inst_end" ON "public"."act_hi_procinst" USING btree ("end_time_");
 
 -- ----------------------------
 -- Uniques structure for table act_hi_procinst
@@ -2889,7 +3277,7 @@ ALTER TABLE "public"."act_hi_procinst" ADD PRIMARY KEY ("id_");
 -- ----------------------------
 -- Indexes structure for table act_hi_taskinst
 -- ----------------------------
-CREATE INDEX "act_idx_hi_task_inst_procinst" ON "public"."act_hi_taskinst" USING btree (proc_inst_id_);
+CREATE INDEX "act_idx_hi_task_inst_procinst" ON "public"."act_hi_taskinst" USING btree ("proc_inst_id_");
 
 -- ----------------------------
 -- Primary Key structure for table act_hi_taskinst
@@ -2899,14 +3287,30 @@ ALTER TABLE "public"."act_hi_taskinst" ADD PRIMARY KEY ("id_");
 -- ----------------------------
 -- Indexes structure for table act_hi_varinst
 -- ----------------------------
-CREATE INDEX "act_idx_hi_procvar_name_type" ON "public"."act_hi_varinst" USING btree (name_, var_type_);
-CREATE INDEX "act_idx_hi_procvar_proc_inst" ON "public"."act_hi_varinst" USING btree (proc_inst_id_);
-CREATE INDEX "act_idx_hi_procvar_task_id" ON "public"."act_hi_varinst" USING btree (task_id_);
+CREATE INDEX "act_idx_hi_procvar_name_type" ON "public"."act_hi_varinst" USING btree ("name_", "var_type_");
+CREATE INDEX "act_idx_hi_procvar_proc_inst" ON "public"."act_hi_varinst" USING btree ("proc_inst_id_");
+CREATE INDEX "act_idx_hi_procvar_task_id" ON "public"."act_hi_varinst" USING btree ("task_id_");
 
 -- ----------------------------
 -- Primary Key structure for table act_hi_varinst
 -- ----------------------------
 ALTER TABLE "public"."act_hi_varinst" ADD PRIMARY KEY ("id_");
+
+-- ----------------------------
+-- Indexes structure for table act_procdef_info
+-- ----------------------------
+CREATE INDEX "act_idx_procdef_info_json" ON "public"."act_procdef_info" USING btree ("info_json_id_");
+CREATE INDEX "act_idx_procdef_info_proc" ON "public"."act_procdef_info" USING btree ("proc_def_id_");
+
+-- ----------------------------
+-- Uniques structure for table act_procdef_info
+-- ----------------------------
+ALTER TABLE "public"."act_procdef_info" ADD UNIQUE ("proc_def_id_");
+
+-- ----------------------------
+-- Primary Key structure for table act_procdef_info
+-- ----------------------------
+ALTER TABLE "public"."act_procdef_info" ADD PRIMARY KEY ("id_");
 
 -- ----------------------------
 -- Primary Key structure for table act_re_deployment
@@ -2916,9 +3320,9 @@ ALTER TABLE "public"."act_re_deployment" ADD PRIMARY KEY ("id_");
 -- ----------------------------
 -- Indexes structure for table act_re_model
 -- ----------------------------
-CREATE INDEX "act_idx_model_deployment" ON "public"."act_re_model" USING btree (deployment_id_);
-CREATE INDEX "act_idx_model_source" ON "public"."act_re_model" USING btree (editor_source_value_id_);
-CREATE INDEX "act_idx_model_source_extra" ON "public"."act_re_model" USING btree (editor_source_extra_value_id_);
+CREATE INDEX "act_idx_model_deployment" ON "public"."act_re_model" USING btree ("deployment_id_");
+CREATE INDEX "act_idx_model_source" ON "public"."act_re_model" USING btree ("editor_source_value_id_");
+CREATE INDEX "act_idx_model_source_extra" ON "public"."act_re_model" USING btree ("editor_source_extra_value_id_");
 
 -- ----------------------------
 -- Primary Key structure for table act_re_model
@@ -2938,8 +3342,8 @@ ALTER TABLE "public"."act_re_procdef" ADD PRIMARY KEY ("id_");
 -- ----------------------------
 -- Indexes structure for table act_ru_event_subscr
 -- ----------------------------
-CREATE INDEX "act_idx_event_subscr" ON "public"."act_ru_event_subscr" USING btree (execution_id_);
-CREATE INDEX "act_idx_event_subscr_config_" ON "public"."act_ru_event_subscr" USING btree (configuration_);
+CREATE INDEX "act_idx_event_subscr" ON "public"."act_ru_event_subscr" USING btree ("execution_id_");
+CREATE INDEX "act_idx_event_subscr_config_" ON "public"."act_ru_event_subscr" USING btree ("configuration_");
 
 -- ----------------------------
 -- Primary Key structure for table act_ru_event_subscr
@@ -2949,11 +3353,11 @@ ALTER TABLE "public"."act_ru_event_subscr" ADD PRIMARY KEY ("id_");
 -- ----------------------------
 -- Indexes structure for table act_ru_execution
 -- ----------------------------
-CREATE INDEX "act_idx_exe_parent" ON "public"."act_ru_execution" USING btree (parent_id_);
-CREATE INDEX "act_idx_exe_procdef" ON "public"."act_ru_execution" USING btree (proc_def_id_);
-CREATE INDEX "act_idx_exe_procinst" ON "public"."act_ru_execution" USING btree (proc_inst_id_);
-CREATE INDEX "act_idx_exe_super" ON "public"."act_ru_execution" USING btree (super_exec_);
-CREATE INDEX "act_idx_exec_buskey" ON "public"."act_ru_execution" USING btree (business_key_);
+CREATE INDEX "act_idx_exe_parent" ON "public"."act_ru_execution" USING btree ("parent_id_");
+CREATE INDEX "act_idx_exe_procdef" ON "public"."act_ru_execution" USING btree ("proc_def_id_");
+CREATE INDEX "act_idx_exe_procinst" ON "public"."act_ru_execution" USING btree ("proc_inst_id_");
+CREATE INDEX "act_idx_exe_super" ON "public"."act_ru_execution" USING btree ("super_exec_");
+CREATE INDEX "act_idx_exec_buskey" ON "public"."act_ru_execution" USING btree ("business_key_");
 
 -- ----------------------------
 -- Primary Key structure for table act_ru_execution
@@ -2963,11 +3367,11 @@ ALTER TABLE "public"."act_ru_execution" ADD PRIMARY KEY ("id_");
 -- ----------------------------
 -- Indexes structure for table act_ru_identitylink
 -- ----------------------------
-CREATE INDEX "act_idx_athrz_procedef" ON "public"."act_ru_identitylink" USING btree (proc_def_id_);
-CREATE INDEX "act_idx_ident_lnk_group" ON "public"."act_ru_identitylink" USING btree (group_id_);
-CREATE INDEX "act_idx_ident_lnk_user" ON "public"."act_ru_identitylink" USING btree (user_id_);
-CREATE INDEX "act_idx_idl_procinst" ON "public"."act_ru_identitylink" USING btree (proc_inst_id_);
-CREATE INDEX "act_idx_tskass_task" ON "public"."act_ru_identitylink" USING btree (task_id_);
+CREATE INDEX "act_idx_athrz_procedef" ON "public"."act_ru_identitylink" USING btree ("proc_def_id_");
+CREATE INDEX "act_idx_ident_lnk_group" ON "public"."act_ru_identitylink" USING btree ("group_id_");
+CREATE INDEX "act_idx_ident_lnk_user" ON "public"."act_ru_identitylink" USING btree ("user_id_");
+CREATE INDEX "act_idx_idl_procinst" ON "public"."act_ru_identitylink" USING btree ("proc_inst_id_");
+CREATE INDEX "act_idx_tskass_task" ON "public"."act_ru_identitylink" USING btree ("task_id_");
 
 -- ----------------------------
 -- Primary Key structure for table act_ru_identitylink
@@ -2977,7 +3381,7 @@ ALTER TABLE "public"."act_ru_identitylink" ADD PRIMARY KEY ("id_");
 -- ----------------------------
 -- Indexes structure for table act_ru_job
 -- ----------------------------
-CREATE INDEX "act_idx_job_exception" ON "public"."act_ru_job" USING btree (exception_stack_id_);
+CREATE INDEX "act_idx_job_exception" ON "public"."act_ru_job" USING btree ("exception_stack_id_");
 
 -- ----------------------------
 -- Primary Key structure for table act_ru_job
@@ -2987,10 +3391,10 @@ ALTER TABLE "public"."act_ru_job" ADD PRIMARY KEY ("id_");
 -- ----------------------------
 -- Indexes structure for table act_ru_task
 -- ----------------------------
-CREATE INDEX "act_idx_task_create" ON "public"."act_ru_task" USING btree (create_time_);
-CREATE INDEX "act_idx_task_exec" ON "public"."act_ru_task" USING btree (execution_id_);
-CREATE INDEX "act_idx_task_procdef" ON "public"."act_ru_task" USING btree (proc_def_id_);
-CREATE INDEX "act_idx_task_procinst" ON "public"."act_ru_task" USING btree (proc_inst_id_);
+CREATE INDEX "act_idx_task_create" ON "public"."act_ru_task" USING btree ("create_time_");
+CREATE INDEX "act_idx_task_exec" ON "public"."act_ru_task" USING btree ("execution_id_");
+CREATE INDEX "act_idx_task_procdef" ON "public"."act_ru_task" USING btree ("proc_def_id_");
+CREATE INDEX "act_idx_task_procinst" ON "public"."act_ru_task" USING btree ("proc_inst_id_");
 
 -- ----------------------------
 -- Primary Key structure for table act_ru_task
@@ -3000,20 +3404,15 @@ ALTER TABLE "public"."act_ru_task" ADD PRIMARY KEY ("id_");
 -- ----------------------------
 -- Indexes structure for table act_ru_variable
 -- ----------------------------
-CREATE INDEX "act_idx_var_bytearray" ON "public"."act_ru_variable" USING btree (bytearray_id_);
-CREATE INDEX "act_idx_var_exe" ON "public"."act_ru_variable" USING btree (execution_id_);
-CREATE INDEX "act_idx_var_procinst" ON "public"."act_ru_variable" USING btree (proc_inst_id_);
-CREATE INDEX "act_idx_variable_task_id" ON "public"."act_ru_variable" USING btree (task_id_);
+CREATE INDEX "act_idx_var_bytearray" ON "public"."act_ru_variable" USING btree ("bytearray_id_");
+CREATE INDEX "act_idx_var_exe" ON "public"."act_ru_variable" USING btree ("execution_id_");
+CREATE INDEX "act_idx_var_procinst" ON "public"."act_ru_variable" USING btree ("proc_inst_id_");
+CREATE INDEX "act_idx_variable_task_id" ON "public"."act_ru_variable" USING btree ("task_id_");
 
 -- ----------------------------
 -- Primary Key structure for table act_ru_variable
 -- ----------------------------
 ALTER TABLE "public"."act_ru_variable" ADD PRIMARY KEY ("id_");
-
--- ----------------------------
--- Primary Key structure for table cm_contract
--- ----------------------------
-ALTER TABLE "public"."cm_contract" ADD PRIMARY KEY ("id");
 
 -- ----------------------------
 -- Primary Key structure for table couchdb_attach
@@ -3146,6 +3545,11 @@ ALTER TABLE "public"."sys_department_user" ADD PRIMARY KEY ("id");
 ALTER TABLE "public"."sys_dict" ADD PRIMARY KEY ("id");
 
 -- ----------------------------
+-- Primary Key structure for table sys_duty
+-- ----------------------------
+ALTER TABLE "public"."sys_duty" ADD PRIMARY KEY ("id");
+
+-- ----------------------------
 -- Primary Key structure for table sys_function
 -- ----------------------------
 ALTER TABLE "public"."sys_function" ADD PRIMARY KEY ("id");
@@ -3181,6 +3585,11 @@ ALTER TABLE "public"."sys_organization" ADD PRIMARY KEY ("id");
 ALTER TABLE "public"."sys_permission" ADD PRIMARY KEY ("id");
 
 -- ----------------------------
+-- Primary Key structure for table sys_plugin
+-- ----------------------------
+ALTER TABLE "public"."sys_plugin" ADD PRIMARY KEY ("id");
+
+-- ----------------------------
 -- Primary Key structure for table sys_role
 -- ----------------------------
 ALTER TABLE "public"."sys_role" ADD PRIMARY KEY ("id");
@@ -3199,6 +3608,11 @@ ALTER TABLE "public"."sys_role_function" ADD PRIMARY KEY ("id");
 -- Primary Key structure for table sys_role_user
 -- ----------------------------
 ALTER TABLE "public"."sys_role_user" ADD PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table sys_seal_apply
+-- ----------------------------
+ALTER TABLE "public"."sys_seal_apply" ADD PRIMARY KEY ("id");
 
 -- ----------------------------
 -- Primary Key structure for table sys_user
@@ -3236,11 +3650,17 @@ ALTER TABLE "public"."sys_workgroup_user" ADD PRIMARY KEY ("id");
 ALTER TABLE "public"."act_ge_bytearray" ADD FOREIGN KEY ("deployment_id_") REFERENCES "public"."act_re_deployment" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
+-- Foreign Key structure for table "public"."act_procdef_info"
+-- ----------------------------
+ALTER TABLE "public"."act_procdef_info" ADD FOREIGN KEY ("info_json_id_") REFERENCES "public"."act_ge_bytearray" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."act_procdef_info" ADD FOREIGN KEY ("proc_def_id_") REFERENCES "public"."act_re_procdef" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- ----------------------------
 -- Foreign Key structure for table "public"."act_re_model"
 -- ----------------------------
+ALTER TABLE "public"."act_re_model" ADD FOREIGN KEY ("editor_source_extra_value_id_") REFERENCES "public"."act_ge_bytearray" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."act_re_model" ADD FOREIGN KEY ("deployment_id_") REFERENCES "public"."act_re_deployment" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."act_re_model" ADD FOREIGN KEY ("editor_source_value_id_") REFERENCES "public"."act_ge_bytearray" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "public"."act_re_model" ADD FOREIGN KEY ("editor_source_extra_value_id_") REFERENCES "public"."act_ge_bytearray" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."act_ru_event_subscr"
@@ -3250,17 +3670,17 @@ ALTER TABLE "public"."act_ru_event_subscr" ADD FOREIGN KEY ("execution_id_") REF
 -- ----------------------------
 -- Foreign Key structure for table "public"."act_ru_execution"
 -- ----------------------------
-ALTER TABLE "public"."act_ru_execution" ADD FOREIGN KEY ("proc_inst_id_") REFERENCES "public"."act_ru_execution" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."act_ru_execution" ADD FOREIGN KEY ("parent_id_") REFERENCES "public"."act_ru_execution" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."act_ru_execution" ADD FOREIGN KEY ("proc_inst_id_") REFERENCES "public"."act_ru_execution" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."act_ru_execution" ADD FOREIGN KEY ("super_exec_") REFERENCES "public"."act_ru_execution" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."act_ru_execution" ADD FOREIGN KEY ("proc_def_id_") REFERENCES "public"."act_re_procdef" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."act_ru_identitylink"
 -- ----------------------------
-ALTER TABLE "public"."act_ru_identitylink" ADD FOREIGN KEY ("proc_def_id_") REFERENCES "public"."act_re_procdef" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."act_ru_identitylink" ADD FOREIGN KEY ("proc_inst_id_") REFERENCES "public"."act_ru_execution" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."act_ru_identitylink" ADD FOREIGN KEY ("task_id_") REFERENCES "public"."act_ru_task" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."act_ru_identitylink" ADD FOREIGN KEY ("proc_def_id_") REFERENCES "public"."act_re_procdef" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."act_ru_job"
@@ -3270,15 +3690,15 @@ ALTER TABLE "public"."act_ru_job" ADD FOREIGN KEY ("exception_stack_id_") REFERE
 -- ----------------------------
 -- Foreign Key structure for table "public"."act_ru_task"
 -- ----------------------------
+ALTER TABLE "public"."act_ru_task" ADD FOREIGN KEY ("proc_def_id_") REFERENCES "public"."act_re_procdef" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."act_ru_task" ADD FOREIGN KEY ("proc_inst_id_") REFERENCES "public"."act_ru_execution" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."act_ru_task" ADD FOREIGN KEY ("execution_id_") REFERENCES "public"."act_ru_execution" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "public"."act_ru_task" ADD FOREIGN KEY ("proc_def_id_") REFERENCES "public"."act_re_procdef" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."act_ru_variable"
 -- ----------------------------
-ALTER TABLE "public"."act_ru_variable" ADD FOREIGN KEY ("proc_inst_id_") REFERENCES "public"."act_ru_execution" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."act_ru_variable" ADD FOREIGN KEY ("execution_id_") REFERENCES "public"."act_ru_execution" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."act_ru_variable" ADD FOREIGN KEY ("proc_inst_id_") REFERENCES "public"."act_ru_execution" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."act_ru_variable" ADD FOREIGN KEY ("bytearray_id_") REFERENCES "public"."act_ge_bytearray" ("id_") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
@@ -3300,5 +3720,5 @@ ALTER TABLE "public"."sys_role_permission" ADD FOREIGN KEY ("role_id") REFERENCE
 -- ----------------------------
 -- Foreign Key structure for table "public"."sys_user_role"
 -- ----------------------------
-ALTER TABLE "public"."sys_user_role" ADD FOREIGN KEY ("role_id") REFERENCES "public"."sys_role" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."sys_user_role" ADD FOREIGN KEY ("user_id") REFERENCES "public"."sys_user" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."sys_user_role" ADD FOREIGN KEY ("role_id") REFERENCES "public"."sys_role" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;

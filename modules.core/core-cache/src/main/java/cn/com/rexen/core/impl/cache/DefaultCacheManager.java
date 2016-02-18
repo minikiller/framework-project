@@ -27,7 +27,7 @@ public class DefaultCacheManager implements ICacheManager {
     }
 
     public void init() {
-        System.out.print("test");
+//        System.out.print("test");
     }
     @Override
     public <T> void save(String key, T value) {
