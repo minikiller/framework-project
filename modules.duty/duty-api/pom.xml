@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>duty-api</artifactId>
-    <name>Duty :: Duty - API</name>
+    <name>Admin :: Duty - API</name>
     <description>Duty API</description>
     <packaging>bundle</packaging>
 
