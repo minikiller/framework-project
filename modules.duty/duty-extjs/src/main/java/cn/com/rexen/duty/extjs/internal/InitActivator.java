@@ -11,7 +11,7 @@ import org.osgi.service.http.HttpService;
  */
 public class InitActivator extends KalixBundleActivator {
 
-    private static final String BUNDLE_NAME = " Duty Duty Extjs ";
+    private static final String BUNDLE_NAME = " Admin Duty Extjs ";
     public static final String KALIX_APP_ROFFICE_PATH = "/kalix/app/duty";
     public static final String KALIX_ROFFICE_RESOURCES_IMAGES = "/kalix/duty/resources/images";
     private static BundleContext context;

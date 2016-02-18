@@ -13,7 +13,7 @@
 
     <artifactId>duty-rest</artifactId>
     <packaging>bundle</packaging>
-    <name>Duty :: Duty - Rest</name>
+    <name>Admin :: Duty - Rest</name>
     <description>Duty Rest Service</description>
 
     <properties>

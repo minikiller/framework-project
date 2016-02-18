@@ -13,7 +13,7 @@
 
     <artifactId>duty-extjs</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Duty :: Duty - Extjs</name>
+    <name>Admin :: Duty - Extjs</name>
     <description>Duty :: Duty - Extjs</description>
     <packaging>bundle</packaging>
 

@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>duty-core</artifactId>
-    <name>Duty :: Duty - Core</name>
+    <name>Admin :: Duty - Core</name>
     <description>Duty Core</description>
     <packaging>bundle</packaging>
 

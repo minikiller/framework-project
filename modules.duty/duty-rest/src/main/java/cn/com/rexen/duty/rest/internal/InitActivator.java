@@ -10,7 +10,7 @@ import org.osgi.framework.BundleContext;
  */
 public class InitActivator implements BundleActivator {
 
-    private static final String BUNDLE_NAME = " Duty Duty Rest ";
+    private static final String BUNDLE_NAME = " Admin Duty Rest ";
     private static BundleContext context;
     private static Logger logger = Logger.getLogger(InitActivator.class);
 
