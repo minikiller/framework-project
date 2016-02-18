@@ -8,6 +8,7 @@ public class ProcessDefinitionDTO {
     private String name;
     private String key;
     private String description;
+    private String version;
     private String category;
     private int suspensionState;
 
@@ -58,5 +59,13 @@ public class ProcessDefinitionDTO {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 }

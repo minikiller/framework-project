@@ -1,6 +1,9 @@
 package cn.com.rexen.workflow.core.impl;
 
 import cn.com.rexen.core.api.security.IUserLoginService;
+import cn.com.rexen.core.util.Assert;
+import cn.com.rexen.core.util.SerializeUtil;
+import cn.com.rexen.core.util.StringUtils;
 import cn.com.rexen.workflow.api.biz.ITaskService;
 import cn.com.rexen.workflow.api.model.JsonData;
 import cn.com.rexen.workflow.api.model.TaskDTO;
@@ -16,6 +19,7 @@ import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by sunlf on 2015/7/31.
@@ -50,30 +54,43 @@ public class TaskServiceImpl implements ITaskService {
      * @return
      */
     @Override
-    public JsonData getTasks(int page, int limit) {
+    public JsonData getTasks(int page, int limit,String jsonStr) {
         //获得当前登陆用户
         String userName = userLoginService.getLoginName();
         List<TaskDTO> taskDTOList;
-        List<Task> taskList = taskService
-                .createTaskQuery()
-                .taskAssignee(userName).orderByTaskCreateTime().desc()
-                .listPage((page - 1) * limit, limit);
+        List<Task> taskList;
+        if(StringUtils.isNotEmpty(jsonStr)){
+            Map map= SerializeUtil.json2Map(jsonStr) ;
+            String taskName= (String) map.get("name");
+            Assert.notNull(taskName);
+            taskList =taskService
+                    .createTaskQuery()
+                    .taskAssignee(userName).taskNameLike("%"+taskName+"%").orderByTaskCreateTime().desc()
+                    .listPage((page - 1) * limit, limit);
+        }
+        else{
+            taskList = taskService
+                    .createTaskQuery()
+                    .taskAssignee(userName).orderByTaskCreateTime().desc()
+                    .listPage((page - 1) * limit, limit);
+        }
 
         if (taskList != null) {
             Mapper mapper = new DozerBeanMapper();
             taskDTOList = DozerHelper.map(mapper, taskList, TaskDTO.class);
-            jsonData.setTotalCount((int) taskService
-                    .createTaskQuery()
-                    .taskAssignee(userName).count());
+            jsonData.setTotalCount(taskList.size());
             //获得业务实体id
             for (TaskDTO dto : taskDTOList) {
                 ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
-                if(processInstance!=null) {
+                if (processInstance != null) {
                     dto.setEntityId(WorkflowUtil.getBizId(processInstance.getBusinessKey()));
-                }else{
+                    dto.setBusinessKey(processInstance.getBusinessKey());
+                } else {
                     HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
-                    if(historicProcessInstance!=null)
+                    if (historicProcessInstance != null){
                         dto.setEntityId(WorkflowUtil.getBizId(historicProcessInstance.getBusinessKey()));
+                        dto.setBusinessKey(processInstance.getBusinessKey());
+                    }
                 }
             }
             jsonData.setData(taskDTOList);

@@ -8,7 +8,7 @@ import cn.com.rexen.workflow.api.model.JsonData;
  * 工作流任务相关接口定义
  */
 public interface ITaskService extends IService {
-    JsonData getTasks(int page, int limit);
+    JsonData getTasks(int page, int limit,String jsonStr);
 
     String getStartUserName(String processInstanceId);
 }

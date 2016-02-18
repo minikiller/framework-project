@@ -1,6 +1,9 @@
 package cn.com.rexen.workflow.core.impl;
 
 import cn.com.rexen.core.api.biz.JsonStatus;
+import cn.com.rexen.core.util.Assert;
+import cn.com.rexen.core.util.SerializeUtil;
+import cn.com.rexen.core.util.StringUtils;
 import cn.com.rexen.workflow.api.biz.IProcessService;
 import cn.com.rexen.workflow.api.model.HistoricActivityInstanceDTO;
 import cn.com.rexen.workflow.api.model.HistoricProcessInstanceDTO;
@@ -21,6 +24,7 @@ import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by sunlf on 2015/7/30.
@@ -54,14 +58,24 @@ public class ProcessServiceImpl implements IProcessService {
      * @return
      */
     @Override
-    public JsonData getProcessDefinition(int page, int limit) {
-
+    public JsonData getProcessDefinition(int page, int limit, String jsonStr) {
         List<ProcessDefinitionDTO> processDefinitionDTOList;
-        List<ProcessDefinition> processDefinitionList = repositoryService.createProcessDefinitionQuery().latestVersion().listPage((page - 1) * limit, limit);
+        List<ProcessDefinition> processDefinitionList=null;
+        //按照流程定义名称模糊查询
+        if(StringUtils.isNotEmpty(jsonStr)){
+            Map map=SerializeUtil.json2Map(jsonStr) ;
+            String processDefinitionName= (String) map.get("name");
+            Assert.notNull(processDefinitionName);
+            processDefinitionList =repositoryService.createProcessDefinitionQuery().processDefinitionNameLike("%"+processDefinitionName+"%").listPage((page - 1) * limit, limit);
+        }
+        else{
+            processDefinitionList = repositoryService.createProcessDefinitionQuery().latestVersion().listPage((page - 1) * limit, limit);
+        }
+
         if (processDefinitionList != null) {
             Mapper mapper = new DozerBeanMapper();
             processDefinitionDTOList = DozerHelper.map(mapper, processDefinitionList, ProcessDefinitionDTO.class);
-            jsonData.setTotalCount((int) repositoryService.createProcessDefinitionQuery().latestVersion().count());
+            jsonData.setTotalCount(processDefinitionList.size());
             jsonData.setData(processDefinitionDTOList);
         }
         return jsonData;
@@ -97,9 +111,22 @@ public class ProcessServiceImpl implements IProcessService {
      * @return
      */
     @Override
-    public JsonData getProcessHistory(int page, int limit) {
+    public JsonData getProcessHistory(int page, int limit, String jsonStr) {
         List<HistoricProcessInstanceDTO> historicProcessDTOList;
-        List<HistoricProcessInstance> processHistoryList = historyService.createHistoricProcessInstanceQuery()
+        List<HistoricProcessInstance> processHistoryList;
+        if(StringUtils.isNotEmpty(jsonStr)){
+            Map map=SerializeUtil.json2Map(jsonStr) ;
+            String processInstanceBusinessKey= (String) map.get("name");
+            if (StringUtils.isNotEmpty(processInstanceBusinessKey))
+            processHistoryList = historyService.createHistoricProcessInstanceQuery().processInstanceBusinessKey(processInstanceBusinessKey)
+                    .orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
+            else{
+                processHistoryList = historyService.createHistoricProcessInstanceQuery()
+                        .orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
+            }
+        }
+        else
+                processHistoryList = historyService.createHistoricProcessInstanceQuery()
                 .orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
         if (processHistoryList != null) {
             Mapper mapper = new DozerBeanMapper();
@@ -120,7 +147,7 @@ public class ProcessServiceImpl implements IProcessService {
                         dto.setEntityId(WorkflowUtil.getBizId(historicProcessInstance.getBusinessKey()));
                 }
             }
-            long count = historyService.createHistoricProcessInstanceQuery().count();
+            long count = processHistoryList.size();
             jsonData.setTotalCount((int) count);
             jsonData.setData(historicProcessDTOList);
         }
