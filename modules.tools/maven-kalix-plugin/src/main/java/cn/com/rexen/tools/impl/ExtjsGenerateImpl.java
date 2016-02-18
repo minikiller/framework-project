@@ -72,7 +72,6 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
         this.attributes = attributes;
     }
 
-    ;
 
     @Override
     public void beforeGenJavaSource() throws MojoExecutionException {
@@ -183,7 +182,7 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
                 resultBuffer.append("\t\tlabelAlign: 'right',\r\n");
                 resultBuffer.append("\t\tlabelWidth: 120,\r\n");
                 resultBuffer.append("\t\twidth: 260,\r\n");
-                resultBuffer.append("\t\tname: '" + fieldName + "__begin__gt'\r\n");
+                resultBuffer.append("\t\tname: '" + fieldName + ":begin:gt'\r\n");
                 resultBuffer.append("\t},\r\n");
 
                 resultBuffer.append("\t{\r\n");
@@ -199,7 +198,7 @@ public class ExtjsGenerateImpl extends AbstractGenernateImpl {
                 resultBuffer.append("\t\theadLabel: true,\r\n");
                 resultBuffer.append("\t\tlabelAlign: 'right',\r\n");
                 resultBuffer.append("\t\twidth: 140,\r\n");
-                resultBuffer.append("\t\tname: '" + fieldName + "__end__lt'\r\n");
+                resultBuffer.append("\t\tname: '" + fieldName + ":end:lt'\r\n");
                 resultBuffer.append("\t},\r\n");
             } else if (field.getType().getValue().equals("int") || field.getType().getValue().equals("Integer")) {
                 resultBuffer.append("\t{\r\n");
