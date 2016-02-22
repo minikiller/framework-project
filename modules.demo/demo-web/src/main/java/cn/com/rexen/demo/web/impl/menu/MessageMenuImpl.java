@@ -64,6 +64,6 @@ public class MessageMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-cutlery";
+        return "x-fa fa-envelope";
     }
 }

@@ -7,7 +7,7 @@ import cn.com.rexen.demo.web.Const;
 import java.util.List;
 
 /**
- * 我的流程
+ * 个人办公
  */
 public class MyWorkingModuleImpl implements IModule {
     @Override
@@ -27,12 +27,12 @@ public class MyWorkingModuleImpl implements IModule {
 
     @Override
     public String getText() {
-        return "我的流程";
+        return "个人办公";
     }
 
     @Override
     public String getDescription() {
-        return "我的流程";
+        return "个人办公";
     }
 
     @Override
@@ -58,7 +58,7 @@ public class MyWorkingModuleImpl implements IModule {
 
     @Override
     public String getIconCls() {
-        return "right-icon x-fa fa-desktop";
+        return "right-icon x-fa fa-folder";
     }
 
     @Override
