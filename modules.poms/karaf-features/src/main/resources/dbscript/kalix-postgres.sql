@@ -222,7 +222,7 @@ INSERT INTO "public"."sys_function" VALUES
   (13710, '管理员2', '2015-08-13 10:35:37', '管理员2', '2015-08-14 09:02:41', 7901, 'dictMenu', 1, '字典管理', 13708, '字典菜单', 3, 'admin:sysModule:systemConstantMenu:dictMenu'),
   (13711, '管理员2', '2015-08-13 10:35:48', '管理员2', '2015-08-14 09:02:42', 7901, 'departmentMenu', 1, '部门管理', 13708, '部门菜单', 3, 'admin:sysModule:systemConstantMenu:departmentMenu'),
   (13712, '管理员2', '2015-08-13 10:35:59', '管理员2', '2015-08-14 09:02:42', 7901, 'areaMenu', 1, '区域管理', 13708, '区域菜单', 3, 'admin:sysModule:systemConstantMenu:areaMenu'),
-  (13713, '管理员2', '2015-08-13 10:37:43', '管理员2', '2015-08-14 09:02:44', 12501, 'demoWorkFlowModule', 0, '工作流演示', -1, '工作流演示模块', 4, 'test:demoWorkFlowModule'),
+  (13713, '管理员2', '2015-08-13 10:37:43', '管理员2', '2015-08-14 09:02:44', 12501, 'demoWorkFlowModule', 0, '流程管理', -1, '流程管理模块', 4, 'test:demoWorkFlowModule'),
   (13714, '管理员2', '2015-08-13 10:38:28', '管理员2', '2015-08-14 09:02:44', 12501, 'demoWorkFlowMenu', 0, '流程演示', 13713, '流程演示菜单', 4, 'test:demoWorkFlowModule:demoWorkFlowMenu'),
   (13715, '管理员2', '2015-08-13 10:39:10', '管理员2', '2015-08-14 09:02:44', 12501, 'noticeMenu', 1, '流程演示管理', 13714, '流程演示管理菜单', 3, 'test:demoWorkFlowModule:demoWorkFlowMenu:noticeMenu'),
   (13716, '管理员2', '2015-08-13 10:39:47', '管理员2', '2015-08-14 09:02:44', 12501, 'taskMenu', 1, '待办任务列表', 13714, '待办任务列表菜单', 3, 'test:demoWorkFlowModule:demoWorkFlowMenu:taskMenu'),

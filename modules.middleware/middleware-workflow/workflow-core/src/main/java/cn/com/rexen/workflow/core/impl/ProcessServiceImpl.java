@@ -1,6 +1,7 @@
 package cn.com.rexen.workflow.core.impl;
 
 import cn.com.rexen.core.api.biz.JsonStatus;
+import cn.com.rexen.core.api.security.IUserLoginService;
 import cn.com.rexen.core.util.Assert;
 import cn.com.rexen.core.util.SerializeUtil;
 import cn.com.rexen.core.util.StringUtils;
@@ -34,6 +35,7 @@ public class ProcessServiceImpl implements IProcessService {
     private RuntimeService runtimeService;
     private HistoryService historyService;
     private TaskService taskService;
+    private IUserLoginService userLoginService;
     private JsonData jsonData = new JsonData();
 
     public void setRuntimeService(RuntimeService runtimeService) {
@@ -50,6 +52,10 @@ public class ProcessServiceImpl implements IProcessService {
 
     public void setHistoryService(HistoryService historyService) {
         this.historyService = historyService;
+    }
+
+    public void setUserLoginService(IUserLoginService userLoginService) {
+        this.userLoginService = userLoginService;
     }
 
     /**
@@ -106,6 +112,61 @@ public class ProcessServiceImpl implements IProcessService {
     }
 
     /**
+     * 获得我的流程列表
+     *
+     * @return
+     */
+    @Override
+    public JsonData getMyProcessHistory(int page, int limit, String jsonStr) {
+        String loginUser=userLoginService.getLoginName();
+        List<HistoricProcessInstanceDTO> historicProcessDTOList;
+        List<HistoricProcessInstance> processHistoryList;
+        if(StringUtils.isNotEmpty(jsonStr)){
+            Map map=SerializeUtil.json2Map(jsonStr) ;
+            String processInstanceBusinessKey= (String) map.get("name");
+            if (StringUtils.isNotEmpty(processInstanceBusinessKey))
+            processHistoryList = historyService.createHistoricProcessInstanceQuery().processInstanceBusinessKey(processInstanceBusinessKey)
+                    .startedBy(loginUser).orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
+            else{
+                processHistoryList = historyService.createHistoricProcessInstanceQuery()
+                        .startedBy(loginUser).orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
+            }
+        }
+        else
+                processHistoryList = historyService.createHistoricProcessInstanceQuery().startedBy(loginUser)
+                .orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
+        if (processHistoryList != null) {
+            generateJsonData(processHistoryList);
+        }
+        return jsonData;
+
+    }
+
+    private void generateJsonData(List<HistoricProcessInstance> processHistoryList) {
+        List<HistoricProcessInstanceDTO> historicProcessDTOList;Mapper mapper = new DozerBeanMapper();
+        historicProcessDTOList = DozerHelper.map(mapper, processHistoryList, HistoricProcessInstanceDTO.class);
+        //设置流程状态
+        for (HistoricProcessInstanceDTO dto : historicProcessDTOList) {
+            if (dto.getEndTime() != null){
+                dto.setStatus("<a style='color:red'>结束</a>");
+            }else {
+                dto.setStatus("进行中");
+            }
+            ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
+            if(processInstance!=null) {
+                dto.setEntityId(WorkflowUtil.getBizId(processInstance.getBusinessKey()));
+            }else{
+                HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
+                if(historicProcessInstance!=null)
+                    dto.setEntityId(WorkflowUtil.getBizId(historicProcessInstance.getBusinessKey()));
+            }
+        }
+        long count = processHistoryList.size();
+        jsonData.setTotalCount((int) count);
+        jsonData.setData(historicProcessDTOList);
+    }
+
+    /**
      * 获得流程历史列表
      *
      * @return
@@ -118,38 +179,18 @@ public class ProcessServiceImpl implements IProcessService {
             Map map=SerializeUtil.json2Map(jsonStr) ;
             String processInstanceBusinessKey= (String) map.get("name");
             if (StringUtils.isNotEmpty(processInstanceBusinessKey))
-            processHistoryList = historyService.createHistoricProcessInstanceQuery().processInstanceBusinessKey(processInstanceBusinessKey)
-                    .orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
+                processHistoryList = historyService.createHistoricProcessInstanceQuery().processInstanceBusinessKey(processInstanceBusinessKey)
+                        .orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
             else{
                 processHistoryList = historyService.createHistoricProcessInstanceQuery()
                         .orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
             }
         }
         else
-                processHistoryList = historyService.createHistoricProcessInstanceQuery()
-                .orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
+            processHistoryList = historyService.createHistoricProcessInstanceQuery()
+                    .orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
         if (processHistoryList != null) {
-            Mapper mapper = new DozerBeanMapper();
-            historicProcessDTOList = DozerHelper.map(mapper, processHistoryList, HistoricProcessInstanceDTO.class);
-            //设置流程状态
-            for (HistoricProcessInstanceDTO dto : historicProcessDTOList) {
-                if (dto.getEndTime() != null){
-                    dto.setStatus("<a style='color:red'>结束</a>");
-                }else {
-                    dto.setStatus("进行中");
-                }
-                ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
-                if(processInstance!=null) {
-                    dto.setEntityId(WorkflowUtil.getBizId(processInstance.getBusinessKey()));
-                }else{
-                    HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
-                    if(historicProcessInstance!=null)
-                        dto.setEntityId(WorkflowUtil.getBizId(historicProcessInstance.getBusinessKey()));
-                }
-            }
-            long count = processHistoryList.size();
-            jsonData.setTotalCount((int) count);
-            jsonData.setData(historicProcessDTOList);
+            generateJsonData(processHistoryList);
         }
         return jsonData;
 

@@ -17,7 +17,7 @@ public class NoticeMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return Const.MODULE_NAME;
+        return Const.WORKFLOW_MODULE_NAME;
     }
 
     @Override

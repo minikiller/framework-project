@@ -17,7 +17,7 @@ public class TaskMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return Const.MODULE_NAME;
+        return Const.MY_WORKING_MODULE_NAME;
     }
 
     @Override

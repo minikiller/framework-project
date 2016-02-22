@@ -2519,7 +2519,7 @@ INSERT INTO "public"."sys_function" VALUES
    'roffice:deployModule:purchaseInvoiceMenu:view', '');
 INSERT INTO "public"."sys_function" VALUES
   ('13713', '管理员2', '2015-08-13 10:37:43', '管理员', '2015-11-17 00:56:22.586', '11', '12501', 'workFlowModule', '0',
-   '工作流演示', '-1', 'workflow:workFlowModule', '工作流演示模块');
+   '流程管理', '-1', 'workflow:workFlowModule', '流程管理模块');
 INSERT INTO "public"."sys_function" VALUES
   ('22810', '管理员', '2015-11-27 21:04:39.326', '管理员', '2015-12-02 09:37:04.746', '3', '58', 'taskMenu', '0', '任务目标',
    '59', 'roffice:cmModule:taskMenu', '');
