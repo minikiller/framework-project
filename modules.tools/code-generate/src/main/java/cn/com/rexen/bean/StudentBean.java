@@ -23,8 +23,6 @@ public class StudentBean {
     /**
      * @describe 年龄
      * @validator 介于1与120之间
-     * @max 120
-     * @min 1
      */
     private int age;
 
