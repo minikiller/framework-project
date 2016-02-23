@@ -47,6 +47,7 @@ Ext.define('kalix.app.message.view.MessageGrid', {
                 text: '接收者',
                 dataIndex: 'receiver'
             },
+
             {
                 text: '消息类别',
                 dataIndex: 'category'

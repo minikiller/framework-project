@@ -46,10 +46,7 @@
     <service interface="cn.com.rexen.core.api.web.IMenu">
         <bean class="cn.com.rexen.demo.web.impl.menu.ProcessHistoryMenuImpl"/>
     </service>
-    <!-- 我的流程页面-->
-    <service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.demo.web.impl.menu.MessageMenuImpl"/>
-    </service>
+
     <!-- 消息通知页面-->
     <service interface="cn.com.rexen.core.api.web.IMenu">
         <bean class="cn.com.rexen.demo.web.impl.menu.MyProcessHistoryMenuImpl"/>

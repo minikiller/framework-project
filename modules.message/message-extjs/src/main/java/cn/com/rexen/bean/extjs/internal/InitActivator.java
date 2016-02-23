@@ -27,7 +27,7 @@ public class InitActivator extends KalixBundleActivator {
 
         reference = bundleContext.getServiceReference(HttpService.class.getName());
         httpService = (HttpService) bundleContext.getService(reference);
-        httpService.registerResources(KALIX_APP_ROFFICE_PATH, "/kalix/message", null);
+        httpService.registerResources(KALIX_APP_ROFFICE_PATH, "/message", null);
         httpService.registerResources(KALIX_ROFFICE_RESOURCES_IMAGES, "/resources/images", null);
     }
 
