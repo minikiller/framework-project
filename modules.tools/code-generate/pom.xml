@@ -53,25 +53,25 @@
                         <projectName>Kalix</projectName>
                         <packageName>cn.com.rexen.bean</packageName>
                         <versionName>1.0.0-SNAPSHOT</versionName>
-                        <module_Name>学生</module_Name>
-                        <pomName>student</pomName>
-                        <beanName>Student</beanName>
+                        <module_Name>消息</module_Name>
+                        <pomName>message</pomName>
+                        <beanName>Message</beanName>
                         <!-- 实体java类所在的位置-->
                         <beanDir>src/main/java</beanDir>
-                        <extjsPrefix>kalix.app.student</extjsPrefix>
+                        <extjsPrefix>kalix.app.message</extjsPrefix>
 
                         <!-- 配置权限-->
                         <permission_app>admin</permission_app><!-- 应用-->
                         <permission_module>constructModule</permission_module><!-- 模块-->
-                        <permission_menu>studentMenu</permission_menu><!-- 菜单-->
+                        <permission_menu>messageMenu</permission_menu><!-- 菜单-->
 
                         <!-- 配置菜单-->
                         <module_id>constructModule</module_id>
-                        <menu_id>studentMenu</menu_id>
-                        <menu_text>学生管理</menu_text>
+                        <menu_id>messageMenu</menu_id>
+                        <menu_text>消息管理</menu_text>
                         <menu_index>50</menu_index>
                         <menu_icon_class>x-fa fa-cutlery</menu_icon_class>
-                        <menu_route_id>app/student</menu_route_id>
+                        <menu_route_id>app/message</menu_route_id>
                     </attributes>
                     <sources>
                         <source>${basedir}/src/main/java</source>
