@@ -11,7 +11,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.com.rexen.bean</groupId>
-    <artifactId>message.parent</artifactId>
+    <artifactId>modules.message</artifactId>
 
     <name>Kalix :: Modules - Message</name>
 
