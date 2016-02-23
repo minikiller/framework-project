@@ -7,9 +7,14 @@
         <bean class="cn.com.rexen.demo.web.impl.app.TestApplicationImpl"/>
     </service>
 
-    <!--工作流演示模块-->
+    <!--流程管理模块-->
     <service interface="cn.com.rexen.core.api.web.IModule">
         <bean class="cn.com.rexen.demo.web.impl.module.WorkFlowModuleImpl"/>
+    </service>
+
+    <!--我的流程模块-->
+    <service interface="cn.com.rexen.core.api.web.IModule">
+        <bean class="cn.com.rexen.demo.web.impl.module.MyWorkingModuleImpl"/>
     </service>
 
     <!--流程演示-->
@@ -41,12 +46,21 @@
     <service interface="cn.com.rexen.core.api.web.IMenu">
         <bean class="cn.com.rexen.demo.web.impl.menu.ProcessHistoryMenuImpl"/>
     </service>
-
+    <!-- 我的流程页面-->
+    <service interface="cn.com.rexen.core.api.web.IMenu">
+        <bean class="cn.com.rexen.demo.web.impl.menu.MessageMenuImpl"/>
+    </service>
+    <!-- 消息通知页面-->
+    <service interface="cn.com.rexen.core.api.web.IMenu">
+        <bean class="cn.com.rexen.demo.web.impl.menu.MyProcessHistoryMenuImpl"/>
+    </service>
 
     <!-- 流程历史页面-->
     <service interface="cn.com.rexen.workflow.api.web.IBizDataHandler">
         <bean class="cn.com.rexen.demo.web.impl.DemoBizDataFormImpl"/>
     </service>
+
+
     <!-- 审批页面-->
     <service interface="cn.com.rexen.workflow.api.web.IFormHandler">
         <bean class="cn.com.rexen.demo.web.impl.DemoAuditFormImpl"/>

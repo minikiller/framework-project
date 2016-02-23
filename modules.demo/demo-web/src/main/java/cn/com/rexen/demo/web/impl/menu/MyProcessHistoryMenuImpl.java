@@ -4,12 +4,12 @@ import cn.com.rexen.core.api.web.IMenu;
 import cn.com.rexen.demo.web.Const;
 
 /**
- * 流程定义菜单
+ * 我的流程列表
  * @author majian <br/>
  *         date:2015-8-10
  * @version 1.0.0
  */
-public class ProcessDefinitionMenuImpl implements IMenu {
+public class MyProcessHistoryMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {
         return true;
@@ -17,7 +17,7 @@ public class ProcessDefinitionMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return Const.WORKFLOW_MODULE_NAME;
+        return Const.MY_WORKING_MODULE_NAME;
     }
 
     @Override
@@ -27,17 +27,17 @@ public class ProcessDefinitionMenuImpl implements IMenu {
 
     @Override
     public String getId() {
-        return "processDefinitionMenu";
+        return "myProcessHistoryMenu";
     }
 
     @Override
     public String getText() {
-        return "流程定义管理";
+        return "我的流程";
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "我的流程";
     }
 
     @Override
@@ -47,21 +47,22 @@ public class ProcessDefinitionMenuImpl implements IMenu {
 
     @Override
     public String getRouteId() {
-        return Const.APPLICATION_NAME + "/processdefinition";
+        return Const.APPLICATION_NAME + "/myprocesshistory";
     }
 
     @Override
     public int getIndex() {
-        return 10;
+        return 20;
     }
 
     @Override
     public String getPermission() {
-        return Const.APPLICATION_NAME + ":" + getModuleId() + ":" + getId();
+//        return Const.APPLICATION_NAME + ":" + getModuleId() + ":" + getId();
+        return "";
     }
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-file-text";
+        return "x-fa fa-history";
     }
 }

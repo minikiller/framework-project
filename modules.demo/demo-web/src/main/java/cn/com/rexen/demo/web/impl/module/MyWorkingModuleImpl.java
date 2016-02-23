@@ -7,9 +7,9 @@ import cn.com.rexen.demo.web.Const;
 import java.util.List;
 
 /**
- * 流程管理
+ * 个人办公
  */
-public class WorkFlowModuleImpl implements IModule {
+public class MyWorkingModuleImpl implements IModule {
     @Override
     public List<IMenu> getMenus() {
         return null;
@@ -22,17 +22,17 @@ public class WorkFlowModuleImpl implements IModule {
 
     @Override
     public String getId() {
-        return Const.WORKFLOW_MODULE_NAME;
+        return Const.MY_WORKING_MODULE_NAME;
     }
 
     @Override
     public String getText() {
-        return "流程管理";
+        return "个人办公";
     }
 
     @Override
     public String getDescription() {
-        return "流程管理";
+        return "个人办公";
     }
 
     @Override
@@ -47,17 +47,18 @@ public class WorkFlowModuleImpl implements IModule {
 
     @Override
     public int getIndex() {
-        return 0;
+        return 10;
     }
 
     @Override
     public String getPermission() {
-        return Const.APPLICATION_NAME + ":" + getId();
+//        return Const.APPLICATION_NAME + ":" + getId();
+        return "";
     }
 
     @Override
     public String getIconCls() {
-        return "right-icon x-fa fa-desktop";
+        return "right-icon x-fa fa-folder";
     }
 
     @Override

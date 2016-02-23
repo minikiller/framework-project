@@ -21,5 +21,21 @@
 
         <property name="activityFontName" value="宋体"></property>
         <property name="labelFontName" value="宋体"></property>
+
+        <property name="eventListeners">
+            <list>
+                <bean class="cn.com.rexen.workflow.engine.MessageEvent" />
+            </list>
+        </property>
+
+        <property name="typedEventListeners">
+            <map>
+                <entry key="TASK_ASSIGNED">
+                    <list>
+                        <bean class="cn.com.rexen.workflow.engine.MessageEvent" />
+                    </list>
+                </entry>
+            </map>
+        </property>
     </bean>
 </beans>

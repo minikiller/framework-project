@@ -2036,7 +2036,7 @@ INSERT INTO "public"."sys_function" VALUES ('400', '管理员', '2015-11-16 23:1
 INSERT INTO "public"."sys_function" VALUES ('401', '管理员', '2015-11-16 23:17:43.831', '管理员', '2015-12-09 11:48:10.741', '4', '58', 'delete', '1', '删除', '351', 'roffice:deployModule:purchaseInvoiceMenu:delete', '');
 INSERT INTO "public"."sys_function" VALUES ('402', '管理员', '2015-11-16 23:17:51.504', '管理员', '2015-12-09 11:48:10.744', '4', '58', 'edit', '1', '编辑', '351', 'roffice:deployModule:purchaseInvoiceMenu:edit', '');
 INSERT INTO "public"."sys_function" VALUES ('403', '管理员', '2015-11-16 23:17:58.222', '管理员', '2015-12-09 11:48:10.748', '4', '58', 'view', '1', '查看', '351', 'roffice:deployModule:purchaseInvoiceMenu:view', '');
-INSERT INTO "public"."sys_function" VALUES ('13713', '管理员2', '2015-08-13 10:37:43', '管理员', '2015-12-09 12:43:00.577', '17', '12501', 'workFlowModule', '0', '工作流演示', '-1', 'workflow:workFlowModule', '工作流演示模块');
+INSERT INTO "public"."sys_function" VALUES ('13713', '管理员2', '2015-08-13 10:37:43', '管理员', '2015-12-09 12:43:00.577', '17', '12501', 'workFlowModule', '0', '流程管理', '-1', 'workflow:workFlowModule', '流程管理模块');
 INSERT INTO "public"."sys_function" VALUES ('22810', '管理员', '2015-11-27 21:04:39.326', '管理员', '2015-12-09 11:48:10.791', '7', '58', 'taskMenu', '0', '任务目标', '59', 'roffice:cmModule:taskMenu', '');
 INSERT INTO "public"."sys_function" VALUES ('22811', '管理员', '2015-11-27 21:05:03.693', '管理员', '2015-12-09 11:48:10.585', '6', '58', 'add', '1', '添加', '22810', 'roffice:cmModule:taskMenu:add', '');
 INSERT INTO "public"."sys_function" VALUES ('22812', '管理员', '2015-11-27 21:05:25.198', '管理员', '2015-12-09 11:48:10.794', '6', '58', 'delete', '1', '删除', '22810', 'roffice:cmModule:taskMenu:delete', '');

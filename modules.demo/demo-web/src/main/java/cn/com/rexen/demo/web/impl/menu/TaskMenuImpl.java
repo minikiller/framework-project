@@ -17,7 +17,7 @@ public class TaskMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return Const.MODULE_NAME;
+        return Const.MY_WORKING_MODULE_NAME;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class TaskMenuImpl implements IMenu {
 
     @Override
     public String getText() {
-        return "待办任务列表";
+        return "待办任务";
     }
 
     @Override
@@ -57,7 +57,8 @@ public class TaskMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return Const.APPLICATION_NAME + ":" + getModuleId() + ":" + getId();
+//        return Const.APPLICATION_NAME + ":" + getModuleId() + ":" + getId();
+        return "";
     }
 
     @Override

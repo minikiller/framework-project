@@ -7,6 +7,10 @@
              targetNamespace="http://www.activiti.org/test">
     <process id="fireworks" name="印章使用申请流程" isExecutable="true">
         <documentation>印章使用申请流程</documentation>
+        <extensionElements>
+            <activiti:eventListener class="cn.com.rexen.workflow.engine.MessageEvent" entityType="task" events="TASK_ASSIGNED" />
+            <!--<activiti:eventListener delegateExpression="${testEventListener}" events="ENTITY_CREATED" entityType="task" />-->
+        </extensionElements>
         <startEvent id="startevent1" name="Start" activiti:formKey="start.form"></startEvent>
         <userTask id="usertask2" name="部门负责人审批" activiti:assignee="qwer" activiti:formKey="audit.form">
             <documentation>印章使用申请流程</documentation>

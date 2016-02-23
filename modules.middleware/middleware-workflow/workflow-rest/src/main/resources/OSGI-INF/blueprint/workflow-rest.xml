@@ -36,6 +36,11 @@
                 <to uri="bean:processService?method=getProcessHistory(${header.page},${header.limit},${header.jsonStr})"/>
             </get>
 
+            <get id="route-getMyHistoryProcess" uri="/myHistory" outType="cn.com.rexen.workflow.api.model.JsonData">
+                <description>Find All My Start History Process</description>
+                <to uri="bean:processService?method=getMyProcessHistory(${header.page},${header.limit},${header.jsonStr})"/>
+            </get>
+
             <get id="route-activateProcessDefinition" uri="/activate" outType="cn.com.rexen.workflow.api.model.JsonData">
                 <description>Activate Process Definition</description>
                 <to uri="bean:processService?method=activateProcessDefinition(${header.key})"/>
