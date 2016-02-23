@@ -1,7 +1,6 @@
 package cn.com.rexen.bean.core.biz;
 
 import cn.com.rexen.audit.api.dao.IAuditBeanDao;
-import cn.com.rexen.bean.entities.MessageBean;
 import org.activiti.engine.impl.util.json.JSONObject;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
@@ -19,10 +18,9 @@ public class WorkFlowMessageEventImpl implements EventHandler {
 
     @Override
     public void handleEvent(Event event) {
-        JSONObject taskJson = new JSONObject();
-        String json = (String) event.getProperty("message");
-        taskJson = json.
-                MessageBean messageBean = taskJson.fromJson(json, MessageBean.class);
-        dao.save(messageBean);
+        String json = (String) event.getProperty("body");
+        JSONObject taskJson = new JSONObject(json);
+        taskJson.get("assignee");
+
     }
 }
