@@ -6,4 +6,5 @@ package cn.com.rexen.demo.api;
  */
 public class Const {
     public static String WORKFLOW_PROCESS_KEY = "fireworks";
+    public static String WORKFLOW_CAR_PROCESS_KEY = "公务用车申请";
 }

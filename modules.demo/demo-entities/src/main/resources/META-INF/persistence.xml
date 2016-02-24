@@ -11,6 +11,7 @@
         <class>cn.com.rexen.core.api.persistence.WorkflowEntity</class>
         <class>cn.com.rexen.demo.entities.NoticeBean</class>
         <class>cn.com.rexen.demo.entities.SealApplyBean</class>
+        <class>cn.com.rexen.demo.entities.CarApplyBean</class>
 
         <properties>
             <property name="openjpa.BrokerImpl" value="non-finalizing"/>

@@ -18,5 +18,11 @@
     <bean id="sealApplyBeanDaoImpl" class="cn.com.rexen.demo.persist.openjpa.SealApplyBeanDaoImpl">
         <tx:transaction method="*" value="Required"/>
     </bean>
+
+    <service interface="cn.com.rexen.demo.api.dao.ICarApplyBeanDao" ref="carApplyBeanDaoImpl"/>
+
+    <bean id="carApplyBeanDaoImpl" class="cn.com.rexen.demo.persist.openjpa.CarApplyBeanDaoImpl">
+        <tx:transaction method="*" value="Required"/>
+    </bean>
 </blueprint>
 

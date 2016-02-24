@@ -31,7 +31,16 @@
     </bean>
 
     <bean id="sealApplyBeanService" class="cn.com.rexen.demo.core.biz.SealApplyBeanServiceImpl">
-        <property name="dao" ref="sealAPplyBeanDao"/>
+        <property name="dao" ref="sealApplyBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
+        <property name="identityService" ref="identityService"/>
+        <property name="runtimeService" ref="runtimeService"/>
+        <property name="taskService" ref="taskService"/>
+    </bean>
+
+    <service interface="cn.com.rexen.demo.api.biz.ICarApplyBeanService" ref="carApplyBeanService"/>
+    <bean id="carApplyBeanService" class="cn.com.rexen.demo.core.biz.CarApplyBeanServiceImpl">
+        <property name="dao" ref="carApplyBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="identityService" ref="identityService"/>
         <property name="runtimeService" ref="runtimeService"/>
@@ -39,6 +48,7 @@
     </bean>
 
     <reference id="noticeBeanDao" interface="cn.com.rexen.demo.api.dao.INoticeBeanDao"/>
-    <reference id="sealAPplyBeanDao" interface="cn.com.rexen.demo.api.dao.ISealApplyBeanDao"/>
+    <reference id="sealApplyBeanDao" interface="cn.com.rexen.demo.api.dao.ISealApplyBeanDao"/>
+    <reference id="carApplyBeanDao" interface="cn.com.rexen.demo.api.dao.ICarApplyBeanDao"/>
 </blueprint>
 

@@ -37,6 +37,11 @@
         <bean class="cn.com.rexen.demo.web.impl.menu.SealApplyMenuImpl"/>
     </service>
 
+    <!--用车申请-->
+    <service interface="cn.com.rexen.core.api.web.IMenu">
+        <bean class="cn.com.rexen.demo.web.impl.menu.CarApplyMenuImpl"/>
+    </service>
+
     <!--流程定义管理-->
     <service interface="cn.com.rexen.core.api.web.IMenu">
         <bean class="cn.com.rexen.demo.web.impl.menu.ProcessDefinitionMenuImpl"/>
