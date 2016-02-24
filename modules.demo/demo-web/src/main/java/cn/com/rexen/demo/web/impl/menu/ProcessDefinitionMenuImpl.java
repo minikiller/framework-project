@@ -17,7 +17,7 @@ public class ProcessDefinitionMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return Const.WORKFLOW_MODULE_NAME;
+        return Const.WORKFLOW_MANAGE_MODULE_NAME;
     }
 
     @Override

@@ -18,7 +18,7 @@ public class SealApplyMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return Const.WORKFLOW_MODULE_NAME;
+        return Const.WORKFLOW_BIZ_MODULE_NAME;
     }
 
     @Override
@@ -58,7 +58,8 @@ public class SealApplyMenuImpl implements IMenu {
 
     @Override
     public String getPermission() {
-        return Const.APPLICATION_NAME + ":" + getModuleId() + ":" + getId();
+//        return Const.APPLICATION_NAME + ":" + getModuleId() + ":" + getId();
+        return "";
     }
 
     @Override

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 流程管理
  */
-public class WorkFlowModuleImpl implements IModule {
+public class WorkFlowManageModuleImpl implements IModule {
     @Override
     public List<IMenu> getMenus() {
         return null;
@@ -22,7 +22,7 @@ public class WorkFlowModuleImpl implements IModule {
 
     @Override
     public String getId() {
-        return Const.WORKFLOW_MODULE_NAME;
+        return Const.WORKFLOW_MANAGE_MODULE_NAME;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class WorkFlowModuleImpl implements IModule {
 
     @Override
     public int getIndex() {
-        return 0;
+        return 30;
     }
 
     @Override

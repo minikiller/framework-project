@@ -5,6 +5,7 @@ package cn.com.rexen.demo.web;
  */
 public class Const {
     public static final String APPLICATION_NAME = "workflow";
-    public static final String WORKFLOW_MODULE_NAME = "workFlowModule";
+    public static final String WORKFLOW_MANAGE_MODULE_NAME = "workFlowModule";
+    public static final String WORKFLOW_BIZ_MODULE_NAME = "workFlowBizModule";
     public static final String MY_WORKING_MODULE_NAME = "myWokingModule";
 }
