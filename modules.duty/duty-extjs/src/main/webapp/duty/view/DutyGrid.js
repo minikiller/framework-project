@@ -1,5 +1,5 @@
 /**
- * 职务表格
+ * 职位表格
  * @author
  * @version 1.0.0
  */
@@ -40,14 +40,14 @@ Ext.define('kalix.app.duty.view.DutyGrid', {
                 hidden: true,
             },
             {
-                text: '职务名称',
+                text: '职位名称',
                 dataIndex: 'name',
             },
             {
                 text: '所在部门',
                 dataIndex: 'department',
             }, {
-                text: '职务描述',
+                text: '职位描述',
                 dataIndex: 'comment',
             },
             {

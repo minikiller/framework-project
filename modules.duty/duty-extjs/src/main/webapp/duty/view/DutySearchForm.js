@@ -1,5 +1,5 @@
 /**
- * 职务查询表单
+ * 职位查询表单
  * @author
  * @version 1.0.0
  */
@@ -11,7 +11,7 @@ Ext.define('kalix.app.duty.view.DutySearchForm', {
     items: [
         {
             xtype: 'textfield',
-            fieldLabel: '职务名称',
+            fieldLabel: '职位名称',
             labelAlign: 'right',
             labelWidth: 60,
             width: 200,

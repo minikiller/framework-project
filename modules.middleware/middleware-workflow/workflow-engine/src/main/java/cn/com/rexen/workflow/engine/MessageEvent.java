@@ -4,8 +4,8 @@ import cn.com.rexen.core.util.JNDIHelper;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.delegate.event.ActivitiEvent;
 import org.activiti.engine.delegate.event.ActivitiEventListener;
-import org.activiti.engine.impl.util.json.JSONObject;
 import org.activiti.engine.task.Task;
+import org.json.JSONObject;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventAdmin;
 

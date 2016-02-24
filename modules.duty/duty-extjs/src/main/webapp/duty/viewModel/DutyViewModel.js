@@ -1,5 +1,5 @@
 /**
- * 职务模型
+ * 职位模型
  *
  * @author
  * @version 1.0.0
@@ -14,9 +14,9 @@ Ext.define('kalix.app.duty.viewModel.DutyViewModel', {
         icon: '',
         title: '',
         view_operation: false,
-        view_title: '查看职务',
-        add_title: '添加职务',
-        edit_title: '修改职务',
+        view_title: '查看职位',
+        add_title: '添加职位',
+        edit_title: '修改职位',
         add_image_path: '/kalix/app/duty/resources/images/duty_add.png',
         view_image_path: '/kalix/app/duty/resources/images/duty_view.png',
         edit_image_path: '/kalix/app/duty/resources/images/duty_edit.png',

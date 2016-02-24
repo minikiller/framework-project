@@ -1,5 +1,5 @@
 /**
- * 职务首页
+ * 职位首页
  *
  * @author
  * @version 1.0.0
@@ -15,14 +15,14 @@ Ext.define('kalix.app.duty.Main', {
     viewModel: 'dutyViewModel',
     items: [
         {
-            title: '职务查询',
+            title: '职位查询',
             iconCls: 'x-fa fa-search',
             xtype: 'dutySearchForm'
         }, {
             xtype: 'dutyGridPanel',
             id: 'dutyGridPanel',
-            title: '职务列表',
-            iconCls: 'x-fa fa-search',
+            title: '职位列表',
+            iconCls: 'x-fa fa-cutlery',
             margin: 10
         }
     ]

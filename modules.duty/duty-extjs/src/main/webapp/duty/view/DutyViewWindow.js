@@ -1,5 +1,5 @@
 /**
- * 职务查看表单
+ * 职位查看表单
  *
  * @author
  * @version 1.0.0
@@ -20,7 +20,7 @@ Ext.define('kalix.app.duty.view.DutyViewWindow', {
             defaults: {readOnly: true},
             xtype: 'baseForm',
             items: [{
-                fieldLabel: '职务名称',
+                fieldLabel: '职位名称',
                 allowBlank: false,
                 bind: {
                     activeError: '{validation.name}',
@@ -36,7 +36,7 @@ Ext.define('kalix.app.duty.view.DutyViewWindow', {
                 }
             },
                 {
-                    fieldLabel: '职务描述',
+                    fieldLabel: '职位描述',
                     allowBlank: false,
                     bind: {
                         activeError: '{validation.comment}',

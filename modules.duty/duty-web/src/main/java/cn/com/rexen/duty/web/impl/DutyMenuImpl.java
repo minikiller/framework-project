@@ -25,7 +25,7 @@ public class DutyMenuImpl implements IMenu {
 
         @Override
         public String getDescription() {
-            return "职务管理";
+            return "职位管理";
         }
 
         @Override
@@ -46,7 +46,7 @@ public class DutyMenuImpl implements IMenu {
 
         @Override
         public String getText() {
-            return "职务管理";
+            return "职位管理";
         }
 
         @Override

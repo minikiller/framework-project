@@ -1,5 +1,5 @@
 /**
- * 职务新增和修改表单
+ * 职位新增和修改表单
  *
  * @author
  * @version 1.0.0
@@ -23,7 +23,7 @@ Ext.define('kalix.app.duty.view.DutyWindow', {
     items: [{
         xtype: 'baseForm',
         items: [{
-            fieldLabel: '职务名称',
+            fieldLabel: '职位名称',
             allowBlank: false,
             bind: {
                 activeError: '{validation.name}',
@@ -38,7 +38,7 @@ Ext.define('kalix.app.duty.view.DutyWindow', {
                 value: '{rec.department}'
             }
         }, {
-            fieldLabel: '职务描述',
+            fieldLabel: '职位描述',
             allowBlank: false,
             xtype: 'textarea',
             bind: {

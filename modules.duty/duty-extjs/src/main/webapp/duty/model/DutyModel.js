@@ -1,5 +1,5 @@
 /**
- * 职务模型
+ * 职位模型
  *
  * @author
  * @version 1.0.0
@@ -31,7 +31,7 @@ Ext.define('kalix.app.duty.model.DutyModel', {
         ],
         name: [{
             type: 'presence',
-            message: '职务名称不能为空!'
+            message: '职位名称不能为空!'
         }]
     }
 });

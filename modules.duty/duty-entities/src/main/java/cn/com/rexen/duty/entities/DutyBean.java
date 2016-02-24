@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 /**
- * @类描述：职务管理
+ * @类描述：职位管理
  * @创建人：zangyanming
  * @创建时间：2016-01-07
  * @修改人：
@@ -18,11 +18,11 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "sys_duty")
 public class DutyBean extends PersistentEntity {
-    @NotNull(message = "'职务名称'是必填项")
-    private String name;//职务名称
+    @NotNull(message = "'职位名称'是必填项")
+    private String name;//职位名称
     @NotNull(message = "'所在部门'是必填项")
     private String department;   //所在部门
-    private String comment; //职务描述
+    private String comment; //职位描述
 
     public String getName() {
         return name;
