@@ -1,6 +1,7 @@
 package cn.com.rexen.demo.entities;
 
 import cn.com.rexen.core.api.persistence.WorkflowEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -23,7 +24,9 @@ public class CarApplyBean extends WorkflowEntity {
     private String department;//申请部门
     private String reason;//用车事由
     private Integer usageCount; //乘车人数
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date beginDate;//用车时段,开始时间
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date endDate;//用车时段，结束时间
     private String address;//用车起始地点
     private boolean city;//是否市内用车
