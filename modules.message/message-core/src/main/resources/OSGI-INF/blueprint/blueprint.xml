@@ -7,10 +7,20 @@
              ref="beanServiceImpl">
     </service>
 
+
     <bean id="beanServiceImpl" class="cn.com.rexen.bean.core.biz.MessageBeanServiceImpl">
         <property name="dao" ref="messageBeanDao"/>
     </bean>
 
     <reference id="messageBeanDao" interface="cn.com.rexen.bean.api.dao.IMessageBeanDao"/>
+
+    <service interface="org.osgi.service.event.EventHandler" ref="workFlowMessageEventImpl">
+        <service-properties>
+            <entry key="event.topics" value="cn/com/rexen/engine/message"/>
+        </service-properties>
+    </service>
+    <bean id="workFlowMessageEventImpl" class="cn.com.rexen.bean.core.biz.WorkFlowMessageEventImpl">
+        <property name="dao" ref="messageBeanDao"/>
+    </bean>
 </blueprint>
 
