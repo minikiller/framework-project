@@ -22,13 +22,16 @@ public class WorkFlowMessageEventImpl implements EventHandler {
         String json = (String) event.getProperty("body");
         JSONObject taskJson = new JSONObject(json);
         String receiver = (String)taskJson.get("assignee");
+        String processDefinitionId = (String) taskJson.get("processDefinitionId");
 
         MessageBean messageBean = new MessageBean();
-        messageBean.setTitle("title");
-        messageBean.setContent("content");
+        messageBean.setTitle("代办通知");
+        String content;
+        content = String.format("%s,您好！\r\n  您有一个代办流程请尽快处理！流程号为%s。", receiver, processDefinitionId);
+        messageBean.setContent(content);
         messageBean.setReceiver(receiver);
+        messageBean.setSender("系统管理员");
 
         dao.save(messageBean);
-
     }
 }

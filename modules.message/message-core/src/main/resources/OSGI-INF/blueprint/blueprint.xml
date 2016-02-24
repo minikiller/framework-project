@@ -16,7 +16,7 @@
 
     <service interface="org.osgi.service.event.EventHandler" ref="workFlowMessageEventImpl">
         <service-properties>
-            <entry key="event.topics" value="cn/com/rexen/message"/>
+            <entry key="event.topics" value="cn/com/rexen/engine/message"/>
         </service-properties>
     </service>
     <bean id="workFlowMessageEventImpl" class="cn.com.rexen.bean.core.biz.WorkFlowMessageEventImpl">
