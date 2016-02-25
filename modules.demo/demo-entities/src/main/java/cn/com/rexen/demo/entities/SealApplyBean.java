@@ -16,18 +16,23 @@ import java.util.Date;
 public class SealApplyBean extends WorkflowEntity {
     //申请部门
     private String department;
-    //申请时间
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date applyDate;
     //用印数
     private Integer usageCount;
     //印章类别
     private Integer sealType;
-    //经办人
-    private String operator;
+    //部门负责人
+    private String departmentHead;
+    //分公司负责人
+    private String filialeHead;
+    //法律顾问
+    private String counsel;
+    //总经理
+    private String generalManager;
+    //印章专管员
+    private String sealAdministrator;
+
     //备注
     private String remark;
-
 
     public String getDepartment() {
         return department;
@@ -35,14 +40,6 @@ public class SealApplyBean extends WorkflowEntity {
 
     public void setDepartment(String department) {
         this.department = department;
-    }
-
-    public Date getApplyDate() {
-        return applyDate;
-    }
-
-    public void setApplyDate(Date date) {
-        this.applyDate = date;
     }
 
     public Integer getUsageCount() {
@@ -61,19 +58,51 @@ public class SealApplyBean extends WorkflowEntity {
         this.sealType = sealType;
     }
 
-    public String getOperator() {
-        return operator;
-    }
-
-    public void setOperator(String operator) {
-        this.operator = operator;
-    }
-
     public String getRemark() {
         return remark;
     }
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getDepartmentHead() {
+        return departmentHead;
+    }
+
+    public void setDepartmentHead(String departmentHead) {
+        this.departmentHead = departmentHead;
+    }
+
+    public String getFilialeHead() {
+        return filialeHead;
+    }
+
+    public void setFilialeHead(String filialeHead) {
+        this.filialeHead = filialeHead;
+    }
+
+    public String getCounsel() {
+        return counsel;
+    }
+
+    public void setCounsel(String counsel) {
+        this.counsel = counsel;
+    }
+
+    public String getGeneralManager() {
+        return generalManager;
+    }
+
+    public void setGeneralManager(String generalManager) {
+        this.generalManager = generalManager;
+    }
+
+    public String getSealAdministrator() {
+        return sealAdministrator;
+    }
+
+    public void setSealAdministrator(String sealAdministrator) {
+        this.sealAdministrator = sealAdministrator;
     }
 }
