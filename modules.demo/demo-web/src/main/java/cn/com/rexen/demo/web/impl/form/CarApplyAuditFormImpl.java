@@ -1,13 +1,13 @@
-package cn.com.rexen.demo.web.impl;
+package cn.com.rexen.demo.web.impl.form;
 
 import cn.com.rexen.demo.api.Const;
 import cn.com.rexen.workflow.api.web.IFormHandler;
 
 /**
- * Created by sunlf on 2015/8/4.
- * 审批页面实现类
+ * Created by sunlf on 2016/2/25.
+ * 用车申请审批页面实现类
  */
-public class DemoAuditFormImpl implements IFormHandler {
+public class CarApplyAuditFormImpl implements IFormHandler {
     @Override
     public String getFormKey() {
         return "audit.form";
@@ -15,7 +15,7 @@ public class DemoAuditFormImpl implements IFormHandler {
 
     @Override
     public String getProcessDefinitionId() {
-        return Const.WORKFLOW_PROCESS_KEY;
+        return Const.PROCESS_CAR_APPLY_KEY_NAME;
     }
 
     @Override

@@ -1,18 +1,16 @@
 package cn.com.rexen.demo.entities;
 
 import cn.com.rexen.core.api.persistence.WorkflowEntity;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.Date;
 
 /**
  * @author chenyanxu
  *         印章申请业务类
  */
 @Entity
-@Table(name = "sys_seal_apply")
+@Table(name = "demo_seal_apply")
 public class SealApplyBean extends WorkflowEntity {
     //申请部门
     private String department;

@@ -64,18 +64,28 @@
 
     <!-- 流程历史页面-->
     <service interface="cn.com.rexen.workflow.api.web.IBizDataHandler">
-        <bean class="cn.com.rexen.demo.web.impl.DemoBizDataFormImpl"/>
+        <bean class="cn.com.rexen.demo.web.impl.form.DemoBizDataFormImpl"/>
     </service>
 
 
     <!-- 审批页面-->
     <service interface="cn.com.rexen.workflow.api.web.IFormHandler">
-        <bean class="cn.com.rexen.demo.web.impl.DemoAuditFormImpl"/>
+        <bean class="cn.com.rexen.demo.web.impl.form.DemoAuditFormImpl"/>
     </service>
     <service interface="cn.com.rexen.workflow.api.web.IFormHandler">
-        <bean class="cn.com.rexen.demo.web.impl.DemoEndFormImpl"/>
+        <bean class="cn.com.rexen.demo.web.impl.form.DemoEndFormImpl"/>
     </service>
     <service interface="cn.com.rexen.workflow.api.web.IFormHandler">
-        <bean class="cn.com.rexen.demo.web.impl.DemoModifyFormImpl"/>
+        <bean class="cn.com.rexen.demo.web.impl.form.DemoModifyFormImpl"/>
+    </service>
+
+    <!-- 用车申请审批页面-->
+    <service interface="cn.com.rexen.workflow.api.web.IFormHandler">
+        <bean class="cn.com.rexen.demo.web.impl.form.CarApplyAuditFormImpl"/>
+    </service>
+
+    <!-- 用车申请流程历史页面-->
+    <service interface="cn.com.rexen.workflow.api.web.IBizDataHandler">
+        <bean class="cn.com.rexen.demo.web.impl.form.CarApplyBizDataFormImpl"/>
     </service>
 </blueprint>

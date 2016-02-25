@@ -4,14 +4,14 @@
              xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
              typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
              targetNamespace="http://www.activiti.org/test">
-  <process id="notice" name="印章使用申请流程" isExecutable="true">
+  <process id="sealapply" name="印章使用申请流程" isExecutable="true">
     <documentation>印章使用申请流程</documentation>
     <extensionElements>
       <activiti:eventListener class="cn.com.rexen.workflow.engine.MessageEvent" entityType="task" events="TASK_ASSIGNED" />
       <!--<activiti:eventListener delegateExpression="${testEventListener}" events="ENTITY_CREATED" entityType="task" />-->
     </extensionElements>
     <startEvent id="startevent1" name="Start" activiti:formKey="start.form"></startEvent>
-    <userTask id="usertask2" name="部门负责人审批" activiti:assignee="qwer" activiti:formKey="audit.form">
+    <userTask id="usertask2" name="部门负责人审批" activiti:assignee="qwer" activiti:formKey="carapply.form">
       <documentation>印章使用申请流程</documentation>
     </userTask>
     <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
@@ -62,8 +62,8 @@
     </userTask>
     <sequenceFlow id="flow19" sourceRef="usertask8" targetRef="endevent1"></sequenceFlow>
   </process>
-  <bpmndi:BPMNDiagram id="BPMNDiagram_notice">
-    <bpmndi:BPMNPlane bpmnElement="notice" id="BPMNPlane_notice">
+  <bpmndi:BPMNDiagram id="BPMNDiagram_sealapply">
+    <bpmndi:BPMNPlane bpmnElement="sealapply" id="BPMNPlane_sealapply">
       <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
         <omgdc:Bounds height="35.0" width="35.0" x="30.0" y="40.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>

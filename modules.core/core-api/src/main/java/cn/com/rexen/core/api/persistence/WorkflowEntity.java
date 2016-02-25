@@ -39,6 +39,7 @@ public abstract class WorkflowEntity extends PersistentEntity {
     private String currentNode;//当前环节
     //private WorkflowStaus status = WorkflowStaus.INACTIVE;//流程状态，“处理中”，“结束”
     private short status = 0;
+    private String auditResult="无审批结果";//审批最终结果
 
     public String getProcessInstanceId() {
         return processInstanceId;
@@ -56,19 +57,19 @@ public abstract class WorkflowEntity extends PersistentEntity {
         this.status = status;
     }
 
-//    public WorkflowStaus getStatus() {
-//        return status;
-//    }
-//
-//    public void setStatus(WorkflowStaus status) {
-//        this.status = status;
-//    }
-
     public String getCurrentNode() {
         return currentNode;
     }
 
     public void setCurrentNode(String currentNode) {
         this.currentNode = currentNode;
+    }
+
+    public String getAuditResult() {
+        return auditResult;
+    }
+
+    public void setAuditResult(String auditResult) {
+        this.auditResult = auditResult;
     }
 }

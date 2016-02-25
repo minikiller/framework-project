@@ -5,15 +5,15 @@
              xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
              typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
              targetNamespace="http://www.activiti.org/test">
-    <process id="CarApply" name="公务用车申请流程" isExecutable="true">
+    <process id="carapply" name="公务用车申请流程" isExecutable="true">
         <documentation>公务用车申请流程</documentation>
         <extensionElements>
             <activiti:eventListener class="cn.com.rexen.workflow.engine.MessageEvent" entityType="task"
                                     events="TASK_ASSIGNED"/>
-            <!--<activiti:eventListener delegateExpression="${testEventListener}" events="ENTITY_CREATED" entityType="task" />-->
         </extensionElements>
         <startEvent id="startevent1" name="启动审批"></startEvent>
-        <userTask id="usertask1" name="申请部门正处级领导审核" activiti:assignee="qwer" activiti:formKey="carapply.form">
+        <userTask id="usertask1" name="正处级领导审核" activiti:assignee="qwer" activiti:formKey="audit.form">
+            <documentation>申请部门正处级领导审核</documentation>
             <extensionElements>
                 <activiti:formProperty id="accepted" name="判断环节" type="boolean"
                                        variable="accepted"></activiti:formProperty>
@@ -23,19 +23,27 @@
         <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
         <sequenceFlow id="flow2" sourceRef="usertask1" targetRef="exclusivegateway1"></sequenceFlow>
         <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>
-        <sequenceFlow id="flow3" name="同意" sourceRef="exclusivegateway1" targetRef="exclusivegateway2"></sequenceFlow>
-        <userTask id="usertask3" name="校务部副部长审核"></userTask>
+        <sequenceFlow id="flow3" name="同意" sourceRef="exclusivegateway1" targetRef="exclusivegateway2">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
+        </sequenceFlow>
+        <userTask id="usertask3" name="校务部副部长审核" activiti:assignee="qwer" activiti:formKey="audit.form">
+            <documentation>校务部副部长审核</documentation>
+        </userTask>
         <sequenceFlow id="flow5" name="市内" sourceRef="exclusivegateway2" targetRef="usertask3">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${city}]]></conditionExpression>
         </sequenceFlow>
-        <userTask id="usertask4" name="主管副校级领导审核"></userTask>
+        <userTask id="usertask4" name="副校级领导审核" activiti:assignee="qwer" activiti:formKey="audit.form">
+            <documentation>副校级领导审核</documentation>
+        </userTask>
         <sequenceFlow id="flow6" name="市外" sourceRef="exclusivegateway2" targetRef="usertask4">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!city}]]></conditionExpression>
         </sequenceFlow>
         <exclusiveGateway id="exclusivegateway3" name="Exclusive Gateway"></exclusiveGateway>
         <sequenceFlow id="flow7" sourceRef="usertask4" targetRef="exclusivegateway3"></sequenceFlow>
         <exclusiveGateway id="exclusivegateway4" name="Exclusive Gateway"></exclusiveGateway>
-        <userTask id="usertask6" name="校党委书记审核"></userTask>
+        <userTask id="usertask6" name="校党委书记审核" activiti:assignee="qwer" activiti:formKey="audit.form">
+            <documentation>校党委书记审核</documentation>
+        </userTask>
         <exclusiveGateway id="exclusivegateway6" name="Exclusive Gateway"></exclusiveGateway>
         <sequenceFlow id="flow12" sourceRef="usertask6" targetRef="exclusivegateway6"></sequenceFlow>
         <endEvent id="endevent1" name="End"></endEvent>
@@ -79,7 +87,7 @@
         <association id="association2" sourceRef="textannotation2" targetRef="endevent2"></association>
     </process>
     <bpmndi:BPMNDiagram id="BPMNDiagram_myProcess">
-        <bpmndi:BPMNPlane bpmnElement="myProcess" id="BPMNPlane_myProcess">
+        <bpmndi:BPMNPlane bpmnElement="carapply" id="BPMNPlane_myProcess">
             <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
                 <omgdc:Bounds height="35.0" width="35.0" x="60.0" y="397.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
