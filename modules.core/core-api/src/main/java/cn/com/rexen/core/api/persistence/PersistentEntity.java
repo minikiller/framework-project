@@ -1,5 +1,6 @@
 package cn.com.rexen.core.api.persistence;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -78,7 +79,7 @@ public abstract class PersistentEntity implements Serializable {
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     public Date getCreationDate() {
         return creationDate;
     }
