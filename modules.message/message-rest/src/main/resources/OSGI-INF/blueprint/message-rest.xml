@@ -49,6 +49,10 @@
                 <to uri="bean:messageService?method=deleteEntity(${header.id})"/>
             </delete>
 
+            <get uri="/workflow/message" id="route-getPollingMessage" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Get Message Count</description>
+                <to uri="bean:messageService?method=getNewMessageCount()"/>
+            </get>
         </rest>
     </camelContext>
 </blueprint>

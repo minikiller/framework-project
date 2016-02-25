@@ -16,7 +16,7 @@ import java.util.Date;
  */
 //todo 修改模型定义
 @Entity
-@Table(name = "sys_message")
+@Table(name = "workflow_message")
 public class MessageBean extends PersistentEntity {
     /**
      * @describe 发送者
