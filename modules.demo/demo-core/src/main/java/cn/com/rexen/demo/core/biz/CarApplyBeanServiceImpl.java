@@ -35,7 +35,7 @@ public class CarApplyBeanServiceImpl extends ShiroGenericBizServiceImpl<ICarAppl
             //获得当前登陆用户
             String userName = this.getShiroService().getSubject().getPrincipal().toString();
             identityService.setAuthenticatedUserId(userName);
-            CarApplyBean bean = (CarApplyBean) this.getEntity(new Long(id));
+            CarApplyBean bean = this.getEntity(new Long(id));
             //启动流程
             ProcessInstance instance = runtimeService.startProcessInstanceByKey(Const.PROCESS_KEY_NAME, bizKey);
 

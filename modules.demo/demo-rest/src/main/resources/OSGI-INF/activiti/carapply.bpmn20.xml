@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
-             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+<definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
              typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
              targetNamespace="http://www.activiti.org/test">
-    <process id="myProcess" name="My process" isExecutable="true">
+    <process id="CarApply" name="公务用车申请流程" isExecutable="true">
+        <documentation>公务用车申请流程</documentation>
+        <extensionElements>
+            <activiti:eventListener class="cn.com.rexen.workflow.engine.MessageEvent" entityType="task"
+                                    events="TASK_ASSIGNED"/>
+            <!--<activiti:eventListener delegateExpression="${testEventListener}" events="ENTITY_CREATED" entityType="task" />-->
+        </extensionElements>
         <startEvent id="startevent1" name="启动审批"></startEvent>
-        <userTask id="usertask1" name="申请部门正处级领导审核"></userTask>
+        <userTask id="usertask1" name="申请部门正处级领导审核" activiti:assignee="qwer" activiti:formKey="carapply.form">
+            <extensionElements>
+                <activiti:formProperty id="accepted" name="判断环节" type="boolean"
+                                       variable="accepted"></activiti:formProperty>
+            </extensionElements>
+        </userTask>
         <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="usertask1"></sequenceFlow>
         <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
         <sequenceFlow id="flow2" sourceRef="usertask1" targetRef="exclusivegateway1"></sequenceFlow>
         <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>
         <sequenceFlow id="flow3" name="同意" sourceRef="exclusivegateway1" targetRef="exclusivegateway2"></sequenceFlow>
         <userTask id="usertask3" name="校务部副部长审核"></userTask>
-        <sequenceFlow id="flow5" name="市内" sourceRef="exclusivegateway2" targetRef="usertask3"></sequenceFlow>
+        <sequenceFlow id="flow5" name="市内" sourceRef="exclusivegateway2" targetRef="usertask3">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${city}]]></conditionExpression>
+        </sequenceFlow>
         <userTask id="usertask4" name="主管副校级领导审核"></userTask>
-        <sequenceFlow id="flow6" name="市外" sourceRef="exclusivegateway2" targetRef="usertask4"></sequenceFlow>
+        <sequenceFlow id="flow6" name="市外" sourceRef="exclusivegateway2" targetRef="usertask4">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!city}]]></conditionExpression>
+        </sequenceFlow>
         <exclusiveGateway id="exclusivegateway3" name="Exclusive Gateway"></exclusiveGateway>
         <sequenceFlow id="flow7" sourceRef="usertask4" targetRef="exclusivegateway3"></sequenceFlow>
         <exclusiveGateway id="exclusivegateway4" name="Exclusive Gateway"></exclusiveGateway>
@@ -22,17 +39,35 @@
         <exclusiveGateway id="exclusivegateway6" name="Exclusive Gateway"></exclusiveGateway>
         <sequenceFlow id="flow12" sourceRef="usertask6" targetRef="exclusivegateway6"></sequenceFlow>
         <endEvent id="endevent1" name="End"></endEvent>
-        <sequenceFlow id="flow14" name="不同意" sourceRef="exclusivegateway6" targetRef="endevent1"></sequenceFlow>
-        <sequenceFlow id="flow16" name="不同意" sourceRef="exclusivegateway4" targetRef="endevent1"></sequenceFlow>
-        <sequenceFlow id="flow17" name="同意" sourceRef="exclusivegateway3" targetRef="usertask3"></sequenceFlow>
-        <sequenceFlow id="flow18" name="不同意" sourceRef="exclusivegateway3" targetRef="endevent1"></sequenceFlow>
-        <sequenceFlow id="flow19" name="不同意" sourceRef="exclusivegateway1" targetRef="endevent1"></sequenceFlow>
+        <sequenceFlow id="flow14" name="不同意" sourceRef="exclusivegateway6" targetRef="endevent1">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow16" name="不同意" sourceRef="exclusivegateway4" targetRef="endevent1">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow17" name="同意" sourceRef="exclusivegateway3" targetRef="usertask3">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow18" name="不同意" sourceRef="exclusivegateway3" targetRef="endevent1">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow19" name="不同意" sourceRef="exclusivegateway1" targetRef="endevent1">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
+        </sequenceFlow>
         <endEvent id="endevent2" name="End"></endEvent>
-        <sequenceFlow id="flow21" name="同意" sourceRef="exclusivegateway6" targetRef="endevent2"></sequenceFlow>
+        <sequenceFlow id="flow21" name="同意" sourceRef="exclusivegateway6" targetRef="endevent2">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
+        </sequenceFlow>
         <exclusiveGateway id="exclusivegateway7" name="Exclusive Gateway"></exclusiveGateway>
-        <sequenceFlow id="flow22" name="同意" sourceRef="exclusivegateway4" targetRef="exclusivegateway7"></sequenceFlow>
-        <sequenceFlow id="flow23" name="市内" sourceRef="exclusivegateway7" targetRef="endevent2"></sequenceFlow>
-        <sequenceFlow id="flow24" name="市外" sourceRef="exclusivegateway7" targetRef="usertask6"></sequenceFlow>
+        <sequenceFlow id="flow22" name="同意" sourceRef="exclusivegateway4" targetRef="exclusivegateway7">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow23" name="市内" sourceRef="exclusivegateway7" targetRef="endevent2">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${city}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow24" name="市外" sourceRef="exclusivegateway7" targetRef="usertask6">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!city}]]></conditionExpression>
+        </sequenceFlow>
         <sequenceFlow id="flow25" sourceRef="usertask3" targetRef="exclusivegateway4"></sequenceFlow>
         <textAnnotation id="textannotation1">
             <text>不同意结束</text>
