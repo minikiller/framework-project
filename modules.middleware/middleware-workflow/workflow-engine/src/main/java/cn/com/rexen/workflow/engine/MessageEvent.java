@@ -1,10 +1,13 @@
 package cn.com.rexen.workflow.engine;
 
 import cn.com.rexen.core.util.JNDIHelper;
-import org.activiti.engine.TaskService;
+import org.activiti.engine.HistoryService;
 import org.activiti.engine.delegate.event.ActivitiEvent;
 import org.activiti.engine.delegate.event.ActivitiEventListener;
-import org.activiti.engine.task.Task;
+import org.activiti.engine.delegate.event.impl.ActivitiEntityEventImpl;
+import org.activiti.engine.history.HistoricProcessInstance;
+import org.activiti.engine.impl.persistence.entity.IdentityLinkEntity;
+import org.activiti.engine.impl.persistence.entity.TaskEntity;
 import org.json.JSONObject;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventAdmin;
@@ -19,14 +22,15 @@ import java.util.List;
  * 自定义事件监听，监听任务分配
  */
 public class MessageEvent implements ActivitiEventListener {
-    private TaskService taskService;
-    private List<Task> taskList;
+    public static final String WORKFLOW_MESSAGE_TOPIC = "cn/com/rexen/engine/message";
+    public static final String WORKFLOW_STARTER_TOPIC = "cn/com/rexen/engine/starter";
     private EventAdmin eventAdmin;
+    private HistoryService historyService;
 
     public MessageEvent() {
         try {
-            taskService = JNDIHelper.getJNDIServiceForName("org.activiti.engine.TaskService");
             eventAdmin = JNDIHelper.getJNDIServiceForName("org.osgi.service.event.EventAdmin");
+            historyService=JNDIHelper.getJNDIServiceForName("org.activiti.engine.HistoryService");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -35,12 +39,37 @@ public class MessageEvent implements ActivitiEventListener {
     @Override
     public void onEvent(ActivitiEvent event) {
         switch (event.getType()) {
-            case TASK_ASSIGNED:
+            case TASK_CREATED:
                 postMessageEvent(event);
+                break;
+            case TASK_COMPLETED:
+                postCompleteEvent(event);
                 break;
             default:
                 System.out.println("Event received: " + event.getType());
         }
+    }
+
+    /**
+     * 发送任务完成事件给工作流的发起人
+     * @param event
+     */
+    private void postCompleteEvent(ActivitiEvent event) {
+        String processDefinitionId = event.getProcessDefinitionId();
+        String processInstanceId = event.getProcessInstanceId();
+        String executionId = event.getExecutionId();
+        JSONObject taskJson=new JSONObject();
+        HistoricProcessInstance historicProcessInstance=historyService.createHistoricProcessInstanceQuery()
+                .processInstanceId(processInstanceId).singleResult();
+        String startUserId=historicProcessInstance.getStartUserId();
+        Dictionary properties = new Hashtable();
+        taskJson.put("startUserId",startUserId);
+        taskJson.put("processDefinitionId", processDefinitionId);
+        taskJson.put("processInstanceId", processInstanceId);
+        taskJson.put("executionId", executionId);
+        properties.put("body", taskJson.toString());
+        Event osgi_event = new Event(WORKFLOW_STARTER_TOPIC, properties);
+        eventAdmin.postEvent(osgi_event);
     }
 
     @Override
@@ -49,7 +78,7 @@ public class MessageEvent implements ActivitiEventListener {
     }
 
     /**
-     * 发送 osgi event
+     * 发送 osgi event 给相应的group
      * @param event
      */
     private void postMessageEvent(ActivitiEvent event) {
@@ -57,19 +86,19 @@ public class MessageEvent implements ActivitiEventListener {
         String processDefinitionId = event.getProcessDefinitionId();
         String processInstanceId = event.getProcessInstanceId();
         String executionId = event.getExecutionId();
-        taskList = taskService.createTaskQuery().processDefinitionId(processDefinitionId)
-                .processInstanceId(processInstanceId).executionId(executionId).list();
-        for (Task task : taskList) {
-            String assignee = task.getAssignee();
-            taskJson.put("assignee",assignee);
+        ActivitiEntityEventImpl entityEvent= (ActivitiEntityEventImpl) event;
+        TaskEntity task= (TaskEntity) entityEvent.getEntity();
+        List<IdentityLinkEntity> idList=task.getIdentityLinks();
+        for(IdentityLinkEntity id:idList){
+            taskJson.put("group",id.getGroupId());
             taskJson.put("processDefinitionId", processDefinitionId);
             taskJson.put("processInstanceId", processInstanceId);
             taskJson.put("executionId", executionId);
-            System.out.println("A task " + assignee + " is assigned!");
+            System.out.println("A task group of " + id.getGroupId() + " is assigned!");
             //添加相关内容到消息体
             Dictionary properties = new Hashtable();
             properties.put("body", taskJson.toString());
-            Event osgi_event = new Event("cn/com/rexen/engine/message", properties);
+            Event osgi_event = new Event(WORKFLOW_MESSAGE_TOPIC, properties);
             eventAdmin.postEvent(osgi_event);
         }
 

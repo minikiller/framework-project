@@ -44,6 +44,11 @@
             <artifactId>gson</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-api</artifactId>
+        </dependency>
+
 
     </dependencies>
     <build>

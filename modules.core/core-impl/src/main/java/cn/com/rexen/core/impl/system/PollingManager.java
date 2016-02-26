@@ -1,6 +1,6 @@
-package cn.com.rexen.core.system.manager;
+package cn.com.rexen.core.impl.system;
 
-import cn.com.rexen.core.api.system.IPolling;
+import cn.com.rexen.core.api.system.IPollingService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,13 +11,13 @@ import java.util.List;
  */
 public class PollingManager {
     private static PollingManager install;
-    //    private static Comparator<IPolling> COMPARATOR = new Comparator<IPolling>() {
+    //    private static Comparator<IPollingService> COMPARATOR = new Comparator<IPollingService>() {
 //        // This is where the sorting happens.
-//        public int compare(IPolling o1, IPolling o2) {
+//        public int compare(IPollingService o1, IPollingService o2) {
 //            return o1.getIndex() - o2.getIndex();
 //        }
 //    };
-    private List<IPolling> PollingList = new ArrayList<IPolling>();
+    private List<IPollingService> PollingList = new ArrayList<IPollingService>();
 
     private PollingManager() {
     }
@@ -29,15 +29,15 @@ public class PollingManager {
         return install;
     }
 
-    public void add(IPolling Polling) {
+    public void add(IPollingService Polling) {
         PollingList.add(Polling);
     }
 
-    public void remove(IPolling Polling) {
+    public void remove(IPollingService Polling) {
         PollingList.remove(Polling);
     }
 
-    public List<IPolling> getPollingList() {
+    public List<IPollingService> getPollingList() {
         if (PollingList != null)
             ;//Collections.sort(PollingList, COMPARATOR);
         return PollingList;

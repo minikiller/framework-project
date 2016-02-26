@@ -38,25 +38,6 @@ public class ProcessServiceImpl implements IProcessService {
     private IUserLoginService userLoginService;
     private JsonData jsonData = new JsonData();
 
-    public void setRuntimeService(RuntimeService runtimeService) {
-        this.runtimeService = runtimeService;
-    }
-
-    public void setTaskService(TaskService taskService) {
-        this.taskService = taskService;
-    }
-
-    public void setRepositoryService(RepositoryService repositoryService) {
-        this.repositoryService = repositoryService;
-    }
-
-    public void setHistoryService(HistoryService historyService) {
-        this.historyService = historyService;
-    }
-
-    public void setUserLoginService(IUserLoginService userLoginService) {
-        this.userLoginService = userLoginService;
-    }
 
     /**
      * 获得流程定义列表
@@ -66,15 +47,14 @@ public class ProcessServiceImpl implements IProcessService {
     @Override
     public JsonData getProcessDefinition(int page, int limit, String jsonStr) {
         List<ProcessDefinitionDTO> processDefinitionDTOList;
-        List<ProcessDefinition> processDefinitionList=null;
+        List<ProcessDefinition> processDefinitionList = null;
         //按照流程定义名称模糊查询
-        if(StringUtils.isNotEmpty(jsonStr)){
-            Map map=SerializeUtil.json2Map(jsonStr) ;
-            String processDefinitionName= (String) map.get("name");
+        if (StringUtils.isNotEmpty(jsonStr)) {
+            Map map = SerializeUtil.json2Map(jsonStr);
+            String processDefinitionName = (String) map.get("name");
             Assert.notNull(processDefinitionName);
-            processDefinitionList =repositoryService.createProcessDefinitionQuery().processDefinitionNameLike("%"+processDefinitionName+"%").listPage((page - 1) * limit, limit);
-        }
-        else{
+            processDefinitionList = repositoryService.createProcessDefinitionQuery().processDefinitionNameLike("%" + processDefinitionName + "%").listPage((page - 1) * limit, limit);
+        } else {
             processDefinitionList = repositoryService.createProcessDefinitionQuery().latestVersion().listPage((page - 1) * limit, limit);
         }
 
@@ -118,23 +98,22 @@ public class ProcessServiceImpl implements IProcessService {
      */
     @Override
     public JsonData getMyProcessHistory(int page, int limit, String jsonStr) {
-        String loginUser=userLoginService.getLoginName();
+        String loginUser = userLoginService.getLoginName();
         List<HistoricProcessInstanceDTO> historicProcessDTOList;
         List<HistoricProcessInstance> processHistoryList;
-        if(StringUtils.isNotEmpty(jsonStr)){
-            Map map=SerializeUtil.json2Map(jsonStr) ;
-            String processInstanceBusinessKey= (String) map.get("name");
+        if (StringUtils.isNotEmpty(jsonStr)) {
+            Map map = SerializeUtil.json2Map(jsonStr);
+            String processInstanceBusinessKey = (String) map.get("name");
             if (StringUtils.isNotEmpty(processInstanceBusinessKey))
-            processHistoryList = historyService.createHistoricProcessInstanceQuery().processInstanceBusinessKey(processInstanceBusinessKey)
-                    .startedBy(loginUser).orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
-            else{
+                processHistoryList = historyService.createHistoricProcessInstanceQuery().processInstanceBusinessKey(processInstanceBusinessKey)
+                        .startedBy(loginUser).orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
+            else {
                 processHistoryList = historyService.createHistoricProcessInstanceQuery()
                         .startedBy(loginUser).orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
             }
-        }
-        else
-                processHistoryList = historyService.createHistoricProcessInstanceQuery().startedBy(loginUser)
-                .orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
+        } else
+            processHistoryList = historyService.createHistoricProcessInstanceQuery().startedBy(loginUser)
+                    .orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
         if (processHistoryList != null) {
             generateJsonData(processHistoryList);
         }
@@ -148,17 +127,17 @@ public class ProcessServiceImpl implements IProcessService {
         historicProcessDTOList = DozerHelper.map(mapper, processHistoryList, HistoricProcessInstanceDTO.class);
         //设置流程状态
         for (HistoricProcessInstanceDTO dto : historicProcessDTOList) {
-            if (dto.getEndTime() != null){
+            if (dto.getEndTime() != null) {
                 dto.setStatus("<a style='color:red'>结束</a>");
-            }else {
+            } else {
                 dto.setStatus("进行中");
             }
             ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
-            if(processInstance!=null) {
+            if (processInstance != null) {
                 dto.setEntityId(WorkflowUtil.getBizId(processInstance.getBusinessKey()));
-            }else{
+            } else {
                 HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
-                if(historicProcessInstance!=null)
+                if (historicProcessInstance != null)
                     dto.setEntityId(WorkflowUtil.getBizId(historicProcessInstance.getBusinessKey()));
             }
         }
@@ -176,18 +155,17 @@ public class ProcessServiceImpl implements IProcessService {
     public JsonData getProcessHistory(int page, int limit, String jsonStr) {
         List<HistoricProcessInstanceDTO> historicProcessDTOList;
         List<HistoricProcessInstance> processHistoryList;
-        if(StringUtils.isNotEmpty(jsonStr)){
-            Map map=SerializeUtil.json2Map(jsonStr) ;
-            String processInstanceBusinessKey= (String) map.get("name");
+        if (StringUtils.isNotEmpty(jsonStr)) {
+            Map map = SerializeUtil.json2Map(jsonStr);
+            String processInstanceBusinessKey = (String) map.get("name");
             if (StringUtils.isNotEmpty(processInstanceBusinessKey))
                 processHistoryList = historyService.createHistoricProcessInstanceQuery().processInstanceBusinessKey(processInstanceBusinessKey)
                         .orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
-            else{
+            else {
                 processHistoryList = historyService.createHistoricProcessInstanceQuery()
                         .orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
             }
-        }
-        else
+        } else
             processHistoryList = historyService.createHistoricProcessInstanceQuery()
                     .orderByProcessInstanceStartTime().desc().listPage((page - 1) * limit, limit);
         if (processHistoryList != null) {
@@ -253,5 +231,25 @@ public class ProcessServiceImpl implements IProcessService {
             jsonStatus.setMsg("启动流程失败");
         }
         return jsonStatus;
+    }
+
+    public void setRuntimeService(RuntimeService runtimeService) {
+        this.runtimeService = runtimeService;
+    }
+
+    public void setTaskService(TaskService taskService) {
+        this.taskService = taskService;
+    }
+
+    public void setRepositoryService(RepositoryService repositoryService) {
+        this.repositoryService = repositoryService;
+    }
+
+    public void setHistoryService(HistoryService historyService) {
+        this.historyService = historyService;
+    }
+
+    public void setUserLoginService(IUserLoginService userLoginService) {
+        this.userLoginService = userLoginService;
     }
 }

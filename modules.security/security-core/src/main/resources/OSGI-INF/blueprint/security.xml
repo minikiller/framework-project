@@ -7,7 +7,7 @@
 http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
 http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://svn.apache.org/repos/asf/aries/trunk/blueprint/blueprint-cm/src/main/resources/org/apache/aries/blueprint/compendium/cm/blueprint-cm-1.1.0.xsd">
 
-    <cm:property-placeholder persistent-id="cn.com.rexen.cache.datasource"
+    <cm:property-placeholder persistent-id="ConfigRedis"
                              update-strategy="reload">
         <cm:default-properties>
             <cm:property name="hostName" value="localhost"/>
@@ -94,8 +94,8 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://svn.apache.or
 
     <bean id="shardedJedisPool" class="redis.clients.jedis.JedisPool">
         <argument index="0" ref="jedisPoolConfig"/>
-        <argument index="1" value="localhost" type="java.lang.String"/>
-        <argument index="2" value="6379" type="int"/>
+        <argument index="1" value="${hostName}" type="java.lang.String"/>
+        <argument index="2" value="${port}" type="int"/>
     </bean>
 
     <bean id="jedisShiroSessionRepository" class="cn.com.rexen.security.core.JedisShiroSessionRepository">
