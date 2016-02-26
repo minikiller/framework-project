@@ -6,11 +6,11 @@ import cn.com.rexen.core.api.web.IMenu;
 /**
  * 已发消息通知
  *
- * @author majian <br/>
- *         date:2015-8-10
+ * @author zangyanming <br/>
+ *         date:2016-2-26
  * @version 1.0.0
  */
-public class MessageMenuImpl implements IMenu {
+public class ReceiverMessageMenuImpl implements IMenu {
     @Override
     public boolean isLeaf() {
         return true;
@@ -28,17 +28,17 @@ public class MessageMenuImpl implements IMenu {
 
     @Override
     public String getId() {
-        return "messageMenu";
+        return "messageReceiverMenu";
     }
 
     @Override
     public String getText() {
-        return "已发消息通知";
+        return "已收消息通知";
     }
 
     @Override
     public String getDescription() {
-        return "已发消息通知列表";
+        return "已收消息通知列表";
     }
 
     @Override
@@ -48,12 +48,12 @@ public class MessageMenuImpl implements IMenu {
 
     @Override
     public String getRouteId() {
-        return "message/sender";
+        return "message/receiver";
     }
 
     @Override
     public int getIndex() {
-        return 10;
+        return 20;
     }
 
     @Override

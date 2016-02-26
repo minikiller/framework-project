@@ -1,6 +1,7 @@
 package cn.com.rexen.bean.entities;
 
 import cn.com.rexen.core.api.persistence.PersistentEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -47,6 +48,7 @@ public class MessageBean extends PersistentEntity {
      * @describe 消息发送时间
      * @validator 不能为空
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date send_timestamp;
     /**
      * @describe 消息是否已读

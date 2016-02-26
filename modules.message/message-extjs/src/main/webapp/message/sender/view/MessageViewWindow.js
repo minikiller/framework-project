@@ -5,15 +5,15 @@
  * @version 1.0.0
  */
 
-Ext.define('kalix.app.message.view.MessageViewWindow', {
+Ext.define('kalix.message.sender.view.MessageViewWindow', {
     extend: 'kalix.view.components.common.BaseWindow',
     requires: [
-        'kalix.app.message.viewModel.MessageViewModel',
+        'kalix.message.sender.viewModel.MessageViewModel',
         'kalix.admin.user.store.UserStore'
     ],
-    alias: 'widget.messageViewWindow',
-    viewModel: 'messageViewModel',
-    xtype: "messageViewWindow",
+    alias: 'widget.messageRecieverViewWindow',
+    viewModel: 'messageSenderViewModel',
+    xtype: "messageRecieverViewWindow",
     width: 400,
     //todo 在此修改查看字段
     items: [{
@@ -50,6 +50,7 @@ Ext.define('kalix.app.message.view.MessageViewWindow', {
             },
             {
                 fieldLabel: '消息内容',
+                xtype: 'textareafield',
                 allowBlank: false,
                 bind: {
                     value: '{rec.content}'
@@ -72,10 +73,27 @@ Ext.define('kalix.app.message.view.MessageViewWindow', {
                     value: '{rec.read}'
                 }
             },
+            //{
+            //    fieldLabel: '消息状态',
+            //    allowBlank: false,
+            //    xtype: 'numberfield',
+            //    bind: {
+            //        value: '{rec.message_state}'
+            //    }
+            //},
             {
                 fieldLabel: '消息状态',
-                allowBlank: false,
-                xtype: 'numberfield',
+
+                xtype: 'combobox',
+                valueField: 'key',
+                displayField: 'name',
+                store: {
+                    data: [
+                        {'name': '未通知', 'key': 1},
+                        {'name': '已通知', 'key': 0}
+                    ]
+                },
+                name: 'message_state',
                 bind: {
                     value: '{rec.message_state}'
                 }

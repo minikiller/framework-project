@@ -6,7 +6,7 @@
  */
 
 
-Ext.define('kalix.app.message.model.MessageModel', {
+Ext.define('kalix.message.receiver.model.MessageModel', {
     extend: 'kalix.model.BaseModel',
 
     //todo 在此修改模型定义
@@ -19,7 +19,8 @@ Ext.define('kalix.app.message.model.MessageModel', {
             type: 'string'
         }, {
             name: 'category',
-            type: 'string'
+            type: 'string',
+            defaultValue: '1'
         }, {
             name: 'title',
             type: 'string'
@@ -33,15 +34,15 @@ Ext.define('kalix.app.message.model.MessageModel', {
         }, {
             name: 'read',
             type: 'int',
-            defaultValue: 0
+            defaultValue: 1
         }, {
             name: 'message_state',
             type: 'int',
-            defaultValue: 0
+            defaultValue: 1
         }, {
             name: 'sign',
             type: 'int',
-            defaultValue: 0
+            defaultValue: 1
         }
     ],
     //todo 在此修改模型验证提示信息
