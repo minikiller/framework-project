@@ -29,10 +29,9 @@ public class WorkFlowMessageEventImpl implements EventHandler {
 
         MessageBean messageBean = new MessageBean();
         messageBean.setSender("系统管理员");
-        messageBean.setTitle("代办通知");
         messageBean.setReceiver(receiver);
         messageBean.setCategory("assignment");
-        messageBean.setTitle("代办任务");
+        messageBean.setTitle("待办任务");
         messageBean.setContent(content);
         messageBean.setSend_timestamp(new Date());
         messageBean.setRead(1);//未读的新消息

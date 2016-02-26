@@ -5,9 +5,9 @@
  * @version 1.0.0
  */
 
-Ext.define('kalix.app.message.viewModel.MessageViewModel', {
+Ext.define('kalix.message.receiver.viewModel.MessageViewModel', {
     extend: 'Ext.app.ViewModel',
-    alias: 'viewmodel.messageViewModel',
+    alias: 'viewmodel.messageReceiverViewModel',
     data: {
         rec: null,
         validation: {},  //验证错误信息
@@ -17,8 +17,8 @@ Ext.define('kalix.app.message.viewModel.MessageViewModel', {
         view_title: '查看消息',
         add_title: '添加消息',
         edit_title: '修改消息',
-        add_image_path: '/kalix/app/message/resources/images/message_add.png',
-        view_image_path: '/kalix/app/message/resources/images/message_view.png',
-        edit_image_path: '/kalix/app/message/resources/images/message_edit.png',
+        add_image_path: '/kalix/message/resources/images/message_add.png',
+        view_image_path: '/kalix/message/resources/images/message_view.png',
+        edit_image_path: '/kalix/message/resources/images/message_edit.png',
     }
 });

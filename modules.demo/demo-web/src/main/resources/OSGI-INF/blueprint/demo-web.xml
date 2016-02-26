@@ -11,6 +11,10 @@
     <service interface="cn.com.rexen.core.api.web.IModule">
         <bean class="cn.com.rexen.demo.web.impl.module.WorkFlowManageModuleImpl"/>
     </service>
+    <!--流程消息模块-->
+    <service interface="cn.com.rexen.core.api.web.IModule">
+        <bean class="cn.com.rexen.demo.web.impl.module.MyMessageModuleImpl"/>
+    </service>
 
     <!--业务流程模块-->
     <service interface="cn.com.rexen.core.api.web.IModule">

@@ -7,10 +7,11 @@
              ref="beanServiceImpl">
     </service>
 
-
+    <reference id="userBeanService" interface="cn.com.rexen.admin.api.biz.IUserBeanService"/>
     <bean id="beanServiceImpl" class="cn.com.rexen.bean.core.biz.MessageBeanServiceImpl">
         <property name="dao" ref="messageBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
+        <property name="userBeanService" ref="userBeanService"/>
     </bean>
 
     <reference id="messageBeanDao" interface="cn.com.rexen.bean.api.dao.IMessageBeanDao"/>

@@ -3,23 +3,24 @@
  * @author
  * @version 1.0.0
  */
-Ext.define('kalix.app.message.view.MessageGrid', {
+Ext.define('kalix.message.sender.view.MessageGrid', {
     extend: 'kalix.view.components.common.BaseGrid',
     requires: [
-        'kalix.app.message.controller.MessageGridController',
-        'kalix.app.message.store.MessageStore',
+        'kalix.message.sender.controller.MessageGridController',
+        'kalix.message.sender.store.MessageStore',
+        'kalix.admin.dict.component.DictGridColumn'
     ],
     alias: 'widget.messageGrid',
-    xtype: 'messageGridPanel',
+    xtype: 'messageSenderGridPanel',
     controller: {
-        type: 'messageGridController',
-        storeId: 'messageStore',
-        cfgForm: 'kalix.app.message.view.MessageWindow',
-        cfgViewForm: 'kalix.app.message.view.MessageViewWindow',
-        cfgModel: 'kalix.app.message.model.MessageModel'
+        type: 'messageSenderGridController',
+        storeId: 'messageSenderStore',
+        cfgForm: 'kalix.message.sender.view.MessageWindow',
+        cfgViewForm: 'kalix.message.sender.view.MessageViewWindow',
+        cfgModel: 'kalix.message.sender.model.MessageModel'
     },
     store: {
-        type: 'messageStore'
+        type: 'messageSenderStore'
     },
 
     //todo 在此修改grid显示列
@@ -39,26 +40,29 @@ Ext.define('kalix.app.message.view.MessageGrid', {
                 dataIndex: 'id',
                 hidden: true,
             },
-            {
-                text: '发送者',
-                dataIndex: 'sender'
-            },
+            //{
+            //    text: '发送者',
+            //    dataIndex: 'sender'
+            //},
             {
                 text: '接收者',
                 dataIndex: 'receiver'
             },
-
             {
                 text: '消息类别',
-                dataIndex: 'category'
-            },
+                xtype: 'dictGridColumn',
+                dictType: 'category',
+                dataIndex: 'category',
+                renderer: null
+            }
+            ,
             {
                 text: '消息主题',
                 dataIndex: 'title'
             },
             {
                 text: '发送时间',
-                dataIndex: 'send_timestamp',
+                dataIndex: 'createdate',
                 xtype: 'datecolumn',
                 format: 'Y-m-d', renderer: null
             },

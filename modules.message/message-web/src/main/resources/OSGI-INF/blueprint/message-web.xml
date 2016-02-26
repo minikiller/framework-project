@@ -5,5 +5,7 @@
     <service interface="cn.com.rexen.core.api.web.IMenu">
         <bean class="cn.com.rexen.bean.web.impl.MessageMenuImpl"/>
     </service>
-
+    <service interface="cn.com.rexen.core.api.web.IMenu">
+        <bean class="cn.com.rexen.bean.web.impl.ReceiverMessageMenuImpl"/>
+    </service>
 </blueprint>

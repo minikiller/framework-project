@@ -6,5 +6,5 @@ package cn.com.rexen.bean.web;
 public class Const {
     public static final String APPLICATION_NAME = "workflow";
     public static final String WORKFLOW_MODULE_NAME = "workFlowModule";
-    public static final String MY_WORKING_MODULE_NAME = "myWokingModule";
+    public static final String MY_MESSAGE_MODULE_NAME = "myMessageModule";
 }
