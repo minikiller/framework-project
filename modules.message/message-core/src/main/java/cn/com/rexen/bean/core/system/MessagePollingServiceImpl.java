@@ -1,11 +1,11 @@
 package cn.com.rexen.bean.core.system;
 
-import cn.com.rexen.core.api.system.IPolling;
+import cn.com.rexen.core.api.system.IPollingService;
 
 /**
  * Created by zangyanming on 2016/2/25.
  */
-public class MessagePollingImpl implements IPolling {
+public class MessagePollingServiceImpl implements IPollingService {
     @Override
     public String getId() {
         return "MessagePolling";

@@ -19,17 +19,29 @@
          <property name="testOnBorrow" value="true" />-->
     </bean>
 
-    <bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">
+    <bean id="shardedJedisPool" class="redis.clients.jedis.JedisPool">
+        <argument index="0" ref="jedisPoolConfig"/>
+        <argument index="1" value="${hostName}" type="java.lang.String"/>
+        <argument index="2" value="${port}" type="int"/>
+    </bean>
+
+    <!--<bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">
         <argument index="0" ref="jedisPoolConfig"/>
         <argument index="1">
             <list>
                 <bean class="redis.clients.jedis.JedisShardInfo">
                     <argument index="0" value="${hostName}"/>
-                    <!--//127.0.0.1-->
+                    &lt;!&ndash;//127.0.0.1&ndash;&gt;
                     <argument index="1" value="${port}" type="int"/>
                 </bean>
             </list>
         </argument>
+    </bean>-->
+
+    <service interface="cn.com.rexen.core.api.system.IStackService" ref="redisStackServiceImpl"/>
+
+    <bean id="redisStackServiceImpl" class="cn.com.rexen.core.redis.mq.RedisStackServiceImpl">
+        <property name="jedisPool" ref="shardedJedisPool"/>
     </bean>
 
 

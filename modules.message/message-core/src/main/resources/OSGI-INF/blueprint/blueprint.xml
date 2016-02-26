@@ -24,7 +24,7 @@
         <property name="dao" ref="messageBeanDao"/>
     </bean>
 
-    <bean id="messagePollingImpl" class="cn.com.rexen.bean.core.system.MessagePollingImpl"/>
-    <service interface="cn.com.rexen.core.api.system.IPolling" ref="messagePollingImpl"/>
+    <bean id="messagePollingImpl" class="cn.com.rexen.bean.core.system.MessagePollingServiceImpl"/>
+    <service interface="cn.com.rexen.core.api.system.IPollingService" ref="messagePollingImpl"/>
 </blueprint>
 
