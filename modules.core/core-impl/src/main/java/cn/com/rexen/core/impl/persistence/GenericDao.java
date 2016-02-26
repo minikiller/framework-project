@@ -165,8 +165,8 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
                 continue;
             }
 
-            if (key.contains("__begin__gt") || key.contains("__end__lt")) {
-                attribute = (SingularAttribute<T, Object>) bean_.getSingularAttribute(key.split("__")[0]);
+            if (key.contains(":begin:gt") || key.contains(":end:lt")) {
+                attribute = (SingularAttribute<T, Object>) bean_.getSingularAttribute(key.split(":")[0]);
             } else {
                 attribute = (SingularAttribute<T, Object>) bean_.getSingularAttribute(key);
             }
@@ -189,10 +189,10 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
                 try {
                     Date date = dateFormat.parse(value);
 
-                    if(key.contains("__begin__gt")){
+                    if(key.contains(":begin:gt")){
                         predicatesList.add(criteriaBuilder.greaterThanOrEqualTo(root.get(tempAttribute), date));
                     }
-                    else if(key.contains("__end__lt")){
+                    else if(key.contains(":end:lt")){
                         predicatesList.add(criteriaBuilder.lessThanOrEqualTo(root.get(tempAttribute), date));
                     }
                 } catch (ParseException e) {
