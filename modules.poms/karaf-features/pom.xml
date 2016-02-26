@@ -101,6 +101,11 @@
                                     <type>cfg</type>
                                     <classifier>ConfigCache</classifier>
                                 </artifact>
+                                <artifact>
+                                    <file>target/classes/ConfigRedis.cfg</file>
+                                    <type>cfg</type>
+                                    <classifier>ConfigRedis</classifier>
+                                </artifact>
                             </artifacts>
                         </configuration>
                     </execution>
