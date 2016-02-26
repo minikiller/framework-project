@@ -12,13 +12,15 @@ public class RedisStackServiceImpl implements IStackService {
     private JedisPool jedisPool;
 
     @Override
-    public void publish(String topic, String msgJson) {
-
+    public void publish(String topic, String msgJson, int seconds) {
+        Producer producer = new Producer(jedisPool.getResource(), topic);
+        producer.publish(msgJson, seconds);
     }
 
     @Override
     public String consume(String topic) {
-        return null;
+        Consumer consumer = new Consumer(jedisPool.getResource(), "consumer", topic);
+        return consumer.consume();
     }
 
     private Jedis getJedis() {

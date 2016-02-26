@@ -77,9 +77,9 @@
                                     <classifier>features</classifier>
                                 </artifact>
                                 <artifact>
-                                    <file>target/classes/CouchdbConfig.cfg</file>
+                                    <file>target/classes/ConfigCouchdb.cfg</file>
                                     <type>cfg</type>
-                                    <classifier>couchdb</classifier>
+                                    <classifier>ConfigCouchdb</classifier>
                                 </artifact>
                                 <artifact>
                                     <file>target/classes/org.ops4j.datasource-kalix.cfg</file>

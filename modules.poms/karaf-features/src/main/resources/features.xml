@@ -322,7 +322,7 @@
             mvn:cn.com.rexen.kalix/karaf-features/${project.version}/cfg/datasource
         </configfile>
         <configfile finalname="/etc/ConfigCouchdb.cfg" override="true">
-            mvn:cn.com.rexen.kalix/karaf-features/${project.version}/cfg/couchdb
+            mvn:cn.com.rexen.kalix/karaf-features/${project.version}/cfg/ConfigCouchdb
         </configfile>
         <configfile finalname="/etc/ConfigWebContext.cfg" override="true">
             mvn:cn.com.rexen.kalix/karaf-features/${project.version}/cfg/ConfigWebContext

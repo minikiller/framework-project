@@ -12,8 +12,9 @@ public interface IStackService extends IService {
      *
      * @param topic   topic
      * @param msgJson JSON 格式的消息
+     * @param seconds 超时时间,可以传0
      */
-    void publish(String topic, String msgJson);
+    void publish(String topic, String msgJson, int seconds);
     /**
      * 读取消息队列
      * @param topic   topic

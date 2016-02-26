@@ -8,7 +8,8 @@
     <process id="carapply" name="公务用车申请流程" isExecutable="true">
         <documentation>公务用车申请流程</documentation>
         <extensionElements>
-            <activiti:eventListener class="cn.com.rexen.workflow.engine.MessageEvent" entityType="task" events="TASK_CREATED"/>
+            <activiti:eventListener class="cn.com.rexen.workflow.engine.MessageEvent" entityType="task"
+                                    events="TASK_CREATED,TASK_COMPLETED"/>
         </extensionElements>
         <startEvent id="startevent1" name="启动审批"></startEvent>
         <userTask id="usertask1" name="正处级领导审核" activiti:candidateGroups="admin" activiti:formKey="audit.form">

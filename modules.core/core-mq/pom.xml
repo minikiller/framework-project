@@ -16,7 +16,7 @@
     <packaging>bundle</packaging>
     <!--need to change after copy-->
     <properties>
-        <bundle.symbolicName>cn.com.rexen.core.mq</bundle.symbolicName>
+        <bundle.symbolicName>cn.com.rexen.core.redis.mq</bundle.symbolicName>
         <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -48,8 +48,6 @@
             <groupId>cn.com.rexen.kalix.core</groupId>
             <artifactId>core-api</artifactId>
         </dependency>
-
-
     </dependencies>
     <build>
         <plugins>

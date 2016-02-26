@@ -3,25 +3,38 @@
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
 ">
     <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
+    <reference id="stackService" interface="cn.com.rexen.core.api.system.IStackService"/>
+    <reference id="messageBeanDao" interface="cn.com.rexen.bean.api.dao.IMessageBeanDao"/>
+
     <service id="messageBeanService" interface="cn.com.rexen.bean.api.biz.IMessageBeanService"
              ref="beanServiceImpl">
     </service>
-
 
     <bean id="beanServiceImpl" class="cn.com.rexen.bean.core.biz.MessageBeanServiceImpl">
         <property name="dao" ref="messageBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
     </bean>
 
-    <reference id="messageBeanDao" interface="cn.com.rexen.bean.api.dao.IMessageBeanDao"/>
-
     <service interface="org.osgi.service.event.EventHandler" ref="workFlowMessageEventImpl">
         <service-properties>
             <entry key="event.topics" value="cn/com/rexen/engine/message"/>
         </service-properties>
     </service>
+
     <bean id="workFlowMessageEventImpl" class="cn.com.rexen.bean.core.biz.WorkFlowMessageEventImpl">
         <property name="dao" ref="messageBeanDao"/>
+        <property name="stackService" ref="stackService"/>
+    </bean>
+
+    <service interface="org.osgi.service.event.EventHandler" ref="workFlowStarterEventImpl">
+        <service-properties>
+            <entry key="event.topics" value="cn/com/rexen/engine/starter"/>
+        </service-properties>
+    </service>
+
+    <bean id="workFlowStarterEventImpl" class="cn.com.rexen.bean.core.biz.WorkFlowStarterEventImpl">
+        <property name="dao" ref="messageBeanDao"/>
+        <property name="stackService" ref="stackService"/>
     </bean>
 
     <bean id="messagePollingImpl" class="cn.com.rexen.bean.core.system.MessagePollingServiceImpl"/>
