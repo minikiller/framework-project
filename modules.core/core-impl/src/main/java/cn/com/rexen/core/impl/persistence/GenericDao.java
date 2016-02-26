@@ -183,7 +183,7 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
             } else if (attrJavaTypeName.equals(short.class.getName()) || attrJavaTypeName.equals(Short.class.getName())) {
                 predicatesList.add(criteriaBuilder.equal(root.get(attribute), new Short(value)));
             } else if(attrJavaTypeName.equals(Date.class.getName())){
-                SingularAttribute<T, Date> tempAttribute = (SingularAttribute<T, Date>)bean_.getSingularAttribute(key.split("__")[0]);
+                SingularAttribute<T, Date> tempAttribute = (SingularAttribute<T, Date>)bean_.getSingularAttribute(key.split(":")[0]);
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
                 try {
