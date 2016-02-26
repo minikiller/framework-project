@@ -98,13 +98,13 @@ public class NoticeBeanServiceImpl extends AuditBizServiceImpl<INoticeBeanDao, N
 
         jsonStatus.setSuccess(true);
         try {
-            String bizKey = Const.PROCESS_KEY_NAME + ":" + entityId;
+            String bizKey = Const.PROCESS_Notice_KEY_NAME+ ":" + entityId;
             //获得当前登陆用户
             String userName = userLoginService.getLoginName();
             identityService.setAuthenticatedUserId(userName);
             NoticeBean bean = (NoticeBean) this.getEntity(new Long(entityId));
             //启动流程
-            ProcessInstance instance = runtimeService.startProcessInstanceByKey(Const.PROCESS_KEY_NAME, bizKey);
+            ProcessInstance instance = runtimeService.startProcessInstanceByKey(Const.PROCESS_Notice_KEY_NAME, bizKey);
 
             Task task = taskService.createTaskQuery().processInstanceId(instance.getProcessInstanceId()).singleResult();
             //设置实体状态

@@ -18,7 +18,7 @@ import java.util.Date;
  * @修改备注：
  */
 @Entity
-@Table(name = "sys_demo")
+@Table(name = "demo_notice")
 @Inheritance(strategy = InheritanceType.JOINED)
 /*@TypeDef(name = "jsonb", typeClass = JSONBUserType.class, parameters = {
         @Parameter(name = JSONBUserType.CLASS,

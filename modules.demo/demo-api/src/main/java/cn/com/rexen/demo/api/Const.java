@@ -5,6 +5,7 @@ package cn.com.rexen.demo.api;
  * 常量类
  */
 public class Const {
-    public static String WORKFLOW_PROCESS_KEY = "fireworks";
-    public static String WORKFLOW_CAR_PROCESS_KEY = "公务用车申请";
+    public static final String PROCESS_SEAL_APPLY_KEY_NAME = "sealapply";
+    public static final String PROCESS_Notice_KEY_NAME = "notice";
+    public static final String PROCESS_CAR_APPLY_KEY_NAME = "carapply";
 }

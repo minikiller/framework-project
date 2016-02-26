@@ -48,4 +48,14 @@
    --> <!--系统提供的服务-->
     <bean id="jndiService" class="cn.com.rexen.core.impl.system.JndiService"/>
     <service id="sys_jndiService" interface="cn.com.rexen.core.api.system.IJndiService" ref="jndiService"/>
+    <bean id="pollingService" class="cn.com.rexen.core.system.impl.PollingServiceImpl"/>
+    <service id="sys_pollingService" interface="cn.com.rexen.core.api.system.IPollingService" ref="pollingService"/>
+
+    <!--监听IPolling项模块的加载和卸载-->
+    <reference-list interface="cn.com.rexen.core.api.system.IPolling" member-type="service-reference"
+                    availability="optional">
+        <reference-listener bind-method="register" unbind-method="unregister">
+            <bean class="cn.com.rexen.core.system.listener.PollingListener"/>
+        </reference-listener>
+    </reference-list>
 </blueprint>

@@ -20,17 +20,9 @@
            xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
-    <!--<cm:property-placeholder persistent-id="CamelRestConfig" update-strategy="reload">-->
-    <!--<cm:default-properties>-->
-    <!--<cm:property name="contextPath" value="/kalix/camel/rest"/>-->
-    <!--<cm:property name="host" value="localhost"/>-->
-    <!--<cm:property name="port" value="8181"/>-->
-    <!--</cm:default-properties>-->
-    <!--</cm:property-placeholder>-->
+    <reference id="pollingService" interface="cn.com.rexen.core.api.system.IPollingService"/>
 
-    <reference id="systemService" interface="cn.com.rexen.core.api.web.ISystemService"/>
-
-    <camelContext id="applicationCamel" xmlns="http://camel.apache.org/schema/blueprint">
+    <camelContext id="pollingCamel" xmlns="http://camel.apache.org/schema/blueprint">
 
         <!-- configure rest to use the camel-servlet component, and use json binding mode -->
         <!-- and tell to output json in pretty print mode -->
@@ -48,36 +40,10 @@
             <description>Extjs System rest service</description>
 
             <!-- this is a rest GET to view an user by the given id -->
-            <get id="route-getAllApp" uri="/applications" outType="cn.com.rexen.core.api.web.model.ApplicationBean[]">
-                <description>Find user by id</description>
-                <to uri="bean:systemService?method=getApplicationList"/>
+            <get id="route-getAllPolling" uri="/pollings" outType="cn.com.rexen.core.api.system.model.PollingBean[]">
+                <description>Get all polling</description>
+                <to uri="bean:pollingService?method=getPollingList"/>
             </get>
-
-            <!-- this is a rest GET to view an user by the given id -->
-            <get id="route-getModuleByAppId" uri="/applications/{id}"
-                 outType="cn.com.rexen.core.api.web.model.ModuleBean[]">
-                <description>Find Module by Application id</description>
-                <to uri="bean:systemService?method=getModuleByApplication(${header.id})"/>
-            </get>
-
-            <!-- this is a rest GET to view an user by the given id -->
-            <get id="route-getSystem" outType="cn.com.rexen.core.api.web.model.SystemBean">
-                <description>Get System Info</description>
-                <to uri="bean:systemService?method=getSystem"/>
-            </get>
-
-            <get id="route-getMenuByModule" uri="/applications/modules/{id}"
-                 outType="cn.com.rexen.core.api.web.model.MenuBean[]">
-                <description>Find Menu by Module id</description>
-                <to uri="bean:systemService?method=getMenuByModule(${header.id})"/>
-            </get>
-
-            <get id="route-getButtonsByPermission" uri="/applications/modules/children/buttons/{permissions}"
-                 outType="java.util.Map">
-                <description>Find Button Permission</description>
-                <to uri="bean:systemService?method=getButtonsByPermission(${header.permissions})"/>
-            </get>
-
         </rest>
 
     </camelContext>

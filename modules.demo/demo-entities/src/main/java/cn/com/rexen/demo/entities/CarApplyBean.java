@@ -18,7 +18,7 @@ import java.util.Date;
  * @修改备注：
  */
 @Entity
-@Table(name = "workflow_car")
+@Table(name = "demo_car")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class CarApplyBean extends WorkflowEntity {
     private String department;//申请部门
@@ -30,10 +30,9 @@ public class CarApplyBean extends WorkflowEntity {
     private Date endDate;//用车时段，结束时间
     private String address;//用车起始地点
     private boolean city;//是否市内用车
-    private String operator;//申请人
     private String operatorPhone;//申请人联系电话
     private String depUser;//申请部门负责人签字
-    private String managerUser;//申请部门主管领导签批
+    private String managerUser;//副校级领导审核
     private String schoolUser;//校务部签字
     private String schoolManagerUser;//校务部主管领导审批（市外）
 
@@ -91,14 +90,6 @@ public class CarApplyBean extends WorkflowEntity {
 
     public void setCity(boolean city) {
         this.city = city;
-    }
-
-    public String getOperator() {
-        return operator;
-    }
-
-    public void setOperator(String operator) {
-        this.operator = operator;
     }
 
     public String getOperatorPhone() {

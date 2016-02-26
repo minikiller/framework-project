@@ -1,5 +1,6 @@
 package cn.com.rexen.workflow.core.impl;
 
+import cn.com.rexen.admin.api.biz.IRoleBeanService;
 import cn.com.rexen.core.api.security.IUserLoginService;
 import cn.com.rexen.core.util.Assert;
 import cn.com.rexen.core.util.SerializeUtil;
@@ -31,22 +32,8 @@ public class TaskServiceImpl implements ITaskService {
     private HistoryService historyService;
     private JsonData jsonData = new JsonData();
     private IUserLoginService userLoginService;
+    private IRoleBeanService roleBeanService;
 
-    public void setTaskService(TaskService taskService) {
-        this.taskService = taskService;
-    }
-
-    public void setUserLoginService(IUserLoginService userLoginService) {
-        this.userLoginService = userLoginService;
-    }
-
-    public void setRuntimeService(RuntimeService runtimeService) {
-        this.runtimeService = runtimeService;
-    }
-
-    public void setHistoryService(HistoryService historyService) {
-        this.historyService = historyService;
-    }
 
     /**
      * 获得工作流任务列表
@@ -59,19 +46,20 @@ public class TaskServiceImpl implements ITaskService {
         String userName = userLoginService.getLoginName();
         List<TaskDTO> taskDTOList;
         List<Task> taskList;
+        List<String> roleBeanList = roleBeanService.getRoleNameListByLoginName(userName);
         if(StringUtils.isNotEmpty(jsonStr)){
             Map map= SerializeUtil.json2Map(jsonStr) ;
             String taskName= (String) map.get("name");
             Assert.notNull(taskName);
             taskList =taskService
-                    .createTaskQuery()
-                    .taskAssignee(userName).taskNameLike("%"+taskName+"%").orderByTaskCreateTime().desc()
+                    .createTaskQuery().taskCandidateGroupIn(roleBeanList)
+                    .taskNameLike("%" + taskName + "%").orderByTaskCreateTime().desc()
                     .listPage((page - 1) * limit, limit);
         }
         else{
             taskList = taskService
-                    .createTaskQuery()
-                    .taskAssignee(userName).orderByTaskCreateTime().desc()
+                    .createTaskQuery().taskCandidateGroupIn(roleBeanList)
+                    .orderByTaskCreateTime().desc()
                     .listPage((page - 1) * limit, limit);
         }
 
@@ -109,5 +97,25 @@ public class TaskServiceImpl implements ITaskService {
         historicProcessInstance = historyService.createHistoricProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
         String userName = historicProcessInstance.getStartUserId();
         return userName;
+    }
+
+    public void setTaskService(TaskService taskService) {
+        this.taskService = taskService;
+    }
+
+    public void setUserLoginService(IUserLoginService userLoginService) {
+        this.userLoginService = userLoginService;
+    }
+
+    public void setRuntimeService(RuntimeService runtimeService) {
+        this.runtimeService = runtimeService;
+    }
+
+    public void setHistoryService(HistoryService historyService) {
+        this.historyService = historyService;
+    }
+
+    public void setRoleBeanService(IRoleBeanService roleBeanService) {
+        this.roleBeanService = roleBeanService;
     }
 }

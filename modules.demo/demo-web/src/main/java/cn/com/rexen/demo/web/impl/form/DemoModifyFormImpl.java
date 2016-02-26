@@ -1,4 +1,4 @@
-package cn.com.rexen.demo.web.impl;
+package cn.com.rexen.demo.web.impl.form;
 
 import cn.com.rexen.demo.api.Const;
 import cn.com.rexen.workflow.api.web.IFormHandler;
@@ -15,7 +15,7 @@ public class DemoModifyFormImpl implements IFormHandler {
 
     @Override
     public String getProcessDefinitionId() {
-        return Const.WORKFLOW_PROCESS_KEY;
+        return Const.PROCESS_SEAL_APPLY_KEY_NAME;
     }
 
     @Override

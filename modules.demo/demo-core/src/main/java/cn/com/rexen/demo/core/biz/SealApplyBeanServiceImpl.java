@@ -31,13 +31,13 @@ public class SealApplyBeanServiceImpl extends ShiroGenericBizServiceImpl<ISealAp
 
         jsonStatus.setSuccess(true);
         try {
-            String bizKey = Const.PROCESS_KEY_NAME + ":" + id;
+            String bizKey = Const.PROCESS_SEAL_APPLY_KEY_NAME + ":" + id;
             //获得当前登陆用户
             String userName = this.getShiroService().getSubject().getPrincipal().toString();
             identityService.setAuthenticatedUserId(userName);
             SealApplyBean bean = (SealApplyBean) this.getEntity(new Long(id));
             //启动流程
-            ProcessInstance instance = runtimeService.startProcessInstanceByKey(Const.PROCESS_KEY_NAME, bizKey);
+            ProcessInstance instance = runtimeService.startProcessInstanceByKey(Const.PROCESS_SEAL_APPLY_KEY_NAME, bizKey);
 
             Task task = taskService.createTaskQuery().processInstanceId(instance.getProcessInstanceId()).singleResult();
             //设置实体状态

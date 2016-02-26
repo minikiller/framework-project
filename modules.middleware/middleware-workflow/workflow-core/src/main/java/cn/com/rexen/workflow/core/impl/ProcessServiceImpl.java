@@ -143,7 +143,8 @@ public class ProcessServiceImpl implements IProcessService {
     }
 
     private void generateJsonData(List<HistoricProcessInstance> processHistoryList) {
-        List<HistoricProcessInstanceDTO> historicProcessDTOList;Mapper mapper = new DozerBeanMapper();
+        List<HistoricProcessInstanceDTO> historicProcessDTOList;
+        Mapper mapper = new DozerBeanMapper();
         historicProcessDTOList = DozerHelper.map(mapper, processHistoryList, HistoricProcessInstanceDTO.class);
         //设置流程状态
         for (HistoricProcessInstanceDTO dto : historicProcessDTOList) {
@@ -212,16 +213,17 @@ public class ProcessServiceImpl implements IProcessService {
             }
         }
 
-
         if (list != null) {
             Mapper mapper = new DozerBeanMapper();
             historicActivityDTOList = DozerHelper.map(mapper, list, HistoricActivityInstanceDTO.class);
             for (HistoricActivityInstanceDTO historicActivityInstance : historicActivityDTOList) {
-                List<Comment> commentList = taskService.getTaskComments(historicActivityInstance.getTaskId());
                 String str = "";
+                List<Comment> commentList = taskService.getTaskComments(historicActivityInstance.getTaskId());
                 for (Comment comment : commentList) {
                     str = comment.getFullMessage() + str + " ";
                 }
+                //替换userid为usename
+//                historicActivityInstance.setAssignee(commentList.get(0).getUserId());
                 historicActivityInstance.setComment(str);
             }
 
