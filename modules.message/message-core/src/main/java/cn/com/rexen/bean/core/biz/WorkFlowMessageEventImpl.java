@@ -2,17 +2,16 @@ package cn.com.rexen.bean.core.biz;
 
 import cn.com.rexen.bean.api.dao.IMessageBeanDao;
 import cn.com.rexen.bean.entities.MessageBean;
+import com.google.gson.Gson;
 import org.activiti.engine.impl.util.json.JSONObject;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
-
-import java.util.Date;
 
 /**
  * 工作流中的消息进行监听处理类
  * Created by zangyanming on 2016/2/23.
  */
-public class WorkFlowMessageEventImpl implements EventHandler {
+public class WorkFlowMessageEventImpl extends BaseWorkflowEvent implements EventHandler {
     IMessageBeanDao dao;
 
     public void setDao(IMessageBeanDao dao) {
