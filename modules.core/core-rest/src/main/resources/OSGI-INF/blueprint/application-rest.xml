@@ -45,7 +45,7 @@
 
         <!-- defines the rest services using the context-path /user -->
         <rest path="/system" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
-            <description>Extjs System rest service</description>
+            <description>Kalix System rest service</description>
 
             <!-- this is a rest GET to view an user by the given id -->
             <get id="route-getAllApp" uri="/applications" outType="cn.com.rexen.core.api.web.model.ApplicationBean[]">

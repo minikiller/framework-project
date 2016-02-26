@@ -1,7 +1,19 @@
-<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
-           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
-">
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+           xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+    <cm:property-placeholder persistent-id="ConfigMessagePool" update-strategy="reload">
+        <cm:default-properties>
+            <cm:property name="id" value="MessagePolling"/>
+            <cm:property name="type" value="workflow-message"/>
+            <cm:property name="interval" value="10000"/>
+            <cm:property name="url" value="camel/rest/system/stack"/>
+            <cm:property name="stop" value="false"/>
+            <cm:property name="callbackHandler" value="onWorkflowMsg"/>
+        </cm:default-properties>
+    </cm:property-placeholder>
+
     <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
     <reference id="stackService" interface="cn.com.rexen.core.api.system.IStackService"/>
     <reference id="messageBeanDao" interface="cn.com.rexen.bean.api.dao.IMessageBeanDao"/>
@@ -39,7 +51,14 @@
         <property name="stackService" ref="stackService"/>
     </bean>
 
-    <bean id="messagePollingImpl" class="cn.com.rexen.bean.core.system.MessagePollingServiceImpl"/>
+    <bean id="messagePollingImpl" class="cn.com.rexen.bean.core.system.MessagePollingServiceImpl">
+        <property name="id" value="${id}"/>
+        <property name="type" value="${type}"/>
+        <property name="interval" value="${interval}"/>
+        <property name="url" value="${url}"/>
+        <property name="stop" value="${stop}"/>
+        <property name="callbackHandler" value="${callbackHandler}"/>
+    </bean>
     <service interface="cn.com.rexen.core.api.system.IPollingService" ref="messagePollingImpl"/>
 </blueprint>
 

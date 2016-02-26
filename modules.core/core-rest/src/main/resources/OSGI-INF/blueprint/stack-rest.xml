@@ -20,9 +20,9 @@
            xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
-    <reference id="pollingService" interface="cn.com.rexen.core.api.system.IPollingManagerService"/>
+    <reference id="stackService" interface="cn.com.rexen.core.api.system.IStackService"/>
 
-    <camelContext id="pollingCamel" xmlns="http://camel.apache.org/schema/blueprint">
+    <camelContext id="stackCamel" xmlns="http://camel.apache.org/schema/blueprint">
 
         <!-- configure rest to use the camel-servlet component, and use json binding mode -->
         <!-- and tell to output json in pretty print mode -->
@@ -40,9 +40,9 @@
             <description>Kalix System rest service</description>
 
             <!-- this is a rest GET to view an user by the given id -->
-            <get id="route-getAllPolling" uri="/pollings" outType="cn.com.rexen.core.api.system.model.PollingBean[]">
-                <description>Get all polling</description>
-                <to uri="bean:pollingService?method=getPollingList"/>
+            <get id="route-getStackByTopic" uri="/stack">
+                <description>Get stack by topic</description>
+                <to uri="bean:stackService?method=consume(${header.topic})"/>
             </get>
         </rest>
 

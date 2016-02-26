@@ -6,33 +6,65 @@ import cn.com.rexen.core.api.system.IPollingService;
  * Created by zangyanming on 2016/2/25.
  */
 public class MessagePollingServiceImpl implements IPollingService {
+    public static final String CONFIG_MESSAGE_POOL = "ConfigMessagePool";
+    private String id;
+    private String type;
+    private int interval;
+    private String url;
+    private boolean stop;
+    private String callbackHandler;
+
     @Override
     public String getId() {
-        return "MessagePolling";
+        return id;
     }
 
     @Override
     public String getType() {
-        return "workflow-message";
+        return type;
     }
 
     @Override
     public int getInterval() {
-        return 10000;
+        return interval;
     }
 
     @Override
     public String getUrl() {
-        return "camel/rest/messages/workflow/message";
+        return url;
     }
 
     @Override
     public boolean isStop() {
-        return false;
+        return stop;
     }
 
     @Override
     public String getCallbackHandler() {
-        return "onWorkflowMsg";
+        return callbackHandler;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setInterval(int interval) {
+        this.interval = interval;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setStop(boolean stop) {
+        this.stop = stop;
+    }
+
+    public void setCallbackHandler(String callbackHandler) {
+        this.callbackHandler = callbackHandler;
     }
 }

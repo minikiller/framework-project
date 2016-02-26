@@ -24,7 +24,7 @@ public class WorkFlowStarterEventImpl extends BaseWorkflowEvent implements Event
         dao.save(messageBean);
         //add msg to stack
         Gson gson = new Gson();
-        stackService.publish("workflow.starter." + receiver, gson.toJson(messageBean), 0);
+        stackService.publish(String.format(TOPIC_FORMAT, receiver), gson.toJson(messageBean), day);
     }
 
 }
