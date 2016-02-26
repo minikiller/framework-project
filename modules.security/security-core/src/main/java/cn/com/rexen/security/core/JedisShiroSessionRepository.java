@@ -51,8 +51,8 @@ public class JedisShiroSessionRepository implements
             jedis.set(key, value);
             jedis.expire(key, Integer.parseInt(timeOut.toString()));
         } catch (JedisException e) {
-            logger.error("保存session失败",
-                    e);
+            logger.error("保存session失败", e);
+            returnBrokenResource(jedis);
         } finally {
             this.returnResource(jedis);
         }
@@ -60,6 +60,10 @@ public class JedisShiroSessionRepository implements
 
     private void returnResource(Jedis jedis) {
         jedisPool.returnResource(jedis);
+    }
+
+    private void returnBrokenResource(Jedis jedis) {
+        jedisPool.returnBrokenResource(jedis);
     }
 
     private Jedis getJedis() {
@@ -76,8 +80,8 @@ public class JedisShiroSessionRepository implements
         try {
             jedis.del(SerializeUtil.serialize(getRedisSessionKey(id)));
         } catch (JedisException e) {
-            logger.error("删除session失败",
-                    e);
+            logger.error("删除session失败", e);
+            returnBrokenResource(jedis);
         } finally {
             this.returnResource(jedis);
         }
@@ -96,8 +100,8 @@ public class JedisShiroSessionRepository implements
                     .serialize(getRedisSessionKey(id)));
             session = SerializeUtil.unserialize(value);
         } catch (JedisException e) {
-            logger.error("获取id为" + id
-                    + "的session失败", e);
+            logger.error("获取id为" + id + "的session失败", e);
+            returnBrokenResource(jedis);
         } catch (Exception e) {
             logger.error("登录异常", e);
         } finally {
@@ -122,6 +126,7 @@ public class JedisShiroSessionRepository implements
             }
         } catch (JedisException e) {
             logger.error("获取所有session失败", e);
+            returnBrokenResource(jedis);
         } finally {
             this.returnResource(jedis);
         }

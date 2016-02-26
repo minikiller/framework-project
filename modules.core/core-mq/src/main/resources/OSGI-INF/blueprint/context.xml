@@ -13,10 +13,10 @@
     </cm:property-placeholder>
 
     <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
-        <!-- <property name="maxActive" value="1024" />
-         <property name="maxIdle" value="200" />
-         <property name="maxWait" value="1000" />
-         <property name="testOnBorrow" value="true" />-->
+        <!--<property name="maxActive" value="1024" />
+        <property name="maxIdle" value="200" />
+        <property name="maxWait" value="1000" />
+        <property name="testOnBorrow" value="true" />-->
     </bean>
 
     <bean id="shardedJedisPool" class="redis.clients.jedis.JedisPool">

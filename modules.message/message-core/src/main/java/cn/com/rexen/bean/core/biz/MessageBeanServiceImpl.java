@@ -4,9 +4,11 @@ import cn.com.rexen.admin.api.biz.IUserBeanService;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.bean.api.biz.IMessageBeanService;
 import cn.com.rexen.bean.api.dao.IMessageBeanDao;
+import cn.com.rexen.bean.core.Const;
 import cn.com.rexen.bean.entities.MessageBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
+import cn.com.rexen.core.api.system.IStackService;
 import cn.com.rexen.core.impl.biz.ShiroGenericBizServiceImpl;
 
 import java.util.List;
@@ -21,10 +23,8 @@ import java.util.List;
  */
 public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageBeanDao, MessageBean> implements IMessageBeanService {
     private IUserBeanService userBeanService;
+    private IStackService stackService;
 
-    public void setUserBeanService(IUserBeanService userBeanService) {
-        this.userBeanService = userBeanService;
-    }
     public MessageBeanServiceImpl() {
         super.init(MessageBean.class.getName());
     }
@@ -67,4 +67,31 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
         }
         return super.getAllEntityByQuery(page, limit, jsonStr);
     }
+
+    @Override
+    public JsonStatus getPollingMessage() {
+        JsonStatus jsonStatus = new JsonStatus();
+        try {
+            jsonStatus.setSuccess(true);
+            String loginName = this.getShiroService().getSubject().getPrincipal().toString();
+            String topic = String.format(Const.POLLING_TOPIC_FORMAT, loginName);
+            jsonStatus.setTag(stackService.consume(topic));
+            return jsonStatus;
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setSuccess(false);
+            jsonStatus.setTag("");
+            return jsonStatus;
+        }
+
+    }
+
+    public void setUserBeanService(IUserBeanService userBeanService) {
+        this.userBeanService = userBeanService;
+    }
+
+    public void setStackService(IStackService stackService) {
+        this.stackService = stackService;
+    }
+
 }

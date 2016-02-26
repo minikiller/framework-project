@@ -33,12 +33,12 @@ public class ReceiverMessageMenuImpl implements IMenu {
 
     @Override
     public String getText() {
-        return "已收消息通知";
+        return "收件箱";
     }
 
     @Override
     public String getDescription() {
-        return "已收消息通知列表";
+        return "收件箱";
     }
 
     @Override
@@ -53,7 +53,7 @@ public class ReceiverMessageMenuImpl implements IMenu {
 
     @Override
     public int getIndex() {
-        return 20;
+        return 0;
     }
 
     @Override
@@ -65,6 +65,6 @@ public class ReceiverMessageMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-envelope";
+        return "x-fa fa-inbox";
     }
 }

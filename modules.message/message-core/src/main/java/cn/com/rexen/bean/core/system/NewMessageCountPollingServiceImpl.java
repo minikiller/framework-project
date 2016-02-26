@@ -3,9 +3,10 @@ package cn.com.rexen.bean.core.system;
 import cn.com.rexen.core.api.system.IPollingService;
 
 /**
- * Created by zangyanming on 2016/2/25.
+ * Created by sunlf on 2016/2/25.
+ * 新消息个数轮询实现类
  */
-public class MessagePollingServiceImpl implements IPollingService {
+public class NewMessageCountPollingServiceImpl implements IPollingService {
     private String id;
     private String type;
     private int interval;

@@ -20,4 +20,9 @@ public interface IMessageBeanService extends IBizService<MessageBean> {
     JsonData getReceiverMessage(int page, int limit, String jsonStr);
 
     JsonData getSenderMessage(int page, int limit, String jsonStr);
+
+    /**
+     * 获得轮询的消息
+     */
+    JsonStatus getPollingMessage();
 }

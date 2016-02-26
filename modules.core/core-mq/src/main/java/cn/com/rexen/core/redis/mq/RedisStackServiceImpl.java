@@ -13,18 +13,52 @@ public class RedisStackServiceImpl implements IStackService {
 
     @Override
     public void publish(String topic, String msgJson, int seconds) {
-        Producer producer = new Producer(jedisPool.getResource(), topic);
-        producer.publish(msgJson, seconds);
+
+        Jedis jedis = getJedis();
+        try {
+//        Producer producer = new Producer(jedis, topic);
+//        producer.publish(msgJson, seconds);
+            jedis.rpush(topic, msgJson);
+        } catch (Exception e) {
+            //释放redis对象
+            jedisPool.returnBrokenResource(jedis);
+            e.printStackTrace();
+        } finally {
+            //返还到连接池
+            returnResource(jedis);
+        }
+
     }
 
     @Override
     public String consume(String topic) {
-        Consumer consumer = new Consumer(jedisPool.getResource(), "consumer", topic);
-        return consumer.consume();
+        Jedis jedis = getJedis();
+        try {
+//        Consumer consumer = new Consumer(jedis, "consumer", topic);
+//        String str=consumer.consume();
+            String str = jedis.lpop(topic);
+            if (str != null)
+                return str;
+            else
+                return "";
+        } catch (Exception e) {
+            //释放redis对象
+            jedisPool.returnBrokenResource(jedis);
+            e.printStackTrace();
+        } finally {
+            //返还到连接池
+            returnResource(jedis);
+        }
+        return "";
+
     }
 
     private Jedis getJedis() {
         return jedisPool.getResource();
+    }
+
+    private void returnResource(Jedis jedis) {
+        jedisPool.returnResource(jedis);
     }
 
     public void setJedisPool(JedisPool jedisPool) {

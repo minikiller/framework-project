@@ -69,6 +69,7 @@ public class MessageEvent implements ActivitiEventListener {
         taskJson.put("executionId", executionId);
         properties.put("body", taskJson.toString());
         Event osgi_event = new Event(WORKFLOW_STARTER_TOPIC, properties);
+        System.out.println("A task of " + startUserId + " is completed!");
         eventAdmin.postEvent(osgi_event);
     }
 

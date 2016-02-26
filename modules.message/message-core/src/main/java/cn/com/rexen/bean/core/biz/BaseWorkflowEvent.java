@@ -13,8 +13,8 @@ import java.util.Date;
 public abstract class BaseWorkflowEvent {
     protected IMessageBeanDao dao;
     protected IStackService stackService;
-    protected static final int day = 24 * 60 * 60;
-    protected static final String TOPIC_FORMAT = "workflow.message.%s";
+    protected static final int day = 24 * 60 * 60 * 1000;
+
 
     public void setDao(IMessageBeanDao dao) {
         this.dao = dao;

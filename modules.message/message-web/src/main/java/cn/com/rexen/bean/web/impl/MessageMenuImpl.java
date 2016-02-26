@@ -33,12 +33,12 @@ public class MessageMenuImpl implements IMenu {
 
     @Override
     public String getText() {
-        return "已发消息通知";
+        return "发件箱";
     }
 
     @Override
     public String getDescription() {
-        return "已发消息通知列表";
+        return "发件箱";
     }
 
     @Override
@@ -65,6 +65,6 @@ public class MessageMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-envelope";
+        return "x-fa fa-share";
     }
 }

@@ -102,9 +102,9 @@
                                     <classifier>ConfigCache</classifier>
                                 </artifact>
                                 <artifact>
-                                    <file>target/classes/ConfigRedis.cfg</file>
+                                    <file>target/classes/ConfigMessagePool.cfg</file>
                                     <type>cfg</type>
-                                    <classifier>ConfigRedis</classifier>
+                                    <classifier>ConfigMessagePool</classifier>
                                 </artifact>
                             </artifacts>
                         </configuration>

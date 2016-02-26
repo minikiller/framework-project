@@ -336,6 +336,9 @@
         <configfile finalname="/etc/ConfigRedis.cfg" override="true">
             mvn:cn.com.rexen.kalix/karaf-features/${project.version}/cfg/ConfigRedis
         </configfile>
+        <configfile finalname="/etc/ConfigMessagePool.cfg" override="true">
+            mvn:cn.com.rexen.kalix/karaf-features/${project.version}/cfg/ConfigMessagePool
+        </configfile>
     </feature>
 
     <feature name="ipojo" version="1.12.1" description="Apache Felix iPOJO Core Runtime">
