@@ -20,13 +20,13 @@ Ext.define('kalix.message.sender.view.MessageViewWindow', {
         defaults: {readOnly: true},
         xtype: 'baseForm',
         items: [
-            {
-                fieldLabel: '发送者',
-                allowBlank: false,
-                bind: {
-                    value: '{rec.sender}'
-                }
-            },
+            //{
+            //    fieldLabel: '发送者',
+            //    allowBlank: false,
+            //    bind: {
+            //        value: '{rec.sender}'
+            //    }
+            //},
             {
                 fieldLabel: '接收者',
                 allowBlank: false,
@@ -36,7 +36,9 @@ Ext.define('kalix.message.sender.view.MessageViewWindow', {
             },
             {
                 fieldLabel: '消息类别',
-                allowBlank: false,
+                xtype: 'dictCombobox',
+                dictType: 'category',
+                name: 'category',
                 bind: {
                     value: '{rec.category}'
                 }

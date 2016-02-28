@@ -36,7 +36,9 @@ Ext.define('kalix.message.receiver.view.MessageViewWindow', {
             },
             {
                 fieldLabel: '消息类别',
-                allowBlank: false,
+                xtype: 'dictCombobox',
+                dictType: 'category',
+                name: 'category',
                 bind: {
                     value: '{rec.category}'
                 }
