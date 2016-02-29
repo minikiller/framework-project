@@ -42,11 +42,11 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
             },
             //{
             //    text: '发送者',
-            //    dataIndex: 'sender'
+            //    dataIndex: 'senderid'
             //},
             {
                 text: '接收者',
-                dataIndex: 'receiver'
+                dataIndex: 'receiverid'
             },
             {
                 text: '消息类别',
@@ -82,11 +82,11 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
         xtype: 'securityToolbar',
         verifyItems: [
             {
-                text: '添加',
+                text: '发件',
                 xtype: 'button',
                 //todo change permission
                 permission: 'admin:constructModule:messageMenu:add',
-                bind: {icon: '{add_image_path}'},
+                iconCls: 'fa fa-pencil',
                 handler: 'onAdd'
             }
         ]

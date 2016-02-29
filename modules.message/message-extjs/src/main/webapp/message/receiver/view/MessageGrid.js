@@ -42,11 +42,11 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
             },
             {
                 text: '发送者',
-                dataIndex: 'sender'
+                dataIndex: 'senderid'
             },
             //{
             //    text: '接收者',
-            //    dataIndex: 'receiver'
+            //    dataIndex: 'receiverid'
             //},
             {
                 text: '消息类别',
@@ -66,7 +66,13 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
                 xtype: 'datecolumn',
                 format: 'Y-m-d', renderer: null
             },
-
+            {
+                trueText: '未读',
+                falseText: '已读',
+                xtype: 'booleancolumn',
+                dataIndex: 'read',
+                renderer: null
+            },
             {
                 xtype: 'securityGridColumnRUD',
                 //todo change permission

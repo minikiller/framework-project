@@ -22,7 +22,7 @@ Ext.define('kalix.message.receiver.Main', {
             xtype: 'messageReceiverGridPanel',
             id: 'messageReceiverGridPanel',
             title: '消息通知列表',
-            iconCls: 'x-fa fa-search',
+            iconCls: 'x-fa fa-inbox',
             margin: 10
         }
     ]

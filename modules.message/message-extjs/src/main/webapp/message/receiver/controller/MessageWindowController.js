@@ -8,7 +8,7 @@ Ext.define('kalix.message.receiver.controller.MessageWindowController', {
     extend: 'kalix.controller.BaseWindowController',
     alias: 'controller.messageReceiverWindowController',
     onShow: function () {
-        this.getView().lookupViewModel().getData().rec.set('sender', Ext.util.Cookies.get('currentUserName') || '系统管理员');
+        this.getView().lookupViewModel().getData().rec.set('receiverid', Ext.util.Cookies.get('currentUserName') || '系统管理员');
         this.getView().lookupViewModel().getData().rec.dirty = false;
     }
 });

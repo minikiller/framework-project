@@ -33,8 +33,10 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
     public JsonStatus getNewMessageCount() {
         JsonStatus jsonStatus = new JsonStatus();
         jsonStatus.setSuccess(true);
-        String userName = this.getShiroService().getSubject().getPrincipal().toString();
-        List countList = this.dao.find("select mb from MessageBean mb where mb.receiver=?1 and mb.read=1", userName);
+        String loginName = this.getShiroService().getSubject().getPrincipal().toString();
+        UserBean userBean = userBeanService.getUserBeanByUsername(loginName);
+        String userId = String.valueOf(userBean.getId());
+        List countList = this.dao.find("select mb from MessageBean mb where mb.receiverid=?1 and mb.read=1", userId);
         if (countList != null) {
             jsonStatus.setTag(String.valueOf(countList.size()));
         } else {
@@ -48,10 +50,11 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
     public JsonData getReceiverMessage(int page, int limit, String jsonStr) {
         String loginName = this.getShiroService().getSubject().getPrincipal().toString();
         UserBean userBean = userBeanService.getUserBeanByUsername(loginName);
+        String userId = String.valueOf(userBean.getId());
         if (jsonStr == null) {
-            jsonStr = "{\"receiver\":\"" + userBean.getId() + "\"}";
+            jsonStr = "{\"receiverid\":\"" + userId + "\"}";
         } else {
-            jsonStr = jsonStr.replace("}", ",\"receiver\":\"" + userBean.getId() + "\"}");
+            jsonStr = jsonStr.replace("}", ",\"receiverid\":\"" + userId + "\"}");
         }
         return super.getAllEntityByQuery(page, limit, jsonStr);
     }
@@ -60,12 +63,39 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
     public JsonData getSenderMessage(int page, int limit, String jsonStr) {
         String loginName = this.getShiroService().getSubject().getPrincipal().toString();
         UserBean userBean = userBeanService.getUserBeanByUsername(loginName);
+        String userId = String.valueOf(userBean.getId());
         if (jsonStr == null) {
-            jsonStr = "{\"sender\":\"" + userBean.getId() + "\"}";
+            jsonStr = "{\"senderid\":\"" + userId + "\"}";
         } else {
-            jsonStr = jsonStr.replace("}", ",\"sender\":\"" + userBean.getId() + "\"}");
+            jsonStr = jsonStr.replace("}", ",\"senderid\":\"" + userId + "\"}");
         }
         return super.getAllEntityByQuery(page, limit, jsonStr);
+    }
+
+    @Override
+    public JsonStatus saveAllEntities(MessageBean messageBean) {
+        JsonStatus jsonStatus = new JsonStatus();
+        String receiverids = messageBean.getReceiverid();
+        String loginName = this.getShiroService().getSubject().getPrincipal().toString();
+        UserBean userBean = userBeanService.getUserBeanByUsername(loginName);
+        String userId = String.valueOf(userBean.getId());
+        try {
+            jsonStatus.setSuccess(true);
+            messageBean.setSenderid(userId);
+            MessageBean newMessageBean = messageBean;
+            String[] ids = receiverids.split(":");
+            for (int i = 0; i < ids.length; i++) {
+                newMessageBean.setReceiverid(ids[i]);
+                saveEntity(newMessageBean);
+            }
+            jsonStatus.setTag("");
+            return jsonStatus;
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setSuccess(false);
+            jsonStatus.setTag("");
+            return jsonStatus;
+        }
     }
 
     @Override
@@ -83,7 +113,6 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
             jsonStatus.setTag("");
             return jsonStatus;
         }
-
     }
 
     public void setUserBeanService(IUserBeanService userBeanService) {

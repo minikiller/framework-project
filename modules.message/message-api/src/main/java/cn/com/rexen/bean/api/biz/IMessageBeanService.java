@@ -21,6 +21,7 @@ public interface IMessageBeanService extends IBizService<MessageBean> {
 
     JsonData getSenderMessage(int page, int limit, String jsonStr);
 
+    JsonStatus saveAllEntities(MessageBean messageBean);
     /**
      * 获得轮询的消息
      */

@@ -21,17 +21,10 @@ Ext.define('kalix.message.receiver.view.MessageViewWindow', {
         xtype: 'baseForm',
         items: [
             {
-                fieldLabel: '发送者',
-                allowBlank: false,
-                bind: {
-                    value: '{rec.sender}'
-                }
-            },
-            {
                 fieldLabel: '接收者',
                 allowBlank: false,
                 bind: {
-                    value: '{rec.receiver}'
+                    value: '{rec.receiverid}'
                 }
             },
             {
@@ -70,7 +63,10 @@ Ext.define('kalix.message.receiver.view.MessageViewWindow', {
             {
                 fieldLabel: '是否已读',
                 allowBlank: false,
-                xtype: 'numberfield',
+                xtype: 'combo',
+                displayField: 'name',
+                valueField: 'value',
+                store: {data: [{name: '已读', value: 0}, {name: '未读', value: 1}]},
                 bind: {
                     value: '{rec.read}'
                 }

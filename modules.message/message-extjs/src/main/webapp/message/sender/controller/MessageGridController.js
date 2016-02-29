@@ -7,4 +7,5 @@
 Ext.define('kalix.message.sender.controller.MessageGridController', {
     extend: 'kalix.controller.BaseGridController',
     alias: 'controller.messageSenderGridController'
+
 });

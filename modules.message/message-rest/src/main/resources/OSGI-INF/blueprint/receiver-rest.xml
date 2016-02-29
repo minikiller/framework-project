@@ -29,18 +29,18 @@
             <!--<to uri="bean:messageService?method=saveEntity"/>-->
             <!--</post>-->
 
-            <!--&lt;!&ndash; this is a rest GET to view a message by the given id &ndash;&gt;-->
-            <!--<get uri="/{id}" id="route-getMessage" outType="cn.com.rexen.bean.entities.MessageBean">-->
-            <!--<description>Find Message by id</description>-->
-            <!--<to uri="bean:messageService?method=getEntity(${header.id})"/>-->
-            <!--</get>-->
+            <!-- this is a rest GET to view a message by the given id -->
+            <get uri="/{id}" id="route-getReceiverMessage" outType="cn.com.rexen.bean.entities.MessageBean">
+                <description>Find Message by id</description>
+                <to uri="bean:messageService?method=getEntity(${header.id})"/>
+            </get>
 
-            <!--&lt;!&ndash; this is a rest PUT to update a message &ndash;&gt;-->
-            <!--<put uri="/{id}" id="route-updateMessage" type="cn.com.rexen.bean.entities.MessageBean"-->
-            <!--outType="cn.com.rexen.core.api.biz.JsonStatus">-->
-            <!--<description>Updates a Message</description>-->
-            <!--<to uri="bean:messageService?method=updateEntity"/>-->
-            <!--</put>-->
+            <!-- this is a rest PUT to update a message -->
+            <put uri="/{id}" id="route-updateReceiverMessage" type="cn.com.rexen.bean.entities.MessageBean"
+                 outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Updates a Message</description>
+                <to uri="bean:messageService?method=updateEntity"/>
+            </put>
 
             <!--&lt;!&ndash; this is a rest DELETE to delete a message &ndash;&gt;-->
             <!--<delete uri="/{id}" id="route-deleteMessage"-->

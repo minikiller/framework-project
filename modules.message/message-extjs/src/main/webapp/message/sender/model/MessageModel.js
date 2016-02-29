@@ -12,10 +12,10 @@ Ext.define('kalix.message.sender.model.MessageModel', {
     //todo 在此修改模型定义
     fields: [
         {
-            name: 'sender',
+            name: 'senderid',
             type: 'string'
         }, {
-            name: 'receiver',
+            name: 'receiverid',
             type: 'string'
         }, {
             name: 'category',
@@ -47,14 +47,14 @@ Ext.define('kalix.message.sender.model.MessageModel', {
     ],
     //todo 在此修改模型验证提示信息
     validators: {
-        sender: [{
-            type: 'presence',
-            message: '发送者不能为空'
-        }],
-        receiver: [{
-            type: 'presence',
-            message: '接收者不能为空'
-        }],
+        //senderid: [{
+        //    type: 'presence',
+        //    message: '发送者不能为空'
+        //}],
+        //receiverid: [{
+        //    type: 'presence',
+        //    message: '接收者不能为空'
+        //}],
         category: [{
             type: 'presence',
             message: '消息类别不能为空'

@@ -22,7 +22,7 @@ Ext.define('kalix.message.sender.Main', {
             xtype: 'messageSenderGridPanel',
             id: 'messageSenderGridPanel',
             title: '消息通知列表',
-            iconCls: 'x-fa fa-search',
+            iconCls: 'x-fa fa-share',
             margin: 10
         }
     ]

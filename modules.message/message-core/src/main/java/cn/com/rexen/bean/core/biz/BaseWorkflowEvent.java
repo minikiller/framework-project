@@ -15,7 +15,6 @@ public abstract class BaseWorkflowEvent {
     protected IStackService stackService;
     protected static final int day = 24 * 60 * 60 * 1000;
 
-
     public void setDao(IMessageBeanDao dao) {
         this.dao = dao;
     }
@@ -24,15 +23,15 @@ public abstract class BaseWorkflowEvent {
         this.stackService = stackService;
     }
 
-    protected MessageBean saveMessageBean(String receiver, String content, String title) {
+    protected MessageBean saveMessageBean(String receiverid, String content, String title) {
         MessageBean messageBean = new MessageBean();
-        messageBean.setSender("系统管理员");
-        messageBean.setReceiver(receiver);
-        messageBean.setCategory("assignment");
+        messageBean.setSenderid("系统管理员");
+        messageBean.setReceiverid(receiverid);
+        messageBean.setCategory("4");//1、消息；2、建议；3、警告；4、分配；
         messageBean.setTitle(title);
         messageBean.setContent(content);
         messageBean.setSend_timestamp(new Date());
-        messageBean.setRead(1);//未读的新消息
+        messageBean.setRead(1);//未读的消息
         messageBean.setMessage_state(1);
         messageBean.setSign(0);
         return messageBean;

@@ -24,14 +24,14 @@ Ext.define('kalix.message.sender.view.MessageViewWindow', {
             //    fieldLabel: '发送者',
             //    allowBlank: false,
             //    bind: {
-            //        value: '{rec.sender}'
+            //        value: '{rec.senderid}'
             //    }
             //},
             {
                 fieldLabel: '接收者',
                 allowBlank: false,
                 bind: {
-                    value: '{rec.receiver}'
+                    value: '{rec.receiverid}'
                 }
             },
             {

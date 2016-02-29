@@ -23,12 +23,12 @@ public class MessageBean extends PersistentEntity {
      * @describe 发送者
      * @validator 不能为空
      */
-    private String sender;
+    private String senderid;
     /**
      * @describe 接收者
      * @validator 不能为空
      */
-    private String receiver;
+    private String receiverid;
     /**
      * @describe 消息类别
      * @validator 不能为空
@@ -66,20 +66,20 @@ public class MessageBean extends PersistentEntity {
      */
     private int sign;
 
-    public String getSender() {
-        return sender;
+    public String getSenderid() {
+        return senderid;
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
+    public void setSenderid(String senderid) {
+        this.senderid = senderid;
     }
 
-    public String getReceiver() {
-        return receiver;
+    public String getReceiverid() {
+        return receiverid;
     }
 
-    public void setReceiver(String receiver) {
-        this.receiver = receiver;
+    public void setReceiverid(String receiverid) {
+        this.receiverid = receiverid;
     }
 
     public String getCategory() {

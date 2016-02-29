@@ -17,15 +17,15 @@ public class WorkFlowStarterEventImpl extends BaseWorkflowEvent implements Event
     public void handleEvent(Event event) {
         String json = (String) event.getProperty("body");
         JSONObject taskJson = new JSONObject(json);
-        String receiver = (String) taskJson.get("startUserId");
+        String receiverid = (String) taskJson.get("startUserId");
         String processDefinitionId = (String) taskJson.get("processDefinitionId");
-        String content = String.format("%s,您好！\r\n  您有一个待办流程请尽快处理！流程号为%s。", receiver, processDefinitionId);
+        String content = String.format("%s,您好！\r\n  您有一个待办流程请尽快处理！流程号为%s。", receiverid, processDefinitionId);
 
-        MessageBean messageBean = saveMessageBean(receiver, content, "审批任务进度提醒");
+        MessageBean messageBean = saveMessageBean(receiverid, content, "审批任务进度提醒");
         dao.save(messageBean);
         //add msg to stack
         Gson gson = new Gson();
-        stackService.publish(String.format(Const.POLLING_TOPIC_FORMAT, receiver), gson.toJson(messageBean), day);
+        stackService.publish(String.format(Const.POLLING_TOPIC_FORMAT, receiverid), gson.toJson(messageBean), day);
     }
 
 }

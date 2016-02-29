@@ -18,7 +18,7 @@ Ext.define('kalix.message.sender.view.MessageSearchForm', {
         //    labelAlign: 'right',
         //    labelWidth: 60,
         //    width: 200,
-        //    name: 'sender'
+        //    name: 'senderid'
         //},
         {
             xtype: 'textfield',
@@ -26,7 +26,7 @@ Ext.define('kalix.message.sender.view.MessageSearchForm', {
             labelAlign: 'right',
             labelWidth: 60,
             width: 200,
-            name: 'receiver'
+            name: 'receiverid'
         },
         //{
         //    xtype: 'textfield',

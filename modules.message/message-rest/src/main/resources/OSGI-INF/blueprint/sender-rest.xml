@@ -20,17 +20,17 @@
             </get>
 
             <!--&lt;!&ndash; this is a rest POST to create a message &ndash;&gt;-->
-            <!--<post id="route-addMessage" type="cn.com.rexen.bean.entities.MessageBean"-->
-            <!--outType="cn.com.rexen.core.api.biz.JsonStatus">-->
-            <!--<description>Create a Message</description>-->
-            <!--<to uri="bean:messageService?method=saveEntity"/>-->
-            <!--</post>-->
+            <post id="route-addMessage" type="cn.com.rexen.bean.entities.MessageBean"
+                  outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Create a Message</description>
+                <to uri="bean:messageService?method=saveAllEntities"/>
+            </post>
 
             <!--&lt;!&ndash; this is a rest GET to view a message by the given id &ndash;&gt;-->
-            <!--<get uri="/{id}" id="route-getMessage" outType="cn.com.rexen.bean.entities.MessageBean">-->
-            <!--<description>Find Message by id</description>-->
-            <!--<to uri="bean:messageService?method=getEntity(${header.id})"/>-->
-            <!--</get>-->
+            <get uri="/{id}" id="route-getMessage" outType="cn.com.rexen.bean.entities.MessageBean">
+                <description>Find Message by id</description>
+                <to uri="bean:messageService?method=getEntity(${header.id})"/>
+            </get>
 
             <!--&lt;!&ndash; this is a rest PUT to update a message &ndash;&gt;-->
             <!--<put uri="/{id}" id="route-updateMessage" type="cn.com.rexen.bean.entities.MessageBean"-->
