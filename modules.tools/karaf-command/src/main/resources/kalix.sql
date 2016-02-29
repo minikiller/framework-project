@@ -29,7 +29,7 @@ CREATE SEQUENCE "public"."act_evt_log_log_nr__seq"
 -- ----------------------------
 -- Table structure for "public"."act_evt_log"
 -- ----------------------------
-DROP TABLE "public"."act_evt_log";
+DROP TABLE IF EXISTS "public"."act_evt_log";
 CREATE TABLE "public"."act_evt_log" (
 "log_nr_" int4 DEFAULT nextval('act_evt_log_log_nr__seq'::regclass) NOT NULL,
 "type_" varchar(64),
@@ -55,7 +55,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."act_ge_bytearray"
 -- ----------------------------
-DROP TABLE "public"."act_ge_bytearray";
+DROP TABLE IF EXISTS "public"."act_ge_bytearray";
 CREATE TABLE "public"."act_ge_bytearray" (
 "id_" varchar(64) NOT NULL,
 "rev_" int4,
@@ -89,7 +89,7 @@ INSERT INTO "public"."act_ge_bytearray" VALUES ('3', '1', 'OSGI-INF/activiti/not
 -- ----------------------------
 -- Table structure for "public"."act_ge_property"
 -- ----------------------------
-DROP TABLE "public"."act_ge_property";
+DROP TABLE IF EXISTS "public"."act_ge_property";
 CREATE TABLE "public"."act_ge_property" (
 "name_" varchar(64) NOT NULL,
 "value_" varchar(300),
@@ -109,7 +109,7 @@ INSERT INTO "public"."act_ge_property" VALUES ('schema.version', '5.20.0.1', '1'
 -- ----------------------------
 -- Table structure for "public"."act_hi_actinst"
 -- ----------------------------
-DROP TABLE "public"."act_hi_actinst";
+DROP TABLE IF EXISTS "public"."act_hi_actinst";
 CREATE TABLE "public"."act_hi_actinst" (
 "id_" varchar(64) NOT NULL,
 "proc_def_id_" varchar(64) NOT NULL,
@@ -174,7 +174,7 @@ INSERT INTO "public"."act_hi_actinst" VALUES ('2645', 'carapply:2:2548', '2621',
 -- ----------------------------
 -- Table structure for "public"."act_hi_attachment"
 -- ----------------------------
-DROP TABLE "public"."act_hi_attachment";
+DROP TABLE IF EXISTS "public"."act_hi_attachment";
 CREATE TABLE "public"."act_hi_attachment" (
 "id_" varchar(64) NOT NULL,
 "rev_" int4,
@@ -199,7 +199,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."act_hi_comment"
 -- ----------------------------
-DROP TABLE "public"."act_hi_comment";
+DROP TABLE IF EXISTS "public"."act_hi_comment";
 CREATE TABLE "public"."act_hi_comment" (
 "id_" varchar(64) NOT NULL,
 "type_" varchar(255),
@@ -232,7 +232,7 @@ INSERT INTO "public"."act_hi_comment" VALUES ('2640', 'comment', '2016-02-29 15:
 -- ----------------------------
 -- Table structure for "public"."act_hi_detail"
 -- ----------------------------
-DROP TABLE "public"."act_hi_detail";
+DROP TABLE IF EXISTS "public"."act_hi_detail";
 CREATE TABLE "public"."act_hi_detail" (
 "id_" varchar(64) NOT NULL,
 "type_" varchar(255) NOT NULL,
@@ -281,7 +281,7 @@ INSERT INTO "public"."act_hi_detail" VALUES ('2642', 'VariableUpdate', '2621', '
 -- ----------------------------
 -- Table structure for "public"."act_hi_identitylink"
 -- ----------------------------
-DROP TABLE "public"."act_hi_identitylink";
+DROP TABLE IF EXISTS "public"."act_hi_identitylink";
 CREATE TABLE "public"."act_hi_identitylink" (
 "id_" varchar(64) NOT NULL,
 "group_id_" varchar(255),
@@ -335,7 +335,7 @@ INSERT INTO "public"."act_hi_identitylink" VALUES ('2643', null, 'participant', 
 -- ----------------------------
 -- Table structure for "public"."act_hi_procinst"
 -- ----------------------------
-DROP TABLE "public"."act_hi_procinst";
+DROP TABLE IF EXISTS "public"."act_hi_procinst";
 CREATE TABLE "public"."act_hi_procinst" (
 "id_" varchar(64) NOT NULL,
 "proc_inst_id_" varchar(64) NOT NULL,
@@ -368,7 +368,7 @@ INSERT INTO "public"."act_hi_procinst" VALUES ('2621', '2621', 'carapply:40414',
 -- ----------------------------
 -- Table structure for "public"."act_hi_taskinst"
 -- ----------------------------
-DROP TABLE "public"."act_hi_taskinst";
+DROP TABLE IF EXISTS "public"."act_hi_taskinst";
 CREATE TABLE "public"."act_hi_taskinst" (
 "id_" varchar(64) NOT NULL,
 "proc_def_id_" varchar(64),
@@ -413,7 +413,7 @@ INSERT INTO "public"."act_hi_taskinst" VALUES ('2637', 'carapply:2:2548', 'usert
 -- ----------------------------
 -- Table structure for "public"."act_hi_varinst"
 -- ----------------------------
-DROP TABLE "public"."act_hi_varinst";
+DROP TABLE IF EXISTS "public"."act_hi_varinst";
 CREATE TABLE "public"."act_hi_varinst" (
 "id_" varchar(64) NOT NULL,
 "proc_inst_id_" varchar(64),
@@ -449,7 +449,7 @@ INSERT INTO "public"."act_hi_varinst" VALUES ('2631', '2621', '2621', null, 'acc
 -- ----------------------------
 -- Table structure for "public"."act_procdef_info"
 -- ----------------------------
-DROP TABLE "public"."act_procdef_info";
+DROP TABLE IF EXISTS "public"."act_procdef_info";
 CREATE TABLE "public"."act_procdef_info" (
 "id_" varchar(64) NOT NULL,
 "proc_def_id_" varchar(64) NOT NULL,
@@ -467,7 +467,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."act_re_deployment"
 -- ----------------------------
-DROP TABLE "public"."act_re_deployment";
+DROP TABLE IF EXISTS "public"."act_re_deployment";
 CREATE TABLE "public"."act_re_deployment" (
 "id_" varchar(64) NOT NULL,
 "name_" varchar(255),
@@ -489,7 +489,7 @@ INSERT INTO "public"."act_re_deployment" VALUES ('2541', 'cn.com.rexen.demo.rest
 -- ----------------------------
 -- Table structure for "public"."act_re_model"
 -- ----------------------------
-DROP TABLE "public"."act_re_model";
+DROP TABLE IF EXISTS "public"."act_re_model";
 CREATE TABLE "public"."act_re_model" (
 "id_" varchar(64) NOT NULL,
 "rev_" int4,
@@ -516,7 +516,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."act_re_procdef"
 -- ----------------------------
-DROP TABLE "public"."act_re_procdef";
+DROP TABLE IF EXISTS "public"."act_re_procdef";
 CREATE TABLE "public"."act_re_procdef" (
 "id_" varchar(64) NOT NULL,
 "rev_" int4,
@@ -551,7 +551,7 @@ INSERT INTO "public"."act_re_procdef" VALUES ('sealapply:2:2550', '1', 'http://w
 -- ----------------------------
 -- Table structure for "public"."act_ru_event_subscr"
 -- ----------------------------
-DROP TABLE "public"."act_ru_event_subscr";
+DROP TABLE IF EXISTS "public"."act_ru_event_subscr";
 CREATE TABLE "public"."act_ru_event_subscr" (
 "id_" varchar(64) NOT NULL,
 "rev_" int4,
@@ -576,7 +576,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."act_ru_execution"
 -- ----------------------------
-DROP TABLE "public"."act_ru_execution";
+DROP TABLE IF EXISTS "public"."act_ru_execution";
 CREATE TABLE "public"."act_ru_execution" (
 "id_" varchar(64) NOT NULL,
 "rev_" int4,
@@ -608,7 +608,7 @@ INSERT INTO "public"."act_ru_execution" VALUES ('2511', '1', '2511', 'carapply:4
 -- ----------------------------
 -- Table structure for "public"."act_ru_identitylink"
 -- ----------------------------
-DROP TABLE "public"."act_ru_identitylink";
+DROP TABLE IF EXISTS "public"."act_ru_identitylink";
 CREATE TABLE "public"."act_ru_identitylink" (
 "id_" varchar(64) NOT NULL,
 "rev_" int4,
@@ -632,7 +632,7 @@ INSERT INTO "public"."act_ru_identitylink" VALUES ('2516', '1', 'admin', 'candid
 -- ----------------------------
 -- Table structure for "public"."act_ru_job"
 -- ----------------------------
-DROP TABLE "public"."act_ru_job";
+DROP TABLE IF EXISTS "public"."act_ru_job";
 CREATE TABLE "public"."act_ru_job" (
 "id_" varchar(64) NOT NULL,
 "rev_" int4,
@@ -663,7 +663,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."act_ru_task"
 -- ----------------------------
-DROP TABLE "public"."act_ru_task";
+DROP TABLE IF EXISTS "public"."act_ru_task";
 CREATE TABLE "public"."act_ru_task" (
 "id_" varchar(64) NOT NULL,
 "rev_" int4,
@@ -697,7 +697,7 @@ INSERT INTO "public"."act_ru_task" VALUES ('2515', '1', '2511', '2511', 'carappl
 -- ----------------------------
 -- Table structure for "public"."act_ru_variable"
 -- ----------------------------
-DROP TABLE "public"."act_ru_variable";
+DROP TABLE IF EXISTS "public"."act_ru_variable";
 CREATE TABLE "public"."act_ru_variable" (
 "id_" varchar(64) NOT NULL,
 "rev_" int4,
@@ -723,7 +723,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."couchdb_attach"
 -- ----------------------------
-DROP TABLE "public"."couchdb_attach";
+DROP TABLE IF EXISTS "public"."couchdb_attach";
 CREATE TABLE "public"."couchdb_attach" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -756,7 +756,7 @@ INSERT INTO "public"."couchdb_attach" VALUES ('98', null, '2015-10-09 15:29:54.2
 -- ----------------------------
 -- Table structure for "public"."demo_car"
 -- ----------------------------
-DROP TABLE "public"."demo_car";
+DROP TABLE IF EXISTS "public"."demo_car";
 CREATE TABLE "public"."demo_car" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -800,7 +800,7 @@ INSERT INTO "public"."demo_car" VALUES ('40417', '管理员', '2016-02-29 16:46:
 -- ----------------------------
 -- Table structure for "public"."demo_notice"
 -- ----------------------------
-DROP TABLE "public"."demo_notice";
+DROP TABLE IF EXISTS "public"."demo_notice";
 CREATE TABLE "public"."demo_notice" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -828,7 +828,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."demo_seal_apply"
 -- ----------------------------
-DROP TABLE "public"."demo_seal_apply";
+DROP TABLE IF EXISTS "public"."demo_seal_apply";
 CREATE TABLE "public"."demo_seal_apply" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -861,7 +861,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."middleware_attachment"
 -- ----------------------------
-DROP TABLE "public"."middleware_attachment";
+DROP TABLE IF EXISTS "public"."middleware_attachment";
 CREATE TABLE "public"."middleware_attachment" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -896,7 +896,7 @@ INSERT INTO "public"."middleware_attachment" VALUES ('39211', '管理员', '2016
 -- ----------------------------
 -- Table structure for "public"."openjpaseq"
 -- ----------------------------
-DROP TABLE "public"."openjpaseq";
+DROP TABLE IF EXISTS "public"."openjpaseq";
 CREATE TABLE "public"."openjpaseq" (
 "id" int2 NOT NULL,
 "sequence_value" int8
@@ -913,7 +913,7 @@ INSERT INTO "public"."openjpaseq" VALUES ('0', '41410');
 -- ----------------------------
 -- Table structure for "public"."roffice_chance"
 -- ----------------------------
-DROP TABLE "public"."roffice_chance";
+DROP TABLE IF EXISTS "public"."roffice_chance";
 CREATE TABLE "public"."roffice_chance" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -945,7 +945,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."roffice_contract"
 -- ----------------------------
-DROP TABLE "public"."roffice_contract";
+DROP TABLE IF EXISTS "public"."roffice_contract";
 CREATE TABLE "public"."roffice_contract" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -1056,7 +1056,7 @@ INSERT INTO "public"."roffice_contract" VALUES ('57', null, null, null, null, nu
 -- ----------------------------
 -- Table structure for "public"."roffice_contract_detail"
 -- ----------------------------
-DROP TABLE "public"."roffice_contract_detail";
+DROP TABLE IF EXISTS "public"."roffice_contract_detail";
 CREATE TABLE "public"."roffice_contract_detail" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -1088,7 +1088,7 @@ INSERT INTO "public"."roffice_contract_detail" VALUES ('38910', '管理员', '20
 -- ----------------------------
 -- Table structure for "public"."roffice_deploy"
 -- ----------------------------
-DROP TABLE "public"."roffice_deploy";
+DROP TABLE IF EXISTS "public"."roffice_deploy";
 CREATE TABLE "public"."roffice_deploy" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -1122,7 +1122,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."roffice_invoice"
 -- ----------------------------
-DROP TABLE "public"."roffice_invoice";
+DROP TABLE IF EXISTS "public"."roffice_invoice";
 CREATE TABLE "public"."roffice_invoice" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -1147,7 +1147,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."roffice_news"
 -- ----------------------------
-DROP TABLE "public"."roffice_news";
+DROP TABLE IF EXISTS "public"."roffice_news";
 CREATE TABLE "public"."roffice_news" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -1172,7 +1172,7 @@ INSERT INTO "public"."roffice_news" VALUES ('27410', null, '2015-12-07 14:16:27.
 -- ----------------------------
 -- Table structure for "public"."roffice_note"
 -- ----------------------------
-DROP TABLE "public"."roffice_note";
+DROP TABLE IF EXISTS "public"."roffice_note";
 CREATE TABLE "public"."roffice_note" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -1209,7 +1209,7 @@ INSERT INTO "public"."roffice_note" VALUES ('27513', null, '2015-12-07 14:35:30.
 -- ----------------------------
 -- Table structure for "public"."roffice_pay"
 -- ----------------------------
-DROP TABLE "public"."roffice_pay";
+DROP TABLE IF EXISTS "public"."roffice_pay";
 CREATE TABLE "public"."roffice_pay" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -1238,7 +1238,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."roffice_project"
 -- ----------------------------
-DROP TABLE "public"."roffice_project";
+DROP TABLE IF EXISTS "public"."roffice_project";
 CREATE TABLE "public"."roffice_project" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -1277,7 +1277,7 @@ INSERT INTO "public"."roffice_project" VALUES ('18210', null, '2015-11-22 01:26:
 -- ----------------------------
 -- Table structure for "public"."roffice_projectwe"
 -- ----------------------------
-DROP TABLE "public"."roffice_projectwe";
+DROP TABLE IF EXISTS "public"."roffice_projectwe";
 CREATE TABLE "public"."roffice_projectwe" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -1314,7 +1314,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."roffice_purchaseinvoice"
 -- ----------------------------
-DROP TABLE "public"."roffice_purchaseinvoice";
+DROP TABLE IF EXISTS "public"."roffice_purchaseinvoice";
 CREATE TABLE "public"."roffice_purchaseinvoice" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -1340,7 +1340,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."roffice_receive"
 -- ----------------------------
-DROP TABLE "public"."roffice_receive";
+DROP TABLE IF EXISTS "public"."roffice_receive";
 CREATE TABLE "public"."roffice_receive" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -1428,7 +1428,7 @@ INSERT INTO "public"."roffice_receive" VALUES ('57', null, null, null, null, '',
 -- ----------------------------
 -- Table structure for "public"."roffice_support"
 -- ----------------------------
-DROP TABLE "public"."roffice_support";
+DROP TABLE IF EXISTS "public"."roffice_support";
 CREATE TABLE "public"."roffice_support" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -1465,7 +1465,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."roffice_task"
 -- ----------------------------
-DROP TABLE "public"."roffice_task";
+DROP TABLE IF EXISTS "public"."roffice_task";
 CREATE TABLE "public"."roffice_task" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -1510,7 +1510,7 @@ INSERT INTO "public"."roffice_task" VALUES ('15', null, null, null, null, '50000
 -- ----------------------------
 -- Table structure for "public"."roffice_travel"
 -- ----------------------------
-DROP TABLE "public"."roffice_travel";
+DROP TABLE IF EXISTS "public"."roffice_travel";
 CREATE TABLE "public"."roffice_travel" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -1542,7 +1542,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."sys_about"
 -- ----------------------------
-DROP TABLE "public"."sys_about";
+DROP TABLE IF EXISTS "public"."sys_about";
 CREATE TABLE "public"."sys_about" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -1569,7 +1569,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."sys_application"
 -- ----------------------------
-DROP TABLE "public"."sys_application";
+DROP TABLE IF EXISTS "public"."sys_application";
 CREATE TABLE "public"."sys_application" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -1596,7 +1596,7 @@ INSERT INTO "public"."sys_application" VALUES ('12501', '管理员2', '2015-12-0
 -- ----------------------------
 -- Table structure for "public"."sys_area"
 -- ----------------------------
-DROP TABLE "public"."sys_area";
+DROP TABLE IF EXISTS "public"."sys_area";
 CREATE TABLE "public"."sys_area" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -1724,7 +1724,7 @@ INSERT INTO "public"."sys_area" VALUES ('99', null, null, null, null, '1', null,
 -- ----------------------------
 -- Table structure for "public"."sys_audit"
 -- ----------------------------
-DROP TABLE "public"."sys_audit";
+DROP TABLE IF EXISTS "public"."sys_audit";
 CREATE TABLE "public"."sys_audit" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -2036,7 +2036,7 @@ INSERT INTO "public"."sys_audit" VALUES ('40349', null, '2016-02-29 16:43:44.181
 -- ----------------------------
 -- Table structure for "public"."sys_demo"
 -- ----------------------------
-DROP TABLE "public"."sys_demo";
+DROP TABLE IF EXISTS "public"."sys_demo";
 CREATE TABLE "public"."sys_demo" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -2063,7 +2063,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."sys_department"
 -- ----------------------------
-DROP TABLE "public"."sys_department";
+DROP TABLE IF EXISTS "public"."sys_department";
 CREATE TABLE "public"."sys_department" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -2131,7 +2131,7 @@ INSERT INTO "public"."sys_department" VALUES ('40913', '管理员', '2016-02-29 
 -- ----------------------------
 -- Table structure for "public"."sys_department_user"
 -- ----------------------------
-DROP TABLE "public"."sys_department_user";
+DROP TABLE IF EXISTS "public"."sys_department_user";
 CREATE TABLE "public"."sys_department_user" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -2159,7 +2159,7 @@ INSERT INTO "public"."sys_department_user" VALUES ('9807', '管理员', '2015-07
 -- ----------------------------
 -- Table structure for "public"."sys_dict"
 -- ----------------------------
-DROP TABLE "public"."sys_dict";
+DROP TABLE IF EXISTS "public"."sys_dict";
 CREATE TABLE "public"."sys_dict" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -2197,7 +2197,7 @@ INSERT INTO "public"."sys_dict" VALUES ('36312', '管理员', '2016-01-07 13:24:
 -- ----------------------------
 -- Table structure for "public"."sys_duty"
 -- ----------------------------
-DROP TABLE "public"."sys_duty";
+DROP TABLE IF EXISTS "public"."sys_duty";
 CREATE TABLE "public"."sys_duty" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -2221,7 +2221,7 @@ INSERT INTO "public"."sys_duty" VALUES ('41010', null, '2016-02-29 14:06:21.497'
 -- ----------------------------
 -- Table structure for "public"."sys_function"
 -- ----------------------------
-DROP TABLE "public"."sys_function";
+DROP TABLE IF EXISTS "public"."sys_function";
 CREATE TABLE "public"."sys_function" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -2387,7 +2387,7 @@ INSERT INTO "public"."sys_function" VALUES ('39713', '管理员', '2016-02-16 14
 -- ----------------------------
 -- Table structure for "public"."sys_hello"
 -- ----------------------------
-DROP TABLE "public"."sys_hello";
+DROP TABLE IF EXISTS "public"."sys_hello";
 CREATE TABLE "public"."sys_hello" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -2412,7 +2412,7 @@ INSERT INTO "public"."sys_hello" VALUES ('93', null, '2015-09-28 20:29:31.337', 
 -- ----------------------------
 -- Table structure for "public"."sys_message"
 -- ----------------------------
-DROP TABLE "public"."sys_message";
+DROP TABLE IF EXISTS "public"."sys_message";
 CREATE TABLE "public"."sys_message" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -2437,7 +2437,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."sys_news"
 -- ----------------------------
-DROP TABLE "public"."sys_news";
+DROP TABLE IF EXISTS "public"."sys_news";
 CREATE TABLE "public"."sys_news" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -2479,7 +2479,7 @@ INSERT INTO "public"."sys_news" VALUES ('246', null, '2015-11-03 17:44:22.139', 
 -- ----------------------------
 -- Table structure for "public"."sys_office"
 -- ----------------------------
-DROP TABLE "public"."sys_office";
+DROP TABLE IF EXISTS "public"."sys_office";
 CREATE TABLE "public"."sys_office" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -2513,7 +2513,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."sys_organization"
 -- ----------------------------
-DROP TABLE "public"."sys_organization";
+DROP TABLE IF EXISTS "public"."sys_organization";
 CREATE TABLE "public"."sys_organization" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -2545,7 +2545,7 @@ INSERT INTO "public"."sys_organization" VALUES ('40810', '管理员', '2016-02-2
 -- ----------------------------
 -- Table structure for "public"."sys_permission"
 -- ----------------------------
-DROP TABLE "public"."sys_permission";
+DROP TABLE IF EXISTS "public"."sys_permission";
 CREATE TABLE "public"."sys_permission" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -2573,7 +2573,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."sys_plugin"
 -- ----------------------------
-DROP TABLE "public"."sys_plugin";
+DROP TABLE IF EXISTS "public"."sys_plugin";
 CREATE TABLE "public"."sys_plugin" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -2597,7 +2597,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."sys_role"
 -- ----------------------------
-DROP TABLE "public"."sys_role";
+DROP TABLE IF EXISTS "public"."sys_role";
 CREATE TABLE "public"."sys_role" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -2639,7 +2639,7 @@ INSERT INTO "public"."sys_role" VALUES ('40615', '管理员', '2016-02-29 14:25:
 -- ----------------------------
 -- Table structure for "public"."sys_role_application"
 -- ----------------------------
-DROP TABLE "public"."sys_role_application";
+DROP TABLE IF EXISTS "public"."sys_role_application";
 CREATE TABLE "public"."sys_role_application" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -2685,7 +2685,7 @@ INSERT INTO "public"."sys_role_application" VALUES ('41215', '管理员', '2016-
 -- ----------------------------
 -- Table structure for "public"."sys_role_function"
 -- ----------------------------
-DROP TABLE "public"."sys_role_function";
+DROP TABLE IF EXISTS "public"."sys_role_function";
 CREATE TABLE "public"."sys_role_function" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -3177,7 +3177,7 @@ INSERT INTO "public"."sys_role_function" VALUES ('41343', '管理员', '2016-02-
 -- ----------------------------
 -- Table structure for "public"."sys_role_permission"
 -- ----------------------------
-DROP TABLE "public"."sys_role_permission";
+DROP TABLE IF EXISTS "public"."sys_role_permission";
 CREATE TABLE "public"."sys_role_permission" (
 "role_id" int8 NOT NULL,
 "permission_id" int8 NOT NULL
@@ -3193,7 +3193,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."sys_role_user"
 -- ----------------------------
-DROP TABLE "public"."sys_role_user";
+DROP TABLE IF EXISTS "public"."sys_role_user";
 CREATE TABLE "public"."sys_role_user" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -3240,7 +3240,7 @@ INSERT INTO "public"."sys_role_user" VALUES ('40726', '管理员', '2016-02-29 1
 -- ----------------------------
 -- Table structure for "public"."sys_seal_apply"
 -- ----------------------------
-DROP TABLE "public"."sys_seal_apply";
+DROP TABLE IF EXISTS "public"."sys_seal_apply";
 CREATE TABLE "public"."sys_seal_apply" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -3269,7 +3269,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."sys_user"
 -- ----------------------------
-DROP TABLE "public"."sys_user";
+DROP TABLE IF EXISTS "public"."sys_user";
 CREATE TABLE "public"."sys_user" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -3395,7 +3395,7 @@ INSERT INTO "public"."sys_user" VALUES ('41114', '管理员', '2016-02-29 14:18:
 -- ----------------------------
 -- Table structure for "public"."sys_user_rel"
 -- ----------------------------
-DROP TABLE "public"."sys_user_rel";
+DROP TABLE IF EXISTS "public"."sys_user_rel";
 CREATE TABLE "public"."sys_user_rel" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -3418,7 +3418,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."sys_user_role"
 -- ----------------------------
-DROP TABLE "public"."sys_user_role";
+DROP TABLE IF EXISTS "public"."sys_user_role";
 CREATE TABLE "public"."sys_user_role" (
 "user_id" int8 NOT NULL,
 "role_id" int8 NOT NULL
@@ -3434,7 +3434,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Table structure for "public"."sys_workgroup"
 -- ----------------------------
-DROP TABLE "public"."sys_workgroup";
+DROP TABLE IF EXISTS "public"."sys_workgroup";
 CREATE TABLE "public"."sys_workgroup" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -3466,7 +3466,7 @@ INSERT INTO "public"."sys_workgroup" VALUES ('20616', '管理员', '2015-11-24 1
 -- ----------------------------
 -- Table structure for "public"."sys_workgroup_role"
 -- ----------------------------
-DROP TABLE "public"."sys_workgroup_role";
+DROP TABLE IF EXISTS "public"."sys_workgroup_role";
 CREATE TABLE "public"."sys_workgroup_role" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -3504,7 +3504,7 @@ INSERT INTO "public"."sys_workgroup_role" VALUES ('29613', '管理员', '2015-12
 -- ----------------------------
 -- Table structure for "public"."sys_workgroup_user"
 -- ----------------------------
-DROP TABLE "public"."sys_workgroup_user";
+DROP TABLE IF EXISTS "public"."sys_workgroup_user";
 CREATE TABLE "public"."sys_workgroup_user" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
@@ -3543,7 +3543,7 @@ INSERT INTO "public"."sys_workgroup_user" VALUES ('29515', '管理员', '2015-12
 -- ----------------------------
 -- Table structure for "public"."workflow_message"
 -- ----------------------------
-DROP TABLE "public"."workflow_message";
+DROP TABLE IF EXISTS "public"."workflow_message";
 CREATE TABLE "public"."workflow_message" (
 "id" int8 NOT NULL,
 "createby" varchar(255),
