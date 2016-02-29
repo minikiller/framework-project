@@ -55,9 +55,9 @@ Ext.define('kalix.message.receiver.view.MessageViewWindow', {
                 fieldLabel: '发送时间',
                 allowBlank: false,
                 xtype: 'datefield',
-                format: 'Y-m-d',
+                format: 'Y-m-d H:i:s',
                 bind: {
-                    value: '{rec.send_timestamp}'
+                    value: '{rec.creationDate}'
                 }
             },
             {
@@ -71,14 +71,6 @@ Ext.define('kalix.message.receiver.view.MessageViewWindow', {
                     value: '{rec.read}'
                 }
             },
-            //{
-            //    fieldLabel: '消息状态',
-            //    allowBlank: false,
-            //    xtype: 'numberfield',
-            //    bind: {
-            //        value: '{rec.message_state}'
-            //    }
-            //},
             {
                 fieldLabel: '消息状态',
 

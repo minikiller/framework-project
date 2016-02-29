@@ -47,14 +47,6 @@ Ext.define('kalix.message.sender.model.MessageModel', {
     ],
     //todo 在此修改模型验证提示信息
     validators: {
-        //senderid: [{
-        //    type: 'presence',
-        //    message: '发送者不能为空'
-        //}],
-        //receiverid: [{
-        //    type: 'presence',
-        //    message: '接收者不能为空'
-        //}],
         category: [{
             type: 'presence',
             message: '消息类别不能为空'

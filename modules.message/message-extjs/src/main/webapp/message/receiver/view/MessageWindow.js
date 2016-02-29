@@ -25,18 +25,9 @@ Ext.define('kalix.message.receiver.view.MessageWindow', {
     width: 400,
     //todo 在此修改表单
     items: [
-
         {
             xtype: 'baseForm',
             items: [
-                {
-                    readOnly: true,
-                    fieldLabel: '发送者',
-                    allowBlank: false,
-                    bind: {
-                        value: '{rec.senderid}'
-                    }
-                },
                 {
                     fieldLabel: '接收者',
                     allowBlank: false,
@@ -68,24 +59,6 @@ Ext.define('kalix.message.receiver.view.MessageWindow', {
                         value: '{rec.content}'
                     }
                 }
-                //,
-                //{
-                //    fieldLabel: '发送时间',
-                //    allowBlank: false,
-                //    xtype: 'datefield',
-                //    format: 'Y-m-d',
-                //    bind: {
-                //        value: '{rec.send_timestamp}'
-                //    }
-                //},
-                //{
-                //    fieldLabel: '是否已读',
-                //    allowBlank: false,
-                //    xtype: 'numberfield',
-                //    bind: {
-                //        value: '{rec.read}'
-                //    }
-                //}
             ]
         }
     ]

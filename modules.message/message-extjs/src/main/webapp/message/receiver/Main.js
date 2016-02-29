@@ -15,13 +15,13 @@ Ext.define('kalix.message.receiver.Main', {
     viewModel: 'messageReceiverViewModel',
     items: [
         {
-            title: '消息通知查询',
+            title: '收件查询',
             iconCls: 'x-fa fa-search',
             xtype: 'messageReceiverSearchForm'
         }, {
             xtype: 'messageReceiverGridPanel',
             id: 'messageReceiverGridPanel',
-            title: '消息通知列表',
+            title: '收件列表',
             iconCls: 'x-fa fa-inbox',
             margin: 10
         }
