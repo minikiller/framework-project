@@ -14,6 +14,7 @@ public class TaskDTO extends BaseDTO {
     private String processInstanceId;//流程实例id
     private String entityId;//业务实体id
     private String businessKey;//业务主键
+    private String processDefinitionId;
 
     public String getName() {
         return name;
@@ -69,5 +70,13 @@ public class TaskDTO extends BaseDTO {
 
     public void setBusinessKey(String businessKey) {
         this.businessKey = businessKey;
+    }
+
+    public String getProcessDefinitionId() {
+        return processDefinitionId;
+    }
+
+    public void setProcessDefinitionId(String processDefinitionId) {
+        this.processDefinitionId = processDefinitionId;
     }
 }
