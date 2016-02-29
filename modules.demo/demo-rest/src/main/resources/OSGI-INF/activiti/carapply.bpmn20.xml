@@ -12,7 +12,7 @@
                                     events="TASK_CREATED,TASK_COMPLETED"/>
         </extensionElements>
         <startEvent id="startevent1" name="启动审批"></startEvent>
-        <userTask id="usertask1" name="正处级领导审核" activiti:candidateGroups="admin" activiti:formKey="audit.form">
+        <userTask id="usertask1" name="正处级领导审核" activiti:candidateGroups="正处级领导" activiti:formKey="audit.form">
             <!--<userTask id="usertask1" name="正处级领导审核" activiti:assignee="qwer" activiti:formKey="audit.form">    -->
             <documentation>申请部门正处级领导审核</documentation>
             <extensionElements>
@@ -27,13 +27,13 @@
         <sequenceFlow id="flow3" name="同意" sourceRef="exclusivegateway1" targetRef="exclusivegateway2">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
         </sequenceFlow>
-        <userTask id="usertask3" name="校务部副部长审核" activiti:candidateGroups="admin" activiti:formKey="audit.form">
+        <userTask id="usertask3" name="校务部副部长审核" activiti:candidateGroups="校务部副部长" activiti:formKey="audit.form">
             <documentation>校务部副部长审核</documentation>
         </userTask>
         <sequenceFlow id="flow5" name="市内" sourceRef="exclusivegateway2" targetRef="usertask3">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${city}]]></conditionExpression>
         </sequenceFlow>
-        <userTask id="usertask4" name="副校级领导审核" activiti:candidateGroups="admin" activiti:formKey="audit.form">
+        <userTask id="usertask4" name="副校级领导审核" activiti:candidateGroups="副校级领导" activiti:formKey="audit.form">
             <documentation>副校级领导审核</documentation>
         </userTask>
         <sequenceFlow id="flow6" name="市外" sourceRef="exclusivegateway2" targetRef="usertask4">
@@ -42,7 +42,7 @@
         <exclusiveGateway id="exclusivegateway3" name="Exclusive Gateway"></exclusiveGateway>
         <sequenceFlow id="flow7" sourceRef="usertask4" targetRef="exclusivegateway3"></sequenceFlow>
         <exclusiveGateway id="exclusivegateway4" name="Exclusive Gateway"></exclusiveGateway>
-        <userTask id="usertask6" name="校党委书记审核" activiti:candidateGroups="admin" activiti:formKey="audit.form">
+        <userTask id="usertask6" name="校党委书记审核" activiti:candidateGroups="校党委书记" activiti:formKey="audit.form">
             <documentation>校党委书记审核</documentation>
         </userTask>
         <exclusiveGateway id="exclusivegateway6" name="Exclusive Gateway"></exclusiveGateway>
