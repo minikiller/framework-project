@@ -12,10 +12,10 @@ Ext.define('kalix.message.receiver.model.MessageModel', {
     //todo 在此修改模型定义
     fields: [
         {
-            name: 'senderid',
+            name: 'senderId',
             type: 'string'
         }, {
-            name: 'receiverid',
+            name: 'receiverId',
             type: 'string'
         }, {
             name: 'category',
@@ -27,10 +27,6 @@ Ext.define('kalix.message.receiver.model.MessageModel', {
         }, {
             name: 'content',
             type: 'string'
-        }, {
-            name: 'send_timestamp',
-            type: 'date',
-            dateFormat: 'Y-m-d H:i:s'
         }, {
             name: 'read',
             type: 'int',

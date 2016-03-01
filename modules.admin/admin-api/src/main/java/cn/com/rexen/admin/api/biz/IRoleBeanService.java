@@ -1,6 +1,7 @@
 package cn.com.rexen.admin.api.biz;
 
 import cn.com.rexen.admin.entities.RoleBean;
+import cn.com.rexen.admin.entities.RoleUserBean;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.app.dto.model.AuthorizationDTO;
 import cn.com.rexen.core.api.biz.IBizService;
@@ -66,7 +67,14 @@ public interface IRoleBeanService extends IBizService<RoleBean> {
      * @param roleBean
      * @return
      */
-    List<UserBean> getUserList(RoleBean roleBean);
+    List<RoleUserBean> getUserList(RoleBean roleBean);
+
+    /**
+     * 根据角色名称返回RoleBean
+     * @param roleName 角色名称
+     * @return
+     */
+    RoleBean queryByRoleName(String roleName);
 
     /**
      * 返回用户下所有角色
@@ -80,7 +88,7 @@ public interface IRoleBeanService extends IBizService<RoleBean> {
      * @param workGroupId
      * @return
      */
-    List<RoleBean> getRolesByWorkGorupId(long workGroupId);
+    List<RoleBean> getRolesByWorkGroupId(long workGroupId);
 
     /**
      * 保存角色与用户关联

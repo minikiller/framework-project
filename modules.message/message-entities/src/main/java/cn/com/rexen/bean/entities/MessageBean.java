@@ -1,11 +1,9 @@
 package cn.com.rexen.bean.entities;
 
 import cn.com.rexen.core.api.persistence.PersistentEntity;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.Date;
 
 /**
  * @类描述：消息管理
@@ -23,12 +21,12 @@ public class MessageBean extends PersistentEntity {
      * @describe 发送者
      * @validator 不能为空
      */
-    private String senderid;
+    private long senderId;
     /**
      * @describe 接收者
      * @validator 不能为空
      */
-    private String receiverid;
+    private long receiverId;
     /**
      * @describe 消息类别
      * @validator 不能为空
@@ -44,42 +42,37 @@ public class MessageBean extends PersistentEntity {
      * @validator 不能为空
      */
     private String content;
-    /**
-     * @describe 消息发送时间
-     * @validator 不能为空
-     */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date send_timestamp;
+
     /**
      * @describe 消息是否已读
      * @validator 不能为空
      */
-    private int read;
+    private boolean read;
     /**
      * @describe 消息类别
      * @validator 不能为空
      */
-    private int message_state;
+    private int state;
     /**
      * @describe 消息标识
      * @validator 不能为空
      */
     private int sign;
 
-    public String getSenderid() {
-        return senderid;
+    public long getSenderId() {
+        return senderId;
     }
 
-    public void setSenderid(String senderid) {
-        this.senderid = senderid;
+    public void setSenderId(long senderId) {
+        this.senderId = senderId;
     }
 
-    public String getReceiverid() {
-        return receiverid;
+    public long getReceiverId() {
+        return receiverId;
     }
 
-    public void setReceiverid(String receiverid) {
-        this.receiverid = receiverid;
+    public void setReceiverId(long receiverId) {
+        this.receiverId = receiverId;
     }
 
     public String getCategory() {
@@ -106,28 +99,20 @@ public class MessageBean extends PersistentEntity {
         this.content = content;
     }
 
-    public Date getSend_timestamp() {
-        return send_timestamp;
-    }
-
-    public void setSend_timestamp(Date send_timestamp) {
-        this.send_timestamp = send_timestamp;
-    }
-
-    public int getRead() {
+    public boolean getRead() {
         return read;
     }
 
-    public void setRead(int read) {
+    public void setRead(boolean read) {
         this.read = read;
     }
 
-    public int getMessage_state() {
-        return message_state;
+    public int getState() {
+        return state;
     }
 
-    public void setMessage_state(int message_state) {
-        this.message_state = message_state;
+    public void setState(int state) {
+        this.state = state;
     }
 
     public int getSign() {

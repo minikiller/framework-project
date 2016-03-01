@@ -85,7 +85,7 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
                 text: '发件',
                 xtype: 'button',
                 //todo change permission
-                permission: 'admin:constructModule:messageMenu:add',
+                permission: '',
                 iconCls: 'fa fa-pencil',
                 handler: 'onAdd'
             }

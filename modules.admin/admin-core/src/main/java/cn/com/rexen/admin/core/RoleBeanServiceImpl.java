@@ -95,7 +95,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
         Assert.notNull(entity, "实体不能为空.");
         String userName = shiroService.getCurrentUserName();
         Assert.notNull(userName, "用户名不能为空.");
-        if(StringUtils.isNotEmpty(userName)) {
+        if (StringUtils.isNotEmpty(userName)) {
             entity.setUpdateBy(userName);
         }
     }
@@ -104,7 +104,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
     public void beforeSaveEntity(RoleBean entity, JsonStatus status) {
         String userName = shiroService.getCurrentUserName();
         Assert.notNull(userName, "用户名不能为空.");
-        if(StringUtils.isNotEmpty(userName)) {
+        if (StringUtils.isNotEmpty(userName)) {
             entity.setCreateBy(userName);
             entity.setUpdateBy(userName);
         }
@@ -123,11 +123,11 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
     @Override
     public boolean isUpdate(RoleBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
-        RoleBean role=(RoleBean)entity;
+        RoleBean role = (RoleBean) entity;
         List<RoleBean> beans = dao.find("select ob from RoleBean ob where ob.name = ?1 ", role.getName());
-        if(beans!=null&&beans.size()>0){
-            RoleBean _role=beans.get(0);
-            if(_role.getId()!=role.getId()){
+        if (beans != null && beans.size() > 0) {
+            RoleBean _role = beans.get(0);
+            if (_role.getId() != role.getId()) {
                 status.setFailure(true);
                 status.setMsg("更新" + FUNCTION_NAME + "失败,已经存在！");
                 return false;
@@ -139,9 +139,9 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
     @Override
     public boolean isSave(RoleBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
-        RoleBean role=(RoleBean)entity;
+        RoleBean role = (RoleBean) entity;
         List<RoleBean> beans = dao.find("select ob from RoleBean ob where ob.name = ?1", role.getName());
-        if(beans!=null&&beans.size()>0){
+        if (beans != null && beans.size() > 0) {
             status.setSuccess(false);
             status.setMsg(FUNCTION_NAME + "已经存在！");
             return false;
@@ -180,11 +180,11 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
 
     @Override
     public JsonData getAllRole() {
-        JsonData jsonData=new JsonData();
+        JsonData jsonData = new JsonData();
         List<RoleBean> roles = dao.getAll();
-        List<PersistentEntity> persistentEntityList=new ArrayList<PersistentEntity>();
-        if(roles!=null&&roles.size()>0){
-            for(RoleBean role:roles){
+        List<PersistentEntity> persistentEntityList = new ArrayList<PersistentEntity>();
+        if (roles != null && roles.size() > 0) {
+            for (RoleBean role : roles) {
                 persistentEntityList.add(role);
             }
         }
@@ -195,57 +195,57 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
 
     @Override
     public JsonStatus saveAuthorization(String roleId, String authorizationIds) {
-        Assert.notNull(roleId,"角色编号不能为空.");
-        Assert.notNull(authorizationIds,"授权编号不能为空.");
-        JsonStatus jsonStatus=new JsonStatus();
+        Assert.notNull(roleId, "角色编号不能为空.");
+        Assert.notNull(authorizationIds, "授权编号不能为空.");
+        JsonStatus jsonStatus = new JsonStatus();
         try {
             //清除关联关系
             roleApplicationBeanDao.deleteByRoleId(Long.parseLong(roleId));
             roleFunctionBeanDao.deleteByRoleId(Long.parseLong(roleId));
-            String userName=shiroService.getCurrentUserName();
+            String userName = shiroService.getCurrentUserName();
             if (authorizationIds.indexOf(",") != -1) {
                 String[] _authorizationIds = authorizationIds.split(",");
                 for (String _authorizationId : _authorizationIds) {
-                    if(_authorizationId.indexOf("root")!=-1)
+                    if (_authorizationId.indexOf("root") != -1)
                         continue;
-                    if(_authorizationId.startsWith("app:")){
-                        RoleApplicationBean roleApplicationBean=new RoleApplicationBean();
+                    if (_authorizationId.startsWith("app:")) {
+                        RoleApplicationBean roleApplicationBean = new RoleApplicationBean();
                         roleApplicationBean.setCreateBy(userName);
                         roleApplicationBean.setUpdateBy(userName);
                         roleApplicationBean.setRoleId(Long.parseLong(roleId));
-                        String applicationId=_authorizationId.substring("app:".length(), _authorizationId.length());
+                        String applicationId = _authorizationId.substring("app:".length(), _authorizationId.length());
                         roleApplicationBean.setApplicationId(Long.parseLong(applicationId));
                         roleApplicationBeanDao.save(roleApplicationBean);
-                    }else if(_authorizationId.startsWith("fun:")){
-                        RoleFunctionBean roleFunctionBean=new RoleFunctionBean();
+                    } else if (_authorizationId.startsWith("fun:")) {
+                        RoleFunctionBean roleFunctionBean = new RoleFunctionBean();
                         roleFunctionBean.setCreateBy(userName);
                         roleFunctionBean.setUpdateBy(userName);
                         roleFunctionBean.setRoleId(Long.parseLong(roleId));
-                        String functionId=_authorizationId.substring("fun:".length(), _authorizationId.length());
+                        String functionId = _authorizationId.substring("fun:".length(), _authorizationId.length());
                         roleFunctionBean.setFunctionId(Long.parseLong(functionId));
                         roleFunctionBeanDao.save(roleFunctionBean);
                     }
                 }
-            }else{
-                if(authorizationIds.startsWith("app:")&&authorizationIds.indexOf("root")==-1){
-                    RoleApplicationBean roleApplicationBean=new RoleApplicationBean();
+            } else {
+                if (authorizationIds.startsWith("app:") && authorizationIds.indexOf("root") == -1) {
+                    RoleApplicationBean roleApplicationBean = new RoleApplicationBean();
                     roleApplicationBean.setCreateBy(userName);
                     roleApplicationBean.setUpdateBy(userName);
                     roleApplicationBean.setRoleId(Long.parseLong(roleId));
-                    String applicationId=authorizationIds.substring("app:".length(), authorizationIds.length());
+                    String applicationId = authorizationIds.substring("app:".length(), authorizationIds.length());
                     roleApplicationBean.setApplicationId(Long.parseLong(applicationId));
                     roleApplicationBeanDao.save(roleApplicationBean);
-                }else if(authorizationIds.startsWith("fun:")&&authorizationIds.indexOf("root")==-1){
-                    RoleFunctionBean roleFunctionBean=new RoleFunctionBean();
+                } else if (authorizationIds.startsWith("fun:") && authorizationIds.indexOf("root") == -1) {
+                    RoleFunctionBean roleFunctionBean = new RoleFunctionBean();
                     roleFunctionBean.setCreateBy(userName);
                     roleFunctionBean.setUpdateBy(userName);
                     roleFunctionBean.setRoleId(Long.parseLong(roleId));
-                    String functionId=authorizationIds.substring("fun:".length(), authorizationIds.length());
+                    String functionId = authorizationIds.substring("fun:".length(), authorizationIds.length());
                     roleFunctionBean.setFunctionId(Long.parseLong(functionId));
                     roleFunctionBeanDao.save(roleFunctionBean);
                 }
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             jsonStatus.setFailure(true);
             jsonStatus.setMsg("保存失败!");
@@ -286,16 +286,26 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
     }
 
     @Override
-    public List<UserBean> getUserList(RoleBean roleBean) {
-        return null;
+    public RoleBean queryByRoleName(String roleName) {
+        List<RoleBean> list = dao.find("select a from RoleBean a where a.name = ?1", roleName);
+        if (list != null && list.size() > 0)
+            return list.get(0);
+        else
+            return null;
+    }
+
+    @Override
+    public List<RoleUserBean> getUserList(RoleBean roleBean) {
+        List<RoleUserBean> roleUserBeans = roleUserBeanDao.find("select rub from RoleUserBean rub where rub.roleId=?1", roleBean.getId());
+        return roleUserBeans;
     }
 
     @Override
     public List<RoleBean> getRolesByUserId(long userId) {
-        List<RoleUserBean> roleUserBeans=roleUserBeanDao.find("select rub from RoleUserBean rub where rub.userId=?1", userId);
-        List<RoleBean> roleBeans=new ArrayList<RoleBean>();
-        if(roleUserBeans!=null&&!roleUserBeans.isEmpty()){
-            for(RoleUserBean roleUserBean:roleUserBeans){
+        List<RoleUserBean> roleUserBeans = roleUserBeanDao.find("select rub from RoleUserBean rub where rub.userId=?1", userId);
+        List<RoleBean> roleBeans = new ArrayList<RoleBean>();
+        if (roleUserBeans != null && !roleUserBeans.isEmpty()) {
+            for (RoleUserBean roleUserBean : roleUserBeans) {
                 RoleBean roleBean = dao.get(roleUserBean.getRoleId());
                 roleBeans.add(roleBean);
             }
@@ -304,11 +314,11 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
     }
 
     @Override
-    public List<RoleBean> getRolesByWorkGorupId(long workGroupId) {
-        List<WorkGroupRoleBean> workGroupRoleBeans=workGroupRoleBeanDao.find("select wgrb from WorkGroupRoleBean wgrb where wgrb.groupId=?1",workGroupId);
-        List<RoleBean> roleBeans=new ArrayList<RoleBean>();
-        if(workGroupRoleBeans!=null&&!workGroupRoleBeans.isEmpty()){
-            for(WorkGroupRoleBean workGroupRoleBean:workGroupRoleBeans){
+    public List<RoleBean> getRolesByWorkGroupId(long workGroupId) {
+        List<WorkGroupRoleBean> workGroupRoleBeans = workGroupRoleBeanDao.find("select wgrb from WorkGroupRoleBean wgrb where wgrb.groupId=?1", workGroupId);
+        List<RoleBean> roleBeans = new ArrayList<RoleBean>();
+        if (workGroupRoleBeans != null && !workGroupRoleBeans.isEmpty()) {
+            for (WorkGroupRoleBean workGroupRoleBean : workGroupRoleBeans) {
                 roleBeans.add(dao.get(workGroupRoleBean.getRoleId()));
             }
         }
@@ -324,11 +334,11 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
 
     @Override
     public List getUsersByRoleId(long id) {
-        List<String> userIds=new ArrayList<String>();
-        List<RoleUserBean> roleUserBeans=roleUserBeanDao.find("select ob from RoleUserBean ob where ob.roleId = ?1", id);
-        if(roleUserBeans!=null&&!roleUserBeans.isEmpty()){
-            for(RoleUserBean roleUserBean:roleUserBeans){
-                if(roleUserBean!=null&&roleUserBean.getUserId()!=0){
+        List<String> userIds = new ArrayList<String>();
+        List<RoleUserBean> roleUserBeans = roleUserBeanDao.find("select ob from RoleUserBean ob where ob.roleId = ?1", id);
+        if (roleUserBeans != null && !roleUserBeans.isEmpty()) {
+            for (RoleUserBean roleUserBean : roleUserBeans) {
+                if (roleUserBean != null && roleUserBean.getUserId() != 0) {
                     userIds.add(String.valueOf(roleUserBean.getUserId()));
                 }
             }
@@ -339,17 +349,17 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
     @Override
     public void afterDeleteEntity(Long id, JsonStatus status) {
         roleUserBeanDao.deleteByRoleId(id);
-        workGroupRoleBeanDao.update("delete from WorkGroupRoleBean wgr where wgr.roleId=?1",id);
+        workGroupRoleBeanDao.update("delete from WorkGroupRoleBean wgr where wgr.roleId=?1", id);
         roleApplicationBeanDao.deleteByRoleId(id);
         roleFunctionBeanDao.deleteByRoleId(id);
     }
 
     @Override
     public JsonStatus saveRoleUsers(long roleId, String userId) {
-        JsonStatus jsonStatus=new JsonStatus();
+        JsonStatus jsonStatus = new JsonStatus();
         try {
             roleUserBeanDao.deleteByRoleId(roleId);
-            String userName=shiroService.getCurrentUserName();
+            String userName = shiroService.getCurrentUserName();
             if (StringUtils.isNotEmpty(userId)) {
                 if (userId.indexOf(",") != -1) {
                     String[] userIds = userId.split(",");
@@ -363,7 +373,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
                             roleUserBeanDao.save(roleUserBean);
                         }
                     }
-                }else{
+                } else {
                     if (StringUtils.isNotEmpty(userId.trim())) {
                         RoleUserBean roleUserBean = new RoleUserBean();
                         roleUserBean.setCreateBy(userName);
@@ -374,7 +384,7 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
                     }
                 }
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             jsonStatus.setFailure(true);
             jsonStatus.setMsg("保存失败!");
@@ -387,53 +397,53 @@ public class RoleBeanServiceImpl extends GenericBizServiceImpl<IRoleBeanDao, Rol
 
     @Override
     public AuthorizationDTO getAuthorizationTree(long roleId) {
-        AuthorizationDTO root=new AuthorizationDTO();
+        AuthorizationDTO root = new AuthorizationDTO();
         root.setId(-1);
         List<ApplicationBean> beans = applicationBeanDao.getAll();
-        if(beans!=null&&beans.size()>0){
-            if(beans!=null&&beans.size()>0) {
+        if (beans != null && beans.size() > 0) {
+            if (beans != null && beans.size() > 0) {
                 //查询关联关系
-                List<RoleFunctionBean> roleFunctionBeans=roleFunctionBeanDao.find("select rfb from RoleFunctionBean rfb where rfb.roleId=?1",roleId);
-                List<RoleApplicationBean> roleApplicationBeans=roleApplicationBeanDao.find("select rab from RoleApplicationBean rab where rab.roleId=?1",roleId);
-                for(ApplicationBean applicationBean:beans){
-                    Assert.notNull(applicationBean,"应用不能为空");
+                List<RoleFunctionBean> roleFunctionBeans = roleFunctionBeanDao.find("select rfb from RoleFunctionBean rfb where rfb.roleId=?1", roleId);
+                List<RoleApplicationBean> roleApplicationBeans = roleApplicationBeanDao.find("select rab from RoleApplicationBean rab where rab.roleId=?1", roleId);
+                for (ApplicationBean applicationBean : beans) {
+                    Assert.notNull(applicationBean, "应用不能为空");
                     Mapper mapper = new DozerBeanMapper();
                     AuthorizationDTO applicationDTO = mapper.map(applicationBean, AuthorizationDTO.class);
                     applicationDTO.setParentId(-1);
                     applicationDTO.setLeaf(true);
                     applicationDTO.setChecked(false);
-                    if(roleApplicationBeans!=null&&!roleApplicationBeans.isEmpty()){
-                        for(RoleApplicationBean roleApplicationBean:roleApplicationBeans){
-                            if(applicationBean.getId()==roleApplicationBean.getApplicationId()){
+                    if (roleApplicationBeans != null && !roleApplicationBeans.isEmpty()) {
+                        for (RoleApplicationBean roleApplicationBean : roleApplicationBeans) {
+                            if (applicationBean.getId() == roleApplicationBean.getApplicationId()) {
                                 applicationDTO.setChecked(true);
                                 break;
                             }
                         }
                     }
                     applicationDTO.setExpanded(true);
-                    List<FunctionBean> functionBeans=functionBeanDao.find("select ob from FunctionBean ob where ob.applicationId = ?1", applicationBean.getId());
-                    if(functionBeans!=null&&functionBeans.size()>0) {
+                    List<FunctionBean> functionBeans = functionBeanDao.find("select ob from FunctionBean ob where ob.applicationId = ?1", applicationBean.getId());
+                    if (functionBeans != null && functionBeans.size() > 0) {
                         applicationDTO.setLeaf(false);
                         //返回该应用下所有根功能
-                        List<FunctionBean> rootFunctions=functionBeanService.getRootElements(functionBeans);
-                        if(rootFunctions!=null&&rootFunctions.size()>0){
-                            for(FunctionBean functionBean:rootFunctions) {
+                        List<FunctionBean> rootFunctions = functionBeanService.getRootElements(functionBeans);
+                        if (rootFunctions != null && rootFunctions.size() > 0) {
+                            for (FunctionBean functionBean : rootFunctions) {
                                 AuthorizationDTO functionDTO = mapper.map(functionBean, AuthorizationDTO.class);
                                 functionDTO.setParentId(applicationBean.getId());
                                 functionDTO.setLeaf(functionBean.getIsLeaf() == 0 ? false : true);
                                 functionDTO.setText(functionBean.getName());
                                 functionDTO.setChecked(false);
                                 //将已选择的节点设置选中状态
-                                if(roleFunctionBeans!=null&&!roleFunctionBeans.isEmpty()){
-                                    for(RoleFunctionBean roleFunctionBean:roleFunctionBeans){
-                                        if(functionBean.getId()==roleFunctionBean.getFunctionId()){
+                                if (roleFunctionBeans != null && !roleFunctionBeans.isEmpty()) {
+                                    for (RoleFunctionBean roleFunctionBean : roleFunctionBeans) {
+                                        if (functionBean.getId() == roleFunctionBean.getFunctionId()) {
                                             functionDTO.setChecked(true);
                                             break;
                                         }
                                     }
                                 }
                                 functionDTO.setExpanded(true);
-                                functionBeanService.getChilden(functionDTO, functionBeans, mapper,roleFunctionBeans);
+                                functionBeanService.getChilden(functionDTO, functionBeans, mapper, roleFunctionBeans);
                                 applicationDTO.getChildren().add(functionDTO);
                             }
                         }

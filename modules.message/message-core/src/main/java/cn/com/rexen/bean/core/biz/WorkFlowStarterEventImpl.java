@@ -1,5 +1,6 @@
 package cn.com.rexen.bean.core.biz;
 
+import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.bean.core.Const;
 import cn.com.rexen.bean.entities.MessageBean;
 import com.google.gson.Gson;
@@ -12,20 +13,24 @@ import org.osgi.service.event.EventHandler;
  * Created by sunlf on 2016/2/23.
  */
 public class WorkFlowStarterEventImpl extends BaseWorkflowEvent implements EventHandler {
+    public static final String MSG_CONTENT = "%s,您好！\r\n  您流程编号为%s的申请已经审批，请查看！";
+    public static final String MSG_TITLE = "流程审批进度提醒";
 
     @Override
     public void handleEvent(Event event) {
         String json = (String) event.getProperty("body");
         JSONObject taskJson = new JSONObject(json);
-        String receiverid = (String) taskJson.get("startUserId");
+        String receiverId = (String) taskJson.get("startUserId");
+        UserBean userBean = userBeanService.getUserBeanByUsername(receiverId);
         String processDefinitionId = (String) taskJson.get("processDefinitionId");
-        String content = String.format("%s,您好！\r\n  您有一个待办流程请尽快处理！流程号为%s。", receiverid, processDefinitionId);
+        String content = String.format(MSG_CONTENT, userBean.getName(), processDefinitionId);
 
-        MessageBean messageBean = saveMessageBean(receiverid, content, "审批任务进度提醒");
+        MessageBean messageBean = saveMessageBean(userBean.getId(), content, MSG_TITLE);
         dao.save(messageBean);
         //add msg to stack
         Gson gson = new Gson();
-        stackService.publish(String.format(Const.POLLING_TOPIC_FORMAT, receiverid), gson.toJson(messageBean), day);
+        stackService.publish(String.format(Const.POLLING_TOPIC_FORMAT, String.valueOf(userBean.getId())), gson.toJson(messageBean), day);
     }
+
 
 }

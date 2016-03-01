@@ -3556,7 +3556,7 @@ CREATE TABLE "public"."workflow_message" (
 "updatedate" timestamp(6),
 "category" varchar(255),
 "content" varchar(255),
-"message_state" int4,
+"state" int4,
 "read" int4,
 "receiver" varchar(255),
 "send_timestamp" timestamp(6),

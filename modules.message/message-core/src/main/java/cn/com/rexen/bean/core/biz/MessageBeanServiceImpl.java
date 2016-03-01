@@ -35,8 +35,7 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
         jsonStatus.setSuccess(true);
         String loginName = this.getShiroService().getSubject().getPrincipal().toString();
         UserBean userBean = userBeanService.getUserBeanByUsername(loginName);
-        String userId = String.valueOf(userBean.getId());
-        List countList = this.dao.find("select mb from MessageBean mb where mb.receiverid=?1 and mb.read=1", userId);
+        List countList = this.dao.find("select mb from MessageBean mb where mb.receiverId=?1 and mb.read=false", userBean.getId());
         if (countList != null) {
             jsonStatus.setTag(String.valueOf(countList.size()));
         } else {
@@ -52,9 +51,9 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
         UserBean userBean = userBeanService.getUserBeanByUsername(loginName);
         String userId = String.valueOf(userBean.getId());
         if (jsonStr == null) {
-            jsonStr = "{\"receiverid\":\"" + userId + "\"}";
+            jsonStr = "{\"receiverId\":\"" + userId + "\"}";
         } else {
-            jsonStr = jsonStr.replace("}", ",\"receiverid\":\"" + userId + "\"}");
+            jsonStr = jsonStr.replace("}", ",\"receiverId\":\"" + userId + "\"}");
         }
         return super.getAllEntityByQuery(page, limit, jsonStr);
     }
@@ -65,9 +64,9 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
         UserBean userBean = userBeanService.getUserBeanByUsername(loginName);
         String userId = String.valueOf(userBean.getId());
         if (jsonStr == null) {
-            jsonStr = "{\"senderid\":\"" + userId + "\"}";
+            jsonStr = "{\"senderId\":\"" + userId + "\"}";
         } else {
-            jsonStr = jsonStr.replace("}", ",\"senderid\":\"" + userId + "\"}");
+            jsonStr = jsonStr.replace("}", ",\"senderId\":\"" + userId + "\"}");
         }
         return super.getAllEntityByQuery(page, limit, jsonStr);
     }
@@ -75,19 +74,19 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
     @Override
     public JsonStatus saveAllEntities(MessageBean messageBean) {
         JsonStatus jsonStatus = new JsonStatus();
-        String receiverids = messageBean.getReceiverid();
+        long receiverids = messageBean.getReceiverId();
         String loginName = this.getShiroService().getSubject().getPrincipal().toString();
         UserBean userBean = userBeanService.getUserBeanByUsername(loginName);
-        String userId = String.valueOf(userBean.getId());
+        long userId = userBean.getId();
         try {
             jsonStatus.setSuccess(true);
-            messageBean.setSenderid(userId);
+            messageBean.setSenderId(userId);
             MessageBean newMessageBean = messageBean;
-            String[] ids = receiverids.split(":");
+            /*String[] ids = receiverids.split(":");
             for (int i = 0; i < ids.length; i++) {
-                newMessageBean.setReceiverid(ids[i]);
+                newMessageBean.setReceiverId(ids[i]);
                 saveEntity(newMessageBean);
-            }
+            }*/
             jsonStatus.setTag("");
             return jsonStatus;
         } catch (Exception e) {
@@ -104,7 +103,8 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
         try {
             jsonStatus.setSuccess(true);
             String loginName = this.getShiroService().getSubject().getPrincipal().toString();
-            String topic = String.format(Const.POLLING_TOPIC_FORMAT, loginName);
+            UserBean userBean = userBeanService.getUserBeanByUsername(loginName);
+            String topic = String.format(Const.POLLING_TOPIC_FORMAT, String.valueOf(userBean.getId()));
             jsonStatus.setTag(stackService.consume(topic));
             return jsonStatus;
         } catch (Exception e) {

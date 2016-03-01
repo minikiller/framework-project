@@ -132,7 +132,7 @@ public class PermissionBeanServiceImpl extends GenericBizServiceImpl<IPermission
         List<WorkGroupUserBean> workGroupUserBeans=workGroupBeanService.getWorkGroupUserBeanByUserId(userId);
         if(workGroupUserBeans!=null&&!workGroupUserBeans.isEmpty()){
             for(WorkGroupUserBean workGroupUserBean:workGroupUserBeans){
-                List<RoleBean> _roleBeans=roleBeanService.getRolesByWorkGorupId(workGroupUserBean.getGroupId());
+                List<RoleBean> _roleBeans = roleBeanService.getRolesByWorkGroupId(workGroupUserBean.getGroupId());
                 if(_roleBeans!=null&&!_roleBeans.isEmpty()){
                     for(RoleBean roleBean:_roleBeans){
                         List<RoleApplicationBean> roleApplicationBeans=roleApplicationBeanDao.getRoleApplicationsByRoleId(roleBean.getId());
@@ -160,7 +160,7 @@ public class PermissionBeanServiceImpl extends GenericBizServiceImpl<IPermission
         List<WorkGroupUserBean> workGroupUserBeans=workGroupBeanService.getWorkGroupUserBeanByUserId(userId);
         if(workGroupUserBeans!=null&&!workGroupUserBeans.isEmpty()){
             for(WorkGroupUserBean workGroupUserBean:workGroupUserBeans){
-                List<RoleBean> _roleBeans=roleBeanService.getRolesByWorkGorupId(workGroupUserBean.getGroupId());
+                List<RoleBean> _roleBeans = roleBeanService.getRolesByWorkGroupId(workGroupUserBean.getGroupId());
                 if(_roleBeans!=null&&!_roleBeans.isEmpty()){
                     for(RoleBean roleBean:_roleBeans){
                         List<RoleFunctionBean> roleFunctionBeans=roleFunctionBeanDao.getRoleFunctionsByRoleId(roleBean.getId());
