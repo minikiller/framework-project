@@ -49,7 +49,7 @@ public class ProcessServiceImpl implements IProcessService {
         List<ProcessDefinitionDTO> processDefinitionDTOList;
         List<ProcessDefinition> processDefinitionList = null;
         //按照流程定义名称模糊查询
-        if (StringUtils.isNotEmpty(jsonStr)) {
+        if (StringUtils.isNotEmpty(jsonStr) && (!jsonStr.equals(""))) {
             Map map = SerializeUtil.json2Map(jsonStr);
             String processDefinitionName = (String) map.get("name");
             Assert.notNull(processDefinitionName);
