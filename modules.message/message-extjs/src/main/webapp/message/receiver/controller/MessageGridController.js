@@ -17,7 +17,7 @@ Ext.define('kalix.message.receiver.controller.MessageGridController', {
         var args = arguments;
         var store = grid.getStore();
 
-        if (false == selModel.get('read')) {//已读消息
+        if (true == selModel.get('read')) {//已读消息
             this.callParent(arguments);
         }
         else {
