@@ -47,7 +47,7 @@ public class CarApplyBeanServiceImpl extends ShiroGenericBizServiceImpl<ICarAppl
             bean.setCurrentNode(task.getName());
             bean.setStatus(WorkflowStaus.ACTIVE);
             bean.setAuditResult("审批中...");
-            this.saveEntity(bean);
+            this.updateEntity(bean);
             jsonStatus.setMsg("启动流程成功！");
         } catch (Exception e) {
             e.printStackTrace();
@@ -105,7 +105,7 @@ public class CarApplyBeanServiceImpl extends ShiroGenericBizServiceImpl<ICarAppl
                 bean.setAuditResult(result);
             }
 
-            this.saveEntity(bean);
+            this.updateEntity(bean);
             jsonStatus.setMsg("任务处理成功！");
         } catch (Exception e) {
             e.printStackTrace();

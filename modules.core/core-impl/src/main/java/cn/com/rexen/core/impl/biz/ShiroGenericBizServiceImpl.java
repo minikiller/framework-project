@@ -21,6 +21,8 @@ public abstract class ShiroGenericBizServiceImpl<T extends IGenericDao, TP exten
             entity.setCreateBy(userName);
             entity.setUpdateBy(userName);
         }
+
+        super.beforeSaveEntity(entity,status);
     }
 
     @Override
@@ -30,6 +32,8 @@ public abstract class ShiroGenericBizServiceImpl<T extends IGenericDao, TP exten
         if (StringUtils.isNotEmpty(userName)) {
             entity.setUpdateBy(userName);
         }
+
+        super.beforeUpdateEntity(entity,status);
     }
 
     public IShiroService getShiroService() {
