@@ -12,37 +12,30 @@ Ext.define('kalix.message.sender.model.MessageModel', {
     //todo 在此修改模型定义
     fields: [
         {
-            name: 'senderid',
+            name: 'senderId',
             type: 'string'
-        }, {
-            name: 'receiverid',
+        },
+        {
+            name: 'receiverNames',
             type: 'string'
-        }, {
+        },
+        {
+            name: 'receiverIds',
+            type: 'string',
+            hidden: true
+        },
+        {
             name: 'category',
             type: 'string',
             defaultValue: '1'
-        }, {
+        },
+        {
             name: 'title',
             type: 'string'
-        }, {
+        },
+        {
             name: 'content',
             type: 'string'
-        }, {
-            name: 'send_timestamp',
-            type: 'date',
-            dateFormat: 'Y-m-d H:i:s'
-        }, {
-            name: 'read',
-            type: 'int',
-            defaultValue: 1
-        }, {
-            name: 'message_state',
-            type: 'int',
-            defaultValue: 1
-        }, {
-            name: 'sign',
-            type: 'int',
-            defaultValue: 1
         }
     ],
     //todo 在此修改模型验证提示信息

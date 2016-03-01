@@ -11,7 +11,11 @@
     <bean id="messageBeanDaoImpl" class="cn.com.rexen.bean.dao.MessageBeanDaoImpl">
         <tx:transaction method="*" value="Required"/>
     </bean>
+    <bean id="senderMessageBeanDaoImpl" class="cn.com.rexen.bean.dao.SenderMessageBeanDaoImpl">
+        <tx:transaction method="*" value="Required"/>
+    </bean>
 
     <service interface="cn.com.rexen.bean.api.dao.IMessageBeanDao" ref="messageBeanDaoImpl"/>
+    <service interface="cn.com.rexen.bean.api.dao.ISenderMessageBeanDao" ref="senderMessageBeanDaoImpl"/>
 </blueprint>
 

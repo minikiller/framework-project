@@ -29,10 +29,10 @@ Ext.define('kalix.message.receiver.model.MessageModel', {
             type: 'string'
         }, {
             name: 'read',
-            type: 'int',
-            defaultValue: 1
+            type: 'boolean',
+            defaultValue: false
         }, {
-            name: 'message_state',
+            name: 'state',
             type: 'int',
             defaultValue: 1
         }, {
@@ -43,11 +43,7 @@ Ext.define('kalix.message.receiver.model.MessageModel', {
     ],
     //todo 在此修改模型验证提示信息
     validators: {
-        senderid: [{
-            type: 'presence',
-            message: '发送者不能为空'
-        }],
-        receiverid: [{
+        receiverId: [{
             type: 'presence',
             message: '接收者不能为空'
         }],

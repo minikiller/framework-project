@@ -18,7 +18,7 @@ Ext.define('kalix.message.receiver.view.MessageSearchForm', {
             labelAlign: 'right',
             labelWidth: 60,
             width: 200,
-            name: 'senderid'
+            name: 'senderId'
         },
         {
             xtype: 'dictCombobox',
@@ -44,7 +44,7 @@ Ext.define('kalix.message.receiver.view.MessageSearchForm', {
             labelAlign: 'right',
             labelWidth: 120,
             width: 260,
-            name: 'send_timestamp:begin:gt'
+            name: 'creationDate:begin:gt'
         },
         {
             xtype: 'displayfield',
@@ -58,7 +58,7 @@ Ext.define('kalix.message.receiver.view.MessageSearchForm', {
             headLabel: true,
             labelAlign: 'right',
             width: 140,
-            name: 'send_timestamp:end:lt'
+            name: 'creationDate:end:lt'
         }
     ]
 

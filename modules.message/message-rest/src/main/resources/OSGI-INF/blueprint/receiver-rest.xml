@@ -22,17 +22,6 @@
                 <to uri="bean:messageService?method=getReceiverMessage(${header.page},${header.limit},${header.jsonStr})"/>
             </get>
 
-            <!-- this is a rest POST to create a message -->
-            <!--<post id="route-addMessage" type="cn.com.rexen.bean.entities.MessageBean"-->
-            <!--outType="cn.com.rexen.core.api.biz.JsonStatus">-->
-            <!--<description>Create a Message</description>-->
-            <!--<to uri="bean:messageService?method=saveEntity"/>-->
-            <!--</post>-->
-            <post id="route-addMessage" type="cn.com.rexen.bean.entities.MessageBean"
-                  outType="cn.com.rexen.core.api.biz.JsonStatus">
-                <description>Create a Message</description>
-                <to uri="bean:messageService?method=saveAllEntities"/>
-            </post>
             <!-- this is a rest GET to view a message by the given id -->
             <get uri="/{id}" id="route-getReceiverMessage" outType="cn.com.rexen.bean.entities.MessageBean">
                 <description>Find Message by id</description>
@@ -45,18 +34,6 @@
                 <description>Updates a Message</description>
                 <to uri="bean:messageService?method=updateEntity"/>
             </put>
-
-            <!--&lt;!&ndash; this is a rest DELETE to delete a message &ndash;&gt;-->
-            <!--<delete uri="/{id}" id="route-deleteMessage"-->
-            <!--outType="cn.com.rexen.core.api.biz.JsonStatus">-->
-            <!--<description>Delete a Message</description>-->
-            <!--<to uri="bean:messageService?method=deleteEntity(${header.id})"/>-->
-            <!--</delete>-->
-
-            <!--<get uri="/workflow/message" id="route-getPollingMessage" outType="cn.com.rexen.core.api.biz.JsonStatus">-->
-            <!--<description>Get Message Count</description>-->
-            <!--<to uri="bean:messageService?method=getNewMessageCount()"/>-->
-            <!--</get>-->
         </rest>
     </camelContext>
 </blueprint>

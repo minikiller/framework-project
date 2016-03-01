@@ -6,6 +6,10 @@
  */
 Ext.define('kalix.message.receiver.controller.MessageGridController', {
     extend: 'kalix.controller.BaseGridController',
+    requires: [
+        'kalix.message.sender.view.MessageWindow',
+        'kalix.message.sender.model.MessageModel'
+    ],
     alias: 'controller.messageReceiverGridController',
     onView: function (grid, rowIndex, colIndex) {
         var selModel = grid.getStore().getData().items[rowIndex];
@@ -13,12 +17,13 @@ Ext.define('kalix.message.receiver.controller.MessageGridController', {
         var args = arguments;
         var store = grid.getStore();
 
-        if (0 == selModel.get('read')) {
+        if (false == selModel.get('read')) {//已读消息
             this.callParent(arguments);
         }
         else {
-            selModel.set('read', 0);
-            selModel.set('message_state',0);
+            selModel.set('read', true);
+            selModel.set('state', 0);
+            selModel.modified = selModel.data;
             grid.getStore().sync({//修改为已读已通知
                 success: function () {
                     selModel.dirty = false;
@@ -36,5 +41,14 @@ Ext.define('kalix.message.receiver.controller.MessageGridController', {
                 }
             });
         }
+    },
+    onSender: function () {
+        var view = Ext.create('kalix.message.sender.view.MessageWindow');
+        var vm = view.lookupViewModel();
+
+        vm.set('rec', Ext.create('kalix.message.sender.model.MessageModel'));
+        vm.set('icon', '/kalix/message/resources/images/message_add.png');
+        vm.set('title', '发件');
+        view.show();
     }
 });

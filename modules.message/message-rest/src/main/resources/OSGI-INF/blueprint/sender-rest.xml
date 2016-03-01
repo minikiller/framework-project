@@ -3,6 +3,8 @@
            xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <reference id="senderMessageService" interface="cn.com.rexen.bean.api.biz.ISenderMessageBeanService"/>
+
     <camelContext id="messageSenderCamel" xmlns="http://camel.apache.org/schema/blueprint">
         <restConfiguration component="servlet" bindingMode="json">
             <dataFormatProperty key="prettyPrint" value="true"/>
@@ -13,43 +15,32 @@
               produces="application/json;charset=utf-8">
             <description>message rest service</description>
 
-            <!-- this is a rest GET to find all message -->
+            <!-- this is a rest GET to find all sendermessage -->
             <get id="route-getAllSenderMessage" outType="cn.com.rexen.core.api.persistence.JsonData">
                 <description>Find all Messages</description>
-                <to uri="bean:messageService?method=getSenderMessage(${header.page},${header.limit},${header.jsonStr})"/>
+                <to uri="bean:senderMessageService?method=getSenderMessage(${header.page},${header.limit},${header.jsonStr})"/>
             </get>
 
-            <!--&lt;!&ndash; this is a rest POST to create a message &ndash;&gt;-->
-            <!--<post id="route-addMessage" type="cn.com.rexen.bean.entities.MessageBean"-->
-                  <!--outType="cn.com.rexen.core.api.biz.JsonStatus">-->
-                <!--<description>Create a Message</description>-->
-                <!--<to uri="bean:messageService?method=saveAllEntities"/>-->
-            <!--</post>-->
-
-            <!--&lt;!&ndash; this is a rest GET to view a message by the given id &ndash;&gt;-->
-            <get uri="/{id}" id="route-getMessage" outType="cn.com.rexen.bean.entities.MessageBean">
+            <!--&lt;!&ndash; this is a rest GET to view a sendermessage by the given id &ndash;&gt;-->
+            <get uri="/{id}" id="route-getSenderMessage" outType="cn.com.rexen.bean.entities.SenderMessageBean">
                 <description>Find Message by id</description>
-                <to uri="bean:messageService?method=getEntity(${header.id})"/>
+                <to uri="bean:senderMessageService?method=getEntity(${header.id})"/>
             </get>
 
-            <!--&lt;!&ndash; this is a rest PUT to update a message &ndash;&gt;-->
-            <!--<put uri="/{id}" id="route-updateMessage" type="cn.com.rexen.bean.entities.MessageBean"-->
-            <!--outType="cn.com.rexen.core.api.biz.JsonStatus">-->
-            <!--<description>Updates a Message</description>-->
-            <!--<to uri="bean:messageService?method=updateEntity"/>-->
-            <!--</put>-->
+            <!-- this is a rest POST to create a sendermessage -->
 
-            <!--&lt;!&ndash; this is a rest DELETE to delete a message &ndash;&gt;-->
-            <!--<delete uri="/{id}" id="route-deleteMessage"-->
-            <!--outType="cn.com.rexen.core.api.biz.JsonStatus">-->
-            <!--<description>Delete a Message</description>-->
-            <!--<to uri="bean:messageService?method=deleteEntity(${header.id})"/>-->
-            <!--</delete>-->
+            <post id="route-addSenderMessage" type="cn.com.rexen.bean.entities.SenderMessageBean"
+                  outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Create a Message</description>
+                <to uri="bean:senderMessageService?method=saveAllEntities"/>
+            </post>
 
-            <!--<get uri="/workflow/message" id="route-getPollingMessage" outType="cn.com.rexen.core.api.biz.JsonStatus">-->
-            <!--<description>Get Message Count</description>-->
-            <!--<to uri="bean:messageService?method=getNewMessageCount()"/>-->
-            <!--</get>-->
+            <!-- this is a rest DELETE to delete a sendermessage -->
+            <delete uri="/{id}" id="route-deleteSenderMessage"
+                    outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Delete a Message</description>
+                <to uri="bean:senderMessageService?method=deleteEntity(${header.id})"/>
+            </delete>
         </rest>
     </camelContext>
 </blueprint>

@@ -42,7 +42,7 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
             },
             {
                 text: '接收者',
-                dataIndex: 'receiverid'
+                dataIndex: 'receiverNames'
             },
             {
                 text: '消息类别',
@@ -79,26 +79,7 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
                         handler: 'onDelete',
                     }
                 ]
-                //todo change permission
-                //permissions: ''//[
-                //    'admin:constructModule:messageMenu:view',
-                //    'admin:constructModule:messageMenu:edit',
-                //    'admin:constructModule:messageMenu:delete'
-                //]
             }
         ]
-    }//,
-    //tbar: {
-    //    xtype: 'securityToolbar',
-    //    verifyItems: [
-    //        {
-    //            text: '发件',
-    //            xtype: 'button',
-    //            //todo change permission
-    //            permission: 'admin:constructModule:messageMenu:add',
-    //            iconCls: 'fa fa-pencil',
-    //            handler: 'onAdd'
-    //        }
-    //    ]
-    //}
+    }
 });

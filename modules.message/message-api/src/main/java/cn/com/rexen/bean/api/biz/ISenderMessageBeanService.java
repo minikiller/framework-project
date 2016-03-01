@@ -1,6 +1,6 @@
 package cn.com.rexen.bean.api.biz;
 
-import cn.com.rexen.bean.entities.MessageBean;
+import cn.com.rexen.bean.entities.SenderMessageBean;
 import cn.com.rexen.core.api.biz.IBizService;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
@@ -13,14 +13,9 @@ import cn.com.rexen.core.api.persistence.JsonData;
  * @修改时间：
  * @修改备注：
  */
-public interface IMessageBeanService extends IBizService<MessageBean> {
+public interface ISenderMessageBeanService extends IBizService<SenderMessageBean> {
     //在此添加新的业务方法
-    JsonStatus getNewMessageCount();
+    JsonData getSenderMessage(int page, int limit, String jsonStr);
 
-    JsonData getReceiverMessage(int page, int limit, String jsonStr);
-
-    /**
-     * 获得轮询的消息
-     */
-    JsonStatus getPollingMessage();
+    JsonStatus saveAllEntities(SenderMessageBean senderMessageBean);
 }

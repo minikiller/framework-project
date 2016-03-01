@@ -24,7 +24,7 @@ Ext.define('kalix.message.sender.view.MessageViewWindow', {
                 fieldLabel: '接收者',
                 allowBlank: false,
                 bind: {
-                    value: '{rec.receiverid}'
+                    value: '{rec.receiverNames}'
                 }
             },
             {
@@ -58,41 +58,6 @@ Ext.define('kalix.message.sender.view.MessageViewWindow', {
                 format: 'Y-m-d H:i:s',
                 bind: {
                     value: '{rec.creationDate}'
-                }
-            },
-            {
-                fieldLabel: '是否已读',
-                allowBlank: false,
-                xtype: 'combo',
-                displayField: 'name',
-                valueField: 'value',
-                store: {data: [{name: '已读', value: 0}, {name: '未读', value: 1}]},
-                bind: {
-                    value: '{rec.read}'
-                }
-            },
-            {
-                fieldLabel: '消息状态',
-                xtype: 'combobox',
-                valueField: 'key',
-                displayField: 'name',
-                store: {
-                    data: [
-                        {'name': '未通知', 'key': 1},
-                        {'name': '已通知', 'key': 0}
-                    ]
-                },
-                name: 'message_state',
-                bind: {
-                    value: '{rec.message_state}'
-                }
-            },
-            {
-                fieldLabel: '消息标识',
-                allowBlank: false,
-                xtype: 'numberfield',
-                bind: {
-                    value: '{rec.sign}'
                 }
             }
         ]

@@ -3,6 +3,7 @@ package cn.com.rexen.bean.core.biz;
 import cn.com.rexen.admin.api.biz.IUserBeanService;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.bean.api.biz.IMessageBeanService;
+import cn.com.rexen.bean.api.biz.ISenderMessageBeanService;
 import cn.com.rexen.bean.api.dao.IMessageBeanDao;
 import cn.com.rexen.bean.core.Const;
 import cn.com.rexen.bean.entities.MessageBean;
@@ -24,6 +25,11 @@ import java.util.List;
 public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageBeanDao, MessageBean> implements IMessageBeanService {
     private IUserBeanService userBeanService;
     private IStackService stackService;
+    private ISenderMessageBeanService senderBeanService;
+
+    public void setSenderBeanService(ISenderMessageBeanService senderBeanService) {
+        this.senderBeanService = senderBeanService;
+    }
 
     public MessageBeanServiceImpl() {
         super.init(MessageBean.class.getName());
@@ -56,45 +62,6 @@ public class MessageBeanServiceImpl extends ShiroGenericBizServiceImpl<IMessageB
             jsonStr = jsonStr.replace("}", ",\"receiverId\":\"" + userId + "\"}");
         }
         return super.getAllEntityByQuery(page, limit, jsonStr);
-    }
-
-    @Override
-    public JsonData getSenderMessage(int page, int limit, String jsonStr) {
-        String loginName = this.getShiroService().getSubject().getPrincipal().toString();
-        UserBean userBean = userBeanService.getUserBeanByUsername(loginName);
-        String userId = String.valueOf(userBean.getId());
-        if (jsonStr == null) {
-            jsonStr = "{\"senderId\":\"" + userId + "\"}";
-        } else {
-            jsonStr = jsonStr.replace("}", ",\"senderId\":\"" + userId + "\"}");
-        }
-        return super.getAllEntityByQuery(page, limit, jsonStr);
-    }
-
-    @Override
-    public JsonStatus saveAllEntities(MessageBean messageBean) {
-        JsonStatus jsonStatus = new JsonStatus();
-        long receiverids = messageBean.getReceiverId();
-        String loginName = this.getShiroService().getSubject().getPrincipal().toString();
-        UserBean userBean = userBeanService.getUserBeanByUsername(loginName);
-        long userId = userBean.getId();
-        try {
-            jsonStatus.setSuccess(true);
-            messageBean.setSenderId(userId);
-            MessageBean newMessageBean = messageBean;
-            /*String[] ids = receiverids.split(":");
-            for (int i = 0; i < ids.length; i++) {
-                newMessageBean.setReceiverId(ids[i]);
-                saveEntity(newMessageBean);
-            }*/
-            jsonStatus.setTag("");
-            return jsonStatus;
-        } catch (Exception e) {
-            e.printStackTrace();
-            jsonStatus.setSuccess(false);
-            jsonStatus.setTag("");
-            return jsonStatus;
-        }
     }
 
     @Override

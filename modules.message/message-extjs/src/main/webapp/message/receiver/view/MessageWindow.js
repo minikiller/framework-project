@@ -32,7 +32,7 @@ Ext.define('kalix.message.receiver.view.MessageWindow', {
                     fieldLabel: '接收者',
                     allowBlank: false,
                     bind: {
-                        value: '{rec.receiverid}'
+                        value: '{rec.receiverId}'
                     }
                 },
                 {

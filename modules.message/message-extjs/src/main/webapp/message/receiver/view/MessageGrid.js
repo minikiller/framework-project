@@ -42,12 +42,8 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
             },
             {
                 text: '发送者',
-                dataIndex: 'senderid'
+                dataIndex: 'senderId'
             },
-            //{
-            //    text: '接收者',
-            //    dataIndex: 'receiverid'
-            //},
             {
                 text: '消息类别',
                 xtype: 'dictGridColumn',
@@ -68,8 +64,8 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
             },
             {
                 text:'是否已读',
-                trueText: '未读',
-                falseText: '已读',
+                trueText: '已读',
+                falseText: '未读',
                 xtype: 'booleancolumn',
                 dataIndex: 'read',
                 renderer: null
@@ -108,7 +104,7 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
                     //todo change permission
                     permission: '',
                     iconCls: 'fa fa-pencil',
-                    handler: 'onAdd'
+                    handler: 'onSender'
                 }
             ]
         }
