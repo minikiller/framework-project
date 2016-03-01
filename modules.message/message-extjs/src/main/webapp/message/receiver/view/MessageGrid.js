@@ -61,12 +61,13 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
                 dataIndex: 'title'
             },
             {
-                text: '发送时间',
-                dataIndex: 'createdate',
+                text: '发件时间',
+                dataIndex: 'creationDate',
                 xtype: 'datecolumn',
-                format: 'Y-m-d', renderer: null
+                format: 'Y-m-d H:i:s', renderer: null
             },
             {
+                text:'是否已读',
                 trueText: '未读',
                 falseText: '已读',
                 xtype: 'booleancolumn',
@@ -74,28 +75,42 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
                 renderer: null
             },
             {
-                xtype: 'securityGridColumnRUD',
-                //todo change permission
-                permissions: [
-                    'admin:constructModule:messageMenu:view',
-                    'admin:constructModule:messageMenu:edit',
-                    'admin:constructModule:messageMenu:delete'
+                xtype: 'securityGridColumnCommon',
+                items: [
+                    {
+                        icon: "/kalix/message/resources/images/message_view.png",
+                        permission: '',
+                        tooltip: '查看',
+                        handler: 'onView'
+                    },
+                    {
+                        icon: "/kalix/message/resources/images/message_delete.png",
+                        permission: '',
+                        tooltip: '删除',
+                        handler: 'onDelete',
+                    }
                 ]
+                //todo change permission
+                //permissions: ''//[
+                //    'admin:constructModule:messageMenu:view',
+                //    'admin:constructModule:messageMenu:edit',
+                //    'admin:constructModule:messageMenu:delete'
+                //]
             }
         ]
-    }//,
-        //tbar: {
-        //    xtype: 'securityToolbar',
-        //    verifyItems: [
-        //        {
-        //            text: '添加',
-        //            xtype: 'button',
-        //            //todo change permission
-        //            permission: 'admin:constructModule:messageMenu:add',
-        //            bind: {icon: '{add_image_path}'},
-        //            handler: 'onAdd'
-        //        }
-        //    ]
-        //}
+    },
+        tbar: {
+            xtype: 'securityToolbar',
+            verifyItems: [
+                {
+                    text: '发件',
+                    xtype: 'button',
+                    //todo change permission
+                    permission: '',
+                    iconCls: 'fa fa-pencil',
+                    handler: 'onAdd'
+                }
+            ]
+        }
     }
 );

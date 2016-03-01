@@ -18,7 +18,8 @@ Ext.define('kalix.message.receiver.controller.MessageGridController', {
         }
         else {
             selModel.set('read', 0);
-            grid.getStore().sync({//修改为已读
+            selModel.set('message_state',0);
+            grid.getStore().sync({//修改为已读已通知
                 success: function () {
                     selModel.dirty = false;
                 },

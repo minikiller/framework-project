@@ -40,10 +40,6 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
                 dataIndex: 'id',
                 hidden: true,
             },
-            //{
-            //    text: '发送者',
-            //    dataIndex: 'senderid'
-            //},
             {
                 text: '接收者',
                 dataIndex: 'receiverid'
@@ -61,34 +57,48 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
                 dataIndex: 'title'
             },
             {
-                text: '发送时间',
-                dataIndex: 'createdate',
+                text: '发件时间',
+                dataIndex: 'creationDate',
                 xtype: 'datecolumn',
-                format: 'Y-m-d', renderer: null
+                format: 'Y-m-d H:i:s', renderer: null
             },
 
             {
-                xtype: 'securityGridColumnRUD',
-                //todo change permission
-                permissions: [
-                    'admin:constructModule:messageMenu:view',
-                    'admin:constructModule:messageMenu:edit',
-                    'admin:constructModule:messageMenu:delete'
+                xtype: 'securityGridColumnCommon',
+                items: [
+                    {
+                        icon: "/kalix/message/resources/images/message_view.png",
+                        permission: '',
+                        tooltip: '查看',
+                        handler: 'onView'
+                    },
+                    {
+                        icon: "/kalix/message/resources/images/message_delete.png",
+                        permission: '',
+                        tooltip: '删除',
+                        handler: 'onDelete',
+                    }
                 ]
-            }
-        ]
-    },
-    tbar: {
-        xtype: 'securityToolbar',
-        verifyItems: [
-            {
-                text: '发件',
-                xtype: 'button',
                 //todo change permission
-                permission: '',
-                iconCls: 'fa fa-pencil',
-                handler: 'onAdd'
+                //permissions: ''//[
+                //    'admin:constructModule:messageMenu:view',
+                //    'admin:constructModule:messageMenu:edit',
+                //    'admin:constructModule:messageMenu:delete'
+                //]
             }
         ]
-    }
+    }//,
+    //tbar: {
+    //    xtype: 'securityToolbar',
+    //    verifyItems: [
+    //        {
+    //            text: '发件',
+    //            xtype: 'button',
+    //            //todo change permission
+    //            permission: 'admin:constructModule:messageMenu:add',
+    //            iconCls: 'fa fa-pencil',
+    //            handler: 'onAdd'
+    //        }
+    //    ]
+    //}
 });

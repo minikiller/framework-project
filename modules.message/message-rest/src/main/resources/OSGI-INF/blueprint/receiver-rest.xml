@@ -22,13 +22,17 @@
                 <to uri="bean:messageService?method=getReceiverMessage(${header.page},${header.limit},${header.jsonStr})"/>
             </get>
 
-            <!--&lt;!&ndash; this is a rest POST to create a message &ndash;&gt;-->
+            <!-- this is a rest POST to create a message -->
             <!--<post id="route-addMessage" type="cn.com.rexen.bean.entities.MessageBean"-->
             <!--outType="cn.com.rexen.core.api.biz.JsonStatus">-->
             <!--<description>Create a Message</description>-->
             <!--<to uri="bean:messageService?method=saveEntity"/>-->
             <!--</post>-->
-
+            <post id="route-addMessage" type="cn.com.rexen.bean.entities.MessageBean"
+                  outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Create a Message</description>
+                <to uri="bean:messageService?method=saveAllEntities"/>
+            </post>
             <!-- this is a rest GET to view a message by the given id -->
             <get uri="/{id}" id="route-getReceiverMessage" outType="cn.com.rexen.bean.entities.MessageBean">
                 <description>Find Message by id</description>

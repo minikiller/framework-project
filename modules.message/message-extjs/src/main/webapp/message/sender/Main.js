@@ -15,13 +15,13 @@ Ext.define('kalix.message.sender.Main', {
     viewModel: 'messageSenderViewModel',
     items: [
         {
-            title: '消息通知查询',
+            title: '发件查询',
             iconCls: 'x-fa fa-search',
             xtype: 'messageSenderSearchForm'
         }, {
             xtype: 'messageSenderGridPanel',
             id: 'messageSenderGridPanel',
-            title: '消息通知列表',
+            title: '发件列表',
             iconCls: 'x-fa fa-share',
             margin: 10
         }

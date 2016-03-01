@@ -12,14 +12,6 @@ Ext.define('kalix.message.sender.view.MessageSearchForm', {
     xtype: 'messageSenderSearchForm',
     storeId: 'messageSenderStore',
     items: [
-        //{
-        //    xtype: 'textfield',
-        //    fieldLabel: '发送者',
-        //    labelAlign: 'right',
-        //    labelWidth: 60,
-        //    width: 200,
-        //    name: 'senderid'
-        //},
         {
             xtype: 'textfield',
             fieldLabel: '接收者',
@@ -28,14 +20,6 @@ Ext.define('kalix.message.sender.view.MessageSearchForm', {
             width: 200,
             name: 'receiverid'
         },
-        //{
-        //    xtype: 'textfield',
-        //    fieldLabel: '消息类别',
-        //    labelAlign: 'right',
-        //    labelWidth: 60,
-        //    width: 200,
-        //    name: 'category'
-        //},
         {
             xtype: 'dictCombobox',
             fieldLabel: '消息类别',
@@ -53,18 +37,10 @@ Ext.define('kalix.message.sender.view.MessageSearchForm', {
             width: 200,
             name: 'title'
         },
-        //{
-        //    xtype: 'textfield',
-        //    fieldLabel: '消息内容',
-        //    labelAlign: 'right',
-        //    labelWidth: 60,
-        //    width: 200,
-        //    name: 'content'
-        //},
         {
             xtype: 'datefield',
             format: 'Y-m-d',
-            fieldLabel: '发送时间:',
+            fieldLabel: '发件时间:',
             labelAlign: 'right',
             labelWidth: 120,
             width: 260,
@@ -85,5 +61,4 @@ Ext.define('kalix.message.sender.view.MessageSearchForm', {
             name: 'send_timestamp:end:lt'
         }
     ]
-
 });
