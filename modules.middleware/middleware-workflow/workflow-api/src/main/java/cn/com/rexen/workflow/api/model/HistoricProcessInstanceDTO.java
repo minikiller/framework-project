@@ -1,6 +1,9 @@
 package cn.com.rexen.workflow.api.model;
 
 import cn.com.rexen.core.api.web.model.BaseDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
 
 /**
  * Created by sunlf on 2015/8/1.
@@ -9,8 +12,10 @@ import cn.com.rexen.core.api.web.model.BaseDTO;
 public class HistoricProcessInstanceDTO extends BaseDTO {
     private String processDefinitionId;//流程id
     private String startUserId;//启动用户id
-    private String startTime;//开始时间
-    private String endTime;//结束时间
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date startTime;//开始时间
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date endTime;//结束时间
     private String businessKey;//业务主键
     private String status;//当前状态  结束 进行中
     private String processInstanceId;//流程实例id
@@ -48,19 +53,19 @@ public class HistoricProcessInstanceDTO extends BaseDTO {
         this.startUserId = startUserId;
     }
 
-    public String getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 

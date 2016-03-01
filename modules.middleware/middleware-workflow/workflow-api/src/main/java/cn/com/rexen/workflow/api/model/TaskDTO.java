@@ -1,6 +1,9 @@
 package cn.com.rexen.workflow.api.model;
 
 import cn.com.rexen.core.api.web.model.BaseDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
 
 /**
  * Created by sunlf on 2015/7/31.
@@ -10,7 +13,8 @@ public class TaskDTO extends BaseDTO {
     private String name;//任务名称
     private String description;//任务描述
     private String assignee;//执行人
-    private String createTime;//创建时间
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date createTime;//创建时间
     private String processInstanceId;//流程实例id
     private String entityId;//业务实体id
     private String businessKey;//业务主键
@@ -40,11 +44,11 @@ public class TaskDTO extends BaseDTO {
         this.assignee = assignee;
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 

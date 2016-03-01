@@ -1,6 +1,9 @@
 package cn.com.rexen.workflow.api.model;
 
 import cn.com.rexen.core.api.web.model.BaseDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
 
 /**
  * Created by sunlf on 2015/8/4.
@@ -9,8 +12,10 @@ import cn.com.rexen.core.api.web.model.BaseDTO;
 public class HistoricActivityInstanceDTO extends BaseDTO {
     private String activityName;
     private String assignee;
-    private String startTime;
-    private String endTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date startTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date endTime;
     private String comment;
     private String taskId;
 
@@ -38,19 +43,19 @@ public class HistoricActivityInstanceDTO extends BaseDTO {
         this.assignee = assignee;
     }
 
-    public String getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
