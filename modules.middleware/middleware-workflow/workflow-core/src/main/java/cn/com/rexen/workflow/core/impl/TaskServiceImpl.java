@@ -3,6 +3,7 @@ package cn.com.rexen.workflow.core.impl;
 import cn.com.rexen.admin.api.biz.IRoleBeanService;
 import cn.com.rexen.core.api.security.IUserLoginService;
 import cn.com.rexen.core.util.Assert;
+import cn.com.rexen.core.util.DateUtil;
 import cn.com.rexen.core.util.SerializeUtil;
 import cn.com.rexen.core.util.StringUtils;
 import cn.com.rexen.workflow.api.biz.ITaskService;
@@ -89,6 +90,7 @@ public class TaskServiceImpl implements ITaskService {
                         dto.setBusinessKey(processInstance.getBusinessKey());
                     }
                 }
+                dto.setDuration(DateUtil.formatDuring(Long.parseLong(dto.getDuration())));
             }
             jsonData.setData(taskDTOList);
         }

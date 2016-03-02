@@ -20,6 +20,15 @@ public class HistoricProcessInstanceDTO extends BaseDTO {
     private String status;//当前状态  结束 进行中
     private String processInstanceId;//流程实例id
     private String entityId;//业务实体id
+    private String durationInMillis; //持续时长
+
+    public String getDurationInMillis() {
+        return durationInMillis;
+    }
+
+    public void setDurationInMillis(String durationInMillis) {
+        this.durationInMillis = durationInMillis;
+    }
 
     public String getProcessInstanceId() {
         return processInstanceId;
