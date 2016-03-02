@@ -59,7 +59,7 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
     }
 
     @Override
-    public void doDeleteAll(String entityIds, JsonStatus jsonStatus) {
+    public void removeBatch(String entityIds, JsonStatus jsonStatus) {
         dao.removeBatch(entityIds);
         jsonStatus.setSuccess(true);
         jsonStatus.setMsg("批量删除成功！");
