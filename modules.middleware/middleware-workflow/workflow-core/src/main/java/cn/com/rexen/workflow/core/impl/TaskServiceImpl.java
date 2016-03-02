@@ -45,28 +45,37 @@ public class TaskServiceImpl implements ITaskService {
         //获得当前登陆用户
         String userName = userLoginService.getLoginName();
         List<TaskDTO> taskDTOList;
-        List<Task> taskList;
+        List<Task> taskGroupList;//获得用户组的任务列表
+        List<Task> taskUserList;//获得基于用户的任务列表
         List<String> roleBeanList = roleBeanService.getRoleNameListByLoginName(userName);
         if(StringUtils.isNotEmpty(jsonStr)){
             Map map= SerializeUtil.json2Map(jsonStr) ;
             String taskName= (String) map.get("name");
             Assert.notNull(taskName);
-            taskList =taskService
+            taskGroupList =taskService
                     .createTaskQuery().taskCandidateGroupIn(roleBeanList)
+                    .taskNameLike("%" + taskName + "%").orderByTaskCreateTime().desc()
+                    .listPage((page - 1) * limit, limit);
+            taskUserList=taskService
+                    .createTaskQuery().taskAssignee(userName)
                     .taskNameLike("%" + taskName + "%").orderByTaskCreateTime().desc()
                     .listPage((page - 1) * limit, limit);
         }
         else{
-            taskList = taskService
+            taskGroupList = taskService
                     .createTaskQuery().taskCandidateGroupIn(roleBeanList)
                     .orderByTaskCreateTime().desc()
                     .listPage((page - 1) * limit, limit);
+            taskUserList = taskService
+                    .createTaskQuery().taskAssignee(userName)
+                    .orderByTaskCreateTime().desc()
+                    .listPage((page - 1) * limit, limit);
         }
-
-        if (taskList != null) {
+        taskGroupList.addAll(taskUserList);
+        if (taskGroupList != null) {
             Mapper mapper = new DozerBeanMapper();
-            taskDTOList = DozerHelper.map(mapper, taskList, TaskDTO.class);
-            jsonData.setTotalCount(taskList.size());
+            taskDTOList = DozerHelper.map(mapper, taskGroupList, TaskDTO.class);
+            jsonData.setTotalCount(taskGroupList.size());
             //获得业务实体id
             for (TaskDTO dto : taskDTOList) {
                 ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
