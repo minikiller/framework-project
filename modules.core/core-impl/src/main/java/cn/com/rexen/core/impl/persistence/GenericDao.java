@@ -11,7 +11,10 @@ import org.apache.log4j.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import javax.persistence.metamodel.EntityType;
 import javax.persistence.metamodel.SingularAttribute;
 import java.io.Serializable;
@@ -19,7 +22,10 @@ import java.lang.reflect.ParameterizedType;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 //import javax.transaction.Transactional;
 
@@ -353,6 +359,21 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
     public void remove(PK id) {
         Object object = get(id);
         entityManager.remove(object);
+        entityManager.flush();
+    }
+
+    // 批量删除
+    @Override
+    public void removeBatch(String ids) {
+        String strIds = ids;
+        strIds = strIds.replaceAll(",", ":");
+        strIds = strIds.replaceAll(";", ":");
+        String[] arrayIds = strIds.split(":");
+        Object object;
+        for (int i = 0; i < arrayIds.length; i++) {
+            object = get((PK) arrayIds[i]);
+            entityManager.remove(object);
+        }
         entityManager.flush();
     }
 
