@@ -1,7 +1,8 @@
-package cn.com.rexen.bean.core.biz;
+package cn.com.rexen.bean.core.event;
 
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.bean.core.Const;
+import cn.com.rexen.bean.core.biz.BaseWorkflowEvent;
 import cn.com.rexen.bean.entities.MessageBean;
 import com.google.gson.Gson;
 import org.activiti.engine.impl.util.json.JSONObject;
@@ -13,7 +14,7 @@ import org.osgi.service.event.EventHandler;
  * Created by sunlf on 2016/2/23.
  */
 public class WorkFlowStarterEventImpl extends BaseWorkflowEvent implements EventHandler {
-    public static final String MSG_CONTENT = "%s,您好！\r\n  您流程编号为%s的申请已经审批，请查看！";
+    public static final String MSG_CONTENT = "%s,您好！\r\n  您流程编号为[%s]的申请已经审批，请查看！";
     public static final String MSG_TITLE = "流程审批进度提醒";
 
     @Override
@@ -22,8 +23,8 @@ public class WorkFlowStarterEventImpl extends BaseWorkflowEvent implements Event
         JSONObject taskJson = new JSONObject(json);
         String receiverId = (String) taskJson.get("startUserId");
         UserBean userBean = userBeanService.getUserBeanByUsername(receiverId);
-        String processDefinitionId = (String) taskJson.get("processDefinitionId");
-        String content = String.format(MSG_CONTENT, userBean.getName(), processDefinitionId);
+        String businessKey = (String) taskJson.get("businessKey");
+        String content = String.format(MSG_CONTENT, userBean.getName(), businessKey);
 
         MessageBean messageBean = saveMessageBean(userBean.getId(), content, MSG_TITLE);
         dao.save(messageBean);

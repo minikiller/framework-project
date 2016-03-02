@@ -1,10 +1,11 @@
-package cn.com.rexen.bean.core.biz;
+package cn.com.rexen.bean.core.event;
 
 import cn.com.rexen.admin.api.biz.IRoleBeanService;
 import cn.com.rexen.admin.entities.RoleBean;
 import cn.com.rexen.admin.entities.RoleUserBean;
 import cn.com.rexen.bean.api.dao.IMessageBeanDao;
 import cn.com.rexen.bean.core.Const;
+import cn.com.rexen.bean.core.biz.BaseWorkflowEvent;
 import cn.com.rexen.bean.entities.MessageBean;
 import cn.com.rexen.core.util.Assert;
 import com.google.gson.Gson;
@@ -20,7 +21,7 @@ import java.util.List;
  */
 public class WorkFlowMessageEventImpl extends BaseWorkflowEvent implements EventHandler {
     private final static String MSG_TITLE = "待办流程提醒";
-    private final static String MSG_CONTENT = "%s,您好！\r\n  您有一个待办流程请尽快处理！流程号为%s。";
+    private final static String MSG_CONTENT = "%s,您好！\r\n  您有一个待办流程请尽快处理！流程号为[%s]。";
 
     IMessageBeanDao dao;
     IRoleBeanService roleBeanService;
@@ -30,7 +31,7 @@ public class WorkFlowMessageEventImpl extends BaseWorkflowEvent implements Event
         String json = (String) event.getProperty("body");
         Gson gson = new Gson();
         JSONObject taskJson = new JSONObject(json);
-        String processDefinitionId = (String) taskJson.get("processDefinitionId");
+        String businessKey = (String) taskJson.get("businessKey");
         //查找组对应的用户id
         String roleName = (String) taskJson.get("group");
         RoleBean roleBean = roleBeanService.queryByRoleName(roleName);
@@ -39,7 +40,7 @@ public class WorkFlowMessageEventImpl extends BaseWorkflowEvent implements Event
         for (RoleUserBean roleUserBean : userList) {
             //获得用户名
             String userName = userBeanService.getEntity(roleUserBean.getUserId()).getName();
-            String content = String.format(MSG_CONTENT, userName, processDefinitionId);
+            String content = String.format(MSG_CONTENT, userName, businessKey);
             MessageBean messageBean = saveMessageBean(roleUserBean.getUserId(), content, MSG_TITLE);
             dao.save(messageBean);
             stackService.publish(String.format(Const.POLLING_TOPIC_FORMAT, roleUserBean.getUserId()), gson.toJson(messageBean), day);

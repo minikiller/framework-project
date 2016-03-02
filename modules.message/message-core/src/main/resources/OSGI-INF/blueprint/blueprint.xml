@@ -37,7 +37,7 @@
         </service-properties>
     </service>
 
-    <bean id="workFlowMessageEventImpl" class="cn.com.rexen.bean.core.biz.WorkFlowMessageEventImpl">
+    <bean id="workFlowMessageEventImpl" class="cn.com.rexen.bean.core.event.WorkFlowMessageEventImpl">
         <property name="dao" ref="messageBeanDao"/>
         <property name="stackService" ref="stackService"/>
         <property name="roleBeanService" ref="roleBeanService"/>
@@ -50,7 +50,7 @@
         </service-properties>
     </service>
 
-    <bean id="workFlowStarterEventImpl" class="cn.com.rexen.bean.core.biz.WorkFlowStarterEventImpl">
+    <bean id="workFlowStarterEventImpl" class="cn.com.rexen.bean.core.event.WorkFlowStarterEventImpl">
         <property name="dao" ref="messageBeanDao"/>
         <property name="stackService" ref="stackService"/>
         <property name="userBeanService" ref="userBeanService"/>

@@ -1,6 +1,7 @@
 package cn.com.rexen.workflow.core.impl;
 
 import cn.com.rexen.admin.api.biz.IRoleBeanService;
+import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.security.IUserLoginService;
 import cn.com.rexen.core.util.Assert;
 import cn.com.rexen.core.util.DateUtil;
@@ -34,7 +35,6 @@ public class TaskServiceImpl implements ITaskService {
     private JsonData jsonData = new JsonData();
     private IUserLoginService userLoginService;
     private IRoleBeanService roleBeanService;
-
 
     /**
      * 获得工作流任务列表
@@ -108,6 +108,28 @@ public class TaskServiceImpl implements ITaskService {
         historicProcessInstance = historyService.createHistoricProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
         String userName = historicProcessInstance.getStartUserId();
         return userName;
+    }
+
+    @Override
+    public JsonStatus delegateTask(String taskIds, String userId) {
+        JsonStatus jsonStatus = new JsonStatus();
+        try {
+
+            jsonStatus.setSuccess(true);
+            String[] taskId = taskIds.split(":");
+            for (String id : taskId) {
+                taskService.claim(id, userLoginService.getLoginName());
+                taskService.delegateTask(id, userId);
+            }
+            return jsonStatus;
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setFailure(true);
+            jsonStatus.setSuccess(false);
+            jsonStatus.setMsg("委托任务处理失败！");
+        }
+        return jsonStatus;
+
     }
 
     public void setTaskService(TaskService taskService) {

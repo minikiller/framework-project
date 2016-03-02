@@ -12,6 +12,7 @@ import org.activiti.engine.IdentityService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.task.DelegationState;
 import org.activiti.engine.task.Task;
 
 import java.util.HashMap;
@@ -79,7 +80,13 @@ public class CarApplyBeanServiceImpl extends ShiroGenericBizServiceImpl<ICarAppl
             CarApplyBean bean = this.getEntity(new Long(beanId));
 
             String userName=this.getShiroService().getCurrentUserName();
-            taskService.claim(task.getId(), currentUserId);
+            //判断是否有人委托
+            if (task.getDelegationState().equals(DelegationState.PENDING)) {
+                taskService.resolveTask(task.getId());
+            } else {
+                taskService.claim(task.getId(), currentUserId);
+            }
+
             writeClaimResult(currentTaskName,userName, bean);
 
             //添加备注信息
