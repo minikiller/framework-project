@@ -64,6 +64,13 @@ public interface IBizService<T extends PersistentEntity> extends IService {
     void doDelete(long entityId, JsonStatus jsonStatus);
 
     /**
+     * 执行批量删除.
+     * @param entityIds
+     * @param jsonStatus
+     */
+    void doDeleteAll(String entityIds, JsonStatus jsonStatus);
+
+    /**
      * 保存前执行.
      * @param entity
      * @param status

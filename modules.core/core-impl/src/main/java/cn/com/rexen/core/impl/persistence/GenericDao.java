@@ -366,15 +366,19 @@ public abstract class GenericDao<T extends PersistentEntity, PK extends Serializ
     @Override
     public void removeBatch(String ids) {
         String strIds = ids;
-        strIds = strIds.replaceAll(",", ":");
-        strIds = strIds.replaceAll(";", ":");
-        String[] arrayIds = strIds.split(":");
-        Object object;
-        for (int i = 0; i < arrayIds.length; i++) {
-            object = get((PK) arrayIds[i]);
-            entityManager.remove(object);
+        if (strIds != null && strIds.trim().length() > 0) {
+            Object object;
+            strIds = strIds.replaceAll(",", ":");
+            strIds = strIds.replaceAll(";", ":");
+            String[] arrayIds = strIds.split(":");
+            for (int i = 0; i < arrayIds.length; i++) {
+                if (arrayIds[i] != null && arrayIds[i].trim().length() > 0) {
+                    object = get((PK) arrayIds[i]);
+                    entityManager.remove(object);
+                }
+            }
+            entityManager.flush();
         }
-        entityManager.flush();
     }
 
     @Override
