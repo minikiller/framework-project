@@ -48,7 +48,7 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
                 hidden: true,
             },
             {
-                text: '发送者',
+                text: '发件人',
                 dataIndex: 'senderId'
             },
             {
@@ -117,7 +117,7 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
                     text: '批量删除',
                     permission: '',
                     iconCls: 'fa fa-trash',
-                    handler: 'onDeleteAll',
+                    handler: 'onRemoveBatch',
                 }
             ]
         }

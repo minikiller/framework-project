@@ -41,7 +41,7 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
                 hidden: true,
             },
             {
-                text: '接收者',
+                text: '收件人',
                 dataIndex: 'receiverNames'
             },
             {

@@ -50,46 +50,5 @@ Ext.define('kalix.message.receiver.controller.MessageGridController', {
         vm.set('icon', '/kalix/message/resources/images/message_add.png');
         vm.set('title', '发件');
         view.show();
-    },
-    onDeleteAll: function () {
-        var selModel = this.getView().getSelectionModel();
-        if (selModel.hasSelection()) {
-            Ext.Msg.confirm("警告", "确定要删除吗？", function (button) {
-                if (button == "yes") {
-                    //var deleteUrl = this.getView().getViewModel().get("url");
-                    var rows = selModel.getSelected();
-                    var ids = "";
-                    for (var i = 0; i < rows.length; i++) {
-                        var row = rows.getAt(i);
-                        if (row != null && row.id != null) {
-                            ids += row.id;
-                            if (i + 1 != rows.length) {
-                                ids += ":";
-                            }
-                        }
-                    }
-                    Ext.Ajax.request({
-                        url: deleteUrl + "?id=" + rec.id,
-                        method: 'DELETE',
-                        callback: function (options, success, response) {
-                            var resp = Ext.JSON.decode(response.responseText);
-                            if (resp.success) {
-                                kalix.core.Notify.success("操作成功", "提示", {timeOut: 1500});
-                                var store = grid.getStore();
-                                store.reload();
-                            }
-                        }
-                    });
-                }
-            });
-        } else {
-            Ext.Msg.show({
-                title: '提示',
-                message: '至少应该选择一条记录进行操作',
-                buttons: Ext.Msg.OK,
-                icon: Ext.Msg.WARNING,
-                fn: null
-            });
-        }
     }
 });

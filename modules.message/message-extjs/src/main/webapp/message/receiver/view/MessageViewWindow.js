@@ -21,10 +21,10 @@ Ext.define('kalix.message.receiver.view.MessageViewWindow', {
         xtype: 'baseForm',
         items: [
             {
-                fieldLabel: '接收者',
+                fieldLabel: '发件人',
                 allowBlank: false,
                 bind: {
-                    value: '{rec.receiverId}'
+                    value: '{rec.senderId}'
                 }
             },
             {

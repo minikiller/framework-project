@@ -14,7 +14,7 @@ Ext.define('kalix.message.sender.view.MessageSearchForm', {
     items: [
         {
             xtype: 'textfield',
-            fieldLabel: '接收者',
+            fieldLabel: '收件人',
             labelAlign: 'right',
             labelWidth: 60,
             width: 200,

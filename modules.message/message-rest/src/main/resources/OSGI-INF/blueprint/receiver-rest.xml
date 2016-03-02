@@ -34,6 +34,13 @@
                 <description>Updates a Message</description>
                 <to uri="bean:messageService?method=updateEntity"/>
             </put>
+
+            <!-- this is a rest DELETE to batch delete messages -->
+            <delete uri="/remove" id="route-removeBatchMessages"
+                    outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Batch delete entities</description>
+                <to uri="bean:messageService?method=removeBatch(${header.ids})"/>
+            </delete>
         </rest>
     </camelContext>
 </blueprint>
