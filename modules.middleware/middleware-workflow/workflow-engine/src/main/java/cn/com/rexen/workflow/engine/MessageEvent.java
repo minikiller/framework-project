@@ -55,18 +55,16 @@ public class MessageEvent implements ActivitiEventListener {
      * @param event
      */
     private void postCompleteEvent(ActivitiEvent event) {
-        String processDefinitionId = event.getProcessDefinitionId();
         String processInstanceId = event.getProcessInstanceId();
-        String executionId = event.getExecutionId();
         JSONObject taskJson=new JSONObject();
         HistoricProcessInstance historicProcessInstance=historyService.createHistoricProcessInstanceQuery()
                 .processInstanceId(processInstanceId).singleResult();
         String startUserId=historicProcessInstance.getStartUserId();
         Dictionary properties = new Hashtable();
+
         taskJson.put("startUserId",startUserId);
-        taskJson.put("processDefinitionId", processDefinitionId);
-        taskJson.put("processInstanceId", processInstanceId);
-        taskJson.put("executionId", executionId);
+        taskJson.put("businessKey", historicProcessInstance.getBusinessKey());
+
         properties.put("body", taskJson.toString());
         Event osgi_event = new Event(WORKFLOW_STARTER_TOPIC, properties);
         System.out.println("A task of " + startUserId + " is completed!");
@@ -84,17 +82,16 @@ public class MessageEvent implements ActivitiEventListener {
      */
     private void postMessageEvent(ActivitiEvent event) {
         JSONObject taskJson=new JSONObject();
-        String processDefinitionId = event.getProcessDefinitionId();
         String processInstanceId = event.getProcessInstanceId();
-        String executionId = event.getExecutionId();
         ActivitiEntityEventImpl entityEvent= (ActivitiEntityEventImpl) event;
         TaskEntity task= (TaskEntity) entityEvent.getEntity();
         List<IdentityLinkEntity> idList=task.getIdentityLinks();
         for(IdentityLinkEntity id:idList){
+
+            HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery()
+                    .processInstanceId(processInstanceId).singleResult();
             taskJson.put("group",id.getGroupId());
-            taskJson.put("processDefinitionId", processDefinitionId);
-            taskJson.put("processInstanceId", processInstanceId);
-            taskJson.put("executionId", executionId);
+            taskJson.put("businessKey", historicProcessInstance.getBusinessKey());
             System.out.println("A task group of " + id.getGroupId() + " is assigned!");
             //添加相关内容到消息体
             Dictionary properties = new Hashtable();
