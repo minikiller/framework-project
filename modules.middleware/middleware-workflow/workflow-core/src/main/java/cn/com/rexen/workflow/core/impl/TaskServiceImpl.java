@@ -42,27 +42,26 @@ public class TaskServiceImpl implements ITaskService {
      * @return
      */
     @Override
-    public JsonData getTasks(int page, int limit,String jsonStr) {
+    public JsonData getTasks(int page, int limit, String jsonStr) {
         //获得当前登陆用户
         String userName = userLoginService.getLoginName();
         List<TaskDTO> taskDTOList;
         List<Task> taskGroupList;//获得用户组的任务列表
         List<Task> taskUserList;//获得基于用户的任务列表
         List<String> roleBeanList = roleBeanService.getRoleNameListByLoginName(userName);
-        if(StringUtils.isNotEmpty(jsonStr)){
-            Map map= SerializeUtil.json2Map(jsonStr) ;
-            String taskName= (String) map.get("name");
+        if (StringUtils.isNotEmpty(jsonStr)) {
+            Map map = SerializeUtil.json2Map(jsonStr);
+            String taskName = (String) map.get("name");
             Assert.notNull(taskName);
-            taskGroupList =taskService
+            taskGroupList = taskService
                     .createTaskQuery().taskCandidateGroupIn(roleBeanList)
                     .taskNameLike("%" + taskName + "%").orderByTaskCreateTime().desc()
                     .listPage((page - 1) * limit, limit);
-            taskUserList=taskService
+            taskUserList = taskService
                     .createTaskQuery().taskAssignee(userName)
                     .taskNameLike("%" + taskName + "%").orderByTaskCreateTime().desc()
                     .listPage((page - 1) * limit, limit);
-        }
-        else{
+        } else {
             taskGroupList = taskService
                     .createTaskQuery().taskCandidateGroupIn(roleBeanList)
                     .orderByTaskCreateTime().desc()
@@ -85,12 +84,13 @@ public class TaskServiceImpl implements ITaskService {
                     dto.setBusinessKey(processInstance.getBusinessKey());
                 } else {
                     HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
-                    if (historicProcessInstance != null){
+                    if (historicProcessInstance != null) {
                         dto.setEntityId(WorkflowUtil.getBizId(historicProcessInstance.getBusinessKey()));
                         dto.setBusinessKey(processInstance.getBusinessKey());
                     }
                 }
-                dto.setDuration(DateUtil.formatDuring(Long.parseLong(dto.getDuration())));
+                if (dto.getDuration() != null)
+                    dto.setDuration(DateUtil.formatDuring(Long.parseLong(dto.getDuration())));
             }
             jsonData.setData(taskDTOList);
         }

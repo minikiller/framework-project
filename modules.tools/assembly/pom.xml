@@ -197,6 +197,8 @@
                         <feature>service</feature>
                         <feature>system</feature>
                         <feature>kalix</feature>
+                        <feature>activiti</feature>
+                        <feature>couchdb</feature>
                     </bootFeatures>
                     <!--<karafDirectory>${assembly.directory}</karafDirectory>
                     <startSsh>true</startSsh>
