@@ -51,6 +51,8 @@ public class SenderMessageBeanServiceImpl extends ShiroGenericBizServiceImpl<ISe
         try {
             jsonStatus.setSuccess(true);
             senderMessageBean.setSenderId(senderId);
+            receiverNames = receiverNames.replaceAll(",",":");
+            receiverNames = receiverNames.replaceAll(";",":");
             String[] ids = receiverNames.split(":");//要修改的
             for (int i = 0; i < ids.length; i++) {
                 MessageBean newMessageBean = new MessageBean();
@@ -67,13 +69,13 @@ public class SenderMessageBeanServiceImpl extends ShiroGenericBizServiceImpl<ISe
             // 保存发件信息
             saveEntity(senderMessageBean);
 
-            jsonStatus.setTag("SenderMessageBeanServiceImpl.java:saveAllEntities异常");
+            jsonStatus.setTag("");
             return jsonStatus;
         } catch (Exception e) {
             e.printStackTrace();
             jsonStatus.setSuccess(false);
-            jsonStatus.setTag("");
-            jsonStatus.setMsg("");
+            jsonStatus.setTag("SenderMessageBeanServiceImpl.java:saveAllEntities异常");
+            jsonStatus.setMsg("发件失败");
             return jsonStatus;
         }
     }
