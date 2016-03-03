@@ -68,8 +68,8 @@ public class SenderMessageBeanServiceImpl extends ShiroGenericBizServiceImpl<ISe
             }
             // 保存发件信息
             saveEntity(senderMessageBean);
-
             jsonStatus.setTag("");
+            jsonStatus.setMsg("发件成功");
             return jsonStatus;
         } catch (Exception e) {
             e.printStackTrace();
