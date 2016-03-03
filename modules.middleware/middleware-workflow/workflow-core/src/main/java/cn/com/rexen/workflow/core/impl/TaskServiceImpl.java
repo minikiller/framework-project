@@ -121,6 +121,7 @@ public class TaskServiceImpl implements ITaskService {
                 taskService.claim(id, userLoginService.getLoginName());
                 taskService.delegateTask(id, userId);
             }
+            jsonStatus.setMsg("委托任务处理成功！");
             return jsonStatus;
         } catch (Exception e) {
             e.printStackTrace();
