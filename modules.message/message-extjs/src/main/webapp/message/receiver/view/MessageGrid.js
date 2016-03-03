@@ -11,7 +11,7 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
         'kalix.admin.dict.component.DictGridColumn'
     ],
     alias: 'widget.messageGrid',
-        xtype: 'messageReceiverGridPanel',
+    xtype: 'messageReceiverGridPanel',
     controller: {
         type: 'messageReceiverGridController',
         storeId: 'messageReceiverStore',
@@ -70,7 +70,7 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
                 format: 'Y-m-d H:i:s', renderer: null
             },
             {
-                text:'是否已读',
+                text: '是否已读',
                 trueText: '已读',
                 falseText: '未读',
                 xtype: 'booleancolumn',
@@ -102,24 +102,23 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
             }
         ]
     },
-        tbar: {
-            xtype: 'securityToolbar',
-            verifyItems: [
-                {
-                    text: '发件',
-                    xtype: 'button',
-                    //todo change permission
-                    permission: '',
-                    iconCls: 'fa fa-pencil',
-                    handler: 'onSender'
-                },
-                {
-                    text: '批量删除',
-                    permission: '',
-                    iconCls: 'fa fa-trash',
-                    handler: 'onRemoveBatch',
-                }
-            ]
-        }
+    tbar: {
+        xtype: 'securityToolbar',
+        verifyItems: [
+            {
+                text: '发件',
+                xtype: 'button',
+                //todo change permission
+                permission: '',
+                iconCls: 'fa fa-pencil',
+                handler: 'onSender'
+            },
+            {
+                text: '批量删除',
+                permission: '',
+                iconCls: 'fa fa-trash',
+                handler: 'onBatchDelete',
+            }
+        ]
     }
-);
+});

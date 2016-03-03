@@ -21,8 +21,10 @@ Ext.define('kalix.message.sender.view.MessageWindow', {
     listeners: {
         show: 'onShow'
     },
+    iconCls: 'fa fa-pencil',
     xtype: "messageSenderWindow",
     width: 600,
+    modal: true,
     //todo 在此修改表单
     items: [
         {

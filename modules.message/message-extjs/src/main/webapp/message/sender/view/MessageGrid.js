@@ -24,8 +24,15 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
     },
 
     //todo 在此修改grid显示列
+    stripeRows: true,
+    manageHeight: true,
+    forceFit: true,
+    selModel: {selType: 'checkboxmodel', mode: "SIMPLE"},
     columns: {
-        defaults: {flex: 1, renderer: 'addTooltip'},
+        defaults: {
+            //renderer: 'addTooltip',
+            flex: 1,
+        },
         items: [
             {
                 xtype: "rownumberer",
@@ -79,6 +86,17 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
                         handler: 'onDelete',
                     }
                 ]
+            }
+        ]
+    },
+    tbar: {
+        xtype: 'securityToolbar',
+        verifyItems: [
+            {
+                text: '批量删除',
+                permission: '',
+                iconCls: 'fa fa-trash',
+                handler: 'onBatchDelete',
             }
         ]
     }

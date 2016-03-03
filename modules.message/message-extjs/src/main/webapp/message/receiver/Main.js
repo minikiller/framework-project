@@ -9,7 +9,8 @@ Ext.define('kalix.message.receiver.Main', {
     requires: [
         'kalix.message.receiver.view.MessageGrid',
         'kalix.message.receiver.view.MessageSearchForm',
-        'kalix.message.receiver.viewModel.MessageViewModel'
+        'kalix.message.receiver.viewModel.MessageViewModel',
+        'kalix.message.sender.store.MessageStore'
     ],
     storeId: 'messageReceiverStore',
     viewModel: 'messageReceiverViewModel',

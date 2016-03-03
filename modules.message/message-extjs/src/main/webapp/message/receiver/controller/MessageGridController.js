@@ -47,7 +47,7 @@ Ext.define('kalix.message.receiver.controller.MessageGridController', {
         var vm = view.lookupViewModel();
 
         vm.set('rec', Ext.create('kalix.message.sender.model.MessageModel'));
-        vm.set('icon', '/kalix/message/resources/images/message_add.png');
+        //vm.set('icon', '/kalix/message/resources/images/message_add.png');
         vm.set('title', '发件');
         view.show();
     }
