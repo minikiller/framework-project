@@ -49,7 +49,7 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
             },
             {
                 text: '发件人',
-                dataIndex: 'senderId'
+                dataIndex: 'senderName'
             },
             {
                 text: '消息类别',

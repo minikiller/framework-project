@@ -18,10 +18,15 @@ import javax.persistence.Table;
 @Table(name = "workflow_message")
 public class MessageBean extends PersistentEntity {
     /**
-     * @describe 发送者
+     * @describe 发件人
      * @validator 不能为空
      */
     private long senderId;
+    /**
+     * @describe 发件人名称
+     * @validator 不能为空
+     */
+    private String senderName;
     /**
      * @describe 接收者
      * @validator 不能为空
@@ -31,7 +36,7 @@ public class MessageBean extends PersistentEntity {
      * @describe 消息类别
      * @validator 不能为空
      */
-    private String category;
+    private int category;
     /**
      * @describe 消息标题
      * @validator 不能为空
@@ -67,6 +72,14 @@ public class MessageBean extends PersistentEntity {
         this.senderId = senderId;
     }
 
+    public String getSenderName() {
+        return senderName;
+    }
+
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
+    }
+
     public long getReceiverId() {
         return receiverId;
     }
@@ -75,11 +88,11 @@ public class MessageBean extends PersistentEntity {
         this.receiverId = receiverId;
     }
 
-    public String getCategory() {
+    public int getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(int category) {
         this.category = category;
     }
 
@@ -99,7 +112,7 @@ public class MessageBean extends PersistentEntity {
         this.content = content;
     }
 
-    public boolean getRead() {
+    public boolean isRead() {
         return read;
     }
 

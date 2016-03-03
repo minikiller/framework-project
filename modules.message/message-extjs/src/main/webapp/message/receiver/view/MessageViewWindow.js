@@ -24,7 +24,7 @@ Ext.define('kalix.message.receiver.view.MessageViewWindow', {
                 fieldLabel: '发件人',
                 allowBlank: false,
                 bind: {
-                    value: '{rec.senderId}'
+                    value: '{rec.senderName}'
                 }
             },
             {
