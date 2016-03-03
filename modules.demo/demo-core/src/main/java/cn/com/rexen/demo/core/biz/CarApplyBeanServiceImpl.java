@@ -81,7 +81,7 @@ public class CarApplyBeanServiceImpl extends ShiroGenericBizServiceImpl<ICarAppl
 
             String userName=this.getShiroService().getCurrentUserName();
             //判断是否有人委托
-            if (task.getDelegationState().equals(DelegationState.PENDING)) {
+            if (task.getDelegationState()!=null && task.getDelegationState().equals(DelegationState.PENDING)) {
                 taskService.resolveTask(task.getId());
             } else {
                 taskService.claim(task.getId(), currentUserId);
