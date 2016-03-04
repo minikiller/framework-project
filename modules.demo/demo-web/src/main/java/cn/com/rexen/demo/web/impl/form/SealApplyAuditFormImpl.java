@@ -4,10 +4,10 @@ import cn.com.rexen.demo.api.Const;
 import cn.com.rexen.workflow.api.web.IFormHandler;
 
 /**
- * Created by sunlf on 2015/8/4.
- * 审批页面实现类
+ * Created by sunlf on 2016/2/25.
+ * 印章申请审批页面实现类
  */
-public class DemoAuditFormImpl implements IFormHandler {
+public class SealApplyAuditFormImpl implements IFormHandler {
     @Override
     public String getFormKey() {
         return "audit.form";
@@ -20,6 +20,6 @@ public class DemoAuditFormImpl implements IFormHandler {
 
     @Override
     public String getComponentClass() {
-        return "kalix.demo.sealApply.view.SealApplyViewForm";
+        return "kalix.demo.carApply.view.CarApplyViewForm";
     }
 }

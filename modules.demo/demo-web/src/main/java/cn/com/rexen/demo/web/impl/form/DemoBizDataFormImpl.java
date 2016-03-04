@@ -14,7 +14,7 @@ public class DemoBizDataFormImpl implements IBizDataHandler {
 
     @Override
     public String getComponentClass() {
-        return "kalix.demo.notice.view.NoticeShowForm";
+        return "kalix.demo.sealApply.view.SealApplyViewForm";
     }
 
     @Override

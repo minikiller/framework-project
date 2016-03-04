@@ -11,7 +11,7 @@
       <!--<activiti:eventListener delegateExpression="${testEventListener}" events="ENTITY_CREATED" entityType="task" />-->
     </extensionElements>
     <startEvent id="startevent1" name="Start" activiti:formKey="start.form"></startEvent>
-    <userTask id="usertask2" name="部门负责人审批" activiti:assignee="qwer" activiti:formKey="carapply.form">
+    <userTask id="usertask2" name="部门负责人审批" activiti:assignee="qwer" activiti:formKey="audit.form">
       <documentation>印章使用申请流程</documentation>
     </userTask>
     <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
