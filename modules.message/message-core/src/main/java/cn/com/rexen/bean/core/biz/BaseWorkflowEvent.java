@@ -22,8 +22,7 @@ public abstract class BaseWorkflowEvent {
         messageBean.setSenderId(ADMIN_USER_ID);
         messageBean.setSenderName(ADMIN_USER_NAME);
         messageBean.setReceiverId(receiverId);
-        //messageBean.setCategory(MessageCategories.getCategoryId("分配"));//1、消息；2、建议；3、警告；4、分配；
-        messageBean.setCategory(4);//1、消息；2、建议；3、警告；4、分配；
+        messageBean.setCategory(1);//1、系统消息；2、建议；3、警告；4、分配；
         messageBean.setTitle(title);
         messageBean.setContent(content);
         messageBean.setRead(false);//未读的消息

@@ -4,7 +4,7 @@ package cn.com.rexen.bean.core.biz;
  * Created by zangyanming on 2016/3/3.
  */
 public enum MessageCategories {
-    MESSAGE("消息", 1), SUGGESTION("建议", 2), WARNING("警告", 3), ASSIGNMENT("分配", 4);
+    MESSAGE("系统消息", 1), SUGGESTION("建议", 2), WARNING("警告", 3), ASSIGNMENT("分配", 4);
     // 成员变量
     private String CategoryName;
     private int id;
