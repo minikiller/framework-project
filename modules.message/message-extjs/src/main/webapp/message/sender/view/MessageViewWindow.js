@@ -21,7 +21,7 @@ Ext.define('kalix.message.sender.view.MessageViewWindow', {
         xtype: 'baseForm',
         items: [
             {
-                fieldLabel: '接收者',
+                fieldLabel: '收件人',
                 allowBlank: false,
                 bind: {
                     value: '{rec.receiverNames}'
@@ -52,7 +52,7 @@ Ext.define('kalix.message.sender.view.MessageViewWindow', {
                 }
             },
             {
-                fieldLabel: '发送时间',
+                fieldLabel: '发件时间',
                 allowBlank: false,
                 xtype: 'datefield',
                 format: 'Y-m-d H:i:s',

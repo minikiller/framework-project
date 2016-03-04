@@ -36,7 +36,7 @@ Ext.define('kalix.message.receiver.controller.MessageGridController', {
                         scope.onView(args[0], args[1], args[2]);//参数分别传入
                     }
                     else {
-                        Ext.Msg.alert(CONFIG.ALTER_TITLE_FAILURE, res.msg);
+                        kalix.core.Notify.alert(CONFIG.ALTER_TITLE_FAILURE, res.msg);
                     }
                 }
             });
@@ -47,7 +47,6 @@ Ext.define('kalix.message.receiver.controller.MessageGridController', {
         var vm = view.lookupViewModel();
 
         vm.set('rec', Ext.create('kalix.message.sender.model.MessageModel'));
-        vm.set('icon', '/kalix/message/resources/images/message_add.png');
         vm.set('title', '发件');
         view.show();
     }

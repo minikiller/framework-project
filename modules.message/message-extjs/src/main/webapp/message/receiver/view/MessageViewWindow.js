@@ -21,10 +21,10 @@ Ext.define('kalix.message.receiver.view.MessageViewWindow', {
         xtype: 'baseForm',
         items: [
             {
-                fieldLabel: '接收者',
+                fieldLabel: '发件人',
                 allowBlank: false,
                 bind: {
-                    value: '{rec.receiverId}'
+                    value: '{rec.senderName}'
                 }
             },
             {
@@ -52,7 +52,7 @@ Ext.define('kalix.message.receiver.view.MessageViewWindow', {
                 }
             },
             {
-                fieldLabel: '发送时间',
+                fieldLabel: '收件时间',
                 allowBlank: false,
                 xtype: 'datefield',
                 format: 'Y-m-d H:i:s',
@@ -70,32 +70,34 @@ Ext.define('kalix.message.receiver.view.MessageViewWindow', {
                 bind: {
                     value: '{rec.read}'
                 }
-            },
-            {
-                fieldLabel: '消息状态',
-
-                xtype: 'combobox',
-                valueField: 'key',
-                displayField: 'name',
-                store: {
-                    data: [
-                        {'name': '未通知', 'key': 1},
-                        {'name': '已通知', 'key': 0}
-                    ]
-                },
-                name: 'state',
-                bind: {
-                    value: '{rec.state}'
-                }
-            },
-            {
-                fieldLabel: '消息标识',
-                allowBlank: false,
-                xtype: 'numberfield',
-                bind: {
-                    value: '{rec.sign}'
-                }
             }
+            //,
+            //{
+            //    fieldLabel: '消息状态',
+            //
+            //    xtype: 'combobox',
+            //    valueField: 'key',
+            //    displayField: 'name',
+            //    store: {
+            //        data: [
+            //            {'name': '未通知', 'key': 1},
+            //            {'name': '已通知', 'key': 0}
+            //        ]
+            //    },
+            //    name: 'state',
+            //    bind: {
+            //        value: '{rec.state}'
+            //    }
+            //}
+            //,
+            //{
+            //    fieldLabel: '消息标识',
+            //    allowBlank: false,
+            //    xtype: 'numberfield',
+            //    bind: {
+            //        value: '{rec.sign}'
+            //    }
+            //}
         ]
     }
 

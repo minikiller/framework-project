@@ -46,7 +46,12 @@
                 <description>Delete a Audit</description>
                 <to uri="bean:auditService?method=deleteEntity(${header.id})"/>
             </delete>
-
+            <!-- this is a rest DELETE to batch delete  audits -->
+            <delete uri="/remove" id="route-batchDeleteAudit"
+                    outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Batch Delete Audits</description>
+                <to uri="bean:auditService?method=batchDeleteEntity(${header.ids})"/>
+            </delete>
         </rest>
     </camelContext>
 </blueprint>

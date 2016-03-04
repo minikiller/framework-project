@@ -3,6 +3,7 @@ package cn.com.rexen.workflow.core.impl;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.security.IUserLoginService;
 import cn.com.rexen.core.util.Assert;
+import cn.com.rexen.core.util.DateUtil;
 import cn.com.rexen.core.util.SerializeUtil;
 import cn.com.rexen.core.util.StringUtils;
 import cn.com.rexen.workflow.api.biz.IProcessService;
@@ -136,9 +137,13 @@ public class ProcessServiceImpl implements IProcessService {
             if (processInstance != null) {
                 dto.setEntityId(WorkflowUtil.getBizId(processInstance.getBusinessKey()));
             } else {
+
                 HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
                 if (historicProcessInstance != null)
                     dto.setEntityId(WorkflowUtil.getBizId(historicProcessInstance.getBusinessKey()));
+            }
+            if(dto.getDurationInMillis()!=null){
+                dto.setDurationInMillis(DateUtil.formatDuring(Long.decode(dto.getDurationInMillis())));
             }
         }
         long count = processHistoryList.size();
@@ -203,6 +208,8 @@ public class ProcessServiceImpl implements IProcessService {
                 //替换userid为usename
 //                historicActivityInstance.setAssignee(commentList.get(0).getUserId());
                 historicActivityInstance.setComment(str);
+                if (historicActivityInstance.getDurationInMillis() != null)
+                    historicActivityInstance.setDurationInMillis(DateUtil.formatDuring(Long.parseLong(historicActivityInstance.getDurationInMillis())));
             }
 
             jsonData.setTotalCount(historicActivityDTOList.size());

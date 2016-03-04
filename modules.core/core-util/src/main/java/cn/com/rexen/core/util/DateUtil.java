@@ -599,4 +599,32 @@ public class DateUtil {
         long days = diff / (1000 * 60 * 60 * 24);
         return days;
     }
+
+    /**
+     *
+     * @mss 要转换的毫秒数
+     * @return 该毫秒数转换为 * days * hours * minutes * seconds 后的格式
+     * @author fy.zhang
+     */
+    public static String formatDuring(long mss) {
+        String format_day="%d天:%d小时:%d分钟:%d秒";
+        String format_hour="%d小时:%d分钟:%d秒";
+        String format_minute="%d分钟:%d秒";
+        String format_second="%d秒";
+
+        long days = mss / (1000 * 60 * 60 * 24);
+        long hours = (mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);
+        long minutes = (mss % (1000 * 60 * 60)) / (1000 * 60);
+        long seconds = (mss % (1000 * 60)) / 1000;
+
+        if(days>0)
+            return String.format(format_day,days,hours,minutes,seconds);
+        else if(hours>0)
+            return String.format(format_hour,hours,minutes,seconds);
+        else if(minutes>0)
+            return String.format(format_minute,minutes,seconds);
+        else if(seconds>0)
+            return String.format(format_second,seconds);
+        return "";
+    }
 }

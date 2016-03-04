@@ -10,7 +10,8 @@ Ext.define('kalix.message.sender.view.MessageWindow', {
         'kalix.message.sender.viewModel.MessageViewModel',
         'kalix.message.sender.controller.MessageWindowController',
         'kalix.admin.user.store.UserStore',
-        'kalix.admin.dict.component.DictCombobox'
+        'kalix.admin.dict.component.DictCombobox',
+        'kalix.admin.user.component.UserTagField'
     ],
     alias: 'widget.messageSenderWindow',
     viewModel: 'messageSenderViewModel',
@@ -21,8 +22,10 @@ Ext.define('kalix.message.sender.view.MessageWindow', {
     listeners: {
         show: 'onShow'
     },
+    iconCls: 'fa fa-pencil',
     xtype: "messageSenderWindow",
     width: 600,
+    modal: true,
     //todo 在此修改表单
     items: [
         {
@@ -30,7 +33,10 @@ Ext.define('kalix.message.sender.view.MessageWindow', {
             items: [
                 {
                     fieldLabel: '收件人',
-                    allowBlank: false,
+                    xtype: 'userTagField',
+                    listeners: {
+                        change: 'onChange'
+                    },
                     bind: {
                         value: '{rec.receiverNames}'
                     }

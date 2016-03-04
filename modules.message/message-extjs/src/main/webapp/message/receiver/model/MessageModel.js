@@ -14,50 +14,65 @@ Ext.define('kalix.message.receiver.model.MessageModel', {
         {
             name: 'senderId',
             type: 'string'
-        }, {
+        },
+        {
+            name: 'senderName',
+            type: 'string',
+            validators: [{type: 'presence'}]
+        },
+        {
             name: 'receiverId',
             type: 'string'
-        }, {
+        },
+        {
             name: 'category',
             type: 'string',
             defaultValue: '1'
-        }, {
+        },
+        {
             name: 'title',
-            type: 'string'
-        }, {
+            type: 'string',
+            validators: [{type: 'presence'}]
+        },
+        {
             name: 'content',
-            type: 'string'
-        }, {
+            type: 'string',
+            validators: [{type: 'presence'}]
+        },
+        {
             name: 'read',
             type: 'boolean',
             defaultValue: false
-        }, {
+        },
+        {
             name: 'state',
             type: 'int',
             defaultValue: 1
-        }, {
+        },
+        {
             name: 'sign',
             type: 'int',
             defaultValue: 1
         }
-    ],
-    //todo 在此修改模型验证提示信息
-    validators: {
-        receiverId: [{
-            type: 'presence',
-            message: '接收者不能为空'
-        }],
-        category: [{
-            type: 'presence',
-            message: '消息类别不能为空'
-        }],
-        title: [{
-            type: 'presence',
-            message: '消息主题不能为空'
-        }],
-        content: [{
-            type: 'presence',
-            message: '消息内容不能为空'
-        }]
-    }
+    ]
+    //,
+    ////todo 在此修改模型验证提示信息
+    //validators: {
+    //    senderName: [{
+    //        type: 'presence',
+    //        message: '收件人不能为空'
+    //    }],
+    //    category: [{
+    //        type: 'presence',
+    //        message: '消息类别不能为空'
+    //    }],
+    //    title: [{
+    //        type: 'presence',
+    //        message: '消息主题不能为空'
+    //    }],
+    //    content: [{
+    //        type: 'presence',
+    //        message: '消息内容不能为空'
+    //    }]
+    //}
 });

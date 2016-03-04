@@ -59,6 +59,13 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
     }
 
     @Override
+    public void doBatchDelete(String entityIds, JsonStatus jsonStatus) {
+        dao.removeBatch(entityIds);
+        jsonStatus.setSuccess(true);
+        jsonStatus.setMsg("批量删除成功！");
+    }
+
+    @Override
     @Transactional
     public void doSave(TP entity, JsonStatus jsonStatus) {
         if (entity.getId() == 0) {
@@ -113,6 +120,19 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
         return jsonStatus;
     }
 
+    public JsonStatus batchDeleteEntity(String entityIds) {
+        log.debug("remove entities of " + entityClassName + ";PKS is " + entityIds);
+        JsonStatus jsonStatus = new JsonStatus();
+        try {
+            doBatchDelete(entityIds, jsonStatus);
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setFailure(true);
+            jsonStatus.setMsg("批量删除失败！");
+        }
+
+        return jsonStatus;
+    }
     @Override
     public JsonStatus removeEntity(TP entity) {
         return deleteEntity(entity.getId());

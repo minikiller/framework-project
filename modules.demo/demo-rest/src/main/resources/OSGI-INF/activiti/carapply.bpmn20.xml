@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn"
-             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
-             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC"
-             xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
              typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
              targetNamespace="http://www.activiti.org/test">
     <process id="carapply" name="公务用车申请流程" isExecutable="true">
         <documentation>公务用车申请流程</documentation>
         <extensionElements>
-            <activiti:eventListener class="cn.com.rexen.workflow.engine.MessageEvent" entityType="task"
-                                    events="TASK_CREATED,TASK_COMPLETED"/>
+            <activiti:eventListener events="TASK_CREATED,TASK_COMPLETED" entityType="task" class="cn.com.rexen.workflow.engine.MessageEvent"></activiti:eventListener>
         </extensionElements>
         <startEvent id="startevent1" name="启动审批"></startEvent>
         <userTask id="usertask1" name="正处级领导审核" activiti:candidateGroups="正处级领导" activiti:formKey="audit.form">
-            <!--<userTask id="usertask1" name="正处级领导审核" activiti:assignee="qwer" activiti:formKey="audit.form">    -->
             <documentation>申请部门正处级领导审核</documentation>
             <extensionElements>
-                <activiti:formProperty id="accepted" name="判断环节" type="boolean"
-                                       variable="accepted"></activiti:formProperty>
+                <activiti:formProperty id="accepted" name="判断环节" type="boolean" variable="accepted"></activiti:formProperty>
             </extensionElements>
         </userTask>
         <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="usertask1"></sequenceFlow>
@@ -47,7 +43,7 @@
         </userTask>
         <exclusiveGateway id="exclusivegateway6" name="Exclusive Gateway"></exclusiveGateway>
         <sequenceFlow id="flow12" sourceRef="usertask6" targetRef="exclusivegateway6"></sequenceFlow>
-        <endEvent id="endevent1" name="End"></endEvent>
+        <endEvent id="endevent1" name="不同意结束"></endEvent>
         <sequenceFlow id="flow14" name="不同意" sourceRef="exclusivegateway6" targetRef="endevent1">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
         </sequenceFlow>
@@ -63,7 +59,7 @@
         <sequenceFlow id="flow19" name="不同意" sourceRef="exclusivegateway1" targetRef="endevent1">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
         </sequenceFlow>
-        <endEvent id="endevent2" name="End"></endEvent>
+        <endEvent id="endevent2" name="同意结束"></endEvent>
         <sequenceFlow id="flow21" name="同意" sourceRef="exclusivegateway6" targetRef="endevent2">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
         </sequenceFlow>
@@ -78,17 +74,9 @@
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!city}]]></conditionExpression>
         </sequenceFlow>
         <sequenceFlow id="flow25" sourceRef="usertask3" targetRef="exclusivegateway4"></sequenceFlow>
-        <textAnnotation id="textannotation1">
-            <text>不同意结束</text>
-        </textAnnotation>
-        <textAnnotation id="textannotation2">
-            <text>同意结束</text>
-        </textAnnotation>
-        <association id="association1" sourceRef="textannotation1" targetRef="endevent1"></association>
-        <association id="association2" sourceRef="textannotation2" targetRef="endevent2"></association>
     </process>
-    <bpmndi:BPMNDiagram id="BPMNDiagram_myProcess">
-        <bpmndi:BPMNPlane bpmnElement="carapply" id="BPMNPlane_myProcess">
+    <bpmndi:BPMNDiagram id="BPMNDiagram_carapply">
+        <bpmndi:BPMNPlane bpmnElement="carapply" id="BPMNPlane_carapply">
             <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
                 <omgdc:Bounds height="35.0" width="35.0" x="60.0" y="397.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
@@ -127,12 +115,6 @@
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="exclusivegateway7" id="BPMNShape_exclusivegateway7">
                 <omgdc:Bounds height="40.0" width="40.0" x="642.0" y="395.0"></omgdc:Bounds>
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="textannotation1" id="BPMNShape_textannotation1">
-                <omgdc:Bounds height="50.0" width="100.0" x="828.0" y="234.0"></omgdc:Bounds>
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="textannotation2" id="BPMNShape_textannotation2">
-                <omgdc:Bounds height="50.0" width="100.0" x="836.0" y="323.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
                 <omgdi:waypoint x="95.0" y="414.0"></omgdi:waypoint>
@@ -191,7 +173,7 @@
                 <omgdi:waypoint x="491.0" y="332.0"></omgdi:waypoint>
                 <omgdi:waypoint x="491.0" y="387.0"></omgdi:waypoint>
                 <bpmndi:BPMNLabel>
-                    <omgdc:Bounds height="11.0" width="22.0" x="439.0" y="291.0"></omgdc:Bounds>
+                    <omgdc:Bounds height="11.0" width="22.0" x="500.0" y="351.0"></omgdc:Bounds>
                 </bpmndi:BPMNLabel>
             </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="flow18" id="BPMNEdge_flow18">
@@ -207,7 +189,7 @@
                 <omgdi:waypoint x="289.0" y="200.0"></omgdi:waypoint>
                 <omgdi:waypoint x="860.0" y="200.0"></omgdi:waypoint>
                 <bpmndi:BPMNLabel>
-                    <omgdc:Bounds height="11.0" width="100.0" x="276.0" y="268.0"></omgdc:Bounds>
+                    <omgdc:Bounds height="11.0" width="33.0" x="276.0" y="268.0"></omgdc:Bounds>
                 </bpmndi:BPMNLabel>
             </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="flow21" id="BPMNEdge_flow21">
@@ -242,14 +224,6 @@
             <bpmndi:BPMNEdge bpmnElement="flow25" id="BPMNEdge_flow25">
                 <omgdi:waypoint x="544.0" y="414.0"></omgdi:waypoint>
                 <omgdi:waypoint x="567.0" y="414.0"></omgdi:waypoint>
-            </bpmndi:BPMNEdge>
-            <bpmndi:BPMNEdge bpmnElement="association1" id="BPMNEdge_association1">
-                <omgdi:waypoint x="878.0" y="234.0"></omgdi:waypoint>
-                <omgdi:waypoint x="877.0" y="218.0"></omgdi:waypoint>
-            </bpmndi:BPMNEdge>
-            <bpmndi:BPMNEdge bpmnElement="association2" id="BPMNEdge_association2">
-                <omgdi:waypoint x="886.0" y="373.0"></omgdi:waypoint>
-                <omgdi:waypoint x="885.0" y="398.0"></omgdi:waypoint>
             </bpmndi:BPMNEdge>
         </bpmndi:BPMNPlane>
     </bpmndi:BPMNDiagram>

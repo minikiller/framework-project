@@ -25,6 +25,7 @@
             <artifactId>framework</artifactId>
             <version>${karaf.version}</version>
             <type>kar</type>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.karaf.features</groupId>
@@ -55,69 +56,19 @@
             <artifactId>branding</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
-        <!--<dependency>
-            <groupId>org.ops4j.pax.wicket</groupId>
-            <artifactId>paxwicket</artifactId>
-            <version>${pax.wicket.version}</version>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.ops4j.pax.wicket</groupId>
-            <artifactId>features</artifactId>
-            <version>${pax.wicket.version}</version>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>-->
-        <!--<dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-features</artifactId>
-            <version>${shiro.version}</version>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>-->
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>7</source>
-                    <target>7</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>2.6</version>
-                <extensions>true</extensions>
                 <executions>
                     <execution>
-                        <id>copy-resources</id>
-                        <phase>prepare-package</phase>
+                        <id>process-resources</id>
                         <goals>
-                            <goal>copy-resources</goal>
+                            <goal>resources</goal>
                         </goals>
-                        <configuration>
-                            <outputDirectory>${project.basedir}/target/assembly</outputDirectory>
-                            <overwrite>true</overwrite>
-                            <resources>
-                                <resource>
-                                    <directory>${project.basedir}/src/main/assembly</directory>
-                                    <filtering>false</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>${project.basedir}/src/main/filtered-assembly</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -197,142 +148,17 @@
                         <feature>service</feature>
                         <feature>system</feature>
                         <feature>kalix</feature>
+                        <feature>activiti</feature>
+                        <feature>couchdb</feature>
                     </bootFeatures>
                     <!--<karafDirectory>${assembly.directory}</karafDirectory>
                     <startSsh>true</startSsh>
                     <keepRunning>true</keepRunning>
                     <deployProjectArtifact>false</deployProjectArtifact>-->
                 </configuration>
-                <!--<executions>
-                    <execution>
-                        <id>populate-system</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>features-add-to-repository</goal>
-                        </goals>
-                        <configuration>
-                            <descriptors>
-                                <descriptor>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</descriptor>
-                            </descriptors>
-                            <features>
-                                <feature>aries-blueprint</feature>
-                                <feature>bundle</feature>
-                                <feature>config</feature>
-                                <feature>deployer</feature>
-                                <feature>diagnostic</feature>
-                                <feature>feature</feature>
-                                <feature>instance</feature>
-                                <feature>jaas</feature>
-                                <feature>kar</feature>
-                                <feature>log</feature>
-                                <feature>management</feature>
-                                <feature>package</feature>
-                                <feature>service</feature>
-                                <feature>shell</feature>
-                                <feature>shell-compat</feature>
-                                <feature>ssh</feature>
-                                <feature>system</feature>
-                                <feature>wrap</feature>
-                            </features>
-                            <repository>target/assembly/system</repository>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>install-kar</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>assembly</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>package</id>
-                        <goals>
-                            <goal>archive</goal>
-                        </goals>
-                    </execution>
-                    &lt;!&ndash;<execution>
-                        <id>run</id>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <karafDirectory>target/assembly</karafDirectory>
-                            <startSsh>true</startSsh>
-                            <keepRunning>true</keepRunning>
-                            <deployProjectArtifact>false</deployProjectArtifact>
-                        </configuration>
-                    </execution>&ndash;&gt;
-                </executions>
 
-                <configuration>
-                    <karafDirectory>${assembly.directory}</karafDirectory>
-                    <startSsh>true</startSsh>
-                    <keepRunning>true</keepRunning>
-                    <deployProjectArtifact>false</deployProjectArtifact>
-                    <installedFeatures>
-                        <feature>wrapper</feature>
-                    </installedFeatures>
-                    <bootFeatures>
-                        <feature>aries-blueprint</feature>
-                        <feature>bundle</feature>
-                        <feature>config</feature>
-                        <feature>deployer</feature>
-                        <feature>diagnostic</feature>
-                        <feature>feature</feature>
-                        <feature>instance</feature>
-                        <feature>jaas</feature>
-                        <feature>kar</feature>
-                        <feature>log</feature>
-                        <feature>management</feature>
-                        <feature>package</feature>
-                        <feature>service</feature>
-                        <feature>shell</feature>
-                        <feature>shell-compat</feature>
-                        <feature>ssh</feature>
-                        <feature>system</feature>
-                        <feature>wrap</feature>
-                        <feature>scr</feature>
-                        <feature>kalix</feature>
-                    </bootFeatures>
-
-                </configuration>-->
             </plugin>
         </plugins>
-        <pluginManagement>
-            <plugins>
-                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
 
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>
-                                            org.apache.karaf.tooling
-                                        </groupId>
-                                        <artifactId>
-                                            karaf-maven-plugin
-                                        </artifactId>
-                                        <versionRange>
-                                            [3.0.0,)
-                                        </versionRange>
-                                        <goals>
-                                            <goal>install-kars</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore/>
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
 </project>

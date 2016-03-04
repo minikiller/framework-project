@@ -1,8 +1,10 @@
 package cn.com.rexen.workflow.core.impl;
 
 import cn.com.rexen.admin.api.biz.IRoleBeanService;
+import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.security.IUserLoginService;
 import cn.com.rexen.core.util.Assert;
+import cn.com.rexen.core.util.DateUtil;
 import cn.com.rexen.core.util.SerializeUtil;
 import cn.com.rexen.core.util.StringUtils;
 import cn.com.rexen.workflow.api.biz.ITaskService;
@@ -34,39 +36,46 @@ public class TaskServiceImpl implements ITaskService {
     private IUserLoginService userLoginService;
     private IRoleBeanService roleBeanService;
 
-
     /**
      * 获得工作流任务列表
      *
      * @return
      */
     @Override
-    public JsonData getTasks(int page, int limit,String jsonStr) {
+    public JsonData getTasks(int page, int limit, String jsonStr) {
         //获得当前登陆用户
         String userName = userLoginService.getLoginName();
         List<TaskDTO> taskDTOList;
-        List<Task> taskList;
+        List<Task> taskGroupList;//获得用户组的任务列表
+        List<Task> taskUserList;//获得基于用户的任务列表
         List<String> roleBeanList = roleBeanService.getRoleNameListByLoginName(userName);
-        if(StringUtils.isNotEmpty(jsonStr)){
-            Map map= SerializeUtil.json2Map(jsonStr) ;
-            String taskName= (String) map.get("name");
+        if (StringUtils.isNotEmpty(jsonStr)) {
+            Map map = SerializeUtil.json2Map(jsonStr);
+            String taskName = (String) map.get("name");
             Assert.notNull(taskName);
-            taskList =taskService
+            taskGroupList = taskService
                     .createTaskQuery().taskCandidateGroupIn(roleBeanList)
                     .taskNameLike("%" + taskName + "%").orderByTaskCreateTime().desc()
                     .listPage((page - 1) * limit, limit);
-        }
-        else{
-            taskList = taskService
+            taskUserList = taskService
+                    .createTaskQuery().taskAssignee(userName)
+                    .taskNameLike("%" + taskName + "%").orderByTaskCreateTime().desc()
+                    .listPage((page - 1) * limit, limit);
+        } else {
+            taskGroupList = taskService
                     .createTaskQuery().taskCandidateGroupIn(roleBeanList)
                     .orderByTaskCreateTime().desc()
                     .listPage((page - 1) * limit, limit);
+            taskUserList = taskService
+                    .createTaskQuery().taskAssignee(userName)
+                    .orderByTaskCreateTime().desc()
+                    .listPage((page - 1) * limit, limit);
         }
-
-        if (taskList != null) {
+        taskGroupList.addAll(taskUserList);
+        if (taskGroupList != null) {
             Mapper mapper = new DozerBeanMapper();
-            taskDTOList = DozerHelper.map(mapper, taskList, TaskDTO.class);
-            jsonData.setTotalCount(taskList.size());
+            taskDTOList = DozerHelper.map(mapper, taskGroupList, TaskDTO.class);
+            jsonData.setTotalCount(taskGroupList.size());
             //获得业务实体id
             for (TaskDTO dto : taskDTOList) {
                 ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
@@ -75,11 +84,13 @@ public class TaskServiceImpl implements ITaskService {
                     dto.setBusinessKey(processInstance.getBusinessKey());
                 } else {
                     HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery().processInstanceId(dto.getProcessInstanceId()).singleResult();
-                    if (historicProcessInstance != null){
+                    if (historicProcessInstance != null) {
                         dto.setEntityId(WorkflowUtil.getBizId(historicProcessInstance.getBusinessKey()));
                         dto.setBusinessKey(processInstance.getBusinessKey());
                     }
                 }
+                if (dto.getDuration() != null)
+                    dto.setDuration(DateUtil.formatDuring(Long.parseLong(dto.getDuration())));
             }
             jsonData.setData(taskDTOList);
         }
@@ -97,6 +108,29 @@ public class TaskServiceImpl implements ITaskService {
         historicProcessInstance = historyService.createHistoricProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
         String userName = historicProcessInstance.getStartUserId();
         return userName;
+    }
+
+    @Override
+    public JsonStatus delegateTask(String taskIds, String userId) {
+        JsonStatus jsonStatus = new JsonStatus();
+        try {
+
+            jsonStatus.setSuccess(true);
+            String[] taskId = taskIds.split(":");
+            for (String id : taskId) {
+                taskService.claim(id, userLoginService.getLoginName());
+                taskService.delegateTask(id, userId);
+            }
+            jsonStatus.setMsg("委托任务处理成功！");
+            return jsonStatus;
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setFailure(true);
+            jsonStatus.setSuccess(false);
+            jsonStatus.setMsg("委托任务处理失败！");
+        }
+        return jsonStatus;
+
     }
 
     public void setTaskService(TaskService taskService) {

@@ -88,6 +88,12 @@ public interface IGenericDao<T, PK extends Serializable> extends IDaoService {
     void remove(PK id);
 
     /**
+     * Generic method to delete multi object
+     *
+     * @param ids the identifiers (primary keys) of the objects to remove,seplated using comma,semicolon or colon
+     */
+    void removeBatch(String ids);
+    /**
      * Find a list of records by using a named query
      *
      * @param queryName   query name of the named query

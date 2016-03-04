@@ -18,6 +18,15 @@ public class HistoricActivityInstanceDTO extends BaseDTO {
     private Date endTime;
     private String comment;
     private String taskId;
+    private String durationInMillis; //任务持续时长
+
+    public String getDurationInMillis() {
+        return durationInMillis;
+    }
+
+    public void setDurationInMillis(String durationInMillis) {
+        this.durationInMillis = durationInMillis;
+    }
 
     public String getTaskId() {
         return taskId;

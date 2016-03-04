@@ -56,6 +56,13 @@
                 <description>Find All Task</description>
                 <to uri="bean:taskService?method=getTasks(${header.page},${header.limit},${header.jsonStr})"/>
             </get>
+
+            <!-- this is a rest GET to delegate an user by the given id -->
+            <get id="route-delegateTask" uri="/tasks/delegate" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Delegate All Task</description>
+                <to uri="bean:taskService?method=delegateTask(${header.taskIds},${header.userId})"/>
+            </get>
+
             <!-- this is a rest GET to view an user by the given id -->
             <get id="route-getHistoricActivity" uri="/activities" outType="cn.com.rexen.workflow.api.model.JsonData">
                 <description>Find All Historic Activity</description>

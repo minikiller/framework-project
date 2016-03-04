@@ -11,7 +11,7 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
         'kalix.admin.dict.component.DictGridColumn'
     ],
     alias: 'widget.messageGrid',
-        xtype: 'messageReceiverGridPanel',
+    xtype: 'messageReceiverGridPanel',
     controller: {
         type: 'messageReceiverGridController',
         storeId: 'messageReceiverStore',
@@ -24,8 +24,15 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
     },
 
     //todo 在此修改grid显示列
+    stripeRows: true,
+    manageHeight: true,
+    forceFit: true,
+    selModel: {selType: 'checkboxmodel', mode: "SIMPLE"},
     columns: {
-        defaults: {flex: 1, renderer: 'addTooltip'},
+        defaults: {
+            //renderer: 'addTooltip',
+            flex: 1
+        },
         items: [
             {
                 xtype: "rownumberer",
@@ -41,8 +48,8 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
                 hidden: true,
             },
             {
-                text: '发送者',
-                dataIndex: 'senderId'
+                text: '发件人',
+                dataIndex: 'senderName'
             },
             {
                 text: '消息类别',
@@ -50,20 +57,17 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
                 dictType: 'category',
                 dataIndex: 'category',
                 renderer: null
-            }
-            ,
+            },
             {
                 text: '消息主题',
                 dataIndex: 'title'
             },
             {
-                text: '发件时间',
+                text: '收件时间',
                 dataIndex: 'creationDate',
-                xtype: 'datecolumn',
-                format: 'Y-m-d H:i:s', renderer: null
             },
             {
-                text:'是否已读',
+                text: '是否已读',
                 trueText: '已读',
                 falseText: '未读',
                 xtype: 'booleancolumn',
@@ -95,18 +99,23 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
             }
         ]
     },
-        tbar: {
-            xtype: 'securityToolbar',
-            verifyItems: [
-                {
-                    text: '发件',
-                    xtype: 'button',
-                    //todo change permission
-                    permission: '',
-                    iconCls: 'fa fa-pencil',
-                    handler: 'onSender'
-                }
-            ]
-        }
+    tbar: {
+        xtype: 'securityToolbar',
+        verifyItems: [
+            {
+                text: '发件',
+                xtype: 'button',
+                //todo change permission
+                permission: '',
+                iconCls: 'fa fa-pencil',
+                handler: 'onSender'
+            },
+            {
+                text: '批量删除',
+                permission: '',
+                iconCls: 'fa fa-trash',
+                handler: 'onBatchDelete',
+            }
+        ]
     }
-);
+});
