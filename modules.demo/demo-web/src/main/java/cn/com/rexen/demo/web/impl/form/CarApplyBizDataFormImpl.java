@@ -15,7 +15,7 @@ public class CarApplyBizDataFormImpl implements IBizDataHandler {
 
     @Override
     public String getComponentClass() {
-        return "kalix.demo.notice.view.NoticeShowForm";
+        return "kalix.demo.carApply.view.CarApplyViewForm";
     }
 
     @Override

@@ -59,7 +59,7 @@ public class SenderMessageBeanServiceImpl extends ShiroGenericBizServiceImpl<ISe
                 newMessageBean.setSenderId(senderId);
                 newMessageBean.setSenderName(userBean.getName());
                 newMessageBean.setReceiverId(Long.parseLong(ids[i]));
-                newMessageBean.setCategory(4);
+                newMessageBean.setCategory(1);//1 系统消息,2 建议,3 警告,4分配
                 newMessageBean.setTitle(senderMessageBean.getTitle());
                 newMessageBean.setContent(senderMessageBean.getContent());
                 newMessageBean.setRead(false);

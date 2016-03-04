@@ -36,6 +36,9 @@ Ext.define('kalix.message.sender.view.MessageWindow', {
                     xtype: 'userTagField',
                     listeners: {
                         change: 'onChange'
+                    },
+                    bind: {
+                        value: '{rec.receiverNames}'
                     }
                 },
                 {
