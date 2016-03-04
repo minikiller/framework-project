@@ -49,7 +49,7 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
             },
             {
                 text: '发件人',
-                dataIndex: 'senderId'
+                dataIndex: 'senderName'
             },
             {
                 text: '消息类别',
@@ -57,8 +57,7 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
                 dictType: 'category',
                 dataIndex: 'category',
                 renderer: null
-            }
-            ,
+            },
             {
                 text: '消息主题',
                 dataIndex: 'title'
@@ -66,8 +65,6 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
             {
                 text: '发件时间',
                 dataIndex: 'creationDate',
-                xtype: 'datecolumn',
-                format: 'Y-m-d H:i:s', renderer: null
             },
             {
                 text: '是否已读',

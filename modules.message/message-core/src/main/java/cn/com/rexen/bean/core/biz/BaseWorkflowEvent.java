@@ -15,16 +15,19 @@ public abstract class BaseWorkflowEvent {
     protected IUserBeanService userBeanService;
     protected static final int day = 24 * 60 * 60 * 1000;
     protected static final int ADMIN_USER_ID = 5601;
+    protected static final String ADMIN_USER_NAME = "系统管理员";
 
     protected MessageBean saveMessageBean(long receiverId, String content, String title) {
         MessageBean messageBean = new MessageBean();
         messageBean.setSenderId(ADMIN_USER_ID);
+        messageBean.setSenderName(ADMIN_USER_NAME);
         messageBean.setReceiverId(receiverId);
-        messageBean.setCategory("4");//1、消息；2、建议；3、警告；4、分配；
+        //messageBean.setCategory(MessageCategories.getCategoryId("分配"));//1、消息；2、建议；3、警告；4、分配；
+        messageBean.setCategory(4);//1、消息；2、建议；3、警告；4、分配；
         messageBean.setTitle(title);
         messageBean.setContent(content);
         messageBean.setRead(false);//未读的消息
-        messageBean.setState(1);
+        messageBean.setState(1);//未通知
         messageBean.setSign(0);
         return messageBean;
     }
