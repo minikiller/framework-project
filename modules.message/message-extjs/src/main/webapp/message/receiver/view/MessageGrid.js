@@ -63,7 +63,7 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
                 dataIndex: 'title'
             },
             {
-                text: '发件时间',
+                text: '收件时间',
                 dataIndex: 'creationDate',
             },
             {

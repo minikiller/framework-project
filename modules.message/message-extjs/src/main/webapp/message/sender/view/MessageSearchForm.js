@@ -20,21 +20,22 @@ Ext.define('kalix.message.sender.view.MessageSearchForm', {
             width: 200,
             name: 'receiverNames'
         },
-        {
-            xtype: 'dictCombobox',
-            fieldLabel: '消息类别',
-            dictType: 'category',
-            name: 'category',
-            bind: {
-                value: '{rec.category}'
-            }
-        },
+        //{
+        //    xtype: 'dictCombobox',
+        //    fieldLabel: '消息类别',
+        //    dictType: 'category',
+        //    name: 'category',
+        //    bind: {
+        //        value: '{rec.category}'
+        //    }
+        //},
         {
             xtype: 'textfield',
             fieldLabel: '消息主题',
             labelAlign: 'right',
             labelWidth: 60,
             width: 200,
+            margin: '0 0 0 20',
             name: 'title'
         },
         {
@@ -44,6 +45,7 @@ Ext.define('kalix.message.sender.view.MessageSearchForm', {
             labelAlign: 'right',
             labelWidth: 120,
             width: 260,
+            margin: '0 0 0 20',
             name: 'creationDate:begin:gt'
         },
         {
