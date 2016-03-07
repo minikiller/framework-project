@@ -3,6 +3,7 @@ package cn.com.rexen.core.web.impl;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.api.web.*;
 import cn.com.rexen.core.api.web.model.*;
+import cn.com.rexen.core.util.ConfigUtil;
 import cn.com.rexen.core.util.StringUtils;
 import cn.com.rexen.core.web.Const;
 import cn.com.rexen.core.web.manager.ApplicationManager;
@@ -193,6 +194,25 @@ public class SystemServiceImpl implements ISystemService {
         }
         resp.put("buttons",buttons.toArray());
         return resp;
+    }
+
+    /**
+     * 获得登录页组件信息配置
+     * @return
+     */
+    @Override
+    public LoginBean getLogin() {
+        String color = (String) ConfigUtil.getConfigProp("color", "ConfigLogin");
+        String image = (String) ConfigUtil.getConfigProp("image", "ConfigLogin");
+        String component = (String) ConfigUtil.getConfigProp("component", "ConfigLogin");
+
+        LoginBean loginBean=new LoginBean();
+
+        loginBean.setColor(color);
+        loginBean.setImage(image);
+        loginBean.setComponent(component);
+
+        return loginBean;
     }
 
     /**

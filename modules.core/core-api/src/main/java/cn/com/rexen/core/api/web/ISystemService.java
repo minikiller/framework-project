@@ -1,9 +1,6 @@
 package cn.com.rexen.core.api.web;
 
-import cn.com.rexen.core.api.web.model.ApplicationBean;
-import cn.com.rexen.core.api.web.model.MenuBean;
-import cn.com.rexen.core.api.web.model.ModuleBean;
-import cn.com.rexen.core.api.web.model.SystemBean;
+import cn.com.rexen.core.api.web.model.*;
 
 import java.util.List;
 import java.util.Map;
@@ -46,4 +43,10 @@ public interface ISystemService {
      * @return
      */
     Map getButtonsByPermission(String permission);
+
+    /**
+     * 获得登录组价信息
+     * @return
+     */
+    LoginBean getLogin();
 }

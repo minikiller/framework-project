@@ -78,6 +78,11 @@
                 <to uri="bean:systemService?method=getButtonsByPermission(${header.permissions})"/>
             </get>
 
+            <get id="route-getLogin" uri="/login"
+                 outType="cn.com.rexen.core.api.web.model.LoginBean">
+                <description></description>
+                <to uri="bean:systemService?method=getLogin()"/>
+            </get>
         </rest>
 
     </camelContext>
