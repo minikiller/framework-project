@@ -68,8 +68,16 @@
     <service interface="cn.com.rexen.core.api.web.IMenu">
         <bean class="cn.com.rexen.admin.web.impl.menu.OrganizationMenuImpl"/>
     </service>
+    <!--不带区域的机构管理-->
+    <service interface="cn.com.rexen.core.api.web.IMenu">
+        <bean class="cn.com.rexen.admin.web.impl.menu.OrganizationNoAreaMenuImpl"/>
+    </service>
     <!--部门管理-->
     <service interface="cn.com.rexen.core.api.web.IMenu">
         <bean class="cn.com.rexen.admin.web.impl.menu.DepartmentMenuImpl"/>
+    </service>
+    <!--不带区域部门管理-->
+    <service interface="cn.com.rexen.core.api.web.IMenu">
+        <bean class="cn.com.rexen.admin.web.impl.menu.DepartmentNoAreaMenuImpl"/>
     </service>
 </blueprint>
