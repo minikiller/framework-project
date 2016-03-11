@@ -51,7 +51,7 @@ public class DutyMenuImpl implements IMenu {
 
         @Override
         public String getRouteId() {
-            return "app/duty";
+            return "admin/dutyNoArea";
         }
 
         @Override
