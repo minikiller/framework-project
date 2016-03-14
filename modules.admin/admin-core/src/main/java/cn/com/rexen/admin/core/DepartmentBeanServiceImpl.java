@@ -222,7 +222,8 @@ public class DepartmentBeanServiceImpl extends GenericBizServiceImpl<IDepartment
                     Mapper mapper = new DozerBeanMapper();
                     DepartmentDTO departmentDTO = mapper.map(rootElement, DepartmentDTO.class);
                     departmentDTO.setLeaf(rootElement.getIsLeaf() == 0 ? false : true);
-                    departmentDTO.setParentName("根机构");
+                    departmentDTO.setParentName("根部门");
+                    departmentDTO.setText(rootElement.getName());
                     getChilden(departmentDTO, beans, mapper);
                     root.getChildren().add(departmentDTO);
                }

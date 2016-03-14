@@ -29,6 +29,11 @@
             <version>1.0.0-SNAPSHOT</version>
             <type>pom</type>
         </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.duty</groupId>
+            <artifactId>duty-api</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
