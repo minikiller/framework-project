@@ -83,6 +83,14 @@
                 <description></description>
                 <to uri="bean:systemService?method=getLogin()"/>
             </get>
+            <get id="route-getUserPreferences" uri="/preferences" outType="java.util.Map">
+                <description></description>
+                <to uri="bean:systemService?method=getUserPreferences()"/>
+            </get>
+            <put id="route-setUserPreferences" uri="/preferences" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description></description>
+                <to uri="bean:systemService?method=setUserPreferences(${header.key},${header.value})"/>
+            </put>
         </rest>
 
     </camelContext>
