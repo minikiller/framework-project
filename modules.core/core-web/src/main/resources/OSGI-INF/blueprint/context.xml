@@ -59,9 +59,11 @@
 
     <reference interface="cn.com.rexen.core.api.security.IShiroService" id="shiroService"></reference>
 
+    <reference interface="org.osgi.service.prefs.PreferencesService" id="preferencesService"/>
     <bean class="cn.com.rexen.core.web.impl.SystemServiceImpl" id="systemServiceImpl">
         <property name="systemService" ref="systemImpl"/>
         <property name="shiroService" ref="shiroService" />
+        <property name="preferencesService" ref="preferencesService"/>
     </bean>
     <service interface="cn.com.rexen.core.api.web.ISystemService" ref="systemServiceImpl"/>
     <!--<service interface="java.util.EventListener" >

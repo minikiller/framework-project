@@ -1,5 +1,6 @@
 package cn.com.rexen.core.api.web;
 
+import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.web.model.*;
 
 import java.util.List;
@@ -45,8 +46,17 @@ public interface ISystemService {
     Map getButtonsByPermission(String permission);
 
     /**
-     * 获得登录组价信息
+     * 获得登录组件信息
      * @return
      */
     LoginBean getLogin();
+
+    /**
+     * 获取用户偏好
+     */
+    Map getUserPreferences();
+    /**
+     * 设置用户偏好
+     */
+    JsonStatus setUserPreferences(String key, String value);
 }
