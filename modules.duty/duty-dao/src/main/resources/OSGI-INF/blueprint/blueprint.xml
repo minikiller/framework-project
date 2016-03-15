@@ -11,7 +11,11 @@
     <bean id="dutyBeanDaoImpl" class="cn.com.rexen.duty.dao.DutyBeanDaoImpl">
         <tx:transaction method="*" value="Required"/>
     </bean>
+    <bean id="dutyUserBeanDaoImpl" class="cn.com.rexen.duty.dao.DutyUserBeanDaoImpl">
+        <tx:transaction method="*" value="Required"/>
+    </bean>
 
     <service interface="cn.com.rexen.duty.api.dao.IDutyBeanDao" ref="dutyBeanDaoImpl"/>
+    <service interface="cn.com.rexen.duty.api.dao.IDutyUserBeanDao" ref="dutyUserBeanDaoImpl"/>
 </blueprint>
 

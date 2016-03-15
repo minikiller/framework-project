@@ -35,20 +35,43 @@
                 <to uri="bean:dutyService?method=getEntity(${header.id})"/>
             </get>
 
+            <!-- this is a rest GET to view a duty by the given id -->
+            <get uri="/dep/{id}" id="route-getDutiesByDepId" outType="java.util.List">
+                <description>Find Duty by id</description>
+                <to uri="bean:dutyService?method=getDutiesByDepId(${header.id})"/>
+            </get>
+
             <!-- this is a rest PUT to update a duty -->
-            <put uri="/{id}" id="route-updateDuty" type="cn.com.rexen.duty.entities.DutyBean"
+            <put id="route-updateDuty" type="cn.com.rexen.duty.entities.DutyBean"
                  outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Updates a Duty</description>
                 <to uri="bean:dutyService?method=updateEntity"/>
             </put>
 
             <!-- this is a rest DELETE to delete a duty -->
-            <delete uri="/{id}" id="route-deleteDuty" type="cn.com.rexen.duty.entities.DutyBean"
-                outType="cn.com.rexen.core.api.biz.JsonStatus">
+            <delete uri="/{id}" id="route-deleteDuty"
+                    outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Delete a Duty</description>
-                <to uri="bean:dutyService?method=removeEntity"/>
+                <to uri="bean:dutyService?method=deleteEntity(${header.id})"/>
             </delete>
 
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-getUsersByDutyId" uri="/dutyUsers/users/{depId}/{id}" outType="java.util.List">
+                <description>Find users by departent Id and duty id</description>
+                <to uri="bean:dutyService?method=getUsersByDutyId(${header.depId},${header.id})"/>
+            </get>
+
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-getUserAllAndDutyUsers" uri="/dutyUsers/users/all/{depId}/{id}" outType="java.util.List">
+                <description>Find users by department Id and duty id</description>
+                <to uri="bean:dutyService?method=getUserAllAndDutyUsers(${header.depId},${header.id})"/>
+            </get>
+
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-saveDutyUsers" uri="/dutyUsers" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>save dutyUsers</description>
+                <to uri="bean:dutyService?method=saveDutyUsers(${header.depId},${header.dutyId},${header.userIds})"/>
+            </get>
         </rest>
     </camelContext>
 </blueprint>
