@@ -21,7 +21,7 @@ public class DutyBean extends PersistentEntity {
     @NotNull(message = "'职位名称'是必填项")
     private String name;//职位名称
     @NotNull(message = "'所在部门'是必填项")
-    private String depid;   //所在部门
+    private long depid;   //所在部门
     private String comment; //职位描述
 
     public String getName() {
@@ -32,11 +32,11 @@ public class DutyBean extends PersistentEntity {
         this.name = name;
     }
 
-    public String getDepid() {
+    public long getDepid() {
         return depid;
     }
 
-    public void setDepid(String depid) {
+    public void setDepid(long depid) {
         this.depid = depid;
     }
 
