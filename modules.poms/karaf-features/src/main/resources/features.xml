@@ -307,6 +307,7 @@
         <bundle>wrap:mvn:de.danielbechler/java-object-diff/0.92.1</bundle>
         <bundle dependency="true">mvn:commons-lang/commons-lang/2.6</bundle>
         <bundle>mvn:org.apache.shiro/shiro-web/1.2.4</bundle>
+        <bundle>mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</bundle>
         <!--<bundle>mvn:org.apache.commons/commons-lang3/3.1</bundle>
         <bundle>mvn:commons-lang/commons-lang/2.6</bundle>
         <bundle>mvn:commons-pool/commons-pool/1.6</bundle>
