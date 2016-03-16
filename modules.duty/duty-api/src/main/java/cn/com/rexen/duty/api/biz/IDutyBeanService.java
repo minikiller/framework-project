@@ -26,4 +26,6 @@ public interface IDutyBeanService extends IBizService<DutyBean> {
     JsonData getUserAllAndDutyUsers(long depId, long dutyId);
 
     JsonStatus saveDutyUsers(long depId, long dutyId, String userIds);
+
+    JsonStatus deleteDuty(long depId, long dutyId);
 }
