@@ -27,6 +27,8 @@ public class CarApplyBean extends WorkflowEntity {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date beginDate;//用车时段,开始时间
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date applyDate;//用车时段,开始时间
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date endDate;//用车时段，结束时间
     private String address;//用车起始地点
     private boolean city;//是否市内用车
@@ -130,5 +132,13 @@ public class CarApplyBean extends WorkflowEntity {
 
     public void setSchoolManagerUser(String schoolManagerUser) {
         this.schoolManagerUser = schoolManagerUser;
+    }
+
+    public Date getApplyDate() {
+        return applyDate;
+    }
+
+    public void setApplyDate(Date applyDate) {
+        this.applyDate = applyDate;
     }
 }
