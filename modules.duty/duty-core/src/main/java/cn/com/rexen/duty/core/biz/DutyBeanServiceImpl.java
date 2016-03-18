@@ -1,6 +1,5 @@
 package cn.com.rexen.duty.core.biz;
 
-import cn.com.rexen.admin.api.dao.IUserBeanDao;
 import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
@@ -27,14 +26,8 @@ import java.util.List;
  */
 public class DutyBeanServiceImpl extends GenericBizServiceImpl<IDutyBeanDao, DutyBean> implements IDutyBeanService {
     private JsonStatus jsonStatus = new JsonStatus();
-    private IUserBeanDao userBeanDao;
     private IDutyUserBeanDao dutyUserBeanDao;
     private IShiroService shiroService;
-
-    public void setUserBeanDao(IUserBeanDao userBeanDao) {
-        this.userBeanDao = userBeanDao;
-    }
-
     public void setDutyUserBeanDao(IDutyUserBeanDao dutyUserBeanDao) {
         this.dutyUserBeanDao = dutyUserBeanDao;
     }
@@ -69,7 +62,7 @@ public class DutyBeanServiceImpl extends GenericBizServiceImpl<IDutyBeanDao, Dut
     @Override
     public JsonData getUserAll(long depId) {
         JsonData jsonData = new JsonData();
-        List<UserBean> users = userBeanDao.find("select u from UserBean u where u.id<>(select dub.userId from DutyUserBean dub)");
+        List<UserBean> users = dutyUserBeanDao.findByNativeSql("select a.* from sys_user as  a, sys_department_user as  b where a.id = b.userid and depid=" + depId, UserBean.class, null);
         List<PersistentEntity> persistentEntities = new ArrayList<PersistentEntity>();
         if (users != null && users.size() > 0) {
             for (UserBean user : users) {
@@ -86,7 +79,7 @@ public class DutyBeanServiceImpl extends GenericBizServiceImpl<IDutyBeanDao, Dut
     @Override
     public JsonData getUserAllAndDutyUsers(long depId, long dutyId) {
         JsonData jsonData = new JsonData();
-        List<UserBean> users = userBeanDao.find("select u from UserBean u where u.id not in(select dub.userId from DutyUserBean dub)");
+        List<UserBean> users = dutyUserBeanDao.findByNativeSql("select a.* from sys_user as  a, sys_department_user as  b where a.id = b.userid and depid=" + depId/*+" and a.id not in (select userid from sys_duty_user)"*/, UserBean.class, null);
         List<PersistentEntity> persistentEntities = new ArrayList<PersistentEntity>();
         if (users != null && users.size() > 0) {
             for (UserBean user : users) {
@@ -95,7 +88,7 @@ public class DutyBeanServiceImpl extends GenericBizServiceImpl<IDutyBeanDao, Dut
                 }
             }
         }
-        List<UserBean> dutyUserBeans = userBeanDao.find("select u from UserBean u where u.id in (select du.userId from DutyUserBean du where du.depId=?1)", dutyId);
+        List<UserBean> dutyUserBeans = dutyUserBeanDao.findByNativeSql("select a.* from sys_user a where a.id in (select du.userId from sys_duty_user du where du.depId=" + depId + " and du.dutyId=" + dutyId + ")", UserBean.class, null);
         if (dutyUserBeans != null && dutyUserBeans.size() > 0) {
             for (UserBean dutyUserBean : dutyUserBeans) {
                 if (dutyUserBean != null) {
@@ -122,6 +115,7 @@ public class DutyBeanServiceImpl extends GenericBizServiceImpl<IDutyBeanDao, Dut
                         dutyUserBean.setCreateBy(userName);
                         dutyUserBean.setUpdateBy(userName);
                         dutyUserBean.setDepId(depId);
+                        dutyUserBean.setDutyId(dutyId);
                         dutyUserBean.setUserId(Long.parseLong(_userId));
                         dutyUserBeanDao.save(dutyUserBean);
                     }
@@ -135,6 +129,23 @@ public class DutyBeanServiceImpl extends GenericBizServiceImpl<IDutyBeanDao, Dut
         }
         jsonStatus.setSuccess(true);
         jsonStatus.setMsg("保存成功!");
+        return jsonStatus;
+    }
+
+    @Override
+    public JsonStatus deleteDuty(long depId, long dutyId) {
+        JsonStatus jsonStatus = new JsonStatus();
+        try {
+            dutyUserBeanDao.deleteByDutyId(depId, dutyId);
+            deleteEntity(dutyId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setFailure(true);
+            jsonStatus.setMsg("删除失败!");
+            return jsonStatus;
+        }
+        jsonStatus.setSuccess(true);
+        jsonStatus.setMsg("删除成功!");
         return jsonStatus;
     }
 }

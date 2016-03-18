@@ -4,19 +4,17 @@
 ">
 
     <service id="dutyBeanService" interface="cn.com.rexen.duty.api.biz.IDutyBeanService"
-             ref="beanServiceImpl">
+             ref="dutyBeanServiceImpl">
     </service>
 
-    <bean id="beanServiceImpl" class="cn.com.rexen.duty.core.biz.DutyBeanServiceImpl">
+    <bean id="dutyBeanServiceImpl" class="cn.com.rexen.duty.core.biz.DutyBeanServiceImpl">
         <property name="dao" ref="dutyBeanDao"/>
-        <property name="userBeanDao" ref="userBeanDao"/>
         <property name="dutyUserBeanDao" ref="dutyUserBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
     </bean>
 
     <reference id="dutyBeanDao" interface="cn.com.rexen.duty.api.dao.IDutyBeanDao"/>
     <reference id="dutyUserBeanDao" interface="cn.com.rexen.duty.api.dao.IDutyUserBeanDao"/>
-    <reference id="userBeanDao" interface="cn.com.rexen.admin.api.dao.IUserBeanDao"/>
     <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
 </blueprint>
 

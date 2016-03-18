@@ -49,10 +49,10 @@
             </put>
 
             <!-- this is a rest DELETE to delete a duty -->
-            <delete uri="/{id}" id="route-deleteDuty"
+            <delete uri="/{depId}/{id}" id="route-deleteDuty"
                     outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Delete a Duty</description>
-                <to uri="bean:dutyService?method=deleteEntity(${header.id})"/>
+                <to uri="bean:dutyService?method=deleteDuty(${header.depId},${header.id})"/>
             </delete>
 
             <!-- this is a rest GET to view an user by the given id -->

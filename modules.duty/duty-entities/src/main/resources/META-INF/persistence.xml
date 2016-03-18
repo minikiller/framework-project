@@ -4,7 +4,11 @@
         <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
         <jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=jdbc/ds)</jta-data-source>
         <class>cn.com.rexen.core.api.persistence.PersistentEntity</class>
+        <class>cn.com.rexen.admin.entities.UserBean</class>
+        <class>cn.com.rexen.admin.entities.RoleBean</class>
+        <class>cn.com.rexen.admin.entities.PermissionBean</class>
         <class>cn.com.rexen.duty.entities.DutyBean</class>
+        <class>cn.com.rexen.duty.entities.DutyUserBean</class>
         <properties>
             <property name="openjpa.BrokerImpl" value="non-finalizing"/>
             <property name="openjpa.Sequence" value="table(Table=OPENJPASEQ, Increment=100)"/>
