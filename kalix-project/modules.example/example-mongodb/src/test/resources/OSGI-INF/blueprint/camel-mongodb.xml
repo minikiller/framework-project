@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <cm:property-placeholder id="storage.placeholder" persistent-id="mongodb.storage">
+        <cm:default-properties>
+            <cm:property name="rest.alias" value="/storage"/>
+            <cm:property name="mongodb.host" value="127.0.0.1"/>
+            <cm:property name="mongodb.port" value="27017"/>
+            <cm:property name="mongodb.database" value="storage"/>
+            <cm:property name="mongodb.user" value=""/>
+            <cm:property name="mongodb.pass" value=""/>
+            <cm:property name="metadata.collection" value="test"/>
+        </cm:default-properties>
+    </cm:property-placeholder>
+    <bean id="mongo" class="com.mongodb.Mongo">
+        <argument index="0" value="${mongodb.host}" type="java.lang.String"/>
+        <argument index="1" value="${mongodb.port}"/>
+    </bean>
+
+
+    <camelContext id="mongodb-camel" xmlns="http://camel.apache.org/schema/blueprint">
+        <contextScan>
+            <includes>cn.com.rexen.example.jdbc</includes>
+        </contextScan>
+        <route id="mongodb-insert">
+            <from uri="direct:insert"/>
+            <!-- &amp;dynamicity=true-->
+            <to uri="mongodb://mongo?database={{mongodb.database}}&amp;collection={{metadata.collection}}&amp;operation=remove"/>
+        </route>
+    </camelContext>
+    <!--<bean id="testMongo" class="cn.com.rexen.example.mongodb.TestMongo  <bean id="test" class="cn.com.rexen.example.mongodb.Hello" init-method="init">
+        <property name="testMongoInsert" ref="testMongo"/>
+            </bean>-->
+</blueprint>

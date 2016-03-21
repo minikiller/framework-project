@@ -1,0 +1,25 @@
+\<?xml version="1.0" encoding="UTF-8"?>
+\<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    \<modelVersion>4.0.0\</modelVersion>
+
+    \<parent>
+            \<groupId><packageName>\</groupId>
+            \<artifactId><pomName>-parent\</artifactId>
+            \<version><versionName>\</version>
+        \</parent>
+    
+    \<artifactId><pomName>-extjs\</artifactId>
+    \<version>1.0.0-SNAPSHOT\</version>
+    \<name><projectName> :: <beanName> - Extjs\</name>
+    \<description><projectName> :: <beanName> - Extjs\</description>
+    \<packaging>bundle\</packaging>
+
+    \<properties>
+        \<bundle.symbolicName><packageName>.extjs\</bundle.symbolicName>
+        \<bundle.namespace>${bundle.symbolicName}\</bundle.namespace>
+        \<project.build.sourceEncoding>UTF-8\</project.build.sourceEncoding>
+    \</properties>
+\</project>

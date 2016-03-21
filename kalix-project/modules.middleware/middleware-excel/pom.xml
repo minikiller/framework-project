@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>cn.com.rexen.kalix</groupId>
+        <artifactId>modules.middleware</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.com.rexen.kalix.middleware</groupId>
+    <artifactId>middleware-excel</artifactId>
+    <name>Middleware :: Modules - Excel</name>
+
+    <modules>
+        <module>excel-api</module>
+        <module>excel-core</module>
+        <module>excel-rest</module>
+    </modules>
+
+    <packaging>pom</packaging>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.poms</groupId>
+                <artifactId>poms-dm</artifactId>
+                <version>${globle.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.middleware</groupId>
+                <artifactId>excel-api</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.poms</groupId>
+            <artifactId>poms-dm</artifactId>
+            <type>pom</type>
+            <version>${globle.version}</version>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.com.rexen.kalix</groupId>
-    <artifactId>kalix-project</artifactId>
+    <groupId>cn.com.vixo.parent</groupId>
+    <artifactId>vixo-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <description>Parent of Project</description>
-
-    <organization>
-        <name>ReXen Tech Company</name>
-        <url>http://www.rexen.com.cn/</url>
-    </organization>
-
-    <scm>
-        <url>https://github.com/sunlingfeng-rexen/kalix-project.git</url>
-        <connection>scm:git:git@github.com:sunlingfeng-rexen/kalix-project.git</connection>
-        <developerConnection>scm:git:git@github.com:sunlingfeng-rexen/kalix-project.git</developerConnection>
-    </scm>
-
+    <description>Parent of All Project</description>
     <properties>
         <globle.version>1.0.0-SNAPSHOT</globle.version>
         <!--
@@ -70,25 +58,15 @@
 
         <bundle.symbolicName>define_in_child_module</bundle.symbolicName>
         <bundle.namespace>define_in_child_module</bundle.namespace>
+        <!--osgi version-->
+        <org.osgi.core.version>6.0.0</org.osgi.core.version>
+        <org.osgi.compendium.version>5.0.0</org.osgi.compendium.version>
+        <org.osgi.enterprise.version>5.0.0</org.osgi.enterprise.version>
+        <log4j.version>1.2.17</log4j.version>
     </properties>
-
     <modules>
-        <module>modules.poms</module>
-        <module>modules.core</module>
-        <module>modules.admin</module>
-        <module>modules.app</module>
-        <module>modules.audit</module>
-        <module>modules.demo</module>
-        <!--<module>modules.example</module>-->
-        <module>modules.middleware</module>
-        <module>modules.tools</module>
-        <module>modules.osgi</module>
-        <module>modules.security</module>
-        <module>modules.duty</module>
-        <module>modules.message</module>
-        <!--<module>modules.notice</module>-->
+        <module>kalix-project</module>
     </modules>
-
     <distributionManagement>
         <repository>
             <id>private-nexus-library-releases</id>
@@ -102,7 +80,6 @@
             <url>http://172.18.82.10:8081/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
-
 
     <build>
         <resources>
@@ -284,19 +261,6 @@
 
                         </configuration>
                     </execution>
-                    <!--<execution>-->
-                    <!--<id>delete-wrong-path</id>-->
-                    <!--<phase>clean</phase>-->
-                    <!--<goals>-->
-                    <!--<goal>run</goal>-->
-                    <!--</goals>-->
-                    <!--<configuration>-->
-                    <!--<tasks>-->
-                    <!--<taskdef resource="net/sf/antcontrib/antcontrib.properties"/>-->
-                    <!--<delete dir="${karaf.path}"/>-->
-                    <!--</tasks>-->
-                    <!--</configuration>-->
-                    <!--</execution>-->
                 </executions>
                 <dependencies>
                     <dependency>
@@ -338,20 +302,6 @@
             </plugin>
         </plugins>
     </build>
-    <reporting>
-        <!--<plugins>-->
-        <!--<plugin>-->
-        <!--<groupId>org.apache.maven.plugins</groupId>-->
-        <!--<artifactId>maven-project-info-reports-plugin</artifactId>-->
-        <!--<version>2.7</version>-->
-        <!--</plugin>-->
-        <!--<plugin>-->
-        <!--<groupId>org.apache.maven.plugins</groupId>-->
-        <!--<artifactId>maven-site-plugin</artifactId>-->
-        <!--<version>3.3</version>-->
-        <!--</plugin>-->
-        <!--</plugins>-->
-    </reporting>
     <repositories>
         <repository>
             <id>mvnrepository</id>

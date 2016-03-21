@@ -1,0 +1,54 @@
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+">
+
+    <service id="demoBeanService" interface="cn.com.rexen.demo.api.biz.INoticeBeanService"
+             ref="beanServiceImpl">
+    </service>
+    <service interface="cn.com.rexen.demo.api.biz.ISealApplyBeanService" ref="sealApplyBeanService"/>
+
+    <reference id="repositoryService" interface="org.activiti.engine.RepositoryService"/>
+    <reference id="formService" interface="org.activiti.engine.FormService"/>
+    <reference id="identityService" interface="org.activiti.engine.IdentityService"/>
+    <reference id="runtimeService" interface="org.activiti.engine.RuntimeService"/>
+    <reference id="taskService" interface="org.activiti.engine.TaskService"/>
+    <reference id="userLoginService" interface="cn.com.rexen.core.api.security.IUserLoginService"/>
+    <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
+    <reference id="auditBeanService" interface="cn.com.rexen.audit.api.biz.IAuditBeanService"/>
+
+
+    <bean id="beanServiceImpl" class="cn.com.rexen.demo.core.biz.NoticeBeanServiceImpl" scope="prototype">
+        <property name="dao" ref="noticeBeanDao"/>
+        <property name="formService" ref="formService"/>
+        <property name="identityService" ref="identityService"/>
+        <property name="repositoryService" ref="repositoryService"/>
+        <property name="runtimeService" ref="runtimeService"/>
+        <property name="taskService" ref="taskService"/>
+        <property name="userLoginService" ref="userLoginService"/>
+        <property name="auditBeanService" ref="auditBeanService"/>
+        <property name="shiroService" ref="shiroService"/>
+    </bean>
+
+    <bean id="sealApplyBeanService" class="cn.com.rexen.demo.core.biz.SealApplyBeanServiceImpl">
+        <property name="dao" ref="sealApplyBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
+        <property name="identityService" ref="identityService"/>
+        <property name="runtimeService" ref="runtimeService"/>
+        <property name="taskService" ref="taskService"/>
+    </bean>
+
+    <service interface="cn.com.rexen.demo.api.biz.ICarApplyBeanService" ref="carApplyBeanService"/>
+    <bean id="carApplyBeanService" class="cn.com.rexen.demo.core.biz.CarApplyBeanServiceImpl">
+        <property name="dao" ref="carApplyBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
+        <property name="identityService" ref="identityService"/>
+        <property name="runtimeService" ref="runtimeService"/>
+        <property name="taskService" ref="taskService"/>
+    </bean>
+
+    <reference id="noticeBeanDao" interface="cn.com.rexen.demo.api.dao.INoticeBeanDao"/>
+    <reference id="sealApplyBeanDao" interface="cn.com.rexen.demo.api.dao.ISealApplyBeanDao"/>
+    <reference id="carApplyBeanDao" interface="cn.com.rexen.demo.api.dao.ICarApplyBeanDao"/>
+</blueprint>
+

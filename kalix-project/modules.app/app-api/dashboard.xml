@@ -1,0 +1,17 @@
+<dashboard>
+    <id>default</id>
+    <text>Default</text>
+    <columnCount>2</columnCount>
+    <widgets>
+        <cn.com.rexen.notice.webapp.wicket.widget.NoticeWidget>
+            <id>system.notice</id>
+            <text>公告</text>
+            <collapsed>false</collapsed>
+            <settings/>
+            <location>
+                <column>0</column>
+                <row>0</row>
+            </location>
+        </cn.com.rexen.notice.webapp.wicket.widget.NoticeWidget>
+    </widgets>
+</dashboard>

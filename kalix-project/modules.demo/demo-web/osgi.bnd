@@ -1,0 +1,9 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+
+Bundle-Activator: cn.com.rexen.demo.web.internal.InitActivator
+Import-Package:cn.com.rexen.core.api.biz,cn.com.rexen.core.api.persistence,cn.com.rexen.demo.entities,*
+Bundle-Category: Rexen Kalix Demo
+Bundle-Classifier:IApplication
+Bundle-ApplicationId:workflow

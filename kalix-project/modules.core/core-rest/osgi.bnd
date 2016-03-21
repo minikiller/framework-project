@@ -1,0 +1,14 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+
+Bundle-Activator: ${bundle.namespace}.internal.InitActivator
+Import-Package:org.apache.camel.component.servlet, \
+                cn.com.rexen.core.api.web.model,\
+                cn.com.rexen.core.api.system.model,\
+                cn.com.rexen.core.api.biz,*
+
+Bundle-Category: Rexen Kalix Core
+#Include-Resource: src/main/webapp,src/main/resources
+#Include-Resource: src/main/resources
+#Web-ContextPath:/camel/rest

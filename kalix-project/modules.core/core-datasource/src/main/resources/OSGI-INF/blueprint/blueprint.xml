@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<blueprint xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="
+	 	http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+	 	http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0
+	 	http://svn.apache.org/repos/asf/aries/trunk/blueprint/blueprint-cm/src/main/resources/org/apache/aries/blueprint/compendium/cm/blueprint-cm-1.1.0.xsd
+	 ">
+    <cm:property-placeholder persistent-id="ConfigDataSource" update-strategy="reload">
+        <cm:default-properties>
+            <cm:property name="name" value="${db.name}"/>
+            <cm:property name="ip" value="${db.ip}"/>
+            <cm:property name="port" value="${db.port}"/>
+            <cm:property name="instance" value="${db.instance}"/>
+            <cm:property name="user" value="${db.username}"/>
+            <cm:property name="password" value="${db.password}"/>
+        </cm:default-properties>
+    </cm:property-placeholder>
+
+    <bean id="derbyXADataSource" class="org.apache.derby.jdbc.EmbeddedXADataSource">
+        <property name="databaseName" value="tradedb"/>
+        <!-- This creates the database on the fly. See the persistence.xml  under ariestrader-entities for property
+          configuration. The DB is created from persistence entities, this is not recommended for production use.  -->
+        <property name="createDatabase" value="create"/>
+    </bean>
+
+    <service id="TradeDataSource" ref="derbyXADataSource" interface="javax.sql.XADataSource">
+        <service-properties>
+            <entry key="osgi.jndi.service.name" value="jdbc/TradeDataSource"/>
+        </service-properties>
+    </service>
+
+
+    <bean id="derbyDataSource" class="org.apache.derby.jdbc.EmbeddedDataSource">
+        <property name="databaseName" value="tradedb"/>
+        <!-- This creates the database on the fly. -->
+        <property name="createDatabase" value="create"/>
+    </bean>
+
+    <service id="NoTxTradeDataSource" ref="derbyDataSource" interface="javax.sql.DataSource">
+        <service-properties>
+            <entry key="osgi.jndi.service.name" value="jdbc/NoTxTradeDataSource"/>
+        </service-properties>
+    </service>
+
+    <!--<bean id="dataSource" class="${db.datasourceClass}">-->
+    <!--<property name="url" value="${url}"/>-->
+    <!--<property name="user" value="${user}"/>-->
+    <!--<property name="password" value="${password}"/>-->
+    <!--</bean>-->
+
+    <bean id="dataSource" class="cn.com.rexen.core.datasource.DataSourceProxy">
+        <argument>
+            <value>${name}</value>
+        </argument>
+        <argument>
+            <value>${ip}</value>
+        </argument>
+        <argument>
+            <value>${port}</value>
+        </argument>
+        <argument>
+            <value>${instance}</value>
+        </argument>
+        <argument>
+            <value>${user}</value>
+        </argument>
+        <argument>
+            <value>${password}</value>
+        </argument>
+    </bean>
+
+    <service interface="javax.sql.DataSource" ref="dataSource">
+        <service-properties>
+            <entry key="osgi.jndi.service.name" value="jdbc/ds"/>
+        </service-properties>
+    </service>
+
+</blueprint>

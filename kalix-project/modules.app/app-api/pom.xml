@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL -->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>cn.com.rexen.kalix.app</groupId>
+        <artifactId>modules.app</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>app-api</artifactId>
+
+    <properties>
+        <bundle.symbolicName>cn.com.rexen.app.api</bundle.symbolicName>
+        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+    </properties>
+
+    <name>System :: App - API</name>
+    <description>System API</description>
+
+    <packaging>bundle</packaging>
+    <dependencies>
+        <!--
+         | uncomment to add all imported (non-local) bundles to your compilation classpath
+        <dependency>
+          <type>pom</type>
+          <groupId>${parent.groupId}</groupId>
+          <artifactId>provision</artifactId>
+          <optional>true</optional>
+        </dependency>
+        -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer-osgi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.app</groupId>
+            <artifactId>app-entities</artifactId>
+
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.app</groupId>
+            <artifactId>app-dto</artifactId>
+
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.admin</groupId>
+            <artifactId>admin-entities</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+
+        <plugins>
+
+        </plugins>
+    </build>
+
+</project>

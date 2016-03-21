@@ -1,0 +1,1 @@
+1.testing camel jdbc to init database

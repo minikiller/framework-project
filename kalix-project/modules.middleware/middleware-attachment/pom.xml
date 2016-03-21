@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>cn.com.rexen.kalix</groupId>
+        <artifactId>modules.middleware</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.com.rexen.kalix.middleware</groupId>
+    <artifactId>modules.attachment</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>attachment-api</module>
+        <module>attachment-core</module>
+        <module>attachment-entities</module>
+        <module>attachment-persist-jpa</module>
+        <module>attachment-rest</module>
+    </modules>
+
+    <name>Middleware :: Modules - attachment</name>
+    <description>Modules attachment</description>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.middleware</groupId>
+                <artifactId>attachment-entities</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.middleware</groupId>
+                <artifactId>attachment-api</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-util</artifactId>
+        </dependency>
+    </dependencies>
+</project>

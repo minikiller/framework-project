@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <reference id="sealApplyService" interface="cn.com.rexen.demo.api.biz.ISealApplyBeanService"/>
+
+    <camelContext id="demo-rest-sealapply" xmlns="http://camel.apache.org/schema/blueprint">
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="true"/>
+        </restConfiguration>
+        <rest path="/sealapplys" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
+            <get id="route-getAllSealApply" outType="cn.com.rexen.core.api.persistence.JsonData">
+                <description>Find all SealApplys</description>
+                <to uri="bean:sealApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+            </get>
+            <post id="route-addSealApply" type="cn.com.rexen.demo.entities.SealApplyBean"
+                  outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Create a SealApply</description>
+                <to uri="bean:sealApplyService?method=saveEntity"/>
+            </post>
+        </rest>
+        <rest path="/sealapplys/{id}" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getSealApply" outType="cn.com.rexen.demo.entities.SealApplyBean">
+                <description>Find SealApply by id</description>
+                <to uri="bean:sealApplyService?method=getEntity(${header.id})"/>
+            </get>
+            <put id="route-updateSealApply" type="cn.com.rexen.demo.entities.SealApplyBean"
+                 outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Updates a SealApply</description>
+                <to uri="bean:sealApplyService?method=updateEntity"/>
+            </put>
+            <delete id="route-removeSealApply"
+                    outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Delete a SealApply</description>
+                <to uri="bean:sealApplyService?method=deleteEntity(${header.id})"/>
+            </delete>
+        </rest>
+        <rest path="/sealapplys/workflow" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-startProcessSealApply" uri="/startProcess" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Start Process of SealApply</description>
+                <to uri="bean:sealApplyService?method=startProcess(${header.id})"/>
+            </get>
+            <get id="route-completeTaskSealApply" uri="/completeTask" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Complete Task of SealApply</description>
+                <to uri="bean:sealApplyService?method=completeTask(${header.taskId},${header.accepted},${header.comment})"/>
+            </get>
+        </rest>
+    </camelContext>
+</blueprint>
+

@@ -1,0 +1,10 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+
+Bundle-Activator: ${bundle.namespace}.internal.InitActivator
+#Meta-Persistence: META-INF/persistence.xml
+#JPA-PersistenceUnits:core-cm
+#Import-Package:*
+#Export-Package:cn.com.rexen.core.api.exception,*
+Bundle-Category: Rexen Kalix Core
