@@ -1,7 +1,0 @@
-#-----------------------------------------------------------------
-# Use this file to add customized Bnd instructions for the bundle
-#-----------------------------------------------------------------
-
-Bundle-Activator: ${bundle.namespace}.internal.InitActivator
-Import-Package:javax.persistence,cn.com.rexen.duty.dao,*
-Bundle-Category: Rexen  Duty Duty

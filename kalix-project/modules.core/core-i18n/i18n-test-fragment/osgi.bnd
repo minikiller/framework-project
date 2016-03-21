@@ -1,7 +1,0 @@
-#-----------------------------------------------------------------
-# Use this file to add customized Bnd instructions for the bundle
-#-----------------------------------------------------------------
-
-#Bundle-Activator: ${bundle.namespace}.internal.InitActivator
-Fragment-Host: cn.com.rexen.core.i18n.test
-Bundle-Category: Rexen Kalix Core

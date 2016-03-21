@@ -1,1 +1,0 @@
-1.testing kalix-maven-plugin code genernate

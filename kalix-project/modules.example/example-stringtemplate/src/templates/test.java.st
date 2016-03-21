@@ -1,1 +1,0 @@
-使用FileGroup读取的文件~~Hello $myname$
