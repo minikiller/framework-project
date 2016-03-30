@@ -565,20 +565,20 @@
             <artifactId>org.apache.aries.transaction.blueprint</artifactId>
         </dependency>-->
     </dependencies>
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.openjpa</groupId>
-                    <artifactId>openjpa-maven-plugin</artifactId>
-                    <version>${openjpa.Version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>native2ascii-maven-plugin</artifactId>
-                    <version>1.0-beta-1</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+    <!--<build>-->
+        <!--<pluginManagement>-->
+            <!--<plugins>-->
+                <!--<plugin>-->
+                    <!--<groupId>org.apache.openjpa</groupId>-->
+                    <!--<artifactId>openjpa-maven-plugin</artifactId>-->
+                    <!--<version>${openjpa.Version}</version>-->
+                <!--</plugin>-->
+                <!--<plugin>-->
+                    <!--<groupId>org.codehaus.mojo</groupId>-->
+                    <!--<artifactId>native2ascii-maven-plugin</artifactId>-->
+                    <!--<version>1.0-beta-1</version>-->
+                <!--</plugin>-->
+            <!--</plugins>-->
+        <!--</pluginManagement>-->
+    <!--</build>-->
 </project>
