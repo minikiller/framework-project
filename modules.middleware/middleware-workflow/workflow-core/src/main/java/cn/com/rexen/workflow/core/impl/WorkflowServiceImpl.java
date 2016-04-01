@@ -1,9 +1,12 @@
 package cn.com.rexen.workflow.core.impl;
 
 import cn.com.rexen.workflow.api.biz.IWorkflowService;
+import com.sun.javafx.sg.prism.NGShape;
 import org.activiti.engine.*;
 import org.activiti.engine.history.HistoricTaskInstance;
+import org.activiti.engine.impl.persistence.entity.ModelEntity;
 import org.activiti.engine.repository.Deployment;
+import org.activiti.engine.repository.Model;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.Execution;
 import org.activiti.engine.runtime.ProcessInstance;
@@ -27,6 +30,7 @@ import java.util.Map;
  * @修改备注：
  */
 public class WorkflowServiceImpl implements IWorkflowService {
+    private ProcessEngine processEngine;
     /*public static void main(String[] args) {
   //获取activiti引擎
   ProcessEngine processEngine = null ;
@@ -37,7 +41,7 @@ public class WorkflowServiceImpl implements IWorkflowService {
 .addClasspathResource("demo01/Interview.bpmn20.xml")
 .deploy();
  }*/
-    private static ProcessEngine processEngine;
+//    private static ProcessEngine processEngine;
 
     /**
      *  *
@@ -47,10 +51,10 @@ public class WorkflowServiceImpl implements IWorkflowService {
      *  
      */
     public static void beforeClass() {
-        if (processEngine == null)
+       /* if (processEngine == null)
             System.out.println("----加载processEngine---");
         processEngine = ProcessEngineConfiguration.createProcessEngineConfigurationFromResource("DataAccessContext.xml", "processEngineConfiguration").buildProcessEngine();
-    }
+*/    }
 
     /**
      * Function :部署流程定义
@@ -61,8 +65,31 @@ public class WorkflowServiceImpl implements IWorkflowService {
 
     public void deploy() {
         RepositoryService repositoryService = processEngine.getRepositoryService();
-        repositoryService.createDeployment().addClasspathResource("demo01/Interview.bpmn20.xml").deploy();
+        //repositoryService.createDeployment().addClasspathResource("demo01/Interview.bpmn20.xml").deploy();
+        String bpmnStr="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<definitions xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:activiti=\"http://activiti.org/bpmn\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\" typeLanguage=\"http://www.w3.org/2001/XMLSchema\" expressionLanguage=\"http://www.w3.org/1999/XPath\" targetNamespace=\"http://www.activiti.org/processdef\">\n" +
+                "  <process id=\"process\" isExecutable=\"true\">\n" +
+                "    <startEvent id=\"sid-4DE20CC4-5973-4262-A961-76354315840F\" name=\"开始\"></startEvent>\n" +
+                "    <endEvent id=\"sid-EA744AD0-35B3-4024-B220-9826316079CC\" name=\"结束\"></endEvent>\n" +
+                "    <sequenceFlow id=\"sid-475C50F1-6C2F-481B-9E94-36CB0F19AD78\" name=\"流程线\" sourceRef=\"sid-4DE20CC4-5973-4262-A961-76354315840F\" targetRef=\"sid-EA744AD0-35B3-4024-B220-9826316079CC\"></sequenceFlow>\n" +
+                "  </process>\n" +
+                "  <bpmndi:BPMNDiagram id=\"BPMNDiagram_process\">\n" +
+                "    <bpmndi:BPMNPlane bpmnElement=\"process\" id=\"BPMNPlane_process\">\n" +
+                "      <bpmndi:BPMNShape bpmnElement=\"sid-4DE20CC4-5973-4262-A961-76354315840F\" id=\"BPMNShape_sid-4DE20CC4-5973-4262-A961-76354315840F\">\n" +
+                "        <omgdc:Bounds height=\"30.0\" width=\"30.0\" x=\"270.0\" y=\"180.0\"></omgdc:Bounds>\n" +
+                "      </bpmndi:BPMNShape>\n" +
+                "      <bpmndi:BPMNShape bpmnElement=\"sid-EA744AD0-35B3-4024-B220-9826316079CC\" id=\"BPMNShape_sid-EA744AD0-35B3-4024-B220-9826316079CC\">\n" +
+                "        <omgdc:Bounds height=\"28.0\" width=\"28.0\" x=\"570.0\" y=\"180.0\"></omgdc:Bounds>\n" +
+                "      </bpmndi:BPMNShape>\n" +
+                "      <bpmndi:BPMNEdge bpmnElement=\"sid-475C50F1-6C2F-481B-9E94-36CB0F19AD78\" id=\"BPMNEdge_sid-475C50F1-6C2F-481B-9E94-36CB0F19AD78\">\n" +
+                "        <omgdi:waypoint x=\"299.9999161090247\" y=\"194.94983305649157\"></omgdi:waypoint>\n" +
+                "        <omgdi:waypoint x=\"570.0000782982436\" y=\"194.04682248060786\"></omgdi:waypoint>\n" +
+                "      </bpmndi:BPMNEdge>\n" +
+                "    </bpmndi:BPMNPlane>\n" +
+                "  </bpmndi:BPMNDiagram>\n" +
+                "</definitions>";
 
+        repositoryService.createDeployment().addString("mytestbpmn",bpmnStr).deploy();
     }
 
     /**
@@ -439,5 +466,9 @@ public class WorkflowServiceImpl implements IWorkflowService {
         for (ProcessInstance e : list) {
             System.out.println(e.getId() + "," + e.getProcessInstanceId() + ",该实例对应的流程定义" + e.getProcessDefinitionId() + ",业务外键：" + e.getBusinessKey());
         }
+    }
+
+    public void setProcessEngine(ProcessEngine processEngine) {
+        this.processEngine = processEngine;
     }
 }
