@@ -9,8 +9,10 @@
 
     \<bean id="beanServiceImpl" class="<packageName>.core.biz.<beanName>BeanServiceImpl">
         \<property name="dao" ref="<pomName>BeanDao"/>
+        \<property name="shiroService" ref="shiroService"/>
     \</bean>
 
     \<reference id="<pomName>BeanDao" interface="<packageName>.api.dao.I<beanName>BeanDao"/>
+    \<reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
 \</blueprint>
 
