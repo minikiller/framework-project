@@ -8,18 +8,17 @@ import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.web.model.BaseDTO;
 import cn.com.rexen.core.api.web.model.QueryDTO;
 import cn.com.rexen.core.util.Assert;
+import cn.com.rexen.core.util.BeanUtil;
 import cn.com.rexen.core.util.SerializeUtil;
 import com.google.gson.Gson;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventAdmin;
 
 import javax.transaction.Transactional;
 import java.lang.reflect.ParameterizedType;
-import java.util.Dictionary;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -312,27 +311,48 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
         return (TP) dao.get(entityId);
     }
 
+    @Override
+    public List<Object> getFieldValuesByIds(Object[] ids,String fieldName){
+        String sql="SELECT a FROM %s a WHERE a.id in (%s)";
+        List queryIds=new ArrayList<Long>();
+
+        for(int index=0;index<ids.length;++index){
+            if(!queryIds.contains(ids[index])){
+                queryIds.add(ids[index]);
+            }
+        }
+
+        sql=String.format(sql,this.entityClassName, StringUtils.join(queryIds,","));
+
+        List records = this.dao.find(sql);
+
+        if(records.size()>0){
+            Map fieldValueMap =BeanUtil.getBeanListFieldValues(records,fieldName);
+            List rtn=new ArrayList<Object>();
+
+            for(int idsIndex=0;idsIndex<ids.length;++idsIndex){
+                rtn.add(fieldValueMap.get(ids[idsIndex].toString()));
+            }
+
+            return rtn;
+        }
+
+        return null;
+    }
+
+
     /**
      * 具体的业务类必须调用该方法
      *
      * @param entityClassName 实体类的名字
      */
     public void init(String entityClassName) {
-        //this.dao = dao;
         this.entityClassName = entityClassName;
     }
 
     public void setEventAdmin(EventAdmin eventAdmin) {
         this.eventAdmin = eventAdmin;
     }
-
-//    private void postEvent(Long id) {
-//        Gson gson = new Gson();
-//        Dictionary properties = new Hashtable();
-//        properties.put("message", gson.toJson(id));
-//        Event event = new Event("cn/com/rexen/userlogin", properties);
-//        eventAdmin.postEvent(event);
-//    }
 
     private void postEvent(String topic, Object obj) {
         if (eventAdmin != null) {

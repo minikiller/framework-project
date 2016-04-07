@@ -6,6 +6,7 @@ import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.web.model.QueryDTO;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @类描述： 对外业务服务的根接口
@@ -192,4 +193,6 @@ public interface IBizService<T extends PersistentEntity> extends IService {
     JsonData getAllEntityforReport(String jsonStr);
 
     T getEntity(long entityId);
+
+    List<Object> getFieldValuesByIds(Object[] ids,String fieldName);
 }
