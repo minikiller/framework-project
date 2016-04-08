@@ -1,9 +1,12 @@
 package cn.com.rexen.workflow.api.biz;
 
+import cn.com.rexen.core.api.biz.JsonStatus;
+import cn.com.rexen.workflow.api.model.JsonXml;
 import org.activiti.engine.task.Task;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @类描述：Workflow业务服务接口类
@@ -53,4 +56,6 @@ public interface IWorkflowService {
     void findExecutionList();
 
     void findProcessInstanceList();
+
+    JsonStatus deploy(JsonXml jsonXml);
 }

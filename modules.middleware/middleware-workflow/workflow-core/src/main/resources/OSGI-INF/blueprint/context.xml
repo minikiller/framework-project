@@ -5,6 +5,7 @@
     </service>
 
     <bean id="workFlowServiceImpl" class="cn.com.rexen.workflow.core.impl.WorkflowServiceImpl">
+        <property name="processEngine" ref="processEngine"/>
     </bean>
 
     <service interface="cn.com.rexen.workflow.api.biz.IWorkflowCommon" ref="workflowCommonImpl">

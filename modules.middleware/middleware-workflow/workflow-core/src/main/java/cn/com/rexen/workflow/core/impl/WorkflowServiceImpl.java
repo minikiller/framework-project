@@ -1,6 +1,8 @@
 package cn.com.rexen.workflow.core.impl;
 
+import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.workflow.api.biz.IWorkflowService;
+import cn.com.rexen.workflow.api.model.JsonXml;
 import com.sun.javafx.sg.prism.NGShape;
 import org.activiti.engine.*;
 import org.activiti.engine.history.HistoricTaskInstance;
@@ -11,6 +13,7 @@ import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.Execution;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
+import org.json4s.jackson.Json;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -63,9 +66,8 @@ public class WorkflowServiceImpl implements IWorkflowService {
      * @date : 2014-1-15
      */
 
-    public void deploy() {
-        RepositoryService repositoryService = processEngine.getRepositoryService();
-        //repositoryService.createDeployment().addClasspathResource("demo01/Interview.bpmn20.xml").deploy();
+    public JsonStatus deploy(JsonXml jsonXml) {
+
         String bpmnStr="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<definitions xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:activiti=\"http://activiti.org/bpmn\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\" typeLanguage=\"http://www.w3.org/2001/XMLSchema\" expressionLanguage=\"http://www.w3.org/1999/XPath\" targetNamespace=\"http://www.activiti.org/processdef\">\n" +
                 "  <process id=\"process\" isExecutable=\"true\">\n" +
@@ -88,8 +90,12 @@ public class WorkflowServiceImpl implements IWorkflowService {
                 "    </bpmndi:BPMNPlane>\n" +
                 "  </bpmndi:BPMNDiagram>\n" +
                 "</definitions>";
+        bpmnStr=jsonXml.getXml();
 
+        RepositoryService repositoryService = processEngine.getRepositoryService();
         repositoryService.createDeployment().addString("mytestbpmn",bpmnStr).deploy();
+
+        return JsonStatus.successResult("添加成功");
     }
 
     /**

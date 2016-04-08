@@ -7,6 +7,7 @@
     <reference id="processService" interface="cn.com.rexen.workflow.api.biz.IProcessService"/>
     <reference id="taskService" interface="cn.com.rexen.workflow.api.biz.ITaskService"/>
     <reference id="commonService" interface="cn.com.rexen.workflow.api.biz.IWorkflowCommon"/>
+    <reference id="workflowService" interface="cn.com.rexen.workflow.api.biz.IWorkflowService"/>
 
     <camelContext id="workflowCamel" xmlns="http://camel.apache.org/schema/blueprint">
 
@@ -78,7 +79,11 @@
                 <description>Find BizData</description>
                 <to uri="bean:commonService?method=getBizData(${header.processDefinitionId})"/>
             </get>
-
+            <post id="route-deploy" uri="/deploy" type="cn.com.rexen.workflow.api.model.JsonXml"
+                  outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Deploy Process Definition</description>
+                <to uri="bean:workflowService?method=deploy"/>
+            </post>
         </rest>
 
     </camelContext>
