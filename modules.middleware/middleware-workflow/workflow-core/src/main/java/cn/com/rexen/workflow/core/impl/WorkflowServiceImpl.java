@@ -92,11 +92,11 @@ public class WorkflowServiceImpl implements IWorkflowService {
                 "</definitions>";
         bpmnStr=jsonXml.getXml();
 
-        //bpmnStr=bpmnStr.replace("xmlns:camunda=\"http://camunda.org/schema/1.0/bpmn\"","xmlns:activiti=\"http://activiti.org/bpmn\"");
-        //bpmnStr=bpmnStr.replace("camunda:","activiti:");
+        bpmnStr=bpmnStr.replace("xmlns:camunda=\"http://camunda.org/schema/1.0/bpmn\"","xmlns:activiti=\"http://activiti.org/bpmn\"");
+        bpmnStr=bpmnStr.replace("camunda:","activiti:");
 
         RepositoryService repositoryService = processEngine.getRepositoryService();
-        repositoryService.createDeployment().addString("bpmnfromext",bpmnStr).deploy();
+        repositoryService.createDeployment().addString("procdef.bpmn",bpmnStr).deploy();
 
         return JsonStatus.successResult("添加成功");
     }
