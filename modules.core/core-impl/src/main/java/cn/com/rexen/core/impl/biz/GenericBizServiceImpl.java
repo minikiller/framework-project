@@ -313,6 +313,8 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
 
     @Override
     public List<Object> getFieldValuesByIds(Object[] ids,String fieldName){
+        if (ids == null || ids.length <= 0)
+            return null;
         String sql="SELECT a FROM %s a WHERE a.id in (%s)";
         List queryIds=new ArrayList<Long>();
 
