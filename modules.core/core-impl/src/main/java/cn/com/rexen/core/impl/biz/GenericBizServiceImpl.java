@@ -329,7 +329,7 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
         List records = this.dao.find(sql);
 
         if(records.size()>0){
-            Map fieldValueMap =BeanUtil.getBeanListFieldValues(records,fieldName);
+            Map fieldValueMap = BeanUtil.getBeanFieldValueMap(records, fieldName);
             List rtn=new ArrayList<Object>();
 
             for(int idsIndex=0;idsIndex<ids.length;++idsIndex){
