@@ -12,12 +12,16 @@ import org.osgi.service.http.HttpService;
 public class InitActivator extends KalixBundleActivator {
 
     private static final String BUNDLE_NAME = " <projectName> <beanName> Extjs ";
-    public static final String KALIX_APP_ROFFICE_PATH = "/kalix/app/app/<pomName>";
-    public static final String KALIX_ROFFICE_RESOURCES_IMAGES = "/kalix/app/<pomName>/resources/images";
     private static BundleContext context;
-    private static Logger logger = Logger.getLogger(InitActivator.class);
     private ServiceReference reference;
     private HttpService httpService;
+
+    //public static final String KALIX_APP_ROFFICE_PATH = "/kalix/app/app/<pomName>";
+    //public static final String KALIX_ROFFICE_RESOURCES_IMAGES = "/kalix/app/<pomName>/resources/images";
+    //private static BundleContext context;
+    //private static Logger logger = Logger.getLogger(InitActivator.class);
+    //private ServiceReference reference;
+    //private HttpService httpService;
 
     @Override
     public void start(BundleContext bundleContext) throws Exception {
@@ -26,8 +30,10 @@ public class InitActivator extends KalixBundleActivator {
 
         reference = bundleContext.getServiceReference(HttpService.class.getName());
         httpService = (HttpService) bundleContext.getService(reference);
-        httpService.registerResources(KALIX_APP_ROFFICE_PATH, "/kalix/<pomName>", null);
-        httpService.registerResources(KALIX_ROFFICE_RESOURCES_IMAGES, "/resources/images", null);
+        httpService.registerResources(contextPath + "/app/pms/<pomName>", "/<pomName>", null);
+        httpService.registerResources(contextPath +"/app/pms/<pomName>/resources/images", "/resources/images", null);
+        //httpService.registerResources(KALIX_APP_ROFFICE_PATH, "/kalix/<pomName>", null);
+        //httpService.registerResources(KALIX_ROFFICE_RESOURCES_IMAGES, "/resources/images", null);
     }
 
     @Override
@@ -35,10 +41,12 @@ public class InitActivator extends KalixBundleActivator {
         SystemUtil.succeedPrintln(String.format("Stop %s bundle!!", BUNDLE_NAME) + bundleContext.getBundle());
         context = null;
         if(httpService!=null){
-            httpService.unregister(KALIX_APP_ROFFICE_PATH);
-            httpService.unregister(KALIX_ROFFICE_RESOURCES_IMAGES);
+            httpService.unregister(contextPath +"/app/pms/<pomName>");
+            httpService.unregister(contextPath +"/app/pms/<pomName>/resources/images");
+            //httpService.unregister(KALIX_APP_ROFFICE_PATH);
+            //httpService.unregister(KALIX_ROFFICE_RESOURCES_IMAGES);
         }
         if (reference != null)
-                    bundleContext.ungetService(reference);
+            bundleContext.ungetService(reference);
     }
 }
