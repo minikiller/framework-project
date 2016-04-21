@@ -17,8 +17,8 @@ Ext.define('<extjsPrefix>.viewModel.<beanName>ViewModel', {
         view_title: '查看<module_Name>',
         add_title: '添加<module_Name>',
         edit_title: '修改<module_Name>',
-        add_image_path: '/kalix/app/<pomName>/resources/images/<pomName>_add.png',
-        view_image_path: '/kalix/app/<pomName>/resources/images/<pomName>_view.png',
-        edit_image_path: '/kalix/app/<pomName>/resources/images/<pomName>_edit.png',
+        add_image_path: '/kalix/app/pms/<pomName>/resources/images/<pomName>_add.png',
+        view_image_path: '/kalix/app/pms/<pomName>/resources/images/<pomName>_view.png',
+        edit_image_path: '/kalix/app/pms/<pomName>/resources/images/<pomName>_edit.png',
     }
 });
