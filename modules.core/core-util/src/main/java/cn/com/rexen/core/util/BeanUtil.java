@@ -82,6 +82,9 @@ public final class BeanUtil {
     }
 
     public static void setBeanListFieldValues(List beanList,String fieldName,List fieldValues){
+        if (fieldValues == null || fieldValues.size() <= 0) {
+            return;
+        }
         if(beanList!=null){
             for(int index=0;index<beanList.size();++index){
                 Object bean=beanList.get(index);
