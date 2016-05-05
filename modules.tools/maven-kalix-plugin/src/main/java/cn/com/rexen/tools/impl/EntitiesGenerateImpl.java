@@ -58,11 +58,14 @@ public class EntitiesGenerateImpl extends AbstractGenernateImpl {
                 resultBuffer.append("@JsonFormat(pattern = \"yyyy-MM-dd HH:mm:ss\",timezone =\"GMT+8\")\r\n");
             }
             resultBuffer.append("\tprivate " + fieldType.getValue() + " " + fieldName + ";\r\n");
-
+        }
+        for (JavaField field : fields) {
+            fieldName = field.getName();
+            fieldType = field.getType();
             //getter
-            if(fieldType.getValue().equals("boolean")) {
+            if (fieldType.getValue().equals("boolean")) {
                 resultBuffer.append("\tpublic " + fieldType.getValue() + " is" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
-            }else{
+            } else {
                 resultBuffer.append("\tpublic " + fieldType.getValue() + " get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
             }
             resultBuffer.append("(){\r\n");

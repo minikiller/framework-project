@@ -3,7 +3,10 @@ package cn.com.rexen.core.util;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author  chenyanxu
@@ -27,8 +30,10 @@ public final class BeanUtil {
         return rtn;
     }
 
-    public static Map getBeanListFieldValues(List list, String fieldName){
+    public static Map getBeanFieldValueMap(List list, String fieldName) {
         Map rtnMap=new Hashtable<Object,Object>();
+
+        List rtnList = new ArrayList<>();
 
         for(int index=0;index<list.size();++index){
             Object bean=list.get(index);
@@ -37,6 +42,18 @@ public final class BeanUtil {
         }
 
         return rtnMap;
+    }
+
+    public static List getBeanFieldValueList(List list, String fieldName) {
+        List rtnList = new ArrayList<>();
+
+        for (int index = 0; index < list.size(); ++index) {
+            Object bean = list.get(index);
+
+            rtnList.add(getBeanFieldValue(bean, fieldName));
+        }
+
+        return rtnList;
     }
 
     public static void setBeanFieldValue(Object bean,String fieldName,Object fieldValue){
@@ -65,6 +82,9 @@ public final class BeanUtil {
     }
 
     public static void setBeanListFieldValues(List beanList,String fieldName,List fieldValues){
+        if (fieldValues == null || fieldValues.size() <= 0) {
+            return;
+        }
         if(beanList!=null){
             for(int index=0;index<beanList.size();++index){
                 Object bean=beanList.get(index);

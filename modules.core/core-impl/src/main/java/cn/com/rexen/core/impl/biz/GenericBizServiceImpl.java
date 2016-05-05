@@ -313,6 +313,8 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
 
     @Override
     public List<Object> getFieldValuesByIds(Object[] ids,String fieldName){
+        if (ids == null || ids.length <= 0)
+            return null;
         String sql="SELECT a FROM %s a WHERE a.id in (%s)";
         List queryIds=new ArrayList<Long>();
 
@@ -327,7 +329,7 @@ public abstract class GenericBizServiceImpl<T extends IGenericDao, TP extends Pe
         List records = this.dao.find(sql);
 
         if(records.size()>0){
-            Map fieldValueMap =BeanUtil.getBeanListFieldValues(records,fieldName);
+            Map fieldValueMap = BeanUtil.getBeanFieldValueMap(records, fieldName);
             List rtn=new ArrayList<Object>();
 
             for(int idsIndex=0;idsIndex<ids.length;++idsIndex){
