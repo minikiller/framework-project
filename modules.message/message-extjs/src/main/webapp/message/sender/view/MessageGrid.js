@@ -31,7 +31,7 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
     columns: {
         defaults: {
             //renderer: 'addTooltip',
-            flex: 1,
+            flex: 1
         },
         items: [
             {
