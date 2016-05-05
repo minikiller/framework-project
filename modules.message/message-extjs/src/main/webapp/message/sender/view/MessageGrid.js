@@ -45,7 +45,7 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
             {
                 text: '编号',
                 dataIndex: 'id',
-                hidden: true,
+                hidden: true
             },
             {
                 text: '收件人',
@@ -64,7 +64,7 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
             },
             {
                 text: '发件时间',
-                dataIndex: 'creationDate',
+                dataIndex: 'creationDate'
             },
 
             {
@@ -80,7 +80,7 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
                         icon: "/kalix/message/resources/images/message_delete.png",
                         permission: '',
                         tooltip: '删除',
-                        handler: 'onDelete',
+                        handler: 'onDelete'
                     }
                 ]
             }
@@ -93,7 +93,7 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
                 text: '批量删除',
                 permission: '',
                 iconCls: 'fa fa-trash',
-                handler: 'onBatchDelete',
+                handler: 'onBatchDelete'
             }
         ]
     }
