@@ -3,17 +3,13 @@ package cn.com.rexen.workflow.core.impl;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.workflow.api.biz.IWorkflowService;
 import cn.com.rexen.workflow.api.model.JsonXml;
-import com.sun.javafx.sg.prism.NGShape;
 import org.activiti.engine.*;
 import org.activiti.engine.history.HistoricTaskInstance;
-import org.activiti.engine.impl.persistence.entity.ModelEntity;
 import org.activiti.engine.repository.Deployment;
-import org.activiti.engine.repository.Model;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.Execution;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
-import org.json4s.jackson.Json;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
