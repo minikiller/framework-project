@@ -53,7 +53,7 @@ public class OrganizationNoAreaMenuImpl implements IMenu {
 
     @Override
     public int getIndex() {
-        return 10;
+        return 20;
     }
 
     @Override
