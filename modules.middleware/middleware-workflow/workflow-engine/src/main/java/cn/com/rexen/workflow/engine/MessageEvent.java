@@ -90,14 +90,17 @@ public class MessageEvent implements ActivitiEventListener {
 
             HistoricProcessInstance historicProcessInstance = historyService.createHistoricProcessInstanceQuery()
                     .processInstanceId(processInstanceId).singleResult();
-            taskJson.put("group",id.getGroupId());
-            taskJson.put("businessKey", historicProcessInstance.getBusinessKey());
-            System.out.println("A task group of " + id.getGroupId() + " is assigned!");
-            //添加相关内容到消息体
-            Dictionary properties = new Hashtable();
-            properties.put("body", taskJson.toString());
-            Event osgi_event = new Event(WORKFLOW_MESSAGE_TOPIC, properties);
-            eventAdmin.postEvent(osgi_event);
+
+            if(historicProcessInstance!=null){
+                taskJson.put("group",id.getGroupId());
+                taskJson.put("businessKey", historicProcessInstance.getBusinessKey());
+                System.out.println("A task group of " + id.getGroupId() + " is assigned!");
+                //添加相关内容到消息体
+                Dictionary properties = new Hashtable();
+                properties.put("body", taskJson.toString());
+                Event osgi_event = new Event(WORKFLOW_MESSAGE_TOPIC, properties);
+                eventAdmin.postEvent(osgi_event);
+            }
         }
 
     }
