@@ -18,7 +18,7 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.core.rest</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
 
     <dependencies>

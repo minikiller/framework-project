@@ -18,7 +18,7 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.duty.entities</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
 
     <dependencies>
@@ -78,27 +78,8 @@
                                     <goal>run</goal>
                                 </goals>
                             </execution>
-                            <execution>
-                                <id>deploy</id>
-                                <phase>install</phase>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                                <configuration>
-                                    <target>
-                                        <copy file="target/${project.artifactId}-${project.version}.jar"
-                                              todir="${karaf.path}"/>
-                                    </target>
-                                </configuration>
-                            </execution>
                         </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.openjpa</groupId>
-                        <artifactId>openjpa-maven-plugin</artifactId>
-                        <version>2.3.0</version>
                     </plugin>
                 </plugins>
     </build>
-
 </project>

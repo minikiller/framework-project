@@ -17,7 +17,7 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.app.dto</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
     <dependencies>
         <!-- swagger api -->

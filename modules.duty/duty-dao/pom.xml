@@ -16,9 +16,9 @@
     <description>Duty JPA</description>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <bundle.symbolicName>cn.com.rexen.duty.dao</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
 
     <dependencies>

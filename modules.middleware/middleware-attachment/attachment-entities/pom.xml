@@ -17,7 +17,7 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.attachment.entities</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
 
     <dependencies>
@@ -61,10 +61,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.openjpa</groupId>
-                <artifactId>openjpa-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

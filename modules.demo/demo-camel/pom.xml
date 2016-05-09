@@ -17,7 +17,7 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.kalix.demo.camel</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
 
 
@@ -90,10 +90,6 @@
     <build>
 
         <plugins>
-            <plugin>
-                <groupId>org.apache.openjpa</groupId>
-                <artifactId>openjpa-maven-plugin</artifactId>
-            </plugin>
             <!-- <plugin>
                  <groupId>org.codehaus.mojo</groupId>
                  <artifactId>openjpa-maven-plugin</artifactId>

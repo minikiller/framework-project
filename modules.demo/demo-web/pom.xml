@@ -16,9 +16,9 @@
     <description>Demo Web Service</description>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <bundle.symbolicName>cn.com.rexen.workflow.web</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
     <dependencies>
 

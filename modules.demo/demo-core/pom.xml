@@ -13,7 +13,7 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.demo.core</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
 
     <name>Kalix :: Demo - Core</name>
@@ -75,31 +75,5 @@
             <artifactId>workflow-core</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
-
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>deploy</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <copy file="target/${project.artifactId}-${project.version}.jar"
-                                      todir="${karaf.path}"/>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>

@@ -13,7 +13,7 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.notice.api</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
 
     <name>Kalix :: Notice - API</name>

@@ -18,7 +18,7 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.example.itest</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
         <pax-exam.version>4.7.0</pax-exam.version>
     </properties>
 

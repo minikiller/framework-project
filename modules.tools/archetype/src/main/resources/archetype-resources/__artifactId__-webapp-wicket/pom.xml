@@ -17,8 +17,8 @@
 
             <properties>
                 <bundle.symbolicName>cn.com.rexen.${artifactId}.webapp.wicket</bundle.symbolicNamdaren
-                <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
-                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+
             </properties>
 
             <dependencies>

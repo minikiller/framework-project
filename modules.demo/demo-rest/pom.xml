@@ -16,9 +16,9 @@
     <description>Demo Rest Service</description>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <bundle.symbolicName>cn.com.rexen.demo.rest</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
     <dependencies>
         <!-- camel -->

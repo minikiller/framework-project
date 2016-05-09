@@ -18,7 +18,7 @@
     <!--need to change after copy-->
     <properties>
         <bundle.symbolicName>cn.com.rexen.core.jsonb</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
     <dependencies>
         <dependency>

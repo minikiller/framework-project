@@ -17,9 +17,9 @@
     <description>Message Rest Service</description>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <bundle.symbolicName>cn.com.rexen.bean.rest</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
 
     <dependencies>

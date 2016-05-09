@@ -15,7 +15,7 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.kalix.osgi.core</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
 
     <dependencies>

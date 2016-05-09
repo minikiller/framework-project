@@ -16,6 +16,6 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.excel.api</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
 </project>

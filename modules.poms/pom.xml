@@ -18,18 +18,20 @@
         <org.osgi.core.version>6.0.0</org.osgi.core.version>
         <org.osgi.compendium.version>5.0.0</org.osgi.compendium.version>
         <org.osgi.enterprise.version>5.0.0</org.osgi.enterprise.version>
-        <derby.Version>10.8.2.2</derby.Version>
-        <openjpa.Version>2.4.0</openjpa.Version>
-        <geronimoJpaSpec.Version>1.1</geronimoJpaSpec.Version>
-        <geronimoJtaSpec.Version>1.1.1</geronimoJtaSpec.Version>
-        <commonsCollections.Version>3.2.1</commonsCollections.Version>
-        <commonsLang.Version>2.5</commonsLang.Version>
-        <commonsPool.Version>1.5.4</commonsPool.Version>
-        <serp.Version>1.13.1</serp.Version>
+        <derby.version>10.8.2.2</derby.version>
+        <jpa.version>2.2.0</jpa.version>
+        <openjpa.version>2.4.0</openjpa.version>
+        <geronimoJpaSpec.version>1.1</geronimoJpaSpec.version>
+        <geronimoJtaSpec.version>1.1.1</geronimoJtaSpec.version>
+        <commonsCollections.version>3.2.1</commonsCollections.version>
+        <commonsLang.version>2.5</commonsLang.version>
+        <commonsPool.version>1.5.4</commonsPool.version>
+        <serp.version>1.13.1</serp.version>
         <log4j.version>1.2.17</log4j.version>
         <geronimo.inject.version>1.2</geronimo.inject.version>
         <ops4j.base.version>1.4.0</ops4j.base.version>
-        <cglib.version>2.2.2_1</cglib.version>
+        <!--<cglib.version>2.2.2_1</cglib.version>-->
+        <cglib.version>3.2.1_1</cglib.version>
         <aopalliance.version>1.0_6</aopalliance.version>
         <shiro.version>1.2.4</shiro.version>
         <jsr339.version>2.2.0</jsr339.version>
@@ -37,7 +39,8 @@
         <javassist.version>3.12.1.GA_3</javassist.version>
         <activiti.version>5.19.0.2</activiti.version>
         <cxf.version>3.1.1</cxf.version>
-        <camel.version>2.16.2</camel.version>
+        <!--<camel.version>2.16.2</camel.version>-->
+        <camel.version>2.17.0</camel.version>
         <activemq.version>5.13.0</activemq.version>
         <guava.version>15.0</guava.version>
         <jedis.version>2.6.2_1</jedis.version>

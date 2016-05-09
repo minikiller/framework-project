@@ -83,42 +83,42 @@
             <dependency>
                 <groupId>org.apache.derby</groupId>
                 <artifactId>derby</artifactId>
-                <version>${derby.Version}</version>
+                <version>${derby.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.openjpa</groupId>
                 <artifactId>openjpa</artifactId>
-                <version>${openjpa.Version}</version>
+                <version>${openjpa.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.geronimo.specs</groupId>
                 <artifactId>geronimo-jta_1.1_spec</artifactId>
-                <version>${geronimoJtaSpec.Version}</version>
+                <version>${geronimoJtaSpec.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.geronimo.specs</groupId>
                 <artifactId>geronimo-jpa_2.0_spec</artifactId>
-                <version>${geronimoJpaSpec.Version}</version>
+                <version>${geronimoJpaSpec.version}</version>
             </dependency>
             <dependency>
                 <groupId>commons-lang</groupId>
                 <artifactId>commons-lang</artifactId>
-                <version>${commonsLang.Version}</version>
+                <version>${commonsLang.version}</version>
             </dependency>
             <dependency>
                 <groupId>commons-pool</groupId>
                 <artifactId>commons-pool</artifactId>
-                <version>${commonsPool.Version}</version>
+                <version>${commonsPool.version}</version>
             </dependency>
             <dependency>
                 <groupId>commons-collections</groupId>
                 <artifactId>commons-collections</artifactId>
-                <version>${commonsCollections.Version}</version>
+                <version>${commonsCollections.version}</version>
             </dependency>
             <dependency>
                 <groupId>net.sourceforge.serp</groupId>
                 <artifactId>serp</artifactId>
-                <version>${serp.Version}</version>
+                <version>${serp.version}</version>
             </dependency>
             <!--openjpa end-->
             <dependency>
@@ -565,20 +565,4 @@
             <artifactId>org.apache.aries.transaction.blueprint</artifactId>
         </dependency>-->
     </dependencies>
-    <!--<build>-->
-        <!--<pluginManagement>-->
-            <!--<plugins>-->
-                <!--<plugin>-->
-                    <!--<groupId>org.apache.openjpa</groupId>-->
-                    <!--<artifactId>openjpa-maven-plugin</artifactId>-->
-                    <!--<version>${openjpa.Version}</version>-->
-                <!--</plugin>-->
-                <!--<plugin>-->
-                    <!--<groupId>org.codehaus.mojo</groupId>-->
-                    <!--<artifactId>native2ascii-maven-plugin</artifactId>-->
-                    <!--<version>1.0-beta-1</version>-->
-                <!--</plugin>-->
-            <!--</plugins>-->
-        <!--</pluginManagement>-->
-    <!--</build>-->
 </project>

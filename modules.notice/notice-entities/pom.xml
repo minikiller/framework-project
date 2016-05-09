@@ -16,7 +16,7 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.notice.entities</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
 
     <dependencies>
@@ -48,12 +48,4 @@
             <artifactId>org.apache.servicemix.specs.jsr303-api-1.0.0</artifactId>
         </dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.openjpa</groupId>
-                <artifactId>openjpa-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>

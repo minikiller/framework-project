@@ -16,7 +16,7 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.tools.codegenerate</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
 
     <dependencies>

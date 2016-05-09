@@ -16,9 +16,9 @@
     <description>Notice Rest Service</description>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <bundle.symbolicName>cn.com.rexen.notice.rest</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
     <dependencies>
         <!-- camel -->

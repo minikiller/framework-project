@@ -17,7 +17,7 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.app.web</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
 
     </properties>
 

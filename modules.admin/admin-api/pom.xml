@@ -14,7 +14,7 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.admin.api</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
 
     <name>System :: Admin - API</name>

@@ -26,8 +26,8 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.core.i18n</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+
     </properties>
 
     <dependencies>

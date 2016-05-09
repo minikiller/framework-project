@@ -34,7 +34,7 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.admin.persist.openjpa</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
 
     <dependencies>

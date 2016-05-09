@@ -32,7 +32,7 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.app.core</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
 
     <dependencies>

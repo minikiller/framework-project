@@ -17,7 +17,7 @@
     <!--need to change after copy-->
     <properties>
         <bundle.symbolicName>cn.com.rexen.core.impl.cache</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+
     </properties>
     <name>Kalix :: Core - Cache</name>
     <description>Core Cache</description>
