@@ -72,6 +72,10 @@
     <service interface="cn.com.rexen.core.api.web.IMenu">
         <bean class="cn.com.rexen.admin.web.impl.menu.OrganizationNoAreaMenuImpl"/>
     </service>
+    <!--组织结构树-->
+    <service interface="cn.com.rexen.core.api.web.IMenu">
+        <bean class="cn.com.rexen.admin.web.impl.menu.OrgChartMenuImpl"/>
+    </service>
     <!--部门管理-->
     <!--<service interface="cn.com.rexen.core.api.web.IMenu">-->
     <!--<bean class="cn.com.rexen.admin.web.impl.menu.DepartmentMenuImpl"/>-->
