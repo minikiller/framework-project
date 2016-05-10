@@ -12,9 +12,9 @@ import java.util.Date;
 public class HistoricProcessInstanceDTO extends BaseDTO {
     private String processDefinitionId;//流程id
     private String startUserId;//启动用户id
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date startTime;//开始时间
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date endTime;//结束时间
     private String businessKey;//业务主键
     private String status;//当前状态  结束 进行中

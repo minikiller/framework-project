@@ -29,11 +29,11 @@ public abstract class PersistentEntity implements Serializable {
     @Version
     @Column(name = "version_")
     private long version;
-    //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    //@JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date creationDate = new Date();// 创建日期
     private String createBy;    // 创建者
     private String updateBy;    // 更新者
-    // @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    // @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateDate = new Date();
     // 更新日期
 
@@ -79,7 +79,7 @@ public abstract class PersistentEntity implements Serializable {
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     public Date getCreationDate() {
         return creationDate;
     }
