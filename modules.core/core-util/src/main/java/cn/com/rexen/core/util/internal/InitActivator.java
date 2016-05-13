@@ -13,26 +13,22 @@ import org.osgi.framework.BundleContext;
  * @修改备注：
  */
 public class InitActivator implements BundleActivator {
-
     private static final String BUNDLE_NAME = " Kalix Core Util ";
     private static BundleContext context;
 
-    /**
-     * @return
-     */
-    public static BundleContext getBundleContext() {
-        return context;
-    }
-
     @Override
     public void start(BundleContext bundleContext) throws Exception {
-        context = bundleContext;
         SystemUtil.succeedPrintln(String.format("Start-up %s bundle!!", BUNDLE_NAME) + bundleContext.getBundle());
+        context=bundleContext;
     }
 
     @Override
     public void stop(BundleContext bundleContext) throws Exception {
         SystemUtil.succeedPrintln(String.format("Stop %s bundle!!", BUNDLE_NAME) + bundleContext.getBundle());
-        context = null;
+        this.context=null;
+    }
+
+    public static BundleContext getBundleContext() {
+        return context;
     }
 }

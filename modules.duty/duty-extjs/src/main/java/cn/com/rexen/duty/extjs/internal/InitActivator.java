@@ -2,7 +2,6 @@ package cn.com.rexen.duty.extjs.internal;
 
 import cn.com.rexen.core.api.osgi.KalixBundleActivator;
 import cn.com.rexen.core.util.SystemUtil;
-import org.apache.log4j.Logger;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.http.HttpService;
@@ -15,7 +14,6 @@ public class InitActivator extends KalixBundleActivator {
     public static final String KALIX_APP_ROFFICE_PATH = "/kalix/app/duty";
     public static final String KALIX_ROFFICE_RESOURCES_IMAGES = "/kalix/duty/resources/images";
     private static BundleContext context;
-    private static Logger logger = Logger.getLogger(InitActivator.class);
     private ServiceReference reference;
     private HttpService httpService;
 

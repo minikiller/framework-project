@@ -3,5 +3,5 @@
 #-----------------------------------------------------------------
 
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
-Import-Package:javax.persistence,cn.com.rexen.bean.dao,*
+Import-Package:javax.persistence,*
 Bundle-Category: Rexen  Kalix Message
