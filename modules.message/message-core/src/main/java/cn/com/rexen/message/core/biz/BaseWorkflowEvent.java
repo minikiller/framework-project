@@ -1,8 +1,8 @@
-package cn.com.rexen.bean.core.biz;
+package cn.com.rexen.message.core.biz;
 
 import cn.com.rexen.admin.api.biz.IUserBeanService;
-import cn.com.rexen.bean.api.dao.IMessageBeanDao;
-import cn.com.rexen.bean.entities.MessageBean;
+import cn.com.rexen.message.api.dao.IMessageBeanDao;
+import cn.com.rexen.message.entities.MessageBean;
 import cn.com.rexen.core.api.system.IStackService;
 
 /**

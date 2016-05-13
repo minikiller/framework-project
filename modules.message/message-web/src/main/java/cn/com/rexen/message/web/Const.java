@@ -1,4 +1,4 @@
-package cn.com.rexen.bean.web;
+package cn.com.rexen.message.web;
 
 /**
  * Created by sunlf on 2015/10/30.

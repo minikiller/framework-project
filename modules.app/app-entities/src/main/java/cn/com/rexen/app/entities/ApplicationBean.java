@@ -22,7 +22,6 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 @XmlRootElement
 public class ApplicationBean extends PersistentEntity {
-
     @NotNull(message = "'名称'是必填项")
     private String name;   // 名称
     @NotNull(message = "'登录名'是必填项")

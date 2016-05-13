@@ -1,4 +1,4 @@
-package cn.com.rexen.bean.core;
+package cn.com.rexen.message.core;
 
 /**
  * Created by sunlf on 2016/2/26.
