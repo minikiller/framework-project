@@ -47,7 +47,6 @@
         <org.apache.servicemix.bundles.jedis.version>2.6.2_1</org.apache.servicemix.bundles.jedis.version>
         <commons-pool2.version>2.4.2</commons-pool2.version>
         <gson.version>2.4</gson.version>
-        <poi.version>3.10-FINAL</poi.version>
         <jackson.version>1.9.12</jackson.version>
         <pax-cdi-api.version>0.11.0</pax-cdi-api.version>
         <postgresql.version>9.4-1202-jdbc41</postgresql.version>
@@ -64,7 +63,9 @@
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <javax.transaction.version>1.2</javax.transaction.version>
         <aries.transaction.version>2.0.0</aries.transaction.version>
-        <excel.poi.version>3.9_2</excel.poi.version>
+        <org.apache.poi.version>3.13</org.apache.poi.version>
+        <java.object.diff>0.92.1</java.object.diff>
+        <org.apache.xmlbeans.version>2.6.0</org.apache.xmlbeans.version>
     </properties>
 
     <modules>

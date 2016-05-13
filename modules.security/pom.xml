@@ -31,22 +31,6 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>cn.com.rexen.kalix.core</groupId>
-                <artifactId>core-api</artifactId>
-                <version>${globle.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.com.rexen.kalix.core</groupId>
-                <artifactId>core-util</artifactId>
-                <version>${globle.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.com.rexen.kalix.core</groupId>
-                <artifactId>core-impl</artifactId>
-                <version>${globle.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>cn.com.rexen.kalix.security</groupId>
                 <artifactId>security-core</artifactId>
                 <version>${globle.version}</version>
