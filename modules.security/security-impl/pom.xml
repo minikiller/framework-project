@@ -15,18 +15,9 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.security.impl</bundle.symbolicName>
-
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-util</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-api</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-web</artifactId>
@@ -35,10 +26,5 @@
             <groupId>javax.transaction</groupId>
             <artifactId>javax.transaction-api</artifactId>
         </dependency>
-
-        <!--<dependency>-->
-        <!--<groupId>cn.com.rexen.kalix.security</groupId>-->
-        <!--<artifactId>security-core</artifactId>-->
-        <!--</dependency>-->
     </dependencies>
 </project>

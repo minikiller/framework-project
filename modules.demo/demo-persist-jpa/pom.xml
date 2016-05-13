@@ -14,10 +14,7 @@
     <description>Demo JPA</description>
 
     <properties>
-
         <bundle.symbolicName>cn.com.rexen.demo.persist.openjpa</bundle.symbolicName>
-
-
     </properties>
 
     <dependencies>
@@ -29,11 +26,9 @@
             <groupId>cn.com.rexen.kalix.demo</groupId>
             <artifactId>demo-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-impl</artifactId>
+        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
 </project>

@@ -1,4 +1,4 @@
-package cn.com.rexen.bean.entities;
+package cn.com.rexen.message.entities;
 
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 

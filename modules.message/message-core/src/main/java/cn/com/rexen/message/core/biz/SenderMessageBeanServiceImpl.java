@@ -1,12 +1,12 @@
-package cn.com.rexen.bean.core.biz;
+package cn.com.rexen.message.core.biz;
 
 import cn.com.rexen.admin.api.biz.IUserBeanService;
 import cn.com.rexen.admin.entities.UserBean;
-import cn.com.rexen.bean.api.biz.IMessageBeanService;
-import cn.com.rexen.bean.api.biz.ISenderMessageBeanService;
-import cn.com.rexen.bean.api.dao.ISenderMessageBeanDao;
-import cn.com.rexen.bean.entities.MessageBean;
-import cn.com.rexen.bean.entities.SenderMessageBean;
+import cn.com.rexen.message.api.biz.IMessageBeanService;
+import cn.com.rexen.message.api.biz.ISenderMessageBeanService;
+import cn.com.rexen.message.api.dao.ISenderMessageBeanDao;
+import cn.com.rexen.message.entities.MessageBean;
+import cn.com.rexen.message.entities.SenderMessageBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.impl.biz.ShiroGenericBizServiceImpl;

@@ -18,8 +18,6 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.core.util</bundle.symbolicName>
-
-
     </properties>
 
     <dependencies>
@@ -27,28 +25,22 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.compendium</artifactId>
         </dependency>
-
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
         </dependency>
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
-
-        <!--<dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
-            <version>3.2.1</version>
-        </dependency>-->
-
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -204,42 +196,4 @@
             </plugin>-->
         </plugins>
     </build>
-
-    <profiles>
-        <!--<profile>-->
-            <!--<id>mysql</id>-->
-            <!--<properties>-->
-                <!--&lt;!&ndash; Database settings &ndash;&gt;-->
-                <!--<dbunit.dataTypeFactoryName>org.dbunit.ext.mysql.MySqlDataTypeFactory</dbunit.dataTypeFactoryName>-->
-                <!--<dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>-->
-                <!--<jdbc.groupId>mysql</jdbc.groupId>-->
-                <!--<jdbc.artifactId>mysql-connector-java</jdbc.artifactId>-->
-                <!--<jdbc.version>5.1.22</jdbc.version>-->
-                <!--<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>-->
-                <!--<jdbc.url>jdbc:mysql://localhost/${db.name}?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;autoReconnect=true</jdbc.url>-->
-                <!--<jdbc.username>root</jdbc.username>-->
-                <!--<jdbc.password>1234</jdbc.password>-->
-                <!--<db.name>kalix</db.name>-->
-            <!--</properties>-->
-
-        <!--</profile>-->
-        <!--<profile>-->
-            <!--<id>postgres</id>-->
-            <!--<properties>-->
-                <!--&lt;!&ndash; Database settings &ndash;&gt;-->
-                <!--&lt;!&ndash;<dbunit.dataTypeFactoryName>org.dbunit.ext.postgres.PostgresqlDataTypeFactory</dbunit.dataTypeFactoryName>&ndash;&gt;-->
-                <!--<dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>-->
-                <!--<jdbc.groupId>org.postgresql</jdbc.groupId>-->
-                <!--<jdbc.artifactId>postgresql</jdbc.artifactId>-->
-                <!--<jdbc.version>9.4-1202-jdbc41</jdbc.version>-->
-                <!--<jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>-->
-                <!--<jdbc.url>jdbc:postgresql://localhost/${db.name}</jdbc.url>-->
-                <!--<jdbc.username>postgres</jdbc.username>-->
-                <!--<jdbc.password>1234</jdbc.password>-->
-                <!--<db.name>kalix</db.name>-->
-            <!--</properties>-->
-
-        <!--</profile>-->
-    </profiles>
-
 </project>

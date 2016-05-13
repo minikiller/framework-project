@@ -5,59 +5,35 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.com.rexen.kalix</groupId>
+        <groupId>cn.com.rexen.kalix.middleware</groupId>
         <artifactId>modules.middleware</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>cn.com.rexen.kalix.middleware</groupId>
-    <artifactId>modules.workflow</artifactId>
+    <groupId>cn.com.rexen.kalix.middleware.workflow</groupId>
+    <artifactId>middleware-workflow</artifactId>
     <name>Middleware :: Modules - Workflow</name>
     <packaging>pom</packaging>
 
-    <properties/>
-
     <modules>
-        <module>workflow-engine</module>
         <module>workflow-api</module>
         <module>workflow-core</module>
+        <module>workflow-engine</module>
         <module>workflow-rest</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>cn.com.rexen.kalix.middleware</groupId>
+                <groupId>cn.com.rexen.kalix.middleware.workflow</groupId>
                 <artifactId>workflow-api</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.admin</groupId>
+                <artifactId>admin-api</artifactId>
                 <version>${globle.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-impl</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-util</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-        </dependency>
-    </dependencies>
 </project>

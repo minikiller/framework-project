@@ -3,22 +3,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
-        <groupId>cn.com.rexen.kalix</groupId>
+        <groupId>cn.com.rexen.kalix.middleware</groupId>
         <artifactId>modules.middleware</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.com.rexen.kalix.middleware</groupId>
-    <artifactId>modules.couchdb</artifactId>
+    <groupId>cn.com.rexen.kalix.middleware.couchdb</groupId>
+    <artifactId>middleware-couchdb</artifactId>
     <packaging>pom</packaging>
 
     <modules>
         <module>couchdb-api</module>
         <module>couchdb-core</module>
-        <!--<module>couchdb-entities</module>-->
-        <!--<module>couchdb-persist-jpa</module>-->
         <module>couchdb-rest</module>
     </modules>
 
@@ -28,16 +26,10 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>cn.com.rexen.kalix.middleware</groupId>
+                <groupId>cn.com.rexen.kalix.middleware.couchdb</groupId>
                 <artifactId>couchdb-api</artifactId>
                 <version>${globle.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
-
 </project>

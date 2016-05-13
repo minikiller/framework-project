@@ -1,6 +1,6 @@
-package cn.com.rexen.bean.web.impl;
+package cn.com.rexen.message.web.impl;
 
-import cn.com.rexen.bean.web.Const;
+import cn.com.rexen.message.web.Const;
 import cn.com.rexen.core.api.web.IMenu;
 
 /**

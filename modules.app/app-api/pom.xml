@@ -22,15 +22,6 @@
 
     <packaging>bundle</packaging>
     <dependencies>
-        <!--
-         | uncomment to add all imported (non-local) bundles to your compilation classpath
-        <dependency>
-          <type>pom</type>
-          <groupId>${parent.groupId}</groupId>
-          <artifactId>provision</artifactId>
-          <optional>true</optional>
-        </dependency>
-        -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -42,12 +33,10 @@
         <dependency>
             <groupId>cn.com.rexen.kalix.app</groupId>
             <artifactId>app-entities</artifactId>
-
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.app</groupId>
             <artifactId>app-dto</artifactId>
-
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.core</groupId>
@@ -58,11 +47,4 @@
             <artifactId>admin-entities</artifactId>
         </dependency>
     </dependencies>
-    <build>
-
-        <plugins>
-
-        </plugins>
-    </build>
-
 </project>

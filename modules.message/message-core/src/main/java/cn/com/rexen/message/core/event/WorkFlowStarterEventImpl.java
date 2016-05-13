@@ -1,9 +1,9 @@
-package cn.com.rexen.bean.core.event;
+package cn.com.rexen.message.core.event;
 
 import cn.com.rexen.admin.entities.UserBean;
-import cn.com.rexen.bean.core.Const;
-import cn.com.rexen.bean.core.biz.BaseWorkflowEvent;
-import cn.com.rexen.bean.entities.MessageBean;
+import cn.com.rexen.message.core.Const;
+import cn.com.rexen.message.core.biz.BaseWorkflowEvent;
+import cn.com.rexen.message.entities.MessageBean;
 import com.google.gson.Gson;
 import org.activiti.engine.impl.util.json.JSONObject;
 import org.osgi.service.event.Event;

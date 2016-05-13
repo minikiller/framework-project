@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.com.rexen.bean</groupId>
+        <groupId>cn.com.rexen.kalix.message</groupId>
         <artifactId>modules.message</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
@@ -17,41 +17,29 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.symbolicName>cn.com.rexen.bean.core</bundle.symbolicName>
-
+        <bundle.symbolicName>cn.com.rexen.message.core</bundle.symbolicName>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.servicemix.specs</groupId>
-            <artifactId>org.apache.servicemix.specs.jsr339-api-m10</artifactId>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-engine</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>cn.com.rexen.bean</groupId>
+            <groupId>cn.com.rexen.kalix.message</groupId>
             <artifactId>message-api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>cn.com.rexen.bean</groupId>
+            <groupId>cn.com.rexen.kalix.message</groupId>
             <artifactId>message-entities</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.audit</groupId>
-            <artifactId>audit-api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.admin</groupId>
             <artifactId>admin-api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-impl</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-        </plugins>
-    </build>
-
 </project>

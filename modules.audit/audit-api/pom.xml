@@ -16,25 +16,12 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.audit.api</bundle.symbolicName>
-
     </properties>
 
-
-
     <dependencies>
-        <dependency>
-            <groupId>org.apache.servicemix.specs</groupId>
-            <artifactId>org.apache.servicemix.specs.jsr339-api-m10</artifactId>
-        </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.audit</groupId>
             <artifactId>audit-entities</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
 </project>

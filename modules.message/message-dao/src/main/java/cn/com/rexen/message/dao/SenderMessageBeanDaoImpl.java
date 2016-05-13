@@ -1,7 +1,7 @@
-package cn.com.rexen.bean.dao;
+package cn.com.rexen.message.dao;
 
-import cn.com.rexen.bean.api.dao.ISenderMessageBeanDao;
-import cn.com.rexen.bean.entities.SenderMessageBean;
+import cn.com.rexen.message.api.dao.ISenderMessageBeanDao;
+import cn.com.rexen.message.entities.SenderMessageBean;
 import cn.com.rexen.core.impl.persistence.GenericDao;
 
 import javax.persistence.EntityManager;

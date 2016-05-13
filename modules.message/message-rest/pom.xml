@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.com.rexen.bean</groupId>
+        <groupId>cn.com.rexen.kalix.message</groupId>
         <artifactId>modules.message</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
@@ -17,28 +17,6 @@
     <description>Message Rest Service</description>
 
     <properties>
-
-        <bundle.symbolicName>cn.com.rexen.bean.rest</bundle.symbolicName>
-
+        <bundle.symbolicName>cn.com.rexen.message.rest</bundle.symbolicName>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.poms</groupId>
-            <artifactId>poms-dm</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.bean</groupId>
-            <artifactId>message-api</artifactId>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
-
 </project>
