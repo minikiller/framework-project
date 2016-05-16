@@ -21,3 +21,5 @@ All the bundles from your feature will be copied to system/. The path to your fe
 
 https://github.com/juttayaya/karaf
 
+https://github.com/apache/karaf/blob/karaf-4.0.x/assemblies/apache-karaf/pom.xml
+
