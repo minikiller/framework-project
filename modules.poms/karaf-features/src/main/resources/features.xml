@@ -295,24 +295,26 @@
         <bundle>mvn:cn.com.rexen.kalix.core/core-delegate/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.kalix.core/core-mq/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.kalix.core/core-rest/${parent.version}</bundle>
-        <bundle>mvn:cn.com.rexen.kalix.core/core-restfultest/${parent.version}</bundle>
+        <!--<bundle>mvn:cn.com.rexen.kalix.core/core-restfultest/${parent.version}</bundle>-->
         <bundle>mvn:cn.com.rexen.kalix.core/core-swagger/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.kalix.core/core-web/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.security/security-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.security/security-impl/${parent.version}</bundle>
         <!--<configfile finalname="/etc/CouchdbConfig.cfg">mvn:cn.com.rexen.kalix.core/karaf-features/${project.version}/cfg-->
         <!--</configfile>-->
     </feature>
 
     <feature name="kalix-web" version="1.0">
         <feature>kalix-core</feature>
-        <feature>mvn:cn.com.rexen.extjs.wrapper/wrapper-extjs/${parent.version}</feature>
-        <feature>mvn:cn.com.rexen.extjs.core/core-extjs/${parent.version}</feature>
-        <feature>mvn:cn.com.rexen.extjs.admin/admin-extjs/${parent.version}</feature>
-        <feature>mvn:cn.com.rexen.extjs.app/app-extjs/${parent.version}</feature>
-        <feature>mvn:cn.com.rexen.extjs.attachment/attachment-extjs/${parent.version}</feature>
-        <feature>mvn:cn.com.rexen.extjs.audit/audit-extjs/${parent.version}</feature>
-        <feature>mvn:cn.com.rexen.extjs.demo/demo-extjs/${parent.version}</feature>
-        <feature>mvn:cn.com.rexen.extjs.orgchart/orgchart-extjs/${parent.version}</feature>
-        <feature>mvn:cn.com.rexen.extjs.bpmn/bpmn-extjs/${parent.version}</feature>
+        <bundle>mvn:cn.com.rexen.extjs.wrapper/extjs-wrapper/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.core/core-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.admin/admin-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.app/app-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.attachment/attachment-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.audit/audit-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.demo/demo-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.orgchart/orgchart-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.bpmn/bpmn-extjs/${parent.version}</bundle>
     </feature>
 
     <feature name="kalix-osgi" version="1.0">
@@ -353,10 +355,9 @@
         <bundle>mvn:cn.com.rexen.kalix.audit/audit-api/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.kalix.audit/audit-core/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.kalix.audit/audit-entities/${parent.version}</bundle>
-        <bundle>mvn:cn.com.rexen.kalix.audit/audit-dao/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-persist-jpa/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.kalix.audit/audit-rest/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.kalix.audit/audit-web/${parent.version}</bundle>
-        <bundle>mvn:cn.com.rexen.kalix.audit/audit-extjs/${parent.version}</bundle>
     </feature>
 
     <feature name="kalix-duty" version="1.0">
@@ -416,16 +417,92 @@
     </feature>
 
     <feature name="kalix-all" version="4.0.5">
+
+        <!--<bundle>mvn:cn.com.rexen.kalix.core/core-util/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-impl/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-cache/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-delegate/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-mq/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-rest/${parent.version}</bundle>
+        &lt;!&ndash;<bundle>mvn:cn.com.rexen.kalix.core/core-restfultest/${parent.version}</bundle>&ndash;&gt;
+        <bundle>mvn:cn.com.rexen.kalix.core/core-swagger/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.core/core-web/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.security/security-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.security/security-impl/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.security/security-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.security/security-impl/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.osgi/osgi-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.osgi/osgi-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.osgi/osgi-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-persist-jpa/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-dto/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.admin/admin-web/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.wrapper/extjs-wrapper/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.core/core-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.admin/admin-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.app/app-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.attachment/attachment-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.audit/audit-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.demo/demo-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.orgchart/orgchart-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.bpmn/bpmn-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-persist-jpa/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-dto/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.app/app-web/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-persist-jpa/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.audit/audit-web/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-dao/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.duty/duty-web/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-dao/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.message/message-web/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-engine/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.attachment/attachment-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.attachment/attachment-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.attachment/attachment-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.attachment/attachment-persist-jpa/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.attachment/attachment-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.couchdb/couchdb-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.couchdb/couchdb-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.couchdb/couchdb-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.excel/excel-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.excel/excel-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.excel/excel-rest/${parent.version}</bundle>-->
         <feature>kalix-core</feature>
+        <feature>kalix-security</feature>
         <feature>kalix-osgi</feature>
         <feature>kalix-admin</feature>
         <feature>kalix-web</feature>
-        <feature>kalix-security</feature>
         <feature>kalix-app</feature>
         <feature>kalix-audit</feature>
         <feature>kalix-duty</feature>
         <feature>kalix-message</feature>
-        <feature>kalix-workflow</feature>
+        <feature>kalix-middleware</feature>
         <feature>kalix-config</feature>
     </feature>
     <!-- kalix config files -->
@@ -456,7 +533,7 @@
         </configfile>
     </feature>
 
-    <feature name="kalix" version="1.0.0">
+    <feature name="kalix-base" version="1.0.0">
         <feature version="${openjpa.version}">openjpa</feature>
         <feature>transaction</feature>
         <feature>war</feature>
@@ -487,8 +564,7 @@
         <bundle>wrap:mvn:de.danielbechler/java-object-diff/0.92.1</bundle>
         <bundle dependency="true">mvn:commons-lang/commons-lang/2.6</bundle>
         <bundle>mvn:org.apache.shiro/shiro-web/1.2.4</bundle>
-        <bundle>mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</bundle>
-        <feature>kalix-all</feature>
+        <bundle dependency="true">mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</bundle>
     </feature>
 
 
