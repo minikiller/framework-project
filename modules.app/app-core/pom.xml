@@ -32,14 +32,12 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.app.core</bundle.symbolicName>
-
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>cn.com.rexen.kalix.admin</groupId>
             <artifactId>admin-api</artifactId>
-
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.app</groupId>
@@ -48,12 +46,10 @@
         <dependency>
             <groupId>cn.com.rexen.kalix.app</groupId>
             <artifactId>app-entities</artifactId>
-
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.app</groupId>
             <artifactId>app-dto</artifactId>
-
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.core</groupId>
@@ -83,49 +79,21 @@
             <groupId>org.apache.servicemix.specs</groupId>
             <artifactId>org.apache.servicemix.specs.jsr339-api-m10</artifactId>
         </dependency>
-
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
         </dependency>
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
-
         <dependency>
             <groupId>net.sf.dozer</groupId>
             <artifactId>dozer-osgi</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
         </dependency>
-        <!--<dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-jaxrs</artifactId>
-            <version>1.9.8</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.amdatu</groupId>
-            <artifactId>org.amdatu.web.rest.jaxrs</artifactId>
-            <version>1.0.0</version>
-        </dependency>-->
-        <!--<dependency>
-            <groupId>org.apache.servicemix.specs</groupId>
-            <artifactId>org.apache.servicemix.specs.jsr339-api-m10</artifactId>
-            <version>2.2.0</version>
-           
-            <optional>true</optional>
-        </dependency>-->
     </dependencies>
-
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
 </project>

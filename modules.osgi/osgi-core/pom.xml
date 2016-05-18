@@ -15,18 +15,12 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.kalix.osgi.core</bundle.symbolicName>
-
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>cn.com.rexen.kalix.osgi</groupId>
             <artifactId>osgi-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.demo</groupId>
-            <artifactId>demo-web</artifactId>
-            <version>${globle.version}</version>
         </dependency>
     </dependencies>
 </project>

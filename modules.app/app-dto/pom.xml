@@ -17,21 +17,5 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.app.dto</bundle.symbolicName>
-
     </properties>
-    <dependencies>
-        <!-- swagger api -->
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-swagger</artifactId>
-        </dependency>
-
-    </dependencies>
-
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
-
 </project>

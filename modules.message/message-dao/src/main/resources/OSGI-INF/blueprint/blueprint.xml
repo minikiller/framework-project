@@ -8,14 +8,14 @@
     <jpa:enable/>
     <tx:enable-annotations/>
 
-    <bean id="messageBeanDaoImpl" class="cn.com.rexen.bean.dao.MessageBeanDaoImpl">
+    <bean id="messageBeanDaoImpl" class="cn.com.rexen.message.dao.MessageBeanDaoImpl">
         <tx:transaction method="*" value="Required"/>
     </bean>
-    <bean id="senderMessageBeanDaoImpl" class="cn.com.rexen.bean.dao.SenderMessageBeanDaoImpl">
+    <bean id="senderMessageBeanDaoImpl" class="cn.com.rexen.message.dao.SenderMessageBeanDaoImpl">
         <tx:transaction method="*" value="Required"/>
     </bean>
 
-    <service interface="cn.com.rexen.bean.api.dao.IMessageBeanDao" ref="messageBeanDaoImpl"/>
-    <service interface="cn.com.rexen.bean.api.dao.ISenderMessageBeanDao" ref="senderMessageBeanDaoImpl"/>
+    <service interface="cn.com.rexen.message.api.dao.IMessageBeanDao" ref="messageBeanDaoImpl"/>
+    <service interface="cn.com.rexen.message.api.dao.ISenderMessageBeanDao" ref="senderMessageBeanDaoImpl"/>
 </blueprint>
 

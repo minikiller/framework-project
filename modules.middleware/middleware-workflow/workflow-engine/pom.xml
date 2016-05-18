@@ -6,8 +6,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.com.rexen.kalix.middleware</groupId>
-        <artifactId>modules.workflow</artifactId>
+        <groupId>cn.com.rexen.kalix.middleware.workflow</groupId>
+        <artifactId>middleware-workflow</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
@@ -18,8 +18,6 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.workflow.engine</bundle.symbolicName>
-
-
     </properties>
 
     <dependencies>
@@ -27,38 +25,28 @@
             <groupId>org.activiti</groupId>
             <artifactId>activiti-engine</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.activiti</groupId>
             <artifactId>activiti-osgi</artifactId>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.mybatis</groupId>-->
+            <!--<artifactId>mybatis</artifactId>-->
+            <!--<version>3.2.8</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
 
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.2.8</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.servicemix.activiti</groupId>
-            <artifactId>org.apache.servicemix.activiti.config</artifactId>
-            <version>6.0.0</version>
-            <scope>provided</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.servicemix.activiti</groupId>-->
+            <!--<artifactId>org.apache.servicemix.activiti.config</artifactId>-->
+            <!--<version>6.0.0</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20140107</version>
         </dependency>
-
     </dependencies>
-
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
 
 </project>

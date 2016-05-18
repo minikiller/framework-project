@@ -23,12 +23,13 @@
         <module>core-delegate</module>
         <module>core-cache</module>
         <module>core-mq</module>
-        <!--<module>core-datasource</module>-->
         <module>core-impl</module>
         <module>core-web</module>
         <module>core-rest</module>
         <module>core-swagger</module>
         <module>core-restfultest</module>
+
+        <!--<module>core-datasource</module>-->
         <!--<module>core-i18n</module>-->
         <!--<module>core-security</module>-->
         <!--<module>core-jsonb</module>-->
@@ -42,29 +43,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>cn.com.rexen.kalix.core</groupId>
-                <artifactId>core-api</artifactId>
-                <version>${globle.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.com.rexen.kalix.core</groupId>
-                <artifactId>core-util</artifactId>
-                <version>${globle.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.com.rexen.kalix.core</groupId>
-                <artifactId>core-impl</artifactId>
-                <version>${globle.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.poms</groupId>
-            <artifactId>poms-dm</artifactId>
-            <version>${globle.version}</version>
-            <type>pom</type>
-        </dependency>
-    </dependencies>
 </project>

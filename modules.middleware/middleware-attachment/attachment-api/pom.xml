@@ -3,32 +3,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <!--<relativePath>..</relativePath>-->
-        <groupId>cn.com.rexen.kalix.middleware</groupId>
-        <artifactId>modules.attachment</artifactId>
+        <groupId>cn.com.rexen.kalix.middleware.attachment</groupId>
+        <artifactId>middleware-attachment</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>attachment-api</artifactId>
-    <name>Middleware :: attachment - API</name>
+    <name>Middleware :: Attachment - API</name>
     <description>attachment API</description>
     <packaging>bundle</packaging>
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.attachment.api</bundle.symbolicName>
-
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>cn.com.rexen.kalix.middleware</groupId>
+            <groupId>cn.com.rexen.kalix.middleware.attachment</groupId>
             <artifactId>attachment-entities</artifactId>
         </dependency>
     </dependencies>
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
-
 </project>

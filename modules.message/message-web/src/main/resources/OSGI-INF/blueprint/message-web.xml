@@ -3,9 +3,9 @@
            xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
     <service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.bean.web.impl.MessageMenuImpl"/>
+        <bean class="cn.com.rexen.message.web.impl.MessageMenuImpl"/>
     </service>
     <service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.bean.web.impl.ReceiverMessageMenuImpl"/>
+        <bean class="cn.com.rexen.message.web.impl.ReceiverMessageMenuImpl"/>
     </service>
 </blueprint>

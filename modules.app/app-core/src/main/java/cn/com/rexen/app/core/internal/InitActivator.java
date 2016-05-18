@@ -2,7 +2,6 @@ package cn.com.rexen.app.core.internal;
 
 import cn.com.rexen.app.core.PluginBundleHandler;
 import cn.com.rexen.core.util.SystemUtil;
-import org.apache.log4j.Logger;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -16,7 +15,6 @@ public class InitActivator implements BundleActivator {
 
     private static final String BUNDLE_NAME = " Kalix App Core ";
     private static BundleContext context;
-    private static Logger logger = Logger.getLogger(InitActivator.class);
     private BundleTracker bundleTracker;
 
     @Override
@@ -26,7 +24,6 @@ public class InitActivator implements BundleActivator {
         bundleTracker = new BundleTracker(context, Bundle.ACTIVE | Bundle.RESOLVED, null) {
             @Override
             public Object addingBundle(Bundle bundle, BundleEvent event) {
-                logger.info(String.format("adding bundle {0} {1}", bundle.getSymbolicName(), bundle));
                 PluginBundleHandler.processBundle(bundle);
                 return null;
             }

@@ -15,7 +15,6 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.kalix.osgi.rest</bundle.symbolicName>
-
     </properties>
 
     <dependencies>

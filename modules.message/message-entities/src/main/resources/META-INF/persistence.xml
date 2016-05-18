@@ -5,8 +5,8 @@
         <jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=jdbc/ds)
         </jta-data-source>
         <class>cn.com.rexen.core.api.persistence.PersistentEntity</class>
-        <class>cn.com.rexen.bean.entities.MessageBean</class>
-        <class>cn.com.rexen.bean.entities.SenderMessageBean</class>
+        <class>cn.com.rexen.message.entities.MessageBean</class>
+        <class>cn.com.rexen.message.entities.SenderMessageBean</class>
         <properties>
             <property name="openjpa.BrokerImpl" value="non-finalizing"/>
             <property name="openjpa.Sequence" value="table(Table=OPENJPASEQ, Increment=100)"/>

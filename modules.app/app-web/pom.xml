@@ -17,27 +17,5 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.app.web</bundle.symbolicName>
-
-
     </properties>
-
-
-    <dependencies>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-api</artifactId>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
-
-
 </project>

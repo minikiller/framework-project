@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.com.rexen.bean</groupId>
+        <groupId>cn.com.rexen.kalix.message</groupId>
         <artifactId>modules.message</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
@@ -18,8 +18,6 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.symbolicName>cn.com.rexen.bean.extjs</bundle.symbolicName>
-
-
+        <bundle.symbolicName>cn.com.rexen.message.extjs</bundle.symbolicName>
     </properties>
 </project>

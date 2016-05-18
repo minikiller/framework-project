@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.com.rexen.kalix.middleware</groupId>
-        <artifactId>modules.workflow</artifactId>
+        <groupId>cn.com.rexen.kalix.middleware.workflow</groupId>
+        <artifactId>middleware-workflow</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
@@ -17,7 +17,6 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.workflow.api</bundle.symbolicName>
-
     </properties>
 
     <dependencies>
@@ -25,16 +24,5 @@
             <groupId>org.activiti</groupId>
             <artifactId>activiti-engine</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.servicemix.specs</groupId>
-            <artifactId>org.apache.servicemix.specs.jsr339-api-m10</artifactId>
-        </dependency>
     </dependencies>
-    <build>
-
-        <plugins>
-
-        </plugins>
-    </build>
-
 </project>

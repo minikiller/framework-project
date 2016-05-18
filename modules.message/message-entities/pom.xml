@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.com.rexen.bean</groupId>
+        <groupId>cn.com.rexen.kalix.message</groupId>
         <artifactId>modules.message</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
@@ -15,34 +15,10 @@
     <name>Kalix :: Message - Entities</name>
     <description>Message Entities</description>
 
-
     <properties>
-        <bundle.symbolicName>cn.com.rexen.bean.entities</bundle.symbolicName>
-
+        <bundle.symbolicName>cn.com.rexen.message.entities</bundle.symbolicName>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.servicemix.specs</groupId>
-            <artifactId>org.apache.servicemix.specs.jsr303-api-1.0.0</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-jpa_2.0_spec</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.openjpa</groupId>
-            <artifactId>openjpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-        </dependency>
-    </dependencies>
+    
     <build>
         <plugins>
             <plugin>

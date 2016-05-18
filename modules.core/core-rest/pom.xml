@@ -18,68 +18,14 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.core.rest</bundle.symbolicName>
-
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-util</artifactId>
-        </dependency>
-        <dependency>
             <groupId>cn.com.rexen.kalix.poms</groupId>
-            <artifactId>poms-rest</artifactId>
+            <artifactId>poms-dm</artifactId>
             <type>pom</type>
             <version>${globle.version}</version>
         </dependency>
-        <!--<dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-servlet</artifactId>
-        </dependency>
-        &lt;!&ndash; swagger api &ndash;&gt;
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-swagger</artifactId>
-        </dependency>
-        &lt;!&ndash; use for json binding &ndash;&gt;
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-jackson</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.ops4j.pax.web</groupId>
-            <artifactId>pax-web-jetty-bundle</artifactId>
-        </dependency>-->
     </dependencies>
-
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
-
 </project>

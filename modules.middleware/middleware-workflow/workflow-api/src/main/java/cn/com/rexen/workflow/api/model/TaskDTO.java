@@ -13,7 +13,7 @@ public class TaskDTO extends BaseDTO {
     private String name;//任务名称
     private String description;//任务描述
     private String assignee;//执行人
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(shape= JsonFormat.Shape.STRING ,pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;//创建时间
     private String processInstanceId;//流程实例id
     private String entityId;//业务实体id

@@ -13,7 +13,6 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.demo.core</bundle.symbolicName>
-
     </properties>
 
     <name>Kalix :: Demo - Core</name>
@@ -23,57 +22,22 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-impl</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.servicemix.specs</groupId>
-            <artifactId>org.apache.servicemix.specs.jsr339-api-m10</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>cn.com.rexen.kalix.demo</groupId>
             <artifactId>demo-api</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>cn.com.rexen.kalix.audit</groupId>
-            <artifactId>audit-api</artifactId>
-            <version>${globle.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>cn.com.rexen.kalix.audit</groupId>
             <artifactId>audit-core</artifactId>
             <version>${globle.version}</version>
         </dependency>
-
         <dependency>
             <groupId>cn.com.rexen.kalix.demo</groupId>
             <artifactId>demo-entities</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.activiti</groupId>
-            <artifactId>activiti-engine</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.com.rexen.kalix.middleware</groupId>
+            <groupId>cn.com.rexen.kalix.middleware.workflow</groupId>
             <artifactId>workflow-core</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${globle.version}</version>
         </dependency>
     </dependencies>
 </project>

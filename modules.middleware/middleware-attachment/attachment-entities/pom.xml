@@ -3,33 +3,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <!--<relativePath>..</relativePath>-->
-        <groupId>cn.com.rexen.kalix.middleware</groupId>
-        <artifactId>modules.attachment</artifactId>
+        <groupId>cn.com.rexen.kalix.middleware.attachment</groupId>
+        <artifactId>middleware-attachment</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>attachment-entities</artifactId>
     <packaging>bundle</packaging>
-    <name>Middleware :: attachment - Entities</name>
+    <name>Middleware :: Attachment - Entities</name>
     <description>attachment Entities Module</description>
-
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.attachment.entities</bundle.symbolicName>
-
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-jpa_2.0_spec</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.openjpa</groupId>
-            <artifactId>openjpa</artifactId>
-        </dependency>
-    </dependencies>
     <build>
         <plugins>
             <plugin>

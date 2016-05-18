@@ -16,7 +16,6 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.audit.persist.openjpa</bundle.symbolicName>
-
     </properties>
 
     <dependencies>
@@ -28,11 +27,9 @@
             <groupId>cn.com.rexen.kalix.audit</groupId>
             <artifactId>audit-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-impl</artifactId>
+        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
 </project>

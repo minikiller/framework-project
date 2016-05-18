@@ -10,7 +10,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>cn.com.rexen.duty</groupId>
+    <groupId>cn.com.rexen.kalix.duty</groupId>
     <artifactId>modules.duty</artifactId>
 
     <name>Admin :: Modules - Duty</name>
@@ -95,6 +95,17 @@
                 <artifactId>app-api</artifactId>
                 <version>${globle.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>cn.com.rexen.kalix.duty</groupId>
+                <artifactId>duty-entities</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.duty</groupId>
+                <artifactId>duty-api</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -104,15 +115,5 @@
             <type>pom</type>
             <version>${globle.version}</version>
         </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-util</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.core</groupId>
-            <artifactId>core-api</artifactId>
-        </dependency>
-
     </dependencies>
-
 </project>

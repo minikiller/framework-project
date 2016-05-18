@@ -2,13 +2,11 @@ package cn.com.rexen.app.entities;
 
 import cn.com.rexen.core.api.persistence.PersistentEntity;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -22,12 +20,8 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 @XmlRootElement
 public class ApplicationBean extends PersistentEntity {
-
-    @NotNull(message = "'名称'是必填项")
     private String name;   // 名称
-    @NotNull(message = "'登录名'是必填项")
     private String remark;   // 备注
-    @NotNull(message = "'代码'是必填项")
     private String code; //代码
     private String location; //地址
 

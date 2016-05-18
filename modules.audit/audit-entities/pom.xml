@@ -13,30 +13,10 @@
     <name>Kalix :: Audit - Entities</name>
     <description>Audit Entities</description>
 
-
     <properties>
         <bundle.symbolicName>cn.com.rexen.audit.entities</bundle.symbolicName>
-
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.servicemix.specs</groupId>
-            <artifactId>org.apache.servicemix.specs.jsr303-api-1.0.0</artifactId>
-        </dependency>
-        <!--<dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.1-api</artifactId>
-        </dependency>-->
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-jpa_2.0_spec</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.openjpa</groupId>
-            <artifactId>openjpa</artifactId>
-        </dependency>
-    </dependencies>
     <build>
         <plugins>
             <plugin>

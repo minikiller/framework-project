@@ -15,9 +15,5 @@
     <packaging>bundle</packaging>
     <properties>
         <bundle.symbolicName>cn.com.rexen.kalix.osgi.api</bundle.symbolicName>
-
     </properties>
-
-    <dependencies>
-    </dependencies>
 </project>
