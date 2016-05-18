@@ -10,8 +10,8 @@
 
     <artifactId>core-delegate</artifactId>
     <packaging>bundle</packaging>
-    <name>Kylix :: Core - Delegate</name>
-    <description>Kylix Core Delegate</description>
+    <name>Kalix :: Core - Delegate</name>
+    <description>Kalix Core Delegate</description>
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.core.delegate</bundle.symbolicName>
