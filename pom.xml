@@ -29,12 +29,12 @@
         <module>modules.demo</module>
         <!--<module>modules.example</module>-->
         <module>modules.middleware</module>
-        <module>modules.tools</module>
         <module>modules.osgi</module>
         <module>modules.security</module>
         <module>modules.duty</module>
         <module>modules.message</module>
         <module>modules.dashboard</module>
+        <module>modules.tools</module>
         <!--<module>modules.notice</module>-->
     </modules>
 </project>
