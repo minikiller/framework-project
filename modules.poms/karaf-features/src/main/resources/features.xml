@@ -339,6 +339,16 @@
         <bundle>mvn:cn.com.rexen.kalix.admin/admin-web/${parent.version}</bundle>
     </feature>
 
+    <feature name="kalix-demo" version="1.0">
+        <feature>kalix-core</feature>
+        <bundle>mvn:cn.com.rexen.kalix.demo/demo-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.demo/demo-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.demo/demo-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.demo/demo-persist-jpa/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.demo/demo-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.demo/demo-web/${parent.version}</bundle>
+    </feature>
+
     <feature name="kalix-app" version="1.0">
         <feature>kalix-core</feature>
         <bundle>mvn:cn.com.rexen.kalix.app/app-api/${parent.version}</bundle>
@@ -499,6 +509,7 @@
         <feature>kalix-admin</feature>
         <feature>kalix-web</feature>
         <feature>kalix-app</feature>
+        <feature>kalix-demo</feature>
         <feature>kalix-audit</feature>
         <feature>kalix-duty</feature>
         <feature>kalix-message</feature>
