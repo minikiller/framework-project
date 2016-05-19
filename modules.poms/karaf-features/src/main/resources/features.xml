@@ -313,6 +313,7 @@
         <bundle>mvn:cn.com.rexen.extjs.attachment/attachment-extjs/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.extjs.audit/audit-extjs/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.extjs.demo/demo-extjs/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.extjs.workflow/workflow-extjs/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.extjs.orgchart/orgchart-extjs/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.extjs.bpmn/bpmn-extjs/${parent.version}</bundle>
     </feature>
