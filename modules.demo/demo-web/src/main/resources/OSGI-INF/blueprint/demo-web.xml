@@ -46,6 +46,11 @@
         <bean class="cn.com.rexen.demo.web.impl.menu.CarApplyMenuImpl"/>
     </service>
 
+    <!--会议室使用申请-->
+    <service interface="cn.com.rexen.core.api.web.IMenu">
+        <bean class="cn.com.rexen.demo.web.impl.menu.MeetingApplyMenuImpl"/>
+    </service>
+
     <!--流程定义管理-->
     <service interface="cn.com.rexen.core.api.web.IMenu">
         <bean class="cn.com.rexen.demo.web.impl.menu.ProcessDefinitionMenuImpl"/>
@@ -88,8 +93,22 @@
         <bean class="cn.com.rexen.demo.web.impl.form.CarApplyAuditFormImpl"/>
     </service>
 
+    <!-- 会议室使用申请审批页面-->
+    <service interface="cn.com.rexen.workflow.api.web.IFormHandler">
+        <bean class="cn.com.rexen.demo.web.impl.form.MeetingApplyAuditFormImpl"/>
+    </service>
+
     <!-- 用车申请流程历史页面-->
     <service interface="cn.com.rexen.workflow.api.web.IBizDataHandler">
         <bean class="cn.com.rexen.demo.web.impl.form.CarApplyBizDataFormImpl"/>
+    </service>
+
+    <!-- 会议室使用申请流程历史页面-->
+    <service interface="cn.com.rexen.workflow.api.web.IBizDataHandler">
+        <bean class="cn.com.rexen.demo.web.impl.form.MeetingApplyBizDataFormImpl"/>
+    </service>
+    <!-- 主流程菜单-->
+    <service interface="cn.com.rexen.core.api.web.IMenu">
+        <bean class="cn.com.rexen.demo.web.impl.menu.MainMenuImpl"/>
     </service>
 </blueprint>

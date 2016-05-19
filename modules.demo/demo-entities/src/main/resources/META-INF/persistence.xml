@@ -12,6 +12,8 @@
         <class>cn.com.rexen.demo.entities.NoticeBean</class>
         <class>cn.com.rexen.demo.entities.SealApplyBean</class>
         <class>cn.com.rexen.demo.entities.CarApplyBean</class>
+        <class>cn.com.rexen.demo.entities.MeetingApplyBean</class>
+        <class>cn.com.rexen.demo.entities.WorkFlowBean</class>
 
         <properties>
             <property name="openjpa.BrokerImpl" value="non-finalizing"/>
