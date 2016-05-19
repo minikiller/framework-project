@@ -72,10 +72,25 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>process-resources</id>
+                        <id>copy-resources</id>
+                        <phase>prepare-package</phase>
                         <goals>
-                            <goal>resources</goal>
+                            <goal>copy-resources</goal>
                         </goals>
+                        <configuration>
+                            <outputDirectory>${project.basedir}/target/assembly</outputDirectory>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>${project.basedir}/src/main/assembly</directory>
+                                    <filtering>false</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>${project.basedir}/src/main/filtered-assembly</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -128,12 +143,21 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <!-- installedFeatures only installs the libraries in the ${KARAF_HOME}/system directory
+                         but the user will have to start it up manually via Karaf command line feature:install
+                    -->
                     <installedFeatures>
                         <feature>wrapper</feature>
                     </installedFeatures>
                     <startupFeatures>
                         <feature>eventadmin</feature>
                     </startupFeatures>
+                    <startupBundles>
+                        <Bundle>mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</Bundle>
+                    </startupBundles>
+                    <!--<bootBundles>
+                        <bootBundle>mvn:org.apache.felix/org.apache.felix.prefs/1.0.6</bootBundle>
+                    </bootBundles>-->
                     <bootFeatures>
                         <feature>framework</feature>
                         <feature>wrap</feature>
@@ -155,17 +179,62 @@
                         <feature>package</feature>
                         <feature>service</feature>
                         <feature>system</feature>
-                        <feature>kalix</feature>
+                        <feature>kalix-base</feature>
                         <feature>activiti</feature>
                         <feature>couchdb</feature>
+                        <feature>kalix-all</feature>
+                        <!--<feature>kalix-core</feature>-->
+                        <!--<feature>kalix-security</feature>-->
+                        <!--<feature>kalix-osgi</feature>-->
+                        <!--<feature>kalix-admin</feature>-->
+                        <!--<feature>kalix-web</feature>-->
+                        <!--<feature>kalix-app</feature>-->
                     </bootFeatures>
                     <!--<karafDirectory>${assembly.directory}</karafDirectory>
                     <startSsh>true</startSsh>
                     <keepRunning>true</keepRunning>
                     <deployProjectArtifact>false</deployProjectArtifact>-->
+
+
+                    <!--<installedFeatures>
+                        <feature>obr</feature>
+                        <feature>war</feature>
+                        <feature>webconsole</feature>
+                        <feature>jndi</feature>
+                        <feature>jpa</feature>
+                        <feature>openjpa</feature>
+                        <feature>jdbc</feature>
+                        <feature>jms</feature>
+                        <feature>transaction</feature>
+                        <feature>camel-quartz2</feature>
+                        <feature>camel-cxf</feature>
+                        <feature>spring</feature>
+                    </installedFeatures>
+-->
                 </configuration>
 
             </plugin>
+
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>bin</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/main/descriptors/bin.xml</descriptor>
+                            </descriptors>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <tarLongFileMode>gnu</tarLongFileMode>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>-->
         </plugins>
 
     </build>
