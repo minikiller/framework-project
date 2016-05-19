@@ -53,7 +53,7 @@ public class MainMenuImpl implements IMenu {
 
     @Override
     public int getIndex() {
-        return 70;
+        return 80;
     }
 
     @Override
