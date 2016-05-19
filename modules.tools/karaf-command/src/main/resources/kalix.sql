@@ -2234,6 +2234,9 @@ INSERT INTO "public"."sys_dict" VALUES ('75211', '管理员', '2016-05-16 10:23:
 INSERT INTO "public"."sys_dict" VALUES ('75212', '管理员', '2016-05-16 10:23:50.445', '管理员', '2016-05-16 10:23:50.445', '1', '', '行政类', '3', 'workflow_category', '3');
 INSERT INTO "public"."sys_dict" VALUES ('75213', '管理员', '2016-05-16 10:24:08.081', '管理员', '2016-05-16 10:24:08.081', '1', '', '费用类', '4', 'workflow_category', '4');
 INSERT INTO "public"."sys_dict" VALUES ('75214', '管理员', '2016-05-16 10:24:24.297', '管理员', '2016-05-16 10:24:24.297', '1', '', '后勤类', '5', 'workflow_category', '5');
+INSERT INTO "public"."sys_dict" VALUES ('78210', 'qwer', '2016-05-19 15:31:32.955', 'qwer', '2016-05-19 15:31:32.955', '1', '', '照像', '1', 'requireType', '1');
+INSERT INTO "public"."sys_dict" VALUES ('78211', 'qwer', '2016-05-19 15:31:54.043', 'qwer', '2016-05-19 15:31:54.043', '1', '', '摄像', '2', 'requireType', '2');
+INSERT INTO "public"."sys_dict" VALUES ('78212', 'qwer', '2016-05-19 15:32:03.096', 'qwer', '2016-05-19 15:32:03.096', '1', '', '记者', '3', 'requireType', '3');
 -- ----------------------------
 -- Table structure for "public"."sys_duty"
 -- ----------------------------
