@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <reference id="meetingApplyService" interface="cn.com.rexen.demo.api.biz.IMeetingApplyBeanService"/>
+
+    <camelContext id="demo-rest-meetingapply" xmlns="http://camel.apache.org/schema/blueprint">
+        <restConfiguration component="servlet" bindingMode="json">
+            <dataFormatProperty key="prettyPrint" value="true"/>
+        </restConfiguration>
+        <rest path="/meetingapplys" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
+            <get id="route-getAllMeetingApply" outType="cn.com.rexen.core.api.persistence.JsonData">
+                <description>Find all meetingApplys</description>
+                <to uri="bean:meetingApplyService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+            </get>
+            <post id="route-addMeetingApply" type="cn.com.rexen.demo.entities.MeetingApplyBean"
+                  outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Create a MeetingApply</description>
+                <to uri="bean:meetingApplyService?method=saveEntity"/>
+            </post>
+        </rest>
+        <rest path="/meetingapplys/{id}" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-getMeetingApply" outType="cn.com.rexen.demo.entities.MeetingApplyBean">
+                <description>Find meetingApply by id</description>
+                <to uri="bean:meetingApplyService?method=getEntity(${header.id})"/>
+            </get>
+            <put id="route-updatemeetingApply" type="cn.com.rexen.demo.entities.MeetingApplyBean"
+                 outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Updates a meetingApply</description>
+                <to uri="bean:meetingApplyService?method=updateEntity"/>
+            </put>
+            <delete id="route-removemeetingApply"
+                    outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Delete a meetingApply</description>
+                <to uri="bean:meetingApplyService?method=deleteEntity(${header.id})"/>
+            </delete>
+        </rest>
+        <rest path="/meetingapplys/workflow" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-startProcessmeetingApply" uri="/startProcess" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Start Process of meetingApply</description>
+                <to uri="bean:meetingApplyService?method=startProcess(${header.id})"/>
+            </get>
+            <get id="route-completeTaskMeetingApply" uri="/completeTask" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Complete Task of meetingApply</description>
+                <to uri="bean:meetingApplyService?method=completeTask(${header.taskId},${header.accepted},${header.comment})"/>
+            </get>
+        </rest>
+    </camelContext>
+</blueprint>
+

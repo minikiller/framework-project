@@ -46,6 +46,11 @@
             \<groupId>com.fasterxml.jackson.core\</groupId>
             \<artifactId>jackson-annotations\</artifactId>
         \</dependency>
+        \<dependency>
+            \<groupId>cn.com.rexen.kalix.admin\</groupId>
+            \<artifactId>admin-entities\</artifactId>
+            \<version>1.0.0-SNAPSHOT\</version>
+        \</dependency>
     \</dependencies>
     \<build>
         \<plugins>

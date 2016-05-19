@@ -4,12 +4,14 @@
 
     <ext:property-placeholder/>
     <!--<bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource">-->
-    <bean id="dataSource" class="${db.datasourceClass}">
-        <!--<property name="driver" value="org.postgresql.Driver"/>-->
+    <!--<bean id="dataSource" class="${db.datasourceClass}">
+        &lt;!&ndash;<property name="driver" value="org.postgresql.Driver"/>&ndash;&gt;
         <property name="url" value="${db.connectionURL}"/>
         <property name="user" value="${db.username}"/>
         <property name="password" value="${db.password}"/>
-    </bean>
+    </bean>-->
+
+    <reference id="dataSource" interface="javax.sql.DataSource"  filter="(osgi.jndi.service.name=jdbc/ds)"/>
 
     <!--用于activiti JavaDelegate-->
     <reference-list id="blueprintListener" availability="optional" interface="org.activiti.engine.delegate.JavaDelegate"

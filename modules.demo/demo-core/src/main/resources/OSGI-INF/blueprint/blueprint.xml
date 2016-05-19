@@ -47,8 +47,26 @@
         <property name="taskService" ref="taskService"/>
     </bean>
 
+    <service interface="cn.com.rexen.demo.api.biz.IMeetingApplyBeanService" ref="meetingApplyBeanService"/>
+    <bean id="meetingApplyBeanService" class="cn.com.rexen.demo.core.biz.MeetingApplyBeanServiceImpl">
+        <property name="dao" ref="meetingApplyBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
+        <property name="identityService" ref="identityService"/>
+        <property name="runtimeService" ref="runtimeService"/>
+        <property name="taskService" ref="taskService"/>
+    </bean>
+
+    <service id="workFlowBeanService" interface="cn.com.rexen.demo.api.biz.IWorkFlowBeanService"
+             ref="workFlowServiceImpl">
+    </service>
+    <bean id="workFlowServiceImpl" class="cn.com.rexen.demo.core.biz.WorkFlowBeanServiceImpl" scope="prototype">
+        <property name="dao" ref="workFlowBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
+    </bean>
     <reference id="noticeBeanDao" interface="cn.com.rexen.demo.api.dao.INoticeBeanDao"/>
     <reference id="sealApplyBeanDao" interface="cn.com.rexen.demo.api.dao.ISealApplyBeanDao"/>
     <reference id="carApplyBeanDao" interface="cn.com.rexen.demo.api.dao.ICarApplyBeanDao"/>
+    <reference id="workFlowBeanDao" interface="cn.com.rexen.demo.api.dao.IWorkFlowBeanDao"/>
+    <reference id="meetingApplyBeanDao" interface="cn.com.rexen.demo.api.dao.IMeetingApplyBeanDao"/>
 </blueprint>
 

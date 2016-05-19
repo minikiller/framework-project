@@ -8,4 +8,5 @@ public class Const {
     public static final String PROCESS_SEAL_APPLY_KEY_NAME = "sealapply";
     public static final String PROCESS_Notice_KEY_NAME = "notice";
     public static final String PROCESS_CAR_APPLY_KEY_NAME = "carapply";
+    public static final String PROCESS_MEETING_APPLY_KEY_NAME = "meetingapply";
 }
