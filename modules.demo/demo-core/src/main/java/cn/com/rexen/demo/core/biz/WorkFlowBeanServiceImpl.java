@@ -19,7 +19,6 @@ public class WorkFlowBeanServiceImpl extends ShiroGenericBizServiceImpl<IWorkFlo
         List<WorkFlowBean> dicts = dao.findByNativeSql("select value as id,label as title from sys_dict where type='workflow_category'", WorkFlowBean.class, null);
         List<WorkFlowBean> flows = dao.findByNativeSql("select b.value as id,b.label as title,count(*) as cnt from act_re_procdef a, sys_dict b where a.category_ like '%/'||b.value and b.type = 'workflow_category' group by id,title order by cnt desc", WorkFlowBean.class, null);
 
-
         List<WorkFlowBean> persistentEntities = new ArrayList<WorkFlowBean>();
         if (flows != null && flows.size() > 0) {
             for (WorkFlowBean flow : flows) {
