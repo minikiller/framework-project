@@ -64,6 +64,6 @@ public class MeetingApplyMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-car";
+        return "fa fa-users";
     }
 }

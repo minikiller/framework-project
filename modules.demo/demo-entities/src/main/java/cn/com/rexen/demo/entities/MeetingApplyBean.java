@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.Date;
 
 /**
@@ -21,17 +22,17 @@ public class MeetingApplyBean extends WorkflowEntity {
     //会议名称
     private String meetingTopic;
     //宣传需求（企划中心）
-    private Integer requirement;
+    private Integer requireType;
     //主持人
     private String host;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd W", timezone = "GMT+8")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date meetingDate;//会议日期
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date beginTime;//会议时段,开始时间
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date endTime;//会议时段，结束时间
-    //星期几
-    private String weekOfDate;
+    @Transient
+    private String weekOfDay;
     //参会人员
     private String participant;
     //出席人数
@@ -42,6 +43,16 @@ public class MeetingApplyBean extends WorkflowEntity {
     private String securityPerson;
     //联系人电话
     private String securityTel;
+    //申请人联系电话
+    private String operatorPhone;
+    //校务部文秘综合干事
+    private String depUser;
+    //校务部行政事务办主管
+    private String schoolAdminUser;
+    //校务部签字
+    private String schoolUser;
+    //发起部门会议纪要审批人
+    private String launchManagerUser;
 
     public String getDepartment() {
         return department;
@@ -67,12 +78,12 @@ public class MeetingApplyBean extends WorkflowEntity {
         this.meetingTopic = meetingTopic;
     }
 
-    public Integer getRequirement() {
-        return requirement;
+    public Integer getRequireType() {
+        return requireType;
     }
 
-    public void setRequirement(Integer requirement) {
-        this.requirement = requirement;
+    public void setRequireType(Integer requireType) {
+        this.requireType = requireType;
     }
 
     public String getHost() {
@@ -107,12 +118,12 @@ public class MeetingApplyBean extends WorkflowEntity {
         this.endTime = endTime;
     }
 
-    public String getWeekOfDate() {
-        return weekOfDate;
+    public String getWeekOfDay() {
+        return weekOfDay;
     }
 
-    public void setWeekOfDate(String weekOfDate) {
-        this.weekOfDate = weekOfDate;
+    public void setWeekOfDay(String weekOfDay) {
+        this.weekOfDay = weekOfDay;
     }
 
     public String getParticipant() {
@@ -153,5 +164,45 @@ public class MeetingApplyBean extends WorkflowEntity {
 
     public void setSecurityTel(String securityTel) {
         this.securityTel = securityTel;
+    }
+
+    public String getOperatorPhone() {
+        return operatorPhone;
+    }
+
+    public void setOperatorPhone(String operatorPhone) {
+        this.operatorPhone = operatorPhone;
+    }
+
+    public String getDepUser() {
+        return depUser;
+    }
+
+    public void setDepUser(String depUser) {
+        this.depUser = depUser;
+    }
+
+    public String getSchoolAdminUser() {
+        return schoolAdminUser;
+    }
+
+    public void setSchoolAdminUser(String schoolAdminUser) {
+        this.schoolAdminUser = schoolAdminUser;
+    }
+
+    public String getSchoolUser() {
+        return schoolUser;
+    }
+
+    public void setSchoolUser(String schoolUser) {
+        this.schoolUser = schoolUser;
+    }
+
+    public String getLaunchManagerUser() {
+        return launchManagerUser;
+    }
+
+    public void setLaunchManagerUser(String launchManagerUser) {
+        this.launchManagerUser = launchManagerUser;
     }
 }
