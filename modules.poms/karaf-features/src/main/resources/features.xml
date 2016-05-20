@@ -581,7 +581,7 @@
 
 
     <!--osgi:install -s 'wrap:mvn:org.jasig.cas.client/cas-client-core/3.2.1$Bundle-SymbolicName=cas-client-core&Bundle-Version=3.2.0'-->
-    <!-- feature:repo-add mvn:cn.com.rexen.kalix.kalix/karaf-features/1.0.0-SNAPSHOT/xml/features-->
+    <!-- feature:repo-add mvn:cn.com.rexen.kalix.poms/karaf-features/1.0.0-SNAPSHOT/xml/features-->
     <!-- feature:install -v kalix activiti-->
     <!-- feature:install -v activiti-->
     <!--install -s mvn:org.postgresql/postgresql/9.4-1200-jdbc41-->

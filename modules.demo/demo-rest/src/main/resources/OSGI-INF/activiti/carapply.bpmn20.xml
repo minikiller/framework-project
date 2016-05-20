@@ -10,39 +10,39 @@
             <activiti:eventListener events="TASK_CREATED,TASK_COMPLETED" entityType="task" class="cn.com.rexen.workflow.engine.MessageEvent"></activiti:eventListener>
         </extensionElements>
         <startEvent id="startevent1" name="启动审批"></startEvent>
-        <userTask id="usertask1" name="正处级领导审核" activiti:candidateGroups="正处级领导" activiti:formKey="audit.form">
+        <userTask id="depUser" name="正处级领导审核" activiti:candidateGroups="正处级领导" activiti:formKey="audit.form">
             <documentation>申请部门正处级领导审核</documentation>
             <extensionElements>
                 <activiti:formProperty id="accepted" name="判断环节" type="boolean" variable="accepted"></activiti:formProperty>
             </extensionElements>
         </userTask>
-        <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="usertask1"></sequenceFlow>
+        <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="depUser"></sequenceFlow>
         <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
-        <sequenceFlow id="flow2" sourceRef="usertask1" targetRef="exclusivegateway1"></sequenceFlow>
+        <sequenceFlow id="flow2" sourceRef="depUser" targetRef="exclusivegateway1"></sequenceFlow>
         <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>
         <sequenceFlow id="flow3" name="同意" sourceRef="exclusivegateway1" targetRef="exclusivegateway2">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
         </sequenceFlow>
-        <userTask id="usertask3" name="校务部副部长审核" activiti:candidateGroups="校务部副部长" activiti:formKey="audit.form">
+        <userTask id="schoolUser" name="校务部副部长审核" activiti:candidateGroups="校务部副部长" activiti:formKey="audit.form">
             <documentation>校务部副部长审核</documentation>
         </userTask>
-        <sequenceFlow id="flow5" name="市内" sourceRef="exclusivegateway2" targetRef="usertask3">
+        <sequenceFlow id="flow5" name="市内" sourceRef="exclusivegateway2" targetRef="schoolUser">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${city}]]></conditionExpression>
         </sequenceFlow>
-        <userTask id="usertask4" name="副校级领导审核" activiti:candidateGroups="副校级领导" activiti:formKey="audit.form">
+        <userTask id="managerUser" name="副校级领导审核" activiti:candidateGroups="副校级领导" activiti:formKey="audit.form">
             <documentation>副校级领导审核</documentation>
         </userTask>
-        <sequenceFlow id="flow6" name="市外" sourceRef="exclusivegateway2" targetRef="usertask4">
+        <sequenceFlow id="flow6" name="市外" sourceRef="exclusivegateway2" targetRef="managerUser">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!city}]]></conditionExpression>
         </sequenceFlow>
         <exclusiveGateway id="exclusivegateway3" name="Exclusive Gateway"></exclusiveGateway>
-        <sequenceFlow id="flow7" sourceRef="usertask4" targetRef="exclusivegateway3"></sequenceFlow>
+        <sequenceFlow id="flow7" sourceRef="managerUser" targetRef="exclusivegateway3"></sequenceFlow>
         <exclusiveGateway id="exclusivegateway4" name="Exclusive Gateway"></exclusiveGateway>
-        <userTask id="usertask6" name="校党委书记审核" activiti:candidateGroups="校党委书记" activiti:formKey="audit.form">
+        <userTask id="schoolManagerUser" name="校党委书记审核" activiti:candidateGroups="校党委书记" activiti:formKey="audit.form">
             <documentation>校党委书记审核</documentation>
         </userTask>
         <exclusiveGateway id="exclusivegateway6" name="Exclusive Gateway"></exclusiveGateway>
-        <sequenceFlow id="flow12" sourceRef="usertask6" targetRef="exclusivegateway6"></sequenceFlow>
+        <sequenceFlow id="flow12" sourceRef="schoolManagerUser" targetRef="exclusivegateway6"></sequenceFlow>
         <endEvent id="endevent1" name="不同意结束"></endEvent>
         <sequenceFlow id="flow14" name="不同意" sourceRef="exclusivegateway6" targetRef="endevent1">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
@@ -50,7 +50,7 @@
         <sequenceFlow id="flow16" name="不同意" sourceRef="exclusivegateway4" targetRef="endevent1">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!accepted}]]></conditionExpression>
         </sequenceFlow>
-        <sequenceFlow id="flow17" name="同意" sourceRef="exclusivegateway3" targetRef="usertask3">
+        <sequenceFlow id="flow17" name="同意" sourceRef="exclusivegateway3" targetRef="schoolUser">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${accepted}]]></conditionExpression>
         </sequenceFlow>
         <sequenceFlow id="flow18" name="不同意" sourceRef="exclusivegateway3" targetRef="endevent1">
@@ -70,17 +70,17 @@
         <sequenceFlow id="flow23" name="市内" sourceRef="exclusivegateway7" targetRef="endevent2">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${city}]]></conditionExpression>
         </sequenceFlow>
-        <sequenceFlow id="flow24" name="市外" sourceRef="exclusivegateway7" targetRef="usertask6">
+        <sequenceFlow id="flow24" name="市外" sourceRef="exclusivegateway7" targetRef="schoolManagerUser">
             <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!city}]]></conditionExpression>
         </sequenceFlow>
-        <sequenceFlow id="flow25" sourceRef="usertask3" targetRef="exclusivegateway4"></sequenceFlow>
+        <sequenceFlow id="flow25" sourceRef="schoolUser" targetRef="exclusivegateway4"></sequenceFlow>
     </process>
     <bpmndi:BPMNDiagram id="BPMNDiagram_carapply">
         <bpmndi:BPMNPlane bpmnElement="carapply" id="BPMNPlane_carapply">
             <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
                 <omgdc:Bounds height="35.0" width="35.0" x="60.0" y="397.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="usertask1" id="BPMNShape_usertask1">
+            <bpmndi:BPMNShape bpmnElement="depUser" id="BPMNShape_depUser">
                 <omgdc:Bounds height="55.0" width="105.0" x="130.0" y="387.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
@@ -89,10 +89,10 @@
             <bpmndi:BPMNShape bpmnElement="exclusivegateway2" id="BPMNShape_exclusivegateway2">
                 <omgdc:Bounds height="40.0" width="40.0" x="352.0" y="395.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="usertask3" id="BPMNShape_usertask3">
+            <bpmndi:BPMNShape bpmnElement="schoolUser" id="BPMNShape_schoolUser">
                 <omgdc:Bounds height="55.0" width="105.0" x="439.0" y="387.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="usertask4" id="BPMNShape_usertask4">
+            <bpmndi:BPMNShape bpmnElement="managerUser" id="BPMNShape_managerUser">
                 <omgdc:Bounds height="55.0" width="105.0" x="320.0" y="285.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="exclusivegateway3" id="BPMNShape_exclusivegateway3">
@@ -101,7 +101,7 @@
             <bpmndi:BPMNShape bpmnElement="exclusivegateway4" id="BPMNShape_exclusivegateway4">
                 <omgdc:Bounds height="40.0" width="40.0" x="567.0" y="394.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="usertask6" id="BPMNShape_usertask6">
+            <bpmndi:BPMNShape bpmnElement="schoolManagerUser" id="BPMNShape_schoolManagerUser">
                 <omgdc:Bounds height="55.0" width="105.0" x="610.0" y="285.0"></omgdc:Bounds>
             </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="exclusivegateway6" id="BPMNShape_exclusivegateway6">

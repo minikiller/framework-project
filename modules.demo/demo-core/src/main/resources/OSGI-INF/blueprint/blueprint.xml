@@ -1,7 +1,9 @@
-<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
-           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
-">
+<blueprint xmlns:jpa="http://aries.apache.org/xmlns/jpa/v2.0.0"
+           xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.2.0"
+           default-activation="eager"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+    <jpa:enable/>
+    <tx:enable-annotations/>
 
     <service id="demoBeanService" interface="cn.com.rexen.demo.api.biz.INoticeBeanService"
              ref="beanServiceImpl">
@@ -31,6 +33,7 @@
     </bean>
 
     <bean id="sealApplyBeanService" class="cn.com.rexen.demo.core.biz.SealApplyBeanServiceImpl">
+        <tx:transaction method="*" value="Required"/>
         <property name="dao" ref="sealApplyBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="identityService" ref="identityService"/>
@@ -40,6 +43,7 @@
 
     <service interface="cn.com.rexen.demo.api.biz.ICarApplyBeanService" ref="carApplyBeanService"/>
     <bean id="carApplyBeanService" class="cn.com.rexen.demo.core.biz.CarApplyBeanServiceImpl">
+        <tx:transaction method="*" value="Required"/>
         <property name="dao" ref="carApplyBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="identityService" ref="identityService"/>
@@ -49,6 +53,7 @@
 
     <service interface="cn.com.rexen.demo.api.biz.IMeetingApplyBeanService" ref="meetingApplyBeanService"/>
     <bean id="meetingApplyBeanService" class="cn.com.rexen.demo.core.biz.MeetingApplyBeanServiceImpl">
+        <tx:transaction method="*" value="Required"/>
         <property name="dao" ref="meetingApplyBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
         <property name="identityService" ref="identityService"/>
