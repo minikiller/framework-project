@@ -24,6 +24,13 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
 
     @Override
     public void writeClaimResult(String currentTaskName, String userName, MeetingApplyBean bean) {
-
+        if (currentTaskName.equals("校务部文秘综合干事")) //申请部门负责人签字
+            bean.setDepUser(userName);
+        else if (currentTaskName.equals("校务部行政事务办主管")) //副校级领导审核
+            bean.setSchoolAdminUser(userName);
+        else if (currentTaskName.equals("校务部副部长")) //校务部签字
+            bean.setSchoolUser(userName);
+        else if (currentTaskName.equals("发起部门会议纪要审批")) //校务部主管领导审批（市外）
+            bean.setSchoolUser(userName);
     }
 }

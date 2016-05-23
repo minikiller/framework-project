@@ -64,6 +64,6 @@ public class MainMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-car";
+        return "fa fa-arrows-alt";
     }
 }
