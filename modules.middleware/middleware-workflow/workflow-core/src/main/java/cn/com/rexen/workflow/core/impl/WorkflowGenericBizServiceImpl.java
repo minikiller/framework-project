@@ -103,7 +103,7 @@ public abstract class  WorkflowGenericBizServiceImpl<T extends IGenericDao, TP e
                 taskService.claim(task.getId(), currentUserId);
             }
 
-            writeClaimResult(currentTaskName,userName, bean);
+            writeClaimResult(task.getTaskDefinitionKey(),userName, bean);
 
             //添加备注信息
             identityService.setAuthenticatedUserId(userName);
@@ -130,7 +130,11 @@ public abstract class  WorkflowGenericBizServiceImpl<T extends IGenericDao, TP e
 
             this.updateEntity(bean);
             jsonStatus.setMsg("任务处理成功！");
-        } catch (Exception e) {
+        }
+        catch (NoSuchMethodException e) {
+            log.warn("未找到对应的方法！");
+        }
+        catch (Exception e) {
             e.printStackTrace();
             jsonStatus.setFailure(true);
             jsonStatus.setSuccess(false);
@@ -142,10 +146,10 @@ public abstract class  WorkflowGenericBizServiceImpl<T extends IGenericDao, TP e
     /**
      * 添加处理人的名字到实体中
      *
-     * @param currentTaskName
+     * @param taskDefinitionKey
      * @param bean
      */
-    public abstract void writeClaimResult(String currentTaskName, String userName,TP bean);
+    public abstract void writeClaimResult(String taskDefinitionKey, String userName,TP bean) throws NoSuchMethodException;
 
     /**
      * 加入流程环节变量到map中

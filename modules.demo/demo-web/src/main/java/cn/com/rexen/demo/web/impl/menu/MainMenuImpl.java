@@ -18,7 +18,7 @@ public class MainMenuImpl implements IMenu {
 
     @Override
     public String getModuleId() {
-        return Const.WORKFLOW_BIZ_MODULE_NAME;
+        return Const.MY_WORKING_MODULE_NAME;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class MainMenuImpl implements IMenu {
 
     @Override
     public String getText() {
-        return "流程11";
+        return "流程申请";
     }
 
     @Override
@@ -64,6 +64,6 @@ public class MainMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-car";
+        return "fa fa-arrows-alt";
     }
 }

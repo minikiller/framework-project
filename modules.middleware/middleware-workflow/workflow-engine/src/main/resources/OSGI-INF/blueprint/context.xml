@@ -32,15 +32,15 @@
 
     <reference id="transactionManager" interface="javax.transaction.TransactionManager"/>
 
-    <!--<bean id="configuration" class="org.activiti.engine.impl.cfg.JtaProcessEngineConfiguration" ext:field-injection="true">
+    <bean id="configuration" class="org.activiti.engine.impl.cfg.JtaProcessEngineConfiguration" ext:field-injection="true">
         <property name="databaseType" value="postgres"/>
         <property name="dataSource" ref="dataSource"/>
         <property name="transactionManager" ref="transactionManager"/>
         <property name="databaseSchemaUpdate" value="true"/>
         <property name="transactionsExternallyManaged" value="true" />
-    </bean>-->
+    </bean>
 
-    <bean id="configuration" factory-ref="configurationFactory" factory-method="getConfiguration"/>
+    <!--<bean id="configuration" factory-ref="configurationFactory" factory-method="getConfiguration"/>-->
 
     <bean id="processEngineFactory" class="org.activiti.osgi.blueprint.ProcessEngineFactoryWithELResolver"
           init-method="init" destroy-method="destroy">
