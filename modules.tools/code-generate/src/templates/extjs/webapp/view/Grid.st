@@ -41,13 +41,35 @@ Ext.define('<extjsPrefix>.view.<beanName>Grid', {
             },
             <GridItems>
             {
-                xtype: 'securityGridColumnRUD',
+                xtype: 'securityGridColumnCommon',
                 //todo change permission
-                permissions: [
-                    '<permission_app>:<permission_module>:<permission_menu>:view',
-                    '<permission_app>:<permission_module>:<permission_menu>:edit',
-                    '<permission_app>:<permission_module>:<permission_menu>:delete'
+                items: [
+                    {
+                        icon: "resources/images/read.png",
+                        permission: '<permission_app>:<permission_module>:<permission_menu>:view',
+                        tooltip: '查看',
+                        handler: 'onView'
+                    },
+                    {
+                        //bind: {icon: ''},
+                        icon: "resources/images/edit.png",
+                        permission: '<permission_app>:<permission_module>:<permission_menu>:edit',
+                        tooltip: '编辑',
+                        handler: 'onEdit'
+                    },
+                    {
+                        icon: "resources/images/delete.png",
+                        permission: '<permission_app>:<permission_module>:<permission_menu>:delete'
+                        tooltip: '删除',
+                        handler: 'onDelete'
+                    }
                 ]
+
+                //permissions: [
+                    //'<permission_app>:<permission_module>:<permission_menu>:view',
+                    //'<permission_app>:<permission_module>:<permission_menu>:edit',
+                    //'<permission_app>:<permission_module>:<permission_menu>:delete'
+                //]
             }
         ]
     },
