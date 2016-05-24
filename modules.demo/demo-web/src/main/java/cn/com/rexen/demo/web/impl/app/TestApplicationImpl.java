@@ -23,12 +23,12 @@ public class TestApplicationImpl implements IApplication {
 
     @Override
     public String getText() {
-        return "测试应用";
+        return "办公自动化";
     }
 
     @Override
     public String getDescription() {
-        return "测试应用";
+        return "办公自动化";
     }
 
     @Override
@@ -53,6 +53,6 @@ public class TestApplicationImpl implements IApplication {
 
     @Override
     public String getTitle() {
-        return "测试应用";
+        return "办公自动化";
     }
 }

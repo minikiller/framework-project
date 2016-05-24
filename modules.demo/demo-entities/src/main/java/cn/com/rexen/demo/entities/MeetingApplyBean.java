@@ -18,7 +18,10 @@ public class MeetingApplyBean extends WorkflowEntity {
     //申请部门
     private String department;
     //会议地点
-    private String meetingPlace;
+    private Integer meetingroomId;
+    //会议地点
+    @Transient
+    private String meetingroomName;
     //会议名称
     private String meetingTopic;
     //宣传需求（企划中心）
@@ -62,12 +65,20 @@ public class MeetingApplyBean extends WorkflowEntity {
         this.department = department;
     }
 
-    public String getMeetingPlace() {
-        return meetingPlace;
+    public Integer getMeetingroomId() {
+        return meetingroomId;
     }
 
-    public void setMeetingPlace(String meetingPlace) {
-        this.meetingPlace = meetingPlace;
+    public void setMeetingroomId(Integer meetingroomId) {
+        this.meetingroomId = meetingroomId;
+    }
+
+    public String getMeetingroomName() {
+        return meetingroomName;
+    }
+
+    public void setMeetingroomName(String meetingroomName) {
+        this.meetingroomName = meetingroomName;
     }
 
     public String getMeetingTopic() {

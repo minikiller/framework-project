@@ -35,6 +35,7 @@
         <module>modules.message</module>
         <module>modules.dashboard</module>
         <module>modules.tools</module>
+        <module>modules.meetingroom</module>
         <!--<module>modules.notice</module>-->
     </modules>
 </project>

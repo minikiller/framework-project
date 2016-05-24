@@ -22,7 +22,7 @@ Ext.define('<extjsPrefix>.Main', {
             xtype: '<pomName>GridPanel',
             id: '<pomName>GridPanel',
             title: '<module_Name>列表',
-            iconCls: 'x-fa fa-search',
+            iconCls: '<menu_icon_class>',
             margin: 10
         }
     ]
