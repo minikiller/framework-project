@@ -41,11 +41,6 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
         this.userBeanService = userBeanService;
     }
 
-//    public void setOrgBeanDao(IOrganizationBeanDao dao) {
-//        this.dao = dao;
-//
-//    }
-
     public void setShiroService(IShiroService shiroService) {
         this.shiroService = shiroService;
     }
@@ -205,27 +200,6 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
 
     }
 
-    public OrganizationDTO getAllOrg() {
-        List<OrganizationBean> orgs = dao.getAll();
-        OrganizationDTO root=new OrganizationDTO();
-        root.setId(-1);
-        if(orgs!=null&&orgs.size()>0){
-            List<OrganizationBean> rootElements = getRootElements(orgs);
-            if(rootElements!=null&&rootElements.size()>0) {
-                for(OrganizationBean rootElement:rootElements){
-                    Mapper mapper = new DozerBeanMapper();
-                    OrganizationDTO organizationDTO = mapper.map(rootElement, OrganizationDTO.class);
-                    organizationDTO.setLeaf(rootElement.getIsLeaf() == 0 ? false : true);
-                    organizationDTO.setParentName("根机构");
-                    organizationDTO.setText(rootElement.getName());
-                    getChilden(organizationDTO, orgs, mapper);
-                    root.getChildren().add(organizationDTO);
-               }
-           }
-        }
-       return root;
-    }
-
     /**
      * 递归函数加载子机构
      *
@@ -250,40 +224,42 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
         root.setChildren(children);
     }
 
-    /**
-     * 获得所有根节点
-     * @param elements
-     * @return
-     */
-    private List<OrganizationBean> getRootElements(List<OrganizationBean> elements) {
-        List<OrganizationBean> roots=new ArrayList<OrganizationBean>();
-        for (OrganizationBean element : elements) {
-            if (element.getParentId() == -1) {
-                roots.add(element);
-            }
-        }
-        return roots;
-    }
-
     public OrganizationDTO getAllByAreaId(Long id) {
         List<OrganizationBean> beans = dao.find("select ob from OrganizationBean ob where ob.areaId = ?1", id);
-        OrganizationDTO root=new OrganizationDTO();
-        root.setId(-1);
-        if(beans!=null&&beans.size()>0){
-            List<OrganizationBean> rootElements = getRootElements(beans);
-            if(rootElements!=null&&rootElements.size()>0) {
-                for(OrganizationBean rootElement:rootElements){
-                    Mapper mapper = new DozerBeanMapper();
-                    OrganizationDTO OrganizationDTO = mapper.map(rootElement, OrganizationDTO.class);
-                    OrganizationDTO.setLeaf(rootElement.getIsLeaf() == 0 ? false : true);
-                    OrganizationDTO.setParentName("根机构");
-                    OrganizationDTO.setText(rootElement.getName());
-                    getChilden(OrganizationDTO, beans, mapper);
-                    root.getChildren().add(OrganizationDTO);
-                }
-            }
+
+        return generateRoot(beans,-1L);
+    }
+
+    public OrganizationDTO getOrg(Long id){
+        OrganizationBean bean = dao.get(id);
+
+        List<OrganizationBean> beans=null;
+
+        if(bean!=null) {
+            beans = dao.find("select ob from OrganizationBean ob where ob.code like ?1", bean.getCode() + "%");
         }
-        return root;
+
+        return generateRoot(beans,id);
+    }
+
+    public OrganizationDTO getOrgByName(String name){
+        List<OrganizationBean> beans1 = dao.find("select ob from OrganizationBean ob where ob.name = ?1",name);
+        List<OrganizationBean> beans2=null;
+
+        if(beans1!=null&&beans1.size()>0) {
+            beans2 = dao.find("select ob from OrganizationBean ob where ob.code like ?1", beans1.get(0).getCode() + "%");
+
+            return generateRoot(beans2,beans1.get(0).getId());
+        }
+
+
+        return generateRoot(null,0L);
+    }
+
+    public OrganizationDTO getAllOrg() {
+        List<OrganizationBean> orgs = dao.getAll();
+
+        return generateRoot(orgs,-1L);
     }
 
     @Override
@@ -304,4 +280,56 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
         }
     }
 
+    /**
+     * 获得所有根节点
+     * @param elements
+     * @return
+     */
+    private List<OrganizationBean> getRootElements(List<OrganizationBean> elements,Long id) {
+        List<OrganizationBean> roots=new ArrayList<OrganizationBean>();
+        for (OrganizationBean element : elements) {
+            if (element.getParentId() == id) {
+                roots.add(element);
+            }
+        }
+        return roots;
+    }
+
+    private OrganizationDTO generateRoot(List<OrganizationBean> beans,Long id){
+        OrganizationDTO root=null;
+        Mapper mapper = new DozerBeanMapper();
+        String parentName="根机构";
+
+        if(id == -1){
+            root=new OrganizationDTO();
+        }
+        else {
+            for(OrganizationBean bean:beans){
+                if(bean.getId()==id){
+                    root=mapper.map(bean, OrganizationDTO.class);
+                    parentName=bean.getName();
+                    break;
+                }
+            }
+        }
+
+        root.setId(id);
+
+        if(beans!=null&&beans.size()>0){
+            List<OrganizationBean> rootElements = getRootElements(beans,id);
+
+            if(rootElements!=null&&rootElements.size()>0) {
+                for(OrganizationBean rootElement:rootElements){
+                    OrganizationDTO organizationDTO = mapper.map(rootElement, OrganizationDTO.class);
+                    organizationDTO.setLeaf(rootElement.getIsLeaf() == 0 ? false : true);
+                    organizationDTO.setParentName(parentName);
+                    organizationDTO.setText(rootElement.getName());
+                    getChilden(organizationDTO, beans, mapper);
+                    root.getChildren().add(organizationDTO);
+                }
+            }
+        }
+
+        return root;
+    }
 }
