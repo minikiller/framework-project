@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cn.com.rexen.kalix.meetingroom</groupId>
+        <artifactId>modules.meetingroom</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>meetingroom-dao</artifactId>
+    <packaging>bundle</packaging>
+    <name>Kalix :: Meetingroom - DAO</name>
+    <description>Meetingroom JPA</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <bundle.symbolicName>cn.com.rexen.bean.dao</bundle.symbolicName>
+        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.meetingroom</groupId>
+            <artifactId>meetingroom-api</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.meetingroom</groupId>
+            <artifactId>meetingroom-entities</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-impl</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+
+        </plugins>
+    </build>
+</project>

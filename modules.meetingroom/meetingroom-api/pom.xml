@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cn.com.rexen.kalix.meetingroom</groupId>
+        <artifactId>modules.meetingroom</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>meetingroom-api</artifactId>
+    <name>Kalix :: Meetingroom - API</name>
+    <description>Meetingroom API</description>
+    <packaging>bundle</packaging>
+
+    <properties>
+        <bundle.symbolicName>cn.com.rexen.bean.api</bundle.symbolicName>
+        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.servicemix.specs</groupId>
+            <artifactId>org.apache.servicemix.specs.jsr339-api-m10</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.com.rexen.kalix.meetingroom</groupId>
+            <artifactId>meetingroom-entities</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+
+        </plugins>
+    </build>
+</project>
