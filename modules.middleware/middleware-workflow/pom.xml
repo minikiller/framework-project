@@ -16,10 +16,13 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>workflow-entities</module>
         <module>workflow-api</module>
+        <module>workflow-dao</module>
         <module>workflow-core</module>
         <module>workflow-engine</module>
         <module>workflow-rest</module>
+        <module>workflow-web</module>
     </modules>
 
     <dependencyManagement>
@@ -27,6 +30,11 @@
             <dependency>
                 <groupId>cn.com.rexen.kalix.middleware.workflow</groupId>
                 <artifactId>workflow-api</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.middleware.workflow</groupId>
+                <artifactId>workflow-entities</artifactId>
                 <version>${globle.version}</version>
             </dependency>
             <dependency>

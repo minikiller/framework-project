@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
 
+    <service interface="cn.com.rexen.workflow.api.biz.ICategoryBeanService" ref="categoryBeanServiceImpl">
+    </service>
+
+    <bean id="categoryBeanServiceImpl" class="cn.com.rexen.workflow.core.impl.CategoryBeanServiceImpl">
+    </bean>
+
     <service interface="cn.com.rexen.workflow.api.biz.IWorkflowService" ref="workFlowServiceImpl">
     </service>
 
