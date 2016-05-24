@@ -24,7 +24,6 @@ public interface IWorkflowService {
 
     void findAllLastVesions();
 
-
     void deleteProcessDefinitionById();
 
     void getProcessDefinitionContent() throws Exception;
