@@ -9,4 +9,7 @@ import cn.com.rexen.workflow.entities.CategoryBean;
  * Created by Administrator on 2016-05-24.
  */
 public class CategoryBeanServiceImpl extends GenericBizServiceImpl<ICategoryBeanDao, CategoryBean> implements ICategoryBeanService {
+    public CategoryBeanServiceImpl() {
+        super.init(CategoryBean.class.getName());
+    }
 }

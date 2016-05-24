@@ -48,30 +48,30 @@
                     <inputDir>src/templates</inputDir>
                     <outputDir>${project.build.directory}/generate</outputDir>
                     <attributes>
-                        <parentName>kalix-project</parentName>
-                        <parentPackageName>cn.com.rexen.kalix</parentPackageName>
-                        <projectName>Kalix</projectName>
+                        <parentName>middleware-workflow</parentName>
+                        <parentPackageName>cn.com.rexen.workflow</parentPackageName>
+                        <projectName>Category</projectName>
                         <packageName>cn.com.rexen.bean</packageName>
                         <versionName>1.0.0-SNAPSHOT</versionName>
-                        <module_Name>消息</module_Name>
-                        <pomName>message</pomName>
-                        <beanName>Message</beanName>
+                        <module_Name>流程分类</module_Name>
+                        <pomName>category</pomName>
+                        <beanName>Category</beanName>
                         <!-- 实体java类所在的位置-->
                         <beanDir>src/main/java</beanDir>
-                        <extjsPrefix>kalix.app.message</extjsPrefix>
+                        <extjsPrefix>kalix.workflow.category</extjsPrefix>
 
                         <!-- 配置权限-->
-                        <permission_app>admin</permission_app><!-- 应用-->
-                        <permission_module>constructModule</permission_module><!-- 模块-->
-                        <permission_menu>messageMenu</permission_menu><!-- 菜单-->
+                        <permission_app>workflow</permission_app><!-- 应用-->
+                        <permission_module>workFlowModule</permission_module><!-- 模块-->
+                        <permission_menu>categoryMenu</permission_menu><!-- 菜单-->
 
                         <!-- 配置菜单-->
-                        <module_id>constructModule</module_id>
-                        <menu_id>messageMenu</menu_id>
-                        <menu_text>消息管理</menu_text>
-                        <menu_index>50</menu_index>
+                        <module_id>workFlowModule</module_id>
+                        <menu_id>categoryMenu</menu_id>
+                        <menu_text>流程分类管理</menu_text>
+                        <menu_index>30</menu_index>
                         <menu_icon_class>x-fa fa-cutlery</menu_icon_class>
-                        <menu_route_id>app/message</menu_route_id>
+                        <menu_route_id>workflow/category</menu_route_id>
                     </attributes>
                     <sources>
                         <source>${basedir}/src/main/java</source>
