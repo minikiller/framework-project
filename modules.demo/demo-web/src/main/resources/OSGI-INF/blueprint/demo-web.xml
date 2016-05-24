@@ -32,9 +32,9 @@
     </service>-->
 
     <!--公告管理-->
-    <service interface="cn.com.rexen.core.api.web.IMenu">
+    <!--<service interface="cn.com.rexen.core.api.web.IMenu">
         <bean class="cn.com.rexen.demo.web.impl.menu.NoticeMenuImpl"/>
-    </service>
+    </service>-->
 
     <!--印章使用申请-->
     <service interface="cn.com.rexen.core.api.web.IMenu">

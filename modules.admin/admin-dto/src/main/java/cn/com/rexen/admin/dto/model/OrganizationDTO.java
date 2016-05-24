@@ -20,6 +20,8 @@ public class OrganizationDTO extends BaseDTO {
     private long parentId; //父机构
     private int areaId;  // 归属区域
     private String parentName; //父节点名称
+    private boolean dept;//是否是部门
+
     private List<OrganizationDTO> children=new ArrayList<OrganizationDTO>();
 
     public String getText() {
@@ -93,5 +95,13 @@ public class OrganizationDTO extends BaseDTO {
 
     public void setChildren(List<OrganizationDTO> children) {
         this.children = children;
+    }
+
+    public boolean isDept() {
+        return dept;
+    }
+
+    public void setDept(boolean dept) {
+        this.dept = dept;
     }
 }

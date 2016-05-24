@@ -14,6 +14,10 @@ public interface IOrganizationBeanService extends IBizService<OrganizationBean> 
 
     OrganizationDTO getAllOrg();
 
+    OrganizationDTO getOrg(Long id);
+
+    OrganizationDTO getOrgByName(String name);
+
     OrganizationDTO getAllByAreaId(Long id);
 
     void deleteByAreaId(Long id);

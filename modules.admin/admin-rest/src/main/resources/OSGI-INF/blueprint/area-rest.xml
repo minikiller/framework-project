@@ -13,8 +13,6 @@
         <!-- defines the rest services using the context-path /area -->
         <rest path="/areas" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
             <description>area rest service</description>
-
-
             <!-- this is a rest PUT to create an area -->
             <post id="route-addArea" type="cn.com.rexen.admin.entities.AreaBean"
                   outType="cn.com.rexen.core.api.biz.JsonStatus">
@@ -41,7 +39,11 @@
                 <to uri="bean:areaService?method=getAllArea"/>
             </get>
 
+            <!-- this is a rest GET to view an orgs by the given  area id -->
+            <get id="route-getOrgsByAreaId" uri="/{id}/orgs" >
+                <description>Find dep by id</description>
+                <to uri="bean:orgService?method=getAllByAreaId(${header.id})"/>
+            </get>
         </rest>
-
     </camelContext>
 </blueprint>

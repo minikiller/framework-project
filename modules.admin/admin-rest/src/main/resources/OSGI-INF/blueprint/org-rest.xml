@@ -15,9 +15,15 @@
             <description>org rest service</description>
 
             <!-- this is a rest GET to view an org by the given id -->
-            <get id="route-getOrg" uri="/{id}" outType="cn.com.rexen.admin.entities.OrganizationBean">
+            <get id="route-getOrg" uri="/{id}">
                 <description>Find org by id</description>
                 <to uri="bean:orgService?method=getOrg(${header.id})"/>
+            </get>
+
+            <!-- this is a rest GET to view an org by the given name -->
+            <get id="route-getOrgByName" uri="/name">
+                <description>Find org by id</description>
+                <to uri="bean:orgService?method=getOrgByName(${header.name})"/>
             </get>
 
             <!-- this is a rest PUT to create an org -->
@@ -26,13 +32,6 @@
                 <description>Create a org</description>
                 <to uri="bean:orgService?method=saveEntity"/>
             </post>
-
-            <!-- this is a rest GET to view an dep by the given id -->
-            <get id="route-getDepsByAreaId" uri="/area/{id}" outType="cn.com.rexen.admin.entities.AreaBean">
-                <description>Find dep by id</description>
-                <to uri="bean:orgService?method=getAllByAreaId(${header.id})"/>
-            </get>
-
 
             <!-- this is a rest PUT to update an org -->
             <put id="route-updateOrg" type="cn.com.rexen.admin.entities.OrganizationBean"
@@ -48,11 +47,10 @@
             </delete>
 
             <!-- this is a rest GET to find all orgs -->
-            <get id="route-getAllOrg" outType="cn.com.rexen.admin.dto.model.OrganizationDTO">
+            <get id="route-getAllOrg">
                 <description>Find all orgs</description>
                 <to uri="bean:orgService?method=getAllOrg"/>
             </get>
-
         </rest>
 
     </camelContext>
