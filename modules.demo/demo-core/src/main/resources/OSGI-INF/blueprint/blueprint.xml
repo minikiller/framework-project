@@ -18,6 +18,7 @@
     <reference id="userLoginService" interface="cn.com.rexen.core.api.security.IUserLoginService"/>
     <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
     <reference id="auditBeanService" interface="cn.com.rexen.audit.api.biz.IAuditBeanService"/>
+    <reference id="meetingroomBeanService" interface="cn.com.rexen.bean.api.biz.IMeetingroomBeanService"/>
 
 
     <bean id="beanServiceImpl" class="cn.com.rexen.demo.core.biz.NoticeBeanServiceImpl" scope="prototype">
@@ -59,6 +60,7 @@
         <property name="identityService" ref="identityService"/>
         <property name="runtimeService" ref="runtimeService"/>
         <property name="taskService" ref="taskService"/>
+        <property name="meetingroomBeanService" ref="meetingroomBeanService"/>
     </bean>
 
     <service id="workFlowBeanService" interface="cn.com.rexen.demo.api.biz.IWorkFlowBeanService"

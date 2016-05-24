@@ -39,5 +39,10 @@
             <artifactId>workflow-core</artifactId>
             <version>${globle.version}</version>
         </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.meetingroom</groupId>
+            <artifactId>meetingroom-api</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>
