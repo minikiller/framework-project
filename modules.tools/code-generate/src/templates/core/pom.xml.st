@@ -18,15 +18,9 @@
 
     \<properties>
         \<bundle.symbolicName><packageName>.core\</bundle.symbolicName>
-        \<bundle.namespace>${bundle.symbolicName}\</bundle.namespace>
     \</properties>
 
     \<dependencies>
-        \<dependency>
-            \<groupId>org.apache.servicemix.specs\</groupId>
-            \<artifactId>org.apache.servicemix.specs.jsr339-api-m10\</artifactId>
-        \</dependency>
-
         \<dependency>
             \<groupId><packageName>\</groupId>
             \<artifactId><pomName>-api\</artifactId>
@@ -38,10 +32,4 @@
             \<version><versionName>\</version>
         \</dependency>
     \</dependencies>
-
-    \<build>
-        \<plugins>
-        \</plugins>
-    \</build>
-
 \</project>

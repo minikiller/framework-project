@@ -17,9 +17,6 @@
 
     \<packaging>pom\</packaging>
 
-    \<properties>
-
-    \</properties>
     \<modules>
         \<module><pomName>-entities\</module>
         \<module><pomName>-api\</module>
@@ -32,48 +29,22 @@
 
     \<dependencyManagement>
         \<dependencies>
-                    \<dependency>
-                        \<groupId>cn.com.rexen.kalix.poms\</groupId>
-                        \<artifactId>poms-dm\</artifactId>
-                        \<version>${globle.version}\</version>
-                        \<type>pom\</type>
-                        \<scope>import\</scope>
-                    \</dependency>
+            \<dependency>
+                \<groupId>cn.com.rexen.kalix.poms\</groupId>
+                \<artifactId>poms-dm\</artifactId>
+                \<version>${globle.version}\</version>
+                \<type>pom\</type>
+                \<scope>import\</scope>
+            \</dependency>
         \</dependencies>
     \</dependencyManagement>
 
     \<dependencies>
         \<dependency>
-            \<groupId>org.osgi\</groupId>
-            \<artifactId>org.osgi.core\</artifactId>
-        \</dependency>
-
-        \<dependency>
-            \<groupId>org.osgi\</groupId>
-            \<artifactId>org.osgi.compendium\</artifactId>
-        \</dependency>
-
-        \<dependency>
-            \<groupId>cn.com.rexen.kalix.core\</groupId>
-            \<artifactId>core-api\</artifactId>
-            \<version><versionName>\</version>
-        \</dependency>
-
-        \<dependency>
-            \<groupId>cn.com.rexen.kalix.core\</groupId>
-            \<artifactId>core-impl\</artifactId>
-            \<version><versionName>\</version>
-        \</dependency>
-
-        \<dependency>
-            \<groupId>cn.com.rexen.kalix.core\</groupId>
-            \<artifactId>core-util\</artifactId>
-            \<version><versionName>\</version>
-        \</dependency>
-        \<dependency>
-            \<groupId>log4j\</groupId>
-            \<artifactId>log4j\</artifactId>
+            \<groupId>cn.com.rexen.kalix.poms\</groupId>
+                 \<artifactId>poms-dm\</artifactId>
+                 \<type>pom\</type>
+                 \<version>${globle.version}\</version>
         \</dependency>
     \</dependencies>
-
 \</project>

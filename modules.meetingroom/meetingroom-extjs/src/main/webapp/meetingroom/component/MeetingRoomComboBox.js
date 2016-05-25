@@ -1,5 +1,5 @@
 /**
- * 项目选择下拉comboBox
+ * 会议室选择下拉comboBox
  * @author zangyanming
  */
 Ext.define('kalix.app.meetingroom.component.MeetingroomComboBox', {

@@ -6,10 +6,10 @@
     \<modelVersion>4.0.0\</modelVersion>
 
     \<parent>
-            \<groupId><packageName>\</groupId>
-            \<artifactId><pomName>-parent\</artifactId>
-            \<version><versionName>\</version>
-        \</parent>
+        \<groupId><packageName>\</groupId>
+        \<artifactId><pomName>-parent\</artifactId>
+        \<version><versionName>\</version>
+    \</parent>
     
     \<artifactId><pomName>-extjs\</artifactId>
     \<version>1.0.0-SNAPSHOT\</version>
@@ -19,7 +19,5 @@
 
     \<properties>
         \<bundle.symbolicName><packageName>.extjs\</bundle.symbolicName>
-        \<bundle.namespace>${bundle.symbolicName}\</bundle.namespace>
-        \<project.build.sourceEncoding>UTF-8\</project.build.sourceEncoding>
     \</properties>
 \</project>

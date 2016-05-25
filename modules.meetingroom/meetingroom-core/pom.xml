@@ -11,14 +11,16 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <groupId>cn.com.rexen.kalix.meetingroom.core</groupId>
     <artifactId>meetingroom-core</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
     <name>Kalix :: Meetingroom - Core</name>
     <description>Meetingroom Core</description>
     <packaging>bundle</packaging>
 
     <properties>
-        <bundle.symbolicName>cn.com.rexen.bean.core</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+        <bundle.symbolicName>cn.com.rexen.meetingroom.core</bundle.symbolicName>
     </properties>
 
     <dependencies>
@@ -28,18 +30,19 @@
         </dependency>
 
         <dependency>
-            <groupId>cn.com.rexen.kalix.meetingroom</groupId>
+            <groupId>cn.com.rexen.kalix.meetingroom.api</groupId>
             <artifactId>meetingroom-api</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>cn.com.rexen.kalix.meetingroom</groupId>
+            <groupId>cn.com.rexen.kalix.meetingroom.entities</groupId>
             <artifactId>meetingroom-entities</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>cn.com.rexen.kalix.core</groupId>
             <artifactId>core-impl</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

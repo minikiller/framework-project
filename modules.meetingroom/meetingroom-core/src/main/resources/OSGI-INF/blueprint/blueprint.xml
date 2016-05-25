@@ -3,16 +3,16 @@
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
 ">
 
-    <service id="meetingroomBeanService" interface="cn.com.rexen.bean.api.biz.IMeetingroomBeanService"
+    <service id="meetingroomBeanService" interface="cn.com.rexen.meetingroom.api.biz.IMeetingroomBeanService"
              ref="beanServiceImpl">
     </service>
 
-    <bean id="beanServiceImpl" class="cn.com.rexen.bean.core.biz.MeetingroomBeanServiceImpl">
+    <bean id="beanServiceImpl" class="cn.com.rexen.meetingroom.core.biz.MeetingroomBeanServiceImpl">
         <property name="dao" ref="meetingroomBeanDao"/>
         <property name="shiroService" ref="shiroService"/>
     </bean>
 
-    <reference id="meetingroomBeanDao" interface="cn.com.rexen.bean.api.dao.IMeetingroomBeanDao"/>
+    <reference id="meetingroomBeanDao" interface="cn.com.rexen.meetingroom.api.dao.IMeetingroomBeanDao"/>
     <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
 </blueprint>
 

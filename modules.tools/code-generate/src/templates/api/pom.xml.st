@@ -17,25 +17,13 @@
 
     \<properties>
         \<bundle.symbolicName><packageName>.api\</bundle.symbolicName>
-        \<bundle.namespace>${bundle.symbolicName}\</bundle.namespace>
     \</properties>
 
     \<dependencies>
-        \<dependency>
-            \<groupId>org.apache.servicemix.specs\</groupId>
-            \<artifactId>org.apache.servicemix.specs.jsr339-api-m10\</artifactId>
-        \</dependency>
-
         \<dependency>
             \<groupId><packageName>\</groupId>
             \<artifactId><pomName>-entities\</artifactId>
             \<version><versionName>\</version>
         \</dependency>
     \</dependencies>
-
-    \<build>
-        \<plugins>
-
-        \</plugins>
-    \</build>
 \</project>

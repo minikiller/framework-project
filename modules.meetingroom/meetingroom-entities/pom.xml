@@ -10,48 +10,18 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <groupId>cn.com.rexen.kalix.meetingroom.entities</groupId>
     <artifactId>meetingroom-entities</artifactId>
-    <packaging>bundle</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+
     <name>Kalix :: Meetingroom - Entities</name>
     <description>Meetingroom Entities</description>
-
+    <packaging>bundle</packaging>
 
     <properties>
-        <bundle.symbolicName>cn.com.rexen.bean.entities</bundle.symbolicName>
-        <bundle.namespace>${bundle.symbolicName}</bundle.namespace>
+        <bundle.symbolicName>cn.com.rexen.meetingroom.entities</bundle.symbolicName>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.servicemix.specs</groupId>
-            <artifactId>org.apache.servicemix.specs.jsr303-api-1.0.0</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-jpa_2.0_spec</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.openjpa</groupId>
-            <artifactId>openjpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.rexen.kalix.admin</groupId>
-            <artifactId>admin-entities</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
     <build>
         <plugins>
             <plugin>
@@ -82,27 +52,8 @@
                             <goal>run</goal>
                         </goals>
                     </execution>
-                    <execution>
-                        <id>deploy</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <copy file="target/${project.artifactId}-${project.version}.jar"
-                                      todir="${karaf.path}"/>
-                            </target>
-                        </configuration>
-                    </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.openjpa</groupId>
-                <artifactId>openjpa-maven-plugin</artifactId>
-                <version>2.3.0</version>
             </plugin>
         </plugins>
     </build>
-
 </project>
