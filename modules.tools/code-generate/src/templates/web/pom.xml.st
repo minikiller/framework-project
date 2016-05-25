@@ -17,9 +17,7 @@
     \<description><beanName> Web Service\</description>
 
     \<properties>
-        \<project.build.sourceEncoding>UTF-8\</project.build.sourceEncoding>
         \<bundle.symbolicName><packageName>.web\</bundle.symbolicName>
-        \<bundle.namespace>${bundle.symbolicName}\</bundle.namespace>
     \</properties>
 
     \<dependencies>
@@ -29,11 +27,4 @@
             \<version><versionName>\</version>
         \</dependency>
     \</dependencies>
-
-    \<build>
-        \<plugins>
-
-        \</plugins>
-    \</build>
-
 \</project>

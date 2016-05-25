@@ -17,24 +17,6 @@
     \<description><beanName> Rest Service\</description>
 
     \<properties>
-        \<project.build.sourceEncoding>UTF-8\</project.build.sourceEncoding>
         \<bundle.symbolicName><packageName>.rest\</bundle.symbolicName>
-        \<bundle.namespace>${bundle.symbolicName}\</bundle.namespace>
     \</properties>
-
-    \<dependencies>
-        \<dependency>
-            \<groupId>cn.com.rexen.kalix.poms\</groupId>
-            \<artifactId>poms-dm\</artifactId>
-            \<version><versionName>\</version>
-            \<type>pom\</type>
-        \</dependency>
-    \</dependencies>
-
-    \<build>
-        \<plugins>
-
-        \</plugins>
-    \</build>
-
 \</project>
