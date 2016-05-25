@@ -3,5 +3,5 @@
 #-----------------------------------------------------------------
 
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
-Import-Package:cn.com.rexen.core.api.biz,cn.com.rexen.core.api.persistence,cn.com.rexen.bean.entities,cn.com.rexen.bean.api.query,*
+Import-Package:cn.com.rexen.core.api.biz,cn.com.rexen.core.api.persistence,cn.com.rexen.meetingroom.entities,cn.com.rexen.meetingroom.api.query,*
 Bundle-Category: Rexen  Kalix Meetingroom

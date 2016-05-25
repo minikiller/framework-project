@@ -1,12 +1,12 @@
 package cn.com.rexen.demo.core.biz;
 
-import cn.com.rexen.bean.api.biz.IMeetingroomBeanService;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.util.BeanUtil;
 import cn.com.rexen.demo.api.biz.IMeetingApplyBeanService;
 import cn.com.rexen.demo.api.dao.IMeetingApplyBeanDao;
 import cn.com.rexen.demo.core.Const;
 import cn.com.rexen.demo.entities.MeetingApplyBean;
+import cn.com.rexen.meetingroom.api.biz.IMeetingroomBeanService;
 import cn.com.rexen.workflow.core.impl.WorkflowGenericBizServiceImpl;
 
 import java.lang.reflect.InvocationTargetException;

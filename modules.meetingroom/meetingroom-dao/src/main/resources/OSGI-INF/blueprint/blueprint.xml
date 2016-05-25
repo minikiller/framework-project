@@ -8,10 +8,10 @@
     <jpa:enable/>
     <tx:enable-annotations/>
 
-    <bean id="meetingroomBeanDaoImpl" class="cn.com.rexen.bean.dao.MeetingroomBeanDaoImpl">
+    <bean id="meetingroomBeanDaoImpl" class="cn.com.rexen.meetingroom.dao.MeetingroomBeanDaoImpl">
         <tx:transaction method="*" value="Required"/>
     </bean>
 
-    <service interface="cn.com.rexen.bean.api.dao.IMeetingroomBeanDao" ref="meetingroomBeanDaoImpl"/>
+    <service interface="cn.com.rexen.meetingroom.api.dao.IMeetingroomBeanDao" ref="meetingroomBeanDaoImpl"/>
 </blueprint>
 
