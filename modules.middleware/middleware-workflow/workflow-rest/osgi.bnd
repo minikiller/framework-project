@@ -5,5 +5,6 @@
 Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 #Meta-Persistence: META-INF/persistence.xml
 #JPA-PersistenceUnits:core-cm
-Import-Package:org.activiti.engine.repository,cn.com.rexen.workflow.api.model,cn.com.rexen.core.api.biz,*
+Import-Package:org.activiti.engine.repository,cn.com.rexen.workflow.api.model,cn.com.rexen.core.api.biz,\
+               cn.com.rexen.workflow.entities,cn.com.rexen.core.api.persistence,*
 Bundle-Category: Rexen Kalix Workflow

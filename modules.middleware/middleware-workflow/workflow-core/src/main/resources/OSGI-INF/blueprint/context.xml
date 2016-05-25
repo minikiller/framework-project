@@ -5,7 +5,11 @@
     </service>
 
     <bean id="categoryBeanServiceImpl" class="cn.com.rexen.workflow.core.impl.CategoryBeanServiceImpl">
+        <property name="dao" ref="categoryBeanDao"/>
+        <!--<property name="shiroService" ref="shiroService"/>-->
     </bean>
+
+    <reference id="categoryBeanDao" interface="cn.com.rexen.workflow.api.dao.ICategoryBeanDao"/>
 
     <service interface="cn.com.rexen.workflow.api.biz.IWorkflowService" ref="workFlowServiceImpl">
     </service>

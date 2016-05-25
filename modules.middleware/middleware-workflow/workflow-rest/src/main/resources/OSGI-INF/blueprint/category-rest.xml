@@ -14,32 +14,37 @@
         <rest path="/categorys" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
             <description>category rest service</description>
 
-            <!-- this is a rest PUT to create an function -->
+            <get id="route-getAllCategory" outType="cn.com.rexen.core.api.persistence.JsonData">
+                <description>Find all Categorys</description>
+                <to uri="bean:categoryService?method=getAllEntityByQuery(${header.page},${header.limit},${header.jsonStr})"/>
+            </get>
+
+            <!-- this is a rest POST to create a category -->
             <post id="route-addCategory" type="cn.com.rexen.workflow.entities.CategoryBean"
                   outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Create a Category</description>
                 <to uri="bean:categoryService?method=saveEntity"/>
             </post>
 
-            <!-- this is a rest PUT to update an function -->
-            <put id="route-updateCategory" type="cn.com.rexen.workflow.entities.CategoryBean"
+            <!-- this is a rest GET to view a category by the given id -->
+            <get uri="/{id}" id="route-getCategory" outType="cn.com.rexen.workflow.entities.CategoryBean">
+                <description>Find Category by id</description>
+                <to uri="bean:categoryService?method=getEntity(${header.id})"/>
+            </get>
+
+            <!-- this is a rest PUT to update a category -->
+            <put uri="/{id}" id="route-updateCategory" type="cn.com.rexen.workflow.entities.CategoryBean"
                  outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Updates a Category</description>
                 <to uri="bean:categoryService?method=updateEntity"/>
             </put>
 
-            <!-- this is a rest DELETE to delete an function -->
-            <delete id="route-deleteFunction" outType="cn.com.rexen.core.api.biz.JsonStatus">
+            <!-- this is a rest DELETE to delete a category -->
+            <delete uri="/{id}" id="route-deleteCategory"
+                    outType="cn.com.rexen.core.api.biz.JsonStatus">
                 <description>Delete a Category</description>
                 <to uri="bean:categoryService?method=deleteEntity(${header.id})"/>
             </delete>
-
-            <!-- this is a rest GET to find all functions -->
-            <get id="route-getAllCategory" outType="cn.com.rexen.workflow.entities.CategoryBean">
-                <description>Find all Categorys</description>
-                <to uri="bean:categoryService?method=getAllEntity"/>
-            </get>
-
         </rest>
 
     </camelContext>
