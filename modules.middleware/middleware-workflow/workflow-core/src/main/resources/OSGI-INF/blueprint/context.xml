@@ -6,6 +6,7 @@
 
     <bean id="categoryBeanServiceImpl" class="cn.com.rexen.workflow.core.impl.CategoryBeanServiceImpl">
         <property name="dao" ref="categoryBeanDao"/>
+        <property name="processEngine" ref="processEngine"/>
         <!--<property name="shiroService" ref="shiroService"/>-->
     </bean>
 
