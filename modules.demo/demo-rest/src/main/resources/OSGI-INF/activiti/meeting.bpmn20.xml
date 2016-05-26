@@ -4,7 +4,7 @@
              xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
              xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
              typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
-             targetNamespace="http://www.activiti.org/test">
+             targetNamespace="http://www.activiti.org/admin">
     <process id="meetingapply" name="会议使用申请流程" isExecutable="true">
         <documentation>会议使用申请流程</documentation>
         <extensionElements>

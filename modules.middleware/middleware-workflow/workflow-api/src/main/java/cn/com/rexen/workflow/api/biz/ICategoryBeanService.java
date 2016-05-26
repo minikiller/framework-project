@@ -1,6 +1,7 @@
 package cn.com.rexen.workflow.api.biz;
 
 import cn.com.rexen.core.api.biz.IBizService;
+import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.workflow.entities.CategoryBean;
 
 
@@ -13,5 +14,10 @@ import cn.com.rexen.workflow.entities.CategoryBean;
  * @修改备注：
  */
 public interface ICategoryBeanService extends IBizService<CategoryBean> {
-
+    /**
+     * 通过分类获得流程定义
+     * @param type
+     * @return
+     */
+    public JsonData getAllWorkFlow(String type);
 }

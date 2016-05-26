@@ -3,8 +3,8 @@
              xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
              xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
              typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
-             targetNamespace="http://www.activiti.org/test">
-    <process id="carapply" name="公务用车申请流程" isExecutable="true">
+             targetNamespace="http://www.activiti.org/rear">
+    <process id="carapply" name="公务用车申请流程" isExecutable="true" activiti:type="">
         <documentation>公务用车申请流程</documentation>
         <extensionElements>
             <activiti:eventListener events="TASK_CREATED,TASK_COMPLETED" entityType="task" class="cn.com.rexen.workflow.engine.MessageEvent"></activiti:eventListener>
