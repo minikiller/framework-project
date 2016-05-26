@@ -11,9 +11,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>cn.com.rexen.kalix.meetingroom.extjs</groupId>
     <artifactId>meetingroom-extjs</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
 
     <name>Kalix :: Meetingroom - Extjs</name>
     <description>Kalix :: Meetingroom - Extjs</description>

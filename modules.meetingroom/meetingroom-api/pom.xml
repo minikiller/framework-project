@@ -10,9 +10,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>cn.com.rexen.kalix.meetingroom.api</groupId>
     <artifactId>meetingroom-api</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
 
     <name>Kalix :: Meetingroom - API</name>
     <description>Meetingroom API</description>

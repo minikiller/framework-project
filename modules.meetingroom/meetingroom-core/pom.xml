@@ -11,9 +11,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>cn.com.rexen.kalix.meetingroom.core</groupId>
     <artifactId>meetingroom-core</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
 
     <name>Kalix :: Meetingroom - Core</name>
     <description>Meetingroom Core</description>

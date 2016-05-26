@@ -10,9 +10,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>cn.com.rexen.kalix.meetingroom.entities</groupId>
     <artifactId>meetingroom-entities</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
 
     <name>Kalix :: Meetingroom - Entities</name>
     <description>Meetingroom Entities</description>
