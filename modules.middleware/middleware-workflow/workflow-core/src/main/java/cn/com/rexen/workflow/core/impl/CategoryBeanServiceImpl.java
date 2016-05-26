@@ -38,11 +38,11 @@ public class CategoryBeanServiceImpl extends GenericBizServiceImpl<ICategoryBean
         List<ProcessDefinition> list = repositoryService.createProcessDefinitionQuery().processDefinitionCategory(namespace).latestVersion().list();
 
         if (list != null && list.size() > 0) {
-            long i=0; //自己构造id
+            long i=1; //自己构造id
             for (ProcessDefinition processDefinition : list) {
                 ProcessDef processDef=new ProcessDef();
                 processDef.setId(i);
-                processDef.setProcessId(processDefinition.getId());
+                processDef.setProcessId(processDefinition.getId());//用于查看工作流定义图片
                 processDef.setKey(processDefinition.getKey());
                 processDef.setName(processDefinition.getName());
                 processDef.setDescription(processDefinition.getDescription());
@@ -53,7 +53,7 @@ public class CategoryBeanServiceImpl extends GenericBizServiceImpl<ICategoryBean
         else
         {
             ProcessDef processDef=new ProcessDef();
-            processDef.setId(1);
+            processDef.setId(0);//没有工作流的id为0
             processDef.setName("暂无数据");
             processDef.setKey("empty");
             processDef.setDescription("还没有定义工作流。");
@@ -73,11 +73,10 @@ public class CategoryBeanServiceImpl extends GenericBizServiceImpl<ICategoryBean
      * 用于返回流程定义的临时类
      */
     private class ProcessDef extends PersistentEntity{
-        private String name;
-        private String key;
+        private String name;//分类名称
+        private String key; //分类关键字
         private String description;
-        private String imgUrl;
-        private String processId;
+        private String processId; //流程定义id
 
         public String getName() {
             return name;
@@ -101,14 +100,6 @@ public class CategoryBeanServiceImpl extends GenericBizServiceImpl<ICategoryBean
 
         public void setDescription(String description) {
             this.description = description;
-        }
-
-        public String getImgUrl() {
-            return imgUrl;
-        }
-
-        public void setImgUrl(String imgUrl) {
-            this.imgUrl = imgUrl;
         }
 
         public String getProcessId() {
