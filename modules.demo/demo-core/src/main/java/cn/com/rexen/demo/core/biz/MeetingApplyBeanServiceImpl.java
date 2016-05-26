@@ -1,3 +1,7 @@
+/**
+ * @author zangyanming
+ * checkDateTime函数检测会议室申请中的开始时间与结束时间范围内，会议室是否被占用
+ */
 package cn.com.rexen.demo.core.biz;
 
 import cn.com.rexen.core.api.biz.JsonStatus;
@@ -17,9 +21,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author chenyanxu
- */
 public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<IMeetingApplyBeanDao, MeetingApplyBean> implements IMeetingApplyBeanService {
     private IMeetingroomBeanService meetingroomBeanService;
 
@@ -84,6 +85,7 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
     public JsonStatus checkDateTime(String jsonStr) {
         MeetingApplyBean entity = SerializeUtil.unserializeJson(jsonStr, MeetingApplyBean.class);
         JsonStatus jsonStatus = new JsonStatus();
+        jsonStatus.setMsg("0");
         long id;
         if (entity.getId() == 0) {
             id = -1;
@@ -92,15 +94,25 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
         }
 
         long meetingroomId = entity.getMeetingroomId();
-        Date meetingDate = entity.getMeetingDate();
+        //Date meetingDate = entity.getMeetingDate();
+
+        Date beginDateTime = new Date();
         Date beginTime = entity.getBeginTime();
-        Date endTime = entity.getEndTime();
-        Date beginDateTime = meetingDate;
+        beginDateTime.setYear(entity.getMeetingDate().getYear());
+        beginDateTime.setMonth(entity.getMeetingDate().getMonth());
+        beginDateTime.setDate(entity.getMeetingDate().getDate());
         beginDateTime.setHours(beginTime.getHours());
         beginDateTime.setMinutes(beginTime.getMinutes());
-        Date endDateTime = meetingDate;
+        beginDateTime.setSeconds(beginTime.getSeconds());
+
+        Date endDateTime = new Date();//entity.getMeetingDate();
+        Date endTime = entity.getEndTime();
+        endDateTime.setYear(entity.getMeetingDate().getYear());
+        endDateTime.setMonth(entity.getMeetingDate().getMonth());
+        endDateTime.setDate(entity.getMeetingDate().getDate());
         endDateTime.setHours(endTime.getHours());
         endDateTime.setMinutes(endTime.getMinutes());
+        endDateTime.setSeconds(endTime.getSeconds());
 
         try {
             Date row_beginTime, row_endTime, row_beginDateTime, row_endDateTime;
@@ -108,28 +120,40 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
             for (int i = 0; i < list.size(); i++) {
                 row_beginTime = list.get(i).getBeginTime();
                 row_endTime = list.get(i).getEndTime();
-                row_beginDateTime = list.get(i).getMeetingDate();
-                row_endDateTime = row_beginDateTime;
 
+                row_beginDateTime = new Date();
+                row_beginDateTime.setYear(list.get(i).getMeetingDate().getYear());
+                row_beginDateTime.setMonth(list.get(i).getMeetingDate().getMonth());
+                row_beginDateTime.setDate(list.get(i).getMeetingDate().getDate());
                 row_beginDateTime.setHours(row_beginTime.getHours());
                 row_beginDateTime.setMinutes(row_beginTime.getMinutes());
+                row_beginDateTime.setSeconds(row_beginTime.getSeconds());
+
+                row_endDateTime = new Date();
+                row_endDateTime.setYear(list.get(i).getMeetingDate().getYear());
+                row_endDateTime.setMonth(list.get(i).getMeetingDate().getMonth());
+                row_endDateTime.setDate(list.get(i).getMeetingDate().getDate());
                 row_endDateTime.setHours(row_endTime.getHours());
                 row_endDateTime.setMinutes(row_endTime.getMinutes());
-                if (beginDateTime.compareTo(row_beginDateTime) > 0 && beginDateTime.compareTo(row_endDateTime) < 0) {
-                    jsonStatus.setMsg("1");
-                    break;
-                }
-                if (endDateTime.compareTo(row_beginDateTime) > 0 && endDateTime.compareTo(row_endDateTime) < 0) {
-                    jsonStatus.setMsg("1");
-                    break;
-                }
-            }
-            if (list.size() <= 0) {
-                jsonStatus.setMsg("0");
-            }
-            jsonStatus.setSuccess(true);
+                row_endDateTime.setSeconds(row_endTime.getSeconds());
 
+                if (beginDateTime.before(row_beginDateTime) && endDateTime.after(row_beginDateTime)) {
+                    jsonStatus.setMsg("1");
+                    break;
+                }
+                if (Math.abs(beginDateTime.getTime() - row_beginDateTime.getTime()) < 1000) {
+                    jsonStatus.setMsg("1");
+                    break;
+                }
+                if (beginDateTime.after(row_beginDateTime) && beginDateTime.before(row_endDateTime)) {
+                    jsonStatus.setMsg("1");
+                    break;
+                }
+            }
+
+            jsonStatus.setSuccess(true);
         } catch (Exception e) {
+            jsonStatus.setMsg("1");
             jsonStatus.setSuccess(false);
         }
         return jsonStatus;
