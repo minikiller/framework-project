@@ -20,6 +20,14 @@
                 <to uri="bean:meetingApplyService?method=saveEntity"/>
             </post>
         </rest>
+        <rest path="/meetingapplys/check" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-checkMeetingApplyDateTime"
+                 outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>Check MeetingApply DateTime</description>
+                <to uri="bean:meetingApplyService?method=checkDateTime(${header.jsonStr})"/>
+            </get>
+        </rest>
         <rest path="/meetingapplys/{id}" consumes="application/json;charset=utf-8"
               produces="application/json;charset=utf-8">
             <get id="route-getMeetingApply" outType="cn.com.rexen.demo.entities.MeetingApplyBean">

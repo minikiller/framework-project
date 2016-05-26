@@ -9,6 +9,7 @@ import cn.com.rexen.demo.entities.MeetingApplyBean;
  */
 public interface IMeetingApplyBeanService extends IBizService<MeetingApplyBean> {
     JsonStatus startProcess(String id);
-
     JsonStatus completeTask(String taskId, String accepted, String comment);
+
+    JsonStatus checkDateTime(String jsonStr);
 }
