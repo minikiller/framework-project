@@ -25,6 +25,8 @@ public class MyCompleter implements Completer {
 
         StringsCompleter delegate = new StringsCompleter();
         delegate.getStrings().add("init-db");
+        delegate.getStrings().add("run");
+        delegate.getStrings().add("list");
         return delegate.complete(session, commandLine, candidates);
     }
 }
