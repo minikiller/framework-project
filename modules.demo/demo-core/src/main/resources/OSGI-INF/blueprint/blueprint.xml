@@ -64,7 +64,6 @@
     <reference id="noticeBeanDao" interface="cn.com.rexen.demo.api.dao.INoticeBeanDao"/>
     <reference id="sealApplyBeanDao" interface="cn.com.rexen.demo.api.dao.ISealApplyBeanDao"/>
     <reference id="carApplyBeanDao" interface="cn.com.rexen.demo.api.dao.ICarApplyBeanDao"/>
-    <reference id="workFlowBeanDao" interface="cn.com.rexen.demo.api.dao.IWorkFlowBeanDao"/>
     <reference id="meetingApplyBeanDao" interface="cn.com.rexen.demo.api.dao.IMeetingApplyBeanDao"/>
 </blueprint>
 
