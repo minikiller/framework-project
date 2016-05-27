@@ -28,10 +28,5 @@
         <tx:transaction method="*" value="Required"/>
     </bean>
 
-    <service interface="cn.com.rexen.demo.api.dao.IWorkFlowBeanDao" ref="workFlowBeanDaoImpl"/>
-    <bean id="workFlowBeanDaoImpl" class="cn.com.rexen.demo.persist.openjpa.WorkFlowBeanDaoImpl">
-        <tx:transaction method="*" value="Required"/>
-    </bean>
-
 </blueprint>
 

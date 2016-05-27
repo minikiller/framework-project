@@ -341,13 +341,22 @@
     </feature>
 
     <feature name="kalix-demo" version="1.0">
-        <feature>kalix-core</feature>
+        <feature>kalix-meetingroom</feature>
         <bundle>mvn:cn.com.rexen.kalix.demo/demo-api/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.kalix.demo/demo-core/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.kalix.demo/demo-entities/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.kalix.demo/demo-persist-jpa/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.kalix.demo/demo-rest/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.kalix.demo/demo-web/${parent.version}</bundle>
+    </feature>
+
+    <feature name="kalix-meetingroom" version="1.0">
+        <bundle>mvn:cn.com.rexen.kalix.meetingroom/meetingroom-api/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.meetingroom/meetingroom-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.meetingroom/meetingroom-entities/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.meetingroom/meetingroom-dao/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.meetingroom/meetingroom-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.meetingroom/meetingroom-web/${parent.version}</bundle>
     </feature>
 
     <feature name="kalix-app" version="1.0">
@@ -402,9 +411,12 @@
 
     <feature name="kalix-middleware-workflow" version="1.0">
         <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-engine/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-entities/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-api/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-core/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-dao/${parent.version}</bundle>
         <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-rest/${parent.version}</bundle>
+        <bundle>mvn:cn.com.rexen.kalix.middleware.workflow/workflow-web/${parent.version}</bundle>
     </feature>
 
     <feature name="kalix-middleware-attachment" version="1.0">

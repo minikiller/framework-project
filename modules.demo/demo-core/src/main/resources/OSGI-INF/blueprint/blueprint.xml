@@ -61,14 +61,6 @@
         <property name="taskService" ref="taskService"/>
         <property name="meetingroomBeanService" ref="meetingroomBeanService"/>
     </bean>
-
-    <service id="workFlowBeanService" interface="cn.com.rexen.demo.api.biz.IWorkFlowBeanService"
-             ref="workFlowServiceImpl">
-    </service>
-    <bean id="workFlowServiceImpl" class="cn.com.rexen.demo.core.biz.WorkFlowBeanServiceImpl" scope="prototype">
-        <property name="dao" ref="workFlowBeanDao"/>
-        <property name="shiroService" ref="shiroService"/>
-    </bean>
     <reference id="noticeBeanDao" interface="cn.com.rexen.demo.api.dao.INoticeBeanDao"/>
     <reference id="sealApplyBeanDao" interface="cn.com.rexen.demo.api.dao.ISealApplyBeanDao"/>
     <reference id="carApplyBeanDao" interface="cn.com.rexen.demo.api.dao.ICarApplyBeanDao"/>
