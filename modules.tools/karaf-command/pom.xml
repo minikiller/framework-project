@@ -16,7 +16,6 @@
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.tools.command</bundle.symbolicName>
-
     </properties>
 
     <dependencies>
@@ -25,7 +24,6 @@
             <artifactId>org.apache.karaf.shell.core</artifactId>
             <version>${karaf.version}</version>
         </dependency>
-
         <dependency>
             <groupId>cn.com.rexen.kalix.core</groupId>
             <artifactId>core-util</artifactId>
@@ -40,6 +38,12 @@
         </dependency>
     </dependencies>
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
         <plugins>
         </plugins>
     </build>
