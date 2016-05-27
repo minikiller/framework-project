@@ -21,14 +21,14 @@
 
     <bean id="blueprintELResolver" class="org.activiti.osgi.blueprint.BlueprintELResolver"/>
 
-    <bean id="configurationFactory" class="cn.com.rexen.workflow.engine.ConfigurationFactory">
+    <!--<bean id="configurationFactory" class="cn.com.rexen.workflow.engine.ConfigurationFactory">
         <property name="dataSource" ref="dataSource"/>
         <property name="databaseSchemaUpdate" value="true"/>
         <property name="history" value="full"/>
         <property name="activityFontName" value="宋体"/>
         <property name="labelFontName" value="宋体"/>
         <property name="dbIdentityUsed" value="false"/>
-    </bean>
+    </bean>-->
 
     <reference id="transactionManager" interface="javax.transaction.TransactionManager"/>
 
@@ -38,6 +38,8 @@
         <property name="transactionManager" ref="transactionManager"/>
         <property name="databaseSchemaUpdate" value="true"/>
         <property name="transactionsExternallyManaged" value="true" />
+        <property name="activityFontName" value="宋体"/>
+        <property name="labelFontName" value="宋体"/>
     </bean>
 
     <!--<bean id="configuration" factory-ref="configurationFactory" factory-method="getConfiguration"/>-->
@@ -49,7 +51,7 @@
         <property name="blueprintELResolver" ref="blueprintELResolver"/>
     </bean>
 
-    <service id="taskListener" interface="org.activiti.engine.delegate.JavaDelegate" ref="myTaskAssigner">
+    <!--<service id="taskListener" interface="org.activiti.engine.delegate.JavaDelegate" ref="myTaskAssigner">
         <service-properties>
             <entry key="osgi.service.blueprint.compname">
                 <value type="java.lang.String">myTaskAssigner</value>
@@ -57,7 +59,7 @@
         </service-properties>
     </service>
 
-    <bean id="myTaskAssigner" class="cn.com.rexen.workflow.engine.MyTaskAssigner"/>
+    <bean id="myTaskAssigner" class="cn.com.rexen.workflow.engine.MyTaskAssigner"/>-->
 
     <!--<service id="processListener" interface="org.activiti.engine.delegate.JavaDelegate" ref="myProcessAssigner">
         <service-properties>

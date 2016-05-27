@@ -1,5 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+<blueprint xmlns:jpa="http://aries.apache.org/xmlns/jpa/v2.0.0"
+           xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.2.0"
+           default-activation="eager"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+    <jpa:enable/>
+    <tx:enable-annotations/>
 
     <service interface="cn.com.rexen.workflow.api.biz.ICategoryBeanService" ref="categoryBeanServiceImpl">
     </service>
@@ -80,6 +84,7 @@
         </service-properties>
     </service>
     <bean id="bpmnImageServlet" class="cn.com.rexen.workflow.core.servlet.BpmnImageServlet">
+        <tx:transaction method="*" value="Required"/>
         <property name="historyService" ref="historyService"/>
         <property name="repositoryService" ref="repositoryService"/>
         <property name="runtimeService" ref="runtimeService"/>
