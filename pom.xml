@@ -34,8 +34,9 @@
         <module>modules.duty</module>
         <module>modules.message</module>
         <module>modules.dashboard</module>
-        <module>modules.tools</module>
         <module>modules.meetingroom</module>
+        <module>modules.tools</module>
+
         <!--<module>modules.notice</module>-->
     </modules>
 </project>
