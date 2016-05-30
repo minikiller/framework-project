@@ -1,5 +1,7 @@
 package cn.com.rexen.core.api.web.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -13,6 +15,7 @@ import java.util.Date;
 public abstract class BaseDTO implements Serializable {
     protected long id = -1;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     protected Date creationDate;// 创建日期
     protected String createBy;    // 创建者
     protected String updateBy;    // 更新者
