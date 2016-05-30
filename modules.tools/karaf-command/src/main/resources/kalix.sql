@@ -18,7 +18,6 @@ Date: 2016-02-29 16:47:36
 -- ----------------------------
 -- Sequence structure for "public"."act_evt_log_log_nr__seq"
 -- ----------------------------
-DROP SEQUENCE "public"."act_evt_log_log_nr__seq";
 CREATE SEQUENCE "public"."act_evt_log_log_nr__seq"
  INCREMENT 1
  MINVALUE 1
