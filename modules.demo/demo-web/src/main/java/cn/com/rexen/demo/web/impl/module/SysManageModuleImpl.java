@@ -27,12 +27,12 @@ public class SysManageModuleImpl implements IModule {
 
     @Override
     public String getText() {
-        return "系统管理";
+        return "基本设置";
     }
 
     @Override
     public String getDescription() {
-        return "系统管理";
+        return "基本设置";
     }
 
     @Override
@@ -57,7 +57,7 @@ public class SysManageModuleImpl implements IModule {
 
     @Override
     public String getIconCls() {
-        return "right-icon x-fa fa-desktop";
+        return "fa fa-plug";
     }
 
     @Override
