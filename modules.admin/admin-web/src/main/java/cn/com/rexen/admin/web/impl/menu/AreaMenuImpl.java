@@ -52,7 +52,7 @@ public class AreaMenuImpl implements IMenu {
 
     @Override
     public int getIndex() {
-        return 0;
+        return 50;
     }
 
     @Override
@@ -62,6 +62,6 @@ public class AreaMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-home";
+        return "iconfont icon-area-management";
     }
 }

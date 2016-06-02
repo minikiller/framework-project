@@ -16,6 +16,10 @@
 
     <modules>
         <module>dashboard-entities</module>
+        <module>dashboard-api</module>
+        <module>dashboard-dao</module>
+        <module>dashboard-core</module>
+        <module>dashboard-rest</module>
     </modules>
 
     <dependencyManagement>
@@ -26,6 +30,17 @@
                 <version>${globle.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.com.rexen.kalix.dashboard</groupId>
+                <artifactId>dashboard-entities</artifactId>
+                <version>${globle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.com.rexen.kalix.dashboard</groupId>
+                <artifactId>dashboard-api</artifactId>
+                <version>${globle.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

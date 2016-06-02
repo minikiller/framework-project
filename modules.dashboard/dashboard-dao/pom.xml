@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>modules.dashboard</artifactId>
+        <groupId>cn.com.rexen.kalix.dashboard</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>dashboard-dao</artifactId>
+    <packaging>bundle</packaging>
+    <name>Kalix :: Dashboard - DAO</name>
+    <description>Dashboard DAO</description>
+
+    <properties>
+        <bundle.symbolicName>cn.com.rexen.kalix.dashboard.dao</bundle.symbolicName>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.dashboard</groupId>
+            <artifactId>dashboard-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.core</groupId>
+            <artifactId>core-impl</artifactId>
+        </dependency>
+    </dependencies>
+</project>

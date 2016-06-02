@@ -58,7 +58,7 @@ public class PermissionModuleImpl implements IModule {
 
     @Override
     public String getIconCls() {
-        return "right-icon x-fa fa-user-secret";
+        return "iconfont icon-permission";
     }
 
     @Override

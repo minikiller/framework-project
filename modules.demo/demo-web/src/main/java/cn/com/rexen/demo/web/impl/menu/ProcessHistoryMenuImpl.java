@@ -62,6 +62,6 @@ public class ProcessHistoryMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-calendar";
+        return "iconfont icon-history";
     }
 }

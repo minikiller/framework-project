@@ -5,7 +5,6 @@
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
 <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
-
     <camelContext id="loginCamel" xmlns="http://camel.apache.org/schema/blueprint">
         <restConfiguration component="servlet" bindingMode="json">
             <dataFormatProperty key="prettyPrint" value="true"/>

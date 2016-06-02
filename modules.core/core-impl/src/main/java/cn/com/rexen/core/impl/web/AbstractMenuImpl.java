@@ -58,6 +58,6 @@ public abstract class AbstractMenuImpl extends AbstractWebPageImpl implements IM
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-file-o";
+        return "icon ";
     }
 }

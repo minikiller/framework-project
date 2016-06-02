@@ -57,7 +57,7 @@ public class AdminModuleImpl implements IModule {
 
     @Override
     public String getIconCls() {
-        return "right-icon x-fa fa-desktop";
+        return "iconfont icon-system";
     }
 
     @Override

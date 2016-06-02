@@ -1,0 +1,15 @@
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0
+           http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+    <reference id="shiroService" interface="cn.com.rexen.core.api.security.IShiroService"/>
+    <reference id="dashboardBeanDao" interface="cn.com.rexen.kalix.dashboard.api.dao.IDashboardBeanDao"/>
+
+    <bean id="dashboardBeanServiceImpl" class="cn.com.rexen.kalix.dashboard.core.biz.DashboardBeanServiceImpl">
+        <property name="dao" ref="dashboardBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
+    </bean>
+
+    <service id="dashboardBeanService" interface="cn.com.rexen.kalix.dashboard.api.biz.IDashboardBeanService"
+             ref="dashboardBeanServiceImpl"/>
+</blueprint>

@@ -62,6 +62,6 @@ public class RoleMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-users";
+        return "iconfont icon-role-management";
     }
 }

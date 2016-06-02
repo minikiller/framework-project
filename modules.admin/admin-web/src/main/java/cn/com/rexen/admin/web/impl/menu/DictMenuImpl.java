@@ -62,6 +62,6 @@ public class DictMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-table";
+        return "iconfont icon-dict-management";
     }
 }

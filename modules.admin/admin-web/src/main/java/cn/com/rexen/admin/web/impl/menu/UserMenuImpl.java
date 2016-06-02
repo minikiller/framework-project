@@ -60,6 +60,6 @@ public class UserMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-user";
+        return "iconfont icon-user-management";
     }
 }

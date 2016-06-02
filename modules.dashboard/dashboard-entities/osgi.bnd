@@ -5,5 +5,4 @@
 #Bundle-Activator: ${bundle.namespace}.internal.InitActivator
 Meta-Persistence: META-INF/persistence.xml
 JPA-PersistenceUnits:dashboard-unit
-Import-Package:*
 Bundle-Category: Rexen Kalix Dashboard
