@@ -528,6 +528,7 @@
         <feature>kalix-message</feature>
         <feature>kalix-middleware</feature>
         <feature>kalix-config</feature>
+        <bundle>mvn:cn.com.rexen.kalix/karaf-command/${parent.version}</bundle>
     </feature>
     <!-- kalix config files -->
     <feature name="kalix-config">

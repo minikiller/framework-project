@@ -56,6 +56,17 @@
                 <to uri="bean:meetingApplyService?method=completeTask(${header.taskId},${header.accepted},${header.comment})"/>
             </get>
         </rest>
+        <rest path="/meetingapplys/reservation" consumes="application/json;charset=utf-8"
+              produces="application/json;charset=utf-8">
+            <get id="route-meetingRoomReservation" uri="/getAll" outType="cn.com.rexen.core.api.persistence.JsonData">
+                <description>Query MeetingRoom Reservation</description>
+                <to uri="bean:meetingApplyService?method=reservation(${header.date})"/>
+            </get>
+            <get id="route-meetingRoomReservations" uri="/getOne" outType="cn.com.rexen.core.api.persistence.JsonData">
+                <description>Query MeetingRoom Reservations</description>
+                <to uri="bean:meetingApplyService?method=reservation(${header.id},${header.date})"/>
+            </get>
+        </rest>
     </camelContext>
 </blueprint>
 

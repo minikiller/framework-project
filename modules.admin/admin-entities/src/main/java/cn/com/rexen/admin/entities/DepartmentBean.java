@@ -17,6 +17,7 @@ import javax.persistence.Table;
 @Table(name = "sys_department")
 @Inheritance(strategy = InheritanceType.JOINED)
 //@XmlRootElement
+@Deprecated //部门与机构合并了
 public class DepartmentBean extends PersistentEntity {
     private String name; //名称
     private String code; //代码

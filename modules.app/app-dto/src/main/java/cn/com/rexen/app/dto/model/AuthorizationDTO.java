@@ -1,6 +1,7 @@
 package cn.com.rexen.app.dto.model;
 
 import cn.com.rexen.core.api.web.model.BaseDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,7 +23,7 @@ public class AuthorizationDTO extends BaseDTO {
     private boolean expanded; //是否展开子节点
     private boolean checked; //是否多选
     private List<AuthorizationDTO> children=new ArrayList<AuthorizationDTO>();
-
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date creationDate;// 创建日期
     private String createBy;    // 创建者
     private String updateBy;    // 更新者

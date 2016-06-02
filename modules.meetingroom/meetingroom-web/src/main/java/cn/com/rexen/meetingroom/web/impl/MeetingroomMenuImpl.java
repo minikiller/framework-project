@@ -41,7 +41,7 @@ public class MeetingroomMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-cutlery";
+        return "fa fa-university";
     }
 
     @Override

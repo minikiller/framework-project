@@ -1,15 +1,19 @@
 package cn.com.rexen.admin.core;
 
-import cn.com.rexen.admin.api.biz.IDepartmentBeanService;
 import cn.com.rexen.admin.api.biz.IOrganizationBeanService;
-import cn.com.rexen.admin.api.biz.IUserBeanService;
+import cn.com.rexen.admin.api.dao.IDepartmentUserBeanDao;
 import cn.com.rexen.admin.api.dao.IOrganizationBeanDao;
 import cn.com.rexen.admin.dto.model.OrganizationDTO;
+import cn.com.rexen.admin.entities.DepartmentUserBean;
 import cn.com.rexen.admin.entities.OrganizationBean;
+import cn.com.rexen.admin.entities.UserBean;
 import cn.com.rexen.core.api.biz.JsonStatus;
+import cn.com.rexen.core.api.persistence.JsonData;
+import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.api.security.IShiroService;
 import cn.com.rexen.core.impl.biz.GenericBizServiceImpl;
 import cn.com.rexen.core.util.Assert;
+import org.apache.commons.lang.StringUtils;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
@@ -25,20 +29,15 @@ import java.util.List;
 public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganizationBeanDao, OrganizationBean> implements IOrganizationBeanService {
     private static final String FUNCTION_NAME = "机构";
     //    private IOrganizationBeanDao dao;
-    private IUserBeanService userBeanService;
+    private IDepartmentUserBeanDao depUserBeanDao;
     private IShiroService shiroService;
-    private IDepartmentBeanService departmentBeanService;
 
     public OrganizationBeanServiceImpl() {
         super.init(OrganizationBean.class.getName());
     }
 
-    public void setDepartmentBeanService(IDepartmentBeanService departmentBeanService) {
-        this.departmentBeanService = departmentBeanService;
-    }
-
-    public void setUserBeanService(IUserBeanService userBeanService) {
-        this.userBeanService = userBeanService;
+    public void setDepUserBeanDao(IDepartmentUserBeanDao depUserBeanDao) {
+        this.depUserBeanDao = depUserBeanDao;
     }
 
     public void setShiroService(IShiroService shiroService) {
@@ -122,7 +121,6 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
                     removeChildren(id);
                     OrganizationBean org=organizationBeans.get(0);
                     dao.removeOrg(id);
-                    departmentBeanService.deleteByOrgId(id);
                     updateParent(org.getParentId());
                     jsonStatus.setSuccess(true);
                     jsonStatus.setMsg("删除" + FUNCTION_NAME + "成功！");
@@ -166,7 +164,6 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
                     removeChildren(org.getId());
                 }
                 dao.removeOrg(org.getId());
-                departmentBeanService.deleteByOrgId(org.getId());
             }
         }
     }
@@ -257,7 +254,8 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
     }
 
     public OrganizationDTO getAllOrg() {
-        List<OrganizationBean> orgs = dao.getAll();
+        //List<OrganizationBean> orgs = dao.getAll();
+        List<OrganizationBean> orgs = dao.find("select ob from OrganizationBean ob where ob.dept=false order by ob.code");
 
         return generateRoot(orgs,-1L);
     }
@@ -270,10 +268,8 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
                 for(OrganizationBean org:orgs){
                     if(org!=null) {
                         dao.removeOrg(org.getId());
-                        departmentBeanService.deleteByOrgId(org.getId());
                     }
                 }
-
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -300,16 +296,13 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
         Mapper mapper = new DozerBeanMapper();
         String parentName="根机构";
 
-        if(id == -1){
-            root=new OrganizationDTO();
-        }
-        else {
-            for(OrganizationBean bean:beans){
-                if(bean.getId()==id){
-                    root=mapper.map(bean, OrganizationDTO.class);
-                    parentName=bean.getName();
-                    break;
-                }
+        root = new OrganizationDTO();
+
+        for (OrganizationBean bean : beans) {
+            if (bean.getId() == id) {
+                root = mapper.map(bean, OrganizationDTO.class);
+                parentName = bean.getName();
+                break;
             }
         }
 
@@ -331,5 +324,93 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
         }
 
         return root;
+    }
+
+
+    // 以下方法提供给部门管理时使用
+    @Override
+    public OrganizationDTO getAllByOrgId(Long orgId) {
+        List<OrganizationBean> beans = dao.find("select ob from OrganizationBean ob where ob.dept=true order by ob.code");
+        return generateRoot(beans, orgId);
+    }
+
+    @Override
+    public List getUsersByDepartmentId(long id) {
+        List<String> userIds = new ArrayList<String>();
+        List<DepartmentUserBean> departmentUserBeans = depUserBeanDao.find("select ob from DepartmentUserBean ob where ob.depId = ?1", id);
+        if (departmentUserBeans != null && !departmentUserBeans.isEmpty()) {
+            for (DepartmentUserBean departmentUserBean : departmentUserBeans) {
+                if (departmentUserBean != null && departmentUserBean.getUserId() != 0) {
+                    userIds.add(String.valueOf(departmentUserBean.getUserId()));
+                }
+            }
+        }
+        return userIds;
+    }
+
+    @Override
+    public JsonData getUserAllAndDepartmentUsers(long depId) {
+        JsonData jsonData = new JsonData();
+        List<UserBean> users = dao.find("select u from UserBean u where u.id not in (select dub.userId from DepartmentUserBean dub)");
+        List<PersistentEntity> persistentEntities = new ArrayList<PersistentEntity>();
+        if (users != null && users.size() > 0) {
+            for (UserBean user : users) {
+                if (user != null) {
+                    persistentEntities.add(user);
+                }
+            }
+        }
+        List<UserBean> departmentUserBeans = dao.find("select u from UserBean u where u.id in (select du.userId from DepartmentUserBean du where du.depId=?1)", depId);
+        if (departmentUserBeans != null && departmentUserBeans.size() > 0) {
+            for (UserBean departmentUserBean : departmentUserBeans) {
+                if (departmentUserBean != null) {
+                    persistentEntities.add(departmentUserBean);
+                }
+            }
+        }
+        jsonData.setData(persistentEntities);
+        jsonData.setTotalCount((long) persistentEntities.size());
+        return jsonData;
+    }
+
+    @Override
+    public JsonStatus saveDepartmentUsers(long depId, String userId) {
+        JsonStatus jsonStatus = new JsonStatus();
+        try {
+            depUserBeanDao.deleteByDepartmentId(depId);
+            String userName = shiroService.getCurrentUserName();
+            if (StringUtils.isNotEmpty(userId)) {
+                if (userId.indexOf(",") != -1) {
+                    String[] userIds = userId.split(",");
+                    for (String _userId : userIds) {
+                        if (StringUtils.isNotEmpty(_userId.trim())) {
+                            DepartmentUserBean departmentUserBean = new DepartmentUserBean();
+                            departmentUserBean.setCreateBy(userName);
+                            departmentUserBean.setUpdateBy(userName);
+                            departmentUserBean.setDepId(depId);
+                            departmentUserBean.setUserId(Long.parseLong(_userId));
+                            depUserBeanDao.save(departmentUserBean);
+                        }
+                    }
+                } else {
+                    if (StringUtils.isNotEmpty(userId.trim())) {
+                        DepartmentUserBean departmentUserBean = new DepartmentUserBean();
+                        departmentUserBean.setCreateBy(userName);
+                        departmentUserBean.setUpdateBy(userName);
+                        departmentUserBean.setDepId(depId);
+                        departmentUserBean.setUserId(Long.parseLong(userId));
+                        depUserBeanDao.save(departmentUserBean);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonStatus.setFailure(true);
+            jsonStatus.setMsg("保存失败!");
+            return jsonStatus;
+        }
+        jsonStatus.setSuccess(true);
+        jsonStatus.setMsg("保存成功!");
+        return jsonStatus;
     }
 }

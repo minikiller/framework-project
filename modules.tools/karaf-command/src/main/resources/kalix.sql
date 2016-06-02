@@ -18,7 +18,6 @@ Date: 2016-02-29 16:47:36
 -- ----------------------------
 -- Sequence structure for "public"."act_evt_log_log_nr__seq"
 -- ----------------------------
-DROP SEQUENCE "public"."act_evt_log_log_nr__seq";
 CREATE SEQUENCE "public"."act_evt_log_log_nr__seq"
  INCREMENT 1
  MINVALUE 1
@@ -4255,56 +4254,5 @@ File Encoding         : 65001
 
 Date: 2016-05-26 15:28:28
 */
-
-
--- ----------------------------
--- Table structure for workflow_category
--- ----------------------------
-DROP TABLE IF EXISTS "public"."workflow_category";
-CREATE TABLE "public"."workflow_category" (
-"id" int8 NOT NULL,
-"createby" varchar(255) COLLATE "default",
-"creationdate" timestamp(6),
-"updateby" varchar(255) COLLATE "default",
-"updatedate" timestamp(6),
-"code" varchar(255) COLLATE "default",
-"jd" varchar(255) COLLATE "default",
-"systemname" varchar(255) COLLATE "default",
-"systemversion" varchar(255) COLLATE "default",
-"username" varchar(255) COLLATE "default",
-"wd" varchar(255) COLLATE "default",
-"xzqh_dm" varchar(255) COLLATE "default",
-"version_" int8,
-"description" varchar(255) COLLATE "default",
-"icon" varchar(255) COLLATE "default",
-"key" varchar(255) COLLATE "default",
-"name" varchar(255) COLLATE "default"
-)
-WITH (OIDS=FALSE)
-
-;
-
--- ----------------------------
--- Records of workflow_category
--- ----------------------------
-INSERT INTO "public"."workflow_category" VALUES ('45713', null, '2016-05-24 16:10:22.076', null, '2016-05-24 16:13:22.076', null, null, null, null, null, null, null, '1', '人事相关流程', '1', 'person', '人事类');
-INSERT INTO "public"."workflow_category" VALUES ('45714', null, '2016-05-24 16:11:53.524', null, '2016-05-24 16:13:53.524', null, null, null, null, null, null, null, '1', '项目相关流程', '1', 'project', '项目类');
-INSERT INTO "public"."workflow_category" VALUES ('45715', null, '2016-05-24 16:08:42.106', null, '2016-05-24 16:14:42.106', null, null, null, null, null, null, null, '1', '行政相关流程', '1', 'admin', '行政类');
-INSERT INTO "public"."workflow_category" VALUES ('45716', null, '2016-05-24 16:12:19', null, '2016-05-24 17:05:26.921', null, null, null, null, null, null, null, '2', '库存相关流程', '1', 'stock', '库存类');
-INSERT INTO "public"."workflow_category" VALUES ('45717', null, '2016-05-24 16:13:49.707', null, '2016-05-24 16:15:49.707', null, null, null, null, null, null, null, '1', '绩效相关流程', '1', 'performance', '绩效类');
-INSERT INTO "public"."workflow_category" VALUES ('45718', null, '2016-05-24 16:14:29.477', null, '2016-05-24 16:16:29.477', null, null, null, null, null, null, null, '1', '公文相关流程', '1', 'doc', '公文类');
-INSERT INTO "public"."workflow_category" VALUES ('45719', null, '2016-05-24 16:15:53.278', null, '2016-05-24 16:16:53.278', null, null, null, null, null, null, null, '1', '采购相关流程', '1', 'purchase', '采购类');
-INSERT INTO "public"."workflow_category" VALUES ('45720', null, '2016-05-24 16:17:19', null, '2016-05-24 17:05:43.833', null, null, null, null, null, null, null, '2', '合同相关流程', '1', 'contract', '合同类');
-INSERT INTO "public"."workflow_category" VALUES ('45721', null, '2016-05-24 16:17:37.702', null, '2016-05-24 16:17:37.702', null, null, null, null, null, null, null, '1', '费用相关流程', '1', 'fee', '费用类');
-INSERT INTO "public"."workflow_category" VALUES ('45722', null, '2016-05-24 16:09:04.403', null, '2016-05-24 16:18:04.403', null, null, null, null, null, null, null, '1', '后勤相关流程', '1', 'rear', '后勤类');
-
--- ----------------------------
--- Alter Sequences Owned By
--- ----------------------------
-
--- ----------------------------
--- Primary Key structure for table workflow_category
--- ----------------------------
-ALTER TABLE "public"."workflow_category" ADD PRIMARY KEY ("id");
 
 

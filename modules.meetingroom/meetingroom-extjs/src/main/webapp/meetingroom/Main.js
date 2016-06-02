@@ -22,7 +22,7 @@ Ext.define('kalix.app.meetingroom.Main', {
             xtype: 'meetingroomGridPanel',
             id: 'meetingroomGridPanel',
             title: '会议室列表',
-            iconCls: 'x-fa fa-search',
+            iconCls: 'fa fa-university',
             margin: 10
         }
     ]

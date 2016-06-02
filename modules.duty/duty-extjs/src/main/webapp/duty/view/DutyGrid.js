@@ -7,7 +7,7 @@ Ext.define('kalix.app.duty.view.DutyGrid', {
     extend: 'kalix.view.components.common.BaseGrid',
     requires: [
         'kalix.app.duty.controller.DutyGridController',
-        'kalix.app.duty.store.DutyStore',
+        'kalix.app.duty.store.DutyStore'
     ],
     alias: 'widget.dutyGrid',
     xtype: 'dutyGridPanel',
@@ -37,18 +37,18 @@ Ext.define('kalix.app.duty.view.DutyGrid', {
             {
                 text: '编号',
                 dataIndex: 'id',
-                hidden: true,
+                hidden: true
             },
             {
                 text: '职位名称',
-                dataIndex: 'name',
+                dataIndex: 'name'
             },
             {
                 text: '所在部门',
-                dataIndex: 'department',
+                dataIndex: 'department'
             }, {
                 text: '职位描述',
-                dataIndex: 'comment',
+                dataIndex: 'comment'
             },
             {
                 xtype: 'securityGridColumnRUD',

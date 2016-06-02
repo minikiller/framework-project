@@ -121,9 +121,8 @@
     <!--机构服务注册-->
     <bean id="orgBeanServiceImpl" class="cn.com.rexen.admin.core.OrganizationBeanServiceImpl">
         <property name="dao" ref="orgBeanDao"/>
-        <property name="userBeanService" ref="userBeanServiceImpl"/>
         <property name="shiroService" ref="shiroService"/>
-        <property name="departmentBeanService" ref="depBeanServiceImpl"/>
+        <property name="depUserBeanDao" ref="depUserBeanDao"/>
     </bean>
     <service id="orgBeanService" ref="orgBeanServiceImpl"
              interface="cn.com.rexen.admin.api.biz.IOrganizationBeanService"/>
