@@ -41,7 +41,7 @@ public class CategoryMenuImpl implements IMenu {
 
         @Override
         public String getIconCls() {
-            return "x-fa fa-newspaper-o";
+            return "iconfont icon-category";
         }
 
         @Override

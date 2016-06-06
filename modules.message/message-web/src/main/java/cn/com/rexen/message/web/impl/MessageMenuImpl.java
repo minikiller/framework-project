@@ -65,6 +65,6 @@ public class MessageMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-share";
+        return "iconfont icon-outbox";
     }
 }

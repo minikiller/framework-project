@@ -15,10 +15,6 @@
     <service interface="cn.com.rexen.core.api.web.IModule">
         <bean class="cn.com.rexen.demo.web.impl.module.MyMessageModuleImpl"/>
     </service>
-    <!--流程系统管理模块-->
-    <service interface="cn.com.rexen.core.api.web.IModule">
-        <bean class="cn.com.rexen.demo.web.impl.module.SysManageModuleImpl"/>
-    </service>
 
     <!--业务流程模块-->
     <service interface="cn.com.rexen.core.api.web.IModule">
@@ -29,16 +25,6 @@
     <service interface="cn.com.rexen.core.api.web.IModule">
         <bean class="cn.com.rexen.demo.web.impl.module.MyWorkingModuleImpl"/>
     </service>
-
-    <!--流程演示-->
-    <!--<service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.demo.web.impl.menu.DemoWorkFlowMenuImpl"/>
-    </service>-->
-
-    <!--公告管理-->
-    <!--<service interface="cn.com.rexen.core.api.web.IMenu">
-        <bean class="cn.com.rexen.demo.web.impl.menu.NoticeMenuImpl"/>
-    </service>-->
 
     <!--印章使用申请-->
     <service interface="cn.com.rexen.core.api.web.IMenu">

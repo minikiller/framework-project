@@ -51,7 +51,7 @@ public class OrgChartMenuImpl implements IMenu {
 
     @Override
     public int getIndex() {
-        return 50;
+        return 0;
     }
 
     @Override
@@ -61,6 +61,6 @@ public class OrgChartMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-building";
+        return "iconfont icon-organization-chart";
     }
 }

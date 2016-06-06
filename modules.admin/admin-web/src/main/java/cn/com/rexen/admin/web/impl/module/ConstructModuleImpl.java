@@ -60,7 +60,7 @@ public class ConstructModuleImpl implements IModule {
 
     @Override
     public String getIconCls() {
-        return "right-icon x-fa fa-sitemap";
+        return "iconfont icon-organization";
     }
 
     @Override

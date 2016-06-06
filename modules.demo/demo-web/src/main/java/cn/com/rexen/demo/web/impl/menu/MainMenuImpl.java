@@ -64,6 +64,6 @@ public class MainMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "fa fa-arrows-alt";
+        return "iconfont icon-process-apply";
     }
 }

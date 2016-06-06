@@ -64,6 +64,6 @@ public class SealApplyMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-credit-card";
+        return "iconfont icon-seal";
     }
 }

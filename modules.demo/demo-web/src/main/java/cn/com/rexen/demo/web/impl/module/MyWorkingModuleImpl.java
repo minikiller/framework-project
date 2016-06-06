@@ -58,7 +58,7 @@ public class MyWorkingModuleImpl implements IModule {
 
     @Override
     public String getIconCls() {
-        return "right-icon x-fa fa-folder";
+        return "iconfont icon-work";
     }
 
     @Override

@@ -64,6 +64,6 @@ public class CarApplyMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-car";
+        return "iconfont icon-public-car";
     }
 }
