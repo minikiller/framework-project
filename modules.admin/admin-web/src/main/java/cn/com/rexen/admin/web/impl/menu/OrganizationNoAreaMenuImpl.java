@@ -63,6 +63,6 @@ public class OrganizationNoAreaMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-building";
+        return "iconfont icon-organization-management";
     }
 }
