@@ -78,24 +78,18 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
                 xtype: 'securityGridColumnCommon',
                 items: [
                     {
-                        icon: "/kalix/message/resources/images/message_view.png",
+                        iconCls: 'iconfont icon-view-column',
                         permission: '',
                         tooltip: '查看',
                         handler: 'onView'
                     },
                     {
-                        icon: "/kalix/message/resources/images/message_delete.png",
+                        iconCls: 'iconfont icon-delete',
                         permission: '',
                         tooltip: '删除',
                         handler: 'onDelete'
                     }
                 ]
-                //todo change permission
-                //permissions: ''//[
-                //    'admin:constructModule:messageMenu:view',
-                //    'admin:constructModule:messageMenu:edit',
-                //    'admin:constructModule:messageMenu:delete'
-                //]
             }
         ]
     },
@@ -107,13 +101,13 @@ Ext.define('kalix.message.receiver.view.MessageGrid', {
                 xtype: 'button',
                 //todo change permission
                 permission: '',
-                iconCls: 'fa fa-pencil',
+                iconCls: 'iconfont icon-add',
                 handler: 'onSender'
             },
             {
                 text: '批量删除',
                 permission: '',
-                iconCls: 'fa fa-trash',
+                iconCls: 'iconfont icon-delete',
                 handler: 'onBatchDelete'
             }
         ]

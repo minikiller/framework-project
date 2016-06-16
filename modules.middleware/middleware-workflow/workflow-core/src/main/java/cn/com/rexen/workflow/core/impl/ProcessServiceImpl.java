@@ -25,6 +25,8 @@ import org.activiti.engine.task.Comment;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -54,7 +56,14 @@ public class ProcessServiceImpl implements IProcessService {
             Map map = SerializeUtil.json2Map(jsonStr);
             String processDefinitionName = (String) map.get("name");
             Assert.notNull(processDefinitionName);
-            processDefinitionList = repositoryService.createProcessDefinitionQuery().processDefinitionNameLike("%" + processDefinitionName + "%").listPage((page - 1) * limit, limit);
+            processDefinitionList = repositoryService.createProcessDefinitionQuery().orderByProcessDefinitionVersion().asc().processDefinitionNameLike("%" + processDefinitionName + "%").listPage((page - 1) * limit, limit);
+            Map<String, ProcessDefinition> mapProcess = new LinkedHashMap<String, ProcessDefinition>();
+            if (processDefinitionList != null && processDefinitionList.size() > 0) {
+                for (ProcessDefinition pd : processDefinitionList) {
+                    mapProcess.put(pd.getKey(), pd);
+                }
+            }
+            processDefinitionList = new ArrayList<ProcessDefinition>(mapProcess.values());
         } else {
             processDefinitionList = repositoryService.createProcessDefinitionQuery().latestVersion().listPage((page - 1) * limit, limit);
         }

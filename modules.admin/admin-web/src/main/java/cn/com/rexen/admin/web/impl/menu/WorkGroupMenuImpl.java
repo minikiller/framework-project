@@ -62,6 +62,6 @@ public class WorkGroupMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-user-plus";
+        return "iconfont icon-workgroup-management";
     }
 }

@@ -21,7 +21,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.com.rexen.kalix.middleware.workflow</groupId>
-            <artifactId>workflow-api</artifactId>
+            <artifactId>workflow-core</artifactId>
             <version>${globle.version}</version>
             <scope>provided</scope>
         </dependency>

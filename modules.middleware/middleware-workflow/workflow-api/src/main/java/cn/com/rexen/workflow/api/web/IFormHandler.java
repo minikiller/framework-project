@@ -19,9 +19,18 @@ public interface IFormHandler {
     String getProcessDefinitionId();
 
     /**
-     * 获得extjs的类名称
+     * 获得extjs的表单类名称
      *
      * @return
      */
-    String getComponentClass();
+    String getFormClass();
+
+    /**
+     * 获得extjs的窗口类名称
+     *
+     * @return
+     */
+    String getWindowClass();
+
+
 }

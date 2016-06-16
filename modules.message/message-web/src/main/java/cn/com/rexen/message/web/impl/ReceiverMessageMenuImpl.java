@@ -65,6 +65,6 @@ public class ReceiverMessageMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-inbox";
+        return "iconfont icon-inbox";
     }
 }

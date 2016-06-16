@@ -56,7 +56,7 @@ public class AppModuleImpl implements IModule {
 
     @Override
     public String getIconCls() {
-        return "right-icon x-fa fa-database";
+        return "iconfont icon-module";
     }
 
     @Override

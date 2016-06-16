@@ -41,7 +41,7 @@ public class DutyMenuImpl implements IMenu {
 
         @Override
         public String getIconCls() {
-            return "x-fa fa-cutlery";
+            return "iconfont icon-job-management";
         }
 
         @Override

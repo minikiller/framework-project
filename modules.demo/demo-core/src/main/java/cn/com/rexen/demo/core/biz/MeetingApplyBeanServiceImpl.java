@@ -6,6 +6,7 @@ package cn.com.rexen.demo.core.biz;
 
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
+import cn.com.rexen.core.api.persistence.PersistentEntity;
 import cn.com.rexen.core.util.BeanUtil;
 import cn.com.rexen.core.util.SerializeUtil;
 import cn.com.rexen.demo.api.biz.IMeetingApplyBeanService;
@@ -17,6 +18,7 @@ import cn.com.rexen.workflow.core.impl.WorkflowGenericBizServiceImpl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -157,5 +159,31 @@ public class MeetingApplyBeanServiceImpl extends WorkflowGenericBizServiceImpl<I
             jsonStatus.setSuccess(false);
         }
         return jsonStatus;
+    }
+
+    @Override
+    public JsonData reservation(Date date) {
+        if (date == null) return null;
+        JsonData jsonData = new JsonData();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String dateStr = df.format(date);
+        List<PersistentEntity> beans = dao.findByNativeSql("select ob from MeetingApplyBean ob where ob.meetingDate >=1? and ob.meetingDate <=2?", MeetingApplyBean.class, dateStr + "00:00:00", dateStr + "23:59:59");
+
+        jsonData.setData(beans);
+        jsonData.setTotalCount((long) beans.size());
+        return jsonData;
+    }
+
+    @Override
+    public JsonData reservation(long roomId, Date date) {
+        if (date == null) return null;
+        JsonData jsonData = new JsonData();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String dateStr = df.format(date);
+        List<PersistentEntity> beans = dao.findByNativeSql("select ob from MeetingApplyBean ob where ob.meetingRoomId = ?1 ob.meetingDate >= 2? and ob.meetingDate <= 3?", MeetingApplyBean.class, roomId, dateStr + "00:00:00", dateStr + "23:59:59");
+
+        jsonData.setData(beans);
+        jsonData.setTotalCount((long) beans.size());
+        return jsonData;
     }
 }

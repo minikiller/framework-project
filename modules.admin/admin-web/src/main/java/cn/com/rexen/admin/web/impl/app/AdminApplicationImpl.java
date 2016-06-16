@@ -32,7 +32,7 @@ public class AdminApplicationImpl implements IApplication {
 
     @Override
     public String getIcon() {
-        return "resources/images/cog.png";
+        return "iconfont icon-admin";
     }
 
     @Override

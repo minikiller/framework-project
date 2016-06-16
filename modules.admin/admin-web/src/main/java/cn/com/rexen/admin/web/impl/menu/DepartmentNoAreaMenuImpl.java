@@ -63,6 +63,6 @@ public class DepartmentNoAreaMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-university";
+        return "iconfont icon-department-management";
     }
 }

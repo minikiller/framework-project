@@ -71,13 +71,13 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
                 xtype: 'securityGridColumnCommon',
                 items: [
                     {
-                        icon: "/kalix/message/resources/images/message_view.png",
+                        iconCls: 'iconfont icon-view-column',
                         permission: '',
                         tooltip: '查看',
                         handler: 'onView'
                     },
                     {
-                        icon: "/kalix/message/resources/images/message_delete.png",
+                        iconCls: 'iconfont icon-delete',
                         permission: '',
                         tooltip: '删除',
                         handler: 'onDelete'
@@ -92,7 +92,7 @@ Ext.define('kalix.message.sender.view.MessageGrid', {
             {
                 text: '批量删除',
                 permission: '',
-                iconCls: 'fa fa-trash',
+                iconCls: 'iconfont icon-delete',
                 handler: 'onBatchDelete'
             }
         ]

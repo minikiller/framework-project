@@ -58,7 +58,7 @@ public class MyMessageModuleImpl implements IModule {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-envelope";
+        return "iconfont icon-message";
     }
 
     @Override

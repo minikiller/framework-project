@@ -58,7 +58,7 @@ public class WorkFlowBizModuleImpl implements IModule {
 
     @Override
     public String getIconCls() {
-        return "right-icon x-fa fa-tasks";
+        return "iconfont icon-process-definition";
     }
 
     @Override

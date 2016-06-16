@@ -61,6 +61,6 @@ public class FunctionMenuImpl implements IMenu {
 
     @Override
     public String getIconCls() {
-        return "x-fa fa-cube";
+        return "iconfont icon-function-management";
     }
 }

@@ -33,7 +33,7 @@ public class TestApplicationImpl implements IApplication {
 
     @Override
     public String getIcon() {
-        return "admin/resources/images/building.png";
+        return "iconfont icon-oa";
     }
 
     @Override

@@ -28,6 +28,8 @@ public class SealApplyBean extends WorkflowEntity {
     private String generalManager;
     //印章专管员
     private String sealAdministrator;
+    //审批修改
+    private String modify;
 
     //备注
     private String remark;
@@ -102,5 +104,13 @@ public class SealApplyBean extends WorkflowEntity {
 
     public void setSealAdministrator(String sealAdministrator) {
         this.sealAdministrator = sealAdministrator;
+    }
+
+    public String getModify() {
+        return modify;
+    }
+
+    public void setModify(String modify) {
+        this.modify = modify;
     }
 }
