@@ -61,9 +61,21 @@
         <property name="taskService" ref="taskService"/>
         <property name="meetingroomBeanService" ref="meetingroomBeanService"/>
     </bean>
+
+    <service interface="cn.com.rexen.demo.api.biz.IRecruitApplyService" ref="recruitApplyService"/>
+    <bean id="recruitApplyService" class="cn.com.rexen.demo.core.biz.RecruitApplyServiceImpl">
+        <tx:transaction method="*" value="Required"/>
+        <property name="dao" ref="recruitApplyBeanDao"/>
+        <property name="shiroService" ref="shiroService"/>
+        <property name="identityService" ref="identityService"/>
+        <property name="runtimeService" ref="runtimeService"/>
+        <property name="taskService" ref="taskService"/>
+    </bean>
+
     <reference id="noticeBeanDao" interface="cn.com.rexen.demo.api.dao.INoticeBeanDao"/>
     <reference id="sealApplyBeanDao" interface="cn.com.rexen.demo.api.dao.ISealApplyBeanDao"/>
     <reference id="carApplyBeanDao" interface="cn.com.rexen.demo.api.dao.ICarApplyBeanDao"/>
     <reference id="meetingApplyBeanDao" interface="cn.com.rexen.demo.api.dao.IMeetingApplyBeanDao"/>
+    <reference id="recruitApplyBeanDao" interface="cn.com.rexen.demo.api.dao.IRecruitApplyDao"/>
 </blueprint>
 

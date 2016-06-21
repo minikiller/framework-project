@@ -14,6 +14,13 @@
     <packaging>bundle</packaging>
     <name>Kalix :: Demo - Rest</name>
     <description>Demo Rest Service</description>
+    <dependencies>
+        <dependency>
+            <groupId>cn.com.rexen.kalix.demo</groupId>
+            <artifactId>demo-api</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
     <properties>
         <bundle.symbolicName>cn.com.rexen.demo.rest</bundle.symbolicName>

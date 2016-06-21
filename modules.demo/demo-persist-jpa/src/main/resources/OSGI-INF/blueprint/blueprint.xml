@@ -28,5 +28,11 @@
         <tx:transaction method="*" value="Required"/>
     </bean>
 
+    <!--招聘申请流程-->
+    <service interface="cn.com.rexen.demo.api.dao.IRecruitApplyDao" ref="recruitApplyDaoImpl"/>
+    <bean id="recruitApplyDaoImpl" class="cn.com.rexen.demo.persist.openjpa.RecruitApplyDaoImpl">
+        <tx:transaction method="*" value="Required"/>
+    </bean>
+
 </blueprint>
 

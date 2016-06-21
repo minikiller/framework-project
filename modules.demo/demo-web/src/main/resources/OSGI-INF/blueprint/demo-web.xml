@@ -101,4 +101,19 @@
     <service interface="cn.com.rexen.core.api.web.IMenu">
         <bean class="cn.com.rexen.demo.web.impl.menu.MainMenuImpl"/>
     </service>
+
+
+    <!-- 用工招聘申请菜单-->
+    <service interface="cn.com.rexen.core.api.web.IMenu">
+        <bean class="cn.com.rexen.demo.web.impl.menu.RecruitApplyMenuImpl"/>
+    </service>
+    <!-- 用工招聘申请审批页面-->
+    <service interface="cn.com.rexen.workflow.api.web.IFormHandler">
+        <bean class="cn.com.rexen.demo.web.impl.form.RecruitApplyAuditFormImpl"/>
+    </service>
+    <!-- 用工招聘申请流程历史页面-->
+    <service interface="cn.com.rexen.workflow.api.web.IBizDataHandler">
+        <bean class="cn.com.rexen.demo.web.impl.form.RecruitApplyBizDataFormImpl"/>
+    </service>
+
 </blueprint>
