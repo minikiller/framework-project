@@ -146,10 +146,10 @@ public abstract class  WorkflowGenericBizServiceImpl<T extends IGenericDao, TP e
     /**
      * 添加处理人的名字到实体中
      *
-     * @param taskDefinitionKey
+     * @param currentTaskId
      * @param bean
      */
-    public abstract void writeClaimResult(String taskDefinitionKey, String userName,TP bean) throws NoSuchMethodException;
+    public abstract void writeClaimResult(String currentTaskId, String userName, TP bean) throws NoSuchMethodException;
 
     /**
      * 加入流程环节变量到map中
