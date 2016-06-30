@@ -51,6 +51,23 @@
                 <description>Find all orgs</description>
                 <to uri="bean:orgService?method=getAllOrg"/>
             </get>
+
+            <get id="route-getUsersByDepartmentId" uri="/departmentUsers/users/{id}" outType="java.util.List">
+                <description>Find users by department Id</description>
+                <to uri="bean:orgService?method=getUsersByDepartmentId(${header.id})"/>
+            </get>
+
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-getUserAllAndDepartmentUsers" uri="/departmentUsers/users/all/{id}" outType="java.util.List">
+                <description>Find users by department Id</description>
+                <to uri="bean:orgService?method=getUserAllAndDepartmentUsers(${header.id})"/>
+            </get>
+
+            <!-- this is a rest GET to view an user by the given id -->
+            <get id="route-saveDepartmentUsers" uri="/departmentUsers" outType="cn.com.rexen.core.api.biz.JsonStatus">
+                <description>save departmentUsers</description>
+                <to uri="bean:orgService?method=saveDepartmentUsers(${header.depId},${header.userIds})"/>
+            </get>
         </rest>
 
     </camelContext>

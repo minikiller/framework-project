@@ -7,6 +7,7 @@ import cn.com.rexen.admin.dto.model.OrganizationDTO;
 import cn.com.rexen.admin.entities.DepartmentUserBean;
 import cn.com.rexen.admin.entities.OrganizationBean;
 import cn.com.rexen.admin.entities.UserBean;
+import cn.com.rexen.admin.util.Compare;
 import cn.com.rexen.core.api.biz.JsonStatus;
 import cn.com.rexen.core.api.persistence.JsonData;
 import cn.com.rexen.core.api.persistence.PersistentEntity;
@@ -19,6 +20,7 @@ import org.dozer.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 机构管理服务实现
@@ -59,9 +61,9 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
     public void afterSaveEntity(OrganizationBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         OrganizationBean bean=(OrganizationBean)entity;
-        if(bean.getParentId()!=-1){
+        if(bean.getParentId() != -1) {
             OrganizationBean parentOrganizationBean = dao.getOrg(bean.getParentId());
-            if(parentOrganizationBean!=null&&parentOrganizationBean.getIsLeaf()==1){
+            if(parentOrganizationBean != null && parentOrganizationBean.getIsLeaf() == 1) {
                 parentOrganizationBean.setIsLeaf(0);
                 dao.saveOrg(parentOrganizationBean);
             }
@@ -72,14 +74,19 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
     public boolean isUpdate(OrganizationBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         OrganizationBean bean=(OrganizationBean)entity;
-        List<OrganizationBean> beans = dao.find("select ob from OrganizationBean ob where ob.name = ?1", bean.getName());
-        if(beans!=null&&beans.size()>0){
-            OrganizationBean _org=beans.get(0);
-            if(_org.getId()!=entity.getId()) {
-                status.setFailure(true);
-                status.setMsg(FUNCTION_NAME + "已经存在！");
-                return false;
-            }
+        // 校验机构名称
+        List<OrganizationBean> beans = dao.find("select ob from OrganizationBean ob where ob.name = ?1 and ob.id <> ?2", bean.getName(), bean.getId());
+        if(beans != null && beans.size() > 0) {
+            status.setFailure(true);
+            status.setMsg(FUNCTION_NAME + "名称已经存在！");
+            return false;
+        }
+        // 校验机构代码
+        beans = dao.find("select ob from OrganizationBean ob where ob.code = ?1 and ob.id <> ?2", bean.getCode(), bean.getId());
+        if(beans != null && beans.size() > 0) {
+            status.setFailure(true);
+            status.setMsg(FUNCTION_NAME + "代码已经存在！");
+            return false;
         }
         return true;
     }
@@ -88,10 +95,18 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
     public boolean isSave(OrganizationBean entity, JsonStatus status) {
         Assert.notNull(entity, "实体不能为空.");
         OrganizationBean bean=(OrganizationBean)entity;
-        List<OrganizationBean> beans = dao.find("select ob from OrganizationBean ob where ob.name = ?1 and ob.areaId=?2", bean.getName(), bean.getAreaId());
-        if(beans!=null&&beans.size()>0){
+        // 校验机构名称
+        List<OrganizationBean> beans = dao.find("select ob from OrganizationBean ob where ob.name = ?1", bean.getName());
+        if(beans != null && beans.size() > 0) {
             status.setSuccess(false);
-            status.setMsg(FUNCTION_NAME + "已经存在！");
+            status.setMsg(FUNCTION_NAME + "名称已经存在！");
+            return false;
+        }
+        // 校验机构代码
+        beans = dao.find("select ob from OrganizationBean ob where ob.code = ?1", bean.getCode());
+        if(beans != null && beans.size() > 0) {
+            status.setSuccess(false);
+            status.setMsg(FUNCTION_NAME + "代码已经存在！");
             return false;
         }
         return true;
@@ -107,7 +122,6 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
         return true;
     }
 
-
     @Override
     public JsonStatus deleteEntity(long id) {
         JsonStatus jsonStatus = new JsonStatus();
@@ -117,7 +131,7 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
                 jsonStatus.setMsg(FUNCTION_NAME + "{" + id + "}不存在！");
             } else {
                 List<OrganizationBean> organizationBeans = dao.find("select ob from OrganizationBean ob where ob.id = ?1", id);
-                if(organizationBeans!=null&&!organizationBeans.isEmpty()) {
+                if(organizationBeans != null && !organizationBeans.isEmpty()) {
                     removeChildren(id);
                     OrganizationBean org=organizationBeans.get(0);
                     dao.removeOrg(id);
@@ -139,16 +153,15 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
 
     }
 
-
     /**
      * 如果父节点下再没有子节点,将更新父节点状态
      * @param parentId
      */
     public void updateParent(Long parentId){
         List<OrganizationBean> organizationBeans = dao.find("select ob from OrganizationBean ob where ob.id = ?1", parentId); //获得父节点
-        if(organizationBeans!=null&&organizationBeans.size()>0){
+        if(organizationBeans != null && organizationBeans.size() > 0) {
             List<OrganizationBean> children = dao.find("select ob from OrganizationBean ob where ob.parentId = ?1", parentId); //获得父节点
-            if(children==null||children.isEmpty()) {
+            if(children == null || children.isEmpty()) {
                 OrganizationBean parent = organizationBeans.get(0);
                 parent.setIsLeaf(1);
                 dao.save(parent);
@@ -253,11 +266,19 @@ public class OrganizationBeanServiceImpl extends GenericBizServiceImpl<IOrganiza
         return generateRoot(null,0L);
     }
 
+    /**
+     * 查询全部 机构
+     * 不在关联到部门 2016-06-29
+     *
+     * @return
+     */
     public OrganizationDTO getAllOrg() {
-        //List<OrganizationBean> orgs = dao.getAll();
-        List<OrganizationBean> orgs = dao.find("select ob from OrganizationBean ob where ob.dept=false order by ob.code");
+        List<OrganizationBean> orgs = dao.getAll().stream()
+                .sorted(Compare.<OrganizationBean>compare()
+                        .thenComparing((a, b) -> a.getCode().compareTo(b.getCode())))
+                .collect(Collectors.toList());
 
-        return generateRoot(orgs,-1L);
+        return generateRoot(orgs, -1L);
     }
 
     @Override
