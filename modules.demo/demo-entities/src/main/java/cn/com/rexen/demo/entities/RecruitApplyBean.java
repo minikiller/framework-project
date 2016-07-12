@@ -17,7 +17,7 @@ public class RecruitApplyBean extends WorkflowEntity {
     private String reason;// 需求原因
     private String positionName;//职位名称
     private Integer recruitCount;// 拟聘人数
-    private Integer allocationCout;// 定编人数
+    private Integer allocationCount;// 定编人数
     private Integer existCount;// 现有人数
     private String leaderName;// 直接上级
     private String treatmentLevel;// 待遇标准
@@ -68,12 +68,12 @@ public class RecruitApplyBean extends WorkflowEntity {
         this.recruitCount = recruitCount;
     }
 
-    public Integer getAllocationCout() {
-        return allocationCout;
+    public Integer getAllocationCount() {
+        return allocationCount;
     }
 
-    public void setAllocationCout(Integer allocationCout) {
-        this.allocationCout = allocationCout;
+    public void setAllocationCount(Integer allocationCount) {
+        this.allocationCount = allocationCount;
     }
 
     public Integer getExistCount() {
