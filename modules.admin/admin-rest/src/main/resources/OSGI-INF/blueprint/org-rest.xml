@@ -12,7 +12,7 @@
 
         <!-- defines the rest services using the context-path /org -->
         <rest path="/orgs" consumes="application/json;charset=utf-8" produces="application/json;charset=utf-8">
-            <description>org rest service 1</description>
+            <description>org rest service 12</description>
             <!-- this is a rest GET to view an org by the given id -->
             <get id="route-getOrg" uri="/{id}">
                 <description>Find org by id</description>
