@@ -52,7 +52,6 @@ public class MyMessageModuleImpl implements IModule {
 
     @Override
     public String getPermission() {
-//        return Const.APPLICATION_NAME + ":" + getId();
         return "";
     }
 
